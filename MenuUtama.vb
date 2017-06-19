@@ -12,6 +12,8 @@
         menuGroupSales.Visible = False
         menuCustomer.Visible = False
         menuSupplier.Visible = False
+        menuYarn.Visible = False
+        menuBankAccount.Visible = False
         'end
     End Sub
     Sub HideMenuTransaction()
@@ -67,6 +69,14 @@
         If menuID = menuSupplier.Tag Then
             menuMaster.Visible = True
             menuSupplier.Visible = True
+        End If
+        If menuID = menuYarn.Tag Then
+            menuMaster.Visible = True
+            menuYarn.Visible = True
+        End If
+        If menuID = menuBankAccount.Tag Then
+            menuMaster.Visible = True
+            menuBankAccount.Visible = True
         End If
         'end
     End Sub
@@ -182,6 +192,18 @@
 
     Private Sub menuSupplier_Click(sender As Object, e As EventArgs) Handles menuSupplier.Click
         Dim frm As New FrmSupplier
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub menuYarn_Click(sender As Object, e As EventArgs) Handles menuYarn.Click
+        Dim frm As New FrmYarn
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub menuBankAccount_Click(sender As Object, e As EventArgs) Handles menuBankAccount.Click
+        Dim frm As New FrmBankAccount
         frm.MdiParent = Me
         frm.Show()
     End Sub

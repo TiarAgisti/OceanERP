@@ -42,10 +42,12 @@ Partial Class MenuUtama
         Me.menuColor = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuUtilities = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuGroupSales = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuTransaksi = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuCustomer = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuSupplier = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuYarn = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuTransaksi = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuBankAccount = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -120,7 +122,7 @@ Partial Class MenuUtama
         '
         'menuMaster
         '
-        Me.menuMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuUser, Me.menuDestination, Me.menuBank, Me.menuFabric, Me.menuTOP, Me.menuColor, Me.menuUtilities, Me.menuGroupSales, Me.menuCustomer, Me.menuSupplier})
+        Me.menuMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuUser, Me.menuDestination, Me.menuBank, Me.menuFabric, Me.menuTOP, Me.menuColor, Me.menuUtilities, Me.menuGroupSales, Me.menuCustomer, Me.menuSupplier, Me.menuYarn, Me.menuBankAccount})
         Me.menuMaster.Name = "menuMaster"
         Me.menuMaster.Size = New System.Drawing.Size(60, 20)
         Me.menuMaster.Text = "Masters"
@@ -181,18 +183,6 @@ Partial Class MenuUtama
         Me.menuGroupSales.Tag = "9"
         Me.menuGroupSales.Text = "Group Sales"
         '
-        'menuTransaksi
-        '
-        Me.menuTransaksi.Name = "menuTransaksi"
-        Me.menuTransaksi.Size = New System.Drawing.Size(85, 20)
-        Me.menuTransaksi.Text = "Transactions"
-        '
-        'menuKeluar
-        '
-        Me.menuKeluar.Name = "menuKeluar"
-        Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
-        Me.menuKeluar.Text = "Exit"
-        '
         'menuCustomer
         '
         Me.menuCustomer.Name = "menuCustomer"
@@ -206,6 +196,32 @@ Partial Class MenuUtama
         Me.menuSupplier.Size = New System.Drawing.Size(167, 22)
         Me.menuSupplier.Tag = "11"
         Me.menuSupplier.Text = "Supplier"
+        '
+        'menuYarn
+        '
+        Me.menuYarn.Name = "menuYarn"
+        Me.menuYarn.Size = New System.Drawing.Size(167, 22)
+        Me.menuYarn.Tag = "12"
+        Me.menuYarn.Text = "Yarn"
+        '
+        'menuTransaksi
+        '
+        Me.menuTransaksi.Name = "menuTransaksi"
+        Me.menuTransaksi.Size = New System.Drawing.Size(85, 20)
+        Me.menuTransaksi.Text = "Transactions"
+        '
+        'menuKeluar
+        '
+        Me.menuKeluar.Name = "menuKeluar"
+        Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
+        Me.menuKeluar.Text = "Exit"
+        '
+        'menuBankAccount
+        '
+        Me.menuBankAccount.Name = "menuBankAccount"
+        Me.menuBankAccount.Size = New System.Drawing.Size(167, 22)
+        Me.menuBankAccount.Tag = "13"
+        Me.menuBankAccount.Text = "Bank Account"
         '
         'MenuUtama
         '
@@ -257,4 +273,6 @@ Partial Class MenuUtama
     Friend WithEvents toltipIP As ToolStripStatusLabel
     Friend WithEvents menuCustomer As ToolStripMenuItem
     Friend WithEvents menuSupplier As ToolStripMenuItem
+    Friend WithEvents menuYarn As ToolStripMenuItem
+    Friend WithEvents menuBankAccount As ToolStripMenuItem
 End Class

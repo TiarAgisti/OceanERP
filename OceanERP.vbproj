@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BisnisFlowControl\Masters\ClsBank.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsBankAccount.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsBrand.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsColor.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsCurrency.vb" />
@@ -83,6 +84,7 @@
     <Compile Include="BisnisFlowControl\Masters\ClsTermOfPayment.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsUser.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsVendor.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsYarn.vb" />
     <Compile Include="BisnisFlowControl\Settings\ClsConfig.vb" />
     <Compile Include="BisnisFlowControl\Settings\ClsLogHistory.vb" />
     <Compile Include="BisnisFlowControl\Settings\ClsPermission.vb" />
@@ -102,6 +104,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Models\CoreModel.vb" />
+    <Compile Include="Models\Masters\BankAccountModel.vb" />
     <Compile Include="Models\Masters\BankModel.vb" />
     <Compile Include="Models\Masters\BrandModel.vb" />
     <Compile Include="Models\Masters\ColorModel.vb" />
@@ -131,6 +134,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmBankAccount.Designer.vb">
+      <DependentUpon>FrmBankAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmBankAccount.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmColors.Designer.vb">
       <DependentUpon>FrmColors.vb</DependentUpon>
@@ -241,6 +250,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmBankAccount.resx">
+      <DependentUpon>FrmBankAccount.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmColors.resx">
       <DependentUpon>FrmColors.vb</DependentUpon>

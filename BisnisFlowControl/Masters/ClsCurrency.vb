@@ -23,7 +23,20 @@
         Return dataTable
 
     End Function
+    Public Function ListComboBoxBank() As DataTable
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable = New DataTable
+        Dim query As String
+        query = "Select CurrencyID,Name From Currency Where IsActive = 1"
 
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+        Catch ex As Exception
+            Throw ex
+        End Try
+        dataAccess = Nothing
+        Return dataTable
+    End Function
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
         Dim query As String = "Select max(CurrencyID) from Currency"
