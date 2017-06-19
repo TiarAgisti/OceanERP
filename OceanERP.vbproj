@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{307CB1F7-F3DD-4DD4-BAF6-6F283C644FDE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>OceanERP.My.MyApplication</StartupObject>
+    <RootNamespace>OceanERP</RootNamespace>
+    <AssemblyName>OceanERP</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>OceanERP.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>OceanERP.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BisnisFlowControl\Masters\ClsBank.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsBrand.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsColor.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsCurrency.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsDepartment.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsDestination.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsFabric.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsGroupSales.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsTermOfPayment.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsUser.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsVendor.vb" />
+    <Compile Include="BisnisFlowControl\Settings\ClsConfig.vb" />
+    <Compile Include="BisnisFlowControl\Settings\ClsLogHistory.vb" />
+    <Compile Include="BisnisFlowControl\Settings\ClsPermission.vb" />
+    <Compile Include="DataAccess\ClsDataAccess.vb" />
+    <Compile Include="DataAccess\MdlHelper.vb" />
+    <Compile Include="FrmLogin.Designer.vb">
+      <DependentUpon>FrmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuUtama.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuUtama.Designer.vb">
+      <DependentUpon>MenuUtama.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Models\CoreModel.vb" />
+    <Compile Include="Models\Masters\BankModel.vb" />
+    <Compile Include="Models\Masters\BrandModel.vb" />
+    <Compile Include="Models\Masters\ColorModel.vb" />
+    <Compile Include="Models\Masters\CurrencyModel.vb" />
+    <Compile Include="Models\Masters\DepartmentModel.vb" />
+    <Compile Include="Models\Masters\DestinationModel.vb" />
+    <Compile Include="Models\Masters\FabricModel.vb" />
+    <Compile Include="Models\Masters\GroupSalesModel.vb" />
+    <Compile Include="Models\Masters\TermOfPaymentModel.vb" />
+    <Compile Include="Models\Masters\UserModel.vb" />
+    <Compile Include="Models\Masters\VendorModel.vb" />
+    <Compile Include="Models\Masters\YarnModel.vb" />
+    <Compile Include="Models\Settings\LogHistoryModel.vb" />
+    <Compile Include="Models\Settings\RoleDModel.vb" />
+    <Compile Include="Models\Settings\RoleHModel.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmColors.Designer.vb">
+      <DependentUpon>FrmColors.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmColors.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmCustomer.Designer.vb">
+      <DependentUpon>FrmCustomer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmCustomer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmDestination.Designer.vb">
+      <DependentUpon>FrmDestination.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmDestination.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmFabric.Designer.vb">
+      <DependentUpon>FrmFabric.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmFabric.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmGroupSales.Designer.vb">
+      <DependentUpon>FrmGroupSales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmGroupSales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmSettingBank.Designer.vb">
+      <DependentUpon>FrmSettingBank.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmSettingBank.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmSupplier.Designer.vb">
+      <DependentUpon>FrmSupplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmSupplier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmTermOfPayment.Designer.vb">
+      <DependentUpon>FrmTermOfPayment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmTermOfPayment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmUser.Designer.vb">
+      <DependentUpon>FrmUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmUtilities.Designer.vb">
+      <DependentUpon>FrmUtilities.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmUtilities.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmYarn.Designer.vb">
+      <DependentUpon>FrmYarn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmYarn.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\List\FrmListUser.Designer.vb">
+      <DependentUpon>FrmListUser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\List\FrmListUser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Settings\Form\FrmChangePassword.Designer.vb">
+      <DependentUpon>FrmChangePassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\Form\FrmChangePassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Settings\Form\FrmConfiguration.Designer.vb">
+      <DependentUpon>FrmConfiguration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\Form\FrmConfiguration.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Settings\List\FrmListPermission.Designer.vb">
+      <DependentUpon>FrmListPermission.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\List\FrmListPermission.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Settings\Form\FrmPermission.Designer.vb">
+      <DependentUpon>FrmPermission.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\Form\FrmPermission.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuUtama.resx">
+      <DependentUpon>MenuUtama.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmColors.resx">
+      <DependentUpon>FrmColors.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmCustomer.resx">
+      <DependentUpon>FrmCustomer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmDestination.resx">
+      <DependentUpon>FrmDestination.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmFabric.resx">
+      <DependentUpon>FrmFabric.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmGroupSales.resx">
+      <DependentUpon>FrmGroupSales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmSettingBank.resx">
+      <DependentUpon>FrmSettingBank.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmSupplier.resx">
+      <DependentUpon>FrmSupplier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmTermOfPayment.resx">
+      <DependentUpon>FrmTermOfPayment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmUser.resx">
+      <DependentUpon>FrmUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmUtilities.resx">
+      <DependentUpon>FrmUtilities.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmYarn.resx">
+      <DependentUpon>FrmYarn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\List\FrmListUser.resx">
+      <DependentUpon>FrmListUser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Settings\Form\FrmChangePassword.resx">
+      <DependentUpon>FrmChangePassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Settings\Form\FrmConfiguration.resx">
+      <DependentUpon>FrmConfiguration.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Settings\List\FrmListPermission.resx">
+      <DependentUpon>FrmListPermission.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Settings\Form\FrmPermission.resx">
+      <DependentUpon>FrmPermission.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image\Home.ico" />
+    <Content Include="Image\login-icon.png" />
+    <Content Include="Image\login.png" />
+    <Content Include="Image\logo.jpg" />
+    <Content Include="Image\OfficePark.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BisnisFlowControl\Transactions\" />
+    <Folder Include="Models\Transactions\" />
+    <Folder Include="Views\Transactions\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
