@@ -6,17 +6,23 @@
 
         Select Case options
             Case "BankAccount Code"
-                query = "Select * From v_BankAccount Where BankAccountCode Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
+                query = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,BankID,VendorID,CurrencyID,IsActive" &
+                        " From v_BankAccount Where BankAccountCode Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
             Case "Bank"
-                query = "Select * From v_BankAccount Where BankName Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
+                query = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,BankID,VendorID,CurrencyID,IsActive" &
+                        " From v_BankAccount Where BankName Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
             Case "Supplier / Customer"
-                query = "Select * From v_BankAccount Where VendorDesc Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
+                query = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,BankID,VendorID,CurrencyID,IsActive" &
+                        " From v_BankAccount Where VendorDesc Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
             Case "Account Name"
-                query = "Select * From v_BankAccount Where AccountName Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
+                query = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,BankID,VendorID,CurrencyID,IsActive" &
+                        " From v_BankAccount Where AccountName Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
             Case "Account Number"
-                query = query = "Select * From v_BankAccount Where AccountNumber Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
+                query = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,BankID,VendorID,CurrencyID,IsActive" &
+                        " From v_BankAccount Where AccountNumber Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
             Case Else
-                query = query = "Select * From v_BankAccount Where IsActive = 1 Order By BankAccountCode Asc"
+                query = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,BankID,VendorID,CurrencyID,IsActive" &
+                        " From v_BankAccount Where IsActive = 1 Order By BankAccountCode Asc"
         End Select
 
         Try
@@ -94,7 +100,7 @@
         If options = "Update" Then
 
             query = "Update BankAccount set BankID='" & bacModel.BankID & "',VendorID = '" & bacModel.VendorID & "',CurrencyID = '" & bacModel.CurrencyID & "'" &
-                     ",AccountName='" & bacModel.BankID & "',AccountNumber='" & bacModel.AccountNumber & "' Where BankAccountID = '" & bacModel.BankAccountID & "'"
+                     ",AccountName='" & bacModel.AccountName & "',AccountNumber='" & bacModel.AccountNumber & "' Where BankAccountID = '" & bacModel.BankAccountID & "'"
             queryList.Add(query)
 
         Else

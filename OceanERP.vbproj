@@ -75,12 +75,14 @@
     <Compile Include="BisnisFlowControl\Masters\ClsBank.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsBankAccount.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsBrand.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsCOA.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsColor.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsCurrency.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsDepartment.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsDestination.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsFabric.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsGroupSales.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsSeason.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsTermOfPayment.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsUser.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsVendor.vb" />
@@ -107,12 +109,14 @@
     <Compile Include="Models\Masters\BankAccountModel.vb" />
     <Compile Include="Models\Masters\BankModel.vb" />
     <Compile Include="Models\Masters\BrandModel.vb" />
+    <Compile Include="Models\Masters\COAModel.vb" />
     <Compile Include="Models\Masters\ColorModel.vb" />
     <Compile Include="Models\Masters\CurrencyModel.vb" />
     <Compile Include="Models\Masters\DepartmentModel.vb" />
     <Compile Include="Models\Masters\DestinationModel.vb" />
     <Compile Include="Models\Masters\FabricModel.vb" />
     <Compile Include="Models\Masters\GroupSalesModel.vb" />
+    <Compile Include="Models\Masters\SeasonModel.vb" />
     <Compile Include="Models\Masters\TermOfPaymentModel.vb" />
     <Compile Include="Models\Masters\UserModel.vb" />
     <Compile Include="Models\Masters\VendorModel.vb" />
@@ -139,6 +143,12 @@
       <DependentUpon>FrmBankAccount.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmBankAccount.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmCOA.Designer.vb">
+      <DependentUpon>FrmCOA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmCOA.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmColors.Designer.vb">
@@ -169,6 +179,12 @@
       <DependentUpon>FrmGroupSales.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmGroupSales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmSeason.Designer.vb">
+      <DependentUpon>FrmSeason.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmSeason.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmSettingBank.Designer.vb">
@@ -254,6 +270,9 @@
     <EmbeddedResource Include="Views\Masters\Form\FrmBankAccount.resx">
       <DependentUpon>FrmBankAccount.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmCOA.resx">
+      <DependentUpon>FrmCOA.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmColors.resx">
       <DependentUpon>FrmColors.vb</DependentUpon>
     </EmbeddedResource>
@@ -268,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmGroupSales.resx">
       <DependentUpon>FrmGroupSales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmSeason.resx">
+      <DependentUpon>FrmSeason.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmSettingBank.resx">
       <DependentUpon>FrmSettingBank.vb</DependentUpon>

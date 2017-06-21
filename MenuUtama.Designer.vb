@@ -45,9 +45,11 @@ Partial Class MenuUtama
         Me.menuCustomer = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuSupplier = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuYarn = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuBankAccount = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuSeason = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuCOA = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuTransaksi = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuBankAccount = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -122,7 +124,7 @@ Partial Class MenuUtama
         '
         'menuMaster
         '
-        Me.menuMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuUser, Me.menuDestination, Me.menuBank, Me.menuFabric, Me.menuTOP, Me.menuColor, Me.menuUtilities, Me.menuGroupSales, Me.menuCustomer, Me.menuSupplier, Me.menuYarn, Me.menuBankAccount})
+        Me.menuMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuUser, Me.menuDestination, Me.menuBank, Me.menuFabric, Me.menuTOP, Me.menuColor, Me.menuUtilities, Me.menuGroupSales, Me.menuCustomer, Me.menuSupplier, Me.menuYarn, Me.menuBankAccount, Me.menuSeason, Me.menuCOA})
         Me.menuMaster.Name = "menuMaster"
         Me.menuMaster.Size = New System.Drawing.Size(60, 20)
         Me.menuMaster.Text = "Masters"
@@ -204,6 +206,27 @@ Partial Class MenuUtama
         Me.menuYarn.Tag = "12"
         Me.menuYarn.Text = "Yarn"
         '
+        'menuBankAccount
+        '
+        Me.menuBankAccount.Name = "menuBankAccount"
+        Me.menuBankAccount.Size = New System.Drawing.Size(167, 22)
+        Me.menuBankAccount.Tag = "13"
+        Me.menuBankAccount.Text = "Bank Account"
+        '
+        'menuSeason
+        '
+        Me.menuSeason.Name = "menuSeason"
+        Me.menuSeason.Size = New System.Drawing.Size(167, 22)
+        Me.menuSeason.Tag = "14"
+        Me.menuSeason.Text = "Season"
+        '
+        'menuCOA
+        '
+        Me.menuCOA.Name = "menuCOA"
+        Me.menuCOA.Size = New System.Drawing.Size(167, 22)
+        Me.menuCOA.Tag = "15"
+        Me.menuCOA.Text = "COA"
+        '
         'menuTransaksi
         '
         Me.menuTransaksi.Name = "menuTransaksi"
@@ -215,13 +238,6 @@ Partial Class MenuUtama
         Me.menuKeluar.Name = "menuKeluar"
         Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
         Me.menuKeluar.Text = "Exit"
-        '
-        'menuBankAccount
-        '
-        Me.menuBankAccount.Name = "menuBankAccount"
-        Me.menuBankAccount.Size = New System.Drawing.Size(167, 22)
-        Me.menuBankAccount.Tag = "13"
-        Me.menuBankAccount.Text = "Bank Account"
         '
         'MenuUtama
         '
@@ -275,4 +291,6 @@ Partial Class MenuUtama
     Friend WithEvents menuSupplier As ToolStripMenuItem
     Friend WithEvents menuYarn As ToolStripMenuItem
     Friend WithEvents menuBankAccount As ToolStripMenuItem
+    Friend WithEvents menuSeason As ToolStripMenuItem
+    Friend WithEvents menuCOA As ToolStripMenuItem
 End Class

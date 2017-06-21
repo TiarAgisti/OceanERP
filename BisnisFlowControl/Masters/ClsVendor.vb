@@ -45,7 +45,7 @@
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
         Dim query As String
-        query = " VendorID,VendorCode + ' - ' + VendorName as VendorDesc From Vendor Where IsActive = 1"
+        query = "Select VendorID,VendorCode + ' - ' + VendorName as VendorDesc From Vendor Where IsActive = 1"
 
         Try
             dataTable = dataAccess.RetrieveListData(query)

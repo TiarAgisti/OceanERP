@@ -23,7 +23,7 @@
         Return dataTable
 
     End Function
-    Public Function ListComboBoxBank() As DataTable
+    Public Function ListComboBoxCurrency() As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
         Dim query As String
