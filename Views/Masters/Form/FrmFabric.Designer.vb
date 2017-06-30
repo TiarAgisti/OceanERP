@@ -39,6 +39,8 @@ Partial Class FrmFabric
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.dgv = New System.Windows.Forms.DataGridView()
+        Me.txtCompo = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -59,7 +61,7 @@ Partial Class FrmFabric
         Me.Label1.Location = New System.Drawing.Point(3, 38)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(67, 13)
-        Me.Label1.TabIndex = 13
+        Me.Label1.TabIndex = 14
         Me.Label1.Text = "Fabric Name"
         '
         'txtCode
@@ -76,7 +78,7 @@ Partial Class FrmFabric
         Me.Label2.Location = New System.Drawing.Point(3, 12)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(64, 13)
-        Me.Label2.TabIndex = 12
+        Me.Label2.TabIndex = 13
         Me.Label2.Text = "Fabric Code"
         '
         'btnExit
@@ -158,6 +160,8 @@ Partial Class FrmFabric
         'Panel3
         '
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.txtCompo)
+        Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Controls.Add(Me.txtName)
         Me.Panel3.Controls.Add(Me.Label1)
         Me.Panel3.Controls.Add(Me.Label2)
@@ -165,8 +169,8 @@ Partial Class FrmFabric
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 46)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(592, 71)
-        Me.Panel3.TabIndex = 23
+        Me.Panel3.Size = New System.Drawing.Size(592, 88)
+        Me.Panel3.TabIndex = 12
         '
         'Panel1
         '
@@ -177,20 +181,20 @@ Partial Class FrmFabric
         Me.Panel1.Controls.Add(Me.btnCancel)
         Me.Panel1.Controls.Add(Me.btnSave)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 117)
+        Me.Panel1.Location = New System.Drawing.Point(0, 134)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(592, 37)
-        Me.Panel1.TabIndex = 24
+        Me.Panel1.TabIndex = 16
         '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.txtCari)
         Me.GroupBox2.Controls.Add(Me.cmbCari)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 154)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 171)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(592, 55)
-        Me.GroupBox2.TabIndex = 25
+        Me.GroupBox2.TabIndex = 17
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Search"
         '
@@ -198,10 +202,27 @@ Partial Class FrmFabric
         '
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgv.Location = New System.Drawing.Point(0, 209)
+        Me.dgv.Location = New System.Drawing.Point(0, 226)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(592, 291)
-        Me.dgv.TabIndex = 26
+        Me.dgv.Size = New System.Drawing.Size(592, 274)
+        Me.dgv.TabIndex = 11
+        '
+        'txtCompo
+        '
+        Me.txtCompo.Location = New System.Drawing.Point(102, 61)
+        Me.txtCompo.MaxLength = 150
+        Me.txtCompo.Name = "txtCompo"
+        Me.txtCompo.Size = New System.Drawing.Size(222, 20)
+        Me.txtCompo.TabIndex = 3
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(3, 64)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(64, 13)
+        Me.Label4.TabIndex = 15
+        Me.Label4.Text = "Composition"
         '
         'FrmFabric
         '
@@ -244,4 +265,6 @@ Partial Class FrmFabric
     Friend WithEvents Panel1 As Panel
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents dgv As DataGridView
+    Friend WithEvents txtCompo As TextBox
+    Friend WithEvents Label4 As Label
 End Class

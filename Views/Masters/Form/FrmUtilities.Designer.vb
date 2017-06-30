@@ -58,6 +58,8 @@ Partial Class FrmUtilities
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtCodeBrand = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtSBU = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.tabDept.SuspendLayout()
         CType(Me.dgvDept, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -101,20 +103,20 @@ Partial Class FrmUtilities
         '
         Me.dgvDept.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvDept.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvDept.Location = New System.Drawing.Point(3, 178)
+        Me.dgvDept.Location = New System.Drawing.Point(3, 195)
         Me.dgvDept.Name = "dgvDept"
-        Me.dgvDept.Size = New System.Drawing.Size(632, 275)
-        Me.dgvDept.TabIndex = 10
+        Me.dgvDept.Size = New System.Drawing.Size(632, 258)
+        Me.dgvDept.TabIndex = 11
         '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.txtCariDept)
         Me.GroupBox2.Controls.Add(Me.cmbCariDept)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox2.Location = New System.Drawing.Point(3, 122)
+        Me.GroupBox2.Location = New System.Drawing.Point(3, 139)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(632, 56)
-        Me.GroupBox2.TabIndex = 15
+        Me.GroupBox2.TabIndex = 17
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Search"
         '
@@ -123,7 +125,7 @@ Partial Class FrmUtilities
         Me.txtCariDept.Location = New System.Drawing.Point(234, 19)
         Me.txtCariDept.Name = "txtCariDept"
         Me.txtCariDept.Size = New System.Drawing.Size(395, 20)
-        Me.txtCariDept.TabIndex = 9
+        Me.txtCariDept.TabIndex = 10
         '
         'cmbCariDept
         '
@@ -132,7 +134,7 @@ Partial Class FrmUtilities
         Me.cmbCariDept.Location = New System.Drawing.Point(5, 19)
         Me.cmbCariDept.Name = "cmbCariDept"
         Me.cmbCariDept.Size = New System.Drawing.Size(223, 21)
-        Me.cmbCariDept.TabIndex = 8
+        Me.cmbCariDept.TabIndex = 9
         '
         'Panel4
         '
@@ -143,17 +145,17 @@ Partial Class FrmUtilities
         Me.Panel4.Controls.Add(Me.btnSaveDept)
         Me.Panel4.Controls.Add(Me.btnDeleteDept)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel4.Location = New System.Drawing.Point(3, 79)
+        Me.Panel4.Location = New System.Drawing.Point(3, 102)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(632, 43)
-        Me.Panel4.TabIndex = 14
+        Me.Panel4.Size = New System.Drawing.Size(632, 37)
+        Me.Panel4.TabIndex = 16
         '
         'btnExitDept
         '
         Me.btnExitDept.Location = New System.Drawing.Point(328, 5)
         Me.btnExitDept.Name = "btnExitDept"
         Me.btnExitDept.Size = New System.Drawing.Size(75, 23)
-        Me.btnExitDept.TabIndex = 7
+        Me.btnExitDept.TabIndex = 8
         Me.btnExitDept.Text = "Exit"
         Me.btnExitDept.UseVisualStyleBackColor = True
         '
@@ -163,7 +165,7 @@ Partial Class FrmUtilities
         Me.btnAddDept.Location = New System.Drawing.Point(4, 5)
         Me.btnAddDept.Name = "btnAddDept"
         Me.btnAddDept.Size = New System.Drawing.Size(75, 23)
-        Me.btnAddDept.TabIndex = 3
+        Me.btnAddDept.TabIndex = 4
         Me.btnAddDept.Text = "Add"
         Me.btnAddDept.UseVisualStyleBackColor = True
         '
@@ -172,7 +174,7 @@ Partial Class FrmUtilities
         Me.btnCancelDept.Location = New System.Drawing.Point(247, 5)
         Me.btnCancelDept.Name = "btnCancelDept"
         Me.btnCancelDept.Size = New System.Drawing.Size(75, 23)
-        Me.btnCancelDept.TabIndex = 6
+        Me.btnCancelDept.TabIndex = 7
         Me.btnCancelDept.Text = "Cancel"
         Me.btnCancelDept.UseVisualStyleBackColor = True
         '
@@ -182,7 +184,7 @@ Partial Class FrmUtilities
         Me.btnSaveDept.Location = New System.Drawing.Point(85, 5)
         Me.btnSaveDept.Name = "btnSaveDept"
         Me.btnSaveDept.Size = New System.Drawing.Size(75, 23)
-        Me.btnSaveDept.TabIndex = 4
+        Me.btnSaveDept.TabIndex = 5
         Me.btnSaveDept.Text = "Save"
         Me.btnSaveDept.UseVisualStyleBackColor = True
         '
@@ -192,13 +194,15 @@ Partial Class FrmUtilities
         Me.btnDeleteDept.Location = New System.Drawing.Point(166, 5)
         Me.btnDeleteDept.Name = "btnDeleteDept"
         Me.btnDeleteDept.Size = New System.Drawing.Size(75, 23)
-        Me.btnDeleteDept.TabIndex = 5
+        Me.btnDeleteDept.TabIndex = 6
         Me.btnDeleteDept.Text = "Delete"
         Me.btnDeleteDept.UseVisualStyleBackColor = True
         '
         'Panel3
         '
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.txtSBU)
+        Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Controls.Add(Me.txtNameDept)
         Me.Panel3.Controls.Add(Me.Label6)
         Me.Panel3.Controls.Add(Me.txtCodeDept)
@@ -206,8 +210,8 @@ Partial Class FrmUtilities
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(3, 3)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(632, 76)
-        Me.Panel3.TabIndex = 13
+        Me.Panel3.Size = New System.Drawing.Size(632, 99)
+        Me.Panel3.TabIndex = 12
         '
         'txtNameDept
         '
@@ -223,7 +227,7 @@ Partial Class FrmUtilities
         Me.Label6.Location = New System.Drawing.Point(8, 41)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(35, 13)
-        Me.Label6.TabIndex = 12
+        Me.Label6.TabIndex = 14
         Me.Label6.Text = "Name"
         '
         'txtCodeDept
@@ -240,7 +244,7 @@ Partial Class FrmUtilities
         Me.Label7.Location = New System.Drawing.Point(8, 15)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(90, 13)
-        Me.Label7.TabIndex = 11
+        Me.Label7.TabIndex = 13
         Me.Label7.Text = "Department Code"
         '
         'tabBrand
@@ -423,6 +427,23 @@ Partial Class FrmUtilities
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Brand Code"
         '
+        'txtSBU
+        '
+        Me.txtSBU.Location = New System.Drawing.Point(101, 64)
+        Me.txtSBU.MaxLength = 50
+        Me.txtSBU.Name = "txtSBU"
+        Me.txtSBU.Size = New System.Drawing.Size(309, 20)
+        Me.txtSBU.TabIndex = 3
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(8, 67)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(29, 13)
+        Me.Label4.TabIndex = 15
+        Me.Label4.Text = "SBU"
+        '
         'FrmUtilities
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -489,4 +510,6 @@ Partial Class FrmUtilities
     Friend WithEvents txtCariBrand As TextBox
     Friend WithEvents cmbCariBrand As ComboBox
     Friend WithEvents dgvBrand As DataGridView
+    Friend WithEvents txtSBU As TextBox
+    Friend WithEvents Label4 As Label
 End Class

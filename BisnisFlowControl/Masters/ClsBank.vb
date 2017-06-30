@@ -9,10 +9,6 @@
                 query = "select * From Bank where BankCode LIKE '%" & param & "%' AND isActive = 1 order by BankCode asc"
             Case "Bank Name"
                 query = "select * From Bank where Name LIKE '%" & param & "%' AND isActive = 1 order by BankCode asc"
-            Case "Account Number"
-                query = "select * From Bank where Account LIKE '%" & param & "%' AND isActive = 1 order by BankCode asc"
-            Case "Account Name"
-                query = "select * From Bank where AccountName LIKE '%" & param & "%' AND isActive = 1 order by BankCode asc"
             Case "Swift Code"
                 query = "select * From Bank where SwiftCode LIKE '%" & param & "%' AND isActive = 1 order by BankCode asc"
             Case Else
@@ -75,10 +71,10 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
 
-        Dim sql As String = "Insert into Bank(BankID,BankCode,Name,Account,AccountName,SwiftCode,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
-                                "'" & bankModel.BankID & "','" & bankModel.BankCode & "','" & bankModel.Name & "','" & bankModel.Account & "'" &
-                                ",'" & bankModel.AccountName & "','" & bankModel.SwiftCode & "','" & bankModel.IsActive & "','" & bankModel.CreatedBy & "'" &
-                                ",'" & bankModel.CreatedDate & "','" & bankModel.UpdatedBy & "','" & bankModel.UpdatedDate & "')"
+        Dim sql As String = "Insert into Bank(BankID,BankCode,Name,SwiftCode,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
+                                "'" & bankModel.BankID & "','" & bankModel.BankCode & "','" & bankModel.Name & "','" & bankModel.SwiftCode & "'" &
+                                ",'" & bankModel.IsActive & "','" & bankModel.CreatedBy & "','" & bankModel.CreatedDate & "','" & bankModel.UpdatedBy & "'" &
+                                ",'" & bankModel.UpdatedDate & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -100,8 +96,8 @@
         Dim query As String
 
         If options = "Update" Then
-            query = "Update Bank Set Name = '" & bankModel.Name & "',Account='" & bankModel.Account & "',AccountName = '" & bankModel.AccountName & "'" &
-                    ",SwiftCode='" & bankModel.SwiftCode & "',IsActive = '" & bankModel.IsActive & "',UpdatedBy='" & bankModel.UpdatedBy & "'" &
+            query = "Update Bank Set Name = '" & bankModel.Name & "',SwiftCode='" & bankModel.SwiftCode & "'" &
+                    ",IsActive = '" & bankModel.IsActive & "',UpdatedBy='" & bankModel.UpdatedBy & "'" &
                     ",UpdatedDate = '" & bankModel.UpdatedDate & "' Where BankID='" & bankModel.BankID & "'"
             queryList.Add(query)
         Else

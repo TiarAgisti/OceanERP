@@ -38,10 +38,6 @@ Partial Class FrmSettingBank
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtSwiftCode = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.txtAccountName = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtAccountNo = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.txtBankName = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtBankCode = New System.Windows.Forms.TextBox()
@@ -105,20 +101,20 @@ Partial Class FrmSettingBank
         '
         Me.dgvBank.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvBank.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvBank.Location = New System.Drawing.Point(3, 242)
+        Me.dgvBank.Location = New System.Drawing.Point(3, 192)
         Me.dgvBank.Name = "dgvBank"
-        Me.dgvBank.Size = New System.Drawing.Size(903, 268)
-        Me.dgvBank.TabIndex = 17
+        Me.dgvBank.Size = New System.Drawing.Size(903, 318)
+        Me.dgvBank.TabIndex = 11
         '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.txtCariBank)
         Me.GroupBox1.Controls.Add(Me.cmbCariBank)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 186)
+        Me.GroupBox1.Location = New System.Drawing.Point(3, 136)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(903, 56)
-        Me.GroupBox1.TabIndex = 2
+        Me.GroupBox1.TabIndex = 17
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Search"
         '
@@ -127,7 +123,7 @@ Partial Class FrmSettingBank
         Me.txtCariBank.Location = New System.Drawing.Point(237, 19)
         Me.txtCariBank.Name = "txtCariBank"
         Me.txtCariBank.Size = New System.Drawing.Size(666, 20)
-        Me.txtCariBank.TabIndex = 16
+        Me.txtCariBank.TabIndex = 10
         '
         'cmbCariBank
         '
@@ -135,7 +131,7 @@ Partial Class FrmSettingBank
         Me.cmbCariBank.Location = New System.Drawing.Point(8, 19)
         Me.cmbCariBank.Name = "cmbCariBank"
         Me.cmbCariBank.Size = New System.Drawing.Size(223, 21)
-        Me.cmbCariBank.TabIndex = 15
+        Me.cmbCariBank.TabIndex = 9
         '
         'Panel2
         '
@@ -146,17 +142,17 @@ Partial Class FrmSettingBank
         Me.Panel2.Controls.Add(Me.btnSaveBank)
         Me.Panel2.Controls.Add(Me.btnAddBank)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(3, 149)
+        Me.Panel2.Location = New System.Drawing.Point(3, 99)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(903, 37)
-        Me.Panel2.TabIndex = 1
+        Me.Panel2.TabIndex = 16
         '
         'btnExitBank
         '
         Me.btnExitBank.Location = New System.Drawing.Point(331, 5)
         Me.btnExitBank.Name = "btnExitBank"
         Me.btnExitBank.Size = New System.Drawing.Size(75, 23)
-        Me.btnExitBank.TabIndex = 14
+        Me.btnExitBank.TabIndex = 8
         Me.btnExitBank.Text = "Exit"
         Me.btnExitBank.UseVisualStyleBackColor = True
         '
@@ -165,7 +161,7 @@ Partial Class FrmSettingBank
         Me.btnCancelBank.Location = New System.Drawing.Point(250, 5)
         Me.btnCancelBank.Name = "btnCancelBank"
         Me.btnCancelBank.Size = New System.Drawing.Size(75, 23)
-        Me.btnCancelBank.TabIndex = 13
+        Me.btnCancelBank.TabIndex = 7
         Me.btnCancelBank.Text = "Cancel"
         Me.btnCancelBank.UseVisualStyleBackColor = True
         '
@@ -175,7 +171,7 @@ Partial Class FrmSettingBank
         Me.btnDeleteBank.Location = New System.Drawing.Point(169, 5)
         Me.btnDeleteBank.Name = "btnDeleteBank"
         Me.btnDeleteBank.Size = New System.Drawing.Size(75, 23)
-        Me.btnDeleteBank.TabIndex = 12
+        Me.btnDeleteBank.TabIndex = 6
         Me.btnDeleteBank.Text = "Delete"
         Me.btnDeleteBank.UseVisualStyleBackColor = True
         '
@@ -185,7 +181,7 @@ Partial Class FrmSettingBank
         Me.btnSaveBank.Location = New System.Drawing.Point(88, 5)
         Me.btnSaveBank.Name = "btnSaveBank"
         Me.btnSaveBank.Size = New System.Drawing.Size(75, 23)
-        Me.btnSaveBank.TabIndex = 11
+        Me.btnSaveBank.TabIndex = 5
         Me.btnSaveBank.Text = "Save"
         Me.btnSaveBank.UseVisualStyleBackColor = True
         '
@@ -195,7 +191,7 @@ Partial Class FrmSettingBank
         Me.btnAddBank.Location = New System.Drawing.Point(7, 5)
         Me.btnAddBank.Name = "btnAddBank"
         Me.btnAddBank.Size = New System.Drawing.Size(75, 23)
-        Me.btnAddBank.TabIndex = 10
+        Me.btnAddBank.TabIndex = 4
         Me.btnAddBank.Text = "Add"
         Me.btnAddBank.UseVisualStyleBackColor = True
         '
@@ -204,10 +200,6 @@ Partial Class FrmSettingBank
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.txtSwiftCode)
         Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Controls.Add(Me.txtAccountName)
-        Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Controls.Add(Me.txtAccountNo)
-        Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.txtBankName)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.txtBankCode)
@@ -215,59 +207,25 @@ Partial Class FrmSettingBank
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(903, 146)
-        Me.Panel1.TabIndex = 0
+        Me.Panel1.Size = New System.Drawing.Size(903, 96)
+        Me.Panel1.TabIndex = 12
         '
         'txtSwiftCode
         '
-        Me.txtSwiftCode.Location = New System.Drawing.Point(97, 117)
+        Me.txtSwiftCode.Location = New System.Drawing.Point(97, 65)
         Me.txtSwiftCode.MaxLength = 50
         Me.txtSwiftCode.Name = "txtSwiftCode"
         Me.txtSwiftCode.Size = New System.Drawing.Size(309, 20)
-        Me.txtSwiftCode.TabIndex = 9
+        Me.txtSwiftCode.TabIndex = 3
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(4, 120)
+        Me.Label5.Location = New System.Drawing.Point(4, 68)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(58, 13)
-        Me.Label5.TabIndex = 8
+        Me.Label5.TabIndex = 15
         Me.Label5.Text = "Swift Code"
-        '
-        'txtAccountName
-        '
-        Me.txtAccountName.Location = New System.Drawing.Point(97, 91)
-        Me.txtAccountName.MaxLength = 150
-        Me.txtAccountName.Name = "txtAccountName"
-        Me.txtAccountName.Size = New System.Drawing.Size(309, 20)
-        Me.txtAccountName.TabIndex = 7
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(4, 94)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(78, 13)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Account Name"
-        '
-        'txtAccountNo
-        '
-        Me.txtAccountNo.Location = New System.Drawing.Point(97, 65)
-        Me.txtAccountNo.MaxLength = 50
-        Me.txtAccountNo.Name = "txtAccountNo"
-        Me.txtAccountNo.Size = New System.Drawing.Size(309, 20)
-        Me.txtAccountNo.TabIndex = 5
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(4, 68)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(87, 13)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Account Number"
         '
         'txtBankName
         '
@@ -275,7 +233,7 @@ Partial Class FrmSettingBank
         Me.txtBankName.MaxLength = 150
         Me.txtBankName.Name = "txtBankName"
         Me.txtBankName.Size = New System.Drawing.Size(309, 20)
-        Me.txtBankName.TabIndex = 3
+        Me.txtBankName.TabIndex = 2
         '
         'Label2
         '
@@ -283,7 +241,7 @@ Partial Class FrmSettingBank
         Me.Label2.Location = New System.Drawing.Point(4, 42)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(63, 13)
-        Me.Label2.TabIndex = 2
+        Me.Label2.TabIndex = 14
         Me.Label2.Text = "Bank Name"
         '
         'txtBankCode
@@ -300,7 +258,7 @@ Partial Class FrmSettingBank
         Me.Label1.Location = New System.Drawing.Point(4, 16)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(60, 13)
-        Me.Label1.TabIndex = 0
+        Me.Label1.TabIndex = 13
         Me.Label1.Text = "Bank Code"
         '
         'tabCurrency
@@ -514,10 +472,6 @@ Partial Class FrmSettingBank
     Friend WithEvents btnAddBank As Button
     Friend WithEvents txtSwiftCode As TextBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents txtAccountName As TextBox
-    Friend WithEvents Label4 As Label
-    Friend WithEvents txtAccountNo As TextBox
-    Friend WithEvents Label3 As Label
     Friend WithEvents txtBankName As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents txtBankCode As TextBox

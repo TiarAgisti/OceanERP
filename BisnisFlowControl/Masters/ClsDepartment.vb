@@ -58,8 +58,8 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
 
-        Dim sql As String = "Insert into Department(DepartmentID,DepartmentCode,Name,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
-                                "'" & departModel.DepartmentID & "','" & departModel.DepartmentCode & "','" & departModel.Name & "'" &
+        Dim sql As String = "Insert into Department(DepartmentID,DepartmentCode,Name,SBU,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
+                                "'" & departModel.DepartmentID & "','" & departModel.DepartmentCode & "','" & departModel.Name & "','" & departModel.SBU & "'" &
                                 ",'" & departModel.IsActive & "','" & departModel.CreatedBy & "','" & departModel.CreatedDate & "'" &
                                 ",'" & departModel.UpdatedBy & "','" & departModel.UpdatedDate & "')"
         queryList.Add(sql)
@@ -83,8 +83,8 @@
         Dim query As String
 
         If options = "Update" Then
-            query = "Update Department Set Name = '" & departModel.Name & "',IsActive = '" & departModel.IsActive & "',UpdatedBy='" & departModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & departModel.UpdatedDate & "' Where DepartmentID='" & departModel.DepartmentID & "'"
+            query = "Update Department Set Name = '" & departModel.Name & "',SBU = '" & departModel.SBU & "',IsActive = '" & departModel.IsActive & "'" &
+                    ",UpdatedBy='" & departModel.UpdatedBy & "',UpdatedDate = '" & departModel.UpdatedDate & "' Where DepartmentID='" & departModel.DepartmentID & "'"
             queryList.Add(query)
         Else
             query = "Update Department Set IsActive = '" & departModel.IsActive & "',UpdatedBy='" & departModel.UpdatedBy & "'" &

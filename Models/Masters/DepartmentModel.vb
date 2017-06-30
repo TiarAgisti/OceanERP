@@ -29,4 +29,14 @@
             xName = value
         End Set
     End Property
+
+    Private xSBU As String
+    Public Property SBU() As String
+        Get
+            Return xSBU
+        End Get
+        Set(ByVal value As String)
+            xSBU = value
+        End Set
+    End Property
 End Class

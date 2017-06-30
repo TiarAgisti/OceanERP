@@ -28,24 +28,6 @@
             xName = value
         End Set
     End Property
-    Private xAccount As String
-    Public Property Account() As String
-        Get
-            Return xAccount
-        End Get
-        Set(ByVal value As String)
-            xAccount = value
-        End Set
-    End Property
-    Private xAccountName As String
-    Public Property AccountName() As String
-        Get
-            Return xAccountName
-        End Get
-        Set(ByVal value As String)
-            xAccountName = value
-        End Set
-    End Property
     Private xSwiftCode As String
     Public Property SwiftCode() As String
         Get

@@ -27,4 +27,13 @@
             xFabricName = value
         End Set
     End Property
+    Private xComposition As String
+    Public Property Composition() As String
+        Get
+            Return xComposition
+        End Get
+        Set(ByVal value As String)
+            xComposition = value
+        End Set
+    End Property
 End Class

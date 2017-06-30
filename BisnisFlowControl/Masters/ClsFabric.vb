@@ -56,8 +56,8 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
 
-        Dim sql As String = "Insert into Fabric(FabricID,FabricCode,FabricName,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
-                                "'" & fabricModel.FabricID & "','" & fabricModel.FabricCode & "','" & fabricModel.FabricName & "'" &
+        Dim sql As String = "Insert into Fabric(FabricID,FabricCode,FabricName,Composition,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
+                                "'" & fabricModel.FabricID & "','" & fabricModel.FabricCode & "','" & fabricModel.FabricName & "','" & fabricModel.Composition & "'" &
                                 ",'" & fabricModel.IsActive & "','" & fabricModel.CreatedBy & "','" & fabricModel.CreatedDate & "'" &
                                 ",'" & fabricModel.UpdatedBy & "','" & fabricModel.UpdatedDate & "')"
         queryList.Add(sql)
@@ -81,8 +81,9 @@
         Dim query As String
 
         If options = "Update" Then
-            query = "Update Fabric Set FabricName = '" & fabricModel.FabricName & "',IsActive = '" & fabricModel.IsActive & "'" &
-                    ",UpdatedBy='" & fabricModel.UpdatedBy & "',UpdatedDate = '" & fabricModel.UpdatedDate & "' Where FabricID='" & fabricModel.FabricID & "'"
+            query = "Update Fabric Set FabricName = '" & fabricModel.FabricName & "',Composition = '" & fabricModel.Composition & "'" &
+                    ",IsActive = '" & fabricModel.IsActive & "',UpdatedBy='" & fabricModel.UpdatedBy & "',UpdatedDate = '" & fabricModel.UpdatedDate & "'" &
+                    " Where FabricID='" & fabricModel.FabricID & "'"
             queryList.Add(query)
 
         Else
