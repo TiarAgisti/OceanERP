@@ -67,6 +67,24 @@
         Return hasil
     End Function
 
+    Public Function GetValidateCurrencyCode(currCode As String) As Boolean
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable = New DataTable
+        Dim query As String = "Select CurrencyCode From Currency Where CurrencyCode = '" & currCode & "'"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+
+            If dataTable.Rows.Count > 0 Then
+                Return False
+            Else
+                Return True
+            End If
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
     Public Function InsertCurrency(currModel As CurrencyModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory

@@ -128,6 +128,7 @@ Partial Class FrmSettingBank
         'cmbCariBank
         '
         Me.cmbCariBank.FormattingEnabled = True
+        Me.cmbCariBank.Items.AddRange(New Object() {"Bank Code", "Bank Name", "Swift Code"})
         Me.cmbCariBank.Location = New System.Drawing.Point(8, 19)
         Me.cmbCariBank.Name = "cmbCariBank"
         Me.cmbCariBank.Size = New System.Drawing.Size(223, 21)
@@ -409,6 +410,7 @@ Partial Class FrmSettingBank
         '
         Me.txtCurrCode.Enabled = False
         Me.txtCurrCode.Location = New System.Drawing.Point(101, 12)
+        Me.txtCurrCode.MaxLength = 15
         Me.txtCurrCode.Name = "txtCurrCode"
         Me.txtCurrCode.Size = New System.Drawing.Size(133, 20)
         Me.txtCurrCode.TabIndex = 5
