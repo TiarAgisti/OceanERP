@@ -84,6 +84,7 @@
     <Compile Include="BisnisFlowControl\Masters\ClsGroupSales.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsSeason.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsTermOfPayment.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsUnit.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsUser.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsVendor.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsYarn.vb" />
@@ -118,6 +119,7 @@
     <Compile Include="Models\Masters\GroupSalesModel.vb" />
     <Compile Include="Models\Masters\SeasonModel.vb" />
     <Compile Include="Models\Masters\TermOfPaymentModel.vb" />
+    <Compile Include="Models\Masters\UnitModel.vb" />
     <Compile Include="Models\Masters\UserModel.vb" />
     <Compile Include="Models\Masters\VendorModel.vb" />
     <Compile Include="Models\Masters\YarnModel.vb" />
@@ -181,6 +183,12 @@
     <Compile Include="Views\Masters\Form\FrmGroupSales.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\Masters\Form\FrmProformaInvoice.Designer.vb">
+      <DependentUpon>FrmProformaInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmProformaInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\Masters\Form\FrmSeason.Designer.vb">
       <DependentUpon>FrmSeason.vb</DependentUpon>
     </Compile>
@@ -203,6 +211,12 @@
       <DependentUpon>FrmTermOfPayment.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmTermOfPayment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmUnit.Designer.vb">
+      <DependentUpon>FrmUnit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmUnit.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmUser.Designer.vb">
@@ -288,6 +302,9 @@
     <EmbeddedResource Include="Views\Masters\Form\FrmGroupSales.resx">
       <DependentUpon>FrmGroupSales.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmProformaInvoice.resx">
+      <DependentUpon>FrmProformaInvoice.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmSeason.resx">
       <DependentUpon>FrmSeason.vb</DependentUpon>
     </EmbeddedResource>
@@ -299,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmTermOfPayment.resx">
       <DependentUpon>FrmTermOfPayment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmUnit.resx">
+      <DependentUpon>FrmUnit.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmUser.resx">
       <DependentUpon>FrmUser.vb</DependentUpon>

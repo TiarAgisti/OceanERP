@@ -50,6 +50,7 @@ Partial Class MenuUtama
         Me.menuCOA = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuTransaksi = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuUnit = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -124,7 +125,7 @@ Partial Class MenuUtama
         '
         'menuMaster
         '
-        Me.menuMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuUser, Me.menuDestination, Me.menuBank, Me.menuFabric, Me.menuTOP, Me.menuColor, Me.menuUtilities, Me.menuGroupSales, Me.menuCustomer, Me.menuSupplier, Me.menuYarn, Me.menuBankAccount, Me.menuSeason, Me.menuCOA})
+        Me.menuMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuUser, Me.menuDestination, Me.menuBank, Me.menuFabric, Me.menuTOP, Me.menuColor, Me.menuUtilities, Me.menuGroupSales, Me.menuCustomer, Me.menuSupplier, Me.menuYarn, Me.menuBankAccount, Me.menuSeason, Me.menuCOA, Me.menuUnit})
         Me.menuMaster.Name = "menuMaster"
         Me.menuMaster.Size = New System.Drawing.Size(60, 20)
         Me.menuMaster.Text = "Masters"
@@ -239,6 +240,13 @@ Partial Class MenuUtama
         Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
         Me.menuKeluar.Text = "Exit"
         '
+        'menuUnit
+        '
+        Me.menuUnit.Name = "menuUnit"
+        Me.menuUnit.Size = New System.Drawing.Size(167, 22)
+        Me.menuUnit.Tag = "16"
+        Me.menuUnit.Text = "Unit"
+        '
         'MenuUtama
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -293,4 +301,5 @@ Partial Class MenuUtama
     Friend WithEvents menuBankAccount As ToolStripMenuItem
     Friend WithEvents menuSeason As ToolStripMenuItem
     Friend WithEvents menuCOA As ToolStripMenuItem
+    Friend WithEvents menuUnit As ToolStripMenuItem
 End Class

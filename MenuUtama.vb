@@ -16,6 +16,7 @@
         menuBankAccount.Visible = False
         menuSeason.Visible = False
         menuCOA.Visible = False
+        menuUnit.Visible = False
         'end
     End Sub
     Sub HideMenuTransaction()
@@ -87,6 +88,10 @@
         If menuID = menuCOA.Tag Then
             menuMaster.Visible = True
             menuCOA.Visible = True
+        End If
+        If menuID = menuUnit.Tag Then
+            menuMaster.Visible = True
+            menuUnit.Visible = True
         End If
         'end
     End Sub
@@ -226,6 +231,12 @@
 
     Private Sub menuCOA_Click(sender As Object, e As EventArgs) Handles menuCOA.Click
         Dim frm As New FrmCOA
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub menuUnit_Click(sender As Object, e As EventArgs) Handles menuUnit.Click
+        Dim frm As New FrmUnit
         frm.MdiParent = Me
         frm.Show()
     End Sub
