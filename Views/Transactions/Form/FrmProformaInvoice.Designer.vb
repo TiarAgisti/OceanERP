@@ -91,6 +91,7 @@ Partial Class FrmProformaInvoice
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.dgv = New System.Windows.Forms.DataGridView()
+        Me.Label29 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -112,6 +113,7 @@ Partial Class FrmProformaInvoice
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.Label29)
         Me.Panel1.Controls.Add(Me.btnCarCust)
         Me.Panel1.Controls.Add(Me.txtTo)
         Me.Panel1.Controls.Add(Me.txtContract)
@@ -742,6 +744,15 @@ Partial Class FrmProformaInvoice
         Me.dgv.Size = New System.Drawing.Size(1048, 278)
         Me.dgv.TabIndex = 34
         '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(379, 121)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(45, 13)
+        Me.Label29.TabIndex = 59
+        Me.Label29.Text = "Address"
+        '
         'FrmProformaInvoice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -836,4 +847,5 @@ Partial Class FrmProformaInvoice
     Friend WithEvents btnCarFab As Button
     Friend WithEvents btnCarCust As Button
     Friend WithEvents txtTo As TextBox
+    Friend WithEvents Label29 As Label
 End Class

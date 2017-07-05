@@ -270,10 +270,10 @@
     <Compile Include="Views\Settings\Form\FrmPermission.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Transactions\List\FrmListSupplier.Designer.vb">
-      <DependentUpon>FrmListSupplier.vb</DependentUpon>
+    <Compile Include="Views\Transactions\List\FrmListProformaInvoice.Designer.vb">
+      <DependentUpon>FrmListProformaInvoice.vb</DependentUpon>
     </Compile>
-    <Compile Include="Views\Transactions\List\FrmListSupplier.vb">
+    <Compile Include="Views\Transactions\List\FrmListProformaInvoice.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -353,8 +353,8 @@
     <EmbeddedResource Include="Views\Settings\Form\FrmPermission.resx">
       <DependentUpon>FrmPermission.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Transactions\List\FrmListSupplier.resx">
-      <DependentUpon>FrmListSupplier.vb</DependentUpon>
+    <EmbeddedResource Include="Views\Transactions\List\FrmListProformaInvoice.resx">
+      <DependentUpon>FrmListProformaInvoice.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
