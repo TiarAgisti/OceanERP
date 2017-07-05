@@ -126,6 +126,9 @@
     <Compile Include="Models\Settings\LogHistoryModel.vb" />
     <Compile Include="Models\Settings\RoleDModel.vb" />
     <Compile Include="Models\Settings\RoleHModel.vb" />
+    <Compile Include="Models\Settings\TermApproveModel.vb" />
+    <Compile Include="Models\Transactions\PIDetailModel.vb" />
+    <Compile Include="Models\Transactions\PIHeaderModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -183,10 +186,10 @@
     <Compile Include="Views\Masters\Form\FrmGroupSales.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Masters\Form\FrmProformaInvoice.Designer.vb">
+    <Compile Include="Views\Transactions\Form\FrmProformaInvoice.Designer.vb">
       <DependentUpon>FrmProformaInvoice.vb</DependentUpon>
     </Compile>
-    <Compile Include="Views\Masters\Form\FrmProformaInvoice.vb">
+    <Compile Include="Views\Transactions\Form\FrmProformaInvoice.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmSeason.Designer.vb">
@@ -267,6 +270,12 @@
     <Compile Include="Views\Settings\Form\FrmPermission.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\Transactions\List\FrmListSupplier.Designer.vb">
+      <DependentUpon>FrmListSupplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transactions\List\FrmListSupplier.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FrmLogin.resx">
@@ -302,7 +311,7 @@
     <EmbeddedResource Include="Views\Masters\Form\FrmGroupSales.resx">
       <DependentUpon>FrmGroupSales.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Masters\Form\FrmProformaInvoice.resx">
+    <EmbeddedResource Include="Views\Transactions\Form\FrmProformaInvoice.resx">
       <DependentUpon>FrmProformaInvoice.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmSeason.resx">
@@ -344,6 +353,9 @@
     <EmbeddedResource Include="Views\Settings\Form\FrmPermission.resx">
       <DependentUpon>FrmPermission.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transactions\List\FrmListSupplier.resx">
+      <DependentUpon>FrmListSupplier.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\Application.myapp">
@@ -363,11 +375,10 @@
     <Content Include="Image\login.png" />
     <Content Include="Image\logo.jpg" />
     <Content Include="Image\OfficePark.jpg" />
+    <Content Include="Image\search.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BisnisFlowControl\Transactions\" />
-    <Folder Include="Models\Transactions\" />
-    <Folder Include="Views\Transactions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

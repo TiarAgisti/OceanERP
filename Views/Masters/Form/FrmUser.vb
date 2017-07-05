@@ -194,6 +194,7 @@
 
 #Region "Button"
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        FrmListUser.status = "Update"
         Me.Close()
     End Sub
 

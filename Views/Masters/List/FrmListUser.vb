@@ -1,4 +1,5 @@
 ﻿Public Class FrmListUser
+    Public Shared status As String
 #Region "Function"
     Sub CheckPermissions()
         Dim roleBFC As ClsPermission = New ClsPermission
@@ -37,6 +38,7 @@
         CheckPermissions()
         ListUsers(cmbCari.Text, txtCari.Text)
         cmbCari.Text = ""
+        status = ""
         txtCari.Clear()
         cmbCari.Focus()
         Text = title
@@ -77,7 +79,7 @@
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Dim frm As New FrmUser
         frm.display = "Create"
-        frm.Show()
+        frm.ShowDialog()
     End Sub
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         Try
@@ -115,6 +117,12 @@
 
     Private Sub txtCari_TextChanged(sender As Object, e As EventArgs) Handles txtCari.TextChanged
         ListUsers(cmbCari.Text, txtCari.Text)
+    End Sub
+
+    Private Sub FrmListUser_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
+        If status = "Update" Then
+            PreCreateDisplay()
+        End If
     End Sub
 #End Region
 

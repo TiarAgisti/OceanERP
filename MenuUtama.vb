@@ -142,7 +142,7 @@
     End Sub
     Private Sub menuUser_Click(sender As Object, e As EventArgs) Handles menuUser.Click
         Dim frm As New FrmListUser
-        frm.MdiParent = Me
+        'frm.MdiParent = Me
         frm.Show()
     End Sub
     Private Sub menuFabric_Click(sender As Object, e As EventArgs) Handles menuFabric.Click
