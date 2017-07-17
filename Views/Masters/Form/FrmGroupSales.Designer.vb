@@ -33,12 +33,12 @@ Partial Class FrmGroupSales
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.txtCari = New System.Windows.Forms.TextBox()
-        Me.cmbCari = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.dgv = New System.Windows.Forms.DataGridView()
+        Me.cmbCari = New System.Windows.Forms.ComboBox()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -134,15 +134,6 @@ Partial Class FrmGroupSales
         Me.txtCari.Size = New System.Drawing.Size(342, 20)
         Me.txtCari.TabIndex = 10
         '
-        'cmbCari
-        '
-        Me.cmbCari.FormattingEnabled = True
-        Me.cmbCari.Items.AddRange(New Object() {"Color Code", "Color Name", "Description"})
-        Me.cmbCari.Location = New System.Drawing.Point(13, 19)
-        Me.cmbCari.Name = "cmbCari"
-        Me.cmbCari.Size = New System.Drawing.Size(215, 21)
-        Me.cmbCari.TabIndex = 9
-        '
         'Label3
         '
         Me.Label3.BackColor = System.Drawing.SystemColors.ActiveCaption
@@ -203,6 +194,15 @@ Partial Class FrmGroupSales
         Me.dgv.Size = New System.Drawing.Size(582, 265)
         Me.dgv.TabIndex = 27
         '
+        'cmbCari
+        '
+        Me.cmbCari.FormattingEnabled = True
+        Me.cmbCari.Items.AddRange(New Object() {"Code", "Name"})
+        Me.cmbCari.Location = New System.Drawing.Point(13, 19)
+        Me.cmbCari.Name = "cmbCari"
+        Me.cmbCari.Size = New System.Drawing.Size(215, 21)
+        Me.cmbCari.TabIndex = 9
+        '
         'FrmGroupSales
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -238,10 +238,10 @@ Partial Class FrmGroupSales
     Friend WithEvents btnSave As Button
     Friend WithEvents btnDelete As Button
     Friend WithEvents txtCari As TextBox
-    Friend WithEvents cmbCari As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel1 As Panel
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents dgv As DataGridView
+    Friend WithEvents cmbCari As ComboBox
 End Class

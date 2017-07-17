@@ -31,6 +31,16 @@
         End Set
     End Property
 
+    Private xNotes As String
+    Public Property Notes() As String
+        Get
+            Return xNotes
+        End Get
+        Set(ByVal value As String)
+            xNotes = value
+        End Set
+    End Property
+
     Private xStatus As Int16
     Public Property Status() As Int16
         Get

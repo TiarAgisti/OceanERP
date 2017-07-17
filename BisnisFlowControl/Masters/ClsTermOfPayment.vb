@@ -1,4 +1,6 @@
 ﻿Public Class ClsTermOfPayment
+
+#Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -25,6 +27,9 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+#End Region
+
+#Region "Method Other"
     Public Function ListComboBoxTerm() As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -65,6 +70,9 @@
         dataAccess = Nothing
         Return hasil
     End Function
+#End Region
+
+#Region "Insert & Update"
     Public Function InsertTerm(termModel As TermOfPaymentModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -116,4 +124,6 @@
             Throw ex
         End Try
     End Function
+#End Region
+
 End Class

@@ -22,6 +22,7 @@
     Sub HideMenuTransaction()
         'menu transaksi
         menuTransaksi.Visible = False
+        menuProformaInvoice.Visible = False
         'end
     End Sub
     Sub HideAllMenu()
@@ -96,7 +97,10 @@
         'end
     End Sub
     Sub CheckPermissionMenuTrans(menuID As Integer)
-
+        If menuID = menuProformaInvoice.Tag Then
+            menuTransaksi.Visible = True
+            menuProformaInvoice.Visible = True
+        End If
     End Sub
     Sub CheckPermissionMenu(menuID As Integer)
         If userID = 1 Then menuPermission.Visible = True
@@ -238,6 +242,13 @@
     Private Sub menuUnit_Click(sender As Object, e As EventArgs) Handles menuUnit.Click
         Dim frm As New FrmUnit
         frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub menuProformaInvoice_Click(sender As Object, e As EventArgs) Handles menuProformaInvoice.Click
+        Dim frm As FrmListProformaInvoice = New FrmListProformaInvoice
+        frm.MdiParent = Me
+        frm.WindowState = FormWindowState.Maximized
         frm.Show()
     End Sub
 End Class

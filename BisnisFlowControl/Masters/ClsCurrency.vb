@@ -1,4 +1,5 @@
 ﻿Public Class ClsCurrency
+#Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -23,19 +24,24 @@
         Return dataTable
 
     End Function
+#End Region
+
+#Region "Method Other"
     Public Function ListComboBoxCurrency() As DataTable
         Dim dataAccess = New ClsDataAccess
-        Dim dataTable = New DataTable
+        Dim dataTable As DataTable = New DataTable
         Dim query As String
-        query = "Select CurrencyID,Name From Currency Where IsActive = 1"
+        query = "Select CurrencyID,CurrencyCode +' - '+ Name as CurrCode From Currency Where IsActive = 1"
 
         Try
             dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
         Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
             Throw ex
         End Try
-        dataAccess = Nothing
-        Return dataTable
     End Function
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
@@ -84,7 +90,9 @@
             Throw ex
         End Try
     End Function
+#End Region
 
+#Region "Insert & Update"
     Public Function InsertCurrency(currModel As CurrencyModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -135,4 +143,5 @@
             Throw ex
         End Try
     End Function
+#End Region
 End Class

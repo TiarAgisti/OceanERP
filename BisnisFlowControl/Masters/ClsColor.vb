@@ -1,4 +1,5 @@
 ﻿Public Class ClsColor
+#Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -25,6 +26,9 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+#End Region
+
+#Region "Method Other"
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
         Dim query As String = "Select max(ColorID) from Colors"
@@ -52,7 +56,24 @@
         dataAccess = Nothing
         Return hasil
     End Function
+    Public Function ListComboBox()
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim query As String
+        query = "Select ColorID,ColorName From Colors Where IsActive = 1"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
+#End Region
 
+#Region "Insert & Update"
     Public Function InsertColor(colorModel As ColorModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -75,7 +96,6 @@
             Throw ex
         End Try
     End Function
-
     Public Function UpdateColor(colorModel As ColorModel, logModel As LogHistoryModel, options As String) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -105,4 +125,6 @@
             Throw ex
         End Try
     End Function
+#End Region
+
 End Class

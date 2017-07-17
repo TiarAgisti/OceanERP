@@ -1,4 +1,5 @@
 ﻿Public Class ClsFabric
+#Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -23,6 +24,36 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+
+    Public Function RetrieveByName(fabricName As String) As FabricModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim fabricModel As FabricModel = New FabricModel
+        Dim query As String = "select FabricID,FabricCode,FabricName From Fabric where IsActive = 1" &
+                                " And FabricName = '" & fabricName & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(query)
+            With dataAccess.reader
+                While .Read
+                    If Not IsDBNull(.Item("FabricCode")) Then
+                        fabricModel.FabricID = .Item("FabricID")
+                        fabricModel.FabricCode = .Item("FabricCode")
+                        fabricModel.FabricName = .Item("FabricName")
+                    End If
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return fabricModel
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
+#End Region
+
+#Region "Method Other"
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
         Dim query As String = "Select max(FabricID) from Fabric"
@@ -50,7 +81,9 @@
         dataAccess = Nothing
         Return hasil
     End Function
+#End Region
 
+#Region "Insert & Update"
     Public Function InsertFabric(fabricModel As FabricModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -103,4 +136,5 @@
             Throw ex
         End Try
     End Function
+#End Region
 End Class

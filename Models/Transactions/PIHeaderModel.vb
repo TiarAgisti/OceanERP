@@ -1,4 +1,5 @@
 ﻿Public Class PIHeaderModel
+    Inherits CoreModel
     Private xPIHeaderID As Long
     Public Property PIHeaderID() As Long
         Get
@@ -6,6 +7,16 @@
         End Get
         Set(ByVal value As Long)
             xPIHeaderID = value
+        End Set
+    End Property
+
+    Private xPIDate As Date
+    Public Property PIDate() As Date
+        Get
+            Return xPIDate
+        End Get
+        Set(ByVal value As Date)
+            xPIDate = value
         End Set
     End Property
 
@@ -26,6 +37,16 @@
         End Get
         Set(ByVal value As Integer)
             xVendorID = value
+        End Set
+    End Property
+
+    Private xBuyerID As Integer
+    Public Property BuyerID() As Integer
+        Get
+            Return xBuyerID
+        End Get
+        Set(ByVal value As Integer)
+            xBuyerID = value
         End Set
     End Property
 
@@ -80,7 +101,7 @@
     End Property
 
     Private xDelTerm As Date
-    Public Property DelDate() As Date
+    Public Property DelTerm() As Date
         Get
             Return xDelTerm
         End Get
@@ -138,4 +159,126 @@
             xStatus = value
         End Set
     End Property
+
+    Private xVendorCode As String
+    Public Property VendorCode() As String
+        Get
+            Return xVendorCode
+        End Get
+        Set(ByVal value As String)
+            xVendorCode = value
+        End Set
+    End Property
+
+    Private xVendorName As String
+    Public Property VendorName() As String
+        Get
+            Return xVendorName
+        End Get
+        Set(ByVal value As String)
+            xVendorName = value
+        End Set
+    End Property
+
+    Private xAddress As String
+    Public Property Address() As String
+        Get
+            Return xAddress
+        End Get
+        Set(ByVal value As String)
+            xAddress = value
+        End Set
+    End Property
+
+    Private xTelephone As String
+    Public Property Telephone() As String
+        Get
+            Return xTelephone
+        End Get
+        Set(ByVal value As String)
+            xTelephone = value
+        End Set
+    End Property
+
+    Private xFax As String
+    Public Property Fax() As String
+        Get
+            Return xFax
+        End Get
+        Set(ByVal value As String)
+            xFax = value
+        End Set
+    End Property
+
+    Private xContactPerson As String
+    Public Property ContactPerson() As String
+        Get
+            Return xContactPerson
+        End Get
+        Set(ByVal value As String)
+            xContactPerson = value
+        End Set
+    End Property
+
+    Private xBuyerName As String
+    Public Property BuyerName() As String
+        Get
+            Return xBuyerName
+        End Get
+        Set(ByVal value As String)
+            xBuyerName = value
+        End Set
+    End Property
+
+    Private xSalesName As String
+    Public Property SalesName() As String
+        Get
+            Return xSalesName
+        End Get
+        Set(ByVal value As String)
+            xSalesName = value
+        End Set
+    End Property
+
+    Private xSeasonName As String
+    Public Property SeasonName() As String
+        Get
+            Return xSeasonName
+        End Get
+        Set(ByVal value As String)
+            xSeasonName = value
+        End Set
+    End Property
+
+    Private xTermOfPayment As String
+    Public Property TermOfPayment() As String
+        Get
+            Return xTermOfPayment
+        End Get
+        Set(ByVal value As String)
+            xTermOfPayment = value
+        End Set
+    End Property
+
+    Private xTermOfPrice As String
+    Public Property TermOfPrice() As String
+        Get
+            Return xTermOfPrice
+        End Get
+        Set(ByVal value As String)
+            xTermOfPrice = value
+        End Set
+    End Property
+
+    Private xDestinationName As String
+    Public Property DestinationName() As String
+        Get
+            Return xDestinationName
+        End Get
+        Set(ByVal value As String)
+            xDestinationName = value
+        End Set
+    End Property
+
+
 End Class

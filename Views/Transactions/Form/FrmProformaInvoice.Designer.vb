@@ -25,6 +25,7 @@ Partial Class FrmProformaInvoice
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmProformaInvoice))
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label29 = New System.Windows.Forms.Label()
         Me.btnCarCust = New System.Windows.Forms.Button()
         Me.txtTo = New System.Windows.Forms.TextBox()
         Me.txtContract = New System.Windows.Forms.TextBox()
@@ -87,11 +88,15 @@ Partial Class FrmProformaInvoice
         Me.dtDateDetail = New System.Windows.Forms.DateTimePicker()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.txtGrandTotal = New System.Windows.Forms.TextBox()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.txtTotQty = New System.Windows.Forms.TextBox()
+        Me.Label30 = New System.Windows.Forms.Label()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.dgv = New System.Windows.Forms.DataGridView()
-        Me.Label29 = New System.Windows.Forms.Label()
+        Me.btnPreview = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -156,6 +161,15 @@ Partial Class FrmProformaInvoice
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1048, 228)
         Me.Panel1.TabIndex = 24
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(379, 121)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(45, 13)
+        Me.Label29.TabIndex = 59
+        Me.Label29.Text = "Address"
         '
         'btnCarCust
         '
@@ -455,6 +469,7 @@ Partial Class FrmProformaInvoice
         '
         'txtPINo
         '
+        Me.txtPINo.Enabled = False
         Me.txtPINo.Location = New System.Drawing.Point(106, 13)
         Me.txtPINo.Name = "txtPINo"
         Me.txtPINo.Size = New System.Drawing.Size(232, 20)
@@ -699,18 +714,61 @@ Partial Class FrmProformaInvoice
         'Panel3
         '
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.btnPreview)
+        Me.Panel3.Controls.Add(Me.txtGrandTotal)
+        Me.Panel3.Controls.Add(Me.Label31)
+        Me.Panel3.Controls.Add(Me.txtTotQty)
+        Me.Panel3.Controls.Add(Me.Label30)
         Me.Panel3.Controls.Add(Me.btnExit)
         Me.Panel3.Controls.Add(Me.btnCancel)
         Me.Panel3.Controls.Add(Me.btnSave)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 427)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1048, 36)
+        Me.Panel3.Size = New System.Drawing.Size(1048, 75)
         Me.Panel3.TabIndex = 26
+        '
+        'txtGrandTotal
+        '
+        Me.txtGrandTotal.Enabled = False
+        Me.txtGrandTotal.Location = New System.Drawing.Point(803, 35)
+        Me.txtGrandTotal.MaxLength = 12
+        Me.txtGrandTotal.Name = "txtGrandTotal"
+        Me.txtGrandTotal.Size = New System.Drawing.Size(232, 20)
+        Me.txtGrandTotal.TabIndex = 72
+        Me.txtGrandTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(722, 38)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(63, 13)
+        Me.Label31.TabIndex = 73
+        Me.Label31.Text = "Grand Total"
+        '
+        'txtTotQty
+        '
+        Me.txtTotQty.Enabled = False
+        Me.txtTotQty.Location = New System.Drawing.Point(803, 9)
+        Me.txtTotQty.MaxLength = 12
+        Me.txtTotQty.Name = "txtTotQty"
+        Me.txtTotQty.Size = New System.Drawing.Size(232, 20)
+        Me.txtTotQty.TabIndex = 70
+        Me.txtTotQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(722, 12)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(50, 13)
+        Me.Label30.TabIndex = 71
+        Me.Label30.Text = "Total Qty"
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(176, 6)
+        Me.btnExit.Location = New System.Drawing.Point(173, 45)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 23)
         Me.btnExit.TabIndex = 33
@@ -719,7 +777,7 @@ Partial Class FrmProformaInvoice
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(95, 6)
+        Me.btnCancel.Location = New System.Drawing.Point(92, 45)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 23)
         Me.btnCancel.TabIndex = 32
@@ -728,7 +786,7 @@ Partial Class FrmProformaInvoice
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(14, 6)
+        Me.btnSave.Location = New System.Drawing.Point(11, 45)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
         Me.btnSave.TabIndex = 31
@@ -739,25 +797,25 @@ Partial Class FrmProformaInvoice
         '
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgv.Location = New System.Drawing.Point(0, 463)
+        Me.dgv.Location = New System.Drawing.Point(0, 502)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(1048, 278)
+        Me.dgv.Size = New System.Drawing.Size(1048, 231)
         Me.dgv.TabIndex = 34
         '
-        'Label29
+        'btnPreview
         '
-        Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(379, 121)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(45, 13)
-        Me.Label29.TabIndex = 59
-        Me.Label29.Text = "Address"
+        Me.btnPreview.Location = New System.Drawing.Point(254, 45)
+        Me.btnPreview.Name = "btnPreview"
+        Me.btnPreview.Size = New System.Drawing.Size(75, 23)
+        Me.btnPreview.TabIndex = 74
+        Me.btnPreview.Text = "Preview"
+        Me.btnPreview.UseVisualStyleBackColor = True
         '
         'FrmProformaInvoice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1048, 741)
+        Me.ClientSize = New System.Drawing.Size(1048, 733)
         Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
@@ -774,6 +832,7 @@ Partial Class FrmProformaInvoice
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -848,4 +907,9 @@ Partial Class FrmProformaInvoice
     Friend WithEvents btnCarCust As Button
     Friend WithEvents txtTo As TextBox
     Friend WithEvents Label29 As Label
+    Friend WithEvents txtGrandTotal As TextBox
+    Friend WithEvents Label31 As Label
+    Friend WithEvents txtTotQty As TextBox
+    Friend WithEvents Label30 As Label
+    Friend WithEvents btnPreview As Button
 End Class

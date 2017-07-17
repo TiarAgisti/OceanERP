@@ -1,4 +1,5 @@
 ﻿Public Class ClsVendor
+#Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String, status As Char) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -27,6 +28,65 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+
+    Public Function RetrieveBuyerName(vendorName As String) As VendorModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim vendorModel As VendorModel = New VendorModel
+        Dim query As String = "Select VendorID,VendorCode,VendorName from Vendor where Status = 'C' and IsActive = 1" &
+                                " And VendorName = '" & vendorName & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(query)
+            With dataAccess.reader
+                While .Read
+                    If Not IsDBNull(.Item("VendorCode")) Then
+                        vendorModel.VendorID = .Item("VendorID")
+                        vendorModel.VendorCode = .Item("VendorCode")
+                        vendorModel.VendorName = .Item("VendorName")
+                    End If
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return vendorModel
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
+
+    Public Function RetrieveCustomerName(vendorName As String) As VendorModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim vendorModel As VendorModel = New VendorModel
+        Dim query As String = "Select VendorID,VendorCode,VendorName,Address,Telephone,Fax,ContactPerson from Vendor where Status = 'C'" &
+                                " And IsActive = 1 And VendorName = '" & vendorName & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(query)
+            With dataAccess.reader
+                While .Read
+                    If Not IsDBNull(.Item("VendorCode")) Then
+                        vendorModel.VendorID = .Item("VendorID")
+                        vendorModel.VendorCode = .Item("VendorCode")
+                        vendorModel.VendorName = .Item("VendorName")
+                        vendorModel.Address = .Item("Address")
+                        vendorModel.Telephone = .Item("Telephone")
+                        vendorModel.Fax = .Item("Fax")
+                        vendorModel.ContactPerson = .Item("ContactPerson")
+                    End If
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return vendorModel
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
+#End Region
+
+#Region "Method Other"
     Public Function ListComboBoxVendor(status As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -55,6 +115,7 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
         Dim query As String = "Select max(VendorID) from Vendor"
@@ -92,7 +153,9 @@
             Throw ex
         End Try
     End Function
+#End Region
 
+#Region "Method Insert & Update"
     Public Function InsertVendor(vendorModel As VendorModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -151,4 +214,8 @@
             Throw ex
         End Try
     End Function
+#End Region
+
+
+
 End Class

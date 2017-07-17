@@ -52,6 +52,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -84,6 +85,7 @@
     <Compile Include="BisnisFlowControl\Masters\ClsGroupSales.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsSeason.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsTermOfPayment.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsTermOfPrice.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsUnit.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsUser.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsVendor.vb" />
@@ -91,6 +93,7 @@
     <Compile Include="BisnisFlowControl\Settings\ClsConfig.vb" />
     <Compile Include="BisnisFlowControl\Settings\ClsLogHistory.vb" />
     <Compile Include="BisnisFlowControl\Settings\ClsPermission.vb" />
+    <Compile Include="BisnisFlowControl\Transactions\ClsProformaInvoice.vb" />
     <Compile Include="DataAccess\ClsDataAccess.vb" />
     <Compile Include="DataAccess\MdlHelper.vb" />
     <Compile Include="FrmLogin.Designer.vb">
@@ -144,6 +147,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ReportDataSet\OceanDS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OceanDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReportDataSet\OceanDS.vb">
+      <DependentUpon>OceanDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Views\Masters\Form\FrmBankAccount.Designer.vb">
       <DependentUpon>FrmBankAccount.vb</DependentUpon>
     </Compile>
@@ -184,6 +195,18 @@
       <DependentUpon>FrmGroupSales.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmGroupSales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\List\FrmListFabric.Designer.vb">
+      <DependentUpon>FrmListFabric.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\List\FrmListFabric.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\List\FrmListCustomer.Designer.vb">
+      <DependentUpon>FrmListCustomer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\List\FrmListCustomer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Transactions\Form\FrmProformaInvoice.Designer.vb">
@@ -290,6 +313,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintOut\ProformaInvoice\rptProformaInvoice.rdlc" />
     <EmbeddedResource Include="Views\Masters\Form\FrmBankAccount.resx">
       <DependentUpon>FrmBankAccount.vb</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +334,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmGroupSales.resx">
       <DependentUpon>FrmGroupSales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\List\FrmListFabric.resx">
+      <DependentUpon>FrmListFabric.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\List\FrmListCustomer.resx">
+      <DependentUpon>FrmListCustomer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\Form\FrmProformaInvoice.resx">
       <DependentUpon>FrmProformaInvoice.vb</DependentUpon>
@@ -368,6 +398,17 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="ReportDataSet\OceanDS.xsc">
+      <DependentUpon>OceanDS.xsd</DependentUpon>
+    </None>
+    <None Include="ReportDataSet\OceanDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OceanDS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ReportDataSet\OceanDS.xss">
+      <DependentUpon>OceanDS.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Image\Home.ico" />
@@ -377,9 +418,7 @@
     <Content Include="Image\OfficePark.jpg" />
     <Content Include="Image\search.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BisnisFlowControl\Transactions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

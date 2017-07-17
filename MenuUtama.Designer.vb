@@ -48,9 +48,10 @@ Partial Class MenuUtama
         Me.menuBankAccount = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuSeason = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuCOA = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuTransaksi = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuUnit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuTransaksi = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuProformaInvoice = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -228,24 +229,32 @@ Partial Class MenuUtama
         Me.menuCOA.Tag = "15"
         Me.menuCOA.Text = "COA"
         '
-        'menuTransaksi
-        '
-        Me.menuTransaksi.Name = "menuTransaksi"
-        Me.menuTransaksi.Size = New System.Drawing.Size(85, 20)
-        Me.menuTransaksi.Text = "Transactions"
-        '
-        'menuKeluar
-        '
-        Me.menuKeluar.Name = "menuKeluar"
-        Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
-        Me.menuKeluar.Text = "Exit"
-        '
         'menuUnit
         '
         Me.menuUnit.Name = "menuUnit"
         Me.menuUnit.Size = New System.Drawing.Size(167, 22)
         Me.menuUnit.Tag = "16"
         Me.menuUnit.Text = "Unit"
+        '
+        'menuTransaksi
+        '
+        Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuProformaInvoice})
+        Me.menuTransaksi.Name = "menuTransaksi"
+        Me.menuTransaksi.Size = New System.Drawing.Size(85, 20)
+        Me.menuTransaksi.Text = "Transactions"
+        '
+        'menuProformaInvoice
+        '
+        Me.menuProformaInvoice.Name = "menuProformaInvoice"
+        Me.menuProformaInvoice.Size = New System.Drawing.Size(165, 22)
+        Me.menuProformaInvoice.Tag = "17"
+        Me.menuProformaInvoice.Text = "Proforma Invoice"
+        '
+        'menuKeluar
+        '
+        Me.menuKeluar.Name = "menuKeluar"
+        Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
+        Me.menuKeluar.Text = "Exit"
         '
         'MenuUtama
         '
@@ -302,4 +311,5 @@ Partial Class MenuUtama
     Friend WithEvents menuSeason As ToolStripMenuItem
     Friend WithEvents menuCOA As ToolStripMenuItem
     Friend WithEvents menuUnit As ToolStripMenuItem
+    Friend WithEvents menuProformaInvoice As ToolStripMenuItem
 End Class

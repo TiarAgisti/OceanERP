@@ -1,4 +1,5 @@
 ﻿Public Class ClsGroupSales
+#Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -23,6 +24,9 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+#End Region
+
+#Region "Method Other"
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
         Dim query As String = "Select max(GroupSalesID) from GroupSales"
@@ -50,7 +54,23 @@
         dataAccess = Nothing
         Return hasil
     End Function
+    Public Function ListComboBox() As DataTable
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim query As String = "Select GroupSalesID,Name From GroupSales where IsActive = 1"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            Return Nothing
+            dataAccess = Nothing
+            Throw ex
+        End Try
+    End Function
+#End Region
 
+#Region "Insert & Update"
     Public Function InsertGroupSales(grpSalesModel As GroupSalesModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -73,7 +93,6 @@
             Throw ex
         End Try
     End Function
-
     Public Function UpdateGroupSales(grpSalesModel As GroupSalesModel, logModel As LogHistoryModel, options As String) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -102,4 +121,5 @@
             Throw ex
         End Try
     End Function
+#End Region
 End Class
