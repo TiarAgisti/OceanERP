@@ -30,23 +30,193 @@
         End Set
     End Property
 
-    Private xDateDetail As Date
-    Public Property DateDetail() As Date
+    Private xStyleID As Integer
+    Public Property StyleID() As Integer
         Get
-            Return xDateDetail
+            Return xStyleID
         End Get
-        Set(ByVal value As Date)
-            xDateDetail = value
+        Set(ByVal value As Integer)
+            xStyleID = value
         End Set
     End Property
 
-    Private xColorID As Integer
-    Public Property ColorID() As Integer
+    Private xRawMaterialID As Integer
+    Public Property RawMaterialID() As Integer
         Get
-            Return xColorID
+            Return xRawMaterialID
         End Get
         Set(ByVal value As Integer)
-            xColorID = value
+            xRawMaterialID = value
+        End Set
+    End Property
+
+    Private xTypeGreige As String
+    Public Property TypeGreige() As String
+        Get
+            Return xTypeGreige
+        End Get
+        Set(ByVal value As String)
+            xTypeGreige = value
+        End Set
+    End Property
+
+    Private xWidthMin As Double
+    Public Property WidthMin() As Double
+        Get
+            Return xWidthMin
+        End Get
+        Set(ByVal value As Double)
+            xWidthMin = value
+        End Set
+    End Property
+
+    Private xWidthMax As Double
+    Public Property WidthMax() As Double
+        Get
+            Return xWidthMax
+        End Get
+        Set(ByVal value As Double)
+            xWidthMax = value
+        End Set
+    End Property
+
+    Private xUnitID As Integer
+    Public Property UnitID() As Integer
+        Get
+            Return xUnitID
+        End Get
+        Set(ByVal value As Integer)
+            xUnitID = value
+        End Set
+    End Property
+
+    Private xWeightMin As Double
+    Public Property WeightMin() As Double
+        Get
+            Return xWeightMin
+        End Get
+        Set(ByVal value As Double)
+            xWeightMin = value
+        End Set
+    End Property
+
+    Private xWeightMax As Double
+    Public Property WeightMax() As Double
+        Get
+            Return xWeightMax
+        End Get
+        Set(ByVal value As Double)
+            xWeightMax = value
+        End Set
+    End Property
+
+    Private xDNYardage As Double
+    Public Property DNYardage() As Double
+        Get
+            Return xDNYardage
+        End Get
+        Set(ByVal value As Double)
+            xDNYardage = value
+        End Set
+    End Property
+
+    Private xWeightYard As Double
+    Public Property WeightYard() As Double
+        Get
+            Return xWeightYard
+        End Get
+        Set(ByVal value As Double)
+            xWeightYard = value
+        End Set
+    End Property
+
+    Private xBeforeWash As Double
+    Public Property BeforeWash() As Double
+        Get
+            Return xBeforeWash
+        End Get
+        Set(ByVal value As Double)
+            xBeforeWash = value
+        End Set
+    End Property
+
+    Private xAfterWash As Double
+    Public Property AfterWash() As Double
+        Get
+            Return xAfterWash
+        End Get
+        Set(ByVal value As Double)
+            xAfterWash = value
+        End Set
+    End Property
+
+    Private xNetWeight As Double
+    Public Property NetWeight() As Double
+        Get
+            Return xNetWeight
+        End Get
+        Set(ByVal value As Double)
+            xNetWeight = value
+        End Set
+    End Property
+
+    Private xSrinkageL As String
+    Public Property SrinkageL() As String
+        Get
+            Return xSrinkageL
+        End Get
+        Set(ByVal value As String)
+            xSrinkageL = value
+        End Set
+    End Property
+
+    Private xSrinkageW As String
+    Public Property SrinkageW() As String
+        Get
+            Return xSrinkageW
+        End Get
+        Set(ByVal value As String)
+            xSrinkageW = value
+        End Set
+    End Property
+
+    Private xGSM As String
+    Public Property GSM() As String
+        Get
+            Return xGSM
+        End Get
+        Set(ByVal value As String)
+            xGSM = value
+        End Set
+    End Property
+
+    Private xPriceGreige As Double
+    Public Property PriceGreige() As Double
+        Get
+            Return xPriceGreige
+        End Get
+        Set(ByVal value As Double)
+            xPriceGreige = value
+        End Set
+    End Property
+
+    Private xPurchSize As String
+    Public Property PurchSize() As String
+        Get
+            Return xPurchSize
+        End Get
+        Set(ByVal value As String)
+            xPurchSize = value
+        End Set
+    End Property
+
+    Private xStorageSize As String
+    Public Property StorageSize() As String
+        Get
+            Return xStorageSize
+        End Get
+        Set(ByVal value As String)
+            xStorageSize = value
         End Set
     End Property
 
@@ -77,126 +247,6 @@
         End Get
         Set(ByVal value As Decimal)
             xQtyWeight = value
-        End Set
-    End Property
-
-    Private xQty As Decimal
-    Public Property Qty() As Decimal
-        Get
-            Return xQty
-        End Get
-        Set(ByVal value As Decimal)
-            xQty = value
-        End Set
-    End Property
-
-    Private xUnitID As Integer
-    Public Property UnitID() As Integer
-        Get
-            Return xUnitID
-        End Get
-        Set(ByVal value As Integer)
-            xUnitID = value
-        End Set
-    End Property
-
-    Private xUnitPrice As Decimal
-    Public Property UnitPrice() As Decimal
-        Get
-            Return xUnitPrice
-        End Get
-        Set(ByVal value As Decimal)
-            xUnitPrice = value
-        End Set
-    End Property
-
-    Private xCurrencyID As Integer
-    Public Property CurrencyID() As Integer
-        Get
-            Return xCurrencyID
-        End Get
-        Set(ByVal value As Integer)
-            xCurrencyID = value
-        End Set
-    End Property
-
-    Private xPINo As String
-    Public Property PINo() As String
-        Get
-            Return xPINo
-        End Get
-        Set(ByVal value As String)
-            xPINo = value
-        End Set
-    End Property
-
-    Private xPIDate As Date
-    Public Property PIDate() As Date
-        Get
-            Return xPIDate
-        End Get
-        Set(ByVal value As Date)
-            xPIDate = value
-        End Set
-    End Property
-
-    Private xFabricName As String
-    Public Property FabricName() As String
-        Get
-            Return xFabricName
-        End Get
-        Set(ByVal value As String)
-            xFabricName = value
-        End Set
-    End Property
-
-    Private xColorCode As String
-    Public Property ColorCode() As String
-        Get
-            Return xColorCode
-        End Get
-        Set(ByVal value As String)
-            xColorCode = value
-        End Set
-    End Property
-
-    Private xColorName As String
-    Public Property ColorName() As String
-        Get
-            Return xColorName
-        End Get
-        Set(ByVal value As String)
-            xColorName = value
-        End Set
-    End Property
-
-    Private xUnitName As String
-    Public Property UnitName() As String
-        Get
-            Return xUnitName
-        End Get
-        Set(ByVal value As String)
-            xUnitName = value
-        End Set
-    End Property
-
-    Private xCurrencyCode As String
-    Public Property CurrencyCode() As String
-        Get
-            Return xCurrencyCode
-        End Get
-        Set(ByVal value As String)
-            xCurrencyCode = value
-        End Set
-    End Property
-
-    Private xCurrency As String
-    Public Property Currency() As String
-        Get
-            Return xCurrency
-        End Get
-        Set(ByVal value As String)
-            xCurrency = value
         End Set
     End Property
 End Class

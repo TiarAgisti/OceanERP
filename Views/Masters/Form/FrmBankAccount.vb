@@ -64,9 +64,7 @@
     End Sub
     Sub ComboBoxSupplier(cmb As ComboBox)
         Dim vendorBFC As ClsVendor = New ClsVendor
-        cmb.DataSource = vendorBFC.ListComboBoxAll()
-        cmb.DisplayMember = "VendorDesc"
-        cmb.ValueMember = "VendorID"
+        vendorBFC.ComboBoxAllVendor(cmb)
     End Sub
     Sub ComboBoxBank(cmb As ComboBox)
         Dim bankBFC As ClsBank = New ClsBank

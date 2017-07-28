@@ -87,7 +87,7 @@
 #End Region
 
 #Region "Method Other"
-    Public Function ListComboBoxVendor(status As String) As DataTable
+    Protected Function ListComboBoxVendor(status As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
         Dim query As String
@@ -101,11 +101,11 @@
         dataAccess = Nothing
         Return dataTable
     End Function
-    Public Function ListComboBoxAll()
+    Protected Function ListComboBoxAll()
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
         Dim query As String
-        query = "Select VendorID,VendorCode + ' - ' + VendorName as VendorDesc From Vendor Where IsActive = 1"
+        query = "Select VendorID,VendorName From Vendor Where IsActive = 1"
 
         Try
             dataTable = dataAccess.RetrieveListData(query)
@@ -115,7 +115,24 @@
         dataAccess = Nothing
         Return dataTable
     End Function
-
+    Public Sub ComboBoxVendor(cmb As ComboBox, statusVendor As String)
+        With cmb
+            .DataSource = ListComboBoxVendor(statusVendor)
+            .DisplayMember = "VendorName"
+            .ValueMember = "VendorID"
+            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+            .AutoCompleteSource = AutoCompleteSource.ListItems
+        End With
+    End Sub
+    Public Sub ComboBoxAllVendor(cmb As ComboBox)
+        With cmb
+            .DataSource = ListComboBoxAll()
+            .DisplayMember = "VendorName"
+            .ValueMember = "VendorID"
+            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+            .AutoCompleteSource = AutoCompleteSource.ListItems
+        End With
+    End Sub
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
         Dim query As String = "Select max(VendorID) from Vendor"
@@ -150,6 +167,23 @@
             Return hasil
         Catch ex As Exception
             dataAccess = Nothing
+            Throw ex
+        End Try
+    End Function
+    Public Function GetValidateName(vendorName As String, status As Char) As Boolean
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable = New DataTable
+        Dim query As String = "Select VendorName From Vendor Where VendorName = '" & vendorName & "' AND Status='" & status & "'"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+
+            If dataTable.Rows.Count > 0 Then
+                Return False
+            Else
+                Return True
+            End If
+
+        Catch ex As Exception
             Throw ex
         End Try
     End Function

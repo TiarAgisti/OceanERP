@@ -1,30 +1,30 @@
-﻿Public Class YarnModel
+﻿Public Class RawMaterialModel
     Inherits CoreModel
-    Private xYarnID As Integer
-    Public Property YarnID() As Integer
+    Private xRawMaterialID As Integer
+    Public Property RawMaterialID() As Integer
         Get
-            Return xYarnID
+            Return xRawMaterialID
         End Get
         Set(ByVal value As Integer)
-            xYarnID = value
+            xRawMaterialID = value
         End Set
     End Property
-    Private xYarnCode As String
-    Public Property YarnCode() As String
+    Private xRawMaterialCode As String
+    Public Property RawMaterialCode() As String
         Get
-            Return xYarnCode
+            Return xRawMaterialCode
         End Get
         Set(ByVal value As String)
-            xYarnCode = value
+            xRawMaterialCode = value
         End Set
     End Property
-    Private xYarnName As String
-    Public Property YarnName() As String
+    Private xRawMaterialName As String
+    Public Property RawMaterialName() As String
         Get
-            Return xYarnName
+            Return xRawMaterialName
         End Get
         Set(ByVal value As String)
-            xYarnName = value
+            xRawMaterialName = value
         End Set
     End Property
     Private xVendorID As Integer
@@ -36,13 +36,13 @@
             xVendorID = value
         End Set
     End Property
-    Private xSpecYarn As String
-    Public Property SpecYarn() As String
+    Private xSpecRawMaterial As String
+    Public Property SpecRawMaterial() As String
         Get
-            Return xSpecYarn
+            Return xSpecRawMaterial
         End Get
         Set(ByVal value As String)
-            xSpecYarn = value
+            xSpecRawMaterial = value
         End Set
     End Property
     Private xVendorName As String

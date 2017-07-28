@@ -33,6 +33,7 @@ Partial Class FrmLogin
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnKeluar = New System.Windows.Forms.Button()
         Me.btnLogin = New System.Windows.Forms.Button()
+        Me.btnConfiguration = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -111,6 +112,7 @@ Partial Class FrmLogin
         'Panel3
         '
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.btnConfiguration)
         Me.Panel3.Controls.Add(Me.btnKeluar)
         Me.Panel3.Controls.Add(Me.btnLogin)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
@@ -125,7 +127,7 @@ Partial Class FrmLogin
         Me.btnKeluar.Name = "btnKeluar"
         Me.btnKeluar.Size = New System.Drawing.Size(75, 23)
         Me.btnKeluar.TabIndex = 5
-        Me.btnKeluar.Text = "Keluar"
+        Me.btnKeluar.Text = "Exit"
         Me.btnKeluar.UseVisualStyleBackColor = True
         '
         'btnLogin
@@ -136,6 +138,15 @@ Partial Class FrmLogin
         Me.btnLogin.TabIndex = 4
         Me.btnLogin.Text = "Login"
         Me.btnLogin.UseVisualStyleBackColor = True
+        '
+        'btnConfiguration
+        '
+        Me.btnConfiguration.Location = New System.Drawing.Point(170, 5)
+        Me.btnConfiguration.Name = "btnConfiguration"
+        Me.btnConfiguration.Size = New System.Drawing.Size(85, 23)
+        Me.btnConfiguration.TabIndex = 6
+        Me.btnConfiguration.Text = "Configuration"
+        Me.btnConfiguration.UseVisualStyleBackColor = True
         '
         'FrmLogin
         '
@@ -171,4 +182,5 @@ Partial Class FrmLogin
     Friend WithEvents Label2 As Label
     Friend WithEvents btnKeluar As Button
     Friend WithEvents btnLogin As Button
+    Friend WithEvents btnConfiguration As Button
 End Class

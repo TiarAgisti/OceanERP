@@ -36,9 +36,7 @@
     Sub ComboBoxCountry(cmb As ComboBox)
         Dim destBFC As ClsDestination = New ClsDestination
         Dim statusCountry As Char = "C"
-        cmb.DataSource = destBFC.ListComboBoxDestination(statusCountry)
-        cmb.DisplayMember = "Name"
-        cmb.ValueMember = "DestinationID"
+        destBFC.ComboBoxDestination(cmb, statusCountry)
     End Sub
     Function CheckEmpty() As Boolean
         If txtName.Text = String.Empty Then
@@ -131,6 +129,7 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Create new Supplier,Supplier name is " + txtName.Text
         Try
+
             If vendorBFC.InsertVendor(SetModel, logBFC.SetLogHistory(logDesc)) = True Then
                 MsgBoxSaved()
                 PreCreateDisplay()

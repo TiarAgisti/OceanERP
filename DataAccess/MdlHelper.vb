@@ -42,6 +42,16 @@ Module MdlHelper
             Return True
         End If
     End Function
+    Public Sub CheckNumber(txt As TextBox)
+        If txt.Text = String.Empty Then
+            txt.Text = ""
+        Else
+            If ValidationNumber(txt) = False Then
+                txt.Clear()
+                txt.Focus()
+            End If
+        End If
+    End Sub
     Public Function ValidationEmail(value As String) As Boolean
         Dim pattern As String = "^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"
         If Regex.Match(value, pattern).Success Then

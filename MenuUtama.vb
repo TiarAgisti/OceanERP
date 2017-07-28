@@ -17,6 +17,9 @@
         menuSeason.Visible = False
         menuCOA.Visible = False
         menuUnit.Visible = False
+        menuBrandYarn.Visible = False
+        menuStyle.Visible = False
+        menuRawMaterial.Visible = False
         'end
     End Sub
     Sub HideMenuTransaction()
@@ -93,6 +96,18 @@
         If menuID = menuUnit.Tag Then
             menuMaster.Visible = True
             menuUnit.Visible = True
+        End If
+        If menuID = menuBrandYarn.Tag Then
+            menuMaster.Visible = True
+            menuBrandYarn.Visible = True
+        End If
+        If menuID = menuStyle.Tag Then
+            menuMaster.Visible = True
+            menuStyle.Visible = True
+        End If
+        If menuID = menuRawMaterial.Tag Then
+            menuMaster.Visible = True
+            menuRawMaterial.Visible = True
         End If
         'end
     End Sub
@@ -249,6 +264,24 @@
         Dim frm As FrmListProformaInvoice = New FrmListProformaInvoice
         frm.MdiParent = Me
         frm.WindowState = FormWindowState.Maximized
+        frm.Show()
+    End Sub
+
+    Private Sub menuBrandYarn_Click(sender As Object, e As EventArgs) Handles menuBrandYarn.Click
+        Dim frm As FrmBrandYarn = New FrmBrandYarn
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub menuStyle_Click(sender As Object, e As EventArgs) Handles menuStyle.Click
+        Dim frm As FrmStyle = New FrmStyle
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub menuRawMaterial_Click(sender As Object, e As EventArgs) Handles menuRawMaterial.Click
+        Dim frm As FrmRawMaterial = New FrmRawMaterial
+        frm.MdiParent = Me
         frm.Show()
     End Sub
 End Class

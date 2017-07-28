@@ -40,12 +40,7 @@
     End Sub
 
     Private Sub btnChoose_Click(sender As Object, e As EventArgs) Handles btnChoose.Click
-        With dgv
-            Dim row As Integer = .CurrentRow.Index
-            FrmProformaInvoice.fabricID = .Item(0, row).Value
-            FrmProformaInvoice.fabricName = .Item(2, row).Value
-        End With
-        Close()
+
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click

@@ -7,11 +7,14 @@
 
         Select Case options
             Case "Fabric Code"
-                query = "Select * From Fabric Where FabricCode LIKE '%" & param & "%' AND IsActive = 1 Order By FabricCode Asc"
+                query = "Select FabricID,FabricCode,FabricName,Composition,Specification,VendorName,VendorID,IsActive From v_Fabric" &
+                        " Where FabricCode Like '%" & param & "%' AND IsActive = 1 Order By FabricCode Asc"
             Case "Fabric Name"
-                query = "Select * From Fabric Where FabricName LIKE '%" & param & "%' AND IsActive = 1 Order By FabricCode Asc"
+                query = "Select FabricID,FabricCode,FabricName,Composition,Specification,VendorName,VendorID,IsActive From v_Fabric" &
+                        " Where FabricName Like '%" & param & "%' AND IsActive = 1 Order By FabricCode Asc"
             Case Else
-                query = "Select * From Fabric Where IsActive = 1 Order By FabricCode Asc"
+                query = "Select FabricID,FabricCode,FabricName,Composition,Specification,VendorName,VendorID,IsActive From v_Fabric" &
+                        " Where IsActive = 1 Order By FabricCode Asc"
         End Select
 
         Try
@@ -81,6 +84,49 @@
         dataAccess = Nothing
         Return hasil
     End Function
+    Public Function GetValidateName(fabricName As String) As Boolean
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable = New DataTable
+        Dim query As String = "Select FabricName From Fabric Where FabricName = '" & fabricName & "'"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+
+            If dataTable.Rows.Count > 0 Then
+                Return False
+            Else
+                Return True
+            End If
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+    Protected Function ListComboBox() As DataTable
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim query As String = "Select FabricID,FabricName From Fabric where IsActive = 1"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+        Catch ex As Exception
+            Throw ex
+            Return Nothing
+        End Try
+        dataAccess = Nothing
+        Return dataTable
+    End Function
+    Public Sub ComboBoxFabric(cmb As ComboBox)
+        Try
+            With cmb
+                .DataSource = ListComboBox()
+                .ValueMember = "FabricID"
+                .DisplayMember = "FabricName"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
 #End Region
 
 #Region "Insert & Update"
@@ -89,10 +135,11 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
 
-        Dim sql As String = "Insert into Fabric(FabricID,FabricCode,FabricName,Composition,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
-                                "'" & fabricModel.FabricID & "','" & fabricModel.FabricCode & "','" & fabricModel.FabricName & "','" & fabricModel.Composition & "'" &
-                                ",'" & fabricModel.IsActive & "','" & fabricModel.CreatedBy & "','" & fabricModel.CreatedDate & "'" &
-                                ",'" & fabricModel.UpdatedBy & "','" & fabricModel.UpdatedDate & "')"
+        Dim sql As String = "Insert into Fabric(FabricID,FabricCode,FabricName,Composition,Specification,VendorID,IsActive,CreatedBy" &
+                                ",CreatedDate,UpdatedBy,UpdatedDate)Values('" & fabricModel.FabricID & "','" & fabricModel.FabricCode & "'" &
+                                ",'" & fabricModel.FabricName & "','" & fabricModel.Composition & "','" & fabricModel.Specification & "'" &
+                                ",'" & fabricModel.VendorID & "','" & fabricModel.IsActive & "','" & fabricModel.CreatedBy & "'" &
+                                ",'" & fabricModel.CreatedDate & "','" & fabricModel.UpdatedBy & "','" & fabricModel.UpdatedDate & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -115,8 +162,8 @@
 
         If options = "Update" Then
             query = "Update Fabric Set FabricName = '" & fabricModel.FabricName & "',Composition = '" & fabricModel.Composition & "'" &
-                    ",IsActive = '" & fabricModel.IsActive & "',UpdatedBy='" & fabricModel.UpdatedBy & "',UpdatedDate = '" & fabricModel.UpdatedDate & "'" &
-                    " Where FabricID='" & fabricModel.FabricID & "'"
+                    ",Specification = '" & fabricModel.Specification & "',VendorID='" & fabricModel.VendorID & "',IsActive = '" & fabricModel.IsActive & "'" &
+                    ",UpdatedBy='" & fabricModel.UpdatedBy & "',UpdatedDate = '" & fabricModel.UpdatedDate & "' Where FabricID='" & fabricModel.FabricID & "'"
             queryList.Add(query)
 
         Else

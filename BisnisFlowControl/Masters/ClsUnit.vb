@@ -59,7 +59,7 @@
         End Try
     End Function
 
-    Public Function ListComboBox()
+    Protected Function ListComboBox()
         Dim dataAccess = New ClsDataAccess
         Dim dataTable As DataTable = New DataTable
         Dim query As String
@@ -74,6 +74,19 @@
             Throw ex
         End Try
     End Function
+    Public Sub ComboBoxUnit(cmb As ComboBox)
+        Try
+            With cmb
+                .DataSource = ListComboBox()
+                .ValueMember = "UnitID"
+                .DisplayMember = "UnitName"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
 #End Region
 
 #Region "Insert & Update"

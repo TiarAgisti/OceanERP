@@ -36,4 +36,31 @@
             xComposition = value
         End Set
     End Property
+    Private xSpecification As String
+    Public Property Specification() As String
+        Get
+            Return xSpecification
+        End Get
+        Set(ByVal value As String)
+            xSpecification = value
+        End Set
+    End Property
+    Private xVendorID As Integer
+    Public Property VendorID() As Integer
+        Get
+            Return xVendorID
+        End Get
+        Set(ByVal value As Integer)
+            xVendorID = value
+        End Set
+    End Property
+    Private xVendorName As String
+    Public Property VendorName() As String
+        Get
+            Return xVendorName
+        End Get
+        Set(ByVal value As String)
+            xVendorName = value
+        End Set
+    End Property
 End Class

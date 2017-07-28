@@ -14,12 +14,14 @@
     Dim contryID As Integer = 0
     Dim displayCon As String = ""
     Const statusCountry As String = "C"
+    Dim countryName As String = ""
 #End Region
 
 #Region "Declaration SeaPort"
     Dim seaPortID As Integer = 0
     Dim displaySea As String = ""
     Const statusSeaPort As String = "S"
+    Dim seaportName As String = ""
 #End Region
 
 #Region "Function Country"
@@ -28,6 +30,7 @@
         txtConName.Clear()
         cmbCariCon.Text = ""
         txtCariCon.Clear()
+        countryName = ""
     End Sub
     Sub PropertiesGridCountry()
         dgvCon.Columns(0).Visible = False
@@ -123,9 +126,11 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Create new Country,Country name is " + txtConName.Text
         Try
-            If destBFC.InsertDestination(SetConModel, logBFC.SetLogHistory(logDesc)) = True Then
-                MsgBoxSaved()
-                PreCreateDisplayCon()
+            If destBFC.GetValidateName(txtConName.Text, statusCountry) = True Then
+                If destBFC.InsertDestination(SetConModel, logBFC.SetLogHistory(logDesc)) = True Then
+                    MsgBoxSaved()
+                    PreCreateDisplayCon()
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -137,9 +142,20 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update Country for CountryCode = " + txtConCode.Text
         Try
-            If destBFC.UpdateDestination(SetConModel, logBFC.SetLogHistory(logDesc), displayCon) = True Then
-                MsgBoxUpdated()
-                PreCreateDisplayCon()
+            If txtConName.Text = countryName Then
+                If destBFC.UpdateDestination(SetConModel, logBFC.SetLogHistory(logDesc), displayCon) = True Then
+                    MsgBoxUpdated()
+                    PreCreateDisplayCon()
+                End If
+            ElseIf txtConName.Text <> countryName Then
+                If destBFC.GetValidateName(txtConName.Text, statusCountry) Then
+                    If destBFC.UpdateDestination(SetConModel, logBFC.SetLogHistory(logDesc), displayCon) = True Then
+                        MsgBoxUpdated()
+                        PreCreateDisplayCon()
+                    Else
+                        MsgBoxError("Country name cant duplicate")
+                    End If
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -168,6 +184,7 @@
         txtSeaName.Clear()
         cmbCariSea.Text = ""
         txtCariSea.Clear()
+        countryName = ""
     End Sub
 
     Sub PropertiesGridSeaPort()
@@ -264,9 +281,13 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Create new SeaPort,SeaPort name is " + txtSeaName.Text
         Try
-            If destBFC.InsertDestination(SetSeaModel, logBFC.SetLogHistory(logDesc)) = True Then
-                MsgBoxSaved()
-                PreCreateDisplaySea()
+            If destBFC.GetValidateName(txtSeaName.Text, statusSeaPort) Then
+                If destBFC.InsertDestination(SetSeaModel, logBFC.SetLogHistory(logDesc)) = True Then
+                    MsgBoxSaved()
+                    PreCreateDisplaySea()
+                End If
+            Else
+                MsgBoxError("Seaport name cant duplicate")
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -277,9 +298,20 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update SeaPort for SeaPortCode = " + txtSeaCode.Text
         Try
-            If destBFC.UpdateDestination(SetSeaModel, logBFC.SetLogHistory(logDesc), displaySea) = True Then
-                MsgBoxUpdated()
-                PreCreateDisplaySea()
+            If txtSeaName.Text = seaportName Then
+                If destBFC.UpdateDestination(SetSeaModel, logBFC.SetLogHistory(logDesc), displaySea) = True Then
+                    MsgBoxUpdated()
+                    PreCreateDisplaySea()
+                End If
+            ElseIf txtSeaName.Text <> seaportName Then
+                If destBFC.GetValidateName(txtSeaName.Text, statusSeaPort) = True Then
+                    If destBFC.UpdateDestination(SetSeaModel, logBFC.SetLogHistory(logDesc), displaySea) = True Then
+                        MsgBoxUpdated()
+                        PreCreateDisplaySea()
+                    Else
+                        MsgBoxError("Seaport name cant duplicate")
+                    End If
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -399,6 +431,7 @@
         contryID = dgvCon.Item(0, row).Value
         txtConCode.Text = dgvCon.Item(1, row).Value
         txtConName.Text = dgvCon.Item(2, row).Value
+        countryName = dgvCon.Item(2, row).Value
 
         displayCon = "Update"
 
@@ -427,6 +460,7 @@
         seaPortID = dgvSea.Item(0, row).Value
         txtSeaCode.Text = dgvSea.Item(1, row).Value
         txtSeaName.Text = dgvSea.Item(2, row).Value
+        seaportName = dgvSea.Item(2, row).Value
 
         displaySea = "Update"
 

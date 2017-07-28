@@ -68,22 +68,7 @@
     End Sub
 
     Private Sub btnChoose_Click(sender As Object, e As EventArgs) Handles btnChoose.Click
-        With dgv
-            Dim row As Integer = .CurrentRow.Index
-            If condition = "Buyer" Then
-                FrmProformaInvoice.buyerID = .Item(0, row).Value
-                FrmProformaInvoice.buyerName = .Item(2, row).Value
-            Else
-                FrmProformaInvoice.customerID = .Item(0, row).Value
-                FrmProformaInvoice.customerCode = .Item(1, row).Value
-                FrmProformaInvoice.customerName = .Item(2, row).Value
-                FrmProformaInvoice.customerAddress = .Item(3, row).Value
-                FrmProformaInvoice.customerTlp = .Item(5, row).Value
-                FrmProformaInvoice.customerFax = .Item(6, row).Value
-                FrmProformaInvoice.customerAtten = .Item(7, row).Value
-            End If
-        End With
-        Close()
+
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click

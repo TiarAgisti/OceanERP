@@ -14,6 +14,22 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Tiar\Ocean\AppOceanERP\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,6 +63,21 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>7774EFD6825BF9BA0CFFA70FA7FEFFF7A5FB6071</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>OceanERP_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Home.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -76,6 +107,7 @@
     <Compile Include="BisnisFlowControl\Masters\ClsBank.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsBankAccount.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsBrand.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsBrandYarn.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsCOA.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsColor.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsCurrency.vb" />
@@ -83,7 +115,9 @@
     <Compile Include="BisnisFlowControl\Masters\ClsDestination.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsFabric.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsGroupSales.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsRawMaterial.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsSeason.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsStyle.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsTermOfPayment.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsTermOfPrice.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsUnit.vb" />
@@ -120,7 +154,10 @@
     <Compile Include="Models\Masters\DestinationModel.vb" />
     <Compile Include="Models\Masters\FabricModel.vb" />
     <Compile Include="Models\Masters\GroupSalesModel.vb" />
+    <Compile Include="Models\Masters\BrandYarnModel.vb" />
+    <Compile Include="Models\Masters\RawMaterialModel.vb" />
     <Compile Include="Models\Masters\SeasonModel.vb" />
+    <Compile Include="Models\Masters\StyleModel.vb" />
     <Compile Include="Models\Masters\TermOfPaymentModel.vb" />
     <Compile Include="Models\Masters\UnitModel.vb" />
     <Compile Include="Models\Masters\UserModel.vb" />
@@ -130,8 +167,12 @@
     <Compile Include="Models\Settings\RoleDModel.vb" />
     <Compile Include="Models\Settings\RoleHModel.vb" />
     <Compile Include="Models\Settings\TermApproveModel.vb" />
+    <Compile Include="Models\Transactions\PIBankDetailModel.vb" />
+    <Compile Include="Models\Transactions\PIColorDetailModel.vb" />
     <Compile Include="Models\Transactions\PIDetailModel.vb" />
     <Compile Include="Models\Transactions\PIHeaderModel.vb" />
+    <Compile Include="Models\Transactions\PIRemarksModel.vb" />
+    <Compile Include="Models\Transactions\PIYarnDetailModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -159,6 +200,12 @@
       <DependentUpon>FrmBankAccount.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmBankAccount.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmBrandYarn.Designer.vb">
+      <DependentUpon>FrmBrandYarn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmBrandYarn.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmCOA.Designer.vb">
@@ -195,6 +242,18 @@
       <DependentUpon>FrmGroupSales.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmGroupSales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmRawMaterial.Designer.vb">
+      <DependentUpon>FrmRawMaterial.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmRawMaterial.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmStyle.Designer.vb">
+      <DependentUpon>FrmStyle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmStyle.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Masters\List\FrmListFabric.Designer.vb">
@@ -317,6 +376,9 @@
     <EmbeddedResource Include="Views\Masters\Form\FrmBankAccount.resx">
       <DependentUpon>FrmBankAccount.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmBrandYarn.resx">
+      <DependentUpon>FrmBrandYarn.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmCOA.resx">
       <DependentUpon>FrmCOA.vb</DependentUpon>
     </EmbeddedResource>
@@ -334,6 +396,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmGroupSales.resx">
       <DependentUpon>FrmGroupSales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmRawMaterial.resx">
+      <DependentUpon>FrmRawMaterial.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmStyle.resx">
+      <DependentUpon>FrmStyle.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\List\FrmListFabric.resx">
       <DependentUpon>FrmListFabric.vb</DependentUpon>
@@ -398,6 +466,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="OceanERP_TemporaryKey.pfx" />
     <None Include="ReportDataSet\OceanDS.xsc">
       <DependentUpon>OceanDS.xsd</DependentUpon>
     </None>
@@ -411,6 +480,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Home.ico" />
     <Content Include="Image\Home.ico" />
     <Content Include="Image\login-icon.png" />
     <Content Include="Image\login.png" />
@@ -418,7 +488,13 @@
     <Content Include="Image\OfficePark.jpg" />
     <Content Include="Image\search.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

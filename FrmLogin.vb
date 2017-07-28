@@ -47,6 +47,11 @@
             btnLogin.Focus()
         End If
     End Sub
+
+    Private Sub btnConfiguration_Click(sender As Object, e As EventArgs) Handles btnConfiguration.Click
+        Dim frm As FrmConfiguration = New FrmConfiguration
+        frm.ShowDialog()
+    End Sub
 #End Region
 
 

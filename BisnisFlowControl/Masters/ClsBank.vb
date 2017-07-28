@@ -1,4 +1,5 @@
 ﻿Public Class ClsBank
+#Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -24,6 +25,9 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+#End Region
+
+#Region "Method Other"
     Public Function ListComboBoxBank() As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -66,6 +70,54 @@
         dataAccess = Nothing
         Return hasil
     End Function
+    Protected Function ListComboBox()
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim query As String
+        query = "Select BankID,BankCode From Bank Where IsActive = 1"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
+    Public Sub ComboBoxBank(cmb As ComboBox)
+        Try
+            With cmb
+                .DataSource = ListComboBox()
+                .ValueMember = "BankID"
+                .DisplayMember = "BankCode"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Public Function GetValidateName(bankName As String) As Boolean
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable = New DataTable
+        Dim query As String = "Select Name From Bank Where Name = '" & bankName & "'"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+
+            If dataTable.Rows.Count > 0 Then
+                Return False
+            Else
+                Return True
+            End If
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+#End Region
+
+#Region "Method CRUD"
     Public Function InsertBank(bankModel As BankModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -117,4 +169,6 @@
             Throw ex
         End Try
     End Function
+#End Region
+
 End Class

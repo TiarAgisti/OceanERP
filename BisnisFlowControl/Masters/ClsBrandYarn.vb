@@ -1,4 +1,4 @@
-﻿Public Class ClsGroupSales
+﻿Public Class ClsBrandYarn
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
@@ -6,12 +6,10 @@
         Dim query As String = ""
 
         Select Case options
-            Case "Code"
-                query = "Select * From GroupSales Where GroupSalesCode LIKE '%" & param & "%' AND IsActive = 1 Order By GroupSalesCode Asc"
-            Case "Name"
-                query = "Select * From GroupSales Where GroupSalesName LIKE '%" & param & "%' AND IsActive = 1 Order By GroupSalesCode Asc"
+            Case "Brand Yarn"
+                query = "Select * From BrandYarn Where BrandYarnName Like '%" & param & "%' AND IsActive = 1 Order By BrandYarnName Asc"
             Case Else
-                query = "Select * From GroupSales Where IsActive = 1 Order By GroupSalesCode Asc"
+                query = "Select * From BrandYarn Where IsActive = 1 Order By BrandYarnName Asc"
         End Select
 
         Try
@@ -29,8 +27,9 @@
 #Region "Method Other"
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
-        Dim query As String = "Select max(GroupSalesID) from GroupSales"
+        Dim query As String = "Select max(BrandYarnID) from BrandYarn"
         Dim dataAccess = New ClsDataAccess
+
         Try
             id = dataAccess.GeneratedAutoNumber(query)
         Catch ex As Exception
@@ -40,47 +39,36 @@
         dataAccess = Nothing
         Return id
     End Function
-    Public Function GeneratedCode() As String
-        Dim code As String = "GRP"
-        Dim hasil As String
-        Dim query As String = "Select max(GroupSalesCode) as Code from GroupSales"
-        Dim dataAccess = New ClsDataAccess
+
+    Protected Function ListComboBox() As DataTable
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim query As String
+        query = "Select BrandYarnID,BrandYarnName From BrandYarn Where IsActive = 1"
+
         Try
-            hasil = dataAccess.GeneratedCode(query, code)
+            dataTable = dataAccess.RetrieveListData(query)
         Catch ex As Exception
-            dataAccess = Nothing
             Throw ex
         End Try
         dataAccess = Nothing
-        Return hasil
+        Return dataTable
     End Function
-    Protected Function ListComboBox() As DataTable
-        Dim dataAccess = New ClsDataAccess
-        Dim dataTable As DataTable = New DataTable
-        Dim query As String = "Select GroupSalesID,Name From GroupSales where IsActive = 1"
-        Try
-            dataTable = dataAccess.RetrieveListData(query)
-            dataAccess = Nothing
-            Return dataTable
-        Catch ex As Exception
-            Return Nothing
-            dataAccess = Nothing
-            Throw ex
-        End Try
-    End Function
-    Public Sub ComboBoxSales(cmb As ComboBox)
+
+    Public Sub ComboBoxBrandYarn(cmb As ComboBox)
         With cmb
             .DataSource = ListComboBox()
-            .ValueMember = "GroupSalesID"
-            .DisplayMember = "Name"
+            .DisplayMember = "BrandYarnName"
+            .ValueMember = "BrandYarnID"
             .AutoCompleteMode = AutoCompleteMode.SuggestAppend
             .AutoCompleteSource = AutoCompleteSource.ListItems
         End With
     End Sub
-    Public Function GetValidateName(salesName As String) As Boolean
+
+    Public Function GetValidateName(brandYarnName As String) As Boolean
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = "Select Name From GroupSales Where Name = '" & salesName & "''"
+        Dim query As String = "Select BrandYarnName From BrandYarn Where BrandYarnName = '" & brandYarnName & "'"
         Try
             dataTable = dataAccess.RetrieveListData(query)
 
@@ -97,15 +85,15 @@
 #End Region
 
 #Region "Insert & Update"
-    Public Function InsertGroupSales(grpSalesModel As GroupSalesModel, logModel As LogHistoryModel) As Boolean
+    Public Function InsertData(brandYarnModel As BrandYarnModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
 
-        Dim sql As String = "Insert into GroupSales(GroupSalesID,GroupSalesCode,Name,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
-                                "'" & grpSalesModel.GroupSalesID & "','" & grpSalesModel.GroupSalesCode & "','" & grpSalesModel.Name & "'" &
-                                ",'" & grpSalesModel.IsActive & "','" & grpSalesModel.CreatedBy & "','" & grpSalesModel.CreatedDate & "'" &
-                                ",'" & grpSalesModel.UpdatedBy & "','" & grpSalesModel.UpdatedDate & "')"
+        Dim sql As String = "Insert into BrandYarn(BrandYarnID,BrandYarnName,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)" &
+                                "Values('" & brandYarnModel.BrandYarnID & "','" & brandYarnModel.BrandYarnName & "'" &
+                                ",'" & brandYarnModel.IsActive & "','" & brandYarnModel.CreatedBy & "','" & brandYarnModel.CreatedDate & "'" &
+                                ",'" & brandYarnModel.UpdatedBy & "','" & brandYarnModel.UpdatedDate & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -119,20 +107,21 @@
             Throw ex
         End Try
     End Function
-    Public Function UpdateGroupSales(grpSalesModel As GroupSalesModel, logModel As LogHistoryModel, options As String) As Boolean
+    Public Function UpdateData(brandYarnModel As BrandYarnModel, logModel As LogHistoryModel, options As String) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
         Dim query As String
 
         If options = "Update" Then
-            query = "Update GroupSales Set Name = '" & grpSalesModel.Name & "',IsActive = '" & grpSalesModel.IsActive & "'" &
-                    ",UpdatedBy='" & grpSalesModel.UpdatedBy & "',UpdatedDate = '" & grpSalesModel.UpdatedDate & "' Where GroupSalesID='" & grpSalesModel.GroupSalesID & "'"
+            query = "Update BrandYarn Set BrandYarnName = '" & brandYarnModel.BrandYarnName & "',IsActive = '" & brandYarnModel.IsActive & "'" &
+                    ",UpdatedBy='" & brandYarnModel.UpdatedBy & "',UpdatedDate = '" & brandYarnModel.UpdatedDate & "'" &
+                    " Where BrandYarnID='" & brandYarnModel.BrandYarnID & "'"
             queryList.Add(query)
 
         Else
-            query = "Update GroupSales Set IsActive = '" & grpSalesModel.IsActive & "',UpdatedBy='" & grpSalesModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & grpSalesModel.UpdatedDate & "' Where GroupSalesID='" & grpSalesModel.GroupSalesID & "'"
+            query = "Update BrandYarn Set IsActive = '" & brandYarnModel.IsActive & "',UpdatedBy='" & brandYarnModel.UpdatedBy & "'" &
+                    ",UpdatedDate = '" & brandYarnModel.UpdatedDate & "' Where BrandYarnID='" & brandYarnModel.BrandYarnID & "'"
             queryList.Add(query)
         End If
 

@@ -1,4 +1,5 @@
 ﻿Public Class ClsDestination
+#Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String, status As Char) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -25,7 +26,9 @@
         dataAccess = Nothing
         Return dataTable
     End Function
-    Public Function ListComboBoxDestination(status As String) As DataTable
+#End Region
+#Region "Method Other"
+    Protected Function ListComboBox(status As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
         Dim query As String
@@ -39,6 +42,15 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+    Public Sub ComboBoxDestination(cmb As ComboBox, status As String)
+        With cmb
+            .DataSource = ListComboBox(status)
+            .DisplayMember = "Name"
+            .ValueMember = "DestinationID"
+            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+            .AutoCompleteSource = AutoCompleteSource.ListItems
+        End With
+    End Sub
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
         Dim query As String = "Select max(DestinationID) from Destination"
@@ -83,6 +95,26 @@
         Return hasil
     End Function
 
+    Public Function GetValidateName(destiName As String, status As Char) As Boolean
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable = New DataTable
+        Dim query As String = "Select Name From Destination Where Name = '" & destiName & "' AND Status = '" & status & "'"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+
+            If dataTable.Rows.Count > 0 Then
+                Return False
+            Else
+                Return True
+            End If
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+#End Region
+
+#Region "CRUD"
     Public Function InsertDestination(destModel As DestinationModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -134,4 +166,5 @@
             Throw ex
         End Try
     End Function
+#End Region
 End Class

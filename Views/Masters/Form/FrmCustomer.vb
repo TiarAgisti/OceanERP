@@ -6,6 +6,7 @@
     Dim isCreate As Boolean = False
     Dim isUpdate As Boolean = False
     Dim isDelete As Boolean = False
+    Dim vendorName As String = ""
 #End Region
 
 #Region "Function"
@@ -39,14 +40,8 @@
     End Sub
     Sub ComboBoxCountry(cmb As ComboBox)
         Dim destBFC As ClsDestination = New ClsDestination
-        Dim statusCountry As Char = "C"
-        Try
-            cmb.DataSource = destBFC.ListComboBoxDestination(statusCountry)
-            cmb.DisplayMember = "Name"
-            cmb.ValueMember = "DestinationID"
-        Catch ex As Exception
-            MsgBoxError(ex.Message)
-        End Try
+        Dim statusDest As String = "C"
+        destBFC.ComboBoxDestination(cmb, statusDest)
     End Sub
     Function CheckEmpty() As Boolean
         If txtName.Text = String.Empty Then
@@ -139,9 +134,13 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Create new Customer,Customer name is " + txtName.Text
         Try
-            If vendorBFC.InsertVendor(SetModel, logBFC.SetLogHistory(logDesc)) = True Then
-                MsgBoxSaved()
-                PreCreateDisplay()
+            If vendorBFC.GetValidateName(txtName.Text, status) = True Then
+                If vendorBFC.InsertVendor(SetModel, logBFC.SetLogHistory(logDesc)) = True Then
+                    MsgBoxSaved()
+                    PreCreateDisplay()
+                End If
+            Else
+                MsgBoxError("Customer name can't duplicate")
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -152,10 +151,22 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update Customer for Code = " + txtCode.Text
         Try
-            If vendorBFC.UpdateVendor(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
-                MsgBoxUpdated()
-                PreCreateDisplay()
+            If txtName.Text = vendorName Then
+                If vendorBFC.UpdateVendor(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
+                    MsgBoxUpdated()
+                    PreCreateDisplay()
+                End If
+            ElseIf txtName.Text <> vendorName Then
+                If vendorBFC.GetValidateName(txtName.Text, status) = True Then
+                    If vendorBFC.UpdateVendor(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
+                        MsgBoxUpdated()
+                        PreCreateDisplay()
+                    Else
+                        MsgBoxError("Customer name can't duplicate")
+                    End If
+                End If
             End If
+
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
@@ -186,6 +197,7 @@
         txtNpwp.Clear()
         cmbCari.Text = ""
         txtCari.Clear()
+        vendorName = ""
     End Sub
     Sub EnabledText(status As Boolean)
         txtName.Enabled = status
@@ -428,6 +440,7 @@
                 customerID = .Item(0, row).Value
                 txtCode.Text = .Item(1, row).Value
                 txtName.Text = .Item(2, row).Value
+                vendorName = .Item(2, row).Value
                 txtAddress.Text = .Item(3, row).Value
                 txtShippAddress.Text = .Item(4, row).Value
                 txtTelephone.Text = .Item(5, row).Value

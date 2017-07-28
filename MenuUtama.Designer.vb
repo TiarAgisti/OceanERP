@@ -49,9 +49,12 @@ Partial Class MenuUtama
         Me.menuSeason = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuCOA = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuUnit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuBrandYarn = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuTransaksi = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuProformaInvoice = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuStyle = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuRawMaterial = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -126,7 +129,7 @@ Partial Class MenuUtama
         '
         'menuMaster
         '
-        Me.menuMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuUser, Me.menuDestination, Me.menuBank, Me.menuFabric, Me.menuTOP, Me.menuColor, Me.menuUtilities, Me.menuGroupSales, Me.menuCustomer, Me.menuSupplier, Me.menuYarn, Me.menuBankAccount, Me.menuSeason, Me.menuCOA, Me.menuUnit})
+        Me.menuMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuUser, Me.menuDestination, Me.menuBank, Me.menuFabric, Me.menuTOP, Me.menuColor, Me.menuUtilities, Me.menuGroupSales, Me.menuCustomer, Me.menuSupplier, Me.menuYarn, Me.menuBankAccount, Me.menuSeason, Me.menuCOA, Me.menuUnit, Me.menuBrandYarn, Me.menuStyle, Me.menuRawMaterial})
         Me.menuMaster.Name = "menuMaster"
         Me.menuMaster.Size = New System.Drawing.Size(60, 20)
         Me.menuMaster.Text = "Masters"
@@ -236,6 +239,13 @@ Partial Class MenuUtama
         Me.menuUnit.Tag = "16"
         Me.menuUnit.Text = "Unit"
         '
+        'menuBrandYarn
+        '
+        Me.menuBrandYarn.Name = "menuBrandYarn"
+        Me.menuBrandYarn.Size = New System.Drawing.Size(167, 22)
+        Me.menuBrandYarn.Tag = "18"
+        Me.menuBrandYarn.Text = "Brand Yarn"
+        '
         'menuTransaksi
         '
         Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuProformaInvoice})
@@ -255,6 +265,20 @@ Partial Class MenuUtama
         Me.menuKeluar.Name = "menuKeluar"
         Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
         Me.menuKeluar.Text = "Exit"
+        '
+        'menuStyle
+        '
+        Me.menuStyle.Name = "menuStyle"
+        Me.menuStyle.Size = New System.Drawing.Size(167, 22)
+        Me.menuStyle.Tag = "19"
+        Me.menuStyle.Text = "Style"
+        '
+        'menuRawMaterial
+        '
+        Me.menuRawMaterial.Name = "menuRawMaterial"
+        Me.menuRawMaterial.Size = New System.Drawing.Size(167, 22)
+        Me.menuRawMaterial.Tag = "20"
+        Me.menuRawMaterial.Text = "Raw Material"
         '
         'MenuUtama
         '
@@ -312,4 +336,7 @@ Partial Class MenuUtama
     Friend WithEvents menuCOA As ToolStripMenuItem
     Friend WithEvents menuUnit As ToolStripMenuItem
     Friend WithEvents menuProformaInvoice As ToolStripMenuItem
+    Friend WithEvents menuBrandYarn As ToolStripMenuItem
+    Friend WithEvents menuStyle As ToolStripMenuItem
+    Friend WithEvents menuRawMaterial As ToolStripMenuItem
 End Class

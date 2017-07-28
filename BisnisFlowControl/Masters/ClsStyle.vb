@@ -1,4 +1,4 @@
-﻿Public Class ClsGroupSales
+﻿Public Class ClsStyle
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
@@ -6,12 +6,14 @@
         Dim query As String = ""
 
         Select Case options
-            Case "Code"
-                query = "Select * From GroupSales Where GroupSalesCode LIKE '%" & param & "%' AND IsActive = 1 Order By GroupSalesCode Asc"
-            Case "Name"
-                query = "Select * From GroupSales Where GroupSalesName LIKE '%" & param & "%' AND IsActive = 1 Order By GroupSalesCode Asc"
+            Case "Style Code"
+                query = "Select * From Style Where StyleCode Like '%" & param & "%' AND IsActive = 1 Order By StyleCode Asc"
+            Case "Style Name"
+                query = "Select * From Style Where StyleName Like '%" & param & "%' AND IsActive = 1 Order By StyleCode Asc"
+            Case "Specification"
+                query = "Select * From Style Where SpecStyle Like '%" & param & "%' AND IsActive = 1 Order By StyleCode Asc"
             Case Else
-                query = "Select * From GroupSales Where IsActive = 1 Order By GroupSalesCode Asc"
+                query = "Select * From Style Where IsActive = 1 Order By StyleCode Asc"
         End Select
 
         Try
@@ -29,7 +31,7 @@
 #Region "Method Other"
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
-        Dim query As String = "Select max(GroupSalesID) from GroupSales"
+        Dim query As String = "Select max(StyleID) from Style"
         Dim dataAccess = New ClsDataAccess
         Try
             id = dataAccess.GeneratedAutoNumber(query)
@@ -40,47 +42,56 @@
         dataAccess = Nothing
         Return id
     End Function
+
     Public Function GeneratedCode() As String
-        Dim code As String = "GRP"
+        Dim code As String
         Dim hasil As String
-        Dim query As String = "Select max(GroupSalesCode) as Code from GroupSales"
+        Dim query As String
         Dim dataAccess = New ClsDataAccess
+
+        code = "STY"
+        query = "Select Max(StyleCode) as Code From Style"
+
+
         Try
             hasil = dataAccess.GeneratedCode(query, code)
+            dataAccess = Nothing
+            Return hasil
         Catch ex As Exception
             dataAccess = Nothing
+            Throw ex
+        End Try
+    End Function
+
+    Protected Function ListComboBox() As DataTable
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim query As String
+        query = "Select StyleID,StyleName From Style Where IsActive = 1"
+
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+        Catch ex As Exception
             Throw ex
         End Try
         dataAccess = Nothing
-        Return hasil
+        Return dataTable
     End Function
-    Protected Function ListComboBox() As DataTable
-        Dim dataAccess = New ClsDataAccess
-        Dim dataTable As DataTable = New DataTable
-        Dim query As String = "Select GroupSalesID,Name From GroupSales where IsActive = 1"
-        Try
-            dataTable = dataAccess.RetrieveListData(query)
-            dataAccess = Nothing
-            Return dataTable
-        Catch ex As Exception
-            Return Nothing
-            dataAccess = Nothing
-            Throw ex
-        End Try
-    End Function
-    Public Sub ComboBoxSales(cmb As ComboBox)
+
+    Public Sub ComboBoxStyle(cmb As ComboBox)
         With cmb
             .DataSource = ListComboBox()
-            .ValueMember = "GroupSalesID"
-            .DisplayMember = "Name"
+            .DisplayMember = "StyleName"
+            .ValueMember = "StyleID"
             .AutoCompleteMode = AutoCompleteMode.SuggestAppend
             .AutoCompleteSource = AutoCompleteSource.ListItems
         End With
     End Sub
-    Public Function GetValidateName(salesName As String) As Boolean
+
+    Public Function GetValidateName(styleName As String) As Boolean
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = "Select Name From GroupSales Where Name = '" & salesName & "''"
+        Dim query As String = "Select StyleName From Style Where StyleName = '" & styleName & "'"
         Try
             dataTable = dataAccess.RetrieveListData(query)
 
@@ -97,15 +108,15 @@
 #End Region
 
 #Region "Insert & Update"
-    Public Function InsertGroupSales(grpSalesModel As GroupSalesModel, logModel As LogHistoryModel) As Boolean
+    Public Function InsertData(styleModel As StyleModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
 
-        Dim sql As String = "Insert into GroupSales(GroupSalesID,GroupSalesCode,Name,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
-                                "'" & grpSalesModel.GroupSalesID & "','" & grpSalesModel.GroupSalesCode & "','" & grpSalesModel.Name & "'" &
-                                ",'" & grpSalesModel.IsActive & "','" & grpSalesModel.CreatedBy & "','" & grpSalesModel.CreatedDate & "'" &
-                                ",'" & grpSalesModel.UpdatedBy & "','" & grpSalesModel.UpdatedDate & "')"
+        Dim sql As String = "Insert into Style(StyleID,StyleCode,StyleName,SpecStyle,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
+                                "'" & styleModel.StyleID & "','" & styleModel.StyleCode & "','" & styleModel.StyleName & "'" &
+                                ",'" & styleModel.SpecStyle & "','" & styleModel.IsActive & "','" & styleModel.CreatedBy & "','" & styleModel.CreatedDate & "'" &
+                                ",'" & styleModel.UpdatedBy & "','" & styleModel.UpdatedDate & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -119,20 +130,22 @@
             Throw ex
         End Try
     End Function
-    Public Function UpdateGroupSales(grpSalesModel As GroupSalesModel, logModel As LogHistoryModel, options As String) As Boolean
+
+    Public Function UpdateData(styleModel As StyleModel, logModel As LogHistoryModel, options As String) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
         Dim query As String
 
         If options = "Update" Then
-            query = "Update GroupSales Set Name = '" & grpSalesModel.Name & "',IsActive = '" & grpSalesModel.IsActive & "'" &
-                    ",UpdatedBy='" & grpSalesModel.UpdatedBy & "',UpdatedDate = '" & grpSalesModel.UpdatedDate & "' Where GroupSalesID='" & grpSalesModel.GroupSalesID & "'"
+            query = "Update Style Set StyleName = '" & styleModel.StyleName & "',SpecStyle = '" & styleModel.StyleName & "'" &
+                    ",IsActive = '" & styleModel.IsActive & "',UpdatedBy='" & styleModel.UpdatedBy & "',UpdatedDate = '" & styleModel.UpdatedDate & "'" &
+                    " Where StyleID='" & styleModel.StyleID & "'"
             queryList.Add(query)
 
         Else
-            query = "Update GroupSales Set IsActive = '" & grpSalesModel.IsActive & "',UpdatedBy='" & grpSalesModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & grpSalesModel.UpdatedDate & "' Where GroupSalesID='" & grpSalesModel.GroupSalesID & "'"
+            query = "Update Style Set IsActive = '" & styleModel.IsActive & "',UpdatedBy='" & styleModel.UpdatedBy & "'" &
+                    ",UpdatedDate = '" & styleModel.UpdatedDate & "' Where StyleID='" & styleModel.StyleID & "'"
             queryList.Add(query)
         End If
 

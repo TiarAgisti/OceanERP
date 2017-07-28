@@ -79,12 +79,17 @@ Public Class ClsDataAccess
         End Try
     End Function
     Public Function ExecuteReader(query As String) As SqlDataReader
-        Dim myConnection As New SqlConnection(ConnectionString)
-        myConnection.Open()
-        Dim myCommand As SqlCommand = New SqlCommand(query, myConnection)
-        reader = myCommand.ExecuteReader(CommandBehavior.Default)
-        myCommand.Dispose()
-        Return reader
+        Try
+            Dim myConnection As New SqlConnection(ConnectionString)
+            myConnection.Open()
+            Dim myCommand As SqlCommand = New SqlCommand(query, myConnection)
+            reader = myCommand.ExecuteReader(CommandBehavior.Default)
+            myCommand.Dispose()
+            Return reader
+        Catch ex As Exception
+            Throw ex
+            Return Nothing
+        End Try
     End Function
     Public Function GeneratedAutoNumber(query As String) As Integer
         Dim id As Integer = 0

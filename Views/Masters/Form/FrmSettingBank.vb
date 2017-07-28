@@ -13,6 +13,7 @@
 #Region "Declaration Bank"
     Dim bankID As Integer = 0
     Dim displayBank As String = ""
+    Dim bankName As String = ""
 #End Region
 
 #Region "Declaration Curr"
@@ -27,6 +28,7 @@
         txtSwiftCode.Clear()
         cmbCariBank.Text = ""
         txtCariBank.Clear()
+        bankName = ""
     End Sub
     Sub PropertiesGridBank()
         dgvBank.Columns(0).Visible = False
@@ -129,9 +131,13 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Create new Bank,bank name is " + txtBankName.Text
         Try
-            If bankBFC.InsertBank(SetBankModel, logBFC.SetLogHistory(logDesc)) = True Then
-                MsgBoxSaved()
-                PreCreateDisplayBank()
+            If bankBFC.GetValidateName(txtBankName.Text) = True Then
+                If bankBFC.InsertBank(SetBankModel, logBFC.SetLogHistory(logDesc)) = True Then
+                    MsgBoxSaved()
+                    PreCreateDisplayBank()
+                End If
+            Else
+                MsgBoxError("Bank name cant duplicate")
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -142,9 +148,20 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update Bank for BankCode = " + txtBankCode.Text
         Try
-            If bankBFC.UpdateBank(SetBankModel, logBFC.SetLogHistory(logDesc), displayBank) = True Then
-                MsgBoxUpdated()
-                PreCreateDisplayBank()
+            If txtBankName.Text = bankName Then
+                If bankBFC.UpdateBank(SetBankModel, logBFC.SetLogHistory(logDesc), displayBank) = True Then
+                    MsgBoxUpdated()
+                    PreCreateDisplayBank()
+                End If
+            ElseIf txtBankName.Text <> bankName Then
+                If bankBFC.GetValidateName(txtBankName.Text) = True Then
+                    If bankBFC.UpdateBank(SetBankModel, logBFC.SetLogHistory(logDesc), displayBank) = True Then
+                        MsgBoxUpdated()
+                        PreCreateDisplayBank()
+                    End If
+                Else
+                    MsgBoxError("Bank name cant duplicate")
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -170,8 +187,8 @@
     Sub ClearTextCurr()
         txtCurrCode.Clear()
         txtCurrName.Clear()
-        cmbCariBank.Text = ""
-        txtCariBank.Clear()
+        cmbCariCurr.Text = ""
+        txtCariCurr.Clear()
     End Sub
     Sub PropertiesGridCurr()
         dgvCurr.Columns(0).Visible = False
@@ -332,6 +349,7 @@
         bankID = dgvBank.Item(0, row).Value
         txtBankCode.Text = dgvBank.Item(1, row).Value
         txtBankName.Text = dgvBank.Item(2, row).Value
+        bankName = dgvBank.Item(2, row).Value
         txtSwiftCode.Text = dgvBank.Item(3, row).Value
 
         displayBank = "Update"

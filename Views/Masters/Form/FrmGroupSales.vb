@@ -5,6 +5,7 @@
     Dim isCreate As Boolean = False
     Dim isUpdate As Boolean = False
     Dim isDelete As Boolean = False
+    Dim salesName As String = ""
 #End Region
 
 #Region "Function"
@@ -13,6 +14,7 @@
         txtName.Clear()
         cmbCari.Text = ""
         txtCari.Clear()
+        salesName = ""
     End Sub
     Sub PropertiesGrid()
         With dgv
@@ -126,9 +128,13 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Create new GroupSales,GroupSales name is " + txtName.Text
         Try
-            If grpSalesBFC.InsertGroupSales(SetModel, logBFC.SetLogHistory(logDesc)) = True Then
-                MsgBoxSaved()
-                PreCreateDisplay()
+            If grpSalesBFC.GetValidateName(txtName.Text) = True Then
+                If grpSalesBFC.InsertGroupSales(SetModel, logBFC.SetLogHistory(logDesc)) = True Then
+                    MsgBoxSaved()
+                    PreCreateDisplay()
+                End If
+            Else
+                MsgBoxError("Group sales name cant duplicate")
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -139,9 +145,20 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update GroupSales for GroupSalesCode = " + txtCode.Text
         Try
-            If grpSalesBFC.UpdateGroupSales(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
-                MsgBoxUpdated()
-                PreCreateDisplay()
+            If txtName.Text = salesName Then
+                If grpSalesBFC.UpdateGroupSales(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
+                    MsgBoxUpdated()
+                    PreCreateDisplay()
+                End If
+            ElseIf txtName.Text <> salesName Then
+                If grpSalesBFC.GetValidateName(txtName.Text) = True Then
+                    If grpSalesBFC.UpdateGroupSales(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
+                        MsgBoxUpdated()
+                        PreCreateDisplay()
+                    Else
+                        MsgBoxError("Group sales name cant duplicate")
+                    End If
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
