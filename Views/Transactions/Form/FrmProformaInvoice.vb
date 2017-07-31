@@ -15,6 +15,8 @@
 
     Dim intBarisRemarks As Integer
     Dim intPostRemarks As Integer
+
+    Dim customerCode As String = ""
 #End Region
 
 #Region "ComboBox"
@@ -23,60 +25,84 @@
         Dim status As String = "C"
         vendorBFC.ComboBoxVendor(cmbBuyer, status)
     End Sub
+
     Sub ComboBoxStyle()
         Dim styleBFC As ClsStyle = New ClsStyle
         styleBFC.ComboBoxStyle(cmbStyle)
     End Sub
+
     Sub ComboBoxSeason()
         Dim seasonBFC As ClsSeason = New ClsSeason
         seasonBFC.ComboBoxSeason(cmbSeason)
     End Sub
+
     Sub ComboBoxPort()
         Dim destiBFC As ClsDestination = New ClsDestination
         Dim status As String = "S"
         destiBFC.ComboBoxDestination(cmbPort, status)
     End Sub
+
     Sub ComboBoxCustomer()
         Dim vendorBFC As ClsVendor = New ClsVendor
         Dim status As String = "C"
         vendorBFC.ComboBoxVendor(cmbTo, status)
     End Sub
+
     Sub ComboBoxMarketing()
         Dim salesBFC As ClsGroupSales = New ClsGroupSales
         salesBFC.ComboBoxSales(cmbFM)
     End Sub
+
     Sub ComboBoxFabric()
         Dim fabricBFC As ClsFabric = New ClsFabric
         fabricBFC.ComboBoxFabric(cmbFabric)
     End Sub
+
     Sub ComboBoxRawMaterial()
         Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
         rawBFC.ComboBoxRawMaterial(cmbRawFabric)
     End Sub
+
     Sub ComboBoxUnit()
         Dim unitBFC As ClsUnit = New ClsUnit
         unitBFC.ComboBoxUnit(cmbUnitFabric)
     End Sub
+
     Sub ComboBoxColor()
         Dim colorBFC As ClsColor = New ClsColor
         colorBFC.ComboBoxColor(cmbColor)
     End Sub
+
     Sub ComboBoxYarn()
         Dim yarnBFC As ClsYarn = New ClsYarn
         yarnBFC.ComboBoxYarn(cmbYarn)
     End Sub
+
     Sub ComboBoxBrandYarn()
         Dim brandYarn As ClsBrandYarn = New ClsBrandYarn
         brandYarn.ComboBoxBrandYarn(cmbMerk)
     End Sub
+
     Sub ComboBoxColorYarn()
         Dim colorBFC As ClsColor = New ClsColor
-        colorBFC.ComboBoxColor(cmbColorYarn)
+        colorBFC.ComboBoxColorYarn(cmbColorYarn)
     End Sub
+
     Sub ComboBoxBank()
         Dim bankBFC As ClsBank = New ClsBank
         bankBFC.ComboBoxBank(cmbBankCode)
     End Sub
+
+    Sub ComboBoxTermOfPayment()
+        Dim topBFC As ClsTermOfPayment = New ClsTermOfPayment
+        topBFC.ComboBoxTOP(cmbTOP)
+    End Sub
+
+    Sub ComboBoxTermPrice()
+        Dim termPriceBFC As ClsTermOfPrice = New ClsTermOfPrice
+        termPriceBFC.ComboBoxTermPrice(cmbTermPrice)
+    End Sub
+
 #End Region
 
 #Region "Grid Detail"
@@ -123,6 +149,7 @@
             .Columns.Add(27, "Qty Weight")
         End With
     End Sub
+
     Sub GridDetailColor()
         With dgvColor
             .Columns.Add(0, "Color ID")
@@ -144,26 +171,31 @@
             .Columns.Add(11, "Note")
         End With
     End Sub
+
     Sub GridDetailYarn()
         With dgvYarn
             .Columns.Add(0, "Yarn ID")
             .Columns(0).Visible = False
+
             .Columns.Add(1, "Yarn Name")
             .Columns.Add(2, "Supplier Yarn")
             .Columns.Add(3, "Price Yarn")
-            .Columns.Add(4, "Supplier Yarn")
-            .Columns.Add(5, "Price Yarn")
-            .Columns.Add(6, "% Usage")
-            .Columns.Add(7, "Qty Usage")
-            .Columns.Add(8, "Color Yarn ID")
+            .Columns.Add(4, "% Usage")
+            .Columns.Add(5, "Qty Usage")
+
+            .Columns.Add(6, "Color Yarn ID")
+            .Columns(6).Visible = False
+
+            .Columns.Add(7, "Color Yarn")
+
+            .Columns.Add(8, "Brand Yarn ID")
             .Columns(8).Visible = False
-            .Columns.Add(9, "Color Yarn")
-            .Columns.Add(10, "Brand Yarn ID")
-            .Columns(10).Visible = False
-            .Columns.Add(11, "Brand Yarn")
-            .Columns.Add(12, "Loss")
+
+            .Columns.Add(9, "Brand Yarn")
+            .Columns.Add(10, "Loss")
         End With
     End Sub
+
     Sub GridDetailRemark()
         With dgvRemarks
             .Columns.Add(0, "Remarks")
@@ -380,258 +412,821 @@
         With dgvYarn
             .Rows.Add()
             .Item(0, intBarisYarn).Value = cmbYarn.SelectedValue
-
+            .Item(1, intBarisYarn).Value = cmbYarn.Text
+            .Item(2, intBarisYarn).Value = txtSuppYarn.Text
+            .Item(3, intBarisYarn).Value = txtPriceYarn.Text
+            .Item(4, intBarisYarn).Value = txtPercentUsage.Text
+            .Item(5, intBarisYarn).Value = txtQtyUsage.Text
+            .Item(6, intBarisYarn).Value = cmbColorYarn.SelectedValue
+            .Item(7, intBarisYarn).Value = cmbColorYarn.Text
+            .Item(8, intBarisYarn).Value = cmbMerk.SelectedValue
+            .Item(9, intBarisYarn).Value = cmbMerk.Text
+            .Item(10, intBarisYarn).Value = txtLoss.Text
         End With
+        intBarisYarn = intBarisYarn + 1
+    End Sub
+
+    Sub AddGridDetailRemarks()
+        With dgvRemarks
+            .Rows.Add()
+            .Item(0, intBarisRemarks).Value = txtRemarks.Text
+        End With
+        intBarisRemarks = intBarisRemarks + 1
     End Sub
 #End Region
-    'Sub DeleteGridDetail()
-    '    Me.dgv.Rows.RemoveAt(Me.dgv.CurrentCell.RowIndex)
-    '    intBaris = intBaris - 1
-    '    txtTotQty.Text = SumQty()
-    '    txtGrandTotal.Text = SumAmount()
-    'End Sub
 
-    'Function SumAmount() As Decimal
-    '    Dim totalAmount As Decimal
-    '    totalAmount = 0
-    '    For row As Integer = 0 To dgv.Rows.Count - 1
-    '        totalAmount = totalAmount + dgv.Rows(row).Cells(14).Value
-    '    Next
-    '    Return totalAmount
-    'End Function
+#Region "Delete Grid"
+    Sub DeleteGridDetailFabric()
+        DeleteGrid(dgvFabric, intBarisFabric)
+    End Sub
+    Sub DeleteGridDetailColor()
+        DeleteGrid(dgvColor, intBarisColor)
+    End Sub
+    Sub DeleteGridDetailYarn()
+        DeleteGrid(dgvYarn, intBarisYarn)
+    End Sub
+    Sub DeleteGridDetailRemarks()
+        DeleteGrid(dgvRemarks, intBarisRemarks)
+    End Sub
+#End Region
 
-    'Function SumQty() As Decimal
-    '    Dim totalQty As Decimal
-    '    totalQty = 0
-    '    For row As Integer = 0 To dgv.Rows.Count - 1
-    '        totalQty = totalQty + dgv.Rows(row).Cells(13).Value
-    '    Next
-    '    Return totalQty
-    'End Function
+#Region "Check Empty"
+    Function CheckEmptyHeader() As Boolean
+        If cmbBuyer.SelectedValue = 0 Then
+            MsgBoxWarning("Buyer not valid")
+            cmbBuyer.Focus()
+            Return False
+        ElseIf String.IsNullOrEmpty(txtRefPO.Text) Then
+            MsgBoxWarning("Ref PO can't empty")
+            txtRefPO.Focus()
+            Return False
+        ElseIf cmbStyle.SelectedValue = 0 Then
+            MsgBoxWarning("Style not valid")
+            cmbStyle.Focus()
+            Return False
+        ElseIf cmbSeason.SelectedValue = 0 Then
+            MsgBoxWarning("Season not valid")
+            cmbSeason.Focus()
+            Return False
+        ElseIf cmbTOP.SelectedValue = 0 Then
+            MsgBoxWarning("Term Of Payment not valid")
+            cmbTOP.Focus()
+            Return False
+        ElseIf cmbTermPrice.SelectedValue = 0 Then
+            MsgBoxWarning("Term Of Price not valid")
+            cmbTermPrice.Focus()
+            Return False
+        ElseIf String.IsNullOrEmpty(txtContract.Text) Then
+            MsgBoxWarning("Contract No can't empty")
+            txtContract.Focus()
+            Return False
+        ElseIf cmbTo.SelectedValue = 0 Then
+            MsgBoxWarning("Customer not valid")
+            cmbTo.Focus()
+            Return False
+        ElseIf cmbFM.SelectedValue = 0 Then
+            MsgBoxWarning("FM not valid")
+            cmbFM.Focus()
+            Return False
+        ElseIf String.IsNullOrEmpty(txtDelPlace.Text) Then
+            MsgBoxWarning("Delivery Place can't empty")
+            txtDelPlace.Focus()
+            Return False
+        ElseIf dgvFabric.Rows.Count - 1 = 0 Then
+            MsgBoxWarning("Detail can't empty")
+            cmbFabric.Focus()
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
-    'Function RetrieveBuyer() As Boolean
-    '    Dim vendorModel As VendorModel = New VendorModel
-    '    Dim vendorBFC As ClsVendor = New ClsVendor
-    '    Try
-    '        vendorModel = vendorBFC.RetrieveBuyerName(txtBuyer.Text)
-    '        If String.IsNullOrEmpty(vendorModel.VendorName) Then
-    '            MsgBoxError("Buyer name not valid")
-    '            txtBuyer.Clear()
-    '            Return False
-    '        Else
-    '            buyerID = vendorModel.VendorID
-    '            txtBuyer.Text = vendorModel.VendorName
-    '            Return True
-    '        End If
-    '    Catch ex As Exception
-    '        Return False
-    '        MsgBoxError(ex.Message)
-    '    End Try
-    'End Function
+    Function CheckEmptyFabric() As Boolean
+        If cmbFabric.SelectedValue = 0 Then
+            MsgBoxWarning("Fabric not valid")
+            cmbFabric.Focus()
+            Return False
+        ElseIf cmbFabricStyle.SelectedValue = 0 Then
+            MsgBoxWarning("Style For Fabric not valid")
+            cmbFabricStyle.Focus()
+            Return False
+        ElseIf cmbRawFabric.SelectedValue = 0 Then
+            MsgBoxWarning("Raw Material For Fabric not valid")
+            cmbRawFabric.Focus()
+            Return False
+        ElseIf cmbTypeGreige.Text = "" Then
+            MsgBoxWarning("Type Greige Cant Empty")
+            cmbTypeGreige.Focus()
+            Return False
+        ElseIf cmbUnitFabric.SelectedValue = 0 Then
+            MsgBoxWarning("Unit For Fabric not valid")
+            cmbUnitFabric.Focus()
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
-    'Function RetrieveCustomer() As Boolean
-    '    Dim vendorModel As VendorModel = New VendorModel
-    '    Dim vendorBFC As ClsVendor = New ClsVendor
-    '    Try
-    '        vendorModel = vendorBFC.RetrieveCustomerName(txtTo.Text)
-    '        If String.IsNullOrEmpty(vendorModel.VendorName) Then
-    '            MsgBoxError("Customer name not valid")
-    '            txtTo.Clear()
-    '            Return False
-    '        Else
-    '            customerID = vendorModel.VendorID
+    Function CheckEmptyColor() As Boolean
+        If cmbColor.SelectedValue = 0 Then
+            MsgBoxWarning("Color not valid")
+            cmbColor.Focus()
+            Return False
+        ElseIf txtColQtyOrder.Text = String.Empty Or txtColQtyOrder.Text = 0 Then
+            MsgBoxWarning("Qty Order cant empty or 0")
+            txtColQtyOrder.Focus()
+            Return False
+        ElseIf txtColPrice.Text = String.Empty Or txtColPrice.Text = 0 Then
+            MsgBoxWarning("Price cant empty or 0")
+            txtColPrice.Focus()
+            Return False
+        ElseIf txtColQtySample.Text = String.Empty Or txtColQtySample.Text = 0 Then
+            MsgBoxWarning("Qty Sample cant empty or 0")
+            txtColQtySample.Focus()
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
-    '            txtTo.Text = vendorModel.VendorName
-    '            txtAddress.Text = vendorModel.Address
-    '            txtTlp.Text = vendorModel.Telephone
-    '            txtFax.Text = vendorModel.Fax
-    '            txtAttention.Text = vendorModel.ContactPerson
-    '            Return True
-    '        End If
-    '    Catch ex As Exception
-    '        Return False
-    '        MsgBoxError(ex.Message)
-    '    End Try
-    'End Function
+    Function CheckEmptyYarn() As Boolean
+        If cmbYarn.SelectedValue = 0 Then
+            MsgBoxWarning("Yarn not valid")
+            cmbYarn.Focus()
+            Return False
+        ElseIf txtPriceYarn.Text = String.Empty Or txtPriceYarn.Text = 0 Then
+            MsgBoxWarning("Price Yarn cant empty or 0")
+            txtPriceYarn.Focus()
+            Return False
+        ElseIf txtQtyUsage.Text = String.Empty Or txtQtyUsage.Text = 0 Then
+            MsgBoxWarning("Qty Usage cant empty or 0")
+            txtQtyUsage.Focus()
+            Return False
+        ElseIf cmbColorYarn.SelectedValue = 0 Then
+            MsgBoxWarning("Color Yarn not valid")
+            cmbColorYarn.Focus()
+            Return False
+        ElseIf cmbMerk.SelectedValue = 0 Then
+            MsgBoxWarning("Merk not valid")
+            cmbMerk.Focus()
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
-    'Function RetrieveFabric() As Boolean
-    '    Dim fabricModel As FabricModel = New FabricModel
-    '    Dim fabricBFC As ClsFabric = New ClsFabric
-    '    Try
-    '        fabricModel = fabricBFC.RetrieveByName(txtFabric.Text)
-    '        If String.IsNullOrEmpty(fabricModel.FabricCode) Then
-    '            MsgBoxError("Fabric name not valid")
-    '            txtFabric.Clear()
-    '            Return False
-    '        Else
-    '            fabricID = fabricModel.FabricID
-    '            txtFabric.Text = fabricModel.FabricName
-    '            Return True
-    '        End If
-    '    Catch ex As Exception
-    '        Return False
-    '        MsgBoxError(ex.Message)
-    '    End Try
-    'End Function
-    'Function CheckEmpty() As Boolean
-    '    If String.IsNullOrEmpty(txtBuyer.Text) Then
-    '        MsgBoxWarning("Buyer can't empty")
-    '        txtBuyer.Focus()
-    '        Return False
-    '    ElseIf String.IsNullOrEmpty(txtRefPO.Text) Then
-    '        MsgBoxWarning("Ref PO can't empty")
-    '        txtRefPO.Focus()
-    '        Return False
-    '    ElseIf String.IsNullOrEmpty(txtStyle.Text) Then
-    '        MsgBoxWarning("Style can't empty")
-    '        txtStyle.Focus()
-    '        Return False
-    '    ElseIf String.IsNullOrEmpty(txtContract.Text) Then
-    '        MsgBoxWarning("Contract No can't empty")
-    '        txtContract.Focus()
-    '        Return False
-    '    ElseIf String.IsNullOrEmpty(txtDelPlace.Text) Then
-    '        MsgBoxWarning("Delivery Place can't empty")
-    '        txtDelPlace.Focus()
-    '        Return False
-    '    ElseIf dgv.Rows.Count - 1 = 0 Then
-    '        MsgBoxWarning("Detail can't empty")
-    '        txtFabric.Focus()
-    '        Return False
-    '    Else
-    '        Return True
-    '    End If
-    'End Function
-    'Function CheckEmptyDetail() As Boolean
-    '    If txtQtyCutt.Text = "" Or txtQtyCutt.Text = 0 Then
-    '        MsgBoxWarning("Qty Cuttable can't empty or 0")
-    '        txtQtyCutt.Focus()
-    '        Return False
-    '    ElseIf txtQtyWeight.Text = "" Or txtQtyWeight.Text = 0 Then
-    '        MsgBoxWarning("Qty Weight can't empty or 0")
-    '        txtQtyWeight.Focus()
-    '        Return False
-    '    ElseIf txtPrice.Text = "" Or txtPrice.Text = 0 Then
-    '        MsgBoxWarning("Unit Price can't empty or 0")
-    '        txtPrice.Focus()
-    '        Return False
-    '    ElseIf txtQty.Text = "" Or txtQty.Text = 0 Then
-    '        MsgBoxWarning("Qty can't empty or 0")
-    '        txtQty.Focus()
-    '        Return False
-    '    Else
-    '        Return True
-    '    End If
-    'End Function
+    Function CheckEmptyBank() As Boolean
+        If cmbBankCode.SelectedValue = 0 Then
+            MsgBoxWarning("Bank not valid")
+            cmbBankCode.Focus()
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
-    'Function CheckDetail() As Boolean
-    '    Dim cek As Integer
-    '    Dim status As Boolean = True
-    '    For cek = 0 To Me.dgv.Rows.Count - 1
-    '        If Me.dgv.Rows(cek).Cells(0).Value = fabricID Then
-    '            status = False
-    '        End If
-    '    Next
-    '    Return status
-    'End Function
+    Function CheckEmptyRemarks() As Boolean
+        If txtRemarks.Text = String.Empty Then
+            MsgBoxWarning("Remarks cant empty")
+            txtRemarks.Focus()
+            Return False
+        Else
+            Return True
+        End If
+    End Function
+#End Region
 
-    'Function GetPiHeaderID() As Long
-    '    Dim piHeaderID As Long
-    '    Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-    '    piHeaderID = piBFC.GeneratedAutoNumber
-    '    Return piHeaderID
-    'End Function
+#Region "Check Available In List"
+    Function CheckFabricInList() As Boolean
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        Dim status As Boolean
+        status = piBFC.CheckFabricInList(dgvFabric, cmbFabric.SelectedValue)
+        Return status
+    End Function
 
-    'Function GetPINo() As String
-    '    Dim piNo As String
-    '    Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-    '    piNo = piBFC.GeneratedPINo(customerCode)
-    '    Return piNo
-    'End Function
+    Function CheckColorInList() As Boolean
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        Dim status As Boolean
+        status = piBFC.CheckColorInList(dgvColor, cmbColor.SelectedValue)
+        Return status
+    End Function
 
-    'Function SetHeaderModel() As PIHeaderModel
-    '    Dim piHeaderModel As PIHeaderModel = New PIHeaderModel
-    '    With piHeaderModel
-    '        Select Case condition
-    '            Case "Create"
-    '                .PIHeaderID = GetPiHeaderID()
-    '                .PIDate = Format(dtPIDate.Value, "yyyy-MM-dd")
-    '                .PINo = GetPINo()
-    '                txtPINo.Text = .PINo
-    '                .VendorID = customerID
-    '                .BuyerID = buyerID
-    '                .GroupSalesID = cmbFM.SelectedValue
-    '                .RefPO = txtRefPO.Text
-    '                .Style = txtStyle.Text
-    '                .SeasonID = cmbSeason.SelectedValue
-    '                .TermOfPaymentID = cmbTOP.SelectedValue
-    '                .DelTerm = Format(dtDelTerm.Value, "yyyy-MM-dd")
-    '                .TermOfPriceID = cmbTermPrice.SelectedValue
-    '                .ContractNo = txtContract.Text
-    '                .DestinationID = cmbPort.SelectedValue
-    '                .DeliveryPlace = txtDelPlace.Text
-    '                .Status = 1
-    '                .CreatedBy = userID
-    '                .CreatedDate = DateTime.Now
-    '                .UpdatedBy = userID
-    '                .UpdatedDate = DateTime.Now
-    '            Case "Update"
+    Function CheckYarnInList() As Boolean
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        Dim status As Boolean
+        status = piBFC.CheckYarnInList(dgvYarn, cmbYarn.SelectedValue)
+        Return status
+    End Function
 
-    '        End Select
-    '    End With
-    '    Return piHeaderModel
-    'End Function
+    Function CheckRemarksInList() As Boolean
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        Dim status As Boolean = True
+        status = piBFC.CheckRemarksInList(dgvRemarks, txtRemarks.Text)
+        Return status
+    End Function
+#End Region
 
-    'Function SetDetailsModel(piHeaderID As Long) As List(Of PIDetailModel)
-    '    Dim listPIDetailModel As List(Of PIDetailModel) = New List(Of PIDetailModel)
-    '    For detail = 0 To dgv.Rows.Count - 2
-    '        Dim piDetailModel As PIDetailModel = New PIDetailModel
-    '        piDetailModel.PIHeaderID = piHeaderID
-    '        piDetailModel.FabricID = dgv.Rows(detail).Cells(0).Value
-    '        piDetailModel.DateDetail = dgv.Rows(detail).Cells(2).Value
-    '        piDetailModel.ColorID = dgv.Rows(detail).Cells(3).Value
-    '        piDetailModel.PPSample = dgv.Rows(detail).Cells(5).Value
-    '        piDetailModel.QtyCuttable = dgv.Rows(detail).Cells(6).Value
-    '        piDetailModel.QtyWeight = dgv.Rows(detail).Cells(7).Value
-    '        piDetailModel.Qty = dgv.Rows(detail).Cells(13).Value
-    '        piDetailModel.UnitID = dgv.Rows(detail).Cells(8).Value
-    '        piDetailModel.UnitPrice = dgv.Rows(detail).Cells(12).Value
-    '        piDetailModel.CurrencyID = dgv.Rows(detail).Cells(10).Value
-    '        listPIDetailModel.Add(piDetailModel)
-    '    Next
-    '    Return listPIDetailModel
-    'End Function
+#Region "Set Data"
+    Function SetDataHeader() As PIHeaderModel
+        Dim headerModel As PIHeaderModel = New PIHeaderModel
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        With headerModel
+            Select Case condition
+                Case "Create"
+                    .PIHeaderID = piBFC.GetPiHeaderID
+                    .PIDate = Format(dtPIDate.Value, "yyyy-MM-dd")
+                    .PINo = piBFC.GetPINo(customerCode)
+                    .VendorID = cmbTo.SelectedValue
+                    .BuyerID = cmbBuyer.SelectedValue
+                    .GroupSalesID = cmbFM.SelectedValue
+                    .RefPO = txtRefPO.Text
+                    .Style = cmbStyle.SelectedValue
+                    .SeasonID = cmbSeason.SelectedValue
+                    .TermOfPaymentID = cmbTOP.SelectedValue
+                    .DelTerm = Format(dtDelTerm.Value, "yyyy-MM-dd")
+                    .TermOfPriceID = cmbTermPrice.SelectedValue
+                    .ContractNo = txtContract.Text
+                    .DestinationID = cmbPort.SelectedValue
+                    .DeliveryPlace = txtDelPlace.Text
+                    .Status = 1
+                    .CreatedBy = userID
+                    .CreatedDate = DateTime.Now
+                    .UpdatedBy = userID
+                    .UpdatedDate = DateTime.Now
+                Case "Update"
+                    .PIHeaderID = piHeaderID
+                    .PIDate = Format(dtPIDate.Value, "yyyy-MM-dd")
+                    .PINo = txtPINo.Text
+                    .VendorID = cmbTo.SelectedValue
+                    .BuyerID = cmbBuyer.SelectedValue
+                    .GroupSalesID = cmbFM.SelectedValue
+                    .RefPO = txtRefPO.Text
+                    .Style = cmbStyle.SelectedValue
+                    .SeasonID = cmbSeason.SelectedValue
+                    .TermOfPaymentID = cmbTOP.SelectedValue
+                    .DelTerm = Format(dtDelTerm.Value, "yyyy-MM-dd")
+                    .TermOfPriceID = cmbTermPrice.SelectedValue
+                    .ContractNo = txtContract.Text
+                    .DestinationID = cmbPort.SelectedValue
+                    .DeliveryPlace = txtDelPlace.Text
+                    .Status = 1
+                    .CreatedBy = userID
+                    .CreatedDate = DateTime.Now
+                    .UpdatedBy = userID
+                    .UpdatedDate = DateTime.Now
+            End Select
+        End With
+        Return headerModel
+    End Function
 
-    'Sub InsertData()
-    '    Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-    '    Dim logBFC As ClsLogHistory = New ClsLogHistory
-    '    Dim logDesc As String = "Create new Proforma Invoice,PINo is " + GetPINo()
+    Function SetDetailFabric(piID As Long) As List(Of PIDetailModel)
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        Dim listModel As List(Of PIDetailModel) = New List(Of PIDetailModel)
+        listModel = piBFC.SetDetailFabric(piID, dgvFabric)
+        Return listModel
+    End Function
 
-    '    Try
-    '        If piBFC.InsertData(SetHeaderModel, SetDetailsModel(GetPiHeaderID), logBFC.SetLogHistory(logDesc)) = True Then
-    '            MsgBoxSaved()
-    '        End If
-    '    Catch ex As Exception
-    '        MsgBoxError(ex.Message)
-    '    End Try
-    'End Sub
-    'Sub PreCreateDisplay()
-    '    dgv.Columns.Clear()
-    '    ClearHeader()
-    '    ClearDetail()
-    '    GridDetail()
-    '    ComboBoxSeason()
-    '    ComboBoxTOP()
-    '    ComboBoxTermOfPrice()
-    '    ComboBoxUnit()
-    '    ComboBoxSeaPort()
-    '    ComboBoxColor()
-    '    ComboBoxCurrency()
-    '    ComboBoxGroupSales()
-    '    txtBuyer.Focus()
-    'End Sub
+    Function SetDetailColor(piID As Long) As List(Of PIColorDetailModel)
+        Dim listModel As List(Of PIColorDetailModel) = New List(Of PIColorDetailModel)
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        listModel = piBFC.SetDetailColor(piID, dgvColor)
+        Return listModel
+    End Function
+
+    Function SetDetailYarn(piID As Long) As List(Of PIYarnDetailModel)
+        Dim listModel As List(Of PIYarnDetailModel) = New List(Of PIYarnDetailModel)
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        listModel = piBFC.SetDetailYarn(piID, dgvYarn)
+        Return listModel
+    End Function
+
+    Function SetDataBank(piID As Long) As PIBankDetailModel
+        Dim myModel As PIBankDetailModel = New PIBankDetailModel
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        myModel.PIHeaderID = piID
+        myModel.PIBankDetailID = piBFC.GetPIDetailBankID
+        myModel.BankID = cmbBankCode.SelectedValue
+        Return myModel
+    End Function
+
+    Function SetDetailRemarks(piID As Long) As List(Of PIRemarksModel)
+        Dim listModel As List(Of PIRemarksModel) = New List(Of PIRemarksModel)
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        listModel = piBFC.SetDetailRemarks(piID, dgvRemarks)
+        Return listModel
+    End Function
+#End Region
+
+#Region "Function"
+    Sub InsertData()
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim myPINo As String = piBFC.GetPINo(customerCode)
+        Dim myPIID As Long = piBFC.GetPiHeaderID
+        Dim logDesc As String = "Create new Proforma Invoice,PINo is " + myPINo
+
+        Try
+            If piBFC.InsertData(SetDataHeader, SetDetailFabric(myPIID), SetDetailColor(myPIID), SetDetailYarn(myPIID) _
+                                , SetDetailRemarks(myPIID), SetDataBank(myPIID), logBFC.SetLogHistory(logDesc)) = True Then
+                MsgBoxSaved()
+            End If
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Sub UpdateData()
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim logDesc As String = "Update Proforma Invoice,Where PINo = " + txtPINo.Text
+        Try
+            If piBFC.UpdateData(SetDataHeader, SetDetailFabric(piHeaderID), SetDetailColor(piHeaderID), SetDetailYarn(piHeaderID) _
+                                , SetDetailRemarks(piHeaderID), SetDataBank(piHeaderID), logBFC.SetLogHistory(logDesc)) = True Then
+                MsgBoxUpdated()
+            End If
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Sub ClearDataGrid()
+        dgvFabric.Columns.Clear()
+        dgvColor.Columns.Clear()
+        dgvYarn.Columns.Clear()
+        dgvRemarks.Columns.Clear()
+    End Sub
+
+    Sub ClearAllData()
+        ClearHeader()
+        ClearFabric()
+        ClearColorFabric()
+        ClearYarn()
+        ClearBankDetail()
+        ClearRemarks()
+    End Sub
+
+    Sub GridDetailALL()
+        GridDetailFabric()
+        GridDetailColor()
+        GridDetailYarn()
+        GridDetailRemark()
+    End Sub
+
+    Sub ComboBoxALL()
+        ComboBoxBank()
+        ComboBoxBrandYarn()
+        ComboBoxBuyer()
+        ComboBoxColor()
+        ComboBoxColorYarn()
+        ComboBoxCustomer()
+        ComboBoxFabric()
+        ComboBoxMarketing()
+        ComboBoxPort()
+        ComboBoxRawMaterial()
+        ComboBoxSeason()
+        ComboBoxStyle()
+        ComboBoxTermOfPayment()
+        ComboBoxTermPrice()
+        ComboBoxUnit()
+        ComboBoxYarn()
+    End Sub
+
+    Sub RetrieveCustomer()
+        Dim vendorBFC As ClsVendor = New ClsVendor
+        Dim vendorModel As VendorModel = New VendorModel
+        Dim obj As Long = cmbTo.SelectedValue
+        If obj > 0 Then
+            vendorModel = vendorBFC.RetrieveVendorByID(obj, "C")
+            With vendorModel
+                txtTlp.Text = .Telephone
+                txtAttention.Text = .ContactPerson
+                txtAddress.Text = .Address
+                txtFax.Text = .Fax
+            End With
+        Else
+            MsgBoxError("Customer not valid")
+        End If
+    End Sub
+
+    Sub CheckPermissions()
+        Dim roleBFC As ClsPermission = New ClsPermission
+        Dim roleModel As RoleDModel = New RoleDModel
+        roleModel = roleBFC.RetrieveDetailsByRoleIDMenuID(roleIDUser, Tag)
+        If roleModel.IsCreate = True Then btnSave.Enabled = True
+        If roleModel.IsUpdate = True Then btnUpdate.Enabled = True
+        If roleModel.IsApprove = True Then btnApprove.Enabled = True
+        If roleModel.IsVoid = True Then btnVoid.Enabled = True
+    End Sub
+
+    Sub PreCreatedisplay()
+        CheckPermissions()
+        ClearDataGrid()
+        ClearAllData()
+        GridDetailALL()
+        ComboBoxALL()
+        cmbBuyer.Focus()
+    End Sub
+
+    Private Sub FrmProformaInvoice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        PreCreatedisplay()
+    End Sub
+#End Region
 
 #Region "Button"
+    Private Sub btnAddFabric_Click(sender As Object, e As EventArgs) Handles btnAddFabric.Click
+        If CheckEmptyFabric() = True Then
+            Try
+                AddGridDetailFabric()
+                ClearFabric()
+            Catch ex As Exception
+                MsgBoxError(ex.Message)
+            End Try
+        End If
+    End Sub
 
+    Private Sub btnDelFabirc_Click(sender As Object, e As EventArgs) Handles btnDelFabirc.Click
+        Try
+            DeleteGridDetailFabric()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnColAddList_Click(sender As Object, e As EventArgs) Handles btnColAddList.Click
+        If CheckEmptyColor() = True Then
+            Try
+                AddGridDetailColor()
+                ClearColorFabric()
+            Catch ex As Exception
+                MsgBoxError(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub btnColDelList_Click(sender As Object, e As EventArgs) Handles btnColDelList.Click
+        Try
+            DeleteGridDetailColor()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnAddYarnList_Click(sender As Object, e As EventArgs) Handles btnAddYarnList.Click
+        If CheckEmptyYarn() = True Then
+            Try
+                AddGridDetailYarn()
+                ClearYarn()
+            Catch ex As Exception
+                MsgBoxError(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub btnDelYarnList_Click(sender As Object, e As EventArgs) Handles btnDelYarnList.Click
+        Try
+            DeleteGridDetailYarn()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnRemAddList_Click(sender As Object, e As EventArgs) Handles btnRemAddList.Click
+        If CheckEmptyRemarks() = True Then
+            Try
+                AddGridDetailRemarks()
+                ClearRemarks()
+            Catch ex As Exception
+                MsgBoxError(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub btnRemDelList_Click(sender As Object, e As EventArgs) Handles btnRemDelList.Click
+        Try
+            DeleteGridDetailRemarks()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+
+    End Sub
+
+    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        UpdateData()
+    End Sub
+
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+
+    End Sub
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+
+    End Sub
+
+    Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
+
+    End Sub
+
+    Private Sub btnVoid_Click(sender As Object, e As EventArgs) Handles btnVoid.Click
+
+    End Sub
+#End Region
+
+#Region "KeyPress"
+    Private Sub dtPIDate_KeyPress(sender As Object, e As KeyPressEventArgs) Handles dtPIDate.KeyPress
+        If e.KeyChar = Chr(13) Then
+            cmbBuyer.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbBuyer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbBuyer.SelectedIndexChanged
+        txtRefPO.Focus()
+    End Sub
+
+    Private Sub txtRefPO_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtRefPO.KeyPress
+        If e.KeyChar = Chr(13) Then
+            cmbStyle.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbStyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbStyle.SelectedIndexChanged
+        cmbSeason.Focus()
+    End Sub
+
+    Private Sub cmbSeason_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSeason.SelectedIndexChanged
+        cmbTOP.Focus()
+    End Sub
+
+    Private Sub cmbTOP_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTOP.SelectedIndexChanged
+        dtDelTerm.Focus()
+    End Sub
+
+    Private Sub cmbTermPrice_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTermPrice.SelectedIndexChanged
+        txtContract.Focus()
+    End Sub
+
+    Private Sub txtContract_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtContract.KeyPress
+        If e.KeyChar = Chr(13) Then
+            cmbPort.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbPort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPort.SelectedIndexChanged
+        cmbTo.Focus()
+    End Sub
+
+    Private Sub cmbTo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTo.SelectedIndexChanged
+        cmbFM.Focus()
+    End Sub
+
+    Private Sub cmbFM_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFM.SelectedIndexChanged
+        txtDelPlace.Focus()
+    End Sub
+
+    Private Sub txtDelPlace_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDelPlace.KeyPress
+        If e.KeyChar = Chr(13) Then
+            cmbFabric.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbFabric_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFabric.SelectedIndexChanged
+        cmbRawFabric.Focus()
+    End Sub
+
+    Private Sub cmbRawFabric_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRawFabric.SelectedIndexChanged
+        cmbTypeGreige.Focus()
+    End Sub
+
+    Private Sub cmbTypeGreige_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTypeGreige.SelectedIndexChanged
+        txtWidthMin.Focus()
+    End Sub
+
+    Private Sub txtWidthMin_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWidthMin.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtWidthMax.Focus()
+        End If
+    End Sub
+
+    Private Sub txtWidthMax_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWidthMax.KeyPress
+        If e.KeyChar = Chr(13) Then
+            cmbUnitFabric.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbUnitFabric_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbUnitFabric.SelectedIndexChanged
+        txtWeightMax.Focus()
+    End Sub
+
+    Private Sub txtWeightMin_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWeightMin.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtWeightMax.Focus()
+        End If
+    End Sub
+
+    Private Sub txtWeightMax_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWeightMax.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtDNYardage.Focus()
+        End If
+    End Sub
+
+    Private Sub txtDNYardage_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDNYardage.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtWeightYard.Focus()
+        End If
+    End Sub
+
+    Private Sub txtWeightYard_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWeightYard.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtBeforeWash.Focus()
+        End If
+    End Sub
+
+    Private Sub txtBeforeWash_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtBeforeWash.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtAfterWash.Focus()
+        End If
+    End Sub
+
+    Private Sub txtAfterWash_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAfterWash.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtNetWeight.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNetWeight_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNetWeight.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtSrinkageL.Focus()
+        End If
+    End Sub
+
+    Private Sub txtSrinkageL_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSrinkageL.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtSrinkageW.Focus()
+        End If
+    End Sub
+
+    Private Sub txtSrinkageW_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSrinkageW.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtGSM.Focus()
+        End If
+    End Sub
+
+    Private Sub txtGSM_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtGSM.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtPriceGreige.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPriceGreige_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPriceGreige.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtPurchSize.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPurchSize_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPurchSize.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtStorageSize.Focus()
+        End If
+    End Sub
+
+    Private Sub txtStorageSize_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtStorageSize.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtPPSample.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPPSample_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPPSample.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtQtyCutt.Focus()
+        End If
+    End Sub
+
+    Private Sub txtQtyCutt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQtyCutt.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtQtyWeight.Focus()
+        End If
+    End Sub
+
+    Private Sub txtQtyWeight_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQtyWeight.KeyPress
+        If e.KeyChar = Chr(13) Then
+            btnAddFabric.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbColor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbColor.SelectedIndexChanged
+        txtColorType.Focus()
+    End Sub
+
+    Private Sub txtColorType_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtColorType.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtLabColNo.Focus()
+        End If
+    End Sub
+
+    Private Sub txtLabColNo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLabColNo.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtColQtyOrder.Focus()
+        End If
+    End Sub
+
+    Private Sub txtColQtyOrder_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtColQtyOrder.KeyPress
+        If e.KeyChar = Chr(13) Then
+            cmbColPurchSize.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbColPurchSize_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbColPurchSize.SelectedIndexChanged
+        txtColPrice.Focus()
+    End Sub
+
+    Private Sub txtColPrice_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtColPrice.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtColQtySample.Focus()
+        End If
+    End Sub
+
+    Private Sub txtColQtySample_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtColQtySample.KeyPress
+        If e.KeyChar = Chr(13) Then
+            dtpColDelDate.Focus()
+        End If
+    End Sub
+
+    Private Sub txtColNotes_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtColNotes.KeyPress
+        If e.KeyChar = Chr(13) Then
+            btnColAddList.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbYarn_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbYarn.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtPriceYarn.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPriceYarn_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPriceYarn.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtPercentUsage.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPercentUsage_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPercentUsage.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtQtyUsage.Focus()
+        End If
+    End Sub
+
+    Private Sub txtQtyUsage_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQtyUsage.KeyPress
+        If e.KeyChar = Chr(13) Then
+            cmbColorYarn.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbYarn_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbYarn.SelectedIndexChanged
+        cmbColorYarn.Focus()
+    End Sub
+
+    Private Sub cmbColorYarn_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbColorYarn.SelectedIndexChanged
+        cmbMerk.Focus()
+    End Sub
+
+    Private Sub cmbMerk_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbMerk.SelectedIndexChanged
+        txtLoss.Focus()
+    End Sub
+
+    Private Sub txtLoss_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLoss.KeyPress
+        If e.KeyChar = Chr(13) Then
+            btnAddYarnList.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbBankCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbBankCode.SelectedIndexChanged
+        txtRemarks.Focus()
+    End Sub
+
+    Private Sub txtRemarks_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtRemarks.KeyPress
+        If e.KeyChar = Chr(13) Then
+            btnRemAddList.Focus()
+        End If
+    End Sub
+#End Region
+
+#Region "Row State Change"
+    Private Sub dgvFabric_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgvFabric.RowStateChanged
+        intPostFabric = e.Row.Index
+    End Sub
+
+    Private Sub dgvColor_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgvColor.RowStateChanged
+        intPostColor = e.Row.Index
+    End Sub
+
+    Private Sub dgvYarn_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgvYarn.RowStateChanged
+        intPostYarn = e.Row.Index
+    End Sub
+
+    Private Sub dgvRemarks_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgvRemarks.RowStateChanged
+        intPostRemarks = e.Row.Index
+    End Sub
 #End Region
 End Class

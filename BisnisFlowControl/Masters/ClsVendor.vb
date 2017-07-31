@@ -84,6 +84,36 @@
             Throw ex
         End Try
     End Function
+
+    Public Function RetrieveVendorByID(vendorID As Long, statusVendor As Char) As VendorModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim vendorModel As VendorModel = New VendorModel
+        Dim query As String = "Select VendorID,VendorCode,VendorName,Address,Telephone,Fax,ContactPerson from Vendor where IsActive = 1" &
+                                " And VendorID = '" & vendorID & "' AND Status = '" & statusVendor & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(query)
+            With dataAccess.reader
+                While .Read
+                    If Not IsDBNull(.Item("VendorCode")) Then
+                        vendorModel.VendorID = .Item("VendorID")
+                        vendorModel.VendorCode = .Item("VendorCode")
+                        vendorModel.VendorName = .Item("VendorName")
+                        vendorModel.Address = .Item("Address")
+                        vendorModel.Telephone = .Item("Telephone")
+                        vendorModel.Fax = .Item("Fax")
+                        vendorModel.ContactPerson = .Item("ContactPerson")
+                    End If
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return vendorModel
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
 #End Region
 
 #Region "Method Other"

@@ -134,7 +134,7 @@ Partial Class FrmConfiguration
         Me.btnKeluar.Name = "btnKeluar"
         Me.btnKeluar.Size = New System.Drawing.Size(97, 23)
         Me.btnKeluar.TabIndex = 11
-        Me.btnKeluar.Text = "Keluar"
+        Me.btnKeluar.Text = "Exit"
         Me.btnKeluar.UseVisualStyleBackColor = True
         '
         'FrmConfiguration

@@ -30,13 +30,7 @@
     End Sub
     Sub ComboBoxTermOfPayment(cmb As ComboBox)
         Dim topBFC As ClsTermOfPayment = New ClsTermOfPayment
-        Try
-            cmb.DataSource = topBFC.ListComboBoxTerm
-            cmb.DisplayMember = "Name"
-            cmb.ValueMember = "TermOfPaymentID"
-        Catch ex As Exception
-            MsgBoxError(ex.Message)
-        End Try
+        topBFC.ComboBoxTOP(cmbTOP)
     End Sub
     Sub ComboBoxCountry(cmb As ComboBox)
         Dim destBFC As ClsDestination = New ClsDestination

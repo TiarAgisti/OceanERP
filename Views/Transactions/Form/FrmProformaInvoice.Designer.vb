@@ -140,10 +140,10 @@ Partial Class FrmProformaInvoice
         Me.Label20 = New System.Windows.Forms.Label()
         Me.dgvYarn = New System.Windows.Forms.DataGridView()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btnDelYarnList = New System.Windows.Forms.Button()
         Me.cmbMerk = New System.Windows.Forms.ComboBox()
         Me.Label57 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btnAddYarnList = New System.Windows.Forms.Button()
         Me.Label56 = New System.Windows.Forms.Label()
         Me.txtLoss = New System.Windows.Forms.TextBox()
         Me.txtQtyUsage = New System.Windows.Forms.TextBox()
@@ -211,7 +211,7 @@ Partial Class FrmProformaInvoice
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(0, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(1354, 43)
+        Me.Label3.Size = New System.Drawing.Size(1251, 43)
         Me.Label3.TabIndex = 23
         Me.Label3.Text = "Proforma Invoice"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -258,24 +258,24 @@ Partial Class FrmProformaInvoice
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 43)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1354, 118)
+        Me.Panel1.Size = New System.Drawing.Size(1251, 118)
         Me.Panel1.TabIndex = 24
         '
         'cmbTo
         '
         Me.cmbTo.FormattingEnabled = True
-        Me.cmbTo.Location = New System.Drawing.Point(624, 84)
+        Me.cmbTo.Location = New System.Drawing.Point(616, 84)
         Me.cmbTo.Name = "cmbTo"
-        Me.cmbTo.Size = New System.Drawing.Size(188, 21)
-        Me.cmbTo.TabIndex = 62
+        Me.cmbTo.Size = New System.Drawing.Size(151, 21)
+        Me.cmbTo.TabIndex = 12
         '
         'cmbStyle
         '
         Me.cmbStyle.FormattingEnabled = True
-        Me.cmbStyle.Location = New System.Drawing.Point(352, 3)
+        Me.cmbStyle.Location = New System.Drawing.Point(347, 5)
         Me.cmbStyle.Name = "cmbStyle"
         Me.cmbStyle.Size = New System.Drawing.Size(188, 21)
-        Me.cmbStyle.TabIndex = 61
+        Me.cmbStyle.TabIndex = 5
         '
         'cmbBuyer
         '
@@ -283,12 +283,12 @@ Partial Class FrmProformaInvoice
         Me.cmbBuyer.Location = New System.Drawing.Point(60, 57)
         Me.cmbBuyer.Name = "cmbBuyer"
         Me.cmbBuyer.Size = New System.Drawing.Size(188, 21)
-        Me.cmbBuyer.TabIndex = 60
+        Me.cmbBuyer.TabIndex = 3
         '
         'Label29
         '
         Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(819, 58)
+        Me.Label29.Location = New System.Drawing.Point(778, 58)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(45, 13)
         Me.Label29.TabIndex = 59
@@ -296,33 +296,33 @@ Partial Class FrmProformaInvoice
         '
         'txtContract
         '
-        Me.txtContract.Location = New System.Drawing.Point(624, 31)
+        Me.txtContract.Location = New System.Drawing.Point(616, 31)
         Me.txtContract.MaxLength = 50
         Me.txtContract.Name = "txtContract"
-        Me.txtContract.Size = New System.Drawing.Size(188, 20)
+        Me.txtContract.Size = New System.Drawing.Size(151, 20)
         Me.txtContract.TabIndex = 10
         '
         'cmbSeason
         '
         Me.cmbSeason.FormattingEnabled = True
-        Me.cmbSeason.Location = New System.Drawing.Point(352, 30)
+        Me.cmbSeason.Location = New System.Drawing.Point(347, 30)
         Me.cmbSeason.Name = "cmbSeason"
         Me.cmbSeason.Size = New System.Drawing.Size(188, 21)
         Me.cmbSeason.TabIndex = 6
         '
         'txtDelPlace
         '
-        Me.txtDelPlace.Location = New System.Drawing.Point(1161, 57)
+        Me.txtDelPlace.Location = New System.Drawing.Point(1069, 56)
         Me.txtDelPlace.MaxLength = 255
         Me.txtDelPlace.Multiline = True
         Me.txtDelPlace.Name = "txtDelPlace"
-        Me.txtDelPlace.Size = New System.Drawing.Size(188, 50)
+        Me.txtDelPlace.Size = New System.Drawing.Size(169, 50)
         Me.txtDelPlace.TabIndex = 18
         '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(1080, 54)
+        Me.Label18.Location = New System.Drawing.Point(988, 59)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(75, 13)
         Me.Label18.TabIndex = 46
@@ -331,15 +331,15 @@ Partial Class FrmProformaInvoice
         'cmbFM
         '
         Me.cmbFM.FormattingEnabled = True
-        Me.cmbFM.Location = New System.Drawing.Point(1161, 30)
+        Me.cmbFM.Location = New System.Drawing.Point(1069, 31)
         Me.cmbFM.Name = "cmbFM"
-        Me.cmbFM.Size = New System.Drawing.Size(188, 21)
+        Me.cmbFM.Size = New System.Drawing.Size(169, 21)
         Me.cmbFM.TabIndex = 17
         '
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(1080, 32)
+        Me.Label17.Location = New System.Drawing.Point(988, 33)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(22, 13)
         Me.Label17.TabIndex = 53
@@ -348,15 +348,15 @@ Partial Class FrmProformaInvoice
         'txtAttention
         '
         Me.txtAttention.Enabled = False
-        Me.txtAttention.Location = New System.Drawing.Point(877, 31)
+        Me.txtAttention.Location = New System.Drawing.Point(829, 30)
         Me.txtAttention.Name = "txtAttention"
-        Me.txtAttention.Size = New System.Drawing.Size(188, 20)
-        Me.txtAttention.TabIndex = 16
+        Me.txtAttention.Size = New System.Drawing.Size(149, 20)
+        Me.txtAttention.TabIndex = 14
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(819, 35)
+        Me.Label16.Location = New System.Drawing.Point(778, 35)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(49, 13)
         Me.Label16.TabIndex = 51
@@ -365,15 +365,15 @@ Partial Class FrmProformaInvoice
         'txtFax
         '
         Me.txtFax.Enabled = False
-        Me.txtFax.Location = New System.Drawing.Point(1161, 4)
+        Me.txtFax.Location = New System.Drawing.Point(1069, 5)
         Me.txtFax.Name = "txtFax"
-        Me.txtFax.Size = New System.Drawing.Size(188, 20)
-        Me.txtFax.TabIndex = 15
+        Me.txtFax.Size = New System.Drawing.Size(169, 20)
+        Me.txtFax.TabIndex = 16
         '
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(1080, 4)
+        Me.Label15.Location = New System.Drawing.Point(988, 9)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(24, 13)
         Me.Label15.TabIndex = 49
@@ -382,15 +382,15 @@ Partial Class FrmProformaInvoice
         'txtTlp
         '
         Me.txtTlp.Enabled = False
-        Me.txtTlp.Location = New System.Drawing.Point(877, 5)
+        Me.txtTlp.Location = New System.Drawing.Point(829, 4)
         Me.txtTlp.Name = "txtTlp"
-        Me.txtTlp.Size = New System.Drawing.Size(188, 20)
-        Me.txtTlp.TabIndex = 14
+        Me.txtTlp.Size = New System.Drawing.Size(149, 20)
+        Me.txtTlp.TabIndex = 13
         '
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(819, 10)
+        Me.Label14.Location = New System.Drawing.Point(778, 10)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(28, 13)
         Me.Label14.TabIndex = 47
@@ -399,16 +399,16 @@ Partial Class FrmProformaInvoice
         'txtAddress
         '
         Me.txtAddress.Enabled = False
-        Me.txtAddress.Location = New System.Drawing.Point(877, 57)
+        Me.txtAddress.Location = New System.Drawing.Point(829, 56)
         Me.txtAddress.Multiline = True
         Me.txtAddress.Name = "txtAddress"
-        Me.txtAddress.Size = New System.Drawing.Size(188, 48)
-        Me.txtAddress.TabIndex = 13
+        Me.txtAddress.Size = New System.Drawing.Size(149, 48)
+        Me.txtAddress.TabIndex = 15
         '
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(546, 86)
+        Me.Label13.Location = New System.Drawing.Point(538, 86)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(20, 13)
         Me.Label13.TabIndex = 44
@@ -417,15 +417,15 @@ Partial Class FrmProformaInvoice
         'cmbPort
         '
         Me.cmbPort.FormattingEnabled = True
-        Me.cmbPort.Location = New System.Drawing.Point(624, 57)
+        Me.cmbPort.Location = New System.Drawing.Point(616, 57)
         Me.cmbPort.Name = "cmbPort"
-        Me.cmbPort.Size = New System.Drawing.Size(188, 21)
+        Me.cmbPort.Size = New System.Drawing.Size(151, 21)
         Me.cmbPort.TabIndex = 11
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(546, 60)
+        Me.Label12.Location = New System.Drawing.Point(538, 60)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(77, 13)
         Me.Label12.TabIndex = 42
@@ -434,7 +434,7 @@ Partial Class FrmProformaInvoice
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(546, 35)
+        Me.Label11.Location = New System.Drawing.Point(538, 35)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(64, 13)
         Me.Label11.TabIndex = 40
@@ -443,15 +443,15 @@ Partial Class FrmProformaInvoice
         'cmbTermPrice
         '
         Me.cmbTermPrice.FormattingEnabled = True
-        Me.cmbTermPrice.Location = New System.Drawing.Point(624, 5)
+        Me.cmbTermPrice.Location = New System.Drawing.Point(616, 5)
         Me.cmbTermPrice.Name = "cmbTermPrice"
-        Me.cmbTermPrice.Size = New System.Drawing.Size(188, 21)
+        Me.cmbTermPrice.Size = New System.Drawing.Size(151, 21)
         Me.cmbTermPrice.TabIndex = 9
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(545, 10)
+        Me.Label10.Location = New System.Drawing.Point(537, 10)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(72, 13)
         Me.Label10.TabIndex = 38
@@ -459,7 +459,7 @@ Partial Class FrmProformaInvoice
         '
         'dtDelTerm
         '
-        Me.dtDelTerm.Location = New System.Drawing.Point(352, 82)
+        Me.dtDelTerm.Location = New System.Drawing.Point(347, 82)
         Me.dtDelTerm.Name = "dtDelTerm"
         Me.dtDelTerm.Size = New System.Drawing.Size(188, 20)
         Me.dtDelTerm.TabIndex = 8
@@ -467,7 +467,7 @@ Partial Class FrmProformaInvoice
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(259, 84)
+        Me.Label9.Location = New System.Drawing.Point(254, 84)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(50, 13)
         Me.Label9.TabIndex = 36
@@ -476,7 +476,7 @@ Partial Class FrmProformaInvoice
         'cmbTOP
         '
         Me.cmbTOP.FormattingEnabled = True
-        Me.cmbTOP.Location = New System.Drawing.Point(352, 55)
+        Me.cmbTOP.Location = New System.Drawing.Point(347, 55)
         Me.cmbTOP.Name = "cmbTOP"
         Me.cmbTOP.Size = New System.Drawing.Size(188, 21)
         Me.cmbTOP.TabIndex = 7
@@ -484,7 +484,7 @@ Partial Class FrmProformaInvoice
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(257, 58)
+        Me.Label8.Location = New System.Drawing.Point(252, 58)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(89, 13)
         Me.Label8.TabIndex = 34
@@ -493,7 +493,7 @@ Partial Class FrmProformaInvoice
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(259, 33)
+        Me.Label7.Location = New System.Drawing.Point(254, 33)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(43, 13)
         Me.Label7.TabIndex = 32
@@ -502,7 +502,7 @@ Partial Class FrmProformaInvoice
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(259, 7)
+        Me.Label6.Location = New System.Drawing.Point(254, 7)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(30, 13)
         Me.Label6.TabIndex = 30
@@ -578,41 +578,42 @@ Partial Class FrmProformaInvoice
         '
         'txtSpec
         '
+        Me.txtSpec.Enabled = False
         Me.txtSpec.Location = New System.Drawing.Point(78, 30)
         Me.txtSpec.Name = "txtSpec"
         Me.txtSpec.Size = New System.Drawing.Size(188, 20)
-        Me.txtSpec.TabIndex = 19
+        Me.txtSpec.TabIndex = 20
         '
         'btnDelFabirc
         '
-        Me.btnDelFabirc.Location = New System.Drawing.Point(1181, 110)
+        Me.btnDelFabirc.Location = New System.Drawing.Point(1111, 110)
         Me.btnDelFabirc.Name = "btnDelFabirc"
         Me.btnDelFabirc.Size = New System.Drawing.Size(108, 23)
-        Me.btnDelFabirc.TabIndex = 30
+        Me.btnDelFabirc.TabIndex = 44
         Me.btnDelFabirc.Text = "Delete From List"
         Me.btnDelFabirc.UseVisualStyleBackColor = True
         '
         'btnAddFabric
         '
-        Me.btnAddFabric.Location = New System.Drawing.Point(1067, 110)
+        Me.btnAddFabric.Location = New System.Drawing.Point(997, 110)
         Me.btnAddFabric.Name = "btnAddFabric"
         Me.btnAddFabric.Size = New System.Drawing.Size(108, 23)
-        Me.btnAddFabric.TabIndex = 29
+        Me.btnAddFabric.TabIndex = 43
         Me.btnAddFabric.Text = "Add To List"
         Me.btnAddFabric.UseVisualStyleBackColor = True
         '
         'txtQtyWeight
         '
-        Me.txtQtyWeight.Location = New System.Drawing.Point(1136, 83)
+        Me.txtQtyWeight.Location = New System.Drawing.Point(1066, 83)
         Me.txtQtyWeight.MaxLength = 12
         Me.txtQtyWeight.Name = "txtQtyWeight"
-        Me.txtQtyWeight.Size = New System.Drawing.Size(183, 20)
-        Me.txtQtyWeight.TabIndex = 24
+        Me.txtQtyWeight.Size = New System.Drawing.Size(153, 20)
+        Me.txtQtyWeight.TabIndex = 42
         '
         'Label24
         '
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(1064, 86)
+        Me.Label24.Location = New System.Drawing.Point(994, 86)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(60, 13)
         Me.Label24.TabIndex = 61
@@ -620,16 +621,16 @@ Partial Class FrmProformaInvoice
         '
         'txtQtyCutt
         '
-        Me.txtQtyCutt.Location = New System.Drawing.Point(1136, 57)
+        Me.txtQtyCutt.Location = New System.Drawing.Point(1066, 57)
         Me.txtQtyCutt.MaxLength = 12
         Me.txtQtyCutt.Name = "txtQtyCutt"
-        Me.txtQtyCutt.Size = New System.Drawing.Size(183, 20)
-        Me.txtQtyCutt.TabIndex = 23
+        Me.txtQtyCutt.Size = New System.Drawing.Size(153, 20)
+        Me.txtQtyCutt.TabIndex = 41
         '
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(1064, 60)
+        Me.Label23.Location = New System.Drawing.Point(994, 60)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(65, 13)
         Me.Label23.TabIndex = 59
@@ -637,16 +638,16 @@ Partial Class FrmProformaInvoice
         '
         'txtPPSample
         '
-        Me.txtPPSample.Location = New System.Drawing.Point(1136, 31)
+        Me.txtPPSample.Location = New System.Drawing.Point(1066, 31)
         Me.txtPPSample.MaxLength = 50
         Me.txtPPSample.Name = "txtPPSample"
-        Me.txtPPSample.Size = New System.Drawing.Size(183, 20)
-        Me.txtPPSample.TabIndex = 22
+        Me.txtPPSample.Size = New System.Drawing.Size(153, 20)
+        Me.txtPPSample.TabIndex = 40
         '
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(1064, 33)
+        Me.Label22.Location = New System.Drawing.Point(994, 33)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(59, 13)
         Me.Label22.TabIndex = 57
@@ -659,7 +660,7 @@ Partial Class FrmProformaInvoice
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Location = New System.Drawing.Point(0, 161)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1354, 262)
+        Me.GroupBox1.Size = New System.Drawing.Size(1251, 241)
         Me.GroupBox1.TabIndex = 70
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Fabric"
@@ -670,7 +671,7 @@ Partial Class FrmProformaInvoice
         Me.dgvFabric.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvFabric.Location = New System.Drawing.Point(3, 157)
         Me.dgvFabric.Name = "dgvFabric"
-        Me.dgvFabric.Size = New System.Drawing.Size(1348, 102)
+        Me.dgvFabric.Size = New System.Drawing.Size(1245, 81)
         Me.dgvFabric.TabIndex = 1
         '
         'Panel2
@@ -729,13 +730,13 @@ Partial Class FrmProformaInvoice
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(3, 16)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1348, 141)
+        Me.Panel2.Size = New System.Drawing.Size(1245, 141)
         Me.Panel2.TabIndex = 0
         '
         'Label49
         '
         Me.Label49.AutoSize = True
-        Me.Label49.Location = New System.Drawing.Point(1064, 7)
+        Me.Label49.Location = New System.Drawing.Point(994, 7)
         Me.Label49.Name = "Label49"
         Me.Label49.Size = New System.Drawing.Size(67, 13)
         Me.Label49.TabIndex = 98
@@ -743,16 +744,16 @@ Partial Class FrmProformaInvoice
         '
         'txtStorageSize
         '
-        Me.txtStorageSize.Location = New System.Drawing.Point(1136, 5)
-        Me.txtStorageSize.MaxLength = 50
+        Me.txtStorageSize.Location = New System.Drawing.Point(1066, 5)
+        Me.txtStorageSize.MaxLength = 15
         Me.txtStorageSize.Name = "txtStorageSize"
-        Me.txtStorageSize.Size = New System.Drawing.Size(183, 20)
-        Me.txtStorageSize.TabIndex = 97
+        Me.txtStorageSize.Size = New System.Drawing.Size(153, 20)
+        Me.txtStorageSize.TabIndex = 39
         '
         'Label48
         '
         Me.Label48.AutoSize = True
-        Me.Label48.Location = New System.Drawing.Point(802, 111)
+        Me.Label48.Location = New System.Drawing.Point(770, 111)
         Me.Label48.Name = "Label48"
         Me.Label48.Size = New System.Drawing.Size(58, 13)
         Me.Label48.TabIndex = 96
@@ -760,16 +761,16 @@ Partial Class FrmProformaInvoice
         '
         'txtPurchSize
         '
-        Me.txtPurchSize.Location = New System.Drawing.Point(874, 109)
-        Me.txtPurchSize.MaxLength = 50
+        Me.txtPurchSize.Location = New System.Drawing.Point(842, 109)
+        Me.txtPurchSize.MaxLength = 15
         Me.txtPurchSize.Name = "txtPurchSize"
-        Me.txtPurchSize.Size = New System.Drawing.Size(183, 20)
-        Me.txtPurchSize.TabIndex = 95
+        Me.txtPurchSize.Size = New System.Drawing.Size(144, 20)
+        Me.txtPurchSize.TabIndex = 38
         '
         'Label47
         '
         Me.Label47.AutoSize = True
-        Me.Label47.Location = New System.Drawing.Point(802, 85)
+        Me.Label47.Location = New System.Drawing.Point(770, 85)
         Me.Label47.Name = "Label47"
         Me.Label47.Size = New System.Drawing.Size(65, 13)
         Me.Label47.TabIndex = 94
@@ -777,16 +778,16 @@ Partial Class FrmProformaInvoice
         '
         'txtPriceGreige
         '
-        Me.txtPriceGreige.Location = New System.Drawing.Point(874, 83)
-        Me.txtPriceGreige.MaxLength = 50
+        Me.txtPriceGreige.Location = New System.Drawing.Point(842, 83)
+        Me.txtPriceGreige.MaxLength = 15
         Me.txtPriceGreige.Name = "txtPriceGreige"
-        Me.txtPriceGreige.Size = New System.Drawing.Size(183, 20)
-        Me.txtPriceGreige.TabIndex = 93
+        Me.txtPriceGreige.Size = New System.Drawing.Size(144, 20)
+        Me.txtPriceGreige.TabIndex = 37
         '
         'Label46
         '
         Me.Label46.AutoSize = True
-        Me.Label46.Location = New System.Drawing.Point(802, 59)
+        Me.Label46.Location = New System.Drawing.Point(770, 59)
         Me.Label46.Name = "Label46"
         Me.Label46.Size = New System.Drawing.Size(42, 13)
         Me.Label46.TabIndex = 92
@@ -795,7 +796,7 @@ Partial Class FrmProformaInvoice
         'Label45
         '
         Me.Label45.AutoSize = True
-        Me.Label45.Location = New System.Drawing.Point(802, 33)
+        Me.Label45.Location = New System.Drawing.Point(770, 33)
         Me.Label45.Name = "Label45"
         Me.Label45.Size = New System.Drawing.Size(63, 13)
         Me.Label45.TabIndex = 92
@@ -803,24 +804,24 @@ Partial Class FrmProformaInvoice
         '
         'txtGSM
         '
-        Me.txtGSM.Location = New System.Drawing.Point(874, 57)
-        Me.txtGSM.MaxLength = 50
+        Me.txtGSM.Location = New System.Drawing.Point(842, 57)
+        Me.txtGSM.MaxLength = 15
         Me.txtGSM.Name = "txtGSM"
-        Me.txtGSM.Size = New System.Drawing.Size(183, 20)
-        Me.txtGSM.TabIndex = 91
+        Me.txtGSM.Size = New System.Drawing.Size(144, 20)
+        Me.txtGSM.TabIndex = 36
         '
         'txtSrinkageW
         '
-        Me.txtSrinkageW.Location = New System.Drawing.Point(874, 31)
-        Me.txtSrinkageW.MaxLength = 50
+        Me.txtSrinkageW.Location = New System.Drawing.Point(842, 31)
+        Me.txtSrinkageW.MaxLength = 15
         Me.txtSrinkageW.Name = "txtSrinkageW"
-        Me.txtSrinkageW.Size = New System.Drawing.Size(183, 20)
-        Me.txtSrinkageW.TabIndex = 91
+        Me.txtSrinkageW.Size = New System.Drawing.Size(144, 20)
+        Me.txtSrinkageW.TabIndex = 35
         '
         'Label44
         '
         Me.Label44.AutoSize = True
-        Me.Label44.Location = New System.Drawing.Point(802, 7)
+        Me.Label44.Location = New System.Drawing.Point(770, 7)
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(58, 13)
         Me.Label44.TabIndex = 90
@@ -831,17 +832,17 @@ Partial Class FrmProformaInvoice
         Me.Label43.AutoSize = True
         Me.Label43.Location = New System.Drawing.Point(541, 111)
         Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(64, 13)
+        Me.Label43.Size = New System.Drawing.Size(61, 13)
         Me.Label43.TabIndex = 90
-        Me.Label43.Text = "Nett Weight"
+        Me.Label43.Text = "Net Weight"
         '
         'txtSrinkageL
         '
-        Me.txtSrinkageL.Location = New System.Drawing.Point(874, 5)
-        Me.txtSrinkageL.MaxLength = 50
+        Me.txtSrinkageL.Location = New System.Drawing.Point(842, 5)
+        Me.txtSrinkageL.MaxLength = 15
         Me.txtSrinkageL.Name = "txtSrinkageL"
-        Me.txtSrinkageL.Size = New System.Drawing.Size(183, 20)
-        Me.txtSrinkageL.TabIndex = 89
+        Me.txtSrinkageL.Size = New System.Drawing.Size(144, 20)
+        Me.txtSrinkageL.TabIndex = 34
         '
         'cmbFabric
         '
@@ -849,7 +850,7 @@ Partial Class FrmProformaInvoice
         Me.cmbFabric.Location = New System.Drawing.Point(78, 3)
         Me.cmbFabric.Name = "cmbFabric"
         Me.cmbFabric.Size = New System.Drawing.Size(188, 21)
-        Me.cmbFabric.TabIndex = 56
+        Me.cmbFabric.TabIndex = 19
         '
         'Label30
         '
@@ -863,10 +864,10 @@ Partial Class FrmProformaInvoice
         'txtNetWeight
         '
         Me.txtNetWeight.Location = New System.Drawing.Point(613, 109)
-        Me.txtNetWeight.MaxLength = 50
+        Me.txtNetWeight.MaxLength = 15
         Me.txtNetWeight.Name = "txtNetWeight"
-        Me.txtNetWeight.Size = New System.Drawing.Size(183, 20)
-        Me.txtNetWeight.TabIndex = 89
+        Me.txtNetWeight.Size = New System.Drawing.Size(151, 20)
+        Me.txtNetWeight.TabIndex = 33
         '
         'Label31
         '
@@ -892,15 +893,15 @@ Partial Class FrmProformaInvoice
         Me.cmbFabricStyle.Location = New System.Drawing.Point(78, 56)
         Me.cmbFabricStyle.Name = "cmbFabricStyle"
         Me.cmbFabricStyle.Size = New System.Drawing.Size(188, 21)
-        Me.cmbFabricStyle.TabIndex = 59
+        Me.cmbFabricStyle.TabIndex = 21
         '
         'txtAfterWash
         '
         Me.txtAfterWash.Location = New System.Drawing.Point(613, 83)
-        Me.txtAfterWash.MaxLength = 50
+        Me.txtAfterWash.MaxLength = 15
         Me.txtAfterWash.Name = "txtAfterWash"
-        Me.txtAfterWash.Size = New System.Drawing.Size(183, 20)
-        Me.txtAfterWash.TabIndex = 87
+        Me.txtAfterWash.Size = New System.Drawing.Size(151, 20)
+        Me.txtAfterWash.TabIndex = 32
         '
         'Label32
         '
@@ -917,7 +918,7 @@ Partial Class FrmProformaInvoice
         Me.cmbRawFabric.Location = New System.Drawing.Point(78, 83)
         Me.cmbRawFabric.Name = "cmbRawFabric"
         Me.cmbRawFabric.Size = New System.Drawing.Size(188, 21)
-        Me.cmbRawFabric.TabIndex = 61
+        Me.cmbRawFabric.TabIndex = 22
         '
         'Label41
         '
@@ -940,26 +941,27 @@ Partial Class FrmProformaInvoice
         'txtWidthMin
         '
         Me.txtWidthMin.Location = New System.Drawing.Point(349, 5)
-        Me.txtWidthMin.MaxLength = 25
+        Me.txtWidthMin.MaxLength = 15
         Me.txtWidthMin.Name = "txtWidthMin"
         Me.txtWidthMin.Size = New System.Drawing.Size(183, 20)
-        Me.txtWidthMin.TabIndex = 71
+        Me.txtWidthMin.TabIndex = 24
         '
         'txtBeforeWash
         '
         Me.txtBeforeWash.Location = New System.Drawing.Point(613, 57)
-        Me.txtBeforeWash.MaxLength = 50
+        Me.txtBeforeWash.MaxLength = 15
         Me.txtBeforeWash.Name = "txtBeforeWash"
-        Me.txtBeforeWash.Size = New System.Drawing.Size(183, 20)
-        Me.txtBeforeWash.TabIndex = 85
+        Me.txtBeforeWash.Size = New System.Drawing.Size(151, 20)
+        Me.txtBeforeWash.TabIndex = 31
         '
         'cmbTypeGreige
         '
         Me.cmbTypeGreige.FormattingEnabled = True
+        Me.cmbTypeGreige.Items.AddRange(New Object() {"Greige", "Colour Greige", "Top Greige Knitt", "Yarn Deing"})
         Me.cmbTypeGreige.Location = New System.Drawing.Point(78, 110)
         Me.cmbTypeGreige.Name = "cmbTypeGreige"
         Me.cmbTypeGreige.Size = New System.Drawing.Size(188, 21)
-        Me.cmbTypeGreige.TabIndex = 63
+        Me.cmbTypeGreige.TabIndex = 23
         '
         'Label34
         '
@@ -982,10 +984,10 @@ Partial Class FrmProformaInvoice
         'txtWidthMax
         '
         Me.txtWidthMax.Location = New System.Drawing.Point(349, 30)
-        Me.txtWidthMax.MaxLength = 25
+        Me.txtWidthMax.MaxLength = 15
         Me.txtWidthMax.Name = "txtWidthMax"
         Me.txtWidthMax.Size = New System.Drawing.Size(183, 20)
-        Me.txtWidthMax.TabIndex = 73
+        Me.txtWidthMax.TabIndex = 25
         '
         'Label35
         '
@@ -999,10 +1001,10 @@ Partial Class FrmProformaInvoice
         'txtWeightYard
         '
         Me.txtWeightYard.Location = New System.Drawing.Point(613, 31)
-        Me.txtWeightYard.MaxLength = 50
+        Me.txtWeightYard.MaxLength = 15
         Me.txtWeightYard.Name = "txtWeightYard"
-        Me.txtWeightYard.Size = New System.Drawing.Size(183, 20)
-        Me.txtWeightYard.TabIndex = 83
+        Me.txtWeightYard.Size = New System.Drawing.Size(151, 20)
+        Me.txtWeightYard.TabIndex = 30
         '
         'Label36
         '
@@ -1019,7 +1021,7 @@ Partial Class FrmProformaInvoice
         Me.cmbUnitFabric.Location = New System.Drawing.Point(349, 56)
         Me.cmbUnitFabric.Name = "cmbUnitFabric"
         Me.cmbUnitFabric.Size = New System.Drawing.Size(183, 21)
-        Me.cmbUnitFabric.TabIndex = 76
+        Me.cmbUnitFabric.TabIndex = 26
         '
         'Label39
         '
@@ -1033,10 +1035,10 @@ Partial Class FrmProformaInvoice
         'txtWeightMin
         '
         Me.txtWeightMin.Location = New System.Drawing.Point(349, 83)
-        Me.txtWeightMin.MaxLength = 50
+        Me.txtWeightMin.MaxLength = 15
         Me.txtWeightMin.Name = "txtWeightMin"
         Me.txtWeightMin.Size = New System.Drawing.Size(183, 20)
-        Me.txtWeightMin.TabIndex = 77
+        Me.txtWeightMin.TabIndex = 27
         '
         'Label37
         '
@@ -1050,18 +1052,18 @@ Partial Class FrmProformaInvoice
         'txtDNYardage
         '
         Me.txtDNYardage.Location = New System.Drawing.Point(613, 5)
-        Me.txtDNYardage.MaxLength = 50
+        Me.txtDNYardage.MaxLength = 15
         Me.txtDNYardage.Name = "txtDNYardage"
-        Me.txtDNYardage.Size = New System.Drawing.Size(183, 20)
-        Me.txtDNYardage.TabIndex = 81
+        Me.txtDNYardage.Size = New System.Drawing.Size(151, 20)
+        Me.txtDNYardage.TabIndex = 29
         '
         'txtWeightMax
         '
         Me.txtWeightMax.Location = New System.Drawing.Point(349, 109)
-        Me.txtWeightMax.MaxLength = 50
+        Me.txtWeightMax.MaxLength = 15
         Me.txtWeightMax.Name = "txtWeightMax"
         Me.txtWeightMax.Size = New System.Drawing.Size(183, 20)
-        Me.txtWeightMax.TabIndex = 79
+        Me.txtWeightMax.TabIndex = 28
         '
         'Label38
         '
@@ -1078,7 +1080,7 @@ Partial Class FrmProformaInvoice
         Me.dgvColor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvColor.Location = New System.Drawing.Point(3, 91)
         Me.dgvColor.Name = "dgvColor"
-        Me.dgvColor.Size = New System.Drawing.Size(1336, 147)
+        Me.dgvColor.Size = New System.Drawing.Size(1233, 98)
         Me.dgvColor.TabIndex = 2
         '
         'Panel3
@@ -1109,39 +1111,40 @@ Partial Class FrmProformaInvoice
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(3, 3)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1336, 88)
+        Me.Panel3.Size = New System.Drawing.Size(1233, 88)
         Me.Panel3.TabIndex = 0
         '
         'txtColQtySample
         '
-        Me.txtColQtySample.Location = New System.Drawing.Point(868, 31)
-        Me.txtColQtySample.MaxLength = 50
+        Me.txtColQtySample.Location = New System.Drawing.Point(820, 31)
+        Me.txtColQtySample.MaxLength = 15
         Me.txtColQtySample.Name = "txtColQtySample"
         Me.txtColQtySample.Size = New System.Drawing.Size(160, 20)
-        Me.txtColQtySample.TabIndex = 121
+        Me.txtColQtySample.TabIndex = 52
         '
         'txtColPrice
         '
-        Me.txtColPrice.Location = New System.Drawing.Point(868, 5)
-        Me.txtColPrice.MaxLength = 50
+        Me.txtColPrice.Location = New System.Drawing.Point(820, 5)
+        Me.txtColPrice.MaxLength = 15
         Me.txtColPrice.Name = "txtColPrice"
         Me.txtColPrice.Size = New System.Drawing.Size(160, 20)
-        Me.txtColPrice.TabIndex = 120
+        Me.txtColPrice.TabIndex = 51
         '
         'txtColor
         '
+        Me.txtColor.Enabled = False
         Me.txtColor.Location = New System.Drawing.Point(78, 30)
         Me.txtColor.MaxLength = 50
         Me.txtColor.Name = "txtColor"
         Me.txtColor.Size = New System.Drawing.Size(188, 20)
-        Me.txtColor.TabIndex = 119
+        Me.txtColor.TabIndex = 46
         '
         'btnColDelList
         '
-        Me.btnColDelList.Location = New System.Drawing.Point(221, 57)
+        Me.btnColDelList.Location = New System.Drawing.Point(122, 57)
         Me.btnColDelList.Name = "btnColDelList"
-        Me.btnColDelList.Size = New System.Drawing.Size(204, 23)
-        Me.btnColDelList.TabIndex = 99
+        Me.btnColDelList.Size = New System.Drawing.Size(105, 23)
+        Me.btnColDelList.TabIndex = 56
         Me.btnColDelList.Text = "Delete From List"
         Me.btnColDelList.UseVisualStyleBackColor = True
         '
@@ -1149,24 +1152,24 @@ Partial Class FrmProformaInvoice
         '
         Me.btnColAddList.Location = New System.Drawing.Point(11, 57)
         Me.btnColAddList.Name = "btnColAddList"
-        Me.btnColAddList.Size = New System.Drawing.Size(204, 23)
-        Me.btnColAddList.TabIndex = 99
+        Me.btnColAddList.Size = New System.Drawing.Size(105, 23)
+        Me.btnColAddList.TabIndex = 55
         Me.btnColAddList.Text = "Add To List"
         Me.btnColAddList.UseVisualStyleBackColor = True
         '
         'txtColNotes
         '
-        Me.txtColNotes.Location = New System.Drawing.Point(1113, 34)
-        Me.txtColNotes.MaxLength = 50
+        Me.txtColNotes.Location = New System.Drawing.Point(1037, 30)
+        Me.txtColNotes.MaxLength = 255
         Me.txtColNotes.Multiline = True
         Me.txtColNotes.Name = "txtColNotes"
-        Me.txtColNotes.Size = New System.Drawing.Size(200, 46)
-        Me.txtColNotes.TabIndex = 117
+        Me.txtColNotes.Size = New System.Drawing.Size(176, 46)
+        Me.txtColNotes.TabIndex = 54
         '
         'Label53
         '
         Me.Label53.AutoSize = True
-        Me.Label53.Location = New System.Drawing.Point(1058, 37)
+        Me.Label53.Location = New System.Drawing.Point(982, 33)
         Me.Label53.Name = "Label53"
         Me.Label53.Size = New System.Drawing.Size(30, 13)
         Me.Label53.TabIndex = 118
@@ -1174,15 +1177,15 @@ Partial Class FrmProformaInvoice
         '
         'dtpColDelDate
         '
-        Me.dtpColDelDate.Location = New System.Drawing.Point(1113, 8)
+        Me.dtpColDelDate.Location = New System.Drawing.Point(1037, 4)
         Me.dtpColDelDate.Name = "dtpColDelDate"
-        Me.dtpColDelDate.Size = New System.Drawing.Size(200, 20)
-        Me.dtpColDelDate.TabIndex = 116
+        Me.dtpColDelDate.Size = New System.Drawing.Size(176, 20)
+        Me.dtpColDelDate.TabIndex = 53
         '
         'Label52
         '
         Me.Label52.AutoSize = True
-        Me.Label52.Location = New System.Drawing.Point(1058, 11)
+        Me.Label52.Location = New System.Drawing.Point(982, 7)
         Me.Label52.Name = "Label52"
         Me.Label52.Size = New System.Drawing.Size(49, 13)
         Me.Label52.TabIndex = 115
@@ -1191,7 +1194,7 @@ Partial Class FrmProformaInvoice
         'Label51
         '
         Me.Label51.AutoSize = True
-        Me.Label51.Location = New System.Drawing.Point(798, 36)
+        Me.Label51.Location = New System.Drawing.Point(750, 36)
         Me.Label51.Name = "Label51"
         Me.Label51.Size = New System.Drawing.Size(61, 13)
         Me.Label51.TabIndex = 113
@@ -1200,7 +1203,7 @@ Partial Class FrmProformaInvoice
         'Label50
         '
         Me.Label50.AutoSize = True
-        Me.Label50.Location = New System.Drawing.Point(798, 9)
+        Me.Label50.Location = New System.Drawing.Point(750, 9)
         Me.Label50.Name = "Label50"
         Me.Label50.Size = New System.Drawing.Size(31, 13)
         Me.Label50.TabIndex = 111
@@ -1209,15 +1212,15 @@ Partial Class FrmProformaInvoice
         'cmbColPurchSize
         '
         Me.cmbColPurchSize.FormattingEnabled = True
-        Me.cmbColPurchSize.Location = New System.Drawing.Point(630, 32)
+        Me.cmbColPurchSize.Location = New System.Drawing.Point(578, 31)
         Me.cmbColPurchSize.Name = "cmbColPurchSize"
         Me.cmbColPurchSize.Size = New System.Drawing.Size(160, 21)
-        Me.cmbColPurchSize.TabIndex = 110
+        Me.cmbColPurchSize.TabIndex = 50
         '
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(560, 35)
+        Me.Label28.Location = New System.Drawing.Point(508, 34)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(58, 13)
         Me.Label28.TabIndex = 109
@@ -1225,16 +1228,16 @@ Partial Class FrmProformaInvoice
         '
         'txtColQtyOrder
         '
-        Me.txtColQtyOrder.Location = New System.Drawing.Point(630, 6)
-        Me.txtColQtyOrder.MaxLength = 50
+        Me.txtColQtyOrder.Location = New System.Drawing.Point(578, 5)
+        Me.txtColQtyOrder.MaxLength = 15
         Me.txtColQtyOrder.Name = "txtColQtyOrder"
         Me.txtColQtyOrder.Size = New System.Drawing.Size(160, 20)
-        Me.txtColQtyOrder.TabIndex = 107
+        Me.txtColQtyOrder.TabIndex = 49
         '
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(560, 9)
+        Me.Label27.Location = New System.Drawing.Point(508, 8)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(52, 13)
         Me.Label27.TabIndex = 108
@@ -1242,16 +1245,16 @@ Partial Class FrmProformaInvoice
         '
         'txtLabColNo
         '
-        Me.txtLabColNo.Location = New System.Drawing.Point(354, 31)
-        Me.txtLabColNo.MaxLength = 50
+        Me.txtLabColNo.Location = New System.Drawing.Point(343, 31)
+        Me.txtLabColNo.MaxLength = 150
         Me.txtLabColNo.Name = "txtLabColNo"
-        Me.txtLabColNo.Size = New System.Drawing.Size(188, 20)
-        Me.txtLabColNo.TabIndex = 105
+        Me.txtLabColNo.Size = New System.Drawing.Size(158, 20)
+        Me.txtLabColNo.TabIndex = 48
         '
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(284, 34)
+        Me.Label26.Location = New System.Drawing.Point(273, 34)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(72, 13)
         Me.Label26.TabIndex = 106
@@ -1259,16 +1262,16 @@ Partial Class FrmProformaInvoice
         '
         'txtColorType
         '
-        Me.txtColorType.Location = New System.Drawing.Point(354, 5)
-        Me.txtColorType.MaxLength = 50
+        Me.txtColorType.Location = New System.Drawing.Point(343, 5)
+        Me.txtColorType.MaxLength = 150
         Me.txtColorType.Name = "txtColorType"
-        Me.txtColorType.Size = New System.Drawing.Size(188, 20)
-        Me.txtColorType.TabIndex = 103
+        Me.txtColorType.Size = New System.Drawing.Size(158, 20)
+        Me.txtColorType.TabIndex = 47
         '
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(284, 8)
+        Me.Label25.Location = New System.Drawing.Point(273, 8)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(58, 13)
         Me.Label25.TabIndex = 104
@@ -1289,7 +1292,7 @@ Partial Class FrmProformaInvoice
         Me.cmbColor.Location = New System.Drawing.Point(78, 3)
         Me.cmbColor.Name = "cmbColor"
         Me.cmbColor.Size = New System.Drawing.Size(188, 21)
-        Me.cmbColor.TabIndex = 100
+        Me.cmbColor.TabIndex = 45
         '
         'Label20
         '
@@ -1306,16 +1309,16 @@ Partial Class FrmProformaInvoice
         Me.dgvYarn.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvYarn.Location = New System.Drawing.Point(3, 3)
         Me.dgvYarn.Name = "dgvYarn"
-        Me.dgvYarn.Size = New System.Drawing.Size(1340, 239)
+        Me.dgvYarn.Size = New System.Drawing.Size(1237, 190)
         Me.dgvYarn.TabIndex = 2
         '
         'Panel4
         '
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel4.Controls.Add(Me.Button4)
+        Me.Panel4.Controls.Add(Me.btnDelYarnList)
         Me.Panel4.Controls.Add(Me.cmbMerk)
         Me.Panel4.Controls.Add(Me.Label57)
-        Me.Panel4.Controls.Add(Me.Button3)
+        Me.Panel4.Controls.Add(Me.btnAddYarnList)
         Me.Panel4.Controls.Add(Me.Label56)
         Me.Panel4.Controls.Add(Me.txtLoss)
         Me.Panel4.Controls.Add(Me.txtQtyUsage)
@@ -1333,17 +1336,17 @@ Partial Class FrmProformaInvoice
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel4.Location = New System.Drawing.Point(3, 3)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1340, 90)
+        Me.Panel4.Size = New System.Drawing.Size(1237, 90)
         Me.Panel4.TabIndex = 1
         '
-        'Button4
+        'btnDelYarnList
         '
-        Me.Button4.Location = New System.Drawing.Point(182, 56)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(165, 23)
-        Me.Button4.TabIndex = 119
-        Me.Button4.Text = "Delete From List"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnDelYarnList.Location = New System.Drawing.Point(122, 56)
+        Me.btnDelYarnList.Name = "btnDelYarnList"
+        Me.btnDelYarnList.Size = New System.Drawing.Size(105, 23)
+        Me.btnDelYarnList.TabIndex = 66
+        Me.btnDelYarnList.Text = "Delete From List"
+        Me.btnDelYarnList.UseVisualStyleBackColor = True
         '
         'cmbMerk
         '
@@ -1351,7 +1354,7 @@ Partial Class FrmProformaInvoice
         Me.cmbMerk.Location = New System.Drawing.Point(753, 2)
         Me.cmbMerk.Name = "cmbMerk"
         Me.cmbMerk.Size = New System.Drawing.Size(183, 21)
-        Me.cmbMerk.TabIndex = 132
+        Me.cmbMerk.TabIndex = 63
         '
         'Label57
         '
@@ -1362,14 +1365,14 @@ Partial Class FrmProformaInvoice
         Me.Label57.TabIndex = 124
         Me.Label57.Text = "Loss"
         '
-        'Button3
+        'btnAddYarnList
         '
-        Me.Button3.Location = New System.Drawing.Point(11, 56)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(165, 23)
-        Me.Button3.TabIndex = 119
-        Me.Button3.Text = "Add To List"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnAddYarnList.Location = New System.Drawing.Point(11, 56)
+        Me.btnAddYarnList.Name = "btnAddYarnList"
+        Me.btnAddYarnList.Size = New System.Drawing.Size(105, 23)
+        Me.btnAddYarnList.TabIndex = 65
+        Me.btnAddYarnList.Text = "Add To List"
+        Me.btnAddYarnList.UseVisualStyleBackColor = True
         '
         'Label56
         '
@@ -1383,26 +1386,26 @@ Partial Class FrmProformaInvoice
         'txtLoss
         '
         Me.txtLoss.Location = New System.Drawing.Point(753, 29)
-        Me.txtLoss.MaxLength = 50
+        Me.txtLoss.MaxLength = 15
         Me.txtLoss.Name = "txtLoss"
         Me.txtLoss.Size = New System.Drawing.Size(183, 20)
-        Me.txtLoss.TabIndex = 123
+        Me.txtLoss.TabIndex = 64
         '
         'txtQtyUsage
         '
         Me.txtQtyUsage.Location = New System.Drawing.Point(531, 4)
-        Me.txtQtyUsage.MaxLength = 50
+        Me.txtQtyUsage.MaxLength = 15
         Me.txtQtyUsage.Name = "txtQtyUsage"
         Me.txtQtyUsage.Size = New System.Drawing.Size(152, 20)
-        Me.txtQtyUsage.TabIndex = 119
+        Me.txtQtyUsage.TabIndex = 61
         '
         'txtPercentUsage
         '
         Me.txtPercentUsage.Location = New System.Drawing.Point(298, 29)
-        Me.txtPercentUsage.MaxLength = 50
+        Me.txtPercentUsage.MaxLength = 15
         Me.txtPercentUsage.Name = "txtPercentUsage"
         Me.txtPercentUsage.Size = New System.Drawing.Size(152, 20)
-        Me.txtPercentUsage.TabIndex = 121
+        Me.txtPercentUsage.TabIndex = 60
         '
         'Label55
         '
@@ -1424,11 +1427,12 @@ Partial Class FrmProformaInvoice
         '
         'txtSuppYarn
         '
+        Me.txtSuppYarn.Enabled = False
         Me.txtSuppYarn.Location = New System.Drawing.Point(78, 30)
         Me.txtSuppYarn.MaxLength = 50
         Me.txtSuppYarn.Name = "txtSuppYarn"
         Me.txtSuppYarn.Size = New System.Drawing.Size(152, 20)
-        Me.txtSuppYarn.TabIndex = 130
+        Me.txtSuppYarn.TabIndex = 58
         '
         'Label60
         '
@@ -1442,10 +1446,10 @@ Partial Class FrmProformaInvoice
         'txtPriceYarn
         '
         Me.txtPriceYarn.Location = New System.Drawing.Point(298, 3)
-        Me.txtPriceYarn.MaxLength = 50
+        Me.txtPriceYarn.MaxLength = 15
         Me.txtPriceYarn.Name = "txtPriceYarn"
         Me.txtPriceYarn.Size = New System.Drawing.Size(152, 20)
-        Me.txtPriceYarn.TabIndex = 128
+        Me.txtPriceYarn.TabIndex = 59
         '
         'Label59
         '
@@ -1462,7 +1466,7 @@ Partial Class FrmProformaInvoice
         Me.cmbColorYarn.Location = New System.Drawing.Point(531, 30)
         Me.cmbColorYarn.Name = "cmbColorYarn"
         Me.cmbColorYarn.Size = New System.Drawing.Size(152, 21)
-        Me.cmbColorYarn.TabIndex = 126
+        Me.cmbColorYarn.TabIndex = 62
         '
         'Label58
         '
@@ -1479,7 +1483,7 @@ Partial Class FrmProformaInvoice
         Me.cmbYarn.Location = New System.Drawing.Point(78, 3)
         Me.cmbYarn.Name = "cmbYarn"
         Me.cmbYarn.Size = New System.Drawing.Size(152, 21)
-        Me.cmbYarn.TabIndex = 120
+        Me.cmbYarn.TabIndex = 57
         '
         'Label54
         '
@@ -1497,10 +1501,10 @@ Partial Class FrmProformaInvoice
         Me.TabControl1.Controls.Add(Me.tabBank)
         Me.TabControl1.Controls.Add(Me.tabRemaks)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TabControl1.Location = New System.Drawing.Point(0, 423)
+        Me.TabControl1.Location = New System.Drawing.Point(0, 402)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1354, 271)
+        Me.TabControl1.Size = New System.Drawing.Size(1251, 222)
         Me.TabControl1.TabIndex = 73
         '
         'tabColFab
@@ -1511,7 +1515,7 @@ Partial Class FrmProformaInvoice
         Me.tabColFab.Location = New System.Drawing.Point(4, 22)
         Me.tabColFab.Name = "tabColFab"
         Me.tabColFab.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabColFab.Size = New System.Drawing.Size(1346, 245)
+        Me.tabColFab.Size = New System.Drawing.Size(1243, 196)
         Me.tabColFab.TabIndex = 0
         Me.tabColFab.Text = "Color Fabric"
         Me.tabColFab.UseVisualStyleBackColor = True
@@ -1523,7 +1527,7 @@ Partial Class FrmProformaInvoice
         Me.tabYarn.Location = New System.Drawing.Point(4, 22)
         Me.tabYarn.Name = "tabYarn"
         Me.tabYarn.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabYarn.Size = New System.Drawing.Size(1346, 245)
+        Me.tabYarn.Size = New System.Drawing.Size(1243, 196)
         Me.tabYarn.TabIndex = 1
         Me.tabYarn.Text = "Yarn"
         Me.tabYarn.UseVisualStyleBackColor = True
@@ -1542,7 +1546,7 @@ Partial Class FrmProformaInvoice
         Me.tabBank.Controls.Add(Me.Label62)
         Me.tabBank.Location = New System.Drawing.Point(4, 22)
         Me.tabBank.Name = "tabBank"
-        Me.tabBank.Size = New System.Drawing.Size(1346, 245)
+        Me.tabBank.Size = New System.Drawing.Size(1243, 196)
         Me.tabBank.TabIndex = 2
         Me.tabBank.Text = "Bank Details"
         Me.tabBank.UseVisualStyleBackColor = True
@@ -1552,8 +1556,9 @@ Partial Class FrmProformaInvoice
         Me.txtSwiftCode.Location = New System.Drawing.Point(103, 122)
         Me.txtSwiftCode.MaxLength = 50
         Me.txtSwiftCode.Name = "txtSwiftCode"
+        Me.txtSwiftCode.ReadOnly = True
         Me.txtSwiftCode.Size = New System.Drawing.Size(183, 20)
-        Me.txtSwiftCode.TabIndex = 105
+        Me.txtSwiftCode.TabIndex = 71
         '
         'Label66
         '
@@ -1569,8 +1574,9 @@ Partial Class FrmProformaInvoice
         Me.txtAccNumber.Location = New System.Drawing.Point(103, 96)
         Me.txtAccNumber.MaxLength = 50
         Me.txtAccNumber.Name = "txtAccNumber"
+        Me.txtAccNumber.ReadOnly = True
         Me.txtAccNumber.Size = New System.Drawing.Size(183, 20)
-        Me.txtAccNumber.TabIndex = 103
+        Me.txtAccNumber.TabIndex = 70
         '
         'Label65
         '
@@ -1586,8 +1592,9 @@ Partial Class FrmProformaInvoice
         Me.txtAccName.Location = New System.Drawing.Point(103, 70)
         Me.txtAccName.MaxLength = 50
         Me.txtAccName.Name = "txtAccName"
+        Me.txtAccName.ReadOnly = True
         Me.txtAccName.Size = New System.Drawing.Size(183, 20)
-        Me.txtAccName.TabIndex = 101
+        Me.txtAccName.TabIndex = 69
         '
         'Label64
         '
@@ -1603,8 +1610,9 @@ Partial Class FrmProformaInvoice
         Me.txtBank.Location = New System.Drawing.Point(103, 44)
         Me.txtBank.MaxLength = 50
         Me.txtBank.Name = "txtBank"
+        Me.txtBank.ReadOnly = True
         Me.txtBank.Size = New System.Drawing.Size(183, 20)
-        Me.txtBank.TabIndex = 99
+        Me.txtBank.TabIndex = 68
         '
         'Label63
         '
@@ -1621,7 +1629,7 @@ Partial Class FrmProformaInvoice
         Me.cmbBankCode.Location = New System.Drawing.Point(103, 17)
         Me.cmbBankCode.Name = "cmbBankCode"
         Me.cmbBankCode.Size = New System.Drawing.Size(183, 21)
-        Me.cmbBankCode.TabIndex = 1
+        Me.cmbBankCode.TabIndex = 67
         '
         'Label62
         '
@@ -1638,7 +1646,7 @@ Partial Class FrmProformaInvoice
         Me.tabRemaks.Controls.Add(Me.Panel6)
         Me.tabRemaks.Location = New System.Drawing.Point(4, 22)
         Me.tabRemaks.Name = "tabRemaks"
-        Me.tabRemaks.Size = New System.Drawing.Size(1346, 245)
+        Me.tabRemaks.Size = New System.Drawing.Size(1243, 196)
         Me.tabRemaks.TabIndex = 3
         Me.tabRemaks.Text = "Remaks"
         Me.tabRemaks.UseVisualStyleBackColor = True
@@ -1649,7 +1657,7 @@ Partial Class FrmProformaInvoice
         Me.dgvRemarks.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvRemarks.Location = New System.Drawing.Point(0, 115)
         Me.dgvRemarks.Name = "dgvRemarks"
-        Me.dgvRemarks.Size = New System.Drawing.Size(1346, 130)
+        Me.dgvRemarks.Size = New System.Drawing.Size(1243, 81)
         Me.dgvRemarks.TabIndex = 1
         '
         'Panel6
@@ -1662,15 +1670,15 @@ Partial Class FrmProformaInvoice
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1346, 115)
+        Me.Panel6.Size = New System.Drawing.Size(1243, 115)
         Me.Panel6.TabIndex = 0
         '
         'btnRemDelList
         '
-        Me.btnRemDelList.Location = New System.Drawing.Point(230, 86)
+        Me.btnRemDelList.Location = New System.Drawing.Point(169, 87)
         Me.btnRemDelList.Name = "btnRemDelList"
-        Me.btnRemDelList.Size = New System.Drawing.Size(165, 23)
-        Me.btnRemDelList.TabIndex = 120
+        Me.btnRemDelList.Size = New System.Drawing.Size(105, 23)
+        Me.btnRemDelList.TabIndex = 74
         Me.btnRemDelList.Text = "Delete From List"
         Me.btnRemDelList.UseVisualStyleBackColor = True
         '
@@ -1678,19 +1686,19 @@ Partial Class FrmProformaInvoice
         '
         Me.btnRemAddList.Location = New System.Drawing.Point(59, 86)
         Me.btnRemAddList.Name = "btnRemAddList"
-        Me.btnRemAddList.Size = New System.Drawing.Size(165, 23)
-        Me.btnRemAddList.TabIndex = 121
+        Me.btnRemAddList.Size = New System.Drawing.Size(105, 23)
+        Me.btnRemAddList.TabIndex = 73
         Me.btnRemAddList.Text = "Add To List"
         Me.btnRemAddList.UseVisualStyleBackColor = True
         '
         'txtRemarks
         '
         Me.txtRemarks.Location = New System.Drawing.Point(59, 6)
-        Me.txtRemarks.MaxLength = 50
+        Me.txtRemarks.MaxLength = 300
         Me.txtRemarks.Multiline = True
         Me.txtRemarks.Name = "txtRemarks"
         Me.txtRemarks.Size = New System.Drawing.Size(502, 74)
-        Me.txtRemarks.TabIndex = 107
+        Me.txtRemarks.TabIndex = 72
         '
         'Label67
         '
@@ -1711,18 +1719,17 @@ Partial Class FrmProformaInvoice
         Me.Panel5.Controls.Add(Me.btnUpdate)
         Me.Panel5.Controls.Add(Me.btnSave)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel5.Location = New System.Drawing.Point(0, 694)
+        Me.Panel5.Location = New System.Drawing.Point(0, 624)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1354, 39)
+        Me.Panel5.Size = New System.Drawing.Size(1251, 44)
         Me.Panel5.TabIndex = 74
         '
         'btnClose
         '
-        Me.btnClose.Enabled = False
         Me.btnClose.Location = New System.Drawing.Point(254, 11)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
-        Me.btnClose.TabIndex = 11
+        Me.btnClose.TabIndex = 78
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -1732,7 +1739,7 @@ Partial Class FrmProformaInvoice
         Me.btnPrint.Location = New System.Drawing.Point(173, 11)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(75, 23)
-        Me.btnPrint.TabIndex = 10
+        Me.btnPrint.TabIndex = 77
         Me.btnPrint.Text = "Print"
         Me.btnPrint.UseVisualStyleBackColor = True
         '
@@ -1742,7 +1749,7 @@ Partial Class FrmProformaInvoice
         Me.btnVoid.Location = New System.Drawing.Point(1274, 11)
         Me.btnVoid.Name = "btnVoid"
         Me.btnVoid.Size = New System.Drawing.Size(75, 23)
-        Me.btnVoid.TabIndex = 9
+        Me.btnVoid.TabIndex = 80
         Me.btnVoid.Text = "Void"
         Me.btnVoid.UseVisualStyleBackColor = True
         '
@@ -1752,7 +1759,7 @@ Partial Class FrmProformaInvoice
         Me.btnApprove.Location = New System.Drawing.Point(1193, 11)
         Me.btnApprove.Name = "btnApprove"
         Me.btnApprove.Size = New System.Drawing.Size(75, 23)
-        Me.btnApprove.TabIndex = 8
+        Me.btnApprove.TabIndex = 79
         Me.btnApprove.Text = "Approve"
         Me.btnApprove.UseVisualStyleBackColor = True
         '
@@ -1762,7 +1769,7 @@ Partial Class FrmProformaInvoice
         Me.btnUpdate.Location = New System.Drawing.Point(92, 11)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(75, 23)
-        Me.btnUpdate.TabIndex = 7
+        Me.btnUpdate.TabIndex = 76
         Me.btnUpdate.Text = "Update"
         Me.btnUpdate.UseVisualStyleBackColor = True
         '
@@ -1772,7 +1779,7 @@ Partial Class FrmProformaInvoice
         Me.btnSave.Location = New System.Drawing.Point(11, 11)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 6
+        Me.btnSave.TabIndex = 75
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -1780,7 +1787,7 @@ Partial Class FrmProformaInvoice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1354, 733)
+        Me.ClientSize = New System.Drawing.Size(1251, 668)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.GroupBox1)
@@ -1790,6 +1797,7 @@ Partial Class FrmProformaInvoice
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmProformaInvoice"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Tag = "17"
         Me.Text = "FrmProformaInvoice"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
@@ -1927,8 +1935,8 @@ Partial Class FrmProformaInvoice
     Friend WithEvents Label20 As Label
     Friend WithEvents Panel4 As Panel
     Friend WithEvents dgvYarn As DataGridView
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btnDelYarnList As Button
+    Friend WithEvents btnAddYarnList As Button
     Friend WithEvents cmbMerk As ComboBox
     Friend WithEvents Label57 As Label
     Friend WithEvents Label56 As Label
