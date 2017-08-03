@@ -1,23 +1,22 @@
 ﻿Public Class ClsColor
+    Dim queryColor As String = "Select * From Colors Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
-        Dim dataAccess = New ClsDataAccess
-        Dim dataTable = New DataTable
-        Dim query As String = ""
-
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
         Select Case options
             Case "Color Code"
-                query = "Select * From Colors Where ColorCode LIKE '%" & param & "%' AND IsActive = 1 Order By ColorCode Asc"
+                queryColor += " AND ColorCode LIKE '%" & param & "%' Order By ColorCode Asc"
             Case "Color Name"
-                query = "Select * From Colors Where ColorName LIKE '%" & param & "%' AND IsActive = 1 Order By ColorCode Asc"
+                queryColor += " AND ColorName LIKE '%" & param & "%' Order By ColorCode Asc"
             Case "Description"
-                query = "Select * From Colors Where Description LIKE '%" & param & "%' AND IsActive = 1 Order By ColorCode Asc"
+                queryColor += " AND Description LIKE '%" & param & "%' Order By ColorCode Asc"
             Case Else
-                query = "Select * From Colors Where IsActive = 1 Order By ColorCode Asc"
+                queryColor += " Order By ColorCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryColor)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -25,6 +24,31 @@
 
         dataAccess = Nothing
         Return dataTable
+    End Function
+
+    Public Function RetrieveByID(colorID As Integer)
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim colorModel As ColorModel = New ColorModel
+        queryColor += " AND ColorID = '" & colorID & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(queryColor)
+            With dataAccess.reader
+                While .Read
+                    If Not IsDBNull(.Item("ColorCode")) Then
+                        colorModel.ColorCode = .Item("ColorCode")
+                        colorModel.ColorName = .Item("ColorName")
+                        colorModel.Description = .Item("Description")
+                    End If
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return colorModel
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
     End Function
 #End Region
 
@@ -71,7 +95,7 @@
             Throw ex
         End Try
     End Function
-    Protected Function ListComboBoxColorYarn()
+    Protected Function ListComboBoxColorCode()
         Dim dataAccess = New ClsDataAccess
         Dim dataTable As DataTable = New DataTable
         Dim query As String
@@ -89,9 +113,9 @@
     Public Sub ComboBoxColor(cmb As ComboBox)
         Try
             With cmb
-                .DataSource = ListComboBox()
+                .DataSource = ListComboBoxColorCode()
                 .ValueMember = "ColorID"
-                .DisplayMember = "ColorName"
+                .DisplayMember = "ColorCode"
                 .AutoCompleteMode = AutoCompleteMode.SuggestAppend
                 .AutoCompleteSource = AutoCompleteSource.ListItems
             End With
@@ -104,7 +128,7 @@
             With cmb
                 .DataSource = ListComboBox()
                 .ValueMember = "ColorID"
-                .DisplayMember = "ColorCode"
+                .DisplayMember = "ColorName"
                 .AutoCompleteMode = AutoCompleteMode.SuggestAppend
                 .AutoCompleteSource = AutoCompleteSource.ListItems
             End With

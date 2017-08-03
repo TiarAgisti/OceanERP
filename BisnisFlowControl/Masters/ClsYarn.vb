@@ -1,23 +1,23 @@
 ﻿Public Class ClsYarn
+    Dim queryYarn As String = "Select * From v_Yarn Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Yarn Code"
-                query = "Select * From v_Yarn Where YarnCode Like '%" & param & "%' AND IsActive = 1 Order By YarnCode Asc"
+                queryYarn += " AND YarnCode Like '%" & param & "%' Order By YarnCode Asc"
             Case "Yarn Name"
-                query = "Select * From v_Yarn Where YarnName Like '%" & param & "%' AND IsActive = 1 Order By YarnCode Asc"
+                queryYarn += " AND YarnName Like '%" & param & "%' Order By YarnCode Asc"
             Case "Supplier"
-                query = "Select * From v_Yarn Where VendorName Like '%" & param & "%' AND IsActive = 1 Order By YarnCode Asc"
+                queryYarn += " AND VendorName Like '%" & param & "%' Order By YarnCode Asc"
             Case Else
-                query = "Select * From v_Yarn Where IsActive = 1 Order By YarnCode Asc"
+                queryYarn += " Order By YarnCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryYarn)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -25,6 +25,34 @@
 
         dataAccess = Nothing
         Return dataTable
+    End Function
+    Public Function RetrieveByID(yarnID As Integer) As YarnModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim yarnModel As YarnModel = New YarnModel
+        queryYarn += " AND YarnID = '" & yarnID & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(queryYarn)
+            With dataAccess.reader
+                While .Read
+                    If Not IsDBNull(.Item("YarnCode")) Then
+                        yarnModel.YarnCode = .Item("YarnCode")
+                        yarnModel.YarnName = .Item("YarnName")
+                        yarnModel.VendorID = .Item("VendorID")
+                        yarnModel.SpecYarn = .Item("SpecYarn")
+                        yarnModel.IsActive = .Item("IsActive")
+                        yarnModel.VendorName = .Item("VendorName")
+                    End If
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return yarnModel
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
     End Function
 #End Region
 

@@ -138,7 +138,6 @@ Partial Class FrmProformaInvoice
         Me.Label21 = New System.Windows.Forms.Label()
         Me.cmbColor = New System.Windows.Forms.ComboBox()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.dgvYarn = New System.Windows.Forms.DataGridView()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.btnDelYarnList = New System.Windows.Forms.Button()
         Me.cmbMerk = New System.Windows.Forms.ComboBox()
@@ -161,6 +160,7 @@ Partial Class FrmProformaInvoice
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tabColFab = New System.Windows.Forms.TabPage()
         Me.tabYarn = New System.Windows.Forms.TabPage()
+        Me.dgvYarn = New System.Windows.Forms.DataGridView()
         Me.tabBank = New System.Windows.Forms.TabPage()
         Me.txtSwiftCode = New System.Windows.Forms.TextBox()
         Me.Label66 = New System.Windows.Forms.Label()
@@ -192,11 +192,11 @@ Partial Class FrmProformaInvoice
         Me.Panel2.SuspendLayout()
         CType(Me.dgvColor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
-        CType(Me.dgvYarn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.tabColFab.SuspendLayout()
         Me.tabYarn.SuspendLayout()
+        CType(Me.dgvYarn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabBank.SuspendLayout()
         Me.tabRemaks.SuspendLayout()
         CType(Me.dgvRemarks, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1303,15 +1303,6 @@ Partial Class FrmProformaInvoice
         Me.Label20.TabIndex = 99
         Me.Label20.Text = "Color Code"
         '
-        'dgvYarn
-        '
-        Me.dgvYarn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvYarn.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvYarn.Location = New System.Drawing.Point(3, 3)
-        Me.dgvYarn.Name = "dgvYarn"
-        Me.dgvYarn.Size = New System.Drawing.Size(1237, 190)
-        Me.dgvYarn.TabIndex = 2
-        '
         'Panel4
         '
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -1522,8 +1513,8 @@ Partial Class FrmProformaInvoice
         '
         'tabYarn
         '
-        Me.tabYarn.Controls.Add(Me.Panel4)
         Me.tabYarn.Controls.Add(Me.dgvYarn)
+        Me.tabYarn.Controls.Add(Me.Panel4)
         Me.tabYarn.Location = New System.Drawing.Point(4, 22)
         Me.tabYarn.Name = "tabYarn"
         Me.tabYarn.Padding = New System.Windows.Forms.Padding(3)
@@ -1531,6 +1522,16 @@ Partial Class FrmProformaInvoice
         Me.tabYarn.TabIndex = 1
         Me.tabYarn.Text = "Yarn"
         Me.tabYarn.UseVisualStyleBackColor = True
+        '
+        'dgvYarn
+        '
+        Me.dgvYarn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.dgvYarn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvYarn.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvYarn.Location = New System.Drawing.Point(3, 93)
+        Me.dgvYarn.Name = "dgvYarn"
+        Me.dgvYarn.Size = New System.Drawing.Size(1237, 100)
+        Me.dgvYarn.TabIndex = 2
         '
         'tabBank
         '
@@ -1553,10 +1554,10 @@ Partial Class FrmProformaInvoice
         '
         'txtSwiftCode
         '
+        Me.txtSwiftCode.Enabled = False
         Me.txtSwiftCode.Location = New System.Drawing.Point(103, 122)
         Me.txtSwiftCode.MaxLength = 50
         Me.txtSwiftCode.Name = "txtSwiftCode"
-        Me.txtSwiftCode.ReadOnly = True
         Me.txtSwiftCode.Size = New System.Drawing.Size(183, 20)
         Me.txtSwiftCode.TabIndex = 71
         '
@@ -1571,10 +1572,10 @@ Partial Class FrmProformaInvoice
         '
         'txtAccNumber
         '
+        Me.txtAccNumber.Enabled = False
         Me.txtAccNumber.Location = New System.Drawing.Point(103, 96)
         Me.txtAccNumber.MaxLength = 50
         Me.txtAccNumber.Name = "txtAccNumber"
-        Me.txtAccNumber.ReadOnly = True
         Me.txtAccNumber.Size = New System.Drawing.Size(183, 20)
         Me.txtAccNumber.TabIndex = 70
         '
@@ -1589,10 +1590,10 @@ Partial Class FrmProformaInvoice
         '
         'txtAccName
         '
+        Me.txtAccName.Enabled = False
         Me.txtAccName.Location = New System.Drawing.Point(103, 70)
         Me.txtAccName.MaxLength = 50
         Me.txtAccName.Name = "txtAccName"
-        Me.txtAccName.ReadOnly = True
         Me.txtAccName.Size = New System.Drawing.Size(183, 20)
         Me.txtAccName.TabIndex = 69
         '
@@ -1809,12 +1810,12 @@ Partial Class FrmProformaInvoice
         CType(Me.dgvColor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        CType(Me.dgvYarn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
         Me.tabColFab.ResumeLayout(False)
         Me.tabYarn.ResumeLayout(False)
+        CType(Me.dgvYarn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabBank.ResumeLayout(False)
         Me.tabBank.PerformLayout()
         Me.tabRemaks.ResumeLayout(False)
@@ -1934,7 +1935,6 @@ Partial Class FrmProformaInvoice
     Friend WithEvents cmbColor As ComboBox
     Friend WithEvents Label20 As Label
     Friend WithEvents Panel4 As Panel
-    Friend WithEvents dgvYarn As DataGridView
     Friend WithEvents btnDelYarnList As Button
     Friend WithEvents btnAddYarnList As Button
     Friend WithEvents cmbMerk As ComboBox
@@ -1989,4 +1989,5 @@ Partial Class FrmProformaInvoice
     Friend WithEvents txtColor As TextBox
     Friend WithEvents txtColQtySample As TextBox
     Friend WithEvents txtColPrice As TextBox
+    Friend WithEvents dgvYarn As DataGridView
 End Class

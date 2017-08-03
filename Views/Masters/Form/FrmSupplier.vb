@@ -329,6 +329,7 @@
             txtFax.Focus()
         End If
     End Sub
+
     Private Sub txtTelephone_TextChanged(sender As Object, e As EventArgs) Handles txtTelephone.TextChanged
         If txtTelephone.Text = "" Then
             txtTelephone.Text = ""
@@ -338,11 +339,13 @@
             End If
         End If
     End Sub
+
     Private Sub txtFax_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtFax.KeyPress
         If e.KeyChar = Chr(13) Then
             txtCP.Focus()
         End If
     End Sub
+
     Private Sub txtFax_TextChanged(sender As Object, e As EventArgs) Handles txtFax.TextChanged
         If txtFax.Text = "" Then
             txtFax.Text = ""
@@ -352,6 +355,7 @@
             End If
         End If
     End Sub
+
     Private Sub txtCP_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCP.KeyPress
         If e.KeyChar = Chr(13) Then
             txtEmailCP.Focus()
@@ -389,6 +393,7 @@
             cmbTOP.Focus()
         End If
     End Sub
+
     Private Sub cmbTOP_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbTOP.KeyPress
         e.KeyChar = Chr(0)
     End Sub
@@ -404,6 +409,7 @@
     Private Sub cmbCountry_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCountry.SelectedIndexChanged
         btnSave.Focus()
     End Sub
+
     Private Sub cmbCari_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbCari.KeyPress
         e.KeyChar = Chr(0)
     End Sub

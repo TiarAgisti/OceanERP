@@ -68,4 +68,43 @@
         End Set
     End Property
 
+    Private xBankName As String
+    Public Property BankName() As String
+        Get
+            Return xBankName
+        End Get
+        Set(ByVal value As String)
+            xBankName = value
+        End Set
+    End Property
+
+    Private xVendorDesc As String
+    Public Property VendorDesc() As String
+        Get
+            Return xVendorDesc
+        End Get
+        Set(ByVal value As String)
+            xVendorDesc = value
+        End Set
+    End Property
+
+    Private xCurrencyName As String
+    Public Property CurrencyName() As String
+        Get
+            Return xCurrencyName
+        End Get
+        Set(ByVal value As String)
+            xCurrencyName = value
+        End Set
+    End Property
+
+    Private xSwiftCode As String
+    Public Property SwiftCode() As String
+        Get
+            Return xSwiftCode
+        End Get
+        Set(ByVal value As String)
+            xSwiftCode = value
+        End Set
+    End Property
 End Class

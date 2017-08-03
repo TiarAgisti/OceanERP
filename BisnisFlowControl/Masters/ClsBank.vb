@@ -1,29 +1,52 @@
 ﻿Public Class ClsBank
+    Dim queryBank As String = "select * From Bank where isActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Bank Code"
-                query = "select * From Bank where BankCode LIKE '%" & param & "%' AND isActive = 1 order by BankCode asc"
+                queryBank += " AND BankCode LIKE '%" & param & "%' order by BankCode asc"
             Case "Bank Name"
-                query = "select * From Bank where Name LIKE '%" & param & "%' AND isActive = 1 order by BankCode asc"
+                queryBank += " AND Name LIKE '%" & param & "%' order by BankCode asc"
             Case "Swift Code"
-                query = "select * From Bank where SwiftCode LIKE '%" & param & "%' AND isActive = 1 order by BankCode asc"
+                queryBank += " AND SwiftCode LIKE '%" & param & "%' order by BankCode asc"
             Case Else
-                query = "select * From Bank where isActive = 1 order by BankCode asc"
+                queryBank += " order by BankCode asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryBank)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
         End Try
         dataAccess = Nothing
         Return dataTable
+    End Function
+
+    Public Function RetrieveByID(bankID As Integer) As BankModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim bankModel As BankModel = New BankModel
+        queryBank += " AND BankID = '" & bankID & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(queryBank)
+            With dataAccess.reader
+                While .Read
+                    If Not IsDBNull(.Item("BankCode")) Then
+                        bankModel.BankCode = .Item("BankCode")
+                        bankModel.Name = .Item("Name")
+                        bankModel.SwiftCode = .Item("SwiftCode")
+                    End If
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return bankModel
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 #End Region
 

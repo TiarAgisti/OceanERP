@@ -30,16 +30,6 @@
         End Set
     End Property
 
-    Private xVendorID As Integer
-    Public Property VendorID() As Integer
-        Get
-            Return xVendorID
-        End Get
-        Set(ByVal value As Integer)
-            xVendorID = value
-        End Set
-    End Property
-
     Private xBuyerID As Integer
     Public Property BuyerID() As Integer
         Get
@@ -47,16 +37,6 @@
         End Get
         Set(ByVal value As Integer)
             xBuyerID = value
-        End Set
-    End Property
-
-    Private xGroupSalesID As Integer
-    Public Property GroupSalesID() As Integer
-        Get
-            Return xGroupSalesID
-        End Get
-        Set(ByVal value As Integer)
-            xGroupSalesID = value
         End Set
     End Property
 
@@ -70,13 +50,13 @@
         End Set
     End Property
 
-    Private xStyle As String
-    Public Property Style() As String
+    Private xStyleID As Integer
+    Public Property StyleID() As Integer
         Get
-            Return xStyle
+            Return xStyleID
         End Get
-        Set(ByVal value As String)
-            xStyle = value
+        Set(ByVal value As Integer)
+            xStyleID = value
         End Set
     End Property
 
@@ -140,6 +120,26 @@
         End Set
     End Property
 
+    Private xCustomerID As Integer
+    Public Property CustomerID() As Integer
+        Get
+            Return xCustomerID
+        End Get
+        Set(ByVal value As Integer)
+            xCustomerID = value
+        End Set
+    End Property
+
+    Private xGroupSalesID As Integer
+    Public Property GroupSalesID() As Integer
+        Get
+            Return xGroupSalesID
+        End Get
+        Set(ByVal value As Integer)
+            xGroupSalesID = value
+        End Set
+    End Property
+
     Private xDeliveryPlace As String
     Public Property DeliveryPlace() As String
         Get
@@ -160,23 +160,23 @@
         End Set
     End Property
 
-    Private xVendorCode As String
-    Public Property VendorCode() As String
+    Private xCustomerCode As String
+    Public Property CustomerCode() As String
         Get
-            Return xVendorCode
+            Return xCustomerCode
         End Get
         Set(ByVal value As String)
-            xVendorCode = value
+            xCustomerCode = value
         End Set
     End Property
 
-    Private xVendorName As String
-    Public Property VendorName() As String
+    Private xCustomerName As String
+    Public Property CustomerName() As String
         Get
-            Return xVendorName
+            Return xCustomerName
         End Get
         Set(ByVal value As String)
-            xVendorName = value
+            xCustomerName = value
         End Set
     End Property
 
@@ -280,5 +280,13 @@
         End Set
     End Property
 
-
+    Private xStyleName As String
+    Public Property StyleName() As String
+        Get
+            Return xStyleName
+        End Get
+        Set(ByVal value As String)
+            xStyleName = value
+        End Set
+    End Property
 End Class

@@ -1,24 +1,22 @@
 ﻿Public Class ClsFabric
+    Dim queryFabric As String = "Select FabricID,FabricCode,FabricName,Composition,Specification,VendorName,VendorID,IsActive From v_Fabric" &
+                        " Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
-        Dim dataAccess = New ClsDataAccess
-        Dim dataTable = New DataTable
-        Dim query As String = ""
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
 
         Select Case options
             Case "Fabric Code"
-                query = "Select FabricID,FabricCode,FabricName,Composition,Specification,VendorName,VendorID,IsActive From v_Fabric" &
-                        " Where FabricCode Like '%" & param & "%' AND IsActive = 1 Order By FabricCode Asc"
+                queryFabric += " AND FabricCode Like '%" & param & "%' Order By FabricCode Asc"
             Case "Fabric Name"
-                query = "Select FabricID,FabricCode,FabricName,Composition,Specification,VendorName,VendorID,IsActive From v_Fabric" &
-                        " Where FabricName Like '%" & param & "%' AND IsActive = 1 Order By FabricCode Asc"
+                queryFabric += " AND FabricName Like '%" & param & "%' Order By FabricCode Asc"
             Case Else
-                query = "Select FabricID,FabricCode,FabricName,Composition,Specification,VendorName,VendorID,IsActive From v_Fabric" &
-                        " Where IsActive = 1 Order By FabricCode Asc"
+                queryFabric += " Order By FabricCode ASC"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryFabric)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -28,20 +26,23 @@
         Return dataTable
     End Function
 
-    Public Function RetrieveByName(fabricName As String) As FabricModel
+    Public Function RetrieveByID(fabricID As Integer) As FabricModel
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim dataTable As DataTable = New DataTable
         Dim fabricModel As FabricModel = New FabricModel
-        Dim query As String = "select FabricID,FabricCode,FabricName From Fabric where IsActive = 1" &
-                                " And FabricName = '" & fabricName & "'"
+        queryFabric += " AND FabricID = '" & fabricID & "'"
         Try
-            dataAccess.reader = dataAccess.ExecuteReader(query)
+            dataAccess.reader = dataAccess.ExecuteReader(queryFabric)
             With dataAccess.reader
                 While .Read
                     If Not IsDBNull(.Item("FabricCode")) Then
                         fabricModel.FabricID = .Item("FabricID")
                         fabricModel.FabricCode = .Item("FabricCode")
                         fabricModel.FabricName = .Item("FabricName")
+                        fabricModel.Composition = .Item("Composition")
+                        fabricModel.Specification = .Item("Specification")
+                        fabricModel.VendorName = .Item("VendorName")
+                        fabricModel.VendorID = .Item("VendorID")
                     End If
                 End While
                 .Close()

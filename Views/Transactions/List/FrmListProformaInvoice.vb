@@ -23,41 +23,48 @@
     End Sub
 
     Sub PropertiesGrid()
-        dgv.Columns(0).HeaderText = "PI HeaderID"
-        dgv.Columns(0).Visible = False
+        Try
+            dgv.Columns(0).HeaderText = "PI HeaderID"
+            dgv.Columns(0).Visible = False
 
-        dgv.Columns(1).HeaderText = "PI Date"
-        dgv.Columns(2).HeaderText = "PI No"
+            dgv.Columns(1).HeaderText = "PI Date"
+            dgv.Columns(2).HeaderText = "PI No"
 
-        dgv.Columns(3).HeaderText = "VendorCode"
-        dgv.Columns(3).Visible = False
+            dgv.Columns(3).HeaderText = "Customer Code"
+            dgv.Columns(3).Visible = False
 
-        dgv.Columns(4).HeaderText = "Customer"
-        dgv.Columns(5).HeaderText = "Buyer"
-        dgv.Columns(6).HeaderText = "Ref PO"
-        dgv.Columns(7).HeaderText = "Style"
-        dgv.Columns(8).HeaderText = "Season"
-        dgv.Columns(9).HeaderText = "Term Of Payment"
-        dgv.Columns(10).HeaderText = "Del Term"
-        dgv.Columns(11).HeaderText = "Term Of Price"
+            dgv.Columns(4).HeaderText = "Customer"
+            dgv.Columns(5).HeaderText = "Buyer"
+            dgv.Columns(6).HeaderText = "Ref PO"
+            dgv.Columns(7).HeaderText = "Style"
+            dgv.Columns(8).HeaderText = "Season"
+            dgv.Columns(9).HeaderText = "Term Of Payment"
+            dgv.Columns(10).HeaderText = "Del Term"
+            dgv.Columns(11).HeaderText = "Term Of Price"
 
-        dgv.Columns(12).HeaderText = "VendorID"
-        dgv.Columns(12).Visible = False
+            dgv.Columns(12).HeaderText = "CustomerID"
+            dgv.Columns(12).Visible = False
 
-        dgv.Columns(13).HeaderText = "BuyerID"
-        dgv.Columns(13).Visible = False
+            dgv.Columns(13).HeaderText = "BuyerID"
+            dgv.Columns(13).Visible = False
 
-        dgv.Columns(14).HeaderText = "SeasonID"
-        dgv.Columns(14).Visible = False
+            dgv.Columns(14).HeaderText = "StyleID"
+            dgv.Columns(14).Visible = False
 
-        dgv.Columns(15).HeaderText = "TermOfPaymentID"
-        dgv.Columns(15).Visible = False
+            dgv.Columns(15).HeaderText = "SeasonID"
+            dgv.Columns(15).Visible = False
 
-        dgv.Columns(16).HeaderText = "TermOfPriceID"
-        dgv.Columns(16).Visible = False
+            dgv.Columns(16).HeaderText = "TermOfPaymentID"
+            dgv.Columns(16).Visible = False
 
-        dgv.Columns(17).HeaderText = "Status"
-        dgv.Columns(17).Visible = False
+            dgv.Columns(17).HeaderText = "TermOfPriceID"
+            dgv.Columns(17).Visible = False
+
+            dgv.Columns(18).HeaderText = "Status"
+            dgv.Columns(18).Visible = False
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Sub ListData()
@@ -84,41 +91,68 @@
             refPO = ""
         End If
 
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        dgv.DataSource = piBFC.RetrieveListProformaInvoice(piNo, dateFrom, dateTo, customer, refPO)
+        dgv.ReadOnly = True
+        PropertiesGrid()
+    End Sub
+
+    Function GetID() As Long
+        Dim row As Integer
+        Dim headerID As Long
+        row = dgv.CurrentRow.Index
+        headerID = dgv.Item(0, row).Value
+        Return headerID
+    End Function
+
+    Sub PreCreateDisplay()
         Try
-            Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-            dgv.DataSource = piBFC.RetrieveListProformaInvoice(piNo, dateFrom, dateTo, customer, refPO)
-            dgv.ReadOnly = True
-            PropertiesGrid()
+            ClearData()
+            ListData()
+            CheckPermissions()
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
-    End Sub
-
-    Sub PreCreateDisplay()
-        ClearData()
-        ListData()
-        CheckPermissions()
     End Sub
 #End Region
 
 #Region "Button"
     Private Sub btnFind_Click(sender As Object, e As EventArgs) Handles btnFind.Click
-        ListData()
+        Try
+            ListData()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        Dim frm As FrmProformaInvoice = New FrmProformaInvoice
-        frm.condition = "Create"
-        frm.ShowDialog()
+        Try
+            Dim frm As FrmProformaInvoice = New FrmProformaInvoice
+            frm.condition = "Create"
+            frm.ShowDialog()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 
     Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
-
+        Try
+            Dim frm As FrmProformaInvoice = New FrmProformaInvoice
+            frm.condition = "Update"
+            FrmProformaInvoice.piHeaderID = GetID()
+            frm.ShowDialog()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
-        ListData()
+        Try
+            ListData()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click

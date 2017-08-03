@@ -49,6 +49,7 @@
             .Columns(8).Visible = False
             .Columns(9).Visible = False
             .Columns(10).Visible = False
+            .Columns(11).Visible = False
 
         End With
     End Sub

@@ -249,4 +249,54 @@
             xQtyWeight = value
         End Set
     End Property
+
+    Private xFabricName As String
+    Public Property FabricName() As String
+        Get
+            Return xFabricName
+        End Get
+        Set(ByVal value As String)
+            xFabricName = value
+        End Set
+    End Property
+
+    Private xStyleName As String
+    Public Property StyleName() As String
+        Get
+            Return xStyleName
+        End Get
+        Set(ByVal value As String)
+            xStyleName = value
+        End Set
+    End Property
+
+    Private xRawMaterialName As String
+    Public Property RawMaterialName() As String
+        Get
+            Return xRawMaterialName
+        End Get
+        Set(ByVal value As String)
+            xRawMaterialName = value
+        End Set
+    End Property
+
+    Private xUnitName As String
+    Public Property UnitName() As String
+        Get
+            Return xUnitName
+        End Get
+        Set(ByVal value As String)
+            xUnitName = value
+        End Set
+    End Property
+
+    Private xPINo As String
+    Public Property PINo() As String
+        Get
+            Return xPINo
+        End Get
+        Set(ByVal value As String)
+            xPINo = value
+        End Set
+    End Property
 End Class

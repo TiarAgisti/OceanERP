@@ -1,32 +1,28 @@
 ﻿Public Class ClsBankAccount
+    Dim queryBankAccount As String = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,SwiftCode,BankID,VendorID,CurrencyID,IsActive" &
+                        " From v_BankAccount Where IsActive = 1"
+#Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
-        Dim dataAccess = New ClsDataAccess
-        Dim dataTable = New DataTable
-        Dim query As String = ""
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
 
         Select Case options
             Case "BankAccount Code"
-                query = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,BankID,VendorID,CurrencyID,IsActive" &
-                        " From v_BankAccount Where BankAccountCode Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
+                queryBankAccount += " AND BankAccountCode Like '%" & param & "%' Order By BankAccountCode Asc"
             Case "Bank"
-                query = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,BankID,VendorID,CurrencyID,IsActive" &
-                        " From v_BankAccount Where BankName Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
+                queryBankAccount += " AND BankName Like '%" & param & "%' Order By BankAccountCode Asc"
             Case "Supplier / Customer"
-                query = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,BankID,VendorID,CurrencyID,IsActive" &
-                        " From v_BankAccount Where VendorDesc Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
+                queryBankAccount += " AND VendorDesc Like '%" & param & "%' Order By BankAccountCode Asc"
             Case "Account Name"
-                query = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,BankID,VendorID,CurrencyID,IsActive" &
-                        " From v_BankAccount Where AccountName Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
+                queryBankAccount = " AND AccountName Like '%" & param & "%' Order By BankAccountCode Asc"
             Case "Account Number"
-                query = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,BankID,VendorID,CurrencyID,IsActive" &
-                        " From v_BankAccount Where AccountNumber Like '%" & param & "%' AND IsActive = 1 Order By BankAccountCode Asc"
+                queryBankAccount += " AND AccountNumber Like '%" & param & "%' Order By BankAccountCode Asc"
             Case Else
-                query = "Select BankAccountID,BankAccountCode,BankName,VendorDesc,CurrencyName,AccountName,AccountNumber,BankID,VendorID,CurrencyID,IsActive" &
-                        " From v_BankAccount Where IsActive = 1 Order By BankAccountCode Asc"
+                queryBankAccount += " Order By BankAccountCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryBankAccount)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -35,6 +31,66 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+
+    Public Function RetrieveByID(bankAccountID As Integer) As BankAccountModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim bankAccountModel As BankAccountModel = New BankAccountModel
+        queryBankAccount += " AND BankAccountID = '" & bankAccountID & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(queryBankAccount)
+            With dataAccess.reader
+                While .Read
+                    If Not IsDBNull(.Item("BankAccountCode")) Then
+                        bankAccountModel.BankAccountCode = .Item("BankAccountCode")
+                        bankAccountModel.BankName = .Item("BankName")
+                        bankAccountModel.VendorDesc = .Item("VendorDesc")
+                        bankAccountModel.CurrencyName = .Item("CurrencyName")
+                        bankAccountModel.AccountName = .Item("AccountName")
+                        bankAccountModel.AccountNumber = .Item("AccountNumber")
+                        bankAccountModel.SwiftCode = .Item("SwiftCode")
+                        bankAccountModel.BankID = .Item("BankID")
+                        bankAccountModel.VendorID = .Item("VendorID")
+                        bankAccountModel.CurrencyID = .Item("CurrencyID")
+                    End If
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return bankAccountModel
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+#End Region
+
+#Region "Method Other"
+    Protected Function ListComboBox() As DataTable
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable = New DataTable
+        Dim query As String
+        query = "Select BankAccountID,BankAccountCode From BankAccount Where IsActive = 1"
+
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+        Catch ex As Exception
+            Throw ex
+        End Try
+        dataAccess = Nothing
+        Return dataTable
+    End Function
+    Public Sub ComboBoxBankAccount(cmb As ComboBox)
+        Try
+            With cmb
+                .DataSource = ListComboBox()
+                .ValueMember = "BankAccountID"
+                .DisplayMember = "BankAccountCode"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
         Dim query As String = "Select max(BankAccountID) from BankAccount"
@@ -67,7 +123,9 @@
             Throw ex
         End Try
     End Function
+#End Region
 
+#Region "Method CRUD"
     Public Function InsertBankAccount(bacModel As BankAccountModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -120,4 +178,5 @@
             Throw ex
         End Try
     End Function
+#End Region
 End Class

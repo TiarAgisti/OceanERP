@@ -4,8 +4,8 @@
                                                 , refPO As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = "Select PIHeaderID,PIDate,PINo,VendorCode,VendorName,BuyerName,RefPO,Style,SeasonName,TermOfPayment" &
-                               ",DelTerm,TermOfPrice,VendorID,BuyerID,SeasonID,TermOfPaymentID,TermOfPriceID,Status From v_PIHeader" &
+        Dim query As String = "Select PIHeaderID,PIDate,PINo,CustomerCode,CustomerName,BuyerName,RefPO,StyleName,SeasonName,TermOfPayment" &
+                               ",DelTerm,TermOfPrice,CustomerID,BuyerID,StyleID,SeasonID,TermOfPaymentID,TermOfPriceID,Status From v_PIHeader" &
                                " Where Status <> 0"
 
         If Not String.IsNullOrEmpty(piNo) Then
@@ -17,7 +17,7 @@
         End If
 
         If Not String.IsNullOrEmpty(customer) Then
-            query += " AND VendorName = '" & customer & "'"
+            query += " AND CustomerName = '" & customer & "'"
         End If
 
         If Not String.IsNullOrEmpty(refPO) Then
@@ -42,34 +42,37 @@
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             While dataAccess.reader.Read
-                If Not IsDBNull(dataAccess.reader.Item("PIHeaderID")) Then
-                    piHeaderModel.PIHeaderID = headerID
-                    piHeaderModel.PINo = dataAccess.reader.Item("Name")
-                    piHeaderModel.BuyerID = dataAccess.reader.Item("BuyerID")
-                    piHeaderModel.BuyerName = dataAccess.reader.Item("BuyerName")
-                    piHeaderModel.RefPO = dataAccess.reader.Item("RefPO")
-                    piHeaderModel.Style = dataAccess.reader.Item("Style")
-                    piHeaderModel.SeasonID = dataAccess.reader.Item("SeasonID")
-                    piHeaderModel.SeasonName = dataAccess.reader.Item("SeasonName")
-                    piHeaderModel.TermOfPaymentID = dataAccess.reader.Item("TermOfPaymentID")
-                    piHeaderModel.TermOfPayment = dataAccess.reader.Item("TermOfPayment")
-                    piHeaderModel.DelTerm = dataAccess.reader.Item("DelTerm")
-                    piHeaderModel.TermOfPriceID = dataAccess.reader.Item("TermOfPriceID")
-                    piHeaderModel.TermOfPrice = dataAccess.reader.Item("TermOfPrice")
-                    piHeaderModel.ContractNo = dataAccess.reader.Item("ContractNo")
-                    piHeaderModel.DestinationID = dataAccess.reader.Item("DestinationID")
-                    piHeaderModel.DestinationName = dataAccess.reader.Item("DestinationName")
-                    piHeaderModel.VendorID = dataAccess.reader.Item("VendorID")
-                    piHeaderModel.VendorCode = dataAccess.reader.Item("VendorCode")
-                    piHeaderModel.VendorName = dataAccess.reader.Item("VendorName")
-                    piHeaderModel.Address = dataAccess.reader.Item("Address")
-                    piHeaderModel.Telephone = dataAccess.reader.Item("Telephone")
-                    piHeaderModel.Fax = dataAccess.reader.Item("Fax")
-                    piHeaderModel.ContactPerson = dataAccess.reader.Item("ContactPerson")
-                    piHeaderModel.GroupSalesID = dataAccess.reader.Item("GroupSalesID")
-                    piHeaderModel.SalesName = dataAccess.reader.Item("SalesName")
-                    piHeaderModel.DeliveryPlace = dataAccess.reader.Item("DeliveryPlace")
-                End If
+                With dataAccess.reader
+                    If Not IsDBNull(.Item("PIHeaderID")) Then
+                        piHeaderModel.PIHeaderID = headerID
+                        piHeaderModel.PIDate = .Item("PIDate")
+                        piHeaderModel.PINo = .Item("PINo")
+                        piHeaderModel.BuyerID = .Item("BuyerID")
+                        piHeaderModel.BuyerName = .Item("BuyerName")
+                        piHeaderModel.RefPO = .Item("RefPO")
+                        piHeaderModel.StyleID = .Item("StyleID")
+                        piHeaderModel.SeasonID = .Item("SeasonID")
+                        piHeaderModel.SeasonName = .Item("SeasonName")
+                        piHeaderModel.TermOfPaymentID = .Item("TermOfPaymentID")
+                        piHeaderModel.TermOfPayment = .Item("TermOfPayment")
+                        piHeaderModel.DelTerm = .Item("DelTerm")
+                        piHeaderModel.TermOfPriceID = .Item("TermOfPriceID")
+                        piHeaderModel.TermOfPrice = .Item("TermOfPrice")
+                        piHeaderModel.ContractNo = .Item("ContractNo")
+                        piHeaderModel.DestinationID = .Item("DestinationID")
+                        piHeaderModel.DestinationName = .Item("DestinationName")
+                        piHeaderModel.CustomerID = .Item("CustomerID")
+                        piHeaderModel.CustomerCode = .Item("CustomerCode")
+                        piHeaderModel.CustomerName = .Item("CustomerName")
+                        piHeaderModel.Address = .Item("Address")
+                        piHeaderModel.Telephone = .Item("Telephone")
+                        piHeaderModel.Fax = .Item("Fax")
+                        piHeaderModel.ContactPerson = .Item("ContactPerson")
+                        piHeaderModel.GroupSalesID = .Item("GroupSalesID")
+                        piHeaderModel.SalesName = .Item("SalesName")
+                        piHeaderModel.DeliveryPlace = .Item("DeliveryPlace")
+                    End If
+                End With
             End While
             dataAccess.reader.Close()
             dataAccess = Nothing
@@ -80,35 +83,47 @@
         End Try
     End Function
 
-    Public Function RetrieveDetailsByHeaderID(headerID As Long) As List(Of PIDetailModel)
+    Public Function RetrieveFabricByHeaderID(headerID As Long) As List(Of PIDetailModel)
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim piHeaderModel As PIHeaderModel = New PIHeaderModel
         Dim query As String = "Select * From v_PIDetail Where PIHeaderID='" & headerID & "'"
         Dim myList As List(Of PIDetailModel) = New List(Of PIDetailModel)
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
-            While dataAccess.reader.Read
-                Dim piDetailModel As PIDetailModel = New PIDetailModel
-                piDetailModel.PIHeaderID = dataAccess.reader.Item("PIHeaderID")
-                piDetailModel.PIDetailID = dataAccess.reader.Item("PIDetailID")
-                piDetailModel.FabricID = dataAccess.reader.Item("FabricID")
-                'piDetailModel.FabricName = dataAccess.reader.Item("FabricName")
-                'piDetailModel.DateDetail = dataAccess.reader.Item("DateDetail")
-                'piDetailModel.ColorID = dataAccess.reader.Item("ColorID")
-                'piDetailModel.ColorCode = dataAccess.reader.Item("ColorCode")
-                'piDetailModel.ColorName = dataAccess.reader.Item("ColorName")
-                'piDetailModel.PPSample = dataAccess.reader.Item("PPSample")
-                piDetailModel.QtyCuttable = dataAccess.reader.Item("QtyCuttable")
-                piDetailModel.QtyWeight = dataAccess.reader.Item("QtyWeight")
-                'piDetailModel.Qty = dataAccess.reader.Item("Qty")
-                piDetailModel.UnitID = dataAccess.reader.Item("UnitID")
-                'piDetailModel.UnitName = dataAccess.reader.Item("UnitName")
-                'piDetailModel.CurrencyID = dataAccess.reader.Item("CurrencyID")
-                'piDetailModel.CurrencyCode = dataAccess.reader.Item("CurrencyCode")
-                'piDetailModel.Currency = dataAccess.reader.Item("Currency")
-                'piDetailModel.UnitPrice = dataAccess.reader.Item("UnitPrice")
-            End While
-            dataAccess.reader.Close()
+            With dataAccess.reader
+                While .Read
+                    Dim piDetailModel As PIDetailModel = New PIDetailModel
+                    piDetailModel.PIHeaderID = .Item("PIHeaderID")
+                    piDetailModel.PIDetailID = .Item("PIDetailID")
+                    piDetailModel.FabricID = .Item("FabricID")
+                    piDetailModel.StyleID = .Item("StyleID")
+                    piDetailModel.RawMaterialID = .Item("RawMaterialID")
+                    piDetailModel.TypeGreige = .Item("TypeGreige")
+                    piDetailModel.WidthMin = .Item("WidthMin")
+                    piDetailModel.WidthMax = .Item("WidthMax")
+                    piDetailModel.UnitID = .Item("UnitID")
+                    piDetailModel.WeightMin = .Item("WeightMin")
+                    piDetailModel.WeightMax = .Item("WeightMax")
+                    piDetailModel.DNYardage = .Item("DNYardage")
+                    piDetailModel.WeightYard = .Item("WeightYard")
+                    piDetailModel.BeforeWash = .Item("BeforeWash")
+                    piDetailModel.AfterWash = .Item("AfterWash")
+                    piDetailModel.NetWeight = .Item("NetWeight")
+                    piDetailModel.SrinkageL = .Item("SrinkageL")
+                    piDetailModel.SrinkageW = .Item("SrinkageW")
+                    piDetailModel.GSM = .Item("GSM")
+                    piDetailModel.PriceGreige = .Item("PriceGreige")
+                    piDetailModel.PurchSize = .Item("PurchSize")
+                    piDetailModel.StorageSize = .Item("StorageSize")
+                    piDetailModel.PPSample = .Item("PPSample")
+                    piDetailModel.QtyCuttable = .Item("QtyCuttable")
+                    piDetailModel.QtyWeight = .Item("QtyWeight")
+                    piDetailModel.PINo = .Item("PINo")
+
+                    myList.Add(piDetailModel)
+                End While
+                dataAccess.reader.Close()
+            End With
             dataAccess = Nothing
             Return myList
         Catch ex As Exception
@@ -133,7 +148,7 @@
             Else
                 Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("PINo"), 9)
                 hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
-                myCode = "OA" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "-" & customerCode & "-" & Format(Now.Year)
+                myCode = "OA" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & customerCode & "/" & Format(Now.Year)
             End If
             dataAccess.reader.Close()
             dataAccess = Nothing
@@ -432,13 +447,13 @@
 #Region "Method CRUD"
     Protected Function SqlInsertHeader(piHeaderModel As PIHeaderModel) As String
         Dim sqlHeader As String
-        sqlHeader = "Insert into PIHeader(PIHeaderID,PIDate,PINo,VendorID,BuyerID,GroupSalesID,RefPO,Style,SeasonID,TermOfPaymentID" &
-                                   ",DelTerm,TermOfPriceID,ContractNo,DestinationID,DeliveryPlace,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
+        sqlHeader = "Insert into PIHeader(PIHeaderID,PIDate,PINo,BuyerID,RefPO,StyleID,SeasonID,TermOfPaymentID,DelTerm,TermOfPriceID" &
+                                   ",ContractNo,DestinationID,CustomerID,GroupSalesID,DeliveryPlace,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
                                    "('" & piHeaderModel.PIHeaderID & "','" & piHeaderModel.PIDate & "','" & piHeaderModel.PINo & "'" &
-                                   ",'" & piHeaderModel.VendorID & "','" & piHeaderModel.BuyerID & "','" & piHeaderModel.GroupSalesID & "'" &
-                                   ",'" & piHeaderModel.RefPO & "','" & piHeaderModel.Style & "','" & piHeaderModel.SeasonID & "'" &
-                                   ",'" & piHeaderModel.TermOfPaymentID & "','" & piHeaderModel.DelTerm & "','" & piHeaderModel.TermOfPriceID & "'" &
-                                   ",'" & piHeaderModel.ContractNo & "','" & piHeaderModel.DestinationID & "','" & piHeaderModel.DeliveryPlace & "'" &
+                                   ",'" & piHeaderModel.BuyerID & "','" & piHeaderModel.RefPO & "','" & piHeaderModel.StyleID & "'" &
+                                   ",'" & piHeaderModel.SeasonID & "','" & piHeaderModel.TermOfPaymentID & "','" & piHeaderModel.DelTerm & "'" &
+                                   ",'" & piHeaderModel.TermOfPriceID & "','" & piHeaderModel.ContractNo & "','" & piHeaderModel.DestinationID & "'" &
+                                   ",'" & piHeaderModel.CustomerID & "','" & piHeaderModel.GroupSalesID & "','" & piHeaderModel.DeliveryPlace & "'" &
                                    ",'" & piHeaderModel.Status & "','" & piHeaderModel.CreatedBy & "','" & piHeaderModel.CreatedDate & "'" &
                                    ",'" & piHeaderModel.UpdatedBy & "','" & piHeaderModel.UpdatedDate & "')"
         Return sqlHeader
@@ -449,7 +464,7 @@
 
         sql = "Insert Into PIDetail(PIheaderID,PIDetailID,FabricID,StyleID,RawMaterialID,TypeGreige,WidthMin,WidthMax,UnitID,WeightMin,WeightMax,DNYardage,WeightYard" &
               ",BeforeWash,AfterWash,NetWeight,SrinkageL,SrinkageW,GSM,PriceGreige,PurchSize,StorageSize,PPSample,QtyCuttable,QtyWeight)Values" &
-              "('" & myModel.PIHeaderID & "',,'" & myModel.PIDetailID & "',,'" & myModel.FabricID & "','" & myModel.StyleID & "'" &
+              "('" & myModel.PIHeaderID & "','" & myModel.PIDetailID & "','" & myModel.FabricID & "','" & myModel.StyleID & "'" &
               ",'" & myModel.RawMaterialID & "','" & myModel.TypeGreige & "','" & myModel.WidthMin & "','" & myModel.WidthMax & "'" &
               ",'" & myModel.UnitID & "','" & myModel.WeightMin & "','" & myModel.WeightMax & "','" & myModel.DNYardage & "'" &
               ",'" & myModel.WeightYard & "','" & myModel.BeforeWash & "','" & myModel.AfterWash & "','" & myModel.NetWeight & "'" &
@@ -463,7 +478,7 @@
     Protected Function SqlInsertDetailColorFabric(myModel As PIColorDetailModel) As String
         Dim SQL As String
         SQL = "Insert Into PIColorDetail(PIHeaderID,PIColorDetailID,ColorID,ColorType,ColorLabNumber,QtyOrder,PurchSizeID,Price,QtySample,DelDate,Note)Values" &
-                "('" & myModel.PIHeaderID & "','" & myModel.PIColorDetailID & "','" & myModel.ColorID & "', '" & myModel.ColorType & "'" &
+                "('" & myModel.PIHeaderID & "','" & myModel.PIColorDetailID & "','" & myModel.ColorID & "','" & myModel.ColorType & "'" &
                 ",'" & myModel.ColorLabNumber & "','" & myModel.QtyOrder & "','" & myModel.PurchSizeID & "','" & myModel.Price & "'" &
                 ",'" & myModel.QtySample & "','" & myModel.DelDate & "','" & myModel.Note & "')"
         Return SQL
@@ -493,12 +508,12 @@
 
     Protected Function SqlUpdateHeader(myModel As PIHeaderModel) As String
         Dim SQL As String
-        SQL = "Update PIHeader Set VendorID = '" & myModel.VendorID & "',BuyerID = '" & myModel.BuyerID & "'" &
-                                    ",GroupSalesID = '" & myModel.GroupSalesID & "',RefPO = '" & myModel.RefPO & "'" &
-                                    ",Style = '" & myModel.PIDate & "',SeasonID = '" & myModel.SeasonID & "'" &
+        SQL = "Update PIHeader Set PIDate = '" & myModel.PIDate & "',BuyerID = '" & myModel.BuyerID & "',RefPO = '" & myModel.RefPO & "'" &
+                                    ",StyleID = '" & myModel.StyleID & "',SeasonID = '" & myModel.SeasonID & "'" &
                                     ",TermOfPaymentID = '" & myModel.TermOfPaymentID & "',DelTerm = '" & myModel.DelTerm & "'" &
                                     ",TermOfPriceID = '" & myModel.TermOfPriceID & "',ContractNo = '" & myModel.ContractNo & "'" &
-                                    ",DestinationID = '" & myModel.DestinationID & "',DeliveryPlace = '" & myModel.DeliveryPlace & "'" &
+                                    ",DestinationID = '" & myModel.DestinationID & "',CustomerID = '" & myModel.CustomerID & "'" &
+                                    ",GroupSalesID='" & myModel.GroupSalesID & "',DeliveryPlace = '" & myModel.DeliveryPlace & "'" &
                                     ",Status = '" & myModel.TermOfPriceID & "',UpdatedBy = '" & myModel.UpdatedBy & "'" &
                                     ",UpdatedDate = '" & myModel.UpdatedDate & "' Where PIHeaderID = '" & myModel.PIHeaderID & "'"
         Return SQL
@@ -567,7 +582,7 @@
         queryList.Add(SqlInsertBankDetail(bankDetailModel))
 
         'insert log history
-        queryList.Add(logBFC.SqlInsertLog(logModel))
+        queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
 
         Try
             dataAccess.InsertMasterDetail(queryList)
@@ -619,7 +634,7 @@
         queryList.Add(SqlUpdateDetailBank(bankDetailModel))
 
         'insert log history
-        queryList.Add(logBFC.SqlInsertLog(logModel))
+        queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
 
         Try
             dataAccess.InsertMasterDetail(queryList)
