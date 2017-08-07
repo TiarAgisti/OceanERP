@@ -79,6 +79,8 @@
     <ApplicationIcon>Home.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -268,6 +270,12 @@
     <Compile Include="Views\Masters\List\FrmListCustomer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\Settings\Form\FrmPrintPreview.Designer.vb">
+      <DependentUpon>FrmPrintPreview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\Form\FrmPrintPreview.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\Transactions\Form\FrmProformaInvoice.Designer.vb">
       <DependentUpon>FrmProformaInvoice.vb</DependentUpon>
     </Compile>
@@ -408,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\List\FrmListCustomer.resx">
       <DependentUpon>FrmListCustomer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Settings\Form\FrmPrintPreview.resx">
+      <DependentUpon>FrmPrintPreview.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\Form\FrmProformaInvoice.resx">
       <DependentUpon>FrmProformaInvoice.vb</DependentUpon>

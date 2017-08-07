@@ -637,6 +637,7 @@
             Select Case condition
                 Case "Create"
                     .PIHeaderID = piBFC.GetPiHeaderID
+                    piHeaderID = .PIHeaderID
                     .PIDate = Format(dtPIDate.Value, "yyyy-MM-dd")
                     .PINo = piBFC.GetPINo(customerCode)
                     txtPINo.Text = .PINo
@@ -762,6 +763,11 @@
 
     Sub PrintData()
         Try
+            Dim frm As New FrmPrintPreview
+            frm.rptView.ProcessingMode = ProcessingMode.Local
+            Dim localReport As LocalReport
+            localReport = frm.rptView.LocalReport
+            localReport.ReportPath = "D:\Tiar\SampleReport\rptPO.rdlc"
             PreCreatedisplay()
         Catch ex As Exception
             MsgBoxError(ex.Message)

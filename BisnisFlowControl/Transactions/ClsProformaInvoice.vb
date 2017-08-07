@@ -250,6 +250,18 @@
             Return Nothing
         End Try
     End Function
+
+    Public Sub RetrievePIHeaderByID(piNO As String, ByRef dsProformaInvoice As DataSet)
+        Dim query As String = "Select * From v_PIHeader Where PINo = @piNo"
+        Dim myField As String = "PINo"
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        'Dim dataTable As DataTable = New DataTable
+        Try
+            dataAccess.RetrievePrintOut(query, myField, piNO)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
 #End Region
 
 #Region "Method Generated"
@@ -764,6 +776,10 @@
             Throw ex
         End Try
     End Function
+#End Region
+
+#Region "PrintOut"
+
 #End Region
 
 

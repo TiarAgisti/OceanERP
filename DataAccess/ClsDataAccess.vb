@@ -78,6 +78,26 @@ Public Class ClsDataAccess
             Throw ex
         End Try
     End Function
+
+    Public Function RetrievePrintOut(query As String, myField As String, myParam As String) As DataTable
+        Dim dataTable As DataTable = New DataTable
+        Try
+            Using conn = New SqlConnection(ConnectionString())
+                conn.Open()
+                Dim myCommand As SqlCommand = New SqlCommand(query, conn)
+                Dim parameter As New SqlParameter(myField, myParam)
+                myCommand.Parameters.Add(parameter)
+                Using dataAdapter As SqlDataAdapter = New SqlDataAdapter(myCommand)
+                    dataAdapter.Fill(dataTable)
+                End Using
+                myCommand.Dispose()
+                conn.Close()
+                Return dataTable
+            End Using
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
     Public Function ExecuteReader(query As String) As SqlDataReader
         Try
             Dim myConnection As New SqlConnection(ConnectionString)
