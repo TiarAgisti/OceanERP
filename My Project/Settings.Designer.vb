@@ -113,6 +113,18 @@ Namespace My
                 Me("winAuthentication") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property reportPath() As String
+            Get
+                Return CType(Me("reportPath"),String)
+            End Get
+            Set
+                Me("reportPath") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

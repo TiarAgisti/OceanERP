@@ -299,4 +299,25 @@
             xPINo = value
         End Set
     End Property
+
+    Private xPIDate As Date
+    Public Property PIDate() As Date
+        Get
+            Return xPIDate
+        End Get
+        Set(ByVal value As Date)
+            xPIDate = value
+        End Set
+    End Property
+
+    Private xSpecification As String
+    Public Property Specification() As String
+        Get
+            Return xSpecification
+        End Get
+        Set(ByVal value As String)
+            xSpecification = value
+        End Set
+    End Property
+
 End Class

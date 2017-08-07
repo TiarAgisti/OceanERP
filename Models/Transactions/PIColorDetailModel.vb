@@ -108,4 +108,54 @@
             xNote = value
         End Set
     End Property
+
+    Private xPIDate As Date
+    Public Property PIDate() As Date
+        Get
+            Return xPIDate
+        End Get
+        Set(ByVal value As Date)
+            xPIDate = value
+        End Set
+    End Property
+
+    Private xPINo As String
+    Public Property PINo() As String
+        Get
+            Return xPINo
+        End Get
+        Set(ByVal value As String)
+            xPINo = value
+        End Set
+    End Property
+
+    Private xColorCode As String
+    Public Property ColorCode() As String
+        Get
+            Return xColorCode
+        End Get
+        Set(ByVal value As String)
+            xColorCode = value
+        End Set
+    End Property
+
+    Private xColorName As String
+    Public Property ColorName() As String
+        Get
+            Return xColorName
+        End Get
+        Set(ByVal value As String)
+            xColorName = value
+        End Set
+    End Property
+
+    Private xPurchSizeName As String
+    Public Property PurchSizeName() As String
+        Get
+            Return xPurchSizeName
+        End Get
+        Set(ByVal value As String)
+            xPurchSizeName = value
+        End Set
+    End Property
 End Class

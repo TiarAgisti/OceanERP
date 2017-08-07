@@ -220,42 +220,42 @@
 
     Sub ClearFabric()
         txtSpec.Clear()
-        txtWidthMin.Clear()
-        txtWidthMax.Clear()
-        txtWeightMin.Clear()
-        txtWeightMax.Clear()
-        txtDNYardage.Clear()
-        txtWeightYard.Clear()
-        txtBeforeWash.Clear()
-        txtAfterWash.Clear()
-        txtNetWeight.Clear()
+        txtWidthMin.Text = 0
+        txtWidthMax.Text = 0
+        txtWeightMin.Text = 0
+        txtWeightMax.Text = 0
+        txtDNYardage.Text = 0
+        txtWeightYard.Text = 0
+        txtBeforeWash.Text = 0
+        txtAfterWash.Text = 0
+        txtNetWeight.Text = 0
         txtSrinkageL.Clear()
         txtSrinkageW.Clear()
         txtGSM.Clear()
-        txtPriceGreige.Clear()
+        txtPriceGreige.Text = 0
         txtPurchSize.Clear()
-        txtStorageSize.Clear()
+        txtStorageSize.Text = 0
         txtPPSample.Clear()
-        txtQtyCutt.Clear()
-        txtQtyWeight.Clear()
+        txtQtyCutt.Text = 0
+        txtQtyWeight.Text = 0
     End Sub
 
     Sub ClearColorFabric()
         txtColor.Clear()
         txtColorType.Clear()
         txtLabColNo.Clear()
-        txtColQtyOrder.Clear()
-        txtColPrice.Clear()
-        txtColQtySample.Clear()
+        txtColQtyOrder.Text = 0
+        txtColPrice.Text = 0
+        txtColQtySample.Text = 0
         txtColNotes.Clear()
     End Sub
 
     Sub ClearYarn()
         txtSuppYarn.Clear()
-        txtPriceYarn.Clear()
-        txtPercentUsage.Clear()
-        txtQtyUsage.Clear()
-        txtLoss.Clear()
+        txtPriceYarn.Text = 0
+        txtPercentUsage.Text = 0
+        txtQtyUsage.Text = 0
+        txtLoss.Text = 0
     End Sub
 
     Sub ClearBankDetail()
@@ -709,7 +709,7 @@
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         myModel.PIHeaderID = piID
         myModel.PIBankDetailID = piBFC.GetPIDetailBankID
-        myModel.BankID = cmbBankCode.SelectedValue
+        myModel.BankAccountID = cmbBankCode.SelectedValue
         Return myModel
     End Function
 
@@ -733,7 +733,10 @@
             If piBFC.InsertData(SetDataHeader, SetDetailFabric(myPIID), SetDetailColor(myPIID), SetDetailYarn(myPIID) _
                                 , SetDetailRemarks(myPIID), SetDataBank(myPIID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxSaved()
-                PreCreatedisplay()
+                btnPrint.Enabled = True
+                btnSave.Enabled = False
+                btnUpdate.Enabled = False
+                'PreCreatedisplay()
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -748,7 +751,18 @@
             If piBFC.UpdateData(SetDataHeader, SetDetailFabric(piHeaderID), SetDetailColor(piHeaderID), SetDetailYarn(piHeaderID) _
                                 , SetDetailRemarks(piHeaderID), SetDataBank(piHeaderID), logBFC.SetLogHistory(logDesc)) = True Then
                 MsgBoxUpdated()
+                btnPrint.Enabled = True
+                btnSave.Enabled = False
+                btnUpdate.Enabled = False
             End If
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Sub PrintData()
+        Try
+            PreCreatedisplay()
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
@@ -858,6 +872,7 @@
     End Sub
 
     Sub RetrieveBankAccount()
+        ComboBoxBank()
         Dim bankAccountBFC As ClsBankAccount = New ClsBankAccount
         Dim bankAccountModel As BankAccountModel = New BankAccountModel
         Dim bankAccountID As Integer = cmbBankCode.SelectedValue
@@ -873,24 +888,21 @@
     End Sub
 
     Sub CheckPermissions()
-        Dim roleBFC As ClsPermission = New ClsPermission
-        Dim roleModel As RoleDModel = New RoleDModel
-        roleModel = roleBFC.RetrieveDetailsByRoleIDMenuID(roleIDUser, Tag)
-        If roleModel.IsCreate = True Then btnSave.Enabled = True
-        If roleModel.IsUpdate = True Then btnUpdate.Enabled = True
-        If roleModel.IsApprove = True Then btnApprove.Enabled = True
-        If roleModel.IsVoid = True Then btnVoid.Enabled = True
+        Try
+            Dim roleBFC As ClsPermission = New ClsPermission
+            Dim roleModel As RoleDModel = New RoleDModel
+            roleModel = roleBFC.RetrieveDetailsByRoleIDMenuID(roleIDUser, Tag)
+            If roleModel.IsCreate = True Then btnSave.Enabled = True
+            If roleModel.IsUpdate = True Then btnUpdate.Enabled = True
+            If roleModel.IsApprove = True Then btnApprove.Enabled = True
+            If roleModel.IsVoid = True Then btnVoid.Enabled = True
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Sub PrepareHeaderByID()
-        ComboBoxBuyer()
-        ComboBoxStyle()
-        ComboBoxSeason()
-        ComboBoxTermOfPayment()
-        ComboBoxTermPrice()
-        ComboBoxPort()
-        ComboBoxCustomer()
-        ComboBoxMarketing()
+        ComboBoxALL()
         Dim headerModel As PIHeaderModel = New PIHeaderModel
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         headerModel = piBFC.RetrieveByID(piHeaderID)
@@ -913,23 +925,141 @@
     End Sub
 
     Sub PrepareFabricByHeaderID()
-
+        Try
+            GridDetailFabric()
+            Dim listFabric As List(Of PIDetailModel) = New List(Of PIDetailModel)
+            Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+            listFabric = piBFC.RetrieveFabricByHeaderID(piHeaderID)
+            For Each detail In listFabric
+                With dgvFabric
+                    .Rows.Add()
+                    .Item(0, intBarisFabric).Value = detail.FabricID
+                    .Item(1, intBarisFabric).Value = detail.FabricName
+                    .Item(2, intBarisFabric).Value = detail.Specification
+                    .Item(3, intBarisFabric).Value = detail.StyleID
+                    .Item(4, intBarisFabric).Value = detail.StyleName
+                    .Item(5, intBarisFabric).Value = detail.RawMaterialID
+                    .Item(6, intBarisFabric).Value = detail.RawMaterialName
+                    .Item(7, intBarisFabric).Value = detail.TypeGreige
+                    .Item(8, intBarisFabric).Value = detail.WidthMin
+                    .Item(9, intBarisFabric).Value = detail.WidthMax
+                    .Item(10, intBarisFabric).Value = detail.UnitID
+                    .Item(11, intBarisFabric).Value = detail.UnitName
+                    .Item(12, intBarisFabric).Value = detail.WeightMin
+                    .Item(13, intBarisFabric).Value = detail.WeightMax
+                    .Item(14, intBarisFabric).Value = detail.DNYardage
+                    .Item(15, intBarisFabric).Value = detail.WeightYard
+                    .Item(16, intBarisFabric).Value = detail.BeforeWash
+                    .Item(17, intBarisFabric).Value = detail.AfterWash
+                    .Item(18, intBarisFabric).Value = detail.NetWeight
+                    .Item(19, intBarisFabric).Value = detail.SrinkageL
+                    .Item(20, intBarisFabric).Value = detail.SrinkageW
+                    .Item(21, intBarisFabric).Value = detail.GSM
+                    .Item(22, intBarisFabric).Value = detail.PriceGreige
+                    .Item(23, intBarisFabric).Value = detail.PurchSize
+                    .Item(24, intBarisFabric).Value = detail.StorageSize
+                    .Item(25, intBarisFabric).Value = detail.PPSample
+                    .Item(26, intBarisFabric).Value = detail.QtyCuttable
+                    .Item(27, intBarisFabric).Value = detail.QtyWeight
+                End With
+                intBarisFabric = intBarisFabric + 1
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Sub PrepareColorByHeaderID()
-
+        Try
+            GridDetailColor()
+            Dim listColor As List(Of PIColorDetailModel) = New List(Of PIColorDetailModel)
+            Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+            listColor = piBFC.RetrieveColorByHeaderID(piHeaderID)
+            For Each detail In listColor
+                With dgvColor
+                    .Rows.Add()
+                    .Item(0, intBarisColor).Value = detail.ColorID
+                    .Item(1, intBarisColor).Value = detail.ColorCode
+                    .Item(2, intBarisColor).Value = detail.ColorName
+                    .Item(3, intBarisColor).Value = detail.ColorType
+                    .Item(4, intBarisColor).Value = detail.ColorLabNumber
+                    .Item(5, intBarisColor).Value = detail.QtyOrder
+                    .Item(6, intBarisColor).Value = detail.PurchSizeID
+                    .Item(7, intBarisColor).Value = detail.PurchSizeName
+                    .Item(8, intBarisColor).Value = detail.Price
+                    .Item(9, intBarisColor).Value = detail.QtySample
+                    .Item(10, intBarisColor).Value = detail.DelDate
+                    .Item(11, intBarisColor).Value = detail.Note
+                End With
+                intBarisColor = intBarisColor + 1
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Sub PrepareYarnByHeaderID()
-
+        Try
+            GridDetailYarn()
+            Dim listYarn As List(Of PIYarnDetailModel) = New List(Of PIYarnDetailModel)
+            Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+            listYarn = piBFC.RetrieveYarnByHeaderID(piHeaderID)
+            For Each detail In listYarn
+                With dgvYarn
+                    .Rows.Add()
+                    .Item(0, intBarisYarn).Value = detail.YarnID
+                    .Item(1, intBarisYarn).Value = detail.YarnName
+                    .Item(2, intBarisYarn).Value = detail.VendorName
+                    .Item(3, intBarisYarn).Value = detail.PriceYarn
+                    .Item(4, intBarisYarn).Value = detail.PercentageUsage
+                    .Item(5, intBarisYarn).Value = detail.QtyUsage
+                    .Item(6, intBarisYarn).Value = detail.ColorID
+                    .Item(7, intBarisYarn).Value = detail.ColorName
+                    .Item(8, intBarisYarn).Value = detail.BrandYarnID
+                    .Item(9, intBarisYarn).Value = detail.BrandYarnName
+                    .Item(10, intBarisYarn).Value = detail.Loss
+                End With
+                intBarisYarn = intBarisYarn + 1
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Sub PrepareBankByHeaderID()
-
+        Try
+            ComboBoxBank()
+            Dim piBankAccountModel As PIBankDetailModel = New PIBankDetailModel
+            Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+            piBankAccountModel = piBFC.RetrieveBankByHeaderID(piHeaderID)
+            With piBankAccountModel
+                cmbBankCode.SelectedValue = .BankAccountID
+                txtBank.Text = .BankName
+                txtAccName.Text = .AccountName
+                txtAccNumber.Text = .AccountNumber
+                txtSwiftCode.Text = .SwiftCode
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Sub PrepareRemarksByHeaderID()
-
+        Try
+            GridDetailRemark()
+            Dim listRemarks As List(Of PIRemarksModel) = New List(Of PIRemarksModel)
+            Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+            listRemarks = piBFC.RetrieveRemarksByHeaderID(piHeaderID)
+            For Each detail In listRemarks
+                With dgvRemarks
+                    .Rows.Add()
+                    .Item(0, intBarisRemarks).Value = detail.Remarks
+                End With
+                intBarisRemarks = intBarisRemarks + 1
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Sub PreCreatedisplay()
@@ -942,8 +1072,18 @@
     End Sub
 
     Sub PreUpdateDisplay()
-        CheckPermissions()
-        PrepareHeaderByID()
+        Try
+            ClearAllData()
+            ClearDataGrid()
+            CheckPermissions()
+            PrepareHeaderByID()
+            PrepareFabricByHeaderID()
+            PrepareColorByHeaderID()
+            PrepareBankByHeaderID()
+            PrepareRemarksByHeaderID()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 
     Private Sub FrmProformaInvoice_Load(sender As Object, e As EventArgs) Handles MyBase.Load

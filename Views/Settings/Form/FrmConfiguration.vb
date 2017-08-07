@@ -1,7 +1,5 @@
 ﻿Public Class FrmConfiguration
     Private Sub LoadConfig()
-        txtServer.Text = My.Settings.server
-        txtDatabase.Text = My.Settings.database
         If My.Settings.winAuthentication = True Then
             cmbAuthentication.Text = "Windows Authentication"
             txtLogin.Enabled = False
@@ -13,6 +11,9 @@
             txtLogin.Text = My.Settings.userId
             txtPassword.Text = My.Settings.userPassword
         End If
+        txtServer.Text = My.Settings.server
+        txtDatabase.Text = My.Settings.database
+        txtReportPath.Text = My.Settings.reportPath
     End Sub
     Private Sub PreCreateDisplay()
         cmbAuthentication.Items.Add("SQL Authentication")
@@ -29,6 +30,7 @@
             My.Settings.winAuthentication = False
             My.Settings.userId = txtLogin.Text
             My.Settings.userPassword = txtPassword.Text
+            My.Settings.reportPath = txtReportPath.Text
         End If
         My.Settings.Save()
     End Sub

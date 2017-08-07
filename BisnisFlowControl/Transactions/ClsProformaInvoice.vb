@@ -85,7 +85,6 @@
 
     Public Function RetrieveFabricByHeaderID(headerID As Long) As List(Of PIDetailModel)
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
-        Dim piHeaderModel As PIHeaderModel = New PIHeaderModel
         Dim query As String = "Select * From v_PIDetail Where PIHeaderID='" & headerID & "'"
         Dim myList As List(Of PIDetailModel) = New List(Of PIDetailModel)
         Try
@@ -119,16 +118,136 @@
                     piDetailModel.QtyCuttable = .Item("QtyCuttable")
                     piDetailModel.QtyWeight = .Item("QtyWeight")
                     piDetailModel.PINo = .Item("PINo")
-
+                    piDetailModel.PIDate = .Item("PIDate")
+                    piDetailModel.FabricName = .Item("FabricName")
+                    piDetailModel.StyleName = .Item("StyleName")
+                    piDetailModel.RawMaterialName = .Item("RawMaterialName")
+                    piDetailModel.UnitName = .Item("UnitName")
+                    piDetailModel.Specification = .Item("Specification")
                     myList.Add(piDetailModel)
                 End While
-                dataAccess.reader.Close()
+                .Close()
             End With
             dataAccess = Nothing
             Return myList
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
+        End Try
+    End Function
+
+    Public Function RetrieveColorByHeaderID(headerID As Long) As List(Of PIColorDetailModel)
+        Dim myList As List(Of PIColorDetailModel) = New List(Of PIColorDetailModel)
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim query As String = "Select * From v_PIColorDetail Where PIHeaderID = '" & headerID & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(query)
+            With dataAccess.reader
+                While .Read
+                    Dim detailModel As PIColorDetailModel = New PIColorDetailModel
+                    detailModel.ColorID = .Item("ColorID")
+                    detailModel.ColorType = .Item("ColorType")
+                    detailModel.ColorLabNumber = .Item("ColorLabNumber")
+                    detailModel.QtyOrder = .Item("QtyOrder")
+                    detailModel.PurchSizeID = .Item("PurchSizeID")
+                    detailModel.Price = .Item("Price")
+                    detailModel.QtySample = .Item("QtySample")
+                    detailModel.DelDate = .Item("DelDate")
+                    detailModel.Note = .Item("Note")
+                    detailModel.PIDate = .Item("PIDate")
+                    detailModel.PINo = .Item("PINo")
+                    detailModel.ColorCode = .Item("ColorCode")
+                    detailModel.ColorName = .Item("ColorName")
+                    detailModel.PurchSizeName = .Item("PurchSizeName")
+                    myList.Add(detailModel)
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return myList
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
+    Public Function RetrieveYarnByHeaderID(headerID As Long) As List(Of PIYarnDetailModel)
+        Dim myList As List(Of PIYarnDetailModel) = New List(Of PIYarnDetailModel)
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim query As String = "Select * v_PIYarnDetail Where PIHeaderID = '" & headerID & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(query)
+            With dataAccess.reader
+                While .Read
+                    Dim detailModel As PIYarnDetailModel = New PIYarnDetailModel
+                    detailModel.YarnID = .Item("YarnID")
+                    detailModel.PriceYarn = .Item("PriceYarn")
+                    detailModel.PercentageUsage = .Item("PercentageUsage")
+                    detailModel.QtyUsage = .Item("QtyUsage")
+                    detailModel.ColorID = .Item("ColorID")
+                    detailModel.BrandYarnID = .Item("BrandYarnID")
+                    detailModel.Loss = .Item("Loss")
+                    detailModel.YarnName = .Item("YarnName")
+                    detailModel.VendorName = .Item("VendorName")
+                    detailModel.ColorCode = .Item("ColorCode")
+                    detailModel.ColorID = .Item("ColorID")
+                    detailModel.ColorName = .Item("ColorName")
+                    detailModel.BrandYarnName = .Item("BrandYarnName")
+                    myList.Add(detailModel)
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return myList
+        Catch ex As Exception
+            Throw ex
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function RetrieveBankByHeaderID(headerID As Long) As PIBankDetailModel
+        Dim piBankModel As PIBankDetailModel = New PIBankDetailModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim query As String = "Select * From v_PIBankDetail Where PIHeaderID = '" & headerID & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(query)
+            With dataAccess.reader
+                While .Read
+                    piBankModel.BankAccountID = .Item("BankAccountID")
+                    piBankModel.BankAccountCode = .Item("BankAccountCode")
+                    piBankModel.AccountName = .Item("AccountName")
+                    piBankModel.AccountNumber = .Item("AccountNumber")
+                    piBankModel.BankName = .Item("BankName")
+                    piBankModel.SwiftCode = .Item("SwiftCode")
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return piBankModel
+        Catch ex As Exception
+            Throw ex
+            Return Nothing
+        End Try
+    End Function
+
+    Public Function RetrieveRemarksByHeaderID(headerID As Long) As List(Of PIRemarksModel)
+        Dim myList As List(Of PIRemarksModel) = New List(Of PIRemarksModel)
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim query As String = "Select * From PIRemarks Where PIHeaderID = '" & headerID & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(query)
+            With dataAccess.reader
+                While .Read
+                    Dim detailModel As PIRemarksModel = New PIRemarksModel
+                    detailModel.Remarks = .Item("Remarks")
+                    myList.Add(detailModel)
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return myList
+        Catch ex As Exception
+            Throw ex
+            Return Nothing
         End Try
     End Function
 #End Region
@@ -501,8 +620,8 @@
 
     Protected Function SqlInsertBankDetail(myModel As PIBankDetailModel) As String
         Dim SQL As String
-        SQL = "Insert Into PIBankDetail(PIHeaderID,PIBankDetailID,BankID)Values('" & myModel.PIHeaderID & "'" &
-                ",'" & myModel.PIBankDetailID & "','" & myModel.BankID & "')"
+        SQL = "Insert Into PIBankDetail(PIHeaderID,PIBankDetailID,BankAccountID)Values('" & myModel.PIHeaderID & "'" &
+                ",'" & myModel.PIBankDetailID & "','" & myModel.BankAccountID & "')"
         Return SQL
     End Function
 
@@ -539,7 +658,7 @@
 
     Protected Function SqlUpdateDetailBank(myModel As PIBankDetailModel) As String
         Dim SQL As String
-        SQL = "Update PIBankDetail Set BankID = '" & myModel.BankID & "' Where PIheaderID = '" & myModel.PIHeaderID & "'"
+        SQL = "Update PIBankDetail Set BankAccountID = '" & myModel.BankAccountID & "' Where PIheaderID = '" & myModel.PIHeaderID & "'"
         Return SQL
     End Function
 

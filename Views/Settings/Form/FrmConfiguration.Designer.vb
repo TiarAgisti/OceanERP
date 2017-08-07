@@ -35,6 +35,8 @@ Partial Class FrmConfiguration
         Me.Label5 = New System.Windows.Forms.Label()
         Me.btnTest = New System.Windows.Forms.Button()
         Me.btnKeluar = New System.Windows.Forms.Button()
+        Me.txtReportPath = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'Label1
@@ -121,27 +123,45 @@ Partial Class FrmConfiguration
         '
         'btnTest
         '
-        Me.btnTest.Location = New System.Drawing.Point(15, 150)
+        Me.btnTest.Location = New System.Drawing.Point(15, 190)
         Me.btnTest.Name = "btnTest"
         Me.btnTest.Size = New System.Drawing.Size(97, 23)
-        Me.btnTest.TabIndex = 10
+        Me.btnTest.TabIndex = 12
         Me.btnTest.Text = "Test Connection"
         Me.btnTest.UseVisualStyleBackColor = True
         '
         'btnKeluar
         '
-        Me.btnKeluar.Location = New System.Drawing.Point(118, 150)
+        Me.btnKeluar.Location = New System.Drawing.Point(118, 190)
         Me.btnKeluar.Name = "btnKeluar"
         Me.btnKeluar.Size = New System.Drawing.Size(97, 23)
-        Me.btnKeluar.TabIndex = 11
+        Me.btnKeluar.TabIndex = 13
         Me.btnKeluar.Text = "Exit"
         Me.btnKeluar.UseVisualStyleBackColor = True
+        '
+        'txtReportPath
+        '
+        Me.txtReportPath.Location = New System.Drawing.Point(93, 150)
+        Me.txtReportPath.Name = "txtReportPath"
+        Me.txtReportPath.Size = New System.Drawing.Size(204, 20)
+        Me.txtReportPath.TabIndex = 11
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(12, 153)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(64, 13)
+        Me.Label6.TabIndex = 12
+        Me.Label6.Text = "Report Path"
         '
         'FrmConfiguration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(322, 182)
+        Me.ClientSize = New System.Drawing.Size(322, 225)
+        Me.Controls.Add(Me.txtReportPath)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.btnKeluar)
         Me.Controls.Add(Me.btnTest)
         Me.Controls.Add(Me.txtPassword)
@@ -177,4 +197,6 @@ Partial Class FrmConfiguration
     Friend WithEvents Label5 As Label
     Friend WithEvents btnTest As Button
     Friend WithEvents btnKeluar As Button
+    Friend WithEvents txtReportPath As TextBox
+    Friend WithEvents Label6 As Label
 End Class

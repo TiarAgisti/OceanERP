@@ -29,6 +29,14 @@ Partial Public Class OceanDS
     
     Private tablePIDetailDT As PIDetailDTDataTable
     
+    Private tablePIColorDT As PIColorDTDataTable
+    
+    Private tablePIYarnDT As PIYarnDTDataTable
+    
+    Private tablePIBankDT As PIBankDTDataTable
+    
+    Private tablePIRemarksDT As PIRemarksDTDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -64,6 +72,18 @@ Partial Public Class OceanDS
             If (Not (ds.Tables("PIDetailDT")) Is Nothing) Then
                 MyBase.Tables.Add(New PIDetailDTDataTable(ds.Tables("PIDetailDT")))
             End If
+            If (Not (ds.Tables("PIColorDT")) Is Nothing) Then
+                MyBase.Tables.Add(New PIColorDTDataTable(ds.Tables("PIColorDT")))
+            End If
+            If (Not (ds.Tables("PIYarnDT")) Is Nothing) Then
+                MyBase.Tables.Add(New PIYarnDTDataTable(ds.Tables("PIYarnDT")))
+            End If
+            If (Not (ds.Tables("PIBankDT")) Is Nothing) Then
+                MyBase.Tables.Add(New PIBankDTDataTable(ds.Tables("PIBankDT")))
+            End If
+            If (Not (ds.Tables("PIRemarksDT")) Is Nothing) Then
+                MyBase.Tables.Add(New PIRemarksDTDataTable(ds.Tables("PIRemarksDT")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -98,6 +118,46 @@ Partial Public Class OceanDS
     Public ReadOnly Property PIDetailDT() As PIDetailDTDataTable
         Get
             Return Me.tablePIDetailDT
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property PIColorDT() As PIColorDTDataTable
+        Get
+            Return Me.tablePIColorDT
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property PIYarnDT() As PIYarnDTDataTable
+        Get
+            Return Me.tablePIYarnDT
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property PIBankDT() As PIBankDTDataTable
+        Get
+            Return Me.tablePIBankDT
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property PIRemarksDT() As PIRemarksDTDataTable
+        Get
+            Return Me.tablePIRemarksDT
         End Get
     End Property
     
@@ -174,6 +234,18 @@ Partial Public Class OceanDS
             If (Not (ds.Tables("PIDetailDT")) Is Nothing) Then
                 MyBase.Tables.Add(New PIDetailDTDataTable(ds.Tables("PIDetailDT")))
             End If
+            If (Not (ds.Tables("PIColorDT")) Is Nothing) Then
+                MyBase.Tables.Add(New PIColorDTDataTable(ds.Tables("PIColorDT")))
+            End If
+            If (Not (ds.Tables("PIYarnDT")) Is Nothing) Then
+                MyBase.Tables.Add(New PIYarnDTDataTable(ds.Tables("PIYarnDT")))
+            End If
+            If (Not (ds.Tables("PIBankDT")) Is Nothing) Then
+                MyBase.Tables.Add(New PIBankDTDataTable(ds.Tables("PIBankDT")))
+            End If
+            If (Not (ds.Tables("PIRemarksDT")) Is Nothing) Then
+                MyBase.Tables.Add(New PIRemarksDTDataTable(ds.Tables("PIRemarksDT")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -218,6 +290,30 @@ Partial Public Class OceanDS
                 Me.tablePIDetailDT.InitVars
             End If
         End If
+        Me.tablePIColorDT = CType(MyBase.Tables("PIColorDT"),PIColorDTDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tablePIColorDT) Is Nothing) Then
+                Me.tablePIColorDT.InitVars
+            End If
+        End If
+        Me.tablePIYarnDT = CType(MyBase.Tables("PIYarnDT"),PIYarnDTDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tablePIYarnDT) Is Nothing) Then
+                Me.tablePIYarnDT.InitVars
+            End If
+        End If
+        Me.tablePIBankDT = CType(MyBase.Tables("PIBankDT"),PIBankDTDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tablePIBankDT) Is Nothing) Then
+                Me.tablePIBankDT.InitVars
+            End If
+        End If
+        Me.tablePIRemarksDT = CType(MyBase.Tables("PIRemarksDT"),PIRemarksDTDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tablePIRemarksDT) Is Nothing) Then
+                Me.tablePIRemarksDT.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -232,6 +328,14 @@ Partial Public Class OceanDS
         MyBase.Tables.Add(Me.tablePIHeaderDT)
         Me.tablePIDetailDT = New PIDetailDTDataTable()
         MyBase.Tables.Add(Me.tablePIDetailDT)
+        Me.tablePIColorDT = New PIColorDTDataTable()
+        MyBase.Tables.Add(Me.tablePIColorDT)
+        Me.tablePIYarnDT = New PIYarnDTDataTable()
+        MyBase.Tables.Add(Me.tablePIYarnDT)
+        Me.tablePIBankDT = New PIBankDTDataTable()
+        MyBase.Tables.Add(Me.tablePIBankDT)
+        Me.tablePIRemarksDT = New PIRemarksDTDataTable()
+        MyBase.Tables.Add(Me.tablePIRemarksDT)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -243,6 +347,30 @@ Partial Public Class OceanDS
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializePIDetailDT() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializePIColorDT() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializePIYarnDT() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializePIBankDT() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializePIRemarksDT() As Boolean
         Return false
     End Function
     
@@ -310,6 +438,18 @@ Partial Public Class OceanDS
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub PIDetailDTRowChangeEventHandler(ByVal sender As Object, ByVal e As PIDetailDTRowChangeEvent)
     
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub PIColorDTRowChangeEventHandler(ByVal sender As Object, ByVal e As PIColorDTRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub PIYarnDTRowChangeEventHandler(ByVal sender As Object, ByVal e As PIYarnDTRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub PIBankDTRowChangeEventHandler(ByVal sender As Object, ByVal e As PIBankDTRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub PIRemarksDTRowChangeEventHandler(ByVal sender As Object, ByVal e As PIRemarksDTRowChangeEvent)
+    
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
@@ -324,7 +464,7 @@ Partial Public Class OceanDS
         
         Private columnPINo As Global.System.Data.DataColumn
         
-        Private columnVendorID As Global.System.Data.DataColumn
+        Private columnCustomerID As Global.System.Data.DataColumn
         
         Private columnBuyerID As Global.System.Data.DataColumn
         
@@ -332,7 +472,7 @@ Partial Public Class OceanDS
         
         Private columnRefPO As Global.System.Data.DataColumn
         
-        Private columnStyle As Global.System.Data.DataColumn
+        Private columnStyleID As Global.System.Data.DataColumn
         
         Private columnSeasonID As Global.System.Data.DataColumn
         
@@ -350,9 +490,9 @@ Partial Public Class OceanDS
         
         Private columnStatus As Global.System.Data.DataColumn
         
-        Private columnVendorCode As Global.System.Data.DataColumn
+        Private columnCustomerCode As Global.System.Data.DataColumn
         
-        Private columnVendorName As Global.System.Data.DataColumn
+        Private columnCustomerName As Global.System.Data.DataColumn
         
         Private columnAddress As Global.System.Data.DataColumn
         
@@ -373,6 +513,8 @@ Partial Public Class OceanDS
         Private columnTermOfPrice As Global.System.Data.DataColumn
         
         Private columnDestinationName As Global.System.Data.DataColumn
+        
+        Private columnStyleName As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -435,9 +577,9 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property VendorIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property CustomerIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnVendorID
+                Return Me.columnCustomerID
             End Get
         End Property
         
@@ -467,9 +609,9 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property StyleColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property StyleIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnStyle
+                Return Me.columnStyleID
             End Get
         End Property
         
@@ -539,17 +681,17 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property VendorCodeColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property CustomerCodeColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnVendorCode
+                Return Me.columnCustomerCode
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property VendorNameColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property CustomerNameColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnVendorName
+                Return Me.columnCustomerName
             End Get
         End Property
         
@@ -634,6 +776,14 @@ Partial Public Class OceanDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property StyleNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStyleName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -674,11 +824,11 @@ Partial Public Class OceanDS
                     ByVal PIHeaderID As Long,  _
                     ByVal PIDate As Date,  _
                     ByVal PINo As String,  _
-                    ByVal VendorID As Integer,  _
+                    ByVal CustomerID As Integer,  _
                     ByVal BuyerID As Integer,  _
                     ByVal GroupSalesID As Integer,  _
                     ByVal RefPO As String,  _
-                    ByVal Style As String,  _
+                    ByVal StyleID As Integer,  _
                     ByVal SeasonID As Integer,  _
                     ByVal TermOfPaymentID As Integer,  _
                     ByVal DelTerm As Date,  _
@@ -686,9 +836,9 @@ Partial Public Class OceanDS
                     ByVal ContractNo As String,  _
                     ByVal DestinationID As Integer,  _
                     ByVal DeliveryPlace As String,  _
-                    ByVal Status As String,  _
-                    ByVal VendorCode As String,  _
-                    ByVal VendorName As String,  _
+                    ByVal Status As Short,  _
+                    ByVal CustomerCode As String,  _
+                    ByVal CustomerName As String,  _
                     ByVal Address As String,  _
                     ByVal Telephone As String,  _
                     ByVal Fax As String,  _
@@ -698,9 +848,10 @@ Partial Public Class OceanDS
                     ByVal SeasonName As String,  _
                     ByVal TermOfPayment As String,  _
                     ByVal TermOfPrice As String,  _
-                    ByVal DestinationName As String) As PIHeaderDTRow
+                    ByVal DestinationName As String,  _
+                    ByVal StyleName As String) As PIHeaderDTRow
             Dim rowPIHeaderDTRow As PIHeaderDTRow = CType(Me.NewRow,PIHeaderDTRow)
-            Dim columnValuesArray() As Object = New Object() {PIHeaderID, PIDate, PINo, VendorID, BuyerID, GroupSalesID, RefPO, Style, SeasonID, TermOfPaymentID, DelTerm, TermOfPriceID, ContractNo, DestinationID, DeliveryPlace, Status, VendorCode, VendorName, Address, Telephone, Fax, ContactPerson, BuyerName, SalesName, SeasonName, TermOfPayment, TermOfPrice, DestinationName}
+            Dim columnValuesArray() As Object = New Object() {PIHeaderID, PIDate, PINo, CustomerID, BuyerID, GroupSalesID, RefPO, StyleID, SeasonID, TermOfPaymentID, DelTerm, TermOfPriceID, ContractNo, DestinationID, DeliveryPlace, Status, CustomerCode, CustomerName, Address, Telephone, Fax, ContactPerson, BuyerName, SalesName, SeasonName, TermOfPayment, TermOfPrice, DestinationName, StyleName}
             rowPIHeaderDTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPIHeaderDTRow)
             Return rowPIHeaderDTRow
@@ -726,11 +877,11 @@ Partial Public Class OceanDS
             Me.columnPIHeaderID = MyBase.Columns("PIHeaderID")
             Me.columnPIDate = MyBase.Columns("PIDate")
             Me.columnPINo = MyBase.Columns("PINo")
-            Me.columnVendorID = MyBase.Columns("VendorID")
+            Me.columnCustomerID = MyBase.Columns("CustomerID")
             Me.columnBuyerID = MyBase.Columns("BuyerID")
             Me.columnGroupSalesID = MyBase.Columns("GroupSalesID")
             Me.columnRefPO = MyBase.Columns("RefPO")
-            Me.columnStyle = MyBase.Columns("Style")
+            Me.columnStyleID = MyBase.Columns("StyleID")
             Me.columnSeasonID = MyBase.Columns("SeasonID")
             Me.columnTermOfPaymentID = MyBase.Columns("TermOfPaymentID")
             Me.columnDelTerm = MyBase.Columns("DelTerm")
@@ -739,8 +890,8 @@ Partial Public Class OceanDS
             Me.columnDestinationID = MyBase.Columns("DestinationID")
             Me.columnDeliveryPlace = MyBase.Columns("DeliveryPlace")
             Me.columnStatus = MyBase.Columns("Status")
-            Me.columnVendorCode = MyBase.Columns("VendorCode")
-            Me.columnVendorName = MyBase.Columns("VendorName")
+            Me.columnCustomerCode = MyBase.Columns("CustomerCode")
+            Me.columnCustomerName = MyBase.Columns("CustomerName")
             Me.columnAddress = MyBase.Columns("Address")
             Me.columnTelephone = MyBase.Columns("Telephone")
             Me.columnFax = MyBase.Columns("Fax")
@@ -751,6 +902,7 @@ Partial Public Class OceanDS
             Me.columnTermOfPayment = MyBase.Columns("TermOfPayment")
             Me.columnTermOfPrice = MyBase.Columns("TermOfPrice")
             Me.columnDestinationName = MyBase.Columns("DestinationName")
+            Me.columnStyleName = MyBase.Columns("StyleName")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -762,16 +914,16 @@ Partial Public Class OceanDS
             MyBase.Columns.Add(Me.columnPIDate)
             Me.columnPINo = New Global.System.Data.DataColumn("PINo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPINo)
-            Me.columnVendorID = New Global.System.Data.DataColumn("VendorID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnVendorID)
+            Me.columnCustomerID = New Global.System.Data.DataColumn("CustomerID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCustomerID)
             Me.columnBuyerID = New Global.System.Data.DataColumn("BuyerID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnBuyerID)
             Me.columnGroupSalesID = New Global.System.Data.DataColumn("GroupSalesID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnGroupSalesID)
             Me.columnRefPO = New Global.System.Data.DataColumn("RefPO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnRefPO)
-            Me.columnStyle = New Global.System.Data.DataColumn("Style", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnStyle)
+            Me.columnStyleID = New Global.System.Data.DataColumn("StyleID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStyleID)
             Me.columnSeasonID = New Global.System.Data.DataColumn("SeasonID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSeasonID)
             Me.columnTermOfPaymentID = New Global.System.Data.DataColumn("TermOfPaymentID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
@@ -786,12 +938,12 @@ Partial Public Class OceanDS
             MyBase.Columns.Add(Me.columnDestinationID)
             Me.columnDeliveryPlace = New Global.System.Data.DataColumn("DeliveryPlace", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDeliveryPlace)
-            Me.columnStatus = New Global.System.Data.DataColumn("Status", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnStatus = New Global.System.Data.DataColumn("Status", GetType(Short), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnStatus)
-            Me.columnVendorCode = New Global.System.Data.DataColumn("VendorCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnVendorCode)
-            Me.columnVendorName = New Global.System.Data.DataColumn("VendorName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnVendorName)
+            Me.columnCustomerCode = New Global.System.Data.DataColumn("CustomerCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCustomerCode)
+            Me.columnCustomerName = New Global.System.Data.DataColumn("CustomerName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCustomerName)
             Me.columnAddress = New Global.System.Data.DataColumn("Address", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnAddress)
             Me.columnTelephone = New Global.System.Data.DataColumn("Telephone", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -812,6 +964,8 @@ Partial Public Class OceanDS
             MyBase.Columns.Add(Me.columnTermOfPrice)
             Me.columnDestinationName = New Global.System.Data.DataColumn("DestinationName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDestinationName)
+            Me.columnStyleName = New Global.System.Data.DataColumn("StyleName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStyleName)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -955,9 +1109,43 @@ Partial Public Class OceanDS
         
         Private columnFabricID As Global.System.Data.DataColumn
         
-        Private columnDateDetail As Global.System.Data.DataColumn
+        Private columnStyleID As Global.System.Data.DataColumn
         
-        Private columnColorID As Global.System.Data.DataColumn
+        Private columnRawMaterialID As Global.System.Data.DataColumn
+        
+        Private columnTypeGreige As Global.System.Data.DataColumn
+        
+        Private columnWidthMin As Global.System.Data.DataColumn
+        
+        Private columnWidthMax As Global.System.Data.DataColumn
+        
+        Private columnUnitID As Global.System.Data.DataColumn
+        
+        Private columnWeightMin As Global.System.Data.DataColumn
+        
+        Private columnWeightMax As Global.System.Data.DataColumn
+        
+        Private columnDNYardage As Global.System.Data.DataColumn
+        
+        Private columnWeightYard As Global.System.Data.DataColumn
+        
+        Private columnBeforeWash As Global.System.Data.DataColumn
+        
+        Private columnAfterWash As Global.System.Data.DataColumn
+        
+        Private columnNetWeight As Global.System.Data.DataColumn
+        
+        Private columnSrinkageL As Global.System.Data.DataColumn
+        
+        Private columnSrinkageW As Global.System.Data.DataColumn
+        
+        Private columnGSM As Global.System.Data.DataColumn
+        
+        Private columnPriceGreige As Global.System.Data.DataColumn
+        
+        Private columnPurchSize As Global.System.Data.DataColumn
+        
+        Private columnStorageSize As Global.System.Data.DataColumn
         
         Private columnPPSample As Global.System.Data.DataColumn
         
@@ -965,29 +1153,19 @@ Partial Public Class OceanDS
         
         Private columnQtyWeight As Global.System.Data.DataColumn
         
-        Private columnQty As Global.System.Data.DataColumn
-        
-        Private columnUnitID As Global.System.Data.DataColumn
-        
-        Private columnUnitPrice As Global.System.Data.DataColumn
-        
-        Private columnCurrencyID As Global.System.Data.DataColumn
-        
         Private columnPINo As Global.System.Data.DataColumn
         
         Private columnPIDate As Global.System.Data.DataColumn
         
         Private columnFabricName As Global.System.Data.DataColumn
         
-        Private columnColorCode As Global.System.Data.DataColumn
+        Private columnSpecification As Global.System.Data.DataColumn
         
-        Private columnColorName As Global.System.Data.DataColumn
+        Private columnStyleName As Global.System.Data.DataColumn
+        
+        Private columnRawMaterialName As Global.System.Data.DataColumn
         
         Private columnUnitName As Global.System.Data.DataColumn
-        
-        Private columnCurrencyCode As Global.System.Data.DataColumn
-        
-        Private columnCurrency As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -1050,17 +1228,153 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property DateDetailColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property StyleIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnDateDetail
+                Return Me.columnStyleID
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ColorIDColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property RawMaterialIDColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnColorID
+                Return Me.columnRawMaterialID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property TypeGreigeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTypeGreige
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property WidthMinColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWidthMin
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property WidthMaxColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWidthMax
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property UnitIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUnitID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property WeightMinColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWeightMin
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property WeightMaxColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWeightMax
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property DNYardageColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDNYardage
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property WeightYardColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnWeightYard
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property BeforeWashColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBeforeWash
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AfterWashColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAfterWash
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property NetWeightColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNetWeight
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SrinkageLColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSrinkageL
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SrinkageWColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSrinkageW
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property GSMColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnGSM
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PriceGreigeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPriceGreige
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PurchSizeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPurchSize
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property StorageSizeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnStorageSize
             End Get
         End Property
         
@@ -1090,38 +1404,6 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property QtyColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnQty
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property UnitIDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnUnitID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property UnitPriceColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnUnitPrice
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property CurrencyIDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCurrencyID
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property PINoColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnPINo
@@ -1146,17 +1428,25 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ColorCodeColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property SpecificationColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnColorCode
+                Return Me.columnSpecification
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ColorNameColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property StyleNameColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnColorName
+                Return Me.columnStyleName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property RawMaterialNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRawMaterialName
             End Get
         End Property
         
@@ -1165,22 +1455,6 @@ Partial Public Class OceanDS
         Public ReadOnly Property UnitNameColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnUnitName
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property CurrencyCodeColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCurrencyCode
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property CurrencyColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCurrency
             End Get
         End Property
         
@@ -1222,28 +1496,40 @@ Partial Public Class OceanDS
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Overloads Function AddPIDetailDTRow( _
-                    ByVal PIHeaderID As String,  _
-                    ByVal PIDetailID As String,  _
-                    ByVal FabricID As String,  _
-                    ByVal DateDetail As String,  _
-                    ByVal ColorID As String,  _
+                    ByVal PIHeaderID As Long,  _
+                    ByVal PIDetailID As Long,  _
+                    ByVal FabricID As Integer,  _
+                    ByVal StyleID As Integer,  _
+                    ByVal RawMaterialID As Integer,  _
+                    ByVal TypeGreige As String,  _
+                    ByVal WidthMin As Double,  _
+                    ByVal WidthMax As Double,  _
+                    ByVal UnitID As Integer,  _
+                    ByVal WeightMin As Double,  _
+                    ByVal WeightMax As Double,  _
+                    ByVal DNYardage As Double,  _
+                    ByVal WeightYard As Double,  _
+                    ByVal BeforeWash As Double,  _
+                    ByVal AfterWash As Double,  _
+                    ByVal NetWeight As Double,  _
+                    ByVal SrinkageL As String,  _
+                    ByVal SrinkageW As String,  _
+                    ByVal GSM As String,  _
+                    ByVal PriceGreige As Double,  _
+                    ByVal PurchSize As String,  _
+                    ByVal StorageSize As String,  _
                     ByVal PPSample As String,  _
-                    ByVal QtyCuttable As String,  _
-                    ByVal QtyWeight As String,  _
-                    ByVal Qty As String,  _
-                    ByVal UnitID As String,  _
-                    ByVal UnitPrice As String,  _
-                    ByVal CurrencyID As String,  _
+                    ByVal QtyCuttable As Double,  _
+                    ByVal QtyWeight As Double,  _
                     ByVal PINo As String,  _
-                    ByVal PIDate As String,  _
+                    ByVal PIDate As Date,  _
                     ByVal FabricName As String,  _
-                    ByVal ColorCode As String,  _
-                    ByVal ColorName As String,  _
-                    ByVal UnitName As String,  _
-                    ByVal CurrencyCode As String,  _
-                    ByVal Currency As String) As PIDetailDTRow
+                    ByVal Specification As String,  _
+                    ByVal StyleName As String,  _
+                    ByVal RawMaterialName As String,  _
+                    ByVal UnitName As String) As PIDetailDTRow
             Dim rowPIDetailDTRow As PIDetailDTRow = CType(Me.NewRow,PIDetailDTRow)
-            Dim columnValuesArray() As Object = New Object() {PIHeaderID, PIDetailID, FabricID, DateDetail, ColorID, PPSample, QtyCuttable, QtyWeight, Qty, UnitID, UnitPrice, CurrencyID, PINo, PIDate, FabricName, ColorCode, ColorName, UnitName, CurrencyCode, Currency}
+            Dim columnValuesArray() As Object = New Object() {PIHeaderID, PIDetailID, FabricID, StyleID, RawMaterialID, TypeGreige, WidthMin, WidthMax, UnitID, WeightMin, WeightMax, DNYardage, WeightYard, BeforeWash, AfterWash, NetWeight, SrinkageL, SrinkageW, GSM, PriceGreige, PurchSize, StorageSize, PPSample, QtyCuttable, QtyWeight, PINo, PIDate, FabricName, Specification, StyleName, RawMaterialName, UnitName}
             rowPIDetailDTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPIDetailDTRow)
             Return rowPIDetailDTRow
@@ -1269,68 +1555,104 @@ Partial Public Class OceanDS
             Me.columnPIHeaderID = MyBase.Columns("PIHeaderID")
             Me.columnPIDetailID = MyBase.Columns("PIDetailID")
             Me.columnFabricID = MyBase.Columns("FabricID")
-            Me.columnDateDetail = MyBase.Columns("DateDetail")
-            Me.columnColorID = MyBase.Columns("ColorID")
+            Me.columnStyleID = MyBase.Columns("StyleID")
+            Me.columnRawMaterialID = MyBase.Columns("RawMaterialID")
+            Me.columnTypeGreige = MyBase.Columns("TypeGreige")
+            Me.columnWidthMin = MyBase.Columns("WidthMin")
+            Me.columnWidthMax = MyBase.Columns("WidthMax")
+            Me.columnUnitID = MyBase.Columns("UnitID")
+            Me.columnWeightMin = MyBase.Columns("WeightMin")
+            Me.columnWeightMax = MyBase.Columns("WeightMax")
+            Me.columnDNYardage = MyBase.Columns("DNYardage")
+            Me.columnWeightYard = MyBase.Columns("WeightYard")
+            Me.columnBeforeWash = MyBase.Columns("BeforeWash")
+            Me.columnAfterWash = MyBase.Columns("AfterWash")
+            Me.columnNetWeight = MyBase.Columns("NetWeight")
+            Me.columnSrinkageL = MyBase.Columns("SrinkageL")
+            Me.columnSrinkageW = MyBase.Columns("SrinkageW")
+            Me.columnGSM = MyBase.Columns("GSM")
+            Me.columnPriceGreige = MyBase.Columns("PriceGreige")
+            Me.columnPurchSize = MyBase.Columns("PurchSize")
+            Me.columnStorageSize = MyBase.Columns("StorageSize")
             Me.columnPPSample = MyBase.Columns("PPSample")
             Me.columnQtyCuttable = MyBase.Columns("QtyCuttable")
             Me.columnQtyWeight = MyBase.Columns("QtyWeight")
-            Me.columnQty = MyBase.Columns("Qty")
-            Me.columnUnitID = MyBase.Columns("UnitID")
-            Me.columnUnitPrice = MyBase.Columns("UnitPrice")
-            Me.columnCurrencyID = MyBase.Columns("CurrencyID")
             Me.columnPINo = MyBase.Columns("PINo")
             Me.columnPIDate = MyBase.Columns("PIDate")
             Me.columnFabricName = MyBase.Columns("FabricName")
-            Me.columnColorCode = MyBase.Columns("ColorCode")
-            Me.columnColorName = MyBase.Columns("ColorName")
+            Me.columnSpecification = MyBase.Columns("Specification")
+            Me.columnStyleName = MyBase.Columns("StyleName")
+            Me.columnRawMaterialName = MyBase.Columns("RawMaterialName")
             Me.columnUnitName = MyBase.Columns("UnitName")
-            Me.columnCurrencyCode = MyBase.Columns("CurrencyCode")
-            Me.columnCurrency = MyBase.Columns("Currency")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnPIHeaderID = New Global.System.Data.DataColumn("PIHeaderID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnPIHeaderID = New Global.System.Data.DataColumn("PIHeaderID", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPIHeaderID)
-            Me.columnPIDetailID = New Global.System.Data.DataColumn("PIDetailID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnPIDetailID = New Global.System.Data.DataColumn("PIDetailID", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPIDetailID)
-            Me.columnFabricID = New Global.System.Data.DataColumn("FabricID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnFabricID = New Global.System.Data.DataColumn("FabricID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFabricID)
-            Me.columnDateDetail = New Global.System.Data.DataColumn("DateDetail", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnDateDetail)
-            Me.columnColorID = New Global.System.Data.DataColumn("ColorID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnColorID)
+            Me.columnStyleID = New Global.System.Data.DataColumn("StyleID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStyleID)
+            Me.columnRawMaterialID = New Global.System.Data.DataColumn("RawMaterialID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRawMaterialID)
+            Me.columnTypeGreige = New Global.System.Data.DataColumn("TypeGreige", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTypeGreige)
+            Me.columnWidthMin = New Global.System.Data.DataColumn("WidthMin", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWidthMin)
+            Me.columnWidthMax = New Global.System.Data.DataColumn("WidthMax", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWidthMax)
+            Me.columnUnitID = New Global.System.Data.DataColumn("UnitID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUnitID)
+            Me.columnWeightMin = New Global.System.Data.DataColumn("WeightMin", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWeightMin)
+            Me.columnWeightMax = New Global.System.Data.DataColumn("WeightMax", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWeightMax)
+            Me.columnDNYardage = New Global.System.Data.DataColumn("DNYardage", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDNYardage)
+            Me.columnWeightYard = New Global.System.Data.DataColumn("WeightYard", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnWeightYard)
+            Me.columnBeforeWash = New Global.System.Data.DataColumn("BeforeWash", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBeforeWash)
+            Me.columnAfterWash = New Global.System.Data.DataColumn("AfterWash", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAfterWash)
+            Me.columnNetWeight = New Global.System.Data.DataColumn("NetWeight", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNetWeight)
+            Me.columnSrinkageL = New Global.System.Data.DataColumn("SrinkageL", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSrinkageL)
+            Me.columnSrinkageW = New Global.System.Data.DataColumn("SrinkageW", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSrinkageW)
+            Me.columnGSM = New Global.System.Data.DataColumn("GSM", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnGSM)
+            Me.columnPriceGreige = New Global.System.Data.DataColumn("PriceGreige", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPriceGreige)
+            Me.columnPurchSize = New Global.System.Data.DataColumn("PurchSize", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPurchSize)
+            Me.columnStorageSize = New Global.System.Data.DataColumn("StorageSize", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStorageSize)
             Me.columnPPSample = New Global.System.Data.DataColumn("PPSample", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPPSample)
-            Me.columnQtyCuttable = New Global.System.Data.DataColumn("QtyCuttable", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnQtyCuttable = New Global.System.Data.DataColumn("QtyCuttable", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnQtyCuttable)
-            Me.columnQtyWeight = New Global.System.Data.DataColumn("QtyWeight", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnQtyWeight = New Global.System.Data.DataColumn("QtyWeight", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnQtyWeight)
-            Me.columnQty = New Global.System.Data.DataColumn("Qty", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnQty)
-            Me.columnUnitID = New Global.System.Data.DataColumn("UnitID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnUnitID)
-            Me.columnUnitPrice = New Global.System.Data.DataColumn("UnitPrice", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnUnitPrice)
-            Me.columnCurrencyID = New Global.System.Data.DataColumn("CurrencyID", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCurrencyID)
             Me.columnPINo = New Global.System.Data.DataColumn("PINo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPINo)
-            Me.columnPIDate = New Global.System.Data.DataColumn("PIDate", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnPIDate = New Global.System.Data.DataColumn("PIDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPIDate)
             Me.columnFabricName = New Global.System.Data.DataColumn("FabricName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFabricName)
-            Me.columnColorCode = New Global.System.Data.DataColumn("ColorCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnColorCode)
-            Me.columnColorName = New Global.System.Data.DataColumn("ColorName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnColorName)
+            Me.columnSpecification = New Global.System.Data.DataColumn("Specification", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSpecification)
+            Me.columnStyleName = New Global.System.Data.DataColumn("StyleName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnStyleName)
+            Me.columnRawMaterialName = New Global.System.Data.DataColumn("RawMaterialName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRawMaterialName)
             Me.columnUnitName = New Global.System.Data.DataColumn("UnitName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUnitName)
-            Me.columnCurrencyCode = New Global.System.Data.DataColumn("CurrencyCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCurrencyCode)
-            Me.columnCurrency = New Global.System.Data.DataColumn("Currency", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCurrency)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1461,6 +1783,1511 @@ Partial Public Class OceanDS
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class PIColorDTDataTable
+        Inherits Global.System.Data.TypedTableBase(Of PIColorDTRow)
+        
+        Private columnPIHeaderID As Global.System.Data.DataColumn
+        
+        Private columnPIColorDetailID As Global.System.Data.DataColumn
+        
+        Private columnColorID As Global.System.Data.DataColumn
+        
+        Private columnColorType As Global.System.Data.DataColumn
+        
+        Private columnColorLabNumber As Global.System.Data.DataColumn
+        
+        Private columnQtyOrder As Global.System.Data.DataColumn
+        
+        Private columnPurchSizeID As Global.System.Data.DataColumn
+        
+        Private columnPrice As Global.System.Data.DataColumn
+        
+        Private columnQtySample As Global.System.Data.DataColumn
+        
+        Private columnDelDate As Global.System.Data.DataColumn
+        
+        Private columnNote As Global.System.Data.DataColumn
+        
+        Private columnPIDate As Global.System.Data.DataColumn
+        
+        Private columnPINo As Global.System.Data.DataColumn
+        
+        Private columnColorCode As Global.System.Data.DataColumn
+        
+        Private columnColorName As Global.System.Data.DataColumn
+        
+        Private columnPurchSizeName As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "PIColorDT"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PIHeaderIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPIHeaderID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PIColorDetailIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPIColorDetailID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ColorIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnColorID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ColorTypeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnColorType
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ColorLabNumberColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnColorLabNumber
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property QtyOrderColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnQtyOrder
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PurchSizeIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPurchSizeID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PriceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPrice
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property QtySampleColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnQtySample
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property DelDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDelDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property NoteColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNote
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PIDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPIDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PINoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPINo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ColorCodeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnColorCode
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ColorNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnColorName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PurchSizeNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPurchSizeName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As PIColorDTRow
+            Get
+                Return CType(Me.Rows(index),PIColorDTRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIColorDTRowChanging As PIColorDTRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIColorDTRowChanged As PIColorDTRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIColorDTRowDeleting As PIColorDTRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIColorDTRowDeleted As PIColorDTRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddPIColorDTRow(ByVal row As PIColorDTRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddPIColorDTRow( _
+                    ByVal PIHeaderID As Long,  _
+                    ByVal PIColorDetailID As Long,  _
+                    ByVal ColorID As Integer,  _
+                    ByVal ColorType As String,  _
+                    ByVal ColorLabNumber As String,  _
+                    ByVal QtyOrder As Double,  _
+                    ByVal PurchSizeID As Integer,  _
+                    ByVal Price As Double,  _
+                    ByVal QtySample As Double,  _
+                    ByVal DelDate As Date,  _
+                    ByVal Note As String,  _
+                    ByVal PIDate As Date,  _
+                    ByVal PINo As String,  _
+                    ByVal ColorCode As String,  _
+                    ByVal ColorName As String,  _
+                    ByVal PurchSizeName As String) As PIColorDTRow
+            Dim rowPIColorDTRow As PIColorDTRow = CType(Me.NewRow,PIColorDTRow)
+            Dim columnValuesArray() As Object = New Object() {PIHeaderID, PIColorDetailID, ColorID, ColorType, ColorLabNumber, QtyOrder, PurchSizeID, Price, QtySample, DelDate, Note, PIDate, PINo, ColorCode, ColorName, PurchSizeName}
+            rowPIColorDTRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowPIColorDTRow)
+            Return rowPIColorDTRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As PIColorDTDataTable = CType(MyBase.Clone,PIColorDTDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New PIColorDTDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnPIHeaderID = MyBase.Columns("PIHeaderID")
+            Me.columnPIColorDetailID = MyBase.Columns("PIColorDetailID")
+            Me.columnColorID = MyBase.Columns("ColorID")
+            Me.columnColorType = MyBase.Columns("ColorType")
+            Me.columnColorLabNumber = MyBase.Columns("ColorLabNumber")
+            Me.columnQtyOrder = MyBase.Columns("QtyOrder")
+            Me.columnPurchSizeID = MyBase.Columns("PurchSizeID")
+            Me.columnPrice = MyBase.Columns("Price")
+            Me.columnQtySample = MyBase.Columns("QtySample")
+            Me.columnDelDate = MyBase.Columns("DelDate")
+            Me.columnNote = MyBase.Columns("Note")
+            Me.columnPIDate = MyBase.Columns("PIDate")
+            Me.columnPINo = MyBase.Columns("PINo")
+            Me.columnColorCode = MyBase.Columns("ColorCode")
+            Me.columnColorName = MyBase.Columns("ColorName")
+            Me.columnPurchSizeName = MyBase.Columns("PurchSizeName")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnPIHeaderID = New Global.System.Data.DataColumn("PIHeaderID", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPIHeaderID)
+            Me.columnPIColorDetailID = New Global.System.Data.DataColumn("PIColorDetailID", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPIColorDetailID)
+            Me.columnColorID = New Global.System.Data.DataColumn("ColorID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnColorID)
+            Me.columnColorType = New Global.System.Data.DataColumn("ColorType", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnColorType)
+            Me.columnColorLabNumber = New Global.System.Data.DataColumn("ColorLabNumber", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnColorLabNumber)
+            Me.columnQtyOrder = New Global.System.Data.DataColumn("QtyOrder", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQtyOrder)
+            Me.columnPurchSizeID = New Global.System.Data.DataColumn("PurchSizeID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPurchSizeID)
+            Me.columnPrice = New Global.System.Data.DataColumn("Price", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPrice)
+            Me.columnQtySample = New Global.System.Data.DataColumn("QtySample", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQtySample)
+            Me.columnDelDate = New Global.System.Data.DataColumn("DelDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDelDate)
+            Me.columnNote = New Global.System.Data.DataColumn("Note", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNote)
+            Me.columnPIDate = New Global.System.Data.DataColumn("PIDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPIDate)
+            Me.columnPINo = New Global.System.Data.DataColumn("PINo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPINo)
+            Me.columnColorCode = New Global.System.Data.DataColumn("ColorCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnColorCode)
+            Me.columnColorName = New Global.System.Data.DataColumn("ColorName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnColorName)
+            Me.columnPurchSizeName = New Global.System.Data.DataColumn("PurchSizeName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPurchSizeName)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewPIColorDTRow() As PIColorDTRow
+            Return CType(Me.NewRow,PIColorDTRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New PIColorDTRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(PIColorDTRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.PIColorDTRowChangedEvent) Is Nothing) Then
+                RaiseEvent PIColorDTRowChanged(Me, New PIColorDTRowChangeEvent(CType(e.Row,PIColorDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.PIColorDTRowChangingEvent) Is Nothing) Then
+                RaiseEvent PIColorDTRowChanging(Me, New PIColorDTRowChangeEvent(CType(e.Row,PIColorDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.PIColorDTRowDeletedEvent) Is Nothing) Then
+                RaiseEvent PIColorDTRowDeleted(Me, New PIColorDTRowChangeEvent(CType(e.Row,PIColorDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.PIColorDTRowDeletingEvent) Is Nothing) Then
+                RaiseEvent PIColorDTRowDeleting(Me, New PIColorDTRowChangeEvent(CType(e.Row,PIColorDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemovePIColorDTRow(ByVal row As PIColorDTRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As OceanDS = New OceanDS()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "PIColorDTDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class PIYarnDTDataTable
+        Inherits Global.System.Data.TypedTableBase(Of PIYarnDTRow)
+        
+        Private columnPIHeaderID As Global.System.Data.DataColumn
+        
+        Private columnPIYarnDetailID As Global.System.Data.DataColumn
+        
+        Private columnYarnID As Global.System.Data.DataColumn
+        
+        Private columnPriceYarn As Global.System.Data.DataColumn
+        
+        Private columnPercentageUsage As Global.System.Data.DataColumn
+        
+        Private columnQtyUsage As Global.System.Data.DataColumn
+        
+        Private columnColorID As Global.System.Data.DataColumn
+        
+        Private columnBrandYarnID As Global.System.Data.DataColumn
+        
+        Private columnLoss As Global.System.Data.DataColumn
+        
+        Private columnYarnName As Global.System.Data.DataColumn
+        
+        Private columnVendorName As Global.System.Data.DataColumn
+        
+        Private columnColorCode As Global.System.Data.DataColumn
+        
+        Private columnColorName As Global.System.Data.DataColumn
+        
+        Private columnBrandYarnName As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "PIYarnDT"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PIHeaderIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPIHeaderID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PIYarnDetailIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPIYarnDetailID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property YarnIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnYarnID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PriceYarnColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPriceYarn
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PercentageUsageColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPercentageUsage
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property QtyUsageColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnQtyUsage
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ColorIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnColorID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property BrandYarnIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBrandYarnID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property LossColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnLoss
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property YarnNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnYarnName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property VendorNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnVendorName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ColorCodeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnColorCode
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ColorNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnColorName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property BrandYarnNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBrandYarnName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As PIYarnDTRow
+            Get
+                Return CType(Me.Rows(index),PIYarnDTRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIYarnDTRowChanging As PIYarnDTRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIYarnDTRowChanged As PIYarnDTRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIYarnDTRowDeleting As PIYarnDTRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIYarnDTRowDeleted As PIYarnDTRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddPIYarnDTRow(ByVal row As PIYarnDTRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddPIYarnDTRow(ByVal PIHeaderID As Long, ByVal PIYarnDetailID As Long, ByVal YarnID As Integer, ByVal PriceYarn As Double, ByVal PercentageUsage As Double, ByVal QtyUsage As Double, ByVal ColorID As Integer, ByVal BrandYarnID As Integer, ByVal Loss As Double, ByVal YarnName As String, ByVal VendorName As String, ByVal ColorCode As String, ByVal ColorName As String, ByVal BrandYarnName As String) As PIYarnDTRow
+            Dim rowPIYarnDTRow As PIYarnDTRow = CType(Me.NewRow,PIYarnDTRow)
+            Dim columnValuesArray() As Object = New Object() {PIHeaderID, PIYarnDetailID, YarnID, PriceYarn, PercentageUsage, QtyUsage, ColorID, BrandYarnID, Loss, YarnName, VendorName, ColorCode, ColorName, BrandYarnName}
+            rowPIYarnDTRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowPIYarnDTRow)
+            Return rowPIYarnDTRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As PIYarnDTDataTable = CType(MyBase.Clone,PIYarnDTDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New PIYarnDTDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnPIHeaderID = MyBase.Columns("PIHeaderID")
+            Me.columnPIYarnDetailID = MyBase.Columns("PIYarnDetailID")
+            Me.columnYarnID = MyBase.Columns("YarnID")
+            Me.columnPriceYarn = MyBase.Columns("PriceYarn")
+            Me.columnPercentageUsage = MyBase.Columns("PercentageUsage")
+            Me.columnQtyUsage = MyBase.Columns("QtyUsage")
+            Me.columnColorID = MyBase.Columns("ColorID")
+            Me.columnBrandYarnID = MyBase.Columns("BrandYarnID")
+            Me.columnLoss = MyBase.Columns("Loss")
+            Me.columnYarnName = MyBase.Columns("YarnName")
+            Me.columnVendorName = MyBase.Columns("VendorName")
+            Me.columnColorCode = MyBase.Columns("ColorCode")
+            Me.columnColorName = MyBase.Columns("ColorName")
+            Me.columnBrandYarnName = MyBase.Columns("BrandYarnName")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnPIHeaderID = New Global.System.Data.DataColumn("PIHeaderID", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPIHeaderID)
+            Me.columnPIYarnDetailID = New Global.System.Data.DataColumn("PIYarnDetailID", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPIYarnDetailID)
+            Me.columnYarnID = New Global.System.Data.DataColumn("YarnID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnYarnID)
+            Me.columnPriceYarn = New Global.System.Data.DataColumn("PriceYarn", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPriceYarn)
+            Me.columnPercentageUsage = New Global.System.Data.DataColumn("PercentageUsage", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPercentageUsage)
+            Me.columnQtyUsage = New Global.System.Data.DataColumn("QtyUsage", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnQtyUsage)
+            Me.columnColorID = New Global.System.Data.DataColumn("ColorID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnColorID)
+            Me.columnBrandYarnID = New Global.System.Data.DataColumn("BrandYarnID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBrandYarnID)
+            Me.columnLoss = New Global.System.Data.DataColumn("Loss", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnLoss)
+            Me.columnYarnName = New Global.System.Data.DataColumn("YarnName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnYarnName)
+            Me.columnVendorName = New Global.System.Data.DataColumn("VendorName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVendorName)
+            Me.columnColorCode = New Global.System.Data.DataColumn("ColorCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnColorCode)
+            Me.columnColorName = New Global.System.Data.DataColumn("ColorName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnColorName)
+            Me.columnBrandYarnName = New Global.System.Data.DataColumn("BrandYarnName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBrandYarnName)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewPIYarnDTRow() As PIYarnDTRow
+            Return CType(Me.NewRow,PIYarnDTRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New PIYarnDTRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(PIYarnDTRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.PIYarnDTRowChangedEvent) Is Nothing) Then
+                RaiseEvent PIYarnDTRowChanged(Me, New PIYarnDTRowChangeEvent(CType(e.Row,PIYarnDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.PIYarnDTRowChangingEvent) Is Nothing) Then
+                RaiseEvent PIYarnDTRowChanging(Me, New PIYarnDTRowChangeEvent(CType(e.Row,PIYarnDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.PIYarnDTRowDeletedEvent) Is Nothing) Then
+                RaiseEvent PIYarnDTRowDeleted(Me, New PIYarnDTRowChangeEvent(CType(e.Row,PIYarnDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.PIYarnDTRowDeletingEvent) Is Nothing) Then
+                RaiseEvent PIYarnDTRowDeleting(Me, New PIYarnDTRowChangeEvent(CType(e.Row,PIYarnDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemovePIYarnDTRow(ByVal row As PIYarnDTRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As OceanDS = New OceanDS()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "PIYarnDTDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class PIBankDTDataTable
+        Inherits Global.System.Data.TypedTableBase(Of PIBankDTRow)
+        
+        Private columnPIHeaderID As Global.System.Data.DataColumn
+        
+        Private columnPIBankDetailID As Global.System.Data.DataColumn
+        
+        Private columnBankAccountID As Global.System.Data.DataColumn
+        
+        Private columnBankAccountCode As Global.System.Data.DataColumn
+        
+        Private columnAccountName As Global.System.Data.DataColumn
+        
+        Private columnAccountNumber As Global.System.Data.DataColumn
+        
+        Private columnBankName As Global.System.Data.DataColumn
+        
+        Private columnSwiftCode As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "PIBankDT"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PIHeaderIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPIHeaderID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PIBankDetailIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPIBankDetailID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property BankAccountIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBankAccountID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property BankAccountCodeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBankAccountCode
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AccountNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAccountName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property AccountNumberColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnAccountNumber
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property BankNameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBankName
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SwiftCodeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSwiftCode
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As PIBankDTRow
+            Get
+                Return CType(Me.Rows(index),PIBankDTRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIBankDTRowChanging As PIBankDTRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIBankDTRowChanged As PIBankDTRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIBankDTRowDeleting As PIBankDTRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIBankDTRowDeleted As PIBankDTRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddPIBankDTRow(ByVal row As PIBankDTRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddPIBankDTRow(ByVal PIHeaderID As Long, ByVal PIBankDetailID As Long, ByVal BankAccountID As Integer, ByVal BankAccountCode As String, ByVal AccountName As String, ByVal AccountNumber As String, ByVal BankName As String, ByVal SwiftCode As String) As PIBankDTRow
+            Dim rowPIBankDTRow As PIBankDTRow = CType(Me.NewRow,PIBankDTRow)
+            Dim columnValuesArray() As Object = New Object() {PIHeaderID, PIBankDetailID, BankAccountID, BankAccountCode, AccountName, AccountNumber, BankName, SwiftCode}
+            rowPIBankDTRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowPIBankDTRow)
+            Return rowPIBankDTRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As PIBankDTDataTable = CType(MyBase.Clone,PIBankDTDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New PIBankDTDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnPIHeaderID = MyBase.Columns("PIHeaderID")
+            Me.columnPIBankDetailID = MyBase.Columns("PIBankDetailID")
+            Me.columnBankAccountID = MyBase.Columns("BankAccountID")
+            Me.columnBankAccountCode = MyBase.Columns("BankAccountCode")
+            Me.columnAccountName = MyBase.Columns("AccountName")
+            Me.columnAccountNumber = MyBase.Columns("AccountNumber")
+            Me.columnBankName = MyBase.Columns("BankName")
+            Me.columnSwiftCode = MyBase.Columns("SwiftCode")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnPIHeaderID = New Global.System.Data.DataColumn("PIHeaderID", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPIHeaderID)
+            Me.columnPIBankDetailID = New Global.System.Data.DataColumn("PIBankDetailID", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPIBankDetailID)
+            Me.columnBankAccountID = New Global.System.Data.DataColumn("BankAccountID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBankAccountID)
+            Me.columnBankAccountCode = New Global.System.Data.DataColumn("BankAccountCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBankAccountCode)
+            Me.columnAccountName = New Global.System.Data.DataColumn("AccountName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAccountName)
+            Me.columnAccountNumber = New Global.System.Data.DataColumn("AccountNumber", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnAccountNumber)
+            Me.columnBankName = New Global.System.Data.DataColumn("BankName", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBankName)
+            Me.columnSwiftCode = New Global.System.Data.DataColumn("SwiftCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSwiftCode)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewPIBankDTRow() As PIBankDTRow
+            Return CType(Me.NewRow,PIBankDTRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New PIBankDTRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(PIBankDTRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.PIBankDTRowChangedEvent) Is Nothing) Then
+                RaiseEvent PIBankDTRowChanged(Me, New PIBankDTRowChangeEvent(CType(e.Row,PIBankDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.PIBankDTRowChangingEvent) Is Nothing) Then
+                RaiseEvent PIBankDTRowChanging(Me, New PIBankDTRowChangeEvent(CType(e.Row,PIBankDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.PIBankDTRowDeletedEvent) Is Nothing) Then
+                RaiseEvent PIBankDTRowDeleted(Me, New PIBankDTRowChangeEvent(CType(e.Row,PIBankDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.PIBankDTRowDeletingEvent) Is Nothing) Then
+                RaiseEvent PIBankDTRowDeleting(Me, New PIBankDTRowChangeEvent(CType(e.Row,PIBankDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemovePIBankDTRow(ByVal row As PIBankDTRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As OceanDS = New OceanDS()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "PIBankDTDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class PIRemarksDTDataTable
+        Inherits Global.System.Data.TypedTableBase(Of PIRemarksDTRow)
+        
+        Private columnPIHeaderID As Global.System.Data.DataColumn
+        
+        Private columnPIRemarksID As Global.System.Data.DataColumn
+        
+        Private columnRemarks As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "PIRemarksDT"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PIHeaderIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPIHeaderID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PIRemarksIDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPIRemarksID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property RemarksColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRemarks
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As PIRemarksDTRow
+            Get
+                Return CType(Me.Rows(index),PIRemarksDTRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIRemarksDTRowChanging As PIRemarksDTRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIRemarksDTRowChanged As PIRemarksDTRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIRemarksDTRowDeleting As PIRemarksDTRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event PIRemarksDTRowDeleted As PIRemarksDTRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddPIRemarksDTRow(ByVal row As PIRemarksDTRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddPIRemarksDTRow(ByVal PIHeaderID As Long, ByVal PIRemarksID As Long, ByVal Remarks As String) As PIRemarksDTRow
+            Dim rowPIRemarksDTRow As PIRemarksDTRow = CType(Me.NewRow,PIRemarksDTRow)
+            Dim columnValuesArray() As Object = New Object() {PIHeaderID, PIRemarksID, Remarks}
+            rowPIRemarksDTRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowPIRemarksDTRow)
+            Return rowPIRemarksDTRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As PIRemarksDTDataTable = CType(MyBase.Clone,PIRemarksDTDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New PIRemarksDTDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnPIHeaderID = MyBase.Columns("PIHeaderID")
+            Me.columnPIRemarksID = MyBase.Columns("PIRemarksID")
+            Me.columnRemarks = MyBase.Columns("Remarks")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnPIHeaderID = New Global.System.Data.DataColumn("PIHeaderID", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPIHeaderID)
+            Me.columnPIRemarksID = New Global.System.Data.DataColumn("PIRemarksID", GetType(Long), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPIRemarksID)
+            Me.columnRemarks = New Global.System.Data.DataColumn("Remarks", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRemarks)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewPIRemarksDTRow() As PIRemarksDTRow
+            Return CType(Me.NewRow,PIRemarksDTRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New PIRemarksDTRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(PIRemarksDTRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.PIRemarksDTRowChangedEvent) Is Nothing) Then
+                RaiseEvent PIRemarksDTRowChanged(Me, New PIRemarksDTRowChangeEvent(CType(e.Row,PIRemarksDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.PIRemarksDTRowChangingEvent) Is Nothing) Then
+                RaiseEvent PIRemarksDTRowChanging(Me, New PIRemarksDTRowChangeEvent(CType(e.Row,PIRemarksDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.PIRemarksDTRowDeletedEvent) Is Nothing) Then
+                RaiseEvent PIRemarksDTRowDeleted(Me, New PIRemarksDTRowChangeEvent(CType(e.Row,PIRemarksDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.PIRemarksDTRowDeletingEvent) Is Nothing) Then
+                RaiseEvent PIRemarksDTRowDeleting(Me, New PIRemarksDTRowChangeEvent(CType(e.Row,PIRemarksDTRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemovePIRemarksDTRow(ByVal row As PIRemarksDTRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As OceanDS = New OceanDS()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "PIRemarksDTDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class PIHeaderDTRow
@@ -1522,16 +3349,16 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property VendorID() As Integer
+        Public Property CustomerID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablePIHeaderDT.VendorIDColumn),Integer)
+                    Return CType(Me(Me.tablePIHeaderDT.CustomerIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'VendorID' in table 'PIHeaderDT' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'CustomerID' in table 'PIHeaderDT' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePIHeaderDT.VendorIDColumn) = value
+                Me(Me.tablePIHeaderDT.CustomerIDColumn) = value
             End Set
         End Property
         
@@ -1582,16 +3409,16 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Style() As String
+        Public Property StyleID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablePIHeaderDT.StyleColumn),String)
+                    Return CType(Me(Me.tablePIHeaderDT.StyleIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Style' in table 'PIHeaderDT' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'StyleID' in table 'PIHeaderDT' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePIHeaderDT.StyleColumn) = value
+                Me(Me.tablePIHeaderDT.StyleIDColumn) = value
             End Set
         End Property
         
@@ -1702,10 +3529,10 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Status() As String
+        Public Property Status() As Short
             Get
                 Try 
-                    Return CType(Me(Me.tablePIHeaderDT.StatusColumn),String)
+                    Return CType(Me(Me.tablePIHeaderDT.StatusColumn),Short)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'Status' in table 'PIHeaderDT' is DBNull.", e)
                 End Try
@@ -1717,31 +3544,31 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property VendorCode() As String
+        Public Property CustomerCode() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablePIHeaderDT.VendorCodeColumn),String)
+                    Return CType(Me(Me.tablePIHeaderDT.CustomerCodeColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'VendorCode' in table 'PIHeaderDT' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'CustomerCode' in table 'PIHeaderDT' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePIHeaderDT.VendorCodeColumn) = value
+                Me(Me.tablePIHeaderDT.CustomerCodeColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property VendorName() As String
+        Public Property CustomerName() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablePIHeaderDT.VendorNameColumn),String)
+                    Return CType(Me(Me.tablePIHeaderDT.CustomerNameColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'VendorName' in table 'PIHeaderDT' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'CustomerName' in table 'PIHeaderDT' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePIHeaderDT.VendorNameColumn) = value
+                Me(Me.tablePIHeaderDT.CustomerNameColumn) = value
             End Set
         End Property
         
@@ -1897,6 +3724,21 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property StyleName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIHeaderDT.StyleNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'StyleName' in table 'PIHeaderDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIHeaderDT.StyleNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsPIHeaderIDNull() As Boolean
             Return Me.IsNull(Me.tablePIHeaderDT.PIHeaderIDColumn)
         End Function
@@ -1933,14 +3775,14 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsVendorIDNull() As Boolean
-            Return Me.IsNull(Me.tablePIHeaderDT.VendorIDColumn)
+        Public Function IsCustomerIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIHeaderDT.CustomerIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetVendorIDNull()
-            Me(Me.tablePIHeaderDT.VendorIDColumn) = Global.System.Convert.DBNull
+        Public Sub SetCustomerIDNull()
+            Me(Me.tablePIHeaderDT.CustomerIDColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1981,14 +3823,14 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsStyleNull() As Boolean
-            Return Me.IsNull(Me.tablePIHeaderDT.StyleColumn)
+        Public Function IsStyleIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIHeaderDT.StyleIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetStyleNull()
-            Me(Me.tablePIHeaderDT.StyleColumn) = Global.System.Convert.DBNull
+        Public Sub SetStyleIDNull()
+            Me(Me.tablePIHeaderDT.StyleIDColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2089,26 +3931,26 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsVendorCodeNull() As Boolean
-            Return Me.IsNull(Me.tablePIHeaderDT.VendorCodeColumn)
+        Public Function IsCustomerCodeNull() As Boolean
+            Return Me.IsNull(Me.tablePIHeaderDT.CustomerCodeColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetVendorCodeNull()
-            Me(Me.tablePIHeaderDT.VendorCodeColumn) = Global.System.Convert.DBNull
+        Public Sub SetCustomerCodeNull()
+            Me(Me.tablePIHeaderDT.CustomerCodeColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsVendorNameNull() As Boolean
-            Return Me.IsNull(Me.tablePIHeaderDT.VendorNameColumn)
+        Public Function IsCustomerNameNull() As Boolean
+            Return Me.IsNull(Me.tablePIHeaderDT.CustomerNameColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetVendorNameNull()
-            Me(Me.tablePIHeaderDT.VendorNameColumn) = Global.System.Convert.DBNull
+        Public Sub SetCustomerNameNull()
+            Me(Me.tablePIHeaderDT.CustomerNameColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2230,6 +4072,18 @@ Partial Public Class OceanDS
         Public Sub SetDestinationNameNull()
             Me(Me.tablePIHeaderDT.DestinationNameColumn) = Global.System.Convert.DBNull
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsStyleNameNull() As Boolean
+            Return Me.IsNull(Me.tablePIHeaderDT.StyleNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetStyleNameNull()
+            Me(Me.tablePIHeaderDT.StyleNameColumn) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -2249,10 +4103,10 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PIHeaderID() As String
+        Public Property PIHeaderID() As Long
             Get
                 Try 
-                    Return CType(Me(Me.tablePIDetailDT.PIHeaderIDColumn),String)
+                    Return CType(Me(Me.tablePIDetailDT.PIHeaderIDColumn),Long)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'PIHeaderID' in table 'PIDetailDT' is DBNull.", e)
                 End Try
@@ -2264,10 +4118,10 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PIDetailID() As String
+        Public Property PIDetailID() As Long
             Get
                 Try 
-                    Return CType(Me(Me.tablePIDetailDT.PIDetailIDColumn),String)
+                    Return CType(Me(Me.tablePIDetailDT.PIDetailIDColumn),Long)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'PIDetailID' in table 'PIDetailDT' is DBNull.", e)
                 End Try
@@ -2279,10 +4133,10 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property FabricID() As String
+        Public Property FabricID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablePIDetailDT.FabricIDColumn),String)
+                    Return CType(Me(Me.tablePIDetailDT.FabricIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'FabricID' in table 'PIDetailDT' is DBNull.", e)
                 End Try
@@ -2294,31 +4148,286 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property DateDetail() As String
+        Public Property StyleID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablePIDetailDT.DateDetailColumn),String)
+                    Return CType(Me(Me.tablePIDetailDT.StyleIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DateDetail' in table 'PIDetailDT' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'StyleID' in table 'PIDetailDT' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePIDetailDT.DateDetailColumn) = value
+                Me(Me.tablePIDetailDT.StyleIDColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ColorID() As String
+        Public Property RawMaterialID() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablePIDetailDT.ColorIDColumn),String)
+                    Return CType(Me(Me.tablePIDetailDT.RawMaterialIDColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ColorID' in table 'PIDetailDT' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'RawMaterialID' in table 'PIDetailDT' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePIDetailDT.ColorIDColumn) = value
+                Me(Me.tablePIDetailDT.RawMaterialIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property TypeGreige() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.TypeGreigeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TypeGreige' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.TypeGreigeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property WidthMin() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.WidthMinColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WidthMin' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.WidthMinColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property WidthMax() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.WidthMaxColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WidthMax' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.WidthMaxColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property UnitID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.UnitIDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'UnitID' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.UnitIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property WeightMin() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.WeightMinColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WeightMin' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.WeightMinColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property WeightMax() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.WeightMaxColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WeightMax' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.WeightMaxColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property DNYardage() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.DNYardageColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DNYardage' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.DNYardageColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property WeightYard() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.WeightYardColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'WeightYard' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.WeightYardColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property BeforeWash() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.BeforeWashColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BeforeWash' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.BeforeWashColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property AfterWash() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.AfterWashColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AfterWash' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.AfterWashColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property NetWeight() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.NetWeightColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'NetWeight' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.NetWeightColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property SrinkageL() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.SrinkageLColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SrinkageL' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.SrinkageLColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property SrinkageW() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.SrinkageWColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SrinkageW' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.SrinkageWColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property GSM() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.GSMColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'GSM' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.GSMColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PriceGreige() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.PriceGreigeColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PriceGreige' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.PriceGreigeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PurchSize() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.PurchSizeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PurchSize' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.PurchSizeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property StorageSize() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.StorageSizeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'StorageSize' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.StorageSizeColumn) = value
             End Set
         End Property
         
@@ -2339,10 +4448,10 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property QtyCuttable() As String
+        Public Property QtyCuttable() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tablePIDetailDT.QtyCuttableColumn),String)
+                    Return CType(Me(Me.tablePIDetailDT.QtyCuttableColumn),Double)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'QtyCuttable' in table 'PIDetailDT' is DBNull.", e)
                 End Try
@@ -2354,76 +4463,16 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property QtyWeight() As String
+        Public Property QtyWeight() As Double
             Get
                 Try 
-                    Return CType(Me(Me.tablePIDetailDT.QtyWeightColumn),String)
+                    Return CType(Me(Me.tablePIDetailDT.QtyWeightColumn),Double)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'QtyWeight' in table 'PIDetailDT' is DBNull.", e)
                 End Try
             End Get
             Set
                 Me(Me.tablePIDetailDT.QtyWeightColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Qty() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablePIDetailDT.QtyColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Qty' in table 'PIDetailDT' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablePIDetailDT.QtyColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property UnitID() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablePIDetailDT.UnitIDColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'UnitID' in table 'PIDetailDT' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablePIDetailDT.UnitIDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property UnitPrice() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablePIDetailDT.UnitPriceColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'UnitPrice' in table 'PIDetailDT' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablePIDetailDT.UnitPriceColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property CurrencyID() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablePIDetailDT.CurrencyIDColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'CurrencyID' in table 'PIDetailDT' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablePIDetailDT.CurrencyIDColumn) = value
             End Set
         End Property
         
@@ -2444,10 +4493,10 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PIDate() As String
+        Public Property PIDate() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tablePIDetailDT.PIDateColumn),String)
+                    Return CType(Me(Me.tablePIDetailDT.PIDateColumn),Date)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("The value for column 'PIDate' in table 'PIDetailDT' is DBNull.", e)
                 End Try
@@ -2474,31 +4523,46 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ColorCode() As String
+        Public Property Specification() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablePIDetailDT.ColorCodeColumn),String)
+                    Return CType(Me(Me.tablePIDetailDT.SpecificationColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ColorCode' in table 'PIDetailDT' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Specification' in table 'PIDetailDT' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePIDetailDT.ColorCodeColumn) = value
+                Me(Me.tablePIDetailDT.SpecificationColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ColorName() As String
+        Public Property StyleName() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablePIDetailDT.ColorNameColumn),String)
+                    Return CType(Me(Me.tablePIDetailDT.StyleNameColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ColorName' in table 'PIDetailDT' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'StyleName' in table 'PIDetailDT' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablePIDetailDT.ColorNameColumn) = value
+                Me(Me.tablePIDetailDT.StyleNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property RawMaterialName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIDetailDT.RawMaterialNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'RawMaterialName' in table 'PIDetailDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIDetailDT.RawMaterialNameColumn) = value
             End Set
         End Property
         
@@ -2514,36 +4578,6 @@ Partial Public Class OceanDS
             End Get
             Set
                 Me(Me.tablePIDetailDT.UnitNameColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property CurrencyCode() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablePIDetailDT.CurrencyCodeColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'CurrencyCode' in table 'PIDetailDT' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablePIDetailDT.CurrencyCodeColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property Currency() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablePIDetailDT.CurrencyColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Currency' in table 'PIDetailDT' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablePIDetailDT.CurrencyColumn) = value
             End Set
         End Property
         
@@ -2585,26 +4619,230 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsDateDetailNull() As Boolean
-            Return Me.IsNull(Me.tablePIDetailDT.DateDetailColumn)
+        Public Function IsStyleIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.StyleIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetDateDetailNull()
-            Me(Me.tablePIDetailDT.DateDetailColumn) = Global.System.Convert.DBNull
+        Public Sub SetStyleIDNull()
+            Me(Me.tablePIDetailDT.StyleIDColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsColorIDNull() As Boolean
-            Return Me.IsNull(Me.tablePIDetailDT.ColorIDColumn)
+        Public Function IsRawMaterialIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.RawMaterialIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetColorIDNull()
-            Me(Me.tablePIDetailDT.ColorIDColumn) = Global.System.Convert.DBNull
+        Public Sub SetRawMaterialIDNull()
+            Me(Me.tablePIDetailDT.RawMaterialIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsTypeGreigeNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.TypeGreigeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetTypeGreigeNull()
+            Me(Me.tablePIDetailDT.TypeGreigeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsWidthMinNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.WidthMinColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetWidthMinNull()
+            Me(Me.tablePIDetailDT.WidthMinColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsWidthMaxNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.WidthMaxColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetWidthMaxNull()
+            Me(Me.tablePIDetailDT.WidthMaxColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsUnitIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.UnitIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetUnitIDNull()
+            Me(Me.tablePIDetailDT.UnitIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsWeightMinNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.WeightMinColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetWeightMinNull()
+            Me(Me.tablePIDetailDT.WeightMinColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsWeightMaxNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.WeightMaxColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetWeightMaxNull()
+            Me(Me.tablePIDetailDT.WeightMaxColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsDNYardageNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.DNYardageColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetDNYardageNull()
+            Me(Me.tablePIDetailDT.DNYardageColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsWeightYardNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.WeightYardColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetWeightYardNull()
+            Me(Me.tablePIDetailDT.WeightYardColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsBeforeWashNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.BeforeWashColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetBeforeWashNull()
+            Me(Me.tablePIDetailDT.BeforeWashColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAfterWashNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.AfterWashColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAfterWashNull()
+            Me(Me.tablePIDetailDT.AfterWashColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsNetWeightNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.NetWeightColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetNetWeightNull()
+            Me(Me.tablePIDetailDT.NetWeightColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSrinkageLNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.SrinkageLColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSrinkageLNull()
+            Me(Me.tablePIDetailDT.SrinkageLColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSrinkageWNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.SrinkageWColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSrinkageWNull()
+            Me(Me.tablePIDetailDT.SrinkageWColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsGSMNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.GSMColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetGSMNull()
+            Me(Me.tablePIDetailDT.GSMColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPriceGreigeNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.PriceGreigeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPriceGreigeNull()
+            Me(Me.tablePIDetailDT.PriceGreigeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPurchSizeNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.PurchSizeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPurchSizeNull()
+            Me(Me.tablePIDetailDT.PurchSizeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsStorageSizeNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.StorageSizeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetStorageSizeNull()
+            Me(Me.tablePIDetailDT.StorageSizeColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2645,54 +4883,6 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsQtyNull() As Boolean
-            Return Me.IsNull(Me.tablePIDetailDT.QtyColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetQtyNull()
-            Me(Me.tablePIDetailDT.QtyColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsUnitIDNull() As Boolean
-            Return Me.IsNull(Me.tablePIDetailDT.UnitIDColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetUnitIDNull()
-            Me(Me.tablePIDetailDT.UnitIDColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsUnitPriceNull() As Boolean
-            Return Me.IsNull(Me.tablePIDetailDT.UnitPriceColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetUnitPriceNull()
-            Me(Me.tablePIDetailDT.UnitPriceColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsCurrencyIDNull() As Boolean
-            Return Me.IsNull(Me.tablePIDetailDT.CurrencyIDColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetCurrencyIDNull()
-            Me(Me.tablePIDetailDT.CurrencyIDColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsPINoNull() As Boolean
             Return Me.IsNull(Me.tablePIDetailDT.PINoColumn)
         End Function
@@ -2729,26 +4919,38 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsColorCodeNull() As Boolean
-            Return Me.IsNull(Me.tablePIDetailDT.ColorCodeColumn)
+        Public Function IsSpecificationNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.SpecificationColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetColorCodeNull()
-            Me(Me.tablePIDetailDT.ColorCodeColumn) = Global.System.Convert.DBNull
+        Public Sub SetSpecificationNull()
+            Me(Me.tablePIDetailDT.SpecificationColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsColorNameNull() As Boolean
-            Return Me.IsNull(Me.tablePIDetailDT.ColorNameColumn)
+        Public Function IsStyleNameNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.StyleNameColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetColorNameNull()
-            Me(Me.tablePIDetailDT.ColorNameColumn) = Global.System.Convert.DBNull
+        Public Sub SetStyleNameNull()
+            Me(Me.tablePIDetailDT.StyleNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsRawMaterialNameNull() As Boolean
+            Return Me.IsNull(Me.tablePIDetailDT.RawMaterialNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetRawMaterialNameNull()
+            Me(Me.tablePIDetailDT.RawMaterialNameColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2762,29 +4964,1176 @@ Partial Public Class OceanDS
         Public Sub SetUnitNameNull()
             Me(Me.tablePIDetailDT.UnitNameColumn) = Global.System.Convert.DBNull
         End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class PIColorDTRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tablePIColorDT As PIColorDTDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsCurrencyCodeNull() As Boolean
-            Return Me.IsNull(Me.tablePIDetailDT.CurrencyCodeColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetCurrencyCodeNull()
-            Me(Me.tablePIDetailDT.CurrencyCodeColumn) = Global.System.Convert.DBNull
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tablePIColorDT = CType(Me.Table,PIColorDTDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsCurrencyNull() As Boolean
-            Return Me.IsNull(Me.tablePIDetailDT.CurrencyColumn)
+        Public Property PIHeaderID() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.PIHeaderIDColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PIHeaderID' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.PIHeaderIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PIColorDetailID() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.PIColorDetailIDColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PIColorDetailID' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.PIColorDetailIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ColorID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.ColorIDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ColorID' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.ColorIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ColorType() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.ColorTypeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ColorType' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.ColorTypeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ColorLabNumber() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.ColorLabNumberColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ColorLabNumber' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.ColorLabNumberColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property QtyOrder() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.QtyOrderColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'QtyOrder' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.QtyOrderColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PurchSizeID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.PurchSizeIDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PurchSizeID' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.PurchSizeIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Price() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.PriceColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Price' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.PriceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property QtySample() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.QtySampleColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'QtySample' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.QtySampleColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property DelDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.DelDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DelDate' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.DelDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Note() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.NoteColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Note' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.NoteColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PIDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.PIDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PIDate' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.PIDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PINo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.PINoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PINo' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.PINoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ColorCode() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.ColorCodeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ColorCode' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.ColorCodeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ColorName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.ColorNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ColorName' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.ColorNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PurchSizeName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIColorDT.PurchSizeNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PurchSizeName' in table 'PIColorDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIColorDT.PurchSizeNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPIHeaderIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.PIHeaderIDColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetCurrencyNull()
-            Me(Me.tablePIDetailDT.CurrencyColumn) = Global.System.Convert.DBNull
+        Public Sub SetPIHeaderIDNull()
+            Me(Me.tablePIColorDT.PIHeaderIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPIColorDetailIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.PIColorDetailIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPIColorDetailIDNull()
+            Me(Me.tablePIColorDT.PIColorDetailIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsColorIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.ColorIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetColorIDNull()
+            Me(Me.tablePIColorDT.ColorIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsColorTypeNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.ColorTypeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetColorTypeNull()
+            Me(Me.tablePIColorDT.ColorTypeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsColorLabNumberNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.ColorLabNumberColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetColorLabNumberNull()
+            Me(Me.tablePIColorDT.ColorLabNumberColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsQtyOrderNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.QtyOrderColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetQtyOrderNull()
+            Me(Me.tablePIColorDT.QtyOrderColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPurchSizeIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.PurchSizeIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPurchSizeIDNull()
+            Me(Me.tablePIColorDT.PurchSizeIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPriceNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.PriceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPriceNull()
+            Me(Me.tablePIColorDT.PriceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsQtySampleNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.QtySampleColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetQtySampleNull()
+            Me(Me.tablePIColorDT.QtySampleColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsDelDateNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.DelDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetDelDateNull()
+            Me(Me.tablePIColorDT.DelDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsNoteNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.NoteColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetNoteNull()
+            Me(Me.tablePIColorDT.NoteColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPIDateNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.PIDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPIDateNull()
+            Me(Me.tablePIColorDT.PIDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPINoNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.PINoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPINoNull()
+            Me(Me.tablePIColorDT.PINoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsColorCodeNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.ColorCodeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetColorCodeNull()
+            Me(Me.tablePIColorDT.ColorCodeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsColorNameNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.ColorNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetColorNameNull()
+            Me(Me.tablePIColorDT.ColorNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPurchSizeNameNull() As Boolean
+            Return Me.IsNull(Me.tablePIColorDT.PurchSizeNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPurchSizeNameNull()
+            Me(Me.tablePIColorDT.PurchSizeNameColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class PIYarnDTRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tablePIYarnDT As PIYarnDTDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tablePIYarnDT = CType(Me.Table,PIYarnDTDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PIHeaderID() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.PIHeaderIDColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PIHeaderID' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.PIHeaderIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PIYarnDetailID() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.PIYarnDetailIDColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PIYarnDetailID' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.PIYarnDetailIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property YarnID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.YarnIDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'YarnID' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.YarnIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PriceYarn() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.PriceYarnColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PriceYarn' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.PriceYarnColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PercentageUsage() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.PercentageUsageColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PercentageUsage' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.PercentageUsageColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property QtyUsage() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.QtyUsageColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'QtyUsage' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.QtyUsageColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ColorID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.ColorIDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ColorID' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.ColorIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property BrandYarnID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.BrandYarnIDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BrandYarnID' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.BrandYarnIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Loss() As Double
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.LossColumn),Double)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Loss' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.LossColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property YarnName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.YarnNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'YarnName' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.YarnNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property VendorName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.VendorNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'VendorName' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.VendorNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ColorCode() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.ColorCodeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ColorCode' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.ColorCodeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ColorName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.ColorNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ColorName' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.ColorNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property BrandYarnName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIYarnDT.BrandYarnNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BrandYarnName' in table 'PIYarnDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIYarnDT.BrandYarnNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPIHeaderIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.PIHeaderIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPIHeaderIDNull()
+            Me(Me.tablePIYarnDT.PIHeaderIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPIYarnDetailIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.PIYarnDetailIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPIYarnDetailIDNull()
+            Me(Me.tablePIYarnDT.PIYarnDetailIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsYarnIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.YarnIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetYarnIDNull()
+            Me(Me.tablePIYarnDT.YarnIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPriceYarnNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.PriceYarnColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPriceYarnNull()
+            Me(Me.tablePIYarnDT.PriceYarnColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPercentageUsageNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.PercentageUsageColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPercentageUsageNull()
+            Me(Me.tablePIYarnDT.PercentageUsageColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsQtyUsageNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.QtyUsageColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetQtyUsageNull()
+            Me(Me.tablePIYarnDT.QtyUsageColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsColorIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.ColorIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetColorIDNull()
+            Me(Me.tablePIYarnDT.ColorIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsBrandYarnIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.BrandYarnIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetBrandYarnIDNull()
+            Me(Me.tablePIYarnDT.BrandYarnIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsLossNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.LossColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetLossNull()
+            Me(Me.tablePIYarnDT.LossColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsYarnNameNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.YarnNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetYarnNameNull()
+            Me(Me.tablePIYarnDT.YarnNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsVendorNameNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.VendorNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetVendorNameNull()
+            Me(Me.tablePIYarnDT.VendorNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsColorCodeNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.ColorCodeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetColorCodeNull()
+            Me(Me.tablePIYarnDT.ColorCodeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsColorNameNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.ColorNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetColorNameNull()
+            Me(Me.tablePIYarnDT.ColorNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsBrandYarnNameNull() As Boolean
+            Return Me.IsNull(Me.tablePIYarnDT.BrandYarnNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetBrandYarnNameNull()
+            Me(Me.tablePIYarnDT.BrandYarnNameColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class PIBankDTRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tablePIBankDT As PIBankDTDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tablePIBankDT = CType(Me.Table,PIBankDTDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PIHeaderID() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIBankDT.PIHeaderIDColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PIHeaderID' in table 'PIBankDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIBankDT.PIHeaderIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PIBankDetailID() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIBankDT.PIBankDetailIDColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PIBankDetailID' in table 'PIBankDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIBankDT.PIBankDetailIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property BankAccountID() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIBankDT.BankAccountIDColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BankAccountID' in table 'PIBankDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIBankDT.BankAccountIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property BankAccountCode() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIBankDT.BankAccountCodeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BankAccountCode' in table 'PIBankDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIBankDT.BankAccountCodeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property AccountName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIBankDT.AccountNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AccountName' in table 'PIBankDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIBankDT.AccountNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property AccountNumber() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIBankDT.AccountNumberColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'AccountNumber' in table 'PIBankDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIBankDT.AccountNumberColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property BankName() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIBankDT.BankNameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BankName' in table 'PIBankDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIBankDT.BankNameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property SwiftCode() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIBankDT.SwiftCodeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SwiftCode' in table 'PIBankDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIBankDT.SwiftCodeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPIHeaderIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIBankDT.PIHeaderIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPIHeaderIDNull()
+            Me(Me.tablePIBankDT.PIHeaderIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPIBankDetailIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIBankDT.PIBankDetailIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPIBankDetailIDNull()
+            Me(Me.tablePIBankDT.PIBankDetailIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsBankAccountIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIBankDT.BankAccountIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetBankAccountIDNull()
+            Me(Me.tablePIBankDT.BankAccountIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsBankAccountCodeNull() As Boolean
+            Return Me.IsNull(Me.tablePIBankDT.BankAccountCodeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetBankAccountCodeNull()
+            Me(Me.tablePIBankDT.BankAccountCodeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAccountNameNull() As Boolean
+            Return Me.IsNull(Me.tablePIBankDT.AccountNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAccountNameNull()
+            Me(Me.tablePIBankDT.AccountNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsAccountNumberNull() As Boolean
+            Return Me.IsNull(Me.tablePIBankDT.AccountNumberColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetAccountNumberNull()
+            Me(Me.tablePIBankDT.AccountNumberColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsBankNameNull() As Boolean
+            Return Me.IsNull(Me.tablePIBankDT.BankNameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetBankNameNull()
+            Me(Me.tablePIBankDT.BankNameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSwiftCodeNull() As Boolean
+            Return Me.IsNull(Me.tablePIBankDT.SwiftCodeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSwiftCodeNull()
+            Me(Me.tablePIBankDT.SwiftCodeColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class PIRemarksDTRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tablePIRemarksDT As PIRemarksDTDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tablePIRemarksDT = CType(Me.Table,PIRemarksDTDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PIHeaderID() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIRemarksDT.PIHeaderIDColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PIHeaderID' in table 'PIRemarksDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIRemarksDT.PIHeaderIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PIRemarksID() As Long
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIRemarksDT.PIRemarksIDColumn),Long)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PIRemarksID' in table 'PIRemarksDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIRemarksDT.PIRemarksIDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Remarks() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIRemarksDT.RemarksColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Remarks' in table 'PIRemarksDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIRemarksDT.RemarksColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPIHeaderIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIRemarksDT.PIHeaderIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPIHeaderIDNull()
+            Me(Me.tablePIRemarksDT.PIHeaderIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPIRemarksIDNull() As Boolean
+            Return Me.IsNull(Me.tablePIRemarksDT.PIRemarksIDColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPIRemarksIDNull()
+            Me(Me.tablePIRemarksDT.PIRemarksIDColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsRemarksNull() As Boolean
+            Return Me.IsNull(Me.tablePIRemarksDT.RemarksColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetRemarksNull()
+            Me(Me.tablePIRemarksDT.RemarksColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -2846,6 +6195,150 @@ Partial Public Class OceanDS
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Row() As PIDetailDTRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class PIColorDTRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As PIColorDTRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As PIColorDTRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As PIColorDTRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class PIYarnDTRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As PIYarnDTRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As PIYarnDTRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As PIYarnDTRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class PIBankDTRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As PIBankDTRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As PIBankDTRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As PIBankDTRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class PIRemarksDTRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As PIRemarksDTRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As PIRemarksDTRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As PIRemarksDTRow
             Get
                 Return Me.eventRow
             End Get

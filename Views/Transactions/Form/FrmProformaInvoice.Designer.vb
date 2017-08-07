@@ -211,7 +211,7 @@ Partial Class FrmProformaInvoice
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(0, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(1251, 43)
+        Me.Label3.Size = New System.Drawing.Size(1255, 43)
         Me.Label3.TabIndex = 23
         Me.Label3.Text = "Proforma Invoice"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -258,7 +258,7 @@ Partial Class FrmProformaInvoice
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 43)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1251, 118)
+        Me.Panel1.Size = New System.Drawing.Size(1255, 118)
         Me.Panel1.TabIndex = 24
         '
         'cmbTo
@@ -660,7 +660,7 @@ Partial Class FrmProformaInvoice
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Location = New System.Drawing.Point(0, 161)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1251, 241)
+        Me.GroupBox1.Size = New System.Drawing.Size(1255, 241)
         Me.GroupBox1.TabIndex = 70
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Fabric"
@@ -671,7 +671,7 @@ Partial Class FrmProformaInvoice
         Me.dgvFabric.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvFabric.Location = New System.Drawing.Point(3, 157)
         Me.dgvFabric.Name = "dgvFabric"
-        Me.dgvFabric.Size = New System.Drawing.Size(1245, 81)
+        Me.dgvFabric.Size = New System.Drawing.Size(1249, 81)
         Me.dgvFabric.TabIndex = 1
         '
         'Panel2
@@ -730,7 +730,7 @@ Partial Class FrmProformaInvoice
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(3, 16)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1245, 141)
+        Me.Panel2.Size = New System.Drawing.Size(1249, 141)
         Me.Panel2.TabIndex = 0
         '
         'Label49
@@ -1495,7 +1495,7 @@ Partial Class FrmProformaInvoice
         Me.TabControl1.Location = New System.Drawing.Point(0, 402)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1251, 222)
+        Me.TabControl1.Size = New System.Drawing.Size(1255, 222)
         Me.TabControl1.TabIndex = 73
         '
         'tabColFab
@@ -1547,7 +1547,7 @@ Partial Class FrmProformaInvoice
         Me.tabBank.Controls.Add(Me.Label62)
         Me.tabBank.Location = New System.Drawing.Point(4, 22)
         Me.tabBank.Name = "tabBank"
-        Me.tabBank.Size = New System.Drawing.Size(1243, 196)
+        Me.tabBank.Size = New System.Drawing.Size(1246, 196)
         Me.tabBank.TabIndex = 2
         Me.tabBank.Text = "Bank Details"
         Me.tabBank.UseVisualStyleBackColor = True
@@ -1647,7 +1647,7 @@ Partial Class FrmProformaInvoice
         Me.tabRemaks.Controls.Add(Me.Panel6)
         Me.tabRemaks.Location = New System.Drawing.Point(4, 22)
         Me.tabRemaks.Name = "tabRemaks"
-        Me.tabRemaks.Size = New System.Drawing.Size(1243, 196)
+        Me.tabRemaks.Size = New System.Drawing.Size(1247, 196)
         Me.tabRemaks.TabIndex = 3
         Me.tabRemaks.Text = "Remaks"
         Me.tabRemaks.UseVisualStyleBackColor = True
@@ -1658,7 +1658,7 @@ Partial Class FrmProformaInvoice
         Me.dgvRemarks.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvRemarks.Location = New System.Drawing.Point(0, 115)
         Me.dgvRemarks.Name = "dgvRemarks"
-        Me.dgvRemarks.Size = New System.Drawing.Size(1243, 81)
+        Me.dgvRemarks.Size = New System.Drawing.Size(1247, 81)
         Me.dgvRemarks.TabIndex = 1
         '
         'Panel6
@@ -1671,7 +1671,7 @@ Partial Class FrmProformaInvoice
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1243, 115)
+        Me.Panel6.Size = New System.Drawing.Size(1247, 115)
         Me.Panel6.TabIndex = 0
         '
         'btnRemDelList
@@ -1722,12 +1722,12 @@ Partial Class FrmProformaInvoice
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 624)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1251, 44)
+        Me.Panel5.Size = New System.Drawing.Size(1255, 44)
         Me.Panel5.TabIndex = 74
         '
         'btnClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(254, 11)
+        Me.btnClose.Location = New System.Drawing.Point(416, 11)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
         Me.btnClose.TabIndex = 78
@@ -1747,7 +1747,7 @@ Partial Class FrmProformaInvoice
         'btnVoid
         '
         Me.btnVoid.Enabled = False
-        Me.btnVoid.Location = New System.Drawing.Point(1274, 11)
+        Me.btnVoid.Location = New System.Drawing.Point(335, 11)
         Me.btnVoid.Name = "btnVoid"
         Me.btnVoid.Size = New System.Drawing.Size(75, 23)
         Me.btnVoid.TabIndex = 80
@@ -1757,7 +1757,7 @@ Partial Class FrmProformaInvoice
         'btnApprove
         '
         Me.btnApprove.Enabled = False
-        Me.btnApprove.Location = New System.Drawing.Point(1193, 11)
+        Me.btnApprove.Location = New System.Drawing.Point(254, 11)
         Me.btnApprove.Name = "btnApprove"
         Me.btnApprove.Size = New System.Drawing.Size(75, 23)
         Me.btnApprove.TabIndex = 79
@@ -1788,7 +1788,7 @@ Partial Class FrmProformaInvoice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1251, 668)
+        Me.ClientSize = New System.Drawing.Size(1255, 668)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.GroupBox1)

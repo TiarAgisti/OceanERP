@@ -90,4 +90,54 @@
             xLoss = value
         End Set
     End Property
+
+    Private xYarnName As String
+    Public Property YarnName() As String
+        Get
+            Return xYarnName
+        End Get
+        Set(ByVal value As String)
+            xYarnName = value
+        End Set
+    End Property
+
+    Private xVendorName As String
+    Public Property VendorName() As String
+        Get
+            Return xVendorName
+        End Get
+        Set(ByVal value As String)
+            xVendorName = value
+        End Set
+    End Property
+
+    Private xColorCode As String
+    Public Property ColorCode() As String
+        Get
+            Return xColorCode
+        End Get
+        Set(ByVal value As String)
+            xColorCode = value
+        End Set
+    End Property
+
+    Private xColorName As String
+    Public Property ColorName() As String
+        Get
+            Return xColorName
+        End Get
+        Set(ByVal value As String)
+            xColorName = value
+        End Set
+    End Property
+
+    Private xBrandYarnName As String
+    Public Property BrandYarnName() As String
+        Get
+            Return xBrandYarnName
+        End Get
+        Set(ByVal value As String)
+            xBrandYarnName = value
+        End Set
+    End Property
 End Class
