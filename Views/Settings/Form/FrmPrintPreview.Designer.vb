@@ -23,23 +23,23 @@ Partial Class FrmPrintPreview
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPrintPreview))
-        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.rptView = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.SuspendLayout()
         '
-        'ReportViewer1
+        'rptView
         '
-        Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
-        Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(771, 445)
-        Me.ReportViewer1.TabIndex = 0
+        Me.rptView.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.rptView.Location = New System.Drawing.Point(0, 0)
+        Me.rptView.Name = "rptView"
+        Me.rptView.Size = New System.Drawing.Size(771, 445)
+        Me.rptView.TabIndex = 0
         '
         'FrmPrintPreview
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(771, 445)
-        Me.Controls.Add(Me.ReportViewer1)
+        Me.Controls.Add(Me.rptView)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmPrintPreview"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -49,5 +49,5 @@ Partial Class FrmPrintPreview
 
     End Sub
 
-    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents rptView As Microsoft.Reporting.WinForms.ReportViewer
 End Class

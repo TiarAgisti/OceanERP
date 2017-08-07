@@ -131,6 +131,7 @@
     <Compile Include="BisnisFlowControl\Settings\ClsPermission.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsProformaInvoice.vb" />
     <Compile Include="DataAccess\ClsDataAccess.vb" />
+    <Compile Include="DataAccess\ClsPrintOut.vb" />
     <Compile Include="DataAccess\MdlHelper.vb" />
     <Compile Include="FrmLogin.Designer.vb">
       <DependentUpon>FrmLogin.vb</DependentUpon>
@@ -380,6 +381,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintOut\ProformaInvoice\Report1.rdlc" />
     <EmbeddedResource Include="PrintOut\ProformaInvoice\rptProformaInvoice.rdlc" />
     <EmbeddedResource Include="Views\Masters\Form\FrmBankAccount.resx">
       <DependentUpon>FrmBankAccount.vb</DependentUpon>

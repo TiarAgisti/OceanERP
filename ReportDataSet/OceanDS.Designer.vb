@@ -2690,6 +2690,8 @@ Partial Public Class OceanDS
         
         Private columnSwiftCode As Global.System.Data.DataColumn
         
+        Private columnPINo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -2790,6 +2792,14 @@ Partial Public Class OceanDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PINoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPINo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2826,9 +2836,9 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddPIBankDTRow(ByVal PIHeaderID As Long, ByVal PIBankDetailID As Long, ByVal BankAccountID As Integer, ByVal BankAccountCode As String, ByVal AccountName As String, ByVal AccountNumber As String, ByVal BankName As String, ByVal SwiftCode As String) As PIBankDTRow
+        Public Overloads Function AddPIBankDTRow(ByVal PIHeaderID As Long, ByVal PIBankDetailID As Long, ByVal BankAccountID As Integer, ByVal BankAccountCode As String, ByVal AccountName As String, ByVal AccountNumber As String, ByVal BankName As String, ByVal SwiftCode As String, ByVal PINo As String) As PIBankDTRow
             Dim rowPIBankDTRow As PIBankDTRow = CType(Me.NewRow,PIBankDTRow)
-            Dim columnValuesArray() As Object = New Object() {PIHeaderID, PIBankDetailID, BankAccountID, BankAccountCode, AccountName, AccountNumber, BankName, SwiftCode}
+            Dim columnValuesArray() As Object = New Object() {PIHeaderID, PIBankDetailID, BankAccountID, BankAccountCode, AccountName, AccountNumber, BankName, SwiftCode, PINo}
             rowPIBankDTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPIBankDTRow)
             Return rowPIBankDTRow
@@ -2859,6 +2869,7 @@ Partial Public Class OceanDS
             Me.columnAccountNumber = MyBase.Columns("AccountNumber")
             Me.columnBankName = MyBase.Columns("BankName")
             Me.columnSwiftCode = MyBase.Columns("SwiftCode")
+            Me.columnPINo = MyBase.Columns("PINo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2880,6 +2891,8 @@ Partial Public Class OceanDS
             MyBase.Columns.Add(Me.columnBankName)
             Me.columnSwiftCode = New Global.System.Data.DataColumn("SwiftCode", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSwiftCode)
+            Me.columnPINo = New Global.System.Data.DataColumn("PINo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPINo)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3023,6 +3036,10 @@ Partial Public Class OceanDS
         
         Private columnRemarks As Global.System.Data.DataColumn
         
+        Private columnPIDate As Global.System.Data.DataColumn
+        
+        Private columnPINo As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -3083,6 +3100,22 @@ Partial Public Class OceanDS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PIDateColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPIDate
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PINoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPINo
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3119,9 +3152,9 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddPIRemarksDTRow(ByVal PIHeaderID As Long, ByVal PIRemarksID As Long, ByVal Remarks As String) As PIRemarksDTRow
+        Public Overloads Function AddPIRemarksDTRow(ByVal PIHeaderID As Long, ByVal PIRemarksID As Long, ByVal Remarks As String, ByVal PIDate As Date, ByVal PINo As String) As PIRemarksDTRow
             Dim rowPIRemarksDTRow As PIRemarksDTRow = CType(Me.NewRow,PIRemarksDTRow)
-            Dim columnValuesArray() As Object = New Object() {PIHeaderID, PIRemarksID, Remarks}
+            Dim columnValuesArray() As Object = New Object() {PIHeaderID, PIRemarksID, Remarks, PIDate, PINo}
             rowPIRemarksDTRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPIRemarksDTRow)
             Return rowPIRemarksDTRow
@@ -3147,6 +3180,8 @@ Partial Public Class OceanDS
             Me.columnPIHeaderID = MyBase.Columns("PIHeaderID")
             Me.columnPIRemarksID = MyBase.Columns("PIRemarksID")
             Me.columnRemarks = MyBase.Columns("Remarks")
+            Me.columnPIDate = MyBase.Columns("PIDate")
+            Me.columnPINo = MyBase.Columns("PINo")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3158,6 +3193,10 @@ Partial Public Class OceanDS
             MyBase.Columns.Add(Me.columnPIRemarksID)
             Me.columnRemarks = New Global.System.Data.DataColumn("Remarks", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnRemarks)
+            Me.columnPIDate = New Global.System.Data.DataColumn("PIDate", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPIDate)
+            Me.columnPINo = New Global.System.Data.DataColumn("PINo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPINo)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5945,6 +5984,21 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PINo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIBankDT.PINoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PINo' in table 'PIBankDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIBankDT.PINoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsPIHeaderIDNull() As Boolean
             Return Me.IsNull(Me.tablePIBankDT.PIHeaderIDColumn)
         End Function
@@ -6038,6 +6092,18 @@ Partial Public Class OceanDS
         Public Sub SetSwiftCodeNull()
             Me(Me.tablePIBankDT.SwiftCodeColumn) = Global.System.Convert.DBNull
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPINoNull() As Boolean
+            Return Me.IsNull(Me.tablePIBankDT.PINoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPINoNull()
+            Me(Me.tablePIBankDT.PINoColumn) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -6102,6 +6168,36 @@ Partial Public Class OceanDS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PIDate() As Date
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIRemarksDT.PIDateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PIDate' in table 'PIRemarksDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIRemarksDT.PIDateColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PINo() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePIRemarksDT.PINoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PINo' in table 'PIRemarksDT' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePIRemarksDT.PINoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsPIHeaderIDNull() As Boolean
             Return Me.IsNull(Me.tablePIRemarksDT.PIHeaderIDColumn)
         End Function
@@ -6134,6 +6230,30 @@ Partial Public Class OceanDS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetRemarksNull()
             Me(Me.tablePIRemarksDT.RemarksColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPIDateNull() As Boolean
+            Return Me.IsNull(Me.tablePIRemarksDT.PIDateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPIDateNull()
+            Me(Me.tablePIRemarksDT.PIDateColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPINoNull() As Boolean
+            Return Me.IsNull(Me.tablePIRemarksDT.PINoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPINoNull()
+            Me(Me.tablePIRemarksDT.PINoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

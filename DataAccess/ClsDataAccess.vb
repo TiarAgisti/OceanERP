@@ -16,6 +16,15 @@ Public Class ClsDataAccess
         End If
         Return connStr
     End Function
+
+    Function SqlConnection() As SqlConnection
+        Dim myConnection As SqlConnection = New SqlConnection(ConnectionString)
+        If myConnection.State = ConnectionState.Closed Then
+            myConnection.Open()
+        End If
+        Return myConnection
+    End Function
+
     Public Function GetHostName() As String
         Try
             Dim strHostName As String = Dns.GetHostName()

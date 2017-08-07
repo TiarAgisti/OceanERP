@@ -763,12 +763,12 @@
 
     Sub PrintData()
         Try
-            Dim frm As New FrmPrintPreview
-            frm.rptView.ProcessingMode = ProcessingMode.Local
-            Dim localReport As LocalReport
-            localReport = frm.rptView.LocalReport
-            localReport.ReportPath = "D:\Tiar\SampleReport\rptPO.rdlc"
-            PreCreatedisplay()
+            Dim piPrint As ClsPrintOut = New ClsPrintOut
+            If piPrint.PrintOutProformaInvoice(txtPINo.Text) Then
+                PreCreatedisplay()
+            Else
+                MsgBoxError("Failed to print")
+            End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
@@ -1087,6 +1087,7 @@
             PrepareColorByHeaderID()
             PrepareBankByHeaderID()
             PrepareRemarksByHeaderID()
+            btnPrint.Enabled = True
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
@@ -1215,7 +1216,7 @@
     End Sub
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
-
+        PrintData()
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click

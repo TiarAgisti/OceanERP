@@ -138,6 +138,7 @@
               <xs:element name="AccountNumber" msprop:Generator_ColumnVarNameInTable="columnAccountNumber" msprop:Generator_ColumnPropNameInRow="AccountNumber" msprop:Generator_ColumnPropNameInTable="AccountNumberColumn" msprop:Generator_UserColumnName="AccountNumber" type="xs:string" minOccurs="0" />
               <xs:element name="BankName" msprop:Generator_ColumnVarNameInTable="columnBankName" msprop:Generator_ColumnPropNameInRow="BankName" msprop:Generator_ColumnPropNameInTable="BankNameColumn" msprop:Generator_UserColumnName="BankName" type="xs:string" minOccurs="0" />
               <xs:element name="SwiftCode" msprop:Generator_ColumnVarNameInTable="columnSwiftCode" msprop:Generator_ColumnPropNameInRow="SwiftCode" msprop:Generator_ColumnPropNameInTable="SwiftCodeColumn" msprop:Generator_UserColumnName="SwiftCode" type="xs:string" minOccurs="0" />
+              <xs:element name="PINo" msprop:Generator_ColumnVarNameInTable="columnPINo" msprop:Generator_ColumnPropNameInRow="PINo" msprop:Generator_ColumnPropNameInTable="PINoColumn" msprop:Generator_UserColumnName="PINo" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -147,6 +148,8 @@
               <xs:element name="PIHeaderID" msprop:Generator_ColumnVarNameInTable="columnPIHeaderID" msprop:Generator_ColumnPropNameInRow="PIHeaderID" msprop:Generator_ColumnPropNameInTable="PIHeaderIDColumn" msprop:Generator_UserColumnName="PIHeaderID" type="xs:long" minOccurs="0" />
               <xs:element name="PIRemarksID" msprop:Generator_ColumnVarNameInTable="columnPIRemarksID" msprop:Generator_ColumnPropNameInRow="PIRemarksID" msprop:Generator_ColumnPropNameInTable="PIRemarksIDColumn" msprop:Generator_UserColumnName="PIRemarksID" type="xs:long" minOccurs="0" />
               <xs:element name="Remarks" msprop:Generator_ColumnVarNameInTable="columnRemarks" msprop:Generator_ColumnPropNameInRow="Remarks" msprop:Generator_ColumnPropNameInTable="RemarksColumn" msprop:Generator_UserColumnName="Remarks" type="xs:string" minOccurs="0" />
+              <xs:element name="PIDate" msprop:Generator_ColumnVarNameInTable="columnPIDate" msprop:Generator_ColumnPropNameInRow="PIDate" msprop:Generator_ColumnPropNameInTable="PIDateColumn" msprop:Generator_UserColumnName="PIDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PINo" msprop:Generator_ColumnVarNameInTable="columnPINo" msprop:Generator_ColumnPropNameInRow="PINo" msprop:Generator_ColumnPropNameInTable="PINoColumn" msprop:Generator_UserColumnName="PINo" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

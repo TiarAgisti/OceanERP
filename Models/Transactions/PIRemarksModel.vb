@@ -29,6 +29,23 @@
         End Set
     End Property
 
+    Private xPIDate As DateTime
+    Public Property PIDate() As DateTime
+        Get
+            Return xPIDate
+        End Get
+        Set(ByVal value As DateTime)
+            xPIDate = value
+        End Set
+    End Property
 
-
+    Private xPINo As String
+    Public Property PINo() As String
+        Get
+            Return xPINo
+        End Get
+        Set(ByVal value As String)
+            xPINo = value
+        End Set
+    End Property
 End Class

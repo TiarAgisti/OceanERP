@@ -1,4 +1,5 @@
-﻿Public Class ClsProformaInvoice
+﻿Imports Microsoft.Reporting.WinForms
+Public Class ClsProformaInvoice
 #Region "Method Retrieve"
     Public Function RetrieveListProformaInvoice(piNo As String, dateFrom As Date, dateTo As Date, customer As String _
                                                 , refPO As String) As DataTable
@@ -251,17 +252,17 @@
         End Try
     End Function
 
-    Public Sub RetrievePIHeaderByID(piNO As String, ByRef dsProformaInvoice As DataSet)
-        Dim query As String = "Select * From v_PIHeader Where PINo = @piNo"
-        Dim myField As String = "PINo"
-        Dim dataAccess As ClsDataAccess = New ClsDataAccess
-        'Dim dataTable As DataTable = New DataTable
-        Try
-            dataAccess.RetrievePrintOut(query, myField, piNO)
-        Catch ex As Exception
-            Throw ex
-        End Try
-    End Sub
+    'Sub RetrievePIHeaderByPINo(piNO As String, ByRef dsProformaInvoice As DataSet)
+    '    Dim query As String = "Select * From v_PIHeader Where PINo = @piNo"
+    '    Dim myField As String = "PINo"
+    '    Dim dataAccess As ClsDataAccess = New ClsDataAccess
+    '    'Dim dataTable As DataTable = New DataTable
+    '    Try
+    '        dataAccess.RetrievePrintOut(query, myField, piNO)
+    '    Catch ex As Exception
+    '        Throw ex
+    '    End Try
+    'End Sub
 #End Region
 
 #Region "Method Generated"
@@ -779,7 +780,29 @@
 #End Region
 
 #Region "PrintOut"
+    'Public Function PrintOut(piNo As String) As Boolean
+    '    Dim status As Boolean = True
+    '    Dim frm As New FrmPrintPreview
+    '    Dim localReport As LocalReport
+    '    Dim dataset As New DataSet("Proforma Invoice")
+    '    Dim dsProformaInvoice As New ReportDataSource
+    '    Try
 
+    '        frm.rptView.ProcessingMode = ProcessingMode.Local
+    '        localReport = frm.rptView.LocalReport
+    '        localReport.ReportPath = My.Settings.reportPath + "ProformaInvoice\rptProformaInvoice.rdlc"
+    '        RetrievePIHeaderByPINo(piNo, dataset)
+    '        dsProformaInvoice.Name = "piHeaderDT"
+    '        dsProformaInvoice.Value = dataset.Tables("v_PIHeader")
+    '        localReport.DataSources.Add(dsProformaInvoice)
+    '        frm.Show()
+    '        frm.rptView.RefreshReport()
+    '    Catch ex As Exception
+    '        status = False
+    '        Throw ex
+    '    End Try
+    '    Return status
+    'End Function
 #End Region
 
 
