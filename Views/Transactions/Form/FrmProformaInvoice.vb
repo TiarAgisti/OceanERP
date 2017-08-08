@@ -675,14 +675,26 @@
                     .DestinationID = cmbPort.SelectedValue
                     .DeliveryPlace = txtDelPlace.Text
                     .Status = 1
-                    .CreatedBy = userID
-                    .CreatedDate = DateTime.Now
+                    .UpdatedBy = userID
+                    .UpdatedDate = DateTime.Now
+                Case "Approved"
+                    .PIHeaderID = piHeaderID
+                    .PINo = txtPINo.Text
+                    .Status = 2
+                    .UpdatedBy = userID
+                    .UpdatedDate = DateTime.Now
+                Case "Void"
+                    .PIHeaderID = piHeaderID
+                    .PINo = txtPINo.Text
+                    .Status = 0
                     .UpdatedBy = userID
                     .UpdatedDate = DateTime.Now
             End Select
         End With
         Return headerModel
     End Function
+
+
 
     Function SetDetailFabric(piID As Long) As List(Of PIDetailModel)
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
@@ -750,11 +762,41 @@
         Dim logDesc As String = "Update Proforma Invoice,Where PINo = " + txtPINo.Text
         Try
             If piBFC.UpdateData(SetDataHeader, SetDetailFabric(piHeaderID), SetDetailColor(piHeaderID), SetDetailYarn(piHeaderID) _
-                                , SetDetailRemarks(piHeaderID), SetDataBank(piHeaderID), logBFC.SetLogHistory(logDesc)) = True Then
+                                , SetDetailRemarks(piHeaderID), SetDataBank(piHeaderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxUpdated()
                 btnPrint.Enabled = True
                 btnSave.Enabled = False
                 btnUpdate.Enabled = False
+            End If
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Sub ApprovedData()
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim logDesc As String = "Approved proforma invoice where PINO = " + txtPINo.Text
+        condition = "Approved"
+        Try
+            If piBFC.UpdateStatusHeader(SetDataHeader, logBFC.SetLogHistoryTrans(logDesc)) Then
+                MsgBoxUpdated()
+                PreCreatedisplay()
+            End If
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Sub VoidData()
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim logDesc As String = "Void proforma invoice where PINO = " + txtPINo.Text
+        condition = "Void"
+        Try
+            If piBFC.UpdateStatusHeader(SetDataHeader, logBFC.SetLogHistoryTrans(logDesc)) Then
+                MsgBoxUpdated()
+                PreCreatedisplay()
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -1086,6 +1128,7 @@
             PrepareFabricByHeaderID()
             PrepareColorByHeaderID()
             PrepareBankByHeaderID()
+            PrepareYarnByHeaderID()
             PrepareRemarksByHeaderID()
             btnPrint.Enabled = True
         Catch ex As Exception
@@ -1100,7 +1143,6 @@
             Case "Update"
                 PreUpdateDisplay()
         End Select
-
     End Sub
 #End Region
 
@@ -1224,11 +1266,11 @@
     End Sub
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
-
+        ApprovedData()
     End Sub
 
     Private Sub btnVoid_Click(sender As Object, e As EventArgs) Handles btnVoid.Click
-
+        VoidData()
     End Sub
 #End Region
 

@@ -6,13 +6,13 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.96482cm</Width>
+              <Width>0.74029cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.73896cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.06527cm</Width>
+              <Width>2.46905cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.5cm</Width>
@@ -21,10 +21,10 @@
               <Width>2.23542cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.28833cm</Width>
+              <Width>2.16898cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.06661cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.25646cm</Width>
@@ -38,7 +38,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.62646cm</Height>
+              <Height>0.6cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -708,10 +708,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>piRemarksDT</DataSetName>
-        <Top>0.47626cm</Top>
-        <Left>0cm</Left>
-        <Height>1.22646cm</Height>
-        <Width>20.43718cm</Width>
+        <Top>0.07057cm</Top>
+        <Left>0.00004cm</Left>
+        <Height>1.20001cm</Height>
+        <Width>20.30265cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -727,7 +727,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.49417cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -740,6 +740,7 @@
                             <TextRun>
                               <Value>Remarks :</Value>
                               <Style>
+                                <FontSize>9pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -775,7 +776,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Remarks.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -814,9 +817,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>piRemarksDT</DataSetName>
-        <Top>1.87911cm</Top>
-        <Left>0.15906cm</Left>
-        <Height>1.2cm</Height>
+        <Top>1.66394cm</Top>
+        <Left>0.00004cm</Left>
+        <Height>1.09417cm</Height>
         <Width>12.39478cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -834,6 +837,7 @@
               <TextRun>
                 <Value>Shipment Date</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -842,9 +846,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.40625in</Top>
-        <Left>0.07812in</Left>
-        <Height>0.25in</Height>
+        <Top>1.15531in</Top>
+        <Height>0.20833in</Height>
         <Width>1.125in</Width>
         <ZIndex>2</ZIndex>
         <Style>
@@ -865,7 +868,9 @@
             <TextRuns>
               <TextRun>
                 <Value>:</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -874,9 +879,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.40625in</Top>
-        <Left>1.13541in</Left>
-        <Height>0.25in</Height>
+        <Top>1.15531in</Top>
+        <Left>1.05729in</Left>
+        <Height>0.20833in</Height>
         <Width>0.3125in</Width>
         <ZIndex>3</ZIndex>
         <Style>
@@ -899,6 +904,7 @@
               <TextRun>
                 <Value>=First(Fields!DelTerm.Value, "piHeaderDT")</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <Format>dd/MMM/yyyy</Format>
                 </Style>
               </TextRun>
@@ -909,9 +915,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox18</rd:DefaultName>
-        <Top>1.40625in</Top>
-        <Left>1.44791in</Left>
-        <Height>0.25in</Height>
+        <Top>1.15531in</Top>
+        <Left>1.36979in</Left>
+        <Height>0.20833in</Height>
         <Width>1.77603in</Width>
         <ZIndex>4</ZIndex>
         <Style>
@@ -933,6 +939,7 @@
               <TextRun>
                 <Value>Bank Details</Value>
                 <Style>
+                  <FontSize>9pt</FontSize>
                   <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
@@ -941,9 +948,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.7257in</Top>
-        <Left>0.07812in</Left>
-        <Height>0.25in</Height>
+        <Top>1.36364in</Top>
+        <Left>0.00001in</Left>
+        <Height>0.20833in</Height>
         <Width>1.125in</Width>
         <ZIndex>5</ZIndex>
         <Style>
@@ -964,7 +971,9 @@
             <TextRuns>
               <TextRun>
                 <Value>:</Value>
-                <Style />
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -973,9 +982,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>1.7257in</Top>
-        <Left>1.13541in</Left>
-        <Height>0.25in</Height>
+        <Top>1.36364in</Top>
+        <Left>1.0573in</Left>
+        <Height>0.20833in</Height>
         <Width>0.3125in</Width>
         <ZIndex>6</ZIndex>
         <Style>
@@ -989,14 +998,428 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox80">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Beneficiary name</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>1.58586in</Top>
+        <Height>0.20833in</Height>
+        <Width>1.28598in</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox81">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>1.58586in</Top>
+        <Left>1.29987in</Left>
+        <Height>0.20833in</Height>
+        <Width>0.24306in</Width>
+        <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox82">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!AccountName.Value, "piBankDT")</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                  <Format>dd/MMM/yyyy</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox18</rd:DefaultName>
+        <Top>1.58586in</Top>
+        <Left>1.5707in</Left>
+        <Height>0.20833in</Height>
+        <Width>1.57512in</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox83">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Bank</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>1.80808in</Top>
+        <Height>0.20833in</Height>
+        <Width>1.28598in</Width>
+        <ZIndex>10</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox84">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>1.80808in</Top>
+        <Left>1.29987in</Left>
+        <Height>0.20833in</Height>
+        <Width>0.24306in</Width>
+        <ZIndex>11</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox85">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!BankName.Value, "piBankDT")</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                  <Format>dd/MMM/yyyy</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox18</rd:DefaultName>
+        <Top>1.80808in</Top>
+        <Left>1.5707in</Left>
+        <Height>0.20833in</Height>
+        <Width>1.57512in</Width>
+        <ZIndex>12</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox86">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>A/C No.</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>1.58586in</Top>
+        <Left>3.31584in</Left>
+        <Height>0.19444in</Height>
+        <Width>1.28598in</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox87">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>1.58586in</Top>
+        <Left>4.61571in</Left>
+        <Height>0.19444in</Height>
+        <Width>0.24306in</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox88">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!AccountNumber.Value, "piBankDT")</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                  <Format>dd/MMM/yyyy</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox18</rd:DefaultName>
+        <Top>1.57545in</Top>
+        <Left>4.88654in</Left>
+        <Height>0.19444in</Height>
+        <Width>1.8508in</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox89">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Swift Address</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>1.79767in</Top>
+        <Left>3.31584in</Left>
+        <Height>0.25in</Height>
+        <Width>1.28598in</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox90">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>:</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>1.79767in</Top>
+        <Left>4.61571in</Left>
+        <Height>0.25in</Height>
+        <Width>0.24306in</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox91">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=First(Fields!SwiftCode.Value, "piBankDT")</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                  <Format>dd/MMM/yyyy</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox18</rd:DefaultName>
+        <Top>1.79767in</Top>
+        <Left>4.88654in</Left>
+        <Height>0.25in</Height>
+        <Width>1.8508in</Width>
+        <ZIndex>18</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>7.14376cm</Height>
-    <Style />
+    <Height>5.27167cm</Height>
+    <Style>
+      <Border>
+        <Style>None</Style>
+      </Border>
+    </Style>
   </Body>
-  <Width>20.60792cm</Width>
+  <Width>20.46329cm</Width>
   <Page>
     <PageHeader>
-      <Height>9.65411cm</Height>
+      <Height>8.27828cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1009,7 +1432,7 @@
                 <TextRun>
                   <Value>PT. OCEAN ASIA INDUSTRI</Value>
                   <Style>
-                    <FontSize>20pt</FontSize>
+                    <FontSize>16pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1020,8 +1443,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Left>0in</Left>
-          <Height>0.41667in</Height>
+          <Left>0.01028in</Left>
+          <Height>0.24875in</Height>
           <Width>8.04613in</Width>
           <Style>
             <Border>
@@ -1052,9 +1475,9 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>0.35292in</Top>
-          <Left>0in</Left>
-          <Height>0.39236in</Height>
+          <Top>0.22444in</Top>
+          <Left>0.00001in</Left>
+          <Height>0.44444in</Height>
           <Width>8.04613in</Width>
           <ZIndex>1</ZIndex>
           <Style>
@@ -1088,9 +1511,9 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
-          <Top>0.73833in</Top>
-          <Left>0in</Left>
-          <Height>0.25in</Height>
+          <Top>0.60986in</Top>
+          <Left>0.00001in</Left>
+          <Height>0.22917in</Height>
           <Width>8.04613in</Width>
           <ZIndex>2</ZIndex>
           <Style>
@@ -1119,8 +1542,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>0.99528in</Top>
-          <Left>0in</Left>
+          <Top>0.86332in</Top>
+          <Left>0.31562in</Left>
           <Height>0.25in</Height>
           <Width>1.04687in</Width>
           <ZIndex>3</ZIndex>
@@ -1151,8 +1574,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>0.99528in</Top>
-          <Left>1.04687in</Left>
+          <Top>0.86332in</Top>
+          <Left>1.36249in</Left>
           <Height>0.25in</Height>
           <Width>0.15625in</Width>
           <ZIndex>4</ZIndex>
@@ -1182,10 +1605,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox6</rd:DefaultName>
-          <Top>0.99528in</Top>
-          <Left>1.20312in</Left>
-          <Height>0.77082in</Height>
-          <Width>1.95833in</Width>
+          <Top>0.86332in</Top>
+          <Left>1.51874in</Left>
+          <Height>0.25in</Height>
+          <Width>2.20833in</Width>
           <ZIndex>5</ZIndex>
           <Style>
             <Border>
@@ -1212,8 +1635,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.7661in</Top>
-          <Left>0in</Left>
+          <Top>1.11332in</Top>
+          <Left>0.31562in</Left>
           <Height>0.25in</Height>
           <Width>1.04687in</Width>
           <ZIndex>6</ZIndex>
@@ -1244,8 +1667,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.7661in</Top>
-          <Left>1.04687in</Left>
+          <Top>1.11332in</Top>
+          <Left>1.36249in</Left>
           <Height>0.25in</Height>
           <Width>0.15625in</Width>
           <ZIndex>7</ZIndex>
@@ -1275,8 +1698,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.0161in</Top>
-          <Left>0in</Left>
+          <Top>1.36332in</Top>
+          <Left>0.31562in</Left>
           <Height>0.25in</Height>
           <Width>1.04687in</Width>
           <ZIndex>8</ZIndex>
@@ -1307,8 +1730,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.0161in</Top>
-          <Left>1.04687in</Left>
+          <Top>1.36332in</Top>
+          <Left>1.36249in</Left>
           <Height>0.25in</Height>
           <Width>0.15625in</Width>
           <ZIndex>9</ZIndex>
@@ -1340,8 +1763,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.27999in</Top>
-          <Left>1.04687in</Left>
+          <Top>1.62721in</Top>
+          <Left>1.36249in</Left>
           <Height>0.25in</Height>
           <Width>0.15625in</Width>
           <ZIndex>10</ZIndex>
@@ -1371,8 +1794,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.27999in</Top>
-          <Left>0in</Left>
+          <Top>1.62721in</Top>
+          <Left>0.31562in</Left>
           <Height>0.25in</Height>
           <Width>1.04687in</Width>
           <ZIndex>11</ZIndex>
@@ -1401,7 +1824,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.54388in</Top>
+          <Top>1.8911in</Top>
+          <Left>0.31562in</Left>
           <Height>0.25in</Height>
           <Width>1.04687in</Width>
           <ZIndex>12</ZIndex>
@@ -1432,8 +1856,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.54388in</Top>
-          <Left>1.04687in</Left>
+          <Top>1.8911in</Top>
+          <Left>1.36249in</Left>
           <Height>0.25in</Height>
           <Width>0.15625in</Width>
           <ZIndex>13</ZIndex>
@@ -1463,8 +1887,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.80777in</Top>
-          <Left>0in</Left>
+          <Top>2.15499in</Top>
+          <Left>0.31562in</Left>
           <Height>0.25in</Height>
           <Width>1.04687in</Width>
           <ZIndex>14</ZIndex>
@@ -1495,8 +1919,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.80777in</Top>
-          <Left>1.04687in</Left>
+          <Top>2.15499in</Top>
+          <Left>1.36249in</Left>
           <Height>0.25in</Height>
           <Width>0.15625in</Width>
           <ZIndex>15</ZIndex>
@@ -1526,10 +1950,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox6</rd:DefaultName>
-          <Top>2.80777in</Top>
-          <Left>1.20312in</Left>
-          <Height>0.86459in</Height>
-          <Width>1.95833in</Width>
+          <Top>2.15499in</Top>
+          <Left>1.51874in</Left>
+          <Height>0.25in</Height>
+          <Width>2.20833in</Width>
           <ZIndex>16</ZIndex>
           <Style>
             <Border>
@@ -1556,10 +1980,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>2.54388in</Top>
-          <Left>1.20312in</Left>
+          <Top>1.8911in</Top>
+          <Left>1.51874in</Left>
           <Height>0.25in</Height>
-          <Width>1.95833in</Width>
+          <Width>2.20833in</Width>
           <ZIndex>17</ZIndex>
           <Style>
             <Border>
@@ -1586,10 +2010,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>2.27999in</Top>
-          <Left>1.20312in</Left>
+          <Top>1.62721in</Top>
+          <Left>1.51874in</Left>
           <Height>0.25in</Height>
-          <Width>1.95833in</Width>
+          <Width>2.20833in</Width>
           <ZIndex>18</ZIndex>
           <Style>
             <Border>
@@ -1616,10 +2040,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>2.0161in</Top>
-          <Left>1.20312in</Left>
+          <Top>1.36332in</Top>
+          <Left>1.51874in</Left>
           <Height>0.25in</Height>
-          <Width>1.95833in</Width>
+          <Width>2.20833in</Width>
           <ZIndex>19</ZIndex>
           <Style>
             <Border>
@@ -1646,10 +2070,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>1.76958in</Top>
-          <Left>1.20312in</Left>
+          <Top>1.1168in</Top>
+          <Left>1.51874in</Left>
           <Height>0.25in</Height>
-          <Width>1.95833in</Width>
+          <Width>2.20833in</Width>
           <ZIndex>20</ZIndex>
           <Style>
             <Border>
@@ -1676,10 +2100,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>0.98833in</Top>
-          <Left>4.90031in</Left>
-          <Height>0.19444in</Height>
-          <Width>1.125in</Width>
+          <Top>2.41888in</Top>
+          <Left>0.31562in</Left>
+          <Height>0.25695in</Height>
+          <Width>1.04687in</Width>
           <ZIndex>21</ZIndex>
           <Style>
             <Border>
@@ -1708,10 +2132,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>0.98833in</Top>
-          <Left>5.9576in</Left>
-          <Height>0.19444in</Height>
-          <Width>0.3125in</Width>
+          <Top>2.41888in</Top>
+          <Left>1.36249in</Left>
+          <Height>0.25695in</Height>
+          <Width>0.15625in</Width>
           <ZIndex>22</ZIndex>
           <Style>
             <Border>
@@ -1739,10 +2163,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>0.98833in</Top>
-          <Left>6.2701in</Left>
-          <Height>0.19444in</Height>
-          <Width>1.77603in</Width>
+          <Top>2.41888in</Top>
+          <Left>1.51874in</Left>
+          <Height>0.25695in</Height>
+          <Width>2.20833in</Width>
           <ZIndex>23</ZIndex>
           <Style>
             <Border>
@@ -1769,10 +2193,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.19666in</Top>
-          <Left>4.90031in</Left>
-          <Height>0.20833in</Height>
-          <Width>1.125in</Width>
+          <Top>2.68972in</Top>
+          <Left>0.31562in</Left>
+          <Height>0.25in</Height>
+          <Width>1.04687in</Width>
           <ZIndex>24</ZIndex>
           <Style>
             <Border>
@@ -1801,10 +2225,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.19666in</Top>
-          <Left>5.9576in</Left>
-          <Height>0.20833in</Height>
-          <Width>0.3125in</Width>
+          <Top>2.68972in</Top>
+          <Left>1.36249in</Left>
+          <Height>0.25in</Height>
+          <Width>0.15625in</Width>
           <ZIndex>25</ZIndex>
           <Style>
             <Border>
@@ -1832,10 +2256,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>1.19666in</Top>
-          <Left>6.2701in</Left>
-          <Height>0.20833in</Height>
-          <Width>1.77603in</Width>
+          <Top>2.68972in</Top>
+          <Left>1.51874in</Left>
+          <Height>0.25in</Height>
+          <Width>2.20833in</Width>
           <ZIndex>26</ZIndex>
           <Style>
             <Border>
@@ -1862,8 +2286,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.41888in</Top>
-          <Left>4.90031in</Left>
+          <Top>0.8668in</Top>
+          <Left>4.26883in</Left>
           <Height>0.21875in</Height>
           <Width>1.125in</Width>
           <ZIndex>27</ZIndex>
@@ -1894,10 +2318,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.41888in</Top>
-          <Left>5.9576in</Left>
+          <Top>0.8668in</Top>
+          <Left>5.39383in</Left>
           <Height>0.21875in</Height>
-          <Width>0.3125in</Width>
+          <Width>0.24479in</Width>
           <ZIndex>28</ZIndex>
           <Style>
             <Border>
@@ -1925,10 +2349,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>1.41888in</Top>
-          <Left>6.2701in</Left>
+          <Top>0.8668in</Top>
+          <Left>5.63862in</Left>
           <Height>0.21875in</Height>
-          <Width>1.77603in</Width>
+          <Width>2.07811in</Width>
           <ZIndex>29</ZIndex>
           <Style>
             <Border>
@@ -1955,8 +2379,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.63763in</Top>
-          <Left>4.90031in</Left>
+          <Top>1.09944in</Top>
+          <Left>4.26469in</Left>
           <Height>0.23958in</Height>
           <Width>1.125in</Width>
           <ZIndex>30</ZIndex>
@@ -1987,10 +2411,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.63763in</Top>
-          <Left>5.9576in</Left>
+          <Top>1.09944in</Top>
+          <Left>5.39383in</Left>
           <Height>0.23958in</Height>
-          <Width>0.3125in</Width>
+          <Width>0.24479in</Width>
           <ZIndex>31</ZIndex>
           <Style>
             <Border>
@@ -2018,10 +2442,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>1.63763in</Top>
-          <Left>6.2701in</Left>
+          <Top>1.09944in</Top>
+          <Left>5.65251in</Left>
           <Height>0.23958in</Height>
-          <Width>1.77603in</Width>
+          <Width>2.06422in</Width>
           <ZIndex>32</ZIndex>
           <Style>
             <Border>
@@ -2048,8 +2472,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.87722in</Top>
-          <Left>4.90031in</Left>
+          <Top>1.35291in</Top>
+          <Left>4.26469in</Left>
           <Height>0.25in</Height>
           <Width>1.125in</Width>
           <ZIndex>33</ZIndex>
@@ -2080,10 +2504,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.87722in</Top>
-          <Left>5.9576in</Left>
+          <Top>1.35291in</Top>
+          <Left>5.39383in</Left>
           <Height>0.25in</Height>
-          <Width>0.3125in</Width>
+          <Width>0.24065in</Width>
           <ZIndex>34</ZIndex>
           <Style>
             <Border>
@@ -2111,10 +2535,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>1.87722in</Top>
-          <Left>6.2701in</Left>
+          <Top>1.35291in</Top>
+          <Left>5.65251in</Left>
           <Height>0.25in</Height>
-          <Width>1.77603in</Width>
+          <Width>2.06422in</Width>
           <ZIndex>35</ZIndex>
           <Style>
             <Border>
@@ -2141,9 +2565,9 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.12722in</Top>
-          <Left>4.90031in</Left>
-          <Height>0.23958in</Height>
+          <Top>1.6168in</Top>
+          <Left>4.26883in</Left>
+          <Height>0.2743in</Height>
           <Width>1.125in</Width>
           <ZIndex>36</ZIndex>
           <Style>
@@ -2173,10 +2597,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.12722in</Top>
-          <Left>5.9576in</Left>
-          <Height>0.23958in</Height>
-          <Width>0.3125in</Width>
+          <Top>1.6168in</Top>
+          <Left>5.39383in</Left>
+          <Height>0.2743in</Height>
+          <Width>0.24479in</Width>
           <ZIndex>37</ZIndex>
           <Style>
             <Border>
@@ -2204,10 +2628,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>2.12722in</Top>
-          <Left>6.2701in</Left>
-          <Height>0.23958in</Height>
-          <Width>1.77603in</Width>
+          <Top>1.6168in</Top>
+          <Left>5.63862in</Left>
+          <Height>0.2743in</Height>
+          <Width>2.07811in</Width>
           <ZIndex>38</ZIndex>
           <Style>
             <Border>
@@ -2234,9 +2658,9 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.39458in</Top>
-          <Left>4.90031in</Left>
-          <Height>0.25in</Height>
+          <Top>1.91194in</Top>
+          <Left>4.26469in</Left>
+          <Height>0.25001in</Height>
           <Width>1.125in</Width>
           <ZIndex>39</ZIndex>
           <Style>
@@ -2266,10 +2690,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.39458in</Top>
-          <Left>5.9576in</Left>
-          <Height>0.25in</Height>
-          <Width>0.3125in</Width>
+          <Top>1.91194in</Top>
+          <Left>5.40358in</Left>
+          <Height>0.25001in</Height>
+          <Width>0.2309in</Width>
           <ZIndex>40</ZIndex>
           <Style>
             <Border>
@@ -2301,10 +2725,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>2.39458in</Top>
-          <Left>6.2701in</Left>
-          <Height>0.25in</Height>
-          <Width>1.77603in</Width>
+          <Top>1.91194in</Top>
+          <Left>5.63448in</Left>
+          <Height>0.25001in</Height>
+          <Width>2.08225in</Width>
           <ZIndex>41</ZIndex>
           <Style>
             <Border>
@@ -2331,8 +2755,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.65847in</Top>
-          <Left>4.90031in</Left>
+          <Top>2.17583in</Top>
+          <Left>4.26883in</Left>
           <Height>0.25in</Height>
           <Width>1.125in</Width>
           <ZIndex>42</ZIndex>
@@ -2363,10 +2787,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.65847in</Top>
-          <Left>5.9576in</Left>
+          <Top>2.17583in</Top>
+          <Left>5.39383in</Left>
           <Height>0.25in</Height>
-          <Width>0.3125in</Width>
+          <Width>0.24479in</Width>
           <ZIndex>43</ZIndex>
           <Style>
             <Border>
@@ -2398,10 +2822,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>2.65847in</Top>
-          <Left>6.28399in</Left>
+          <Top>2.17583in</Top>
+          <Left>5.65251in</Left>
           <Height>0.25in</Height>
-          <Width>1.76214in</Width>
+          <Width>2.06422in</Width>
           <ZIndex>44</ZIndex>
           <Style>
             <Border>
@@ -2428,8 +2852,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.90847in</Top>
-          <Left>4.90031in</Left>
+          <Top>2.42583in</Top>
+          <Left>4.26883in</Left>
           <Height>0.25in</Height>
           <Width>1.125in</Width>
           <ZIndex>45</ZIndex>
@@ -2460,10 +2884,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>2.90847in</Top>
-          <Left>5.9576in</Left>
+          <Top>2.42583in</Top>
+          <Left>5.40358in</Left>
           <Height>0.25in</Height>
-          <Width>0.3125in</Width>
+          <Width>0.23504in</Width>
           <ZIndex>46</ZIndex>
           <Style>
             <Border>
@@ -2491,10 +2915,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>2.90847in</Top>
-          <Left>6.2701in</Left>
+          <Top>2.42583in</Top>
+          <Left>5.63862in</Left>
           <Height>0.25in</Height>
-          <Width>1.77603in</Width>
+          <Width>2.07811in</Width>
           <ZIndex>47</ZIndex>
           <Style>
             <Border>
@@ -2521,8 +2945,8 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>3.15847in</Top>
-          <Left>4.90031in</Left>
+          <Top>2.67583in</Top>
+          <Left>4.26883in</Left>
           <Height>0.25in</Height>
           <Width>1.125in</Width>
           <ZIndex>48</ZIndex>
@@ -2553,10 +2977,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>3.15847in</Top>
-          <Left>5.9576in</Left>
+          <Top>2.67583in</Top>
+          <Left>5.40358in</Left>
           <Height>0.25in</Height>
-          <Width>0.3125in</Width>
+          <Width>0.23504in</Width>
           <ZIndex>49</ZIndex>
           <Style>
             <Border>
@@ -2584,10 +3008,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>3.15847in</Top>
-          <Left>6.2701in</Left>
+          <Top>2.67583in</Top>
+          <Left>5.63862in</Left>
           <Height>0.25in</Height>
-          <Width>1.77603in</Width>
+          <Width>2.07811in</Width>
           <ZIndex>50</ZIndex>
           <Style>
             <Border>
@@ -2614,9 +3038,9 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>3.42236in</Top>
-          <Left>4.90031in</Left>
-          <Height>0.28125in</Height>
+          <Top>2.93972in</Top>
+          <Left>4.26883in</Left>
+          <Height>0.22917in</Height>
           <Width>1.125in</Width>
           <ZIndex>51</ZIndex>
           <Style>
@@ -2646,10 +3070,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>3.42236in</Top>
-          <Left>5.9576in</Left>
-          <Height>0.28125in</Height>
-          <Width>0.3125in</Width>
+          <Top>2.93972in</Top>
+          <Left>5.39383in</Left>
+          <Height>0.22917in</Height>
+          <Width>0.24479in</Width>
           <ZIndex>52</ZIndex>
           <Style>
             <Border>
@@ -2677,10 +3101,10 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox18</rd:DefaultName>
-          <Top>3.42236in</Top>
-          <Left>6.2701in</Left>
-          <Height>0.28125in</Height>
-          <Width>1.77603in</Width>
+          <Top>2.93972in</Top>
+          <Left>5.63862in</Left>
+          <Height>0.22917in</Height>
+          <Width>2.07811in</Width>
           <ZIndex>53</ZIndex>
           <Style>
             <Border>
@@ -2699,12 +3123,271 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
         </Border>
       </Style>
     </PageHeader>
-    <PageHeight>27.94cm</PageHeight>
+    <PageFooter>
+      <Height>2cm</Height>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox92">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Cosmic Gear Ltd</Value>
+                  <Style>
+                    <FontSize>9pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox4</rd:DefaultName>
+          <Left>0.11373in</Left>
+          <Height>0.25in</Height>
+          <Width>1.04687in</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox93">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Customer</Value>
+                  <Style>
+                    <FontSize>9pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox4</rd:DefaultName>
+          <Top>0.42901in</Top>
+          <Left>0.11373in</Left>
+          <Height>0.27778in</Height>
+          <Width>1.04687in</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Line Name="Line1">
+          <Top>1.01913cm</Top>
+          <Left>0.28887cm</Left>
+          <Height>0cm</Height>
+          <Width>2.50285cm</Width>
+          <ZIndex>2</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
+        <Line Name="Line2">
+          <Top>1.01913cm</Top>
+          <Left>5.36917cm</Left>
+          <Height>0cm</Height>
+          <Width>2.50285cm</Width>
+          <ZIndex>3</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
+        <Textbox Name="Textbox94">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Approve by</Value>
+                  <Style>
+                    <FontSize>9pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox4</rd:DefaultName>
+          <Top>0.42901in</Top>
+          <Left>2.11459in</Left>
+          <Height>0.25in</Height>
+          <Width>1.04687in</Width>
+          <ZIndex>4</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Line Name="Line3">
+          <Top>1.01913cm</Top>
+          <Left>11.05178cm</Left>
+          <Height>0cm</Height>
+          <Width>2.50285cm</Width>
+          <ZIndex>5</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
+        <Textbox Name="Textbox95">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Checked by</Value>
+                  <Style>
+                    <FontSize>9pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox4</rd:DefaultName>
+          <Top>0.42901in</Top>
+          <Left>4.35109in</Left>
+          <Height>0.25in</Height>
+          <Width>1.04687in</Width>
+          <ZIndex>6</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Line Name="Line4">
+          <Top>0.98778cm</Top>
+          <Left>16.17582cm</Left>
+          <Height>0cm</Height>
+          <Width>2.50285cm</Width>
+          <ZIndex>7</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
+        <Textbox Name="Textbox96">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Made by</Value>
+                  <Style>
+                    <FontSize>9pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox4</rd:DefaultName>
+          <Top>0.42901in</Top>
+          <Left>6.36843in</Left>
+          <Height>0.25in</Height>
+          <Width>1.04687in</Width>
+          <ZIndex>8</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox97">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!SalesName.Value, "piHeaderDT")</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox18</rd:DefaultName>
+          <Top>0.12346in</Top>
+          <Left>6.36843in</Left>
+          <Height>0.19599in</Height>
+          <Width>1.62475in</Width>
+          <ZIndex>9</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
+    <PageHeight>25cm</PageHeight>
     <PageWidth>21.59cm</PageWidth>
     <LeftMargin>0.5cm</LeftMargin>
     <RightMargin>0.5cm</RightMargin>
-    <TopMargin>1cm</TopMargin>
-    <BottomMargin>1cm</BottomMargin>
+    <TopMargin>0.5cm</TopMargin>
+    <BottomMargin>0.2cm</BottomMargin>
     <ColumnSpacing>1.27cm</ColumnSpacing>
     <Style />
   </Page>

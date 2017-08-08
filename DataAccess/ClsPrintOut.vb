@@ -86,7 +86,7 @@ Public Class ClsPrintOut
             Dim dsProformaInvoiceBank As New ReportDataSource
             With dsProformaInvoiceBank
                 .Name = "piBankDT"
-                .Value = dsPIRemarks.Tables("v_PIBank")
+                .Value = dsPIBank.Tables("v_PIBankDetail")
             End With
 
 

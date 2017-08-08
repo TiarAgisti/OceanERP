@@ -251,18 +251,6 @@ Public Class ClsProformaInvoice
             Return Nothing
         End Try
     End Function
-
-    'Sub RetrievePIHeaderByPINo(piNO As String, ByRef dsProformaInvoice As DataSet)
-    '    Dim query As String = "Select * From v_PIHeader Where PINo = @piNo"
-    '    Dim myField As String = "PINo"
-    '    Dim dataAccess As ClsDataAccess = New ClsDataAccess
-    '    'Dim dataTable As DataTable = New DataTable
-    '    Try
-    '        dataAccess.RetrievePrintOut(query, myField, piNO)
-    '    Catch ex As Exception
-    '        Throw ex
-    '    End Try
-    'End Sub
 #End Region
 
 #Region "Method Generated"
@@ -651,6 +639,12 @@ Public Class ClsProformaInvoice
         Return SQL
     End Function
 
+    Protected Function SqlUpdateStatusHeader(myModel As PIHeaderModel) As String
+        Dim SQL As String
+        SQL = "Update PIHeader Set Status = '" & myModel.Status & "' Where PIHeaderID = '" & myModel.PIHeaderID & "'"
+        Return SQL
+    End Function
+
     Protected Function SqlDeleteDetailFabric(myModel As PIHeaderModel) As String
         Dim SQL As String
         SQL = "Delete From PIDetail Where PIHeaderID = '" & myModel.PIHeaderID & "'"
@@ -777,33 +771,25 @@ Public Class ClsProformaInvoice
             Throw ex
         End Try
     End Function
+
+    Public Function UpdateStatusHeader(piHeaderModel As PIHeaderModel, logModel As LogHistoryModel) As Boolean
+        Dim status As Boolean
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim queryList As List(Of String) = New List(Of String)
+
+        Try
+            'update header
+            queryList.Add(SqlUpdateStatusHeader(piHeaderModel))
+            'insert log history
+            queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
+            status = True
+        Catch ex As Exception
+            status = False
+            Throw ex
+        End Try
+        Return status
+    End Function
 #End Region
-
-#Region "PrintOut"
-    'Public Function PrintOut(piNo As String) As Boolean
-    '    Dim status As Boolean = True
-    '    Dim frm As New FrmPrintPreview
-    '    Dim localReport As LocalReport
-    '    Dim dataset As New DataSet("Proforma Invoice")
-    '    Dim dsProformaInvoice As New ReportDataSource
-    '    Try
-
-    '        frm.rptView.ProcessingMode = ProcessingMode.Local
-    '        localReport = frm.rptView.LocalReport
-    '        localReport.ReportPath = My.Settings.reportPath + "ProformaInvoice\rptProformaInvoice.rdlc"
-    '        RetrievePIHeaderByPINo(piNo, dataset)
-    '        dsProformaInvoice.Name = "piHeaderDT"
-    '        dsProformaInvoice.Value = dataset.Tables("v_PIHeader")
-    '        localReport.DataSources.Add(dsProformaInvoice)
-    '        frm.Show()
-    '        frm.rptView.RefreshReport()
-    '    Catch ex As Exception
-    '        status = False
-    '        Throw ex
-    '    End Try
-    '    Return status
-    'End Function
-#End Region
-
 
 End Class
