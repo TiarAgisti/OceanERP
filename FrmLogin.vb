@@ -11,7 +11,7 @@
                 userID = userModel.UserID
                 userName = userModel.Name
                 roleIDUser = userModel.RoleID
-                stringIPUser = logBFC.GetIPAddressLog
+                stringIPUser = logBFC.GetHostNameLog
                 MsgBoxInformation("Login Successfully")
                 menu.Show()
                 Hide()
@@ -49,7 +49,7 @@
     End Sub
 
     Private Sub btnConfiguration_Click(sender As Object, e As EventArgs) Handles btnConfiguration.Click
-        Dim frm As FrmConfiguration = New FrmConfiguration
+        Dim frm As FrmPasswordConfig = New FrmPasswordConfig
         frm.ShowDialog()
     End Sub
 #End Region

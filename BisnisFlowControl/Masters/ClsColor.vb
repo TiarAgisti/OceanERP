@@ -156,7 +156,7 @@
     End Function
 #End Region
 
-#Region "Insert & Update"
+#Region "Method CRUD"
     Public Function InsertColor(colorModel As ColorModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory

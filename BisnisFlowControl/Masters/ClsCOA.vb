@@ -1,20 +1,21 @@
 ﻿Public Class ClsCOA
+    Dim queryCOA As String = "Select CoaID,CoaCode,CoaName,CostCenter,IsActive From COA Where IsActive = 1"
+#Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "COA Code"
-                query = "Select CoaID,CoaCode,CoaName,CostCenter,IsActive From COA Where CoaCode Like '%" & param & "%' AND IsActive = 1 Order By CoaCode Asc"
+                queryCOA += " AND CoaCode Like '%" & param & "%' Order By CoaCode Asc"
             Case "COA Name"
-                query = "Select CoaID,CoaCode,CoaName,CostCenter,IsActive From COA Where CoaName Like '%" & param & "%' AND IsActive = 1 Order By CoaCode Asc"
+                queryCOA += " AND CoaName Like '%" & param & "%' Order By CoaCode Asc"
             Case Else
-                query = "Select CoaID,CoaCode,CoaName,CostCenter,IsActive From COA Where IsActive = 1 Order By CoaCode Asc"
+                queryCOA += " Order By CoaCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryCOA)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -23,6 +24,9 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+#End Region
+
+#Region "Method Other"
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
         Dim query As String = "Select max(CoaID) from COA"
@@ -55,6 +59,9 @@
             Throw ex
         End Try
     End Function
+#End Region
+
+#Region "Method CRUD"
     Public Function InsertCOA(coaModel As COAModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -104,4 +111,6 @@
             Throw ex
         End Try
     End Function
+#End Region
+
 End Class

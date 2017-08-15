@@ -120,6 +120,7 @@
                     MsgBoxError(ex.Message)
                 End Try
         End Select
+        Text = title
     End Sub
     Private Sub txtUserName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUserName.KeyPress
         If e.KeyChar = Chr(13) Then

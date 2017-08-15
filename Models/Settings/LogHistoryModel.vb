@@ -31,13 +31,13 @@
         End Set
     End Property
 
-    Private xIP As String
-    Public Property IP() As String
+    Private xCompName As String
+    Public Property CompName() As String
         Get
-            Return xIP
+            Return xCompName
         End Get
         Set(ByVal value As String)
-            xIP = value
+            xCompName = value
         End Set
     End Property
 

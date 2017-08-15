@@ -37,7 +37,7 @@
         logModel.LogID = GeneratedAutoNumber()
         logModel.Description = description
         logModel.UserID = userID
-        logModel.IP = GetHostNameLog() + "-" + GetIPAddressLog()
+        logModel.CompName = GetHostNameLog()
         logModel.CreatedDate = DateTime.Now
         Return logModel
     End Function
@@ -46,16 +46,16 @@
         logModel.LogID = GeneratedAutoNumberTrans()
         logModel.Description = desc
         logModel.UserID = userID
-        logModel.IP = GetHostNameLog() + "-" + GetIPAddressLog()
+        logModel.CompName = GetHostNameLog()
         logModel.CreatedDate = DateTime.Now
         Return logModel
     End Function
     Public Function SaveData(logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Try
-            Dim query As String = "Insert into LogHistory(LogID,Description,UserID,IP,CreatedDate)values" &
+            Dim query As String = "Insert into LogHistory(LogID,Description,UserID,CompName,CreatedDate)values" &
                             "('" & logModel.LogID & "','" & logModel.Description & "','" & logModel.UserID & "'" &
-                           ",'" & logModel.IP & "','" & logModel.CreatedDate & "')"
+                           ",'" & logModel.CompName & "','" & logModel.CreatedDate & "')"
             dataAccess.CreateCommand(query)
             dataAccess = Nothing
             Return True
@@ -65,14 +65,14 @@
         End Try
     End Function
     Public Function SqlInsertLog(logModel As LogHistoryModel) As String
-        Dim queryLog As String = "Insert into LogHistory(LogID,Description,UserID,IP,CreatedDate)values('" & logModel.LogID & "','" & logModel.Description & "'" &
-                               ",'" & logModel.UserID & "','" & logModel.IP & "','" & logModel.CreatedDate & "')"
+        Dim queryLog As String = "Insert into LogHistory(LogID,Description,UserID,CompName,CreatedDate)values('" & logModel.LogID & "','" & logModel.Description & "'" &
+                               ",'" & logModel.UserID & "','" & logModel.CompName & "','" & logModel.CreatedDate & "')"
         Return queryLog
     End Function
 
     Public Function SqlInsertLogHistoryTransaction(logModel As LogHistoryModel) As String
-        Dim queryLog As String = "Insert into LogHistoryTransaction(LogID,Description,UserID,IP,CreatedDate)values('" & logModel.LogID & "','" & logModel.Description & "'" &
-                               ",'" & logModel.UserID & "','" & logModel.IP & "','" & logModel.CreatedDate & "')"
+        Dim queryLog As String = "Insert into LogHistoryTransaction(LogID,Description,UserID,CompName,CreatedDate)values('" & logModel.LogID & "','" & logModel.Description & "'" &
+                               ",'" & logModel.UserID & "','" & logModel.CompName & "','" & logModel.CreatedDate & "')"
         Return queryLog
     End Function
 #End Region

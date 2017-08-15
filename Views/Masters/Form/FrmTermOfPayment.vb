@@ -81,6 +81,7 @@
         ButtonAdd()
         display = ""
         btnAdd.Focus()
+        Text = title
     End Sub
     Function CheckEmpty() As Boolean
         If txtName.Text = String.Empty Then
@@ -220,7 +221,6 @@
     Private Sub FrmTermOfPayment_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PreCreateDisplay()
         txtName.Focus()
-        Text = title
     End Sub
 
     Private Sub txtName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtName.KeyPress

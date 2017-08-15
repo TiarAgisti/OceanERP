@@ -82,6 +82,7 @@
         ButtonAdd()
         display = ""
         btnAdd.Focus()
+        Text = title
     End Sub
 
     Function CheckEmpty() As Boolean
@@ -275,7 +276,6 @@
 
     Private Sub FrmUnit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PreCreateDisplay()
-        Text = title
     End Sub
 #End Region
 

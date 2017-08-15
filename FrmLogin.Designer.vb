@@ -31,9 +31,9 @@ Partial Class FrmLogin
         Me.txtUserName = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.btnConfiguration = New System.Windows.Forms.Button()
         Me.btnKeluar = New System.Windows.Forms.Button()
         Me.btnLogin = New System.Windows.Forms.Button()
-        Me.btnConfiguration = New System.Windows.Forms.Button()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -121,6 +121,15 @@ Partial Class FrmLogin
         Me.Panel3.Size = New System.Drawing.Size(328, 41)
         Me.Panel3.TabIndex = 9
         '
+        'btnConfiguration
+        '
+        Me.btnConfiguration.Location = New System.Drawing.Point(170, 5)
+        Me.btnConfiguration.Name = "btnConfiguration"
+        Me.btnConfiguration.Size = New System.Drawing.Size(85, 23)
+        Me.btnConfiguration.TabIndex = 6
+        Me.btnConfiguration.Text = "Configuration"
+        Me.btnConfiguration.UseVisualStyleBackColor = True
+        '
         'btnKeluar
         '
         Me.btnKeluar.Location = New System.Drawing.Point(89, 5)
@@ -139,15 +148,6 @@ Partial Class FrmLogin
         Me.btnLogin.Text = "Login"
         Me.btnLogin.UseVisualStyleBackColor = True
         '
-        'btnConfiguration
-        '
-        Me.btnConfiguration.Location = New System.Drawing.Point(170, 5)
-        Me.btnConfiguration.Name = "btnConfiguration"
-        Me.btnConfiguration.Size = New System.Drawing.Size(85, 23)
-        Me.btnConfiguration.TabIndex = 6
-        Me.btnConfiguration.Text = "Configuration"
-        Me.btnConfiguration.UseVisualStyleBackColor = True
-        '
         'FrmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -164,7 +164,7 @@ Partial Class FrmLogin
         Me.MinimizeBox = False
         Me.Name = "FrmLogin"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "FrmLogin"
+        Me.Text = "Welcome"
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)

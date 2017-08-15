@@ -17,6 +17,7 @@
     Dim intPostRemarks As Integer
 
     Dim customerCode As String = ""
+    Dim statusPI As Integer
 #End Region
 
 #Region "ComboBox"
@@ -169,7 +170,10 @@
             .Columns.Add(7, "Purch Size")
             .Columns.Add(8, "Price")
             .Columns.Add(9, "Qty Sample")
+
             .Columns.Add(10, "Del Date")
+            .Columns(10).DefaultCellStyle.Format = "dd-MMM-yyyy"
+
             .Columns.Add(11, "Note")
         End With
     End Sub
@@ -694,8 +698,6 @@
         Return headerModel
     End Function
 
-
-
     Function SetDetailFabric(piID As Long) As List(Of PIDetailModel)
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Dim listModel As List(Of PIDetailModel) = New List(Of PIDetailModel)
@@ -746,6 +748,7 @@
             If piBFC.InsertData(SetDataHeader, SetDetailFabric(myPIID), SetDetailColor(myPIID), SetDetailYarn(myPIID) _
                                 , SetDetailRemarks(myPIID), SetDataBank(myPIID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxSaved()
+                CheckPermissions()
                 btnPrint.Enabled = True
                 btnSave.Enabled = False
                 btnUpdate.Enabled = False
@@ -764,6 +767,7 @@
             If piBFC.UpdateData(SetDataHeader, SetDetailFabric(piHeaderID), SetDetailColor(piHeaderID), SetDetailYarn(piHeaderID) _
                                 , SetDetailRemarks(piHeaderID), SetDataBank(piHeaderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxUpdated()
+                CheckPermissions()
                 btnPrint.Enabled = True
                 btnSave.Enabled = False
                 btnUpdate.Enabled = False
@@ -780,7 +784,7 @@
         condition = "Approved"
         Try
             If piBFC.UpdateStatusHeader(SetDataHeader, logBFC.SetLogHistoryTrans(logDesc)) Then
-                MsgBoxUpdated()
+                MsgBoxApproved()
                 PreCreatedisplay()
             End If
         Catch ex As Exception
@@ -795,7 +799,7 @@
         condition = "Void"
         Try
             If piBFC.UpdateStatusHeader(SetDataHeader, logBFC.SetLogHistoryTrans(logDesc)) Then
-                MsgBoxUpdated()
+                MsgBoxVoid()
                 PreCreatedisplay()
             End If
         Catch ex As Exception
@@ -859,10 +863,9 @@
     End Sub
 
     Sub RetrieveCustomer()
-        ComboBoxCustomer()
         Dim vendorBFC As ClsVendor = New ClsVendor
         Dim vendorModel As VendorModel = New VendorModel
-        Dim obj As Integer = Convert.ToInt32(cmbTo.SelectedValue)
+        Dim obj As Integer = cmbTo.SelectedValue
         If obj > 0 Then
             vendorModel = vendorBFC.RetrieveVendorByID(obj, "C")
             With vendorModel
@@ -920,7 +923,6 @@
     End Sub
 
     Sub RetrieveBankAccount()
-        ComboBoxBank()
         Dim bankAccountBFC As ClsBankAccount = New ClsBankAccount
         Dim bankAccountModel As BankAccountModel = New BankAccountModel
         Dim bankAccountID As Integer = cmbBankCode.SelectedValue
@@ -969,6 +971,7 @@
             cmbTo.SelectedValue = .CustomerID
             cmbFM.SelectedValue = .GroupSalesID
             txtDelPlace.Text = .DeliveryPlace
+            statusPI = .Status
         End With
     End Sub
 
@@ -1117,6 +1120,10 @@
         GridDetailALL()
         ComboBoxALL()
         cmbBuyer.Focus()
+        btnApprove.Enabled = False
+        btnVoid.Enabled = False
+        btnPrint.Enabled = False
+        btnUpdate.Enabled = False
     End Sub
 
     Sub PreUpdateDisplay()
@@ -1130,7 +1137,10 @@
             PrepareBankByHeaderID()
             PrepareYarnByHeaderID()
             PrepareRemarksByHeaderID()
-            btnPrint.Enabled = True
+            If statusPI = 0 Then btnPrint.Enabled = False Else btnPrint.Enabled = True
+            If statusPI = 0 Or statusPI = 2 Then btnApprove.Enabled = False
+            If statusPI = 0 Then btnVoid.Enabled = False
+            btnSave.Enabled = False
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
@@ -1143,6 +1153,7 @@
             Case "Update"
                 PreUpdateDisplay()
         End Select
+        Text = title
     End Sub
 #End Region
 
@@ -1343,7 +1354,7 @@
         cmbRawFabric.Focus()
     End Sub
 
-    Private Sub cmbFabric_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles cmbFabric.Validating
+    Private Sub cmbFabric_Validated(sender As Object, e As EventArgs) Handles cmbFabric.Validated
         RetrieveFabric()
     End Sub
 
@@ -1585,12 +1596,6 @@
 
     Private Sub dgvRemarks_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgvRemarks.RowStateChanged
         intPostRemarks = e.Row.Index
-    End Sub
-
-    Private Sub cmbTo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbTo.KeyPress
-        If e.KeyChar = Chr(13) Then
-            MsgBox("Enter")
-        End If
     End Sub
 #End Region
 End Class

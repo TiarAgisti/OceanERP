@@ -1,20 +1,21 @@
 ﻿Public Class ClsUser
+    Dim queryUser As String = "select * From v_Users where IsActive = 1"
+#Region "Method Retrieve"
     Public Function RetrieveListUser(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "User Name"
-                query = "select * From v_Users where Name LIKE '%" & param & "%' AND isActive = 1 order by Name asc"
+                queryUser += " AND Name LIKE '%" & param & "%' order by Name asc"
             Case "Permission"
-                query = "select * From v_Users where RoleName LIKE '%" & param & "%' AND isActive = 1 order by Name asc"
+                queryUser += " AND RoleName LIKE '%" & param & "%' order by Name asc"
             Case Else
-                query = "select * From v_Users where isActive = 1 order by Name asc"
+                queryUser += " order by Name asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryUser)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -24,28 +25,12 @@
 
     End Function
 
-    Public Function CheckUserName(myUserName As String) As Boolean
-        Dim dataAccess As ClsDataAccess = New ClsDataAccess
-        Dim query As String = "Select COUNT(Name) as Name From Users Where Name = '" & myUserName & "'"
-        Try
-            dataAccess.reader = dataAccess.ExecuteReader(query)
-            dataAccess.reader.Read()
-
-            If dataAccess.reader.Item("Name") = 0 Then
-                Return True
-            Else
-                Return False
-            End If
-        Catch ex As Exception
-            Throw ex
-        End Try
-    End Function
     Public Function RetrieveByID(myID As Integer) As UserModel
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim userModel As UserModel = New UserModel
-        Dim query As String = "Select * From Users Where UserID='" & myID & "'"
+        queryUser += " AND UserID='" & myID & "'"
         Try
-            dataAccess.reader = dataAccess.ExecuteReader(query)
+            dataAccess.reader = dataAccess.ExecuteReader(queryUser)
             While dataAccess.reader.Read
                 If Not IsDBNull(dataAccess.reader.Item("UserID")) Then
                     userModel.UserID = myID
@@ -65,7 +50,8 @@
     Public Function RetrieveByNamePassword(userName As String, pass As String) As UserModel
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim userModel As UserModel = New UserModel
-        Dim query As String = "Select UserID,Name,userpassword,RoleID From Users Where Name='" & userName & "' AND userpassword='" & EncryptionPassword(pass, valueKey) & "' AND IsActive = 1"
+        Dim query As String = "Select UserID,Name,userpassword,RoleID From Users Where Name='" & userName & "'" &
+                            " And userpassword='" & EncryptionPassword(pass, valueKey) & "' AND IsActive = 1"
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             While dataAccess.reader.Read
@@ -106,6 +92,25 @@
         End Try
         Return userModel
     End Function
+#End Region
+#Region "Method Other"
+    Public Function CheckUserName(myUserName As String) As Boolean
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim query As String = "Select COUNT(Name) as Name From Users Where Name = '" & myUserName & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(query)
+            dataAccess.reader.Read()
+
+            If dataAccess.reader.Item("Name") = 0 Then
+                Return True
+            Else
+                Return False
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+
     Public Function EncryptionPassword(myPassword As String, key As String) As String
         Try
             Dim dataAccess As ClsDataAccess = New ClsDataAccess
@@ -142,6 +147,9 @@
         dataAccess = Nothing
         Return id
     End Function
+#End Region
+
+#Region "Method CRUD"
     Public Function InsertUser(userModel As UserModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -221,4 +229,6 @@
             Throw ex
         End Try
     End Function
+#End Region
+
 End Class

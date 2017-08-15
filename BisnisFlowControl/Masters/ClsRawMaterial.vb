@@ -1,23 +1,23 @@
 ﻿Public Class ClsRawMaterial
+    Dim queryRaw As String = "Select * From v_RawMaterial Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Raw Material Code"
-                query = "Select * From v_RawMaterial Where RawMaterialCode Like '%" & param & "%' AND IsActive = 1 Order By RawMaterialCode Asc"
+                queryRaw += " AND RawMaterialCode Like '%" & param & "%' Order By RawMaterialCode Asc"
             Case "Raw Material Name"
-                query = "Select * From v_RawMaterial Where RawMaterialName Like '%" & param & "%' AND IsActive = 1 Order By RawMaterialCode Asc"
+                queryRaw += " AND RawMaterialName Like '%" & param & "%' Order By RawMaterialCode Asc"
             Case "Supplier"
-                query = "Select * From v_RawMaterial Where VendorName Like '%" & param & "%' AND IsActive = 1 Order By RawMaterialCode Asc"
+                queryRaw += " AND VendorName Like '%" & param & "%' Order By RawMaterialCode Asc"
             Case Else
-                query = "Select * From v_RawMaterial Where IsActive = 1 Order By RawMaterialCode Asc"
+                queryRaw += " Order By RawMaterialCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryRaw)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -107,7 +107,7 @@
     End Function
 #End Region
 
-#Region "Insert & Update"
+#Region "Method CRUD"
     Public Function InsertData(rawMaterialModel As RawMaterialModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory

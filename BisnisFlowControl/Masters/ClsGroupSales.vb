@@ -1,21 +1,21 @@
 ﻿Public Class ClsGroupSales
+    Dim querySales As String = "Select * From GroupSales Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Code"
-                query = "Select * From GroupSales Where GroupSalesCode LIKE '%" & param & "%' AND IsActive = 1 Order By GroupSalesCode Asc"
+                querySales += " AND GroupSalesCode LIKE '%" & param & "%' Order By GroupSalesCode Asc"
             Case "Name"
-                query = "Select * From GroupSales Where GroupSalesName LIKE '%" & param & "%' AND IsActive = 1 Order By GroupSalesCode Asc"
+                querySales += " AND GroupSalesName LIKE '%" & param & "%' Order By GroupSalesCode Asc"
             Case Else
-                query = "Select * From GroupSales Where IsActive = 1 Order By GroupSalesCode Asc"
+                querySales += " Order By GroupSalesCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(querySales)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -96,7 +96,7 @@
     End Function
 #End Region
 
-#Region "Insert & Update"
+#Region "Method CRUD"
     Public Function InsertGroupSales(grpSalesModel As GroupSalesModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory

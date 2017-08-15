@@ -24,6 +24,12 @@ Module MdlHelper
     Public Sub MsgBoxUpdated()
         MsgBoxInformation("Data has been updated")
     End Sub
+    Public Sub MsgBoxApproved()
+        MsgBoxInformation("Data has been Approved")
+    End Sub
+    Public Sub MsgBoxVoid()
+        MsgBoxInformation("Data has been Voided")
+    End Sub
     Public Sub MsgBoxDeleted()
         MsgBoxInformation("Data has been deleted")
     End Sub

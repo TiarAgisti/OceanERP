@@ -1,25 +1,25 @@
 ﻿Public Class ClsVendor
+    Dim queryVendor As String = "Select * From v_Vendor Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String, status As Char) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Customer Code"
-                query = "Select * From v_Vendor Where VendorCode Like '%" & param & "%' AND IsActive = 1 AND Status = '" & status & "' Order By VendorCode Asc"
+                queryVendor += " AND VendorCode Like '%" & param & "%' AND Status = '" & status & "' Order By VendorCode Asc"
             Case "Name"
-                query = "Select * From v_Vendor Where VendorName LIKE '%" & param & "%' AND IsActive = 1 AND Status = '" & status & "' Order By VendorCode Asc"
+                queryVendor += " AND VendorName LIKE '%" & param & "%' AND Status = '" & status & "' Order By VendorCode Asc"
             Case "Supplier Code"
-                query = "Select * From v_Vendor Where VendorCode LIKE '%" & param & "%' AND IsActive = 1 AND Status = '" & status & "' Order By VendorCode Asc"
+                queryVendor += " AND VendorCode LIKE '%" & param & "%' AND Status = '" & status & "' Order By VendorCode Asc"
             Case "Address"
-                query = "Select * From v_Vendor Where Address LIKE '%" & param & "%' AND IsActive = 1 AND Status = '" & status & "' Order By VendorCode Asc"
+                queryVendor += " AND Address LIKE '%" & param & "%' AND Status = '" & status & "' Order By VendorCode Asc"
             Case Else
-                query = "Select * From v_Vendor Where IsActive = 1 AND Status = '" & status & "' Order By VendorCode Asc"
+                queryVendor += " AND Status = '" & status & "' Order By VendorCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryVendor)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -219,7 +219,7 @@
     End Function
 #End Region
 
-#Region "Method Insert & Update"
+#Region "Method CRUD"
     Public Function InsertVendor(vendorModel As VendorModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory

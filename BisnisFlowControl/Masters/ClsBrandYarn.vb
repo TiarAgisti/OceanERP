@@ -1,19 +1,19 @@
 ﻿Public Class ClsBrandYarn
+    Dim queryBrandYarn As String = "Select * From BrandYarn Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Brand Yarn"
-                query = "Select * From BrandYarn Where BrandYarnName Like '%" & param & "%' AND IsActive = 1 Order By BrandYarnName Asc"
+                queryBrandYarn += " AND BrandYarnName Like '%" & param & "%' Order By BrandYarnName Asc"
             Case Else
-                query = "Select * From BrandYarn Where IsActive = 1 Order By BrandYarnName Asc"
+                queryBrandYarn += " Order By BrandYarnName Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryBrandYarn)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -84,7 +84,7 @@
     End Function
 #End Region
 
-#Region "Insert & Update"
+#Region "Method CRUD"
     Public Function InsertData(brandYarnModel As BrandYarnModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory

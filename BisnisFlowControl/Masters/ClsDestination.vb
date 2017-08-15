@@ -1,23 +1,23 @@
 ﻿Public Class ClsDestination
+    Dim queryDest As String = "Select * From Destination Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String, status As Char) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Country Code"
-                query = "Select * From Destination Where DestinationCode LIKE '%" & param & "%' AND IsActive = 1 AND Status = '" & status & "' Order By DestinationCode Asc"
+                queryDest += " AND DestinationCode LIKE '%" & param & "%' AND Status = '" & status & "' Order By DestinationCode Asc"
             Case "Name"
-                query = "Select * From Destination Where Name LIKE '%" & param & "%' AND IsActive = 1 AND Status = '" & status & "' Order By DestinationCode Asc"
+                queryDest += " AND Name LIKE '%" & param & "%' AND Status = '" & status & "' Order By DestinationCode Asc"
             Case "SeaPort Code"
-                query = "Select * From Destination Where DestinationCode LIKE '%" & param & "%' AND IsActive = 1 AND Status = '" & status & "' Order By DestinationCode Asc"
+                queryDest += " AND DestinationCode LIKE '%" & param & "%' AND Status = '" & status & "' Order By DestinationCode Asc"
             Case Else
-                query = "Select * From Destination Where IsActive = 1 AND Status = '" & status & "' Order By DestinationCode Asc"
+                queryDest += " AND Status = '" & status & "' Order By DestinationCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryDest)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -114,7 +114,7 @@
     End Function
 #End Region
 
-#Region "CRUD"
+#Region "Method CRUD"
     Public Function InsertDestination(destModel As DestinationModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory

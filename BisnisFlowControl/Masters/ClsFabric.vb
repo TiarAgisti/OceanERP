@@ -130,7 +130,7 @@
     End Sub
 #End Region
 
-#Region "Insert & Update"
+#Region "Method CRUD"
     Public Function InsertFabric(fabricModel As FabricModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory

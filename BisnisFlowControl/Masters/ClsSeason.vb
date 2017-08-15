@@ -1,27 +1,24 @@
 ﻿Public Class ClsSeason
+    Dim querySeason As String = "Select SeasonID,SeasonCode,SeasonName,Description,VendorName,VendorID,IsActive From v_Season" &
+                        " Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Season Code"
-                query = "Select SeasonID,SeasonCode,SeasonName,Description,VendorName,VendorID,IsActive From v_Season" &
-                        " Where SeasonCode Like '%" & param & "%' AND IsActive = 1 Order By SeasonCode Asc"
+                querySeason += " AND SeasonCode Like '%" & param & "%' Order By SeasonCode Asc"
             Case "Season Name"
-                query = "Select SeasonID,SeasonCode,SeasonName,Description,VendorName,VendorID,IsActive From v_Season" &
-                        " Where SeasonName Like '%" & param & "%' AND IsActive = 1 Order By SeasonCode Asc"
+                querySeason += " AND SeasonName Like '%" & param & "%' Order By SeasonCode Asc"
             Case "Customer"
-                query = "Select SeasonID,SeasonCode,SeasonName,Description,VendorName,VendorID,IsActive From v_Season" &
-                        " Where VendorName Like '%" & param & "%' AND IsActive = 1 Order By SeasonCode Asc"
+                querySeason += " AND VendorName Like '%" & param & "%' Order By SeasonCode Asc"
             Case Else
-                query = "Select SeasonID,SeasonCode,SeasonName,Description,VendorName,VendorID,IsActive From v_Season" &
-                        " Where IsActive = 1 Order By SeasonCode Asc"
+                querySeason += " Order By SeasonCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(querySeason)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -106,7 +103,7 @@
     End Function
 #End Region
 
-#Region "Insert & Update"
+#Region "Method CRUD"
     Public Function InsertSeason(seasonModel As SeasonModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory

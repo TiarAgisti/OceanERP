@@ -1,22 +1,23 @@
 ﻿Public Class ClsBrand
+    Dim queryBrand As String = "Select * From Brand Where BrandCode Where IsActive = 1"
+#Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Brand Code"
-                query = "Select * From Brand Where BrandCode LIKE '%" & param & "%' AND IsActive = 1 Order By BrandCode Asc"
+                queryBrand += " AND BrandCode LIKE '%" & param & "%' Order By BrandCode Asc"
             Case "Name"
-                query = "Select * From Brand Where Name LIKE '%" & param & "%' AND IsActive = 1 Order By BrandCode Asc"
+                queryBrand += " AND Name LIKE '%" & param & "%' Order By BrandCode Asc"
             Case "Description"
-                query = "Select * From Brand Where Description LIKE '%" & param & "%' AND IsActive = 1 Order By BrandCode Asc"
+                queryBrand += " AND Description LIKE '%" & param & "%' Order By BrandCode Asc"
             Case Else
-                query = "Select * From Brand Where IsActive = 1 Order By BrandCode Asc"
+                queryBrand += " Order By BrandCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryBrand)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -25,7 +26,9 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+#End Region
 
+#Region "Method Other"
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
         Dim query As String = "Select max(BrandID) from Brand"
@@ -54,7 +57,9 @@
         dataAccess = Nothing
         Return hasil
     End Function
+#End Region
 
+#Region "Method CRUD"
     Public Function InsertBrand(brandModel As BrandModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -106,4 +111,6 @@
             Throw ex
         End Try
     End Function
+#End Region
+
 End Class

@@ -1,23 +1,23 @@
 ﻿Public Class ClsStyle
+    Dim queryStyle As String = "Select * From Style Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Style Code"
-                query = "Select * From Style Where StyleCode Like '%" & param & "%' AND IsActive = 1 Order By StyleCode Asc"
+                queryStyle += " AND StyleCode Like '%" & param & "%' Order By StyleCode Asc"
             Case "Style Name"
-                query = "Select * From Style Where StyleName Like '%" & param & "%' AND IsActive = 1 Order By StyleCode Asc"
+                queryStyle += " AND StyleName Like '%" & param & "%' Order By StyleCode Asc"
             Case "Specification"
-                query = "Select * From Style Where SpecStyle Like '%" & param & "%' AND IsActive = 1 Order By StyleCode Asc"
+                queryStyle += " AND SpecStyle Like '%" & param & "%' Order By StyleCode Asc"
             Case Else
-                query = "Select * From Style Where IsActive = 1 Order By StyleCode Asc"
+                queryStyle += " Order By StyleCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryStyle)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -107,7 +107,7 @@
     End Function
 #End Region
 
-#Region "Insert & Update"
+#Region "Method CRUD"
     Public Function InsertData(styleModel As StyleModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory

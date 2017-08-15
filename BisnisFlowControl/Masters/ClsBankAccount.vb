@@ -14,7 +14,7 @@
             Case "Supplier / Customer"
                 queryBankAccount += " AND VendorDesc Like '%" & param & "%' Order By BankAccountCode Asc"
             Case "Account Name"
-                queryBankAccount = " AND AccountName Like '%" & param & "%' Order By BankAccountCode Asc"
+                queryBankAccount += " AND AccountName Like '%" & param & "%' Order By BankAccountCode Asc"
             Case "Account Number"
                 queryBankAccount += " AND AccountNumber Like '%" & param & "%' Order By BankAccountCode Asc"
             Case Else

@@ -1,20 +1,21 @@
 ﻿Public Class ClsDepartment
+    Dim queryDepartment As String = "Select * From Department Where IsActive = 1"
+#Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Department Code"
-                query = "Select * From Department Where DepartmentCode LIKE '%" & param & "%' AND IsActive = 1 Order By DepartmentCode Asc"
+                queryDepartment += " AND DepartmentCode LIKE '%" & param & "%' Order By DepartmentCode Asc"
             Case "Name"
-                query = "Select * From Department Where Name LIKE '%" & param & "%' AND IsActive = 1 Order By DepartmentCode Asc"
+                queryDepartment += " AND Name LIKE '%" & param & "%' Order By DepartmentCode Asc"
             Case Else
-                query = "Select * From Department Where IsActive = 1 Order By DepartmentCode Asc"
+                queryDepartment += " Order By DepartmentCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryDepartment)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -23,7 +24,9 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+#End Region
 
+#Region "Method Other"
     Public Function GeneratedAutoNumber() As Integer
         Dim id As Integer = 0
         Dim query As String = "Select max(DepartmentID) from Department"
@@ -52,7 +55,9 @@
         dataAccess = Nothing
         Return hasil
     End Function
+#End Region
 
+#Region "Method CRUD"
     Public Function InsertDepart(departModel As DepartmentModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -103,4 +108,5 @@
             Throw ex
         End Try
     End Function
+#End Region
 End Class

@@ -1,24 +1,23 @@
 ﻿Public Class ClsTermOfPayment
-
+    Dim queryTOP As String = "Select * From TermOfPayment Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Code"
-                query = "Select * From TermOfPayment Where TermOfPaymentCode LIKE '%" & param & "%' AND IsActive = 1 Order By TermOfPaymentCode Asc"
+                queryTOP += " AND TermOfPaymentCode LIKE '%" & param & "%' Order By TermOfPaymentCode Asc"
             Case "Name"
-                query = "Select * From TermOfPayment Where Name LIKE '%" & param & "%' AND IsActive = 1 Order By TermOfPaymentCode Asc"
+                queryTOP += " AND Name LIKE '%" & param & "%' Order By TermOfPaymentCode Asc"
             Case "Description"
-                query = "Select * From TermOfPayment Where Description LIKE '%" & param & "%' AND IsActive = 1 Order By TermOfPaymentCode Asc"
+                queryTOP += " AND Description LIKE '%" & param & "%' Order By TermOfPaymentCode Asc"
             Case Else
-                query = "Select * From TermOfPayment Where IsActive = 1 Order By TermOfPaymentCode Asc"
+                queryTOP += " Order By TermOfPaymentCode Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryTOP)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex

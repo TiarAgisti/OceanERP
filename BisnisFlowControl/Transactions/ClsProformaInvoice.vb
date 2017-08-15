@@ -72,6 +72,7 @@ Public Class ClsProformaInvoice
                         piHeaderModel.GroupSalesID = .Item("GroupSalesID")
                         piHeaderModel.SalesName = .Item("SalesName")
                         piHeaderModel.DeliveryPlace = .Item("DeliveryPlace")
+                        piHeaderModel.Status = .Item("Status")
                     End If
                 End With
             End While
@@ -174,7 +175,7 @@ Public Class ClsProformaInvoice
     Public Function RetrieveYarnByHeaderID(headerID As Long) As List(Of PIYarnDetailModel)
         Dim myList As List(Of PIYarnDetailModel) = New List(Of PIYarnDetailModel)
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
-        Dim query As String = "Select * v_PIYarnDetail Where PIHeaderID = '" & headerID & "'"
+        Dim query As String = "Select * From v_PIYarnDetail Where PIHeaderID = '" & headerID & "'"
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             With dataAccess.reader
@@ -783,6 +784,9 @@ Public Class ClsProformaInvoice
             queryList.Add(SqlUpdateStatusHeader(piHeaderModel))
             'insert log history
             queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
+
+            dataAccess.InsertMasterDetail(queryList)
+            dataAccess = Nothing
             status = True
         Catch ex As Exception
             status = False

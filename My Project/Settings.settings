@@ -20,5 +20,8 @@
     <Setting Name="reportPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="superPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">roti1!@#</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

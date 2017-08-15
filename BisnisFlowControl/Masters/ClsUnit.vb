@@ -1,21 +1,21 @@
 ﻿Public Class ClsUnit
+    Dim queryUnit As String = "Select * From Unit Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Unit Name"
-                query = "Select * From Unit Where UnitName LIKE '%" & param & "%' AND IsActive = 1 Order By UnitName Asc"
+                queryUnit += " AND UnitName LIKE '%" & param & "%' Order By UnitName Asc"
             Case "Description"
-                query = "Select * From Unit Where Description LIKE '%" & param & "%' AND IsActive = 1 Order By UnitName Asc"
+                queryUnit += " AND Description LIKE '%" & param & "%' Order By UnitName Asc"
             Case Else
-                query = "Select * From Unit Where IsActive = 1 Order By UnitName Asc"
+                queryUnit += " Order By UnitName Asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryUnit)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -89,7 +89,7 @@
     End Sub
 #End Region
 
-#Region "Insert & Update"
+#Region "Method CRUD"
     Public Function InsertUnit(unitModel As UnitModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory

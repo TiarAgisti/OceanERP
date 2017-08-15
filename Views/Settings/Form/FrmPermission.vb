@@ -249,6 +249,7 @@
                 PrepareGrid()
                 RetrieveDetails(roleID)
         End Select
+        Text = title
     End Sub
 #End Region
 

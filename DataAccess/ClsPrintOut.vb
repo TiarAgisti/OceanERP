@@ -13,8 +13,25 @@ Public Class ClsPrintOut
                 Dim myCommand As SqlCommand = New SqlCommand(query, myConnection)
                 Dim parameter As New SqlParameter("PINo", piNo)
                 myCommand.Parameters.Add(parameter)
-                Dim purchaseOrderAdapter As New SqlDataAdapter(myCommand)
-                purchaseOrderAdapter.Fill(dsProformaInvoice, "v_PIHeader")
+                Dim proformaInvoiceAdapter As New SqlDataAdapter(myCommand)
+                proformaInvoiceAdapter.Fill(dsProformaInvoice, "v_PIHeader")
+                myCommand.Dispose()
+            End Using
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Protected Sub GetProformaInvoicePrintOut(ByVal piNo As String, ByRef dsProformaInvoice As DataSet)
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim query As String = "Select * From v_PIPrintOut where PINo = @piNo"
+        Try
+            Using myConnection As SqlConnection = dataAccess.SqlConnection
+                Dim myCommand As SqlCommand = New SqlCommand(query, myConnection)
+                Dim parameter As New SqlParameter("PINo", piNo)
+                myCommand.Parameters.Add(parameter)
+                Dim proformaInvoiceAdapter As New SqlDataAdapter(myCommand)
+                proformaInvoiceAdapter.Fill(dsProformaInvoice, "v_PIPrintOut")
                 myCommand.Dispose()
             End Using
         Catch ex As Exception
@@ -30,8 +47,8 @@ Public Class ClsPrintOut
                 Dim myCommand As SqlCommand = New SqlCommand(query, myConnection)
                 Dim parameter As New SqlParameter("PINo", piNo)
                 myCommand.Parameters.Add(parameter)
-                Dim purchaseOrderAdapter As New SqlDataAdapter(myCommand)
-                purchaseOrderAdapter.Fill(dsProformaInvoice, "v_PIBankDetail")
+                Dim proformaInvoiceAdapter As New SqlDataAdapter(myCommand)
+                proformaInvoiceAdapter.Fill(dsProformaInvoice, "v_PIBankDetail")
                 myCommand.Dispose()
             End Using
         Catch ex As Exception
@@ -47,8 +64,8 @@ Public Class ClsPrintOut
                 Dim myCommand As SqlCommand = New SqlCommand(query, myConnection)
                 Dim parameter As New SqlParameter("PINo", piNo)
                 myCommand.Parameters.Add(parameter)
-                Dim purchaseOrderAdapter As New SqlDataAdapter(myCommand)
-                purchaseOrderAdapter.Fill(dsProformaInvoice, "v_PIRemarks")
+                Dim proformaInvoiceAdapter As New SqlDataAdapter(myCommand)
+                proformaInvoiceAdapter.Fill(dsProformaInvoice, "v_PIRemarks")
                 myCommand.Dispose()
             End Using
         Catch ex As Exception
@@ -73,6 +90,14 @@ Public Class ClsPrintOut
                 .Value = dataset.Tables("v_PIHeader")
             End With
 
+            Dim dsPIPrintOut As New DataSet("PI PrintOut")
+            GetProformaInvoicePrintOut(piNo, dsPIPrintOut)
+            Dim dsProformaInvoicePrintOut As New ReportDataSource
+            With dsProformaInvoicePrintOut
+                .Name = "piPrintOutDT"
+                .Value = dsPIPrintOut.Tables("v_PIPrintOut")
+            End With
+
             Dim dsPIRemarks As New DataSet("PI Remarks")
             GetPIRemarksByPINo(piNo, dsPIRemarks)
             Dim dsProformaInvoiceRemarks As New ReportDataSource
@@ -92,6 +117,7 @@ Public Class ClsPrintOut
 
             With localReport.DataSources
                 .Add(dsProformaInvoiceHeader)
+                .Add(dsProformaInvoicePrintOut)
                 .Add(dsProformaInvoiceRemarks)
                 .Add(dsProformaInvoiceBank)
             End With

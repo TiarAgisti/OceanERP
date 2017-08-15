@@ -28,6 +28,8 @@
             dgv.Columns(0).Visible = False
 
             dgv.Columns(1).HeaderText = "PI Date"
+            dgv.Columns(1).DefaultCellStyle.Format = "dd-MMM-yyyy"
+
             dgv.Columns(2).HeaderText = "PI No"
 
             dgv.Columns(3).HeaderText = "Customer Code"
@@ -39,7 +41,10 @@
             dgv.Columns(7).HeaderText = "Style"
             dgv.Columns(8).HeaderText = "Season"
             dgv.Columns(9).HeaderText = "Term Of Payment"
+
             dgv.Columns(10).HeaderText = "Del Term"
+            dgv.Columns(10).DefaultCellStyle.Format = "dd-MMM-yyyy"
+
             dgv.Columns(11).HeaderText = "Term Of Price"
 
             dgv.Columns(12).HeaderText = "CustomerID"
@@ -100,8 +105,12 @@
     Function GetID() As Long
         Dim row As Integer
         Dim headerID As Long
-        row = dgv.CurrentRow.Index
-        headerID = dgv.Item(0, row).Value
+        If dgv.Rows.Count > 1 Then
+            row = dgv.CurrentRow.Index
+            headerID = dgv.Item(0, row).Value
+        Else
+            Throw New Exception("No data available")
+        End If
         Return headerID
     End Function
 
@@ -161,6 +170,7 @@
 
     Private Sub FrmListProformaInvoice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PreCreateDisplay()
+        Text = title
     End Sub
 
     Private Sub FrmListProformaInvoice_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated

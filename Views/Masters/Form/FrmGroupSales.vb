@@ -80,6 +80,7 @@
         ButtonAdd()
         display = ""
         btnAdd.Focus()
+        Text = title
     End Sub
     Function CheckEmpty() As Boolean
         If txtName.Text = String.Empty Then

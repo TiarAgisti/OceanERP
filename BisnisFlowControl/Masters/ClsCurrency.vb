@@ -1,21 +1,21 @@
 ﻿Public Class ClsCurrency
+    Dim queryCurrency As String = "select * From Currency where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = ""
 
         Select Case options
             Case "Currency Code"
-                query = "select * From Currency where CurrencyCode LIKE '%" & param & "%' AND isActive = 1 order by CurrencyCode asc"
+                queryCurrency += " AND CurrencyCode LIKE '%" & param & "%' order by CurrencyCode asc"
             Case "Name"
-                query = "select * From Currency where Name LIKE '%" & param & "%' AND isActive = 1 order by CurrencyCode asc"
+                queryCurrency += " AND Name LIKE '%" & param & "%' order by CurrencyCode asc"
             Case Else
-                query = "select * From Currency where isActive = 1 order by CurrencyCode asc"
+                queryCurrency += " order by CurrencyCode asc"
         End Select
 
         Try
-            dataTable = dataAccess.RetrieveListData(query)
+            dataTable = dataAccess.RetrieveListData(queryCurrency)
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
@@ -92,7 +92,7 @@
     End Function
 #End Region
 
-#Region "Insert & Update"
+#Region "Method CRUD"
     Public Function InsertCurrency(currModel As CurrencyModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory

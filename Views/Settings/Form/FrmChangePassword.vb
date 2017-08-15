@@ -45,6 +45,15 @@
             MsgBoxError(ex.Message)
         End Try
     End Sub
+
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+        Text = title
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
 #End Region
 
 

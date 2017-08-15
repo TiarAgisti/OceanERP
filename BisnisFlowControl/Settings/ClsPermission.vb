@@ -1,6 +1,5 @@
 ﻿Public Class ClsPermission
-    Dim dataAccess As ClsDataAccess
-    Dim dataTable As DataTable
+#Region "Method Retrieve"
     Public Function RetrieveListPermission() As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -84,6 +83,9 @@
             Throw ex
         End Try
     End Function
+#End Region
+
+#Region "Method Other"
     Public Function ListComboBox() As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
@@ -125,6 +127,9 @@
         dataAccess = Nothing
         Return validation
     End Function
+#End Region
+
+#Region "Method CRUD"
     Public Function InsertRole(roleModel As RoleHModel, roleDetailModel As List(Of RoleDModel), logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -205,4 +210,6 @@
             Throw ex
         End Try
     End Function
+#End Region
+
 End Class
