@@ -203,12 +203,12 @@
     Public Function GetValidateName(vendorName As String, status As Char) As Boolean
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = "Select VendorName From Vendor Where VendorName = '" & vendorName & "' AND Status='" & status & "'"
+        Dim query As String = "Select VendorName From Vendor Where VendorName = '" & vendorName & "' AND Status='" & status & "' AND IsActive = 1"
         Try
             dataTable = dataAccess.RetrieveListData(query)
 
             If dataTable.Rows.Count > 0 Then
-                Return False
+                Throw New Exception("Name can't duplicate")
             Else
                 Return True
             End If

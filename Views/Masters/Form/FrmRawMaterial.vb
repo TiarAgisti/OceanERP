@@ -70,21 +70,20 @@
     End Sub
 
     Function CheckEmpty() As Boolean
-        If txtName.Text = String.Empty Then
+        Dim check As Boolean = True
+        If Trim(txtName.Text) = String.Empty Then
             MsgBoxWarning("Name can't empty")
             txtName.Focus()
-            Return True
-        ElseIf txtSpec.Text = String.Empty Then
+        ElseIf Trim(txtSpec.Text) = String.Empty Then
             MsgBoxWarning("Specification can't empty")
             txtSpec.Focus()
-            Return True
         ElseIf cmbVendor.SelectedValue = 0 Then
             MsgBoxWarning("Supplier not valid")
             cmbVendor.Focus()
-            Return True
         Else
-            Return False
+            check = False
         End If
+        Return check
     End Function
 
     Function SetModel() As RawMaterialModel
@@ -164,9 +163,6 @@
                     MsgBoxSaved()
                     PreCreateDisplay()
                 End If
-            Else
-                MsgBoxError("Raw material name cant duplicate entry")
-                txtName.Focus()
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -189,9 +185,6 @@
                         MsgBoxUpdated()
                         PreCreateDisplay()
                     End If
-                Else
-                    MsgBoxError("Raw Material Name can't duplicate entry")
-                    txtName.Focus()
                 End If
             End If
         Catch ex As Exception

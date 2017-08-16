@@ -93,11 +93,10 @@
             dataTable = dataAccess.RetrieveListData(query)
 
             If dataTable.Rows.Count > 0 Then
-                Return False
+                Throw New Exception("Fabric Name can't duplicate entry")
             Else
                 Return True
             End If
-
         Catch ex As Exception
             Throw ex
         End Try

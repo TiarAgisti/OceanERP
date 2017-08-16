@@ -25,21 +25,23 @@
         myID = 0
     End Sub
     Function CheckEmpty() As Boolean
-        If txtUserName.Text = String.Empty Then
+        Dim userBFC As ClsUser = New ClsUser
+        Dim check As Boolean = True
+        If Trim(txtUserName.Text) = String.Empty Then
             MsgBoxWarning("User name can't empty")
             txtUserName.Focus()
-            Return True
-        ElseIf txtPassword.Text = String.Empty Then
+        ElseIf Trim(txtPassword.Text) = String.Empty Then
             MsgBoxWarning("Password can't empty")
             txtPassword.Focus()
-            Return True
-        ElseIf txtConfirm.Text = String.Empty Then
+        ElseIf Trim(txtConfirm.Text) = String.Empty Then
             MsgBoxWarning("Confirmation password can't empty")
             txtConfirm.Focus()
-            Return True
+        ElseIf userBFC.CheckUserName(txtUserName.Text) = False Then
+            MsgBoxWarning("User name can't duplicate,please change user name!!")
         Else
-            Return False
+            check = False
         End If
+        Return check
     End Function
     Function SetUserModel() As UserModel
         Dim user As UserModel = New UserModel
@@ -124,36 +126,7 @@
     End Sub
     Private Sub txtUserName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUserName.KeyPress
         If e.KeyChar = Chr(13) Then
-            Dim userBFC As ClsUser = New ClsUser
-            Try
-                If userBFC.CheckUserName(txtUserName.Text) Then
-                    txtPassword.Focus()
-                Else
-                    MsgBoxError("User Name is Available,please change user name!!!")
-                    txtUserName.Clear()
-                    txtUserName.Focus()
-                End If
-            Catch ex As Exception
-                MsgBoxError(ex.Message)
-            End Try
-        End If
-    End Sub
-    Private Sub txtUserName_Validated(sender As Object, e As EventArgs) Handles txtUserName.Validated
-        If txtUserName.Text = "" Then
-            txtUserName.Text = ""
-        Else
-            Dim userBFC As ClsUser = New ClsUser
-            Try
-                If userBFC.CheckUserName(txtUserName.Text) Then
-                    txtPassword.Focus()
-                Else
-                    MsgBoxError("User Name is Available,please change user name!!!")
-                    txtUserName.Clear()
-                    txtUserName.Focus()
-                End If
-            Catch ex As Exception
-                MsgBoxError(ex.Message)
-            End Try
+            txtPassword.Focus()
         End If
     End Sub
     Private Sub txtPassword_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPassword.KeyPress

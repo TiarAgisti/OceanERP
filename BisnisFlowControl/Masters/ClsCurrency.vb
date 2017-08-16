@@ -81,7 +81,7 @@
             dataTable = dataAccess.RetrieveListData(query)
 
             If dataTable.Rows.Count > 0 Then
-                Return False
+                Throw New Exception("Currency Code can't duplicate entry")
             Else
                 Return True
             End If

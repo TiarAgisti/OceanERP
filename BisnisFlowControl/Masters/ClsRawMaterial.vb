@@ -96,11 +96,10 @@
             dataTable = dataAccess.RetrieveListData(query)
 
             If dataTable.Rows.Count > 0 Then
-                Return False
+                Throw New Exception("Raw material name cant duplicate entry")
             Else
                 Return True
             End If
-
         Catch ex As Exception
             Throw ex
         End Try

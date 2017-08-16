@@ -6,6 +6,7 @@
     Dim isCreate As Boolean = False
     Dim isUpdate As Boolean = False
     Dim isDelete As Boolean = False
+    Dim supplierName As String
 #End Region
 
 #Region "Function"
@@ -37,41 +38,35 @@
         destBFC.ComboBoxDestination(cmb, statusCountry)
     End Sub
     Function CheckEmpty() As Boolean
-        If txtName.Text = String.Empty Then
+        Dim check As Boolean = True
+        If Trim(txtName.Text) = String.Empty Then
             MsgBoxWarning("Name can't empty")
             txtName.Focus()
-            Return True
-        ElseIf txtAddress.Text = String.Empty Then
+        ElseIf Trim(txtAddress.Text) = String.Empty Then
             MsgBoxWarning("Address can't empty")
             txtAddress.Focus()
-            Return True
-        ElseIf txtShippAddress.Text = String.Empty Then
+        ElseIf Trim(txtShippAddress.Text) = String.Empty Then
             MsgBoxWarning("Shipping Address can't empty")
             txtShippAddress.Focus()
-            Return True
-        ElseIf txtTelephone.Text = String.Empty Then
+        ElseIf Trim(txtTelephone.Text) = String.Empty Then
             MsgBoxWarning("Telephone can't empty")
             txtName.Focus()
-            Return True
-        ElseIf txtFax.Text = String.Empty Then
+        ElseIf Trim(txtFax.Text) = String.Empty Then
             MsgBoxWarning("Fax can't empty")
             txtFax.Focus()
-            Return True
-        ElseIf txtCP.Text = String.Empty Then
+        ElseIf Trim(txtCP.Text) = String.Empty Then
             MsgBoxWarning("Contact Person can't empty")
             txtCP.Focus()
-            Return True
-        ElseIf txtEmailCP.Text = String.Empty Then
+        ElseIf Trim(txtEmailCP.Text) = String.Empty Then
             MsgBoxWarning("Email CP can't empty")
             txtEmailCP.Focus()
-            Return True
-        ElseIf txtNpwp.Text = String.Empty Then
+        ElseIf Trim(txtNpwp.Text) = String.Empty Then
             MsgBoxWarning("Npwp can't empty")
             txtNpwp.Focus()
-            Return True
         Else
-            Return False
+            check = False
         End If
+        Return check
     End Function
     Function SetModel() As VendorModel
         Dim vendorModel As VendorModel = New VendorModel
@@ -127,10 +122,11 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Create new Supplier,Supplier name is " + txtName.Text
         Try
-
-            If vendorBFC.InsertVendor(SetModel, logBFC.SetLogHistory(logDesc)) = True Then
-                MsgBoxSaved()
-                PreCreateDisplay()
+            If vendorBFC.GetValidateName(txtName.Text, status) = True Then
+                If vendorBFC.InsertVendor(SetModel, logBFC.SetLogHistory(logDesc)) = True Then
+                    MsgBoxSaved()
+                    PreCreateDisplay()
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -141,9 +137,18 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update Supplier for Code = " + txtCode.Text
         Try
-            If vendorBFC.UpdateVendor(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
-                MsgBoxUpdated()
-                PreCreateDisplay()
+            If txtName.Text = supplierName Then
+                If vendorBFC.UpdateVendor(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
+                    MsgBoxUpdated()
+                    PreCreateDisplay()
+                End If
+            ElseIf txtName.Text <> supplierName Then
+                If vendorBFC.GetValidateName(txtName.Text, status) = True Then
+                    If vendorBFC.UpdateVendor(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
+                        MsgBoxUpdated()
+                        PreCreateDisplay()
+                    End If
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -175,6 +180,7 @@
         txtNpwp.Clear()
         cmbCari.Text = ""
         txtCari.Clear()
+        supplierName = ""
     End Sub
     Sub EnabledText(status As Boolean)
         txtName.Enabled = status

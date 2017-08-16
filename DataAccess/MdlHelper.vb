@@ -53,7 +53,7 @@ Module MdlHelper
             txt.Text = ""
         Else
             If ValidationNumber(txt) = False Then
-                txt.Clear()
+                txt.Text = 0
                 txt.Focus()
             End If
         End If

@@ -1,6 +1,7 @@
 ﻿Public Class FrmTermOfPayment
 #Region "Declaration"
     Dim termID As Integer = 0
+    Dim topName As String
     Dim display As String = ""
     Dim isCreate As Boolean = False
     Dim isUpdate As Boolean = False
@@ -84,17 +85,17 @@
         Text = title
     End Sub
     Function CheckEmpty() As Boolean
-        If txtName.Text = String.Empty Then
+        Dim check As Boolean = True
+        If Trim(txtName.Text) = String.Empty Then
             MsgBoxWarning("Name can't empty")
             txtName.Focus()
-            Return True
-        ElseIf txtDesc.Text = String.Empty Then
+        ElseIf Trim(txtDesc.Text) = String.Empty Then
             MsgBoxWarning("Description can't empty")
             txtDesc.Focus()
-            Return True
         Else
-            Return False
+            check = False
         End If
+        Return check
     End Function
     Function SetModel() As TermOfPaymentModel
         Dim termModel As TermOfPaymentModel = New TermOfPaymentModel
@@ -136,9 +137,11 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Create new Term Of Payment,Term Of Payment name is " + txtName.Text
         Try
-            If termBFC.InsertTerm(SetModel, logBFC.SetLogHistory(logDesc)) = True Then
-                MsgBoxSaved()
-                PreCreateDisplay()
+            If termBFC.GetValidateName(txtName.Text) Then
+                If termBFC.InsertTerm(SetModel, logBFC.SetLogHistory(logDesc)) = True Then
+                    MsgBoxSaved()
+                    PreCreateDisplay()
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -150,9 +153,18 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update Term Of Payment for TermOfPaymentCode = " + txtCode.Text
         Try
-            If termBFC.UpdateTerm(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
-                MsgBoxUpdated()
-                PreCreateDisplay()
+            If txtName.Text = topName Then
+                If termBFC.UpdateTerm(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
+                    MsgBoxUpdated()
+                    PreCreateDisplay()
+                End If
+            ElseIf txtName.Text <> topName Then
+                If termBFC.GetValidateName(txtName.Text) Then
+                    If termBFC.UpdateTerm(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
+                        MsgBoxUpdated()
+                        PreCreateDisplay()
+                    End If
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -252,6 +264,7 @@
             termID = .Item(0, row).Value
             txtCode.Text = .Item(1, row).Value
             txtName.Text = .Item(2, row).Value
+            topName = txtName.Text
             txtDesc.Text = .Item(3, row).Value
         End With
 

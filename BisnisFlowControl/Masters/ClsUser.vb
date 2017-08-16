@@ -96,7 +96,7 @@
 #Region "Method Other"
     Public Function CheckUserName(myUserName As String) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
-        Dim query As String = "Select COUNT(Name) as Name From Users Where Name = '" & myUserName & "'"
+        Dim query As String = "Select COUNT(Name) as Name From Users Where Name = '" & myUserName & "' AND IsActive = 1"
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             dataAccess.reader.Read()
@@ -106,6 +106,8 @@
             Else
                 Return False
             End If
+            dataAccess.reader.Close()
+            dataAccess = Nothing
         Catch ex As Exception
             Throw ex
         End Try

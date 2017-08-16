@@ -76,21 +76,21 @@
     Sub ComboBoxCurrency(cmb As ComboBox)
         Dim curBFC As ClsCurrency = New ClsCurrency
         cmb.DataSource = curBFC.ListComboBoxCurrency
-        cmb.DisplayMember = "Name"
+        cmb.DisplayMember = "CurrCode"
         cmb.ValueMember = "CurrencyID"
     End Sub
     Function CheckEmpty() As Boolean
-        If txtAccName.Text = String.Empty Then
+        Dim check As Boolean = True
+        If Trim(txtAccName.Text) = String.Empty Then
             MsgBoxWarning("Account Name can't empty")
             txtAccName.Focus()
-            Return True
-        ElseIf txtAccNumber.Text = String.Empty Then
+        ElseIf Trim(txtAccNumber.Text) = String.Empty Then
             MsgBoxWarning("Account Number can't empty")
             txtAccNumber.Focus()
-            Return True
         Else
-            Return False
+            check = False
         End If
+        Return check
     End Function
     Function SetModel() As BankAccountModel
         Dim bacModel As BankAccountModel = New BankAccountModel
@@ -158,9 +158,6 @@
         CheckPermissions()
         ClearText()
         ListBankAccount(cmbCari.Text, txtCari.Text)
-        ComboBoxBank(cmbBank)
-        ComboBoxCurrency(cmbCurrency)
-        ComboBoxSupplier(cmbVendor)
         EnabledText(False)
         ButtonAdd()
         display = ""
@@ -210,6 +207,9 @@
 
 #Region "Button"
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        ComboBoxBank(cmbBank)
+        ComboBoxCurrency(cmbCurrency)
+        ComboBoxSupplier(cmbVendor)
         EnabledText(True)
         display = "Create"
         ButtonSave()

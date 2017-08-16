@@ -44,16 +44,15 @@
     Public Function GetValidateUnitName(unitName As String) As Boolean
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = "Select UnitName From Unit Where UnitName = '" & unitName & "'"
+        Dim query As String = "Select UnitName From Unit Where UnitName = '" & unitName & "' AND IsActive = 1"
         Try
             dataTable = dataAccess.RetrieveListData(query)
 
             If dataTable.Rows.Count > 0 Then
-                Return False
+                Throw New Exception("Unit Name can't duplicate entry")
             Else
                 Return True
             End If
-
         Catch ex As Exception
             Throw ex
         End Try

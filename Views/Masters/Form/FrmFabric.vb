@@ -99,25 +99,23 @@
         Text = title
     End Sub
     Function CheckEmpty() As Boolean
-        If txtName.Text = String.Empty Then
+        Dim check As Boolean = True
+        If Trim(txtName.Text) = String.Empty Then
             MsgBoxWarning("Name can't empty")
             txtName.Focus()
-            Return True
-        ElseIf txtCompo.Text = String.Empty Then
+        ElseIf Trim(txtCompo.Text) = String.Empty Then
             MsgBoxWarning("Composition can't empty")
             txtCompo.Focus()
-            Return True
-        ElseIf txtSpec.Text = String.Empty Then
+        ElseIf Trim(txtSpec.Text) = String.Empty Then
             MsgBoxWarning("Specification can't empty")
             txtSpec.Focus()
-            Return True
         ElseIf cmbSupp.SelectedValue = 0 Then
             MsgBoxError("Supplier not valid")
             cmbSupp.Focus()
-            Return True
         Else
-            Return False
+            check = False
         End If
+        Return check
     End Function
     Function SetModel() As FabricModel
         Dim fabricModel As FabricModel = New FabricModel
@@ -167,8 +165,6 @@
                 If fabricBFC.InsertFabric(SetModel, logBFC.SetLogHistory(logDesc)) = True Then
                     MsgBoxSaved()
                     PreCreateDisplay()
-                Else
-                    MsgBoxError("Fabric Name can't duplicate entry")
                 End If
             End If
         Catch ex As Exception
@@ -190,8 +186,6 @@
                     If fabricBFC.UpdateFabric(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
                         MsgBoxUpdated()
                         PreCreateDisplay()
-                    Else
-                        MsgBoxError("Fabric Name can't duplicate entry")
                     End If
                 End If
             End If

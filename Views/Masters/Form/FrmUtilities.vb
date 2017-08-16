@@ -11,13 +11,15 @@
         If roleModel.IsDelete = True Then isDelete = True
     End Sub
 #Region "Declaration Department"
-    Dim deptID As Integer = 0
+    Dim deptID As Int32 = 0
     Dim displayDept As String = ""
+    Dim deptName As String
 #End Region
 
 #Region "Declaration Brand"
-    Dim brandID As Integer = 0
-    Dim displayBrand As String = ""
+    Dim brandID As Int32
+    Dim displayBrand As String
+    Dim brandName As String
 #End Region
 
 #Region "Function Department"
@@ -90,17 +92,17 @@
         displayDept = ""
     End Sub
     Function CheckEmptyDept() As Boolean
-        If txtNameDept.Text = String.Empty Then
+        Dim check As Boolean = True
+        If Trim(txtNameDept.Text) = String.Empty Then
             MsgBoxWarning("Name can't empty")
             txtNameDept.Focus()
-            Return True
-        ElseIf txtSBU.Text = String.Empty Then
+        ElseIf Trim(txtSBU.Text) = String.Empty Then
             MsgBoxWarning("SBU can't empty")
             txtSBU.Focus()
-            Return True
         Else
-            Return False
+            check = False
         End If
+        Return check
     End Function
     Function SetDeptModel() As DepartmentModel
         Dim deptModel As DepartmentModel = New DepartmentModel
@@ -142,9 +144,11 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Create new Department,Department name is " + txtNameDept.Text
         Try
-            If deptBFC.InsertDepart(SetDeptModel, logBFC.SetLogHistory(logDesc)) = True Then
-                MsgBoxSaved()
-                PreCreateDisplayDept()
+            If deptBFC.GetValidateName(txtNameDept.Text) Then
+                If deptBFC.InsertDepart(SetDeptModel, logBFC.SetLogHistory(logDesc)) = True Then
+                    MsgBoxSaved()
+                    PreCreateDisplayDept()
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -156,9 +160,18 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update Department for DepartmentCode = " + txtCodeDept.Text
         Try
-            If deptBFC.UpdateDepartment(SetDeptModel, logBFC.SetLogHistory(logDesc), displayDept) = True Then
-                MsgBoxUpdated()
-                PreCreateDisplayDept()
+            If txtNameDept.Text = deptName Then
+                If deptBFC.UpdateDepartment(SetDeptModel, logBFC.SetLogHistory(logDesc), displayDept) = True Then
+                    MsgBoxUpdated()
+                    PreCreateDisplayDept()
+                End If
+            ElseIf txtNameDept.Text <> deptName Then
+                If deptBFC.GetValidateName(txtNameDept.Text) Then
+                    If deptBFC.UpdateDepartment(SetDeptModel, logBFC.SetLogHistory(logDesc), displayDept) = True Then
+                        MsgBoxUpdated()
+                        PreCreateDisplayDept()
+                    End If
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -250,17 +263,17 @@
         displayBrand = ""
     End Sub
     Function CheckEmptyBrand() As Boolean
-        If txtNameBrand.Text = String.Empty Then
+        Dim check As Boolean = True
+        If Trim(txtNameBrand.Text) = String.Empty Then
             MsgBoxWarning("Name can't empty")
             txtNameBrand.Focus()
-            Return True
-        ElseIf txtDesc.Text = String.Empty Then
+        ElseIf Trim(txtDesc.Text) = String.Empty Then
             MsgBoxWarning("Description can't empty")
             txtDesc.Focus()
-            Return True
         Else
-            Return False
+            check = False
         End If
+        Return check
     End Function
     Function SetBrandModel() As BrandModel
         Dim brandModel As BrandModel = New BrandModel
@@ -302,9 +315,11 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Create new Brand,Brand name is " + txtNameBrand.Text
         Try
-            If brandBFC.InsertBrand(SetBrandModel, logBFC.SetLogHistory(logDesc)) = True Then
-                MsgBoxSaved()
-                PreCreateDisplayBrand()
+            If brandBFC.GetValidateName(txtNameBrand.Text) Then
+                If brandBFC.InsertBrand(SetBrandModel, logBFC.SetLogHistory(logDesc)) = True Then
+                    MsgBoxSaved()
+                    PreCreateDisplayBrand()
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -315,9 +330,18 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update Brand for BrandCode = " + txtCodeBrand.Text
         Try
-            If brandBFC.UpdateBrand(SetBrandModel, logBFC.SetLogHistory(logDesc), displayBrand) = True Then
-                MsgBoxUpdated()
-                PreCreateDisplayBrand()
+            If txtNameBrand.Text = brandName Then
+                If brandBFC.UpdateBrand(SetBrandModel, logBFC.SetLogHistory(logDesc), displayBrand) = True Then
+                    MsgBoxUpdated()
+                    PreCreateDisplayBrand()
+                End If
+            ElseIf txtNameBrand.Text <> brandName Then
+                If brandBFC.GetValidateName(txtNameBrand.Text) Then
+                    If brandBFC.UpdateBrand(SetBrandModel, logBFC.SetLogHistory(logDesc), displayBrand) = True Then
+                        MsgBoxUpdated()
+                        PreCreateDisplayBrand()
+                    End If
+                End If
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -451,6 +475,7 @@
             deptID = .Item(0, row).Value
             txtCodeDept.Text = .Item(1, row).Value
             txtNameDept.Text = .Item(2, row).Value
+            deptName = txtNameDept.Text
             txtSBU.Text = .Item(3, row).Value
         End With
 
@@ -491,6 +516,7 @@
             brandID = .Item(0, row).Value
             txtCodeBrand.Text = .Item(1, row).Value
             txtNameBrand.Text = .Item(2, row).Value
+            brandName = txtNameBrand.Text
             txtDesc.Text = .Item(3, row).Value
         End With
 

@@ -60,13 +60,14 @@
     End Sub
 
     Function CheckEmpty() As Boolean
-        If txtName.Text = String.Empty Then
+        Dim check As Boolean = True
+        If Trim(txtName.Text) = String.Empty Then
             MsgBoxWarning("Name can't empty")
             txtName.Focus()
-            Return True
         Else
-            Return False
+            check = False
         End If
+        Return check
     End Function
 
     Function SetModel() As BrandYarnModel
@@ -138,9 +139,6 @@
                     MsgBoxSaved()
                     PreCreateDisplay()
                 End If
-            Else
-                MsgBoxError("Brand Yarn Name can't duplicate entry")
-                txtName.Focus()
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -163,8 +161,6 @@
                         MsgBoxUpdated()
                         PreCreateDisplay()
                     End If
-                Else
-                    MsgBoxError("Brand Yarn Name can't duplicate entry")
                 End If
             End If
         Catch ex As Exception

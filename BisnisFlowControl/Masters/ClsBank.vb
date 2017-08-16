@@ -124,12 +124,12 @@
     Public Function GetValidateName(bankName As String) As Boolean
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = "Select Name From Bank Where Name = '" & bankName & "'"
+        Dim query As String = "Select Name From Bank Where Name = '" & bankName & "' AND IsActive = 1"
         Try
             dataTable = dataAccess.RetrieveListData(query)
 
             If dataTable.Rows.Count > 0 Then
-                Return False
+                Throw New Exception("Bank name cant duplicate")
             Else
                 Return True
             End If

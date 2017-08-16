@@ -13,8 +13,10 @@
         dgv.Columns(0).Visible = False
         dgv.Columns(1).HeaderText = "User Name"
         dgv.Columns(1).Width = 250
+
         dgv.Columns(2).HeaderText = "Password"
-        dgv.Columns(2).Width = 250
+        dgv.Columns(2).Visible = False
+
         dgv.Columns(3).Visible = False
         dgv.Columns(4).Visible = False
         dgv.Columns(5).Visible = False

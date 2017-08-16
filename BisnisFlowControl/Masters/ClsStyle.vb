@@ -91,12 +91,12 @@
     Public Function GetValidateName(styleName As String) As Boolean
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = "Select StyleName From Style Where StyleName = '" & styleName & "'"
+        Dim query As String = "Select StyleName From Style Where StyleName = '" & styleName & "' AND IsActive = 1"
         Try
             dataTable = dataAccess.RetrieveListData(query)
 
             If dataTable.Rows.Count > 0 Then
-                Return False
+                Throw New Exception("Style Name can't duplicate entry")
             Else
                 Return True
             End If

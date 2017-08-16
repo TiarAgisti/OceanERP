@@ -86,17 +86,17 @@
     End Sub
 
     Function CheckEmpty() As Boolean
-        If txtUnitName.Text = String.Empty Then
+        Dim check As Boolean = True
+        If Trim(txtUnitName.Text) = String.Empty Then
             MsgBoxWarning("Unit Name can't empty")
             txtUnitName.Focus()
-            Return True
-        ElseIf txtDescription.Text = String.Empty Then
+        ElseIf Trim(txtDescription.Text) = String.Empty Then
             MsgBoxWarning("Description can't empty")
             txtDescription.Focus()
-            Return True
         Else
-            Return False
+            check = False
         End If
+        Return check
     End Function
 
     Function SetModel() As UnitModel
@@ -143,8 +143,6 @@
                     MsgBoxSaved()
                     PreCreateDisplay()
                 End If
-            Else
-                MsgBoxError("Unit Name can't duplicate entry")
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -167,8 +165,6 @@
                         MsgBoxUpdated()
                         PreCreateDisplay()
                     End If
-                Else
-                    MsgBoxError("Unit Name can't duplicate entry")
                 End If
             End If
         Catch ex As Exception

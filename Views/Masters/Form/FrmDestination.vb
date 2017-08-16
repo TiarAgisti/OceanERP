@@ -84,7 +84,7 @@
         displayCon = ""
     End Sub
     Function CheckEmptyCon() As Boolean
-        If txtConName.Text = String.Empty Then
+        If Trim(txtConName.Text) = String.Empty Then
             MsgBoxWarning("Name can't empty")
             txtConName.Focus()
             Return True
@@ -152,8 +152,6 @@
                     If destBFC.UpdateDestination(SetConModel, logBFC.SetLogHistory(logDesc), displayCon) = True Then
                         MsgBoxUpdated()
                         PreCreateDisplayCon()
-                    Else
-                        MsgBoxError("Country name cant duplicate")
                     End If
                 End If
             End If
@@ -239,7 +237,7 @@
         displaySea = ""
     End Sub
     Function CheckEmptySea() As Boolean
-        If txtSeaName.Text = String.Empty Then
+        If Trim(txtSeaName.Text) = String.Empty Then
             MsgBoxWarning("Name can't empty")
             txtSeaName.Focus()
             Return True
@@ -286,8 +284,6 @@
                     MsgBoxSaved()
                     PreCreateDisplaySea()
                 End If
-            Else
-                MsgBoxError("Seaport name cant duplicate")
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -308,8 +304,6 @@
                     If destBFC.UpdateDestination(SetSeaModel, logBFC.SetLogHistory(logDesc), displaySea) = True Then
                         MsgBoxUpdated()
                         PreCreateDisplaySea()
-                    Else
-                        MsgBoxError("Seaport name cant duplicate")
                     End If
                 End If
             End If

@@ -68,12 +68,12 @@
     Public Function GetValidateName(brandYarnName As String) As Boolean
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = "Select BrandYarnName From BrandYarn Where BrandYarnName = '" & brandYarnName & "'"
+        Dim query As String = "Select BrandYarnName From BrandYarn Where BrandYarnName = '" & brandYarnName & "' AND IsActive = 1"
         Try
             dataTable = dataAccess.RetrieveListData(query)
 
             If dataTable.Rows.Count > 0 Then
-                Return False
+                Throw New Exception("Brand Yarn Name can't duplicate entry")
             Else
                 Return True
             End If

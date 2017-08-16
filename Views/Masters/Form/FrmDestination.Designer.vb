@@ -209,10 +209,10 @@ Partial Class FrmDestination
         '
         'txtConName
         '
-        Me.txtConName.Location = New System.Drawing.Point(99, 38)
+        Me.txtConName.Location = New System.Drawing.Point(85, 38)
         Me.txtConName.MaxLength = 50
         Me.txtConName.Name = "txtConName"
-        Me.txtConName.Size = New System.Drawing.Size(308, 20)
+        Me.txtConName.Size = New System.Drawing.Size(306, 20)
         Me.txtConName.TabIndex = 2
         '
         'Label6
@@ -227,7 +227,7 @@ Partial Class FrmDestination
         'txtConCode
         '
         Me.txtConCode.Enabled = False
-        Me.txtConCode.Location = New System.Drawing.Point(101, 12)
+        Me.txtConCode.Location = New System.Drawing.Point(85, 12)
         Me.txtConCode.Name = "txtConCode"
         Me.txtConCode.Size = New System.Drawing.Size(133, 20)
         Me.txtConCode.TabIndex = 1
@@ -370,7 +370,7 @@ Partial Class FrmDestination
         '
         'txtSeaName
         '
-        Me.txtSeaName.Location = New System.Drawing.Point(101, 38)
+        Me.txtSeaName.Location = New System.Drawing.Point(85, 38)
         Me.txtSeaName.MaxLength = 50
         Me.txtSeaName.Name = "txtSeaName"
         Me.txtSeaName.Size = New System.Drawing.Size(309, 20)
@@ -388,7 +388,7 @@ Partial Class FrmDestination
         'txtSeaCode
         '
         Me.txtSeaCode.Enabled = False
-        Me.txtSeaCode.Location = New System.Drawing.Point(101, 12)
+        Me.txtSeaCode.Location = New System.Drawing.Point(85, 12)
         Me.txtSeaCode.Name = "txtSeaCode"
         Me.txtSeaCode.Size = New System.Drawing.Size(133, 20)
         Me.txtSeaCode.TabIndex = 1

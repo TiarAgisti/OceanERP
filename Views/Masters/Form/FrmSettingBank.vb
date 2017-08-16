@@ -85,17 +85,17 @@
         displayBank = ""
     End Sub
     Function CheckEmptyBank() As Boolean
-        If txtBankName.Text = String.Empty Then
+        Dim check As Boolean = True
+        If Trim(txtBankName.Text) = String.Empty Then
             MsgBoxWarning("Name can't empty")
             txtBankName.Focus()
-            Return True
-        ElseIf txtSwiftCode.Text = String.Empty Then
+        ElseIf Trim(txtSwiftCode.Text) = String.Empty Then
             MsgBoxWarning("Swift Code can't empty")
             txtSwiftCode.Focus()
-            Return True
         Else
-            Return False
+            check = False
         End If
+        Return check
     End Function
     Function SetBankModel() As BankModel
         Dim bankModel As BankModel = New BankModel
@@ -136,8 +136,6 @@
                     MsgBoxSaved()
                     PreCreateDisplayBank()
                 End If
-            Else
-                MsgBoxError("Bank name cant duplicate")
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -159,8 +157,6 @@
                         MsgBoxUpdated()
                         PreCreateDisplayBank()
                     End If
-                Else
-                    MsgBoxError("Bank name cant duplicate")
                 End If
             End If
         Catch ex As Exception
@@ -243,13 +239,14 @@
         displayCurr = ""
     End Sub
     Function CheckEmptyCurr() As Boolean
-        If txtCurrName.Text = String.Empty Then
+        Dim check As Boolean = True
+        If Trim(txtCurrName.Text) = String.Empty Then
             MsgBoxWarning("Name can't empty")
             txtCurrName.Focus()
-            Return True
         Else
-            Return False
+            check = False
         End If
+        Return check
     End Function
     Function SetCurrModel() As CurrencyModel
         Dim currModel As CurrencyModel = New CurrencyModel
@@ -288,8 +285,6 @@
                     MsgBoxSaved()
                     PreCreateDisplayCurr()
                 End If
-            Else
-                MsgBoxError("Currency Code can't duplicate entry")
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)

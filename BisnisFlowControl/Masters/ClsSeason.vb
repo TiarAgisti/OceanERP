@@ -92,11 +92,10 @@
             dataTable = dataAccess.RetrieveListData(query)
 
             If dataTable.Rows.Count > 0 Then
-                Return False
+                Throw New Exception("Season name can't duplicate")
             Else
                 Return True
             End If
-
         Catch ex As Exception
             Throw ex
         End Try

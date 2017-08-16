@@ -459,147 +459,147 @@
 
 #Region "Check Empty"
     Function CheckEmptyHeader() As Boolean
+        Dim check As Boolean = True
         If cmbBuyer.SelectedValue = 0 Then
             MsgBoxWarning("Buyer not valid")
             cmbBuyer.Focus()
-            Return False
-        ElseIf String.IsNullOrEmpty(txtRefPO.Text) Then
+        ElseIf String.IsNullOrEmpty(Trim(txtRefPO.Text)) Then
             MsgBoxWarning("Ref PO can't empty")
             txtRefPO.Focus()
-            Return False
         ElseIf cmbStyle.SelectedValue = 0 Then
             MsgBoxWarning("Style not valid")
             cmbStyle.Focus()
-            Return False
         ElseIf cmbSeason.SelectedValue = 0 Then
             MsgBoxWarning("Season not valid")
             cmbSeason.Focus()
-            Return False
         ElseIf cmbTOP.SelectedValue = 0 Then
             MsgBoxWarning("Term Of Payment not valid")
             cmbTOP.Focus()
-            Return False
         ElseIf cmbTermPrice.SelectedValue = 0 Then
             MsgBoxWarning("Term Of Price not valid")
             cmbTermPrice.Focus()
-            Return False
-        ElseIf String.IsNullOrEmpty(txtContract.Text) Then
+        ElseIf String.IsNullOrEmpty(Trim(txtContract.Text)) Then
             MsgBoxWarning("Contract No can't empty")
             txtContract.Focus()
-            Return False
         ElseIf cmbTo.SelectedValue = 0 Then
             MsgBoxWarning("Customer not valid")
             cmbTo.Focus()
-            Return False
         ElseIf cmbFM.SelectedValue = 0 Then
             MsgBoxWarning("FM not valid")
             cmbFM.Focus()
-            Return False
-        ElseIf String.IsNullOrEmpty(txtDelPlace.Text) Then
+        ElseIf String.IsNullOrEmpty(Trim(txtDelPlace.Text)) Then
             MsgBoxWarning("Delivery Place can't empty")
             txtDelPlace.Focus()
-            Return False
         ElseIf dgvFabric.Rows.Count - 1 = 0 Then
             MsgBoxWarning("Detail can't empty")
             cmbFabric.Focus()
-            Return False
         Else
-            Return True
+            check = False
         End If
+        Return check
     End Function
 
     Function CheckEmptyFabric() As Boolean
+        Dim check As Boolean = True
         If cmbFabric.SelectedValue = 0 Then
             MsgBoxWarning("Fabric not valid")
             cmbFabric.Focus()
-            Return False
         ElseIf cmbFabricStyle.SelectedValue = 0 Then
             MsgBoxWarning("Style For Fabric not valid")
             cmbFabricStyle.Focus()
-            Return False
         ElseIf cmbRawFabric.SelectedValue = 0 Then
             MsgBoxWarning("Raw Material For Fabric not valid")
             cmbRawFabric.Focus()
-            Return False
         ElseIf cmbTypeGreige.Text = "" Then
             MsgBoxWarning("Type Greige Cant Empty")
             cmbTypeGreige.Focus()
-            Return False
         ElseIf cmbUnitFabric.SelectedValue = 0 Then
             MsgBoxWarning("Unit For Fabric not valid")
             cmbUnitFabric.Focus()
-            Return False
         Else
-            Return True
+            check = False
         End If
+        Return check
     End Function
 
     Function CheckEmptyColor() As Boolean
+        Dim check As Boolean = True
         If cmbColor.SelectedValue = 0 Then
             MsgBoxWarning("Color not valid")
             cmbColor.Focus()
-            Return False
-        ElseIf txtColQtyOrder.Text = String.Empty Or txtColQtyOrder.Text = 0 Then
+        ElseIf Trim(txtColQtyOrder.Text) = String.Empty Then
+            MsgBoxWarning("Qty Order can't empty")
+            txtColQtyOrder.Focus()
+        ElseIf Trim(txtColQtyOrder.Text) = 0 Then
             MsgBoxWarning("Qty Order cant empty or 0")
             txtColQtyOrder.Focus()
-            Return False
-        ElseIf txtColPrice.Text = String.Empty Or txtColPrice.Text = 0 Then
+        ElseIf Trim(txtColPrice.Text) = String.Empty Then
             MsgBoxWarning("Price cant empty or 0")
             txtColPrice.Focus()
-            Return False
-        ElseIf txtColQtySample.Text = String.Empty Or txtColQtySample.Text = 0 Then
+        ElseIf txtColPrice.Text = 0 Then
+            MsgBoxWarning("Price cant empty or 0")
+            txtColPrice.Focus()
+        ElseIf Trim(txtColQtySample.Text) = String.Empty Then
             MsgBoxWarning("Qty Sample cant empty or 0")
             txtColQtySample.Focus()
-            Return False
+        ElseIf txtColQtySample.Text = 0 Then
+            MsgBoxWarning("Qty Sample cant empty or 0")
+            txtColQtySample.Focus()
         Else
-            Return True
+            check = False
         End If
+        Return check
     End Function
 
     Function CheckEmptyYarn() As Boolean
+        Dim check As Boolean = True
         If cmbYarn.SelectedValue = 0 Then
             MsgBoxWarning("Yarn not valid")
             cmbYarn.Focus()
-            Return False
-        ElseIf txtPriceYarn.Text = String.Empty Or txtPriceYarn.Text = 0 Then
+        ElseIf Trim(txtPriceYarn.Text) = String.Empty Then
             MsgBoxWarning("Price Yarn cant empty or 0")
             txtPriceYarn.Focus()
-            Return False
-        ElseIf txtQtyUsage.Text = String.Empty Or txtQtyUsage.Text = 0 Then
+        ElseIf txtPriceYarn.Text = 0 Then
+            MsgBoxWarning("Price Yarn cant empty or 0")
+            txtPriceYarn.Focus()
+        ElseIf Trim(txtQtyUsage.Text) = String.Empty Then
             MsgBoxWarning("Qty Usage cant empty or 0")
             txtQtyUsage.Focus()
-            Return False
+        ElseIf txtQtyUsage.Text = 0 Then
+            MsgBoxWarning("Qty Usage cant empty or 0")
+            txtQtyUsage.Focus()
         ElseIf cmbColorYarn.SelectedValue = 0 Then
             MsgBoxWarning("Color Yarn not valid")
             cmbColorYarn.Focus()
-            Return False
         ElseIf cmbMerk.SelectedValue = 0 Then
             MsgBoxWarning("Merk not valid")
             cmbMerk.Focus()
-            Return False
         Else
-            Return True
+            check = False
         End If
+        Return check
     End Function
 
     Function CheckEmptyBank() As Boolean
+        Dim check As Boolean = True
         If cmbBankCode.SelectedValue = 0 Then
             MsgBoxWarning("Bank not valid")
             cmbBankCode.Focus()
-            Return False
         Else
-            Return True
+            check = False
         End If
+        Return check
     End Function
 
     Function CheckEmptyRemarks() As Boolean
-        If txtRemarks.Text = String.Empty Then
+        Dim check As Boolean = True
+        If Trim(txtRemarks.Text) = String.Empty Then
             MsgBoxWarning("Remarks cant empty")
             txtRemarks.Focus()
-            Return False
         Else
-            Return True
+            check = False
         End If
+        Return check
     End Function
 #End Region
 
@@ -1159,7 +1159,7 @@
 
 #Region "Button"
     Private Sub btnAddFabric_Click(sender As Object, e As EventArgs) Handles btnAddFabric.Click
-        If CheckEmptyFabric() = True Then
+        If CheckEmptyFabric() = False Then
             Try
                 If CheckFabricInList() = True Then
                     AddGridDetailFabric()
@@ -1183,7 +1183,7 @@
     End Sub
 
     Private Sub btnColAddList_Click(sender As Object, e As EventArgs) Handles btnColAddList.Click
-        If CheckEmptyColor() = True Then
+        If CheckEmptyColor() = False Then
             Try
                 If CheckColorInList() = True Then
                     AddGridDetailColor()
@@ -1207,7 +1207,7 @@
     End Sub
 
     Private Sub btnAddYarnList_Click(sender As Object, e As EventArgs) Handles btnAddYarnList.Click
-        If CheckEmptyYarn() = True Then
+        If CheckEmptyYarn() = False Then
             Try
                 If CheckYarnInList() = True Then
                     AddGridDetailYarn()
@@ -1230,7 +1230,7 @@
     End Sub
 
     Private Sub btnRemAddList_Click(sender As Object, e As EventArgs) Handles btnRemAddList.Click
-        If CheckEmptyRemarks() = True Then
+        If CheckEmptyRemarks() = False Then
             Try
                 If CheckRemarksInList() = True Then
                     AddGridDetailRemarks()
@@ -1253,7 +1253,7 @@
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If CheckEmptyHeader() = True Then
+        If CheckEmptyHeader() = False And CheckEmptyBank() = False Then
             If condition = "Create" Then
                 InsertData()
             End If
@@ -1261,7 +1261,7 @@
     End Sub
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-        If CheckEmptyHeader() = True Then
+        If CheckEmptyHeader() = False And CheckEmptyBank() = False Then
             If condition = "Update" Then
                 UpdateData()
             End If
