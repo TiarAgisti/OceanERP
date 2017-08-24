@@ -509,7 +509,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="OceanERP_TemporaryKey.pfx" />
     <None Include="ReportDataSet\OceanDS.xsc">
       <DependentUpon>OceanDS.xsd</DependentUpon>
     </None>
