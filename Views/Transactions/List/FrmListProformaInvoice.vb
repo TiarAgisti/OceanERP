@@ -66,7 +66,7 @@
             dgv.Columns(17).Visible = False
 
             dgv.Columns(18).HeaderText = "Status"
-            dgv.Columns(18).Visible = False
+            'dgv.Columns(18).Visible = False
         Catch ex As Exception
             Throw ex
         End Try

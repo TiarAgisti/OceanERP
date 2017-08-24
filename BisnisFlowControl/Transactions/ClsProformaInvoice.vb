@@ -6,7 +6,7 @@ Public Class ClsProformaInvoice
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
         Dim query As String = "Select PIHeaderID,PIDate,PINo,CustomerCode,CustomerName,BuyerName,RefPO,StyleName,SeasonName,TermOfPayment" &
-                               ",DelTerm,TermOfPrice,CustomerID,BuyerID,StyleID,SeasonID,TermOfPaymentID,TermOfPriceID,Status From v_PIHeader" &
+                               ",DelTerm,TermOfPrice,CustomerID,BuyerID,StyleID,SeasonID,TermOfPaymentID,TermOfPriceID,StatusDesc From v_PIHeader" &
                                " Where Status <> 0"
 
         If Not String.IsNullOrEmpty(piNo) Then

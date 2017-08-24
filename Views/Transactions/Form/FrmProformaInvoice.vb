@@ -820,6 +820,16 @@
         End Try
     End Sub
 
+    Sub ClearVariable()
+        intBarisFabric = 0
+        intPostFabric = 0
+        intBarisColor = 0
+        intPostColor = 0
+        intBarisYarn = 0
+        intPostYarn = 0
+        intBarisRemarks = 0
+        intPostRemarks = 0
+    End Sub
     Sub ClearDataGrid()
         dgvFabric.Columns.Clear()
         dgvColor.Columns.Clear()
@@ -828,6 +838,7 @@
     End Sub
 
     Sub ClearAllData()
+        ClearVariable()
         ClearHeader()
         ClearFabric()
         ClearColorFabric()

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmFabric
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmFabric
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmFabric))
         Me.txtName = New System.Windows.Forms.TextBox()
@@ -36,15 +36,15 @@ Partial Class FrmFabric
         Me.cmbCari = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.cmbSupp = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtSpec = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.txtCompo = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.dgv = New System.Windows.Forms.DataGridView()
-        Me.txtSpec = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.cmbSupp = New System.Windows.Forms.ComboBox()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -53,7 +53,7 @@ Partial Class FrmFabric
         '
         'txtName
         '
-        Me.txtName.Location = New System.Drawing.Point(102, 35)
+        Me.txtName.Location = New System.Drawing.Point(76, 35)
         Me.txtName.MaxLength = 255
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(477, 20)
@@ -71,7 +71,7 @@ Partial Class FrmFabric
         'txtCode
         '
         Me.txtCode.Enabled = False
-        Me.txtCode.Location = New System.Drawing.Point(102, 9)
+        Me.txtCode.Location = New System.Drawing.Point(76, 9)
         Me.txtCode.Name = "txtCode"
         Me.txtCode.Size = New System.Drawing.Size(133, 20)
         Me.txtCode.TabIndex = 1
@@ -177,12 +177,46 @@ Partial Class FrmFabric
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 46)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(607, 146)
+        Me.Panel3.Size = New System.Drawing.Size(607, 144)
         Me.Panel3.TabIndex = 12
+        '
+        'cmbSupp
+        '
+        Me.cmbSupp.FormattingEnabled = True
+        Me.cmbSupp.Location = New System.Drawing.Point(76, 113)
+        Me.cmbSupp.Name = "cmbSupp"
+        Me.cmbSupp.Size = New System.Drawing.Size(222, 21)
+        Me.cmbSupp.TabIndex = 20
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(3, 116)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(45, 13)
+        Me.Label6.TabIndex = 19
+        Me.Label6.Text = "Supplier"
+        '
+        'txtSpec
+        '
+        Me.txtSpec.Location = New System.Drawing.Point(76, 87)
+        Me.txtSpec.MaxLength = 150
+        Me.txtSpec.Name = "txtSpec"
+        Me.txtSpec.Size = New System.Drawing.Size(222, 20)
+        Me.txtSpec.TabIndex = 4
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(3, 90)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(68, 13)
+        Me.Label5.TabIndex = 17
+        Me.Label5.Text = "Specification"
         '
         'txtCompo
         '
-        Me.txtCompo.Location = New System.Drawing.Point(102, 61)
+        Me.txtCompo.Location = New System.Drawing.Point(76, 61)
         Me.txtCompo.MaxLength = 150
         Me.txtCompo.Name = "txtCompo"
         Me.txtCompo.Size = New System.Drawing.Size(222, 20)
@@ -206,7 +240,7 @@ Partial Class FrmFabric
         Me.Panel1.Controls.Add(Me.btnCancel)
         Me.Panel1.Controls.Add(Me.btnSave)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 192)
+        Me.Panel1.Location = New System.Drawing.Point(0, 190)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(607, 37)
         Me.Panel1.TabIndex = 16
@@ -216,7 +250,7 @@ Partial Class FrmFabric
         Me.GroupBox2.Controls.Add(Me.txtCari)
         Me.GroupBox2.Controls.Add(Me.cmbCari)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 229)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 227)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(607, 55)
         Me.GroupBox2.TabIndex = 17
@@ -227,44 +261,10 @@ Partial Class FrmFabric
         '
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgv.Location = New System.Drawing.Point(0, 284)
+        Me.dgv.Location = New System.Drawing.Point(0, 282)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(607, 216)
+        Me.dgv.Size = New System.Drawing.Size(607, 218)
         Me.dgv.TabIndex = 12
-        '
-        'txtSpec
-        '
-        Me.txtSpec.Location = New System.Drawing.Point(102, 87)
-        Me.txtSpec.MaxLength = 150
-        Me.txtSpec.Name = "txtSpec"
-        Me.txtSpec.Size = New System.Drawing.Size(222, 20)
-        Me.txtSpec.TabIndex = 4
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(3, 90)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(68, 13)
-        Me.Label5.TabIndex = 17
-        Me.Label5.Text = "Specification"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(3, 116)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(45, 13)
-        Me.Label6.TabIndex = 19
-        Me.Label6.Text = "Supplier"
-        '
-        'cmbSupp
-        '
-        Me.cmbSupp.FormattingEnabled = True
-        Me.cmbSupp.Location = New System.Drawing.Point(102, 113)
-        Me.cmbSupp.Name = "cmbSupp"
-        Me.cmbSupp.Size = New System.Drawing.Size(222, 21)
-        Me.cmbSupp.TabIndex = 20
         '
         'FrmFabric
         '

@@ -270,6 +270,12 @@
         End If
     End Sub
 
+    Private Sub cmbSupp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbSupp.KeyPress
+        If e.KeyChar = Chr(13) Then
+            btnSave.Focus()
+        End If
+    End Sub
+
     Private Sub cmbCari_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCari.SelectedIndexChanged
         txtCari.Focus()
     End Sub

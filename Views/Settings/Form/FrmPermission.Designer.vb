@@ -56,7 +56,7 @@ Partial Class FrmPermission
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(0, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(687, 46)
+        Me.Label1.Size = New System.Drawing.Size(614, 46)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Permission"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -69,7 +69,7 @@ Partial Class FrmPermission
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 46)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(687, 42)
+        Me.Panel1.Size = New System.Drawing.Size(614, 42)
         Me.Panel1.TabIndex = 2
         '
         'txtName
@@ -92,9 +92,9 @@ Partial Class FrmPermission
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.btnDel)
-        Me.GroupBox1.Controls.Add(Me.btnAdd)
         Me.GroupBox1.Controls.Add(Me.ckVoid)
         Me.GroupBox1.Controls.Add(Me.ckApprove)
+        Me.GroupBox1.Controls.Add(Me.btnAdd)
         Me.GroupBox1.Controls.Add(Me.ckDelete)
         Me.GroupBox1.Controls.Add(Me.ckUpdate)
         Me.GroupBox1.Controls.Add(Me.CkCreate)
@@ -104,14 +104,14 @@ Partial Class FrmPermission
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Location = New System.Drawing.Point(0, 88)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(687, 121)
+        Me.GroupBox1.Size = New System.Drawing.Size(614, 112)
         Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Menu"
         '
         'btnDel
         '
-        Me.btnDel.Location = New System.Drawing.Point(125, 88)
+        Me.btnDel.Location = New System.Drawing.Point(124, 83)
         Me.btnDel.Name = "btnDel"
         Me.btnDel.Size = New System.Drawing.Size(103, 23)
         Me.btnDel.TabIndex = 12
@@ -120,7 +120,7 @@ Partial Class FrmPermission
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(16, 88)
+        Me.btnAdd.Location = New System.Drawing.Point(15, 83)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(103, 23)
         Me.btnAdd.TabIndex = 11
@@ -207,9 +207,9 @@ Partial Class FrmPermission
         '
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv.Dock = System.Windows.Forms.DockStyle.Top
-        Me.dgv.Location = New System.Drawing.Point(0, 209)
+        Me.dgv.Location = New System.Drawing.Point(0, 200)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(687, 179)
+        Me.dgv.Size = New System.Drawing.Size(614, 284)
         Me.dgv.TabIndex = 4
         '
         'Panel2
@@ -219,9 +219,9 @@ Partial Class FrmPermission
         Me.Panel2.Controls.Add(Me.btnCancel)
         Me.Panel2.Controls.Add(Me.btnSave)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 388)
+        Me.Panel2.Location = New System.Drawing.Point(0, 484)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(687, 28)
+        Me.Panel2.Size = New System.Drawing.Size(614, 41)
         Me.Panel2.TabIndex = 5
         '
         'btnExit
@@ -255,7 +255,7 @@ Partial Class FrmPermission
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(687, 416)
+        Me.ClientSize = New System.Drawing.Size(614, 525)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.GroupBox1)

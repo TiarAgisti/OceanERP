@@ -50,18 +50,20 @@ Partial Class MenuUtama
         Me.menuCOA = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuUnit = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuBrandYarn = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuStyle = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuRawMaterial = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuTransaksi = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuProformaInvoice = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuStyle = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuRawMaterial = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.toltipCopyRight = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toltipUserName, Me.ToolStripStatusLabel2, Me.toltipTanggal, Me.ToolStripStatusLabel3, Me.toltipIP})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toltipUserName, Me.ToolStripStatusLabel2, Me.toltipTanggal, Me.ToolStripStatusLabel3, Me.toltipIP, Me.ToolStripStatusLabel1, Me.toltipCopyRight})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 452)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1063, 22)
@@ -246,6 +248,20 @@ Partial Class MenuUtama
         Me.menuBrandYarn.Tag = "18"
         Me.menuBrandYarn.Text = "Brand Yarn"
         '
+        'menuStyle
+        '
+        Me.menuStyle.Name = "menuStyle"
+        Me.menuStyle.Size = New System.Drawing.Size(167, 22)
+        Me.menuStyle.Tag = "19"
+        Me.menuStyle.Text = "Style"
+        '
+        'menuRawMaterial
+        '
+        Me.menuRawMaterial.Name = "menuRawMaterial"
+        Me.menuRawMaterial.Size = New System.Drawing.Size(167, 22)
+        Me.menuRawMaterial.Tag = "20"
+        Me.menuRawMaterial.Text = "Raw Material"
+        '
         'menuTransaksi
         '
         Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuProformaInvoice})
@@ -266,19 +282,17 @@ Partial Class MenuUtama
         Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
         Me.menuKeluar.Text = "Exit"
         '
-        'menuStyle
+        'ToolStripStatusLabel1
         '
-        Me.menuStyle.Name = "menuStyle"
-        Me.menuStyle.Size = New System.Drawing.Size(167, 22)
-        Me.menuStyle.Tag = "19"
-        Me.menuStyle.Text = "Style"
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(13, 17)
+        Me.ToolStripStatusLabel1.Text = "||"
         '
-        'menuRawMaterial
+        'toltipCopyRight
         '
-        Me.menuRawMaterial.Name = "menuRawMaterial"
-        Me.menuRawMaterial.Size = New System.Drawing.Size(167, 22)
-        Me.menuRawMaterial.Tag = "20"
-        Me.menuRawMaterial.Text = "Raw Material"
+        Me.toltipCopyRight.Name = "toltipCopyRight"
+        Me.toltipCopyRight.Size = New System.Drawing.Size(58, 17)
+        Me.toltipCopyRight.Text = "copyright"
         '
         'MenuUtama
         '
@@ -339,4 +353,6 @@ Partial Class MenuUtama
     Friend WithEvents menuBrandYarn As ToolStripMenuItem
     Friend WithEvents menuStyle As ToolStripMenuItem
     Friend WithEvents menuRawMaterial As ToolStripMenuItem
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents toltipCopyRight As ToolStripStatusLabel
 End Class

@@ -284,6 +284,12 @@
     <Compile Include="Views\Settings\Form\FrmPrintPreview.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\Transactions\Form\FrmBillOfMaterial.Designer.vb">
+      <DependentUpon>FrmBillOfMaterial.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transactions\Form\FrmBillOfMaterial.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\Transactions\Form\FrmProformaInvoice.Designer.vb">
       <DependentUpon>FrmProformaInvoice.vb</DependentUpon>
     </Compile>
@@ -368,6 +374,12 @@
     <Compile Include="Views\Settings\Form\FrmPermission.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\Transactions\List\FrmListBOM.Designer.vb">
+      <DependentUpon>FrmListBOM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transactions\List\FrmListBOM.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\Transactions\List\FrmListProformaInvoice.Designer.vb">
       <DependentUpon>FrmListProformaInvoice.vb</DependentUpon>
     </Compile>
@@ -432,6 +444,9 @@
     <EmbeddedResource Include="Views\Settings\Form\FrmPrintPreview.resx">
       <DependentUpon>FrmPrintPreview.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transactions\Form\FrmBillOfMaterial.resx">
+      <DependentUpon>FrmBillOfMaterial.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\Form\FrmProformaInvoice.resx">
       <DependentUpon>FrmProformaInvoice.vb</DependentUpon>
     </EmbeddedResource>
@@ -473,6 +488,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Settings\Form\FrmPermission.resx">
       <DependentUpon>FrmPermission.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transactions\List\FrmListBOM.resx">
+      <DependentUpon>FrmListBOM.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\List\FrmListProformaInvoice.resx">
       <DependentUpon>FrmListProformaInvoice.vb</DependentUpon>
