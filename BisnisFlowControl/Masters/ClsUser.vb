@@ -93,6 +93,7 @@
         Return userModel
     End Function
 #End Region
+
 #Region "Method Other"
     Public Function CheckUserName(myUserName As String) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
