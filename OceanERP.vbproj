@@ -509,6 +509,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="OceanERP.bak" />
     <None Include="ReportDataSet\OceanDS.xsc">
       <DependentUpon>OceanDS.xsd</DependentUpon>
     </None>
