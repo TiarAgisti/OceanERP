@@ -54,6 +54,12 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabProductName = New System.Windows.Forms.TabPage()
+        Me.btnClose = New System.Windows.Forms.Button()
+        Me.btnPrint = New System.Windows.Forms.Button()
+        Me.btnVoid = New System.Windows.Forms.Button()
+        Me.btnApprove = New System.Windows.Forms.Button()
+        Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
         Me.Label30 = New System.Windows.Forms.Label()
         Me.txtGrandTotal = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
@@ -80,6 +86,7 @@ Partial Class FrmPurchaseOrder
         Me.cmbRawCode = New System.Windows.Forms.ComboBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TabRemark = New System.Windows.Forms.TabPage()
+        Me.dgvremarks = New System.Windows.Forms.DataGridView()
         Me.btnRemDelList = New System.Windows.Forms.Button()
         Me.btnRemAddList = New System.Windows.Forms.Button()
         Me.txtRemarks = New System.Windows.Forms.TextBox()
@@ -98,7 +105,6 @@ Partial Class FrmPurchaseOrder
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtAdressCust = New System.Windows.Forms.TextBox()
-        Me.dgvremarks = New System.Windows.Forms.DataGridView()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -107,9 +113,9 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.SuspendLayout()
         CType(Me.dgvproduct, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabRemark.SuspendLayout()
+        CType(Me.dgvremarks, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        CType(Me.dgvremarks, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label3
@@ -269,7 +275,7 @@ Partial Class FrmPurchaseOrder
         Me.Panel1.Controls.Add(Me.cmbSupplier)
         Me.Panel1.Location = New System.Drawing.Point(9, 19)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(413, 203)
+        Me.Panel1.Size = New System.Drawing.Size(411, 203)
         Me.Panel1.TabIndex = 0
         '
         'txtEmailSup
@@ -396,6 +402,12 @@ Partial Class FrmPurchaseOrder
         '
         'TabProductName
         '
+        Me.TabProductName.Controls.Add(Me.btnClose)
+        Me.TabProductName.Controls.Add(Me.btnPrint)
+        Me.TabProductName.Controls.Add(Me.btnVoid)
+        Me.TabProductName.Controls.Add(Me.btnApprove)
+        Me.TabProductName.Controls.Add(Me.btnUpdate)
+        Me.TabProductName.Controls.Add(Me.btnSave)
         Me.TabProductName.Controls.Add(Me.Label30)
         Me.TabProductName.Controls.Add(Me.txtGrandTotal)
         Me.TabProductName.Controls.Add(Me.Label29)
@@ -428,6 +440,65 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.TabIndex = 0
         Me.TabProductName.Text = "Produk Name"
         Me.TabProductName.UseVisualStyleBackColor = True
+        '
+        'btnClose
+        '
+        Me.btnClose.Location = New System.Drawing.Point(415, 188)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(75, 23)
+        Me.btnClose.TabIndex = 130
+        Me.btnClose.Text = "Close"
+        Me.btnClose.UseVisualStyleBackColor = True
+        '
+        'btnPrint
+        '
+        Me.btnPrint.Enabled = False
+        Me.btnPrint.Location = New System.Drawing.Point(172, 188)
+        Me.btnPrint.Name = "btnPrint"
+        Me.btnPrint.Size = New System.Drawing.Size(75, 23)
+        Me.btnPrint.TabIndex = 129
+        Me.btnPrint.Text = "Print"
+        Me.btnPrint.UseVisualStyleBackColor = True
+        '
+        'btnVoid
+        '
+        Me.btnVoid.Enabled = False
+        Me.btnVoid.Location = New System.Drawing.Point(334, 188)
+        Me.btnVoid.Name = "btnVoid"
+        Me.btnVoid.Size = New System.Drawing.Size(75, 23)
+        Me.btnVoid.TabIndex = 132
+        Me.btnVoid.Text = "Void"
+        Me.btnVoid.UseVisualStyleBackColor = True
+        '
+        'btnApprove
+        '
+        Me.btnApprove.Enabled = False
+        Me.btnApprove.Location = New System.Drawing.Point(253, 188)
+        Me.btnApprove.Name = "btnApprove"
+        Me.btnApprove.Size = New System.Drawing.Size(75, 23)
+        Me.btnApprove.TabIndex = 131
+        Me.btnApprove.Text = "Approve"
+        Me.btnApprove.UseVisualStyleBackColor = True
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.Enabled = False
+        Me.btnUpdate.Location = New System.Drawing.Point(91, 188)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(75, 23)
+        Me.btnUpdate.TabIndex = 128
+        Me.btnUpdate.Text = "Update"
+        Me.btnUpdate.UseVisualStyleBackColor = True
+        '
+        'btnSave
+        '
+        Me.btnSave.Enabled = False
+        Me.btnSave.Location = New System.Drawing.Point(10, 188)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(75, 23)
+        Me.btnSave.TabIndex = 127
+        Me.btnSave.Text = "Save"
+        Me.btnSave.UseVisualStyleBackColor = True
         '
         'Label30
         '
@@ -667,6 +738,14 @@ Partial Class FrmPurchaseOrder
         Me.TabRemark.Text = "Remarks"
         Me.TabRemark.UseVisualStyleBackColor = True
         '
+        'dgvremarks
+        '
+        Me.dgvremarks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvremarks.Location = New System.Drawing.Point(8, 120)
+        Me.dgvremarks.Name = "dgvremarks"
+        Me.dgvremarks.Size = New System.Drawing.Size(845, 97)
+        Me.dgvremarks.TabIndex = 113
+        '
         'btnRemDelList
         '
         Me.btnRemDelList.Location = New System.Drawing.Point(168, 84)
@@ -691,7 +770,7 @@ Partial Class FrmPurchaseOrder
         Me.txtRemarks.MaxLength = 300
         Me.txtRemarks.Multiline = True
         Me.txtRemarks.Name = "txtRemarks"
-        Me.txtRemarks.Size = New System.Drawing.Size(502, 74)
+        Me.txtRemarks.Size = New System.Drawing.Size(353, 74)
         Me.txtRemarks.TabIndex = 109
         '
         'Label67
@@ -835,14 +914,6 @@ Partial Class FrmPurchaseOrder
         Me.txtAdressCust.Size = New System.Drawing.Size(188, 63)
         Me.txtAdressCust.TabIndex = 40
         '
-        'dgvremarks
-        '
-        Me.dgvremarks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvremarks.Location = New System.Drawing.Point(8, 120)
-        Me.dgvremarks.Name = "dgvremarks"
-        Me.dgvremarks.Size = New System.Drawing.Size(845, 97)
-        Me.dgvremarks.TabIndex = 113
-        '
         'FrmPurchaseOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -868,10 +939,10 @@ Partial Class FrmPurchaseOrder
         CType(Me.dgvproduct, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabRemark.ResumeLayout(False)
         Me.TabRemark.PerformLayout()
+        CType(Me.dgvremarks, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.dgvremarks, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -952,4 +1023,10 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents Label30 As Label
     Friend WithEvents txtGrandTotal As TextBox
     Friend WithEvents dgvremarks As DataGridView
+    Friend WithEvents btnClose As Button
+    Friend WithEvents btnPrint As Button
+    Friend WithEvents btnVoid As Button
+    Friend WithEvents btnApprove As Button
+    Friend WithEvents btnUpdate As Button
+    Friend WithEvents btnSave As Button
 End Class
