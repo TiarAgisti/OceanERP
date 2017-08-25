@@ -54,13 +54,29 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabProductName = New System.Windows.Forms.TabPage()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.btnRawDelList = New System.Windows.Forms.Button()
         Me.btnRawAddList = New System.Windows.Forms.Button()
+        Me.Label25 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.txtQty = New System.Windows.Forms.TextBox()
+        Me.Label26 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.txtUnitPrice = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.txtRawMaterialCode = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.cmbRawCode = New System.Windows.Forms.ComboBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TabRemark = New System.Windows.Forms.TabPage()
@@ -82,22 +98,6 @@ Partial Class FrmPurchaseOrder
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtAdressCust = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.txtRawMaterialCode = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.txtUnitPrice = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label27 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Label30 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
         CType(Me.OceanDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -243,9 +243,9 @@ Partial Class FrmPurchaseOrder
         Me.Label11.AutoSize = True
         Me.Label11.Location = New System.Drawing.Point(264, 18)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(93, 13)
+        Me.Label11.Size = New System.Drawing.Size(87, 13)
         Me.Label11.TabIndex = 23
-        Me.Label11.Text = "Ship Via/Methode"
+        Me.Label11.Text = "Ship Via/Method"
         '
         'GroupBox2
         '
@@ -433,6 +433,87 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.Text = "Produk Name"
         Me.TabProductName.UseVisualStyleBackColor = True
         '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(564, 313)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(63, 13)
+        Me.Label30.TabIndex = 126
+        Me.Label30.Text = "Grand Total"
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Enabled = False
+        Me.TextBox6.Location = New System.Drawing.Point(667, 310)
+        Me.TextBox6.MaxLength = 50
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(188, 20)
+        Me.TextBox6.TabIndex = 125
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(564, 289)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(34, 13)
+        Me.Label29.TabIndex = 124
+        Me.Label29.Text = "S && H"
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Enabled = False
+        Me.TextBox5.Location = New System.Drawing.Point(667, 286)
+        Me.TextBox5.MaxLength = 50
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(188, 20)
+        Me.TextBox5.TabIndex = 123
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Enabled = False
+        Me.TextBox3.Location = New System.Drawing.Point(667, 263)
+        Me.TextBox3.MaxLength = 50
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(188, 20)
+        Me.TextBox3.TabIndex = 121
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(564, 266)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(57, 13)
+        Me.Label27.TabIndex = 122
+        Me.Label27.Text = "Other Cost"
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Enabled = False
+        Me.TextBox4.Location = New System.Drawing.Point(667, 240)
+        Me.TextBox4.MaxLength = 50
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(188, 20)
+        Me.TextBox4.TabIndex = 119
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Location = New System.Drawing.Point(564, 243)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(83, 13)
+        Me.Label28.TabIndex = 120
+        Me.Label28.Text = "VAT (10% Rate)"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Enabled = False
+        Me.TextBox1.Location = New System.Drawing.Point(667, 218)
+        Me.TextBox1.MaxLength = 50
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(188, 20)
+        Me.TextBox1.TabIndex = 117
+        '
         'btnRawDelList
         '
         Me.btnRawDelList.Location = New System.Drawing.Point(121, 64)
@@ -451,6 +532,15 @@ Partial Class FrmPurchaseOrder
         Me.btnRawAddList.Text = "Add To List"
         Me.btnRawAddList.UseVisualStyleBackColor = True
         '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(564, 218)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(49, 13)
+        Me.Label25.TabIndex = 118
+        Me.Label25.Text = "Discount"
+        '
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -467,6 +557,15 @@ Partial Class FrmPurchaseOrder
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(188, 20)
         Me.txtTotal.TabIndex = 110
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Enabled = False
+        Me.TextBox2.Location = New System.Drawing.Point(667, 195)
+        Me.TextBox2.MaxLength = 50
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(188, 20)
+        Me.TextBox2.TabIndex = 115
         '
         'Label16
         '
@@ -486,6 +585,15 @@ Partial Class FrmPurchaseOrder
         Me.txtQty.Size = New System.Drawing.Size(188, 20)
         Me.txtQty.TabIndex = 108
         '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(564, 195)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(46, 13)
+        Me.Label26.TabIndex = 116
+        Me.Label26.Text = "Subtotal"
+        '
         'Label15
         '
         Me.Label15.AutoSize = True
@@ -494,6 +602,42 @@ Partial Class FrmPurchaseOrder
         Me.Label15.Size = New System.Drawing.Size(46, 13)
         Me.Label15.TabIndex = 109
         Me.Label15.Text = "Quantity"
+        '
+        'txtUnitPrice
+        '
+        Me.txtUnitPrice.Enabled = False
+        Me.txtUnitPrice.Location = New System.Drawing.Point(362, 7)
+        Me.txtUnitPrice.MaxLength = 50
+        Me.txtUnitPrice.Name = "txtUnitPrice"
+        Me.txtUnitPrice.Size = New System.Drawing.Size(188, 20)
+        Me.txtUnitPrice.TabIndex = 106
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(307, 9)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(53, 13)
+        Me.Label14.TabIndex = 107
+        Me.Label14.Text = "Unit Price"
+        '
+        'txtRawMaterialCode
+        '
+        Me.txtRawMaterialCode.Enabled = False
+        Me.txtRawMaterialCode.Location = New System.Drawing.Point(110, 36)
+        Me.txtRawMaterialCode.MaxLength = 50
+        Me.txtRawMaterialCode.Name = "txtRawMaterialCode"
+        Me.txtRawMaterialCode.Size = New System.Drawing.Size(188, 20)
+        Me.txtRawMaterialCode.TabIndex = 103
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(7, 36)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(100, 13)
+        Me.Label21.TabIndex = 105
+        Me.Label21.Text = "Raw Material Name"
         '
         'cmbRawCode
         '
@@ -521,7 +665,7 @@ Partial Class FrmPurchaseOrder
         Me.TabRemark.Location = New System.Drawing.Point(4, 22)
         Me.TabRemark.Name = "TabRemark"
         Me.TabRemark.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabRemark.Size = New System.Drawing.Size(861, 202)
+        Me.TabRemark.Size = New System.Drawing.Size(861, 337)
         Me.TabRemark.TabIndex = 1
         Me.TabRemark.Text = "Remarks"
         Me.TabRemark.UseVisualStyleBackColor = True
@@ -693,150 +837,6 @@ Partial Class FrmPurchaseOrder
         Me.txtAdressCust.Name = "txtAdressCust"
         Me.txtAdressCust.Size = New System.Drawing.Size(188, 63)
         Me.txtAdressCust.TabIndex = 40
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(667, 218)
-        Me.TextBox1.MaxLength = 50
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(188, 20)
-        Me.TextBox1.TabIndex = 117
-        '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(564, 218)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(49, 13)
-        Me.Label25.TabIndex = 118
-        Me.Label25.Text = "Discount"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Enabled = False
-        Me.TextBox2.Location = New System.Drawing.Point(667, 195)
-        Me.TextBox2.MaxLength = 50
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(188, 20)
-        Me.TextBox2.TabIndex = 115
-        '
-        'Label26
-        '
-        Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(564, 195)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(46, 13)
-        Me.Label26.TabIndex = 116
-        Me.Label26.Text = "Subtotal"
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(7, 36)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(100, 13)
-        Me.Label21.TabIndex = 105
-        Me.Label21.Text = "Raw Material Name"
-        '
-        'txtRawMaterialCode
-        '
-        Me.txtRawMaterialCode.Enabled = False
-        Me.txtRawMaterialCode.Location = New System.Drawing.Point(110, 36)
-        Me.txtRawMaterialCode.MaxLength = 50
-        Me.txtRawMaterialCode.Name = "txtRawMaterialCode"
-        Me.txtRawMaterialCode.Size = New System.Drawing.Size(188, 20)
-        Me.txtRawMaterialCode.TabIndex = 103
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(307, 9)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(53, 13)
-        Me.Label14.TabIndex = 107
-        Me.Label14.Text = "Unit Price"
-        '
-        'txtUnitPrice
-        '
-        Me.txtUnitPrice.Enabled = False
-        Me.txtUnitPrice.Location = New System.Drawing.Point(362, 7)
-        Me.txtUnitPrice.MaxLength = 50
-        Me.txtUnitPrice.Name = "txtUnitPrice"
-        Me.txtUnitPrice.Size = New System.Drawing.Size(188, 20)
-        Me.txtUnitPrice.TabIndex = 106
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Enabled = False
-        Me.TextBox3.Location = New System.Drawing.Point(667, 263)
-        Me.TextBox3.MaxLength = 50
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(188, 20)
-        Me.TextBox3.TabIndex = 121
-        '
-        'Label27
-        '
-        Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(564, 266)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(57, 13)
-        Me.Label27.TabIndex = 122
-        Me.Label27.Text = "Other Cost"
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Enabled = False
-        Me.TextBox4.Location = New System.Drawing.Point(667, 240)
-        Me.TextBox4.MaxLength = 50
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(188, 20)
-        Me.TextBox4.TabIndex = 119
-        '
-        'Label28
-        '
-        Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(564, 243)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(83, 13)
-        Me.Label28.TabIndex = 120
-        Me.Label28.Text = "VAT (10% Rate)"
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Enabled = False
-        Me.TextBox5.Location = New System.Drawing.Point(667, 286)
-        Me.TextBox5.MaxLength = 50
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(188, 20)
-        Me.TextBox5.TabIndex = 123
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(564, 289)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(34, 13)
-        Me.Label29.TabIndex = 124
-        Me.Label29.Text = "S && H"
-        '
-        'Label30
-        '
-        Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(564, 313)
-        Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(63, 13)
-        Me.Label30.TabIndex = 126
-        Me.Label30.Text = "Grand Total"
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Enabled = False
-        Me.TextBox6.Location = New System.Drawing.Point(667, 310)
-        Me.TextBox6.MaxLength = 50
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(188, 20)
-        Me.TextBox6.TabIndex = 125
         '
         'FrmPurchaseOrder
         '
