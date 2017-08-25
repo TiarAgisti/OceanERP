@@ -154,6 +154,15 @@
             xTermOfPayment = value
         End Set
     End Property
+    Private xCustomerCode As String
+    Public Property CustomerCode() As String
+        Get
+            Return xCustomerCode
+        End Get
+        Set(ByVal value As String)
+            xCustomerCode = value
+        End Set
+    End Property
     Private xCustomerName As String
     Public Property CustomerName() As String
         Get
@@ -163,6 +172,64 @@
             xCustomerName = value
         End Set
     End Property
+
+    Private xAddressCustomer As String
+    Public Property AddressCustomer() As String
+        Get
+            Return xAddressCustomer
+        End Get
+        Set(ByVal value As String)
+            xAddressCustomer = value
+        End Set
+    End Property
+
+    Private xTelephoneCustomer As String
+    Public Property TelephoneCustomer() As String
+        Get
+            Return xTelephoneCustomer
+        End Get
+        Set(ByVal value As String)
+            xTelephoneCustomer = value
+        End Set
+    End Property
+
+    Private xFaxCustomer As String
+    Public Property FaxCustomer() As String
+        Get
+            Return xFaxCustomer
+        End Get
+        Set(ByVal value As String)
+            xFaxCustomer = value
+        End Set
+    End Property
+
+    Private xContactPersonCustomer As String
+    Public Property ContactPersonCustomer() As String
+        Get
+            Return xContactPersonCustomer
+        End Get
+        Set(ByVal value As String)
+            xContactPersonCustomer = value
+        End Set
+    End Property
+    Private xEmailCustomer As String
+    Public Property EmailCustomer() As String
+        Get
+            Return xEmailCustomer
+        End Get
+        Set(ByVal value As String)
+            xEmailCustomer = value
+        End Set
+    End Property
+    Private xSupplierCode As String
+    Public Property SupplierCode() As String
+        Get
+            Return xSupplierCode
+        End Get
+        Set(ByVal value As String)
+            xSupplierCode = value
+        End Set
+    End Property
     Private xSupplierName As String
     Public Property SupplierName() As String
         Get
@@ -170,6 +237,55 @@
         End Get
         Set(ByVal value As String)
             xSupplierName = value
+        End Set
+    End Property
+
+    Private xAddressSupplier As String
+    Public Property AddressSupplier() As String
+        Get
+            Return xAddressSupplier
+        End Get
+        Set(ByVal value As String)
+            xAddressSupplier = value
+        End Set
+    End Property
+
+    Private xTelephoneSupplier As String
+    Public Property TelephoneSupplier() As String
+        Get
+            Return xTelephoneSupplier
+        End Get
+        Set(ByVal value As String)
+            xTelephoneSupplier = value
+        End Set
+    End Property
+
+    Private xFaxSupplier As String
+    Public Property FaxSupplier() As String
+        Get
+            Return xFaxSupplier
+        End Get
+        Set(ByVal value As String)
+            xFaxSupplier = value
+        End Set
+    End Property
+
+    Private xContactPersonSupplier As String
+    Public Property ContactPersonSupplier() As String
+        Get
+            Return xContactPersonSupplier
+        End Get
+        Set(ByVal value As String)
+            xContactPersonSupplier = value
+        End Set
+    End Property
+    Private xEmailSupplier As String
+    Public Property EmailSupplier() As String
+        Get
+            Return xEmailSupplier
+        End Get
+        Set(ByVal value As String)
+            xEmailSupplier = value
         End Set
     End Property
 End Class

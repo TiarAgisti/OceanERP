@@ -129,6 +129,7 @@
     <Compile Include="BisnisFlowControl\Settings\ClsConfig.vb" />
     <Compile Include="BisnisFlowControl\Settings\ClsLogHistory.vb" />
     <Compile Include="BisnisFlowControl\Settings\ClsPermission.vb" />
+    <Compile Include="BisnisFlowControl\Transactions\ClsPO.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsProformaInvoice.vb" />
     <Compile Include="DataAccess\ClsDataAccess.vb" />
     <Compile Include="DataAccess\ClsPrintOut.vb" />
@@ -181,6 +182,7 @@
     <Compile Include="Models\Transactions\PIPrintOutModel.vb" />
     <Compile Include="Models\Transactions\PIRemarksModel.vb" />
     <Compile Include="Models\Transactions\PIYarnDetailModel.vb" />
+    <Compile Include="Models\Transactions\PORemarksModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

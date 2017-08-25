@@ -785,9 +785,9 @@ Partial Class FrmPurchaseOrder
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.Panel2)
-        Me.GroupBox4.Location = New System.Drawing.Point(445, 132)
+        Me.GroupBox4.Location = New System.Drawing.Point(445, 128)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(442, 229)
+        Me.GroupBox4.Size = New System.Drawing.Size(442, 233)
         Me.GroupBox4.TabIndex = 27
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Ship To"
@@ -806,15 +806,15 @@ Partial Class FrmPurchaseOrder
         Me.Panel2.Controls.Add(Me.Label22)
         Me.Panel2.Controls.Add(Me.Label19)
         Me.Panel2.Controls.Add(Me.txtAdressCust)
-        Me.Panel2.Location = New System.Drawing.Point(6, 19)
+        Me.Panel2.Location = New System.Drawing.Point(6, 15)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(426, 199)
+        Me.Panel2.Size = New System.Drawing.Size(426, 207)
         Me.Panel2.TabIndex = 35
         '
         'txtEmailCust
         '
         Me.txtEmailCust.Enabled = False
-        Me.txtEmailCust.Location = New System.Drawing.Point(106, 173)
+        Me.txtEmailCust.Location = New System.Drawing.Point(103, 181)
         Me.txtEmailCust.Name = "txtEmailCust"
         Me.txtEmailCust.Size = New System.Drawing.Size(188, 20)
         Me.txtEmailCust.TabIndex = 46
@@ -822,7 +822,7 @@ Partial Class FrmPurchaseOrder
         'Label24
         '
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(20, 5)
+        Me.Label24.Location = New System.Drawing.Point(17, 13)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(51, 13)
         Me.Label24.TabIndex = 37
@@ -831,7 +831,7 @@ Partial Class FrmPurchaseOrder
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(25, 176)
+        Me.Label17.Location = New System.Drawing.Point(22, 184)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(32, 13)
         Me.Label17.TabIndex = 45
@@ -840,7 +840,7 @@ Partial Class FrmPurchaseOrder
         'cmbCustomer
         '
         Me.cmbCustomer.FormattingEnabled = True
-        Me.cmbCustomer.Location = New System.Drawing.Point(106, 2)
+        Me.cmbCustomer.Location = New System.Drawing.Point(103, 10)
         Me.cmbCustomer.Name = "cmbCustomer"
         Me.cmbCustomer.Size = New System.Drawing.Size(188, 21)
         Me.cmbCustomer.TabIndex = 35
@@ -848,7 +848,7 @@ Partial Class FrmPurchaseOrder
         'txtFaxCust
         '
         Me.txtFaxCust.Enabled = False
-        Me.txtFaxCust.Location = New System.Drawing.Point(106, 147)
+        Me.txtFaxCust.Location = New System.Drawing.Point(103, 155)
         Me.txtFaxCust.Name = "txtFaxCust"
         Me.txtFaxCust.Size = New System.Drawing.Size(188, 20)
         Me.txtFaxCust.TabIndex = 44
@@ -856,7 +856,7 @@ Partial Class FrmPurchaseOrder
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(20, 32)
+        Me.Label23.Location = New System.Drawing.Point(17, 40)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(80, 13)
         Me.Label23.TabIndex = 36
@@ -865,7 +865,7 @@ Partial Class FrmPurchaseOrder
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(25, 150)
+        Me.Label18.Location = New System.Drawing.Point(22, 158)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(24, 13)
         Me.Label18.TabIndex = 43
@@ -874,7 +874,7 @@ Partial Class FrmPurchaseOrder
         'txtCPCust
         '
         Me.txtCPCust.Enabled = False
-        Me.txtCPCust.Location = New System.Drawing.Point(106, 29)
+        Me.txtCPCust.Location = New System.Drawing.Point(103, 37)
         Me.txtCPCust.Name = "txtCPCust"
         Me.txtCPCust.Size = New System.Drawing.Size(188, 20)
         Me.txtCPCust.TabIndex = 38
@@ -882,7 +882,7 @@ Partial Class FrmPurchaseOrder
         'txtPhoneCust
         '
         Me.txtPhoneCust.Enabled = False
-        Me.txtPhoneCust.Location = New System.Drawing.Point(106, 124)
+        Me.txtPhoneCust.Location = New System.Drawing.Point(103, 132)
         Me.txtPhoneCust.Name = "txtPhoneCust"
         Me.txtPhoneCust.Size = New System.Drawing.Size(188, 20)
         Me.txtPhoneCust.TabIndex = 42
@@ -890,7 +890,7 @@ Partial Class FrmPurchaseOrder
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(20, 58)
+        Me.Label22.Location = New System.Drawing.Point(17, 66)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(39, 13)
         Me.Label22.TabIndex = 39
@@ -899,7 +899,7 @@ Partial Class FrmPurchaseOrder
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(25, 124)
+        Me.Label19.Location = New System.Drawing.Point(22, 132)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(38, 13)
         Me.Label19.TabIndex = 41
@@ -908,7 +908,7 @@ Partial Class FrmPurchaseOrder
         'txtAdressCust
         '
         Me.txtAdressCust.Enabled = False
-        Me.txtAdressCust.Location = New System.Drawing.Point(106, 55)
+        Me.txtAdressCust.Location = New System.Drawing.Point(103, 63)
         Me.txtAdressCust.Multiline = True
         Me.txtAdressCust.Name = "txtAdressCust"
         Me.txtAdressCust.Size = New System.Drawing.Size(188, 63)
