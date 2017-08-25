@@ -129,6 +129,7 @@
     <Compile Include="BisnisFlowControl\Settings\ClsConfig.vb" />
     <Compile Include="BisnisFlowControl\Settings\ClsLogHistory.vb" />
     <Compile Include="BisnisFlowControl\Settings\ClsPermission.vb" />
+    <Compile Include="BisnisFlowControl\Transactions\ClsBOM.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsPO.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsProformaInvoice.vb" />
     <Compile Include="DataAccess\ClsDataAccess.vb" />
@@ -171,6 +172,8 @@
     <Compile Include="Models\Settings\RoleDModel.vb" />
     <Compile Include="Models\Settings\RoleHModel.vb" />
     <Compile Include="Models\Settings\TermApproveModel.vb" />
+    <Compile Include="Models\Transactions\BOMDetailModel.vb" />
+    <Compile Include="Models\Transactions\BOMHeaderModel.vb" />
     <Compile Include="Models\Transactions\PODetailModel.vb" />
     <Compile Include="Models\Transactions\POHeaderModel.vb" />
     <Compile Include="Models\Transactions\PIBankDetailModel.vb" />

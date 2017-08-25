@@ -595,7 +595,6 @@ Public Class ClsProformaInvoice
         Return sql
     End Function
 
-
     Protected Function SqlInsertDetailColorFabric(myModel As PIColorDetailModel) As String
         Dim SQL As String
         SQL = "Insert Into PIColorDetail(PIHeaderID,PIColorDetailID,ColorID,ColorType,ColorLabNumber,QtyOrder,PurchSizeID,Price,QtySample,DelDate,Note)Values" &
@@ -675,6 +674,7 @@ Public Class ClsProformaInvoice
         SQL = "Delete From PIRemarks Where PIHeaderID = '" & myModel.PIHeaderID & "'"
         Return SQL
     End Function
+
     Public Function InsertData(piHeaderModel As PIHeaderModel, listPIDetailModel As List(Of PIDetailModel) _
                                , listColorDetailModel As List(Of PIColorDetailModel), listYarnDetailModel As List(Of PIYarnDetailModel) _
                                , listRemarks As List(Of PIRemarksModel), bankDetailModel As PIBankDetailModel, logModel As LogHistoryModel) As Boolean
