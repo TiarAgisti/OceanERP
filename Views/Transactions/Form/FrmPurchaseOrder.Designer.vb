@@ -24,7 +24,6 @@ Partial Class FrmPurchaseOrder
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPurchaseOrder))
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.OceanDS1 = New OceanERP.OceanDS()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.dtERD = New System.Windows.Forms.DateTimePicker()
         Me.dtSD = New System.Windows.Forms.DateTimePicker()
@@ -100,7 +99,6 @@ Partial Class FrmPurchaseOrder
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtAdressCust = New System.Windows.Forms.TextBox()
         Me.dgvremarks = New System.Windows.Forms.DataGridView()
-        CType(Me.OceanDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -125,11 +123,6 @@ Partial Class FrmPurchaseOrder
         Me.Label3.TabIndex = 24
         Me.Label3.Text = "Purchase Order"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'OceanDS1
-        '
-        Me.OceanDS1.DataSetName = "OceanDS"
-        Me.OceanDS1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'GroupBox1
         '
@@ -863,7 +856,6 @@ Partial Class FrmPurchaseOrder
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmPurchaseOrder"
         Me.Text = "FrmPurchaseOrder"
-        CType(Me.OceanDS1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -885,7 +877,6 @@ Partial Class FrmPurchaseOrder
     End Sub
 
     Friend WithEvents Label3 As Label
-    Friend WithEvents OceanDS1 As OceanDS
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents dtPODate As DateTimePicker
     Friend WithEvents Label2 As Label
