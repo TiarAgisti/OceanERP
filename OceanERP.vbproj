@@ -170,6 +170,8 @@
     <Compile Include="Models\Settings\RoleDModel.vb" />
     <Compile Include="Models\Settings\RoleHModel.vb" />
     <Compile Include="Models\Settings\TermApproveModel.vb" />
+    <Compile Include="Models\Transactions\PODetailModel.vb" />
+    <Compile Include="Models\Transactions\POHeaderModel.vb" />
     <Compile Include="Models\Transactions\PIBankDetailModel.vb" />
     <Compile Include="Models\Transactions\PIColorDetailModel.vb" />
     <Compile Include="Models\Transactions\PIDetailModel.vb" />
