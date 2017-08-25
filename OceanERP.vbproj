@@ -180,6 +180,7 @@
     <Compile Include="Models\Transactions\PIPrintOutModel.vb" />
     <Compile Include="Models\Transactions\PIRemarksModel.vb" />
     <Compile Include="Models\Transactions\PIYarnDetailModel.vb" />
+    <Compile Include="Models\Transactions\PORemarksModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
