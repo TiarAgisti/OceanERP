@@ -22,6 +22,7 @@ Partial Class FrmPurchaseOrder
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPurchaseOrder))
         Me.Label3 = New System.Windows.Forms.Label()
         Me.OceanDS1 = New OceanERP.OceanDS()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -55,20 +56,20 @@ Partial Class FrmPurchaseOrder
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabProductName = New System.Windows.Forms.TabPage()
         Me.Label30 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.txtGrandTotal = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.txtSH = New System.Windows.Forms.TextBox()
+        Me.txtOtherCost = New System.Windows.Forms.TextBox()
         Me.Label27 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.txtVAT = New System.Windows.Forms.TextBox()
         Me.Label28 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtDiscount = New System.Windows.Forms.TextBox()
         Me.btnRawDelList = New System.Windows.Forms.Button()
         Me.btnRawAddList = New System.Windows.Forms.Button()
         Me.Label25 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgvproduct = New System.Windows.Forms.DataGridView()
         Me.txtTotal = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtSubtotal = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.txtQty = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
@@ -98,6 +99,7 @@ Partial Class FrmPurchaseOrder
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtAdressCust = New System.Windows.Forms.TextBox()
+        Me.dgvremarks = New System.Windows.Forms.DataGridView()
         CType(Me.OceanDS1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -105,10 +107,11 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox3.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabProductName.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvproduct, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabRemark.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        CType(Me.dgvremarks, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label3
@@ -118,7 +121,7 @@ Partial Class FrmPurchaseOrder
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(0, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(896, 43)
+        Me.Label3.Size = New System.Drawing.Size(892, 43)
         Me.Label3.TabIndex = 24
         Me.Label3.Text = "Purchase Order"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -384,7 +387,7 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox3.Controls.Add(Me.TabControl1)
         Me.GroupBox3.Location = New System.Drawing.Point(5, 367)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(882, 382)
+        Me.GroupBox3.Size = New System.Drawing.Size(882, 385)
         Me.GroupBox3.TabIndex = 26
         Me.GroupBox3.TabStop = False
         '
@@ -401,20 +404,20 @@ Partial Class FrmPurchaseOrder
         'TabProductName
         '
         Me.TabProductName.Controls.Add(Me.Label30)
-        Me.TabProductName.Controls.Add(Me.TextBox6)
+        Me.TabProductName.Controls.Add(Me.txtGrandTotal)
         Me.TabProductName.Controls.Add(Me.Label29)
-        Me.TabProductName.Controls.Add(Me.TextBox5)
-        Me.TabProductName.Controls.Add(Me.TextBox3)
+        Me.TabProductName.Controls.Add(Me.txtSH)
+        Me.TabProductName.Controls.Add(Me.txtOtherCost)
         Me.TabProductName.Controls.Add(Me.Label27)
-        Me.TabProductName.Controls.Add(Me.TextBox4)
+        Me.TabProductName.Controls.Add(Me.txtVAT)
         Me.TabProductName.Controls.Add(Me.Label28)
-        Me.TabProductName.Controls.Add(Me.TextBox1)
+        Me.TabProductName.Controls.Add(Me.txtDiscount)
         Me.TabProductName.Controls.Add(Me.btnRawDelList)
         Me.TabProductName.Controls.Add(Me.btnRawAddList)
         Me.TabProductName.Controls.Add(Me.Label25)
-        Me.TabProductName.Controls.Add(Me.DataGridView1)
+        Me.TabProductName.Controls.Add(Me.dgvproduct)
         Me.TabProductName.Controls.Add(Me.txtTotal)
-        Me.TabProductName.Controls.Add(Me.TextBox2)
+        Me.TabProductName.Controls.Add(Me.txtSubtotal)
         Me.TabProductName.Controls.Add(Me.Label16)
         Me.TabProductName.Controls.Add(Me.txtQty)
         Me.TabProductName.Controls.Add(Me.Label26)
@@ -436,87 +439,87 @@ Partial Class FrmPurchaseOrder
         'Label30
         '
         Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(564, 313)
+        Me.Label30.Location = New System.Drawing.Point(564, 303)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(63, 13)
         Me.Label30.TabIndex = 126
         Me.Label30.Text = "Grand Total"
         '
-        'TextBox6
+        'txtGrandTotal
         '
-        Me.TextBox6.Enabled = False
-        Me.TextBox6.Location = New System.Drawing.Point(667, 310)
-        Me.TextBox6.MaxLength = 50
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(188, 20)
-        Me.TextBox6.TabIndex = 125
+        Me.txtGrandTotal.Enabled = False
+        Me.txtGrandTotal.Location = New System.Drawing.Point(667, 300)
+        Me.txtGrandTotal.MaxLength = 50
+        Me.txtGrandTotal.Name = "txtGrandTotal"
+        Me.txtGrandTotal.Size = New System.Drawing.Size(188, 20)
+        Me.txtGrandTotal.TabIndex = 125
         '
         'Label29
         '
         Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(564, 289)
+        Me.Label29.Location = New System.Drawing.Point(564, 279)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(34, 13)
         Me.Label29.TabIndex = 124
         Me.Label29.Text = "S && H"
         '
-        'TextBox5
+        'txtSH
         '
-        Me.TextBox5.Enabled = False
-        Me.TextBox5.Location = New System.Drawing.Point(667, 286)
-        Me.TextBox5.MaxLength = 50
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(188, 20)
-        Me.TextBox5.TabIndex = 123
+        Me.txtSH.Enabled = False
+        Me.txtSH.Location = New System.Drawing.Point(667, 276)
+        Me.txtSH.MaxLength = 50
+        Me.txtSH.Name = "txtSH"
+        Me.txtSH.Size = New System.Drawing.Size(188, 20)
+        Me.txtSH.TabIndex = 123
         '
-        'TextBox3
+        'txtOtherCost
         '
-        Me.TextBox3.Enabled = False
-        Me.TextBox3.Location = New System.Drawing.Point(667, 263)
-        Me.TextBox3.MaxLength = 50
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(188, 20)
-        Me.TextBox3.TabIndex = 121
+        Me.txtOtherCost.Enabled = False
+        Me.txtOtherCost.Location = New System.Drawing.Point(667, 253)
+        Me.txtOtherCost.MaxLength = 50
+        Me.txtOtherCost.Name = "txtOtherCost"
+        Me.txtOtherCost.Size = New System.Drawing.Size(188, 20)
+        Me.txtOtherCost.TabIndex = 121
         '
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(564, 266)
+        Me.Label27.Location = New System.Drawing.Point(564, 256)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(57, 13)
         Me.Label27.TabIndex = 122
         Me.Label27.Text = "Other Cost"
         '
-        'TextBox4
+        'txtVAT
         '
-        Me.TextBox4.Enabled = False
-        Me.TextBox4.Location = New System.Drawing.Point(667, 240)
-        Me.TextBox4.MaxLength = 50
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(188, 20)
-        Me.TextBox4.TabIndex = 119
+        Me.txtVAT.Enabled = False
+        Me.txtVAT.Location = New System.Drawing.Point(667, 230)
+        Me.txtVAT.MaxLength = 50
+        Me.txtVAT.Name = "txtVAT"
+        Me.txtVAT.Size = New System.Drawing.Size(188, 20)
+        Me.txtVAT.TabIndex = 119
         '
         'Label28
         '
         Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(564, 243)
+        Me.Label28.Location = New System.Drawing.Point(564, 233)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(83, 13)
         Me.Label28.TabIndex = 120
         Me.Label28.Text = "VAT (10% Rate)"
         '
-        'TextBox1
+        'txtDiscount
         '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(667, 218)
-        Me.TextBox1.MaxLength = 50
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(188, 20)
-        Me.TextBox1.TabIndex = 117
+        Me.txtDiscount.Enabled = False
+        Me.txtDiscount.Location = New System.Drawing.Point(667, 208)
+        Me.txtDiscount.MaxLength = 50
+        Me.txtDiscount.Name = "txtDiscount"
+        Me.txtDiscount.Size = New System.Drawing.Size(188, 20)
+        Me.txtDiscount.TabIndex = 117
         '
         'btnRawDelList
         '
-        Me.btnRawDelList.Location = New System.Drawing.Point(121, 64)
+        Me.btnRawDelList.Location = New System.Drawing.Point(667, 56)
         Me.btnRawDelList.Name = "btnRawDelList"
         Me.btnRawDelList.Size = New System.Drawing.Size(105, 23)
         Me.btnRawDelList.TabIndex = 114
@@ -525,7 +528,7 @@ Partial Class FrmPurchaseOrder
         '
         'btnRawAddList
         '
-        Me.btnRawAddList.Location = New System.Drawing.Point(10, 64)
+        Me.btnRawAddList.Location = New System.Drawing.Point(556, 56)
         Me.btnRawAddList.Name = "btnRawAddList"
         Me.btnRawAddList.Size = New System.Drawing.Size(105, 23)
         Me.btnRawAddList.TabIndex = 113
@@ -535,19 +538,19 @@ Partial Class FrmPurchaseOrder
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(564, 218)
+        Me.Label25.Location = New System.Drawing.Point(564, 208)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(49, 13)
         Me.Label25.TabIndex = 118
         Me.Label25.Text = "Discount"
         '
-        'DataGridView1
+        'dgvproduct
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(10, 93)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(845, 91)
-        Me.DataGridView1.TabIndex = 112
+        Me.dgvproduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvproduct.Location = New System.Drawing.Point(10, 85)
+        Me.dgvproduct.Name = "dgvproduct"
+        Me.dgvproduct.Size = New System.Drawing.Size(845, 97)
+        Me.dgvproduct.TabIndex = 112
         '
         'txtTotal
         '
@@ -558,14 +561,14 @@ Partial Class FrmPurchaseOrder
         Me.txtTotal.Size = New System.Drawing.Size(188, 20)
         Me.txtTotal.TabIndex = 110
         '
-        'TextBox2
+        'txtSubtotal
         '
-        Me.TextBox2.Enabled = False
-        Me.TextBox2.Location = New System.Drawing.Point(667, 195)
-        Me.TextBox2.MaxLength = 50
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(188, 20)
-        Me.TextBox2.TabIndex = 115
+        Me.txtSubtotal.Enabled = False
+        Me.txtSubtotal.Location = New System.Drawing.Point(667, 185)
+        Me.txtSubtotal.MaxLength = 50
+        Me.txtSubtotal.Name = "txtSubtotal"
+        Me.txtSubtotal.Size = New System.Drawing.Size(188, 20)
+        Me.txtSubtotal.TabIndex = 115
         '
         'Label16
         '
@@ -588,7 +591,7 @@ Partial Class FrmPurchaseOrder
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(564, 195)
+        Me.Label26.Location = New System.Drawing.Point(564, 185)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(46, 13)
         Me.Label26.TabIndex = 116
@@ -658,6 +661,7 @@ Partial Class FrmPurchaseOrder
         '
         'TabRemark
         '
+        Me.TabRemark.Controls.Add(Me.dgvremarks)
         Me.TabRemark.Controls.Add(Me.btnRemDelList)
         Me.TabRemark.Controls.Add(Me.btnRemAddList)
         Me.TabRemark.Controls.Add(Me.txtRemarks)
@@ -838,16 +842,25 @@ Partial Class FrmPurchaseOrder
         Me.txtAdressCust.Size = New System.Drawing.Size(188, 63)
         Me.txtAdressCust.TabIndex = 40
         '
+        'dgvremarks
+        '
+        Me.dgvremarks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvremarks.Location = New System.Drawing.Point(8, 120)
+        Me.dgvremarks.Name = "dgvremarks"
+        Me.dgvremarks.Size = New System.Drawing.Size(845, 97)
+        Me.dgvremarks.TabIndex = 113
+        '
         'FrmPurchaseOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(896, 750)
+        Me.ClientSize = New System.Drawing.Size(892, 750)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label3)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmPurchaseOrder"
         Me.Text = "FrmPurchaseOrder"
         CType(Me.OceanDS1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -860,12 +873,13 @@ Partial Class FrmPurchaseOrder
         Me.TabControl1.ResumeLayout(False)
         Me.TabProductName.ResumeLayout(False)
         Me.TabProductName.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvproduct, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabRemark.ResumeLayout(False)
         Me.TabRemark.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.dgvremarks, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -913,7 +927,7 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents Label15 As Label
     Friend WithEvents txtTotal As TextBox
     Friend WithEvents Label16 As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvproduct As DataGridView
     Friend WithEvents btnRawDelList As Button
     Friend WithEvents btnRawAddList As Button
     Friend WithEvents GroupBox4 As GroupBox
@@ -931,19 +945,20 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents Label19 As Label
     Friend WithEvents txtAdressCust As TextBox
     Friend WithEvents Label29 As Label
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents txtSH As TextBox
+    Friend WithEvents txtOtherCost As TextBox
     Friend WithEvents Label27 As Label
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents txtVAT As TextBox
     Friend WithEvents Label28 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtDiscount As TextBox
     Friend WithEvents Label25 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtSubtotal As TextBox
     Friend WithEvents Label26 As Label
     Friend WithEvents txtUnitPrice As TextBox
     Friend WithEvents Label14 As Label
     Friend WithEvents txtRawMaterialCode As TextBox
     Friend WithEvents Label21 As Label
     Friend WithEvents Label30 As Label
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents txtGrandTotal As TextBox
+    Friend WithEvents dgvremarks As DataGridView
 End Class
