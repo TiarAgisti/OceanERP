@@ -25,22 +25,22 @@ Partial Class FrmListBOM
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmListBOM))
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.ckFabric = New System.Windows.Forms.CheckBox()
-        Me.txtFabric = New System.Windows.Forms.TextBox()
-        Me.txtStyle = New System.Windows.Forms.TextBox()
-        Me.ckStyle = New System.Windows.Forms.CheckBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ckColor = New System.Windows.Forms.CheckBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.ckStatus = New System.Windows.Forms.CheckBox()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.btnFind = New System.Windows.Forms.Button()
+        Me.ckStatus = New System.Windows.Forms.CheckBox()
+        Me.txtColor = New System.Windows.Forms.TextBox()
+        Me.ckColor = New System.Windows.Forms.CheckBox()
+        Me.txtStyle = New System.Windows.Forms.TextBox()
+        Me.ckStyle = New System.Windows.Forms.CheckBox()
+        Me.txtFabric = New System.Windows.Forms.TextBox()
+        Me.ckFabric = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.btnView = New System.Windows.Forms.Button()
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.dgv = New System.Windows.Forms.DataGridView()
+        Me.cmbStatus = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,11 +61,11 @@ Partial Class FrmListBOM
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.cmbStatus)
         Me.Panel1.Controls.Add(Me.btnClear)
         Me.Panel1.Controls.Add(Me.btnFind)
-        Me.Panel1.Controls.Add(Me.TextBox2)
         Me.Panel1.Controls.Add(Me.ckStatus)
-        Me.Panel1.Controls.Add(Me.TextBox1)
+        Me.Panel1.Controls.Add(Me.txtColor)
         Me.Panel1.Controls.Add(Me.ckColor)
         Me.Panel1.Controls.Add(Me.txtStyle)
         Me.Panel1.Controls.Add(Me.ckStyle)
@@ -77,22 +77,50 @@ Partial Class FrmListBOM
         Me.Panel1.Size = New System.Drawing.Size(917, 153)
         Me.Panel1.TabIndex = 16
         '
-        'ckFabric
+        'btnClear
         '
-        Me.ckFabric.AutoSize = True
-        Me.ckFabric.Location = New System.Drawing.Point(10, 13)
-        Me.ckFabric.Name = "ckFabric"
-        Me.ckFabric.Size = New System.Drawing.Size(55, 17)
-        Me.ckFabric.TabIndex = 0
-        Me.ckFabric.Text = "Fabric"
-        Me.ckFabric.UseVisualStyleBackColor = True
+        Me.btnClear.Location = New System.Drawing.Point(152, 122)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(75, 23)
+        Me.btnClear.TabIndex = 40
+        Me.btnClear.Text = "Clear"
+        Me.btnClear.UseVisualStyleBackColor = True
         '
-        'txtFabric
+        'btnFind
         '
-        Me.txtFabric.Location = New System.Drawing.Point(71, 10)
-        Me.txtFabric.Name = "txtFabric"
-        Me.txtFabric.Size = New System.Drawing.Size(198, 20)
-        Me.txtFabric.TabIndex = 1
+        Me.btnFind.Location = New System.Drawing.Point(71, 122)
+        Me.btnFind.Name = "btnFind"
+        Me.btnFind.Size = New System.Drawing.Size(75, 23)
+        Me.btnFind.TabIndex = 39
+        Me.btnFind.Text = "Find"
+        Me.btnFind.UseVisualStyleBackColor = True
+        '
+        'ckStatus
+        '
+        Me.ckStatus.AutoSize = True
+        Me.ckStatus.Location = New System.Drawing.Point(10, 91)
+        Me.ckStatus.Name = "ckStatus"
+        Me.ckStatus.Size = New System.Drawing.Size(56, 17)
+        Me.ckStatus.TabIndex = 6
+        Me.ckStatus.Text = "Status"
+        Me.ckStatus.UseVisualStyleBackColor = True
+        '
+        'txtColor
+        '
+        Me.txtColor.Location = New System.Drawing.Point(71, 62)
+        Me.txtColor.Name = "txtColor"
+        Me.txtColor.Size = New System.Drawing.Size(198, 20)
+        Me.txtColor.TabIndex = 5
+        '
+        'ckColor
+        '
+        Me.ckColor.AutoSize = True
+        Me.ckColor.Location = New System.Drawing.Point(10, 65)
+        Me.ckColor.Name = "ckColor"
+        Me.ckColor.Size = New System.Drawing.Size(50, 17)
+        Me.ckColor.TabIndex = 4
+        Me.ckColor.Text = "Color"
+        Me.ckColor.UseVisualStyleBackColor = True
         '
         'txtStyle
         '
@@ -111,57 +139,22 @@ Partial Class FrmListBOM
         Me.ckStyle.Text = "Style"
         Me.ckStyle.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'txtFabric
         '
-        Me.TextBox1.Location = New System.Drawing.Point(71, 62)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(198, 20)
-        Me.TextBox1.TabIndex = 5
+        Me.txtFabric.Location = New System.Drawing.Point(71, 10)
+        Me.txtFabric.Name = "txtFabric"
+        Me.txtFabric.Size = New System.Drawing.Size(198, 20)
+        Me.txtFabric.TabIndex = 1
         '
-        'ckColor
+        'ckFabric
         '
-        Me.ckColor.AutoSize = True
-        Me.ckColor.Location = New System.Drawing.Point(10, 65)
-        Me.ckColor.Name = "ckColor"
-        Me.ckColor.Size = New System.Drawing.Size(50, 17)
-        Me.ckColor.TabIndex = 4
-        Me.ckColor.Text = "Color"
-        Me.ckColor.UseVisualStyleBackColor = True
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(71, 88)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(198, 20)
-        Me.TextBox2.TabIndex = 7
-        '
-        'ckStatus
-        '
-        Me.ckStatus.AutoSize = True
-        Me.ckStatus.Location = New System.Drawing.Point(10, 91)
-        Me.ckStatus.Name = "ckStatus"
-        Me.ckStatus.Size = New System.Drawing.Size(56, 17)
-        Me.ckStatus.TabIndex = 6
-        Me.ckStatus.Text = "Status"
-        Me.ckStatus.UseVisualStyleBackColor = True
-        '
-        'btnClear
-        '
-        Me.btnClear.Location = New System.Drawing.Point(152, 114)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(75, 23)
-        Me.btnClear.TabIndex = 40
-        Me.btnClear.Text = "Clear"
-        Me.btnClear.UseVisualStyleBackColor = True
-        '
-        'btnFind
-        '
-        Me.btnFind.Location = New System.Drawing.Point(71, 114)
-        Me.btnFind.Name = "btnFind"
-        Me.btnFind.Size = New System.Drawing.Size(75, 23)
-        Me.btnFind.TabIndex = 39
-        Me.btnFind.Text = "Find"
-        Me.btnFind.UseVisualStyleBackColor = True
+        Me.ckFabric.AutoSize = True
+        Me.ckFabric.Location = New System.Drawing.Point(10, 13)
+        Me.ckFabric.Name = "ckFabric"
+        Me.ckFabric.Size = New System.Drawing.Size(55, 17)
+        Me.ckFabric.TabIndex = 0
+        Me.ckFabric.Text = "Fabric"
+        Me.ckFabric.UseVisualStyleBackColor = True
         '
         'Panel2
         '
@@ -223,6 +216,14 @@ Partial Class FrmListBOM
         Me.dgv.Size = New System.Drawing.Size(917, 252)
         Me.dgv.TabIndex = 28
         '
+        'cmbStatus
+        '
+        Me.cmbStatus.FormattingEnabled = True
+        Me.cmbStatus.Location = New System.Drawing.Point(71, 89)
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Size = New System.Drawing.Size(198, 21)
+        Me.cmbStatus.TabIndex = 41
+        '
         'FrmListBOM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -247,9 +248,8 @@ Partial Class FrmListBOM
 
     Friend WithEvents Label4 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents TextBox2 As TextBox
     Friend WithEvents ckStatus As CheckBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtColor As TextBox
     Friend WithEvents ckColor As CheckBox
     Friend WithEvents txtStyle As TextBox
     Friend WithEvents ckStyle As CheckBox
@@ -263,4 +263,5 @@ Partial Class FrmListBOM
     Friend WithEvents btnView As Button
     Friend WithEvents btnRefresh As Button
     Friend WithEvents dgv As DataGridView
+    Friend WithEvents cmbStatus As ComboBox
 End Class
