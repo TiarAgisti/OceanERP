@@ -80,6 +80,7 @@ Public Class ClsProformaInvoice
             dataAccess = Nothing
             Return piHeaderModel
         Catch ex As Exception
+            dataAccess.reader.Close()
             dataAccess = Nothing
             Throw ex
         End Try
@@ -365,15 +366,15 @@ Public Class ClsProformaInvoice
         dataAccess = Nothing
         Return id
     End Function
+#End Region
 
+#Region "Get"
     Public Function GetPINo(customerCode As String) As String
         Dim piNo As String
         piNo = GeneratedPINo(customerCode)
         Return piNo
     End Function
-#End Region
 
-#Region "Get ID"
     Public Function GetPiHeaderID() As Long
         Dim myID As Long
         myID = GeneratedAutoNumber()

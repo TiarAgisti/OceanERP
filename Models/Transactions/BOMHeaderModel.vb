@@ -29,7 +29,7 @@
         End Set
     End Property
     Private xBuyerID As Integer
-    Public Property BUyerID() As Integer
+    Public Property BuyerID() As Integer
         Get
             Return xBuyerID
         End Get
