@@ -85,7 +85,7 @@ Public Class FrmPurchaseOrder
         txtEmailCust.Clear()
         cmbTOP.Text = ""
 
-        txtUnitPrice.Clear()
+        txtUnitPrice.Text = 0
         txtQty.Text = 0
         txtTotal.Text = 0
         txtSubtotal.Text = 0
@@ -119,6 +119,7 @@ Public Class FrmPurchaseOrder
 
     Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
         CheckNumber(txtQty)
+        txtTotal.Text = txtQty.Text * txtUnitPrice.Text
     End Sub
 
     Private Sub txtUnitPrice_TextChanged(sender As Object, e As EventArgs) Handles txtUnitPrice.TextChanged
@@ -181,23 +182,23 @@ Public Class FrmPurchaseOrder
     Function CheckEmptyHeader() As Boolean
         Dim check As Boolean = True
         If cmbCustomer.SelectedValue = 0 Then
-            MsgBoxWarning("Customer not valid")
+            MsgBoxWarning("Customer Not Valid")
             cmbCustomer.Focus()
         ElseIf String.IsNullOrEmpty(Trim(txtShipViaMethode.Text)) Then
-            MsgBoxWarning("Ship Via Methode can't empty")
+            MsgBoxWarning("Ship Via Methode Can't Empty")
             txtShipViaMethode.Focus()
         ElseIf cmbSupplier.SelectedValue = 0 Then
-            MsgBoxWarning("Supplier not valid")
+            MsgBoxWarning("Supplier Not Valid")
             cmbSupplier.Focus()
 
         ElseIf cmbTOP.SelectedValue = 0 Then
-            MsgBoxWarning("Term Of Payment not valid")
+            MsgBoxWarning("Term Of Payment Not Valid")
 
         ElseIf dgvrawmatrial.Rows.Count - 1 = 0 Then
-            MsgBoxWarning("Detail can't empty")
+            MsgBoxWarning("Detail Can't Empty")
             cmbRawCode.Focus()
         ElseIf dgvRemarks.Rows.Count - 1 = 0 Then
-            MsgBoxWarning("Remarks can't empty")
+            MsgBoxWarning("Remarks Can't Empty")
             txtRemarks.Focus()
         Else
             check = False
@@ -207,16 +208,16 @@ Public Class FrmPurchaseOrder
     Function CheckEmptyRawMatrial() As Boolean
         Dim check As Boolean = True
         If cmbRawCode.SelectedValue = 0 Then
-            MsgBoxWarning("Raw Matrial not valid")
+            MsgBoxWarning("Raw Matrial Not Valid")
             cmbRawCode.Focus()
         ElseIf txtUnitPrice.Text = "" Then
-            MsgBoxWarning("Unit Price Cant Empty")
+            MsgBoxWarning("Unit Price Can't Empty")
             txtUnitPrice.Focus()
         ElseIf txtQty.Text = "" Then
-            MsgBoxWarning("Qty Price Cant Empty")
+            MsgBoxWarning("Qty Price Can't Empty")
             txtQty.Focus()
         ElseIf cmbUnit.SelectedValue = 0 Then
-            MsgBoxWarning("Unit For raw Matrial not valid")
+            MsgBoxWarning("Unit For Raw Matrial Not Valid")
             cmbUnit.Focus()
         Else
             check = False
@@ -226,7 +227,7 @@ Public Class FrmPurchaseOrder
     Function CheckEmptyRemarks() As Boolean
         Dim check As Boolean = True
         If Trim(txtRemarks.Text) = String.Empty Then
-            MsgBoxWarning("Remarks cant empty")
+            MsgBoxWarning("Remarks Can't Empty")
             txtRemarks.Focus()
         Else
             check = False
@@ -452,8 +453,6 @@ Public Class FrmPurchaseOrder
         ComboBoxUnit()
 
     End Sub
-
-
     Sub RetrieveSupplier()
         Dim vendorPoS As ClsVendor = New ClsVendor
         Dim vendorModel As VendorModel = New VendorModel
@@ -574,6 +573,8 @@ Public Class FrmPurchaseOrder
         ComboBoxALL()
         txtShipViaMethode.Focus()
         txtShipViaMethode.Enabled = True
+        txtUnitPrice.Enabled = True
+        txtQty.Enabled = True
         btnApprove.Enabled = False
         btnVoid.Enabled = False
         btnPrint.Enabled = False
@@ -699,10 +700,35 @@ Public Class FrmPurchaseOrder
     Private Sub dgvrawmatrial_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgvrawmatrial.RowStateChanged
         intPostRawMatrial = e.Row.Index
     End Sub
+    Private Sub cmbSupplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSupplier.SelectedIndexChanged
+        cmbCustomer.Focus()
+    End Sub
 
+    Private Sub cmbCustomer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCustomer.SelectedIndexChanged
+        cmbRawCode.Focus()
+    End Sub
 
+    Private Sub cmbRawCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRawCode.SelectedIndexChanged
+        cmbUnit.Focus()
+    End Sub
 
-    Private Sub cmbSupplier_Validating(sender As Object, e As CancelEventArgs) Handles cmbSupplier.Validating
+    Private Sub cmbUnit_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbUnit.SelectedIndexChanged
+        txtUnitPrice.Focus()
+    End Sub
+
+    Private Sub txtUnitPrice_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUnitPrice.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtQty.Focus()
+        End If
+    End Sub
+
+    Private Sub txtQty_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQty.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtRemarks.Focus()
+        End If
+    End Sub
+
+    Private Sub cmbSupplier_Validated(sender As Object, e As EventArgs) Handles cmbSupplier.Validated
         Try
             RetrieveSupplier()
         Catch ex As Exception

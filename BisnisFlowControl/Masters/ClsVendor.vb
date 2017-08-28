@@ -88,7 +88,7 @@
     Public Function RetrieveVendorByID(vendorID As Long, statusVendor As Char) As VendorModel
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim vendorModel As VendorModel = New VendorModel
-        Dim query As String = "Select VendorID,VendorCode,VendorName,Address,Telephone,Fax,ContactPerson from Vendor where IsActive = 1" &
+        Dim query As String = "Select VendorID,VendorCode,VendorName,Address,Telephone,Fax,ContactPerson,EmailCP from Vendor where IsActive = 1" &
                                 " And VendorID = '" & vendorID & "' AND Status = '" & statusVendor & "'"
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
