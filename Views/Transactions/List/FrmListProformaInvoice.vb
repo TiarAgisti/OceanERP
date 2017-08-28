@@ -75,29 +75,32 @@
     Sub ListData()
         If chkPINo.Checked = True Then
             piNo = txtPINo.Text
-        Else
+        ElseIf chkPINo.Checked = False Then
             piNo = ""
         End If
 
         If chkPIDate.Checked = True Then
             dateFrom = dtpDateFrom.Value
             dateTo = dtpDateTo.Value
+        ElseIf chkPIDate.Checked = False Then
+            dateFrom = "00:00:00"
+            dateTo = "00:00:00"
         End If
 
         If chkCustomer.Checked = True Then
             customer = txtCustomer.Text
-        Else
+        ElseIf chkCustomer.Checked = False Then
             customer = ""
         End If
 
         If chkRefPO.Checked = True Then
             refPO = txtRefPO.Text
-        Else
+        ElseIf chkRefPO.Checked = False Then
             refPO = ""
         End If
 
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-        dgv.DataSource = piBFC.RetrieveListProformaInvoice(piNo, dateFrom, dateTo, customer, refPO)
+        dgv.DataSource = piBFC.RetrieveListProformaInvoice(Trim(piNo), dateFrom, dateTo, Trim(customer), Trim(refPO))
         dgv.ReadOnly = True
         PropertiesGrid()
     End Sub
@@ -154,7 +157,9 @@
             MsgBoxError(ex.Message)
         End Try
     End Sub
-
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        ClearData()
+    End Sub
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         Try
@@ -167,7 +172,9 @@
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Close()
     End Sub
+#End Region
 
+#Region "Other"
     Private Sub FrmListProformaInvoice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PreCreateDisplay()
         Text = title
@@ -176,10 +183,5 @@
     Private Sub FrmListProformaInvoice_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
         ListData()
     End Sub
-
-#End Region
-
-#Region "Other"
-
 #End Region
 End Class

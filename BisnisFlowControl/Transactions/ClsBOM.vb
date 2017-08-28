@@ -1,6 +1,6 @@
 ﻿Public Class ClsBOM
     Dim query As String = "Select BOMHeaderID,BOMCode,FabricName,Composition,Specification,VendorName,StyleName,ColorName,StatusDesc" &
-                               ",FabricID,BuyerID,StyleID,ColorID,StatusBOM From v_PIHeader Where Status <> 0"
+                               ",FabricID,BuyerID,StyleID,ColorID,StatusBOM From v_BOMHeader Where IsActive <> 0"
 #Region "Retrieve"
     Public Function RetrieveListBOM(fabricName As String, styleName As String, colorName As String, statusDesc As String) As DataTable
         Dim dataAccess = New ClsDataAccess

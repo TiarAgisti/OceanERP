@@ -25,6 +25,7 @@ Partial Class FrmListProformaInvoice
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmListProformaInvoice))
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnClear = New System.Windows.Forms.Button()
         Me.chkRefPO = New System.Windows.Forms.CheckBox()
         Me.chkCustomer = New System.Windows.Forms.CheckBox()
         Me.chkPIDate = New System.Windows.Forms.CheckBox()
@@ -42,7 +43,6 @@ Partial Class FrmListProformaInvoice
         Me.btnView = New System.Windows.Forms.Button()
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.dgv = New System.Windows.Forms.DataGridView()
-        Me.btnClear = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -80,6 +80,15 @@ Partial Class FrmListProformaInvoice
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(911, 148)
         Me.Panel1.TabIndex = 25
+        '
+        'btnClear
+        '
+        Me.btnClear.Location = New System.Drawing.Point(166, 117)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(75, 23)
+        Me.btnClear.TabIndex = 38
+        Me.btnClear.Text = "Clear"
+        Me.btnClear.UseVisualStyleBackColor = True
         '
         'chkRefPO
         '
@@ -233,15 +242,6 @@ Partial Class FrmListProformaInvoice
         Me.dgv.Name = "dgv"
         Me.dgv.Size = New System.Drawing.Size(911, 209)
         Me.dgv.TabIndex = 27
-        '
-        'btnClear
-        '
-        Me.btnClear.Location = New System.Drawing.Point(166, 117)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(75, 23)
-        Me.btnClear.TabIndex = 38
-        Me.btnClear.Text = "Clear"
-        Me.btnClear.UseVisualStyleBackColor = True
         '
         'FrmListProformaInvoice
         '
