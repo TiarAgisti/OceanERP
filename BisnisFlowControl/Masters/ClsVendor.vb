@@ -102,6 +102,7 @@
                         vendorModel.Telephone = .Item("Telephone")
                         vendorModel.Fax = .Item("Fax")
                         vendorModel.ContactPerson = .Item("ContactPerson")
+                        vendorModel.EmailCP = .Item("EmailCP")
                     End If
                 End While
                 .Close()

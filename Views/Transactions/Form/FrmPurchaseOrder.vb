@@ -9,7 +9,7 @@
     Dim intPostRemarks As Integer
 
     Dim customerCode As String = ""
-    Dim suppplierCode As String = ""
+    Dim supplierCode As String = ""
     Dim statusPO As Integer
 #End Region
 
@@ -99,10 +99,6 @@
         txtRawMaterialName.Clear()
         cmbUnit.Text = ""
     End Sub
-
-
-
-
     Sub ClearRemarks()
         txtRemarks.Clear()
     End Sub
@@ -265,7 +261,7 @@
                     .POHeaderID = poBFC.GetPOHeaderID
                     poHeaderID = .POHeaderID
                     .PODate = Format(dtPODate.Value, "yyyy-MM-dd")
-                    .PONo = poBFC.GetPONo(suppplierCode)
+                    .PONo = poBFC.GetPONo(supplierCode)
                     txtPONo.Text = .PONo
                     .CustomerID = cmbCustomer.SelectedValue
                     .SupplierID = cmbSupplier.SelectedValue
@@ -288,7 +284,7 @@
                     .POHeaderID = poBFC.GetPOHeaderID
                     poHeaderID = .POHeaderID
                     .PODate = Format(dtPODate.Value, "yyyy-MM-dd")
-                    .PONo = poBFC.GetPONo(suppplierCode)
+                    .PONo = poBFC.GetPONo(supplierCode)
                     txtPONo.Text = .PONo
                     .CustomerID = cmbCustomer.SelectedValue
                     .SupplierID = cmbSupplier.SelectedValue
@@ -340,7 +336,7 @@
     Sub InsertData()
         Dim poBFC As ClsPO = New ClsPO
         Dim logpo As ClsLogHistory = New ClsLogHistory
-        Dim myPONo As String = poBFC.GetPONo(suppplierCode)
+        Dim myPONo As String = poBFC.GetPONo(supplierCode)
         Dim myPOID As Long = poBFC.GetPOHeaderID
         Dim logDesc As String = "Create new Purchase Order,PONo is " + myPONo
 
@@ -456,13 +452,14 @@
     End Sub
 
     Sub RetrieveCustomer()
-        Dim vendorPoC As ClsVendor = New ClsVendor
+        Dim vendorBFC As ClsVendor = New ClsVendor
         Dim vendorModel As VendorModel = New VendorModel
         Dim obj As Integer = cmbCustomer.SelectedValue
         If obj > 0 Then
-            vendorModel = vendorPoC.RetrieveVendorByID(obj, "C")
+            vendorModel = vendorBFC.RetrieveVendorByID(obj, "C")
             With vendorModel
                 customerCode = .VendorCode
+                txtPhoneCust.Text = .Telephone
                 txtCPCust.Text = .ContactPerson
                 txtAdressCust.Text = .Address
                 txtPhoneCust.Text = .Telephone
@@ -480,7 +477,7 @@
         If obj > 0 Then
             vendorModel = vendorPoS.RetrieveVendorByID(obj, "S")
             With vendorModel
-                suppplierCode = .VendorCode
+                supplierCode = .VendorCode
                 txtCPSup.Text = .ContactPerson
                 txtAddressSup.Text = .Address
                 txtPhoneSup.Text = .Telephone
@@ -500,7 +497,7 @@
         If RawMatrialID > 0 Then
             rawmatrialModel = rawmatrialPo.RetrieveByID(rawmatrialID)
             With rawmatrialModel
-                txtRawMaterialName.Text = rawmatrialModel.RawMaterialName
+                txtRawMaterialName.Text = .RawMaterialName
             End With
         Else
             MsgBoxError("Raw Matrial Not Valid")
@@ -592,6 +589,7 @@
         GridDetailALL()
         ComboBoxALL()
         txtShipViaMethode.Focus()
+        txtShipViaMethode.Enabled = True
         btnApprove.Enabled = False
         btnVoid.Enabled = False
         btnPrint.Enabled = False
@@ -718,5 +716,13 @@
         intPostRawMatrial = e.Row.Index
     End Sub
 
+    Private Sub cmbCustomer_Validated(sender As Object, e As EventArgs) Handles cmbCustomer.Validated
+        Try
+            RetrieveCustomer()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
 #End Region
+
 End Class

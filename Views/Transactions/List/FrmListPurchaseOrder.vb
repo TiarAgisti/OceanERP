@@ -102,7 +102,7 @@
     End Sub
 #End Region
 #Region "Button"
-    Private Sub btnFind_Click(sender As Object, e As EventArgs) Handles btnFind.Click
+    Private Sub btnFind_Click(sender As Object, e As EventArgs)
         Try
             ListData()
         Catch ex As Exception

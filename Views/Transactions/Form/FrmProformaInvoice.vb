@@ -1608,6 +1608,5 @@
     Private Sub dgvRemarks_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgvRemarks.RowStateChanged
         intPostRemarks = e.Row.Index
     End Sub
-
 #End Region
 End Class

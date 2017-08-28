@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.OceanERP.FrmListPurchaseOrder
+            Me.MainForm = Global.OceanERP.FrmLogin
         End Sub
     End Class
 End Namespace

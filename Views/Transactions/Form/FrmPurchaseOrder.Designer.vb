@@ -948,6 +948,7 @@ Partial Class FrmPurchaseOrder
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmPurchaseOrder"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Tag = "22"
         Me.Text = "FrmPurchaseOrder"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
