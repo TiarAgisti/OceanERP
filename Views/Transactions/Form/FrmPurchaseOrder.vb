@@ -12,6 +12,7 @@ Public Class FrmPurchaseOrder
 
     Dim customerCode As String = ""
     Dim supplierCode As String = ""
+    Dim rawmatrialCode As String = ""
     Dim statusPO As Integer
 #End Region
 
@@ -471,6 +472,24 @@ Public Class FrmPurchaseOrder
             MsgBoxError("Supplier not valid")
         End If
     End Sub
+    Sub RetrieveCustomer()
+        Dim vendorPoC As ClsVendor = New ClsVendor
+        Dim vendorModel As VendorModel = New VendorModel
+        Dim obj As Integer = cmbCustomer.SelectedValue
+        If obj > 0 Then
+            vendorModel = vendorPoC.RetrieveVendorByID(obj, "C")
+            With vendorModel
+                customerCode = .VendorCode
+                txtCPCust.Text = .ContactPerson
+                txtAdressCust.Text = .Address
+                txtPhoneCust.Text = .Telephone
+                txtFaxCust.Text = .Fax
+                txtEmailCust.Text = .EmailCP
+            End With
+        Else
+            MsgBoxError("Customer Not Valid")
+        End If
+    End Sub
 
 
     Sub RetrieveRawMatrial()
@@ -480,6 +499,7 @@ Public Class FrmPurchaseOrder
         If rawmatrialID > 0 Then
             rawmatrialModel = rawmatrialPo.RetrieveByID(rawmatrialID)
             With rawmatrialModel
+                rawmatrialCode = .RawMaterialCode
                 txtRawMaterialName.Text = .RawMaterialName
             End With
         Else
@@ -731,6 +751,14 @@ Public Class FrmPurchaseOrder
     Private Sub cmbSupplier_Validated(sender As Object, e As EventArgs) Handles cmbSupplier.Validated
         Try
             RetrieveSupplier()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub cmbCustomer_Validated(sender As Object, e As EventArgs) Handles cmbCustomer.Validated
+        Try
+            RetrieveCustomer()
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
