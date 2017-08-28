@@ -26,34 +26,34 @@ Partial Class FrmBillOfMaterial
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.ComboBox5 = New System.Windows.Forms.ComboBox()
+        Me.cmbStatus = New System.Windows.Forms.ComboBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
+        Me.cmbColor = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.cmbStyle = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.cmbBuyer = New System.Windows.Forms.ComboBox()
         Me.txtSpec = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtCompo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.cmbFabric = New System.Windows.Forms.ComboBox()
+        Me.txtCode = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btnColDelList = New System.Windows.Forms.Button()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.btnColAddList = New System.Windows.Forms.Button()
+        Me.btnDelList = New System.Windows.Forms.Button()
+        Me.txtQty = New System.Windows.Forms.TextBox()
+        Me.btnAddList = New System.Windows.Forms.Button()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.ComboBox7 = New System.Windows.Forms.ComboBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.cmbUnit = New System.Windows.Forms.ComboBox()
+        Me.txtSuppRaw = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtSpecRaw = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.ComboBox6 = New System.Windows.Forms.ComboBox()
+        Me.cmbRaw = New System.Windows.Forms.ComboBox()
         Me.dgv = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Button()
@@ -81,20 +81,20 @@ Partial Class FrmBillOfMaterial
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel1.Controls.Add(Me.Label9)
-        Me.Panel1.Controls.Add(Me.ComboBox5)
+        Me.Panel1.Controls.Add(Me.cmbStatus)
         Me.Panel1.Controls.Add(Me.Label8)
-        Me.Panel1.Controls.Add(Me.ComboBox4)
+        Me.Panel1.Controls.Add(Me.cmbColor)
         Me.Panel1.Controls.Add(Me.Label7)
-        Me.Panel1.Controls.Add(Me.ComboBox3)
+        Me.Panel1.Controls.Add(Me.cmbStyle)
         Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.ComboBox2)
+        Me.Panel1.Controls.Add(Me.cmbBuyer)
         Me.Panel1.Controls.Add(Me.txtSpec)
         Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.txtCompo)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Controls.Add(Me.ComboBox1)
-        Me.Panel1.Controls.Add(Me.TextBox1)
+        Me.Panel1.Controls.Add(Me.cmbFabric)
+        Me.Panel1.Controls.Add(Me.txtCode)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 46)
@@ -111,13 +111,13 @@ Partial Class FrmBillOfMaterial
         Me.Label9.TabIndex = 33
         Me.Label9.Text = "Status"
         '
-        'ComboBox5
+        'cmbStatus
         '
-        Me.ComboBox5.FormattingEnabled = True
-        Me.ComboBox5.Location = New System.Drawing.Point(325, 88)
-        Me.ComboBox5.Name = "ComboBox5"
-        Me.ComboBox5.Size = New System.Drawing.Size(208, 21)
-        Me.ComboBox5.TabIndex = 32
+        Me.cmbStatus.FormattingEnabled = True
+        Me.cmbStatus.Location = New System.Drawing.Point(325, 88)
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Size = New System.Drawing.Size(208, 21)
+        Me.cmbStatus.TabIndex = 32
         '
         'Label8
         '
@@ -128,13 +128,13 @@ Partial Class FrmBillOfMaterial
         Me.Label8.TabIndex = 31
         Me.Label8.Text = "Color"
         '
-        'ComboBox4
+        'cmbColor
         '
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(325, 61)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(208, 21)
-        Me.ComboBox4.TabIndex = 30
+        Me.cmbColor.FormattingEnabled = True
+        Me.cmbColor.Location = New System.Drawing.Point(325, 61)
+        Me.cmbColor.Name = "cmbColor"
+        Me.cmbColor.Size = New System.Drawing.Size(208, 21)
+        Me.cmbColor.TabIndex = 30
         '
         'Label7
         '
@@ -145,13 +145,13 @@ Partial Class FrmBillOfMaterial
         Me.Label7.TabIndex = 29
         Me.Label7.Text = "Style"
         '
-        'ComboBox3
+        'cmbStyle
         '
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(325, 34)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(208, 21)
-        Me.ComboBox3.TabIndex = 28
+        Me.cmbStyle.FormattingEnabled = True
+        Me.cmbStyle.Location = New System.Drawing.Point(325, 34)
+        Me.cmbStyle.Name = "cmbStyle"
+        Me.cmbStyle.Size = New System.Drawing.Size(208, 21)
+        Me.cmbStyle.TabIndex = 28
         '
         'Label3
         '
@@ -162,13 +162,13 @@ Partial Class FrmBillOfMaterial
         Me.Label3.TabIndex = 27
         Me.Label3.Text = "Buyer"
         '
-        'ComboBox2
+        'cmbBuyer
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(325, 7)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(208, 21)
-        Me.ComboBox2.TabIndex = 26
+        Me.cmbBuyer.FormattingEnabled = True
+        Me.cmbBuyer.Location = New System.Drawing.Point(325, 7)
+        Me.cmbBuyer.Name = "cmbBuyer"
+        Me.cmbBuyer.Size = New System.Drawing.Size(208, 21)
+        Me.cmbBuyer.TabIndex = 26
         '
         'txtSpec
         '
@@ -213,20 +213,20 @@ Partial Class FrmBillOfMaterial
         Me.Label6.TabIndex = 21
         Me.Label6.Text = "Fabric Name"
         '
-        'ComboBox1
+        'cmbFabric
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(83, 33)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(196, 21)
-        Me.ComboBox1.TabIndex = 16
+        Me.cmbFabric.FormattingEnabled = True
+        Me.cmbFabric.Location = New System.Drawing.Point(83, 33)
+        Me.cmbFabric.Name = "cmbFabric"
+        Me.cmbFabric.Size = New System.Drawing.Size(196, 21)
+        Me.cmbFabric.TabIndex = 16
         '
-        'TextBox1
+        'txtCode
         '
-        Me.TextBox1.Location = New System.Drawing.Point(83, 7)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(196, 20)
-        Me.TextBox1.TabIndex = 1
+        Me.txtCode.Location = New System.Drawing.Point(83, 7)
+        Me.txtCode.Name = "txtCode"
+        Me.txtCode.Size = New System.Drawing.Size(196, 20)
+        Me.txtCode.TabIndex = 1
         '
         'Label1
         '
@@ -239,18 +239,18 @@ Partial Class FrmBillOfMaterial
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.btnColDelList)
-        Me.GroupBox1.Controls.Add(Me.TextBox4)
-        Me.GroupBox1.Controls.Add(Me.btnColAddList)
+        Me.GroupBox1.Controls.Add(Me.btnDelList)
+        Me.GroupBox1.Controls.Add(Me.txtQty)
+        Me.GroupBox1.Controls.Add(Me.btnAddList)
         Me.GroupBox1.Controls.Add(Me.Label14)
         Me.GroupBox1.Controls.Add(Me.Label13)
-        Me.GroupBox1.Controls.Add(Me.ComboBox7)
-        Me.GroupBox1.Controls.Add(Me.TextBox3)
+        Me.GroupBox1.Controls.Add(Me.cmbUnit)
+        Me.GroupBox1.Controls.Add(Me.txtSuppRaw)
         Me.GroupBox1.Controls.Add(Me.Label12)
-        Me.GroupBox1.Controls.Add(Me.TextBox2)
+        Me.GroupBox1.Controls.Add(Me.txtSpecRaw)
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.Label10)
-        Me.GroupBox1.Controls.Add(Me.ComboBox6)
+        Me.GroupBox1.Controls.Add(Me.cmbRaw)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Location = New System.Drawing.Point(0, 161)
         Me.GroupBox1.Name = "GroupBox1"
@@ -259,31 +259,31 @@ Partial Class FrmBillOfMaterial
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Raw Material"
         '
-        'btnColDelList
+        'btnDelList
         '
-        Me.btnColDelList.Location = New System.Drawing.Point(430, 72)
-        Me.btnColDelList.Name = "btnColDelList"
-        Me.btnColDelList.Size = New System.Drawing.Size(105, 23)
-        Me.btnColDelList.TabIndex = 58
-        Me.btnColDelList.Text = "Delete From List"
-        Me.btnColDelList.UseVisualStyleBackColor = True
+        Me.btnDelList.Location = New System.Drawing.Point(430, 72)
+        Me.btnDelList.Name = "btnDelList"
+        Me.btnDelList.Size = New System.Drawing.Size(105, 23)
+        Me.btnDelList.TabIndex = 58
+        Me.btnDelList.Text = "Delete From List"
+        Me.btnDelList.UseVisualStyleBackColor = True
         '
-        'TextBox4
+        'txtQty
         '
-        Me.TextBox4.Location = New System.Drawing.Point(367, 46)
-        Me.TextBox4.MaxLength = 150
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(168, 20)
-        Me.TextBox4.TabIndex = 42
+        Me.txtQty.Location = New System.Drawing.Point(367, 46)
+        Me.txtQty.MaxLength = 150
+        Me.txtQty.Name = "txtQty"
+        Me.txtQty.Size = New System.Drawing.Size(168, 20)
+        Me.txtQty.TabIndex = 42
         '
-        'btnColAddList
+        'btnAddList
         '
-        Me.btnColAddList.Location = New System.Drawing.Point(319, 72)
-        Me.btnColAddList.Name = "btnColAddList"
-        Me.btnColAddList.Size = New System.Drawing.Size(105, 23)
-        Me.btnColAddList.TabIndex = 57
-        Me.btnColAddList.Text = "Add To List"
-        Me.btnColAddList.UseVisualStyleBackColor = True
+        Me.btnAddList.Location = New System.Drawing.Point(319, 72)
+        Me.btnAddList.Name = "btnAddList"
+        Me.btnAddList.Size = New System.Drawing.Size(105, 23)
+        Me.btnAddList.TabIndex = 57
+        Me.btnAddList.Text = "Add To List"
+        Me.btnAddList.UseVisualStyleBackColor = True
         '
         'Label14
         '
@@ -303,21 +303,21 @@ Partial Class FrmBillOfMaterial
         Me.Label13.TabIndex = 41
         Me.Label13.Text = "UOM"
         '
-        'ComboBox7
+        'cmbUnit
         '
-        Me.ComboBox7.FormattingEnabled = True
-        Me.ComboBox7.Location = New System.Drawing.Point(367, 19)
-        Me.ComboBox7.Name = "ComboBox7"
-        Me.ComboBox7.Size = New System.Drawing.Size(168, 21)
-        Me.ComboBox7.TabIndex = 40
+        Me.cmbUnit.FormattingEnabled = True
+        Me.cmbUnit.Location = New System.Drawing.Point(367, 19)
+        Me.cmbUnit.Name = "cmbUnit"
+        Me.cmbUnit.Size = New System.Drawing.Size(168, 21)
+        Me.cmbUnit.TabIndex = 40
         '
-        'TextBox3
+        'txtSuppRaw
         '
-        Me.TextBox3.Location = New System.Drawing.Point(118, 72)
-        Me.TextBox3.MaxLength = 150
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(178, 20)
-        Me.TextBox3.TabIndex = 38
+        Me.txtSuppRaw.Location = New System.Drawing.Point(118, 72)
+        Me.txtSuppRaw.MaxLength = 150
+        Me.txtSuppRaw.Name = "txtSuppRaw"
+        Me.txtSuppRaw.Size = New System.Drawing.Size(178, 20)
+        Me.txtSuppRaw.TabIndex = 38
         '
         'Label12
         '
@@ -328,13 +328,13 @@ Partial Class FrmBillOfMaterial
         Me.Label12.TabIndex = 39
         Me.Label12.Text = "Supplier"
         '
-        'TextBox2
+        'txtSpecRaw
         '
-        Me.TextBox2.Location = New System.Drawing.Point(118, 46)
-        Me.TextBox2.MaxLength = 150
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(178, 20)
-        Me.TextBox2.TabIndex = 36
+        Me.txtSpecRaw.Location = New System.Drawing.Point(118, 46)
+        Me.txtSpecRaw.MaxLength = 150
+        Me.txtSpecRaw.Name = "txtSpecRaw"
+        Me.txtSpecRaw.Size = New System.Drawing.Size(178, 20)
+        Me.txtSpecRaw.TabIndex = 36
         '
         'Label11
         '
@@ -354,13 +354,13 @@ Partial Class FrmBillOfMaterial
         Me.Label10.TabIndex = 35
         Me.Label10.Text = "Raw Material Name"
         '
-        'ComboBox6
+        'cmbRaw
         '
-        Me.ComboBox6.FormattingEnabled = True
-        Me.ComboBox6.Location = New System.Drawing.Point(118, 19)
-        Me.ComboBox6.Name = "ComboBox6"
-        Me.ComboBox6.Size = New System.Drawing.Size(178, 21)
-        Me.ComboBox6.TabIndex = 34
+        Me.cmbRaw.FormattingEnabled = True
+        Me.cmbRaw.Location = New System.Drawing.Point(118, 19)
+        Me.cmbRaw.Name = "cmbRaw"
+        Me.cmbRaw.Size = New System.Drawing.Size(178, 21)
+        Me.cmbRaw.TabIndex = 34
         '
         'dgv
         '
@@ -439,35 +439,35 @@ Partial Class FrmBillOfMaterial
 
     Friend WithEvents Label4 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtCode As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents cmbFabric As ComboBox
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
-    Friend WithEvents ComboBox3 As ComboBox
+    Friend WithEvents cmbStyle As ComboBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents ComboBox2 As ComboBox
+    Friend WithEvents cmbBuyer As ComboBox
     Friend WithEvents txtSpec As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents txtCompo As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label9 As Label
-    Friend WithEvents ComboBox5 As ComboBox
+    Friend WithEvents cmbStatus As ComboBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents ComboBox4 As ComboBox
+    Friend WithEvents cmbColor As ComboBox
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents ComboBox6 As ComboBox
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents cmbRaw As ComboBox
+    Friend WithEvents txtQty As TextBox
     Friend WithEvents Label14 As Label
     Friend WithEvents Label13 As Label
-    Friend WithEvents ComboBox7 As ComboBox
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents cmbUnit As ComboBox
+    Friend WithEvents txtSuppRaw As TextBox
     Friend WithEvents Label12 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtSpecRaw As TextBox
     Friend WithEvents Label11 As Label
-    Friend WithEvents btnColDelList As Button
-    Friend WithEvents btnColAddList As Button
+    Friend WithEvents btnDelList As Button
+    Friend WithEvents btnAddList As Button
     Friend WithEvents dgv As DataGridView
     Friend WithEvents Panel2 As Panel
     Friend WithEvents btnClose As Button
