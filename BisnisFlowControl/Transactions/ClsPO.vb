@@ -385,10 +385,10 @@ Public Class ClsPO
         queryList.Add(SqlDeleteDetailRawMatrail(poHeaderModel)) 'delete RawMatrial
         queryList.Add(SqlDeleteDetailRemarks(poHeaderModel)) 'delete Remarks
 
-        'update piheader
+        'update poheader
         queryList.Add(SqlUpdateHeader(poHeaderModel))
 
-        'insert fabric
+        'insert matrial
         For Each detail In listPODetailModel
             queryList.Add(SqlInsertDetailRawMatrial(detail))
         Next

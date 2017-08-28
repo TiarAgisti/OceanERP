@@ -99,8 +99,10 @@ Public Class FrmPurchaseOrder
 
     Sub ClearRawMatrial()
         cmbRawCode.Text = ""
-        txtRawMaterialName.Clear()
         cmbUnit.Text = ""
+        txtUnitPrice.Clear()
+        txtQty.Clear()
+        txtTotal.Clear()
     End Sub
     Sub ClearRemarks()
         txtRemarks.Clear()
@@ -120,7 +122,7 @@ Public Class FrmPurchaseOrder
 
     Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
         CheckNumber(txtQty)
-        txtTotal.Text = txtQty.Text * txtUnitPrice.Text
+        txtTotal.Text = Val(txtQty.Text) * Val(txtUnitPrice.Text)
     End Sub
 
     Private Sub txtUnitPrice_TextChanged(sender As Object, e As EventArgs) Handles txtUnitPrice.TextChanged
@@ -151,12 +153,12 @@ Public Class FrmPurchaseOrder
             .Rows.Add()
             .Item(0, intBarisRawMatrial).Value = cmbRawCode.SelectedValue
             .Item(1, intBarisRawMatrial).Value = cmbRawCode.Text
-            .Item(2, intBarisRawMatrial).Value = txtRawMaterialName.Text
-            .Item(3, intBarisRawMatrial).Value = cmbUnit.SelectedValue
-            .Item(4, intBarisRawMatrial).Value = cmbUnit.Text
-            .Item(5, intBarisRawMatrial).Value = txtUnitPrice.Text
-            .Item(6, intBarisRawMatrial).Value = txtQty.Text
-            .Item(7, intBarisRawMatrial).Value = txtTotal.Text
+            .Item(2, intBarisRawMatrial).Value = cmbRawCode.Text
+            '   .Item(2, intBarisRawMatrial).Value = cmbUnit.SelectedValue
+            .Item(3, intBarisRawMatrial).Value = cmbUnit.Text
+            .Item(4, intBarisRawMatrial).Value = txtUnitPrice.Text
+            .Item(5, intBarisRawMatrial).Value = txtQty.Text
+            .Item(6, intBarisRawMatrial).Value = txtTotal.Text
 
         End With
         intBarisRawMatrial = intBarisRawMatrial + 1
@@ -191,10 +193,9 @@ Public Class FrmPurchaseOrder
         ElseIf cmbSupplier.SelectedValue = 0 Then
             MsgBoxWarning("Supplier Not Valid")
             cmbSupplier.Focus()
-
         ElseIf cmbTOP.SelectedValue = 0 Then
             MsgBoxWarning("Term Of Payment Not Valid")
-
+            cmbTOP.Focus()
         ElseIf dgvrawmatrial.Rows.Count - 1 = 0 Then
             MsgBoxWarning("Detail Can't Empty")
             cmbRawCode.Focus()
@@ -500,7 +501,7 @@ Public Class FrmPurchaseOrder
             rawmatrialModel = rawmatrialPo.RetrieveByID(rawmatrialID)
             With rawmatrialModel
                 rawmatrialCode = .RawMaterialCode
-                txtRawMaterialName.Text = .RawMaterialName
+
             End With
         Else
             MsgBoxError("Raw Matrial Not Valid")
