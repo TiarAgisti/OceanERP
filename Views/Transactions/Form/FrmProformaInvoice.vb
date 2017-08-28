@@ -61,8 +61,12 @@
     End Sub
 
     Sub ComboBoxRawMaterial()
-        Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
-        rawBFC.ComboBoxRawMaterial(cmbRawFabric)
+        Try
+            Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
+            rawBFC.ComboBoxRawMaterial(cmbRawFabric)
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxUnit()
@@ -1302,47 +1306,37 @@
             cmbBuyer.Focus()
         End If
     End Sub
-
     Private Sub cmbBuyer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbBuyer.SelectedIndexChanged
         txtRefPO.Focus()
     End Sub
-
     Private Sub txtRefPO_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtRefPO.KeyPress
         If e.KeyChar = Chr(13) Then
             cmbStyle.Focus()
         End If
     End Sub
-
     Private Sub cmbStyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbStyle.SelectedIndexChanged
         cmbSeason.Focus()
     End Sub
-
     Private Sub cmbSeason_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSeason.SelectedIndexChanged
         cmbTOP.Focus()
     End Sub
-
     Private Sub cmbTOP_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTOP.SelectedIndexChanged
         dtDelTerm.Focus()
     End Sub
-
     Private Sub cmbTermPrice_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTermPrice.SelectedIndexChanged
         txtContract.Focus()
     End Sub
-
     Private Sub txtContract_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtContract.KeyPress
         If e.KeyChar = Chr(13) Then
             cmbPort.Focus()
         End If
     End Sub
-
     Private Sub cmbPort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPort.SelectedIndexChanged
         cmbTo.Focus()
     End Sub
-
     Private Sub cmbTo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTo.SelectedIndexChanged
         cmbFM.Focus()
     End Sub
-
     Private Sub cmbTo_Validated(sender As Object, e As EventArgs) Handles cmbTo.Validated
         Try
             RetrieveCustomer()
@@ -1350,241 +1344,196 @@
             MsgBoxError(ex.Message)
         End Try
     End Sub
-
     Private Sub cmbFM_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFM.SelectedIndexChanged
         txtDelPlace.Focus()
     End Sub
-
     Private Sub txtDelPlace_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDelPlace.KeyPress
         If e.KeyChar = Chr(13) Then
             cmbFabric.Focus()
         End If
     End Sub
-
     Private Sub cmbFabric_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFabric.SelectedIndexChanged
         cmbRawFabric.Focus()
     End Sub
-
     Private Sub cmbFabric_Validated(sender As Object, e As EventArgs) Handles cmbFabric.Validated
         RetrieveFabric()
     End Sub
-
     Private Sub cmbRawFabric_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRawFabric.SelectedIndexChanged
         cmbTypeGreige.Focus()
     End Sub
-
     Private Sub cmbTypeGreige_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTypeGreige.SelectedIndexChanged
         txtWidthMin.Focus()
     End Sub
-
     Private Sub txtWidthMin_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWidthMin.KeyPress
         If e.KeyChar = Chr(13) Then
             txtWidthMax.Focus()
         End If
     End Sub
-
     Private Sub txtWidthMax_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWidthMax.KeyPress
         If e.KeyChar = Chr(13) Then
             cmbUnitFabric.Focus()
         End If
     End Sub
-
     Private Sub cmbUnitFabric_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbUnitFabric.SelectedIndexChanged
         txtWeightMin.Focus()
     End Sub
-
     Private Sub txtWeightMin_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWeightMin.KeyPress
         If e.KeyChar = Chr(13) Then
             txtWeightMax.Focus()
         End If
     End Sub
-
     Private Sub txtWeightMax_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWeightMax.KeyPress
         If e.KeyChar = Chr(13) Then
             txtDNYardage.Focus()
         End If
     End Sub
-
     Private Sub txtDNYardage_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDNYardage.KeyPress
         If e.KeyChar = Chr(13) Then
             txtWeightYard.Focus()
         End If
     End Sub
-
     Private Sub txtWeightYard_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWeightYard.KeyPress
         If e.KeyChar = Chr(13) Then
             txtBeforeWash.Focus()
         End If
     End Sub
-
     Private Sub txtBeforeWash_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtBeforeWash.KeyPress
         If e.KeyChar = Chr(13) Then
             txtAfterWash.Focus()
         End If
     End Sub
-
     Private Sub txtAfterWash_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAfterWash.KeyPress
         If e.KeyChar = Chr(13) Then
             txtNetWeight.Focus()
         End If
     End Sub
-
     Private Sub txtNetWeight_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNetWeight.KeyPress
         If e.KeyChar = Chr(13) Then
             txtSrinkageL.Focus()
         End If
     End Sub
-
     Private Sub txtSrinkageL_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSrinkageL.KeyPress
         If e.KeyChar = Chr(13) Then
             txtSrinkageW.Focus()
         End If
     End Sub
-
     Private Sub txtSrinkageW_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSrinkageW.KeyPress
         If e.KeyChar = Chr(13) Then
             txtGSM.Focus()
         End If
     End Sub
-
     Private Sub txtGSM_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtGSM.KeyPress
         If e.KeyChar = Chr(13) Then
             txtPriceGreige.Focus()
         End If
     End Sub
-
     Private Sub txtPriceGreige_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPriceGreige.KeyPress
         If e.KeyChar = Chr(13) Then
             txtPurchSize.Focus()
         End If
     End Sub
-
     Private Sub txtPurchSize_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPurchSize.KeyPress
         If e.KeyChar = Chr(13) Then
             txtStorageSize.Focus()
         End If
     End Sub
-
     Private Sub txtStorageSize_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtStorageSize.KeyPress
         If e.KeyChar = Chr(13) Then
             txtPPSample.Focus()
         End If
     End Sub
-
     Private Sub txtPPSample_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPPSample.KeyPress
         If e.KeyChar = Chr(13) Then
             txtQtyCutt.Focus()
         End If
     End Sub
-
     Private Sub txtQtyCutt_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQtyCutt.KeyPress
         If e.KeyChar = Chr(13) Then
             txtQtyWeight.Focus()
         End If
     End Sub
-
     Private Sub txtQtyWeight_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQtyWeight.KeyPress
         If e.KeyChar = Chr(13) Then
             btnAddFabric.Focus()
         End If
     End Sub
-
     Private Sub cmbColor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbColor.SelectedIndexChanged
         txtColorType.Focus()
     End Sub
-
     Private Sub cmbColor_Validated(sender As Object, e As EventArgs) Handles cmbColor.Validated
         RetrieveColor()
     End Sub
-
     Private Sub txtColorType_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtColorType.KeyPress
         If e.KeyChar = Chr(13) Then
             txtLabColNo.Focus()
         End If
     End Sub
-
     Private Sub txtLabColNo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLabColNo.KeyPress
         If e.KeyChar = Chr(13) Then
             txtColQtyOrder.Focus()
         End If
     End Sub
-
     Private Sub txtColQtyOrder_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtColQtyOrder.KeyPress
         If e.KeyChar = Chr(13) Then
             cmbColPurchSize.Focus()
         End If
     End Sub
-
     Private Sub cmbColPurchSize_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbColPurchSize.SelectedIndexChanged
         txtColPrice.Focus()
     End Sub
-
     Private Sub txtColPrice_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtColPrice.KeyPress
         If e.KeyChar = Chr(13) Then
             txtColQtySample.Focus()
         End If
     End Sub
-
     Private Sub txtColQtySample_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtColQtySample.KeyPress
         If e.KeyChar = Chr(13) Then
             dtpColDelDate.Focus()
         End If
     End Sub
-
     Private Sub txtColNotes_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtColNotes.KeyPress
         If e.KeyChar = Chr(13) Then
             btnColAddList.Focus()
         End If
     End Sub
-
     Private Sub cmbYarn_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbYarn.SelectedIndexChanged
         txtPriceYarn.Focus()
     End Sub
-
     Private Sub cmbYarn_Validated(sender As Object, e As EventArgs) Handles cmbYarn.Validated
         RetrieveYarn()
     End Sub
-
     Private Sub txtPriceYarn_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPriceYarn.KeyPress
         If e.KeyChar = Chr(13) Then
             txtPercentUsage.Focus()
         End If
     End Sub
-
     Private Sub txtPercentUsage_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPercentUsage.KeyPress
         If e.KeyChar = Chr(13) Then
             txtQtyUsage.Focus()
         End If
     End Sub
-
     Private Sub txtQtyUsage_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQtyUsage.KeyPress
         If e.KeyChar = Chr(13) Then
             cmbColorYarn.Focus()
         End If
     End Sub
-
     Private Sub cmbColorYarn_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbColorYarn.SelectedIndexChanged
         cmbMerk.Focus()
     End Sub
-
     Private Sub cmbMerk_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbMerk.SelectedIndexChanged
         txtLoss.Focus()
     End Sub
-
     Private Sub txtLoss_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtLoss.KeyPress
         If e.KeyChar = Chr(13) Then
             btnAddYarnList.Focus()
         End If
     End Sub
-
     Private Sub cmbBankCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbBankCode.SelectedIndexChanged
         txtRemarks.Focus()
     End Sub
-
     Private Sub cmbBankCode_Validated(sender As Object, e As EventArgs) Handles cmbBankCode.Validated
         RetrieveBankAccount()
     End Sub
-
     Private Sub txtRemarks_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtRemarks.KeyPress
         If e.KeyChar = Chr(13) Then
             btnRemAddList.Focus()

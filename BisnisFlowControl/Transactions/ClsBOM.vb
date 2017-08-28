@@ -208,7 +208,12 @@
                 With dgv
                     detailModel.BOMHeaderID = bomID
                     detailModel.BOMDetailID = bomDetailID
+                    detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
+                    detailModel.UnitID = .Rows(detail).Cells(4).Value
+                    detailModel.Qty = .Rows(detail).Cells(6).Value
+                    listDetailModel.Add(detailModel)
                 End With
+                bomDetailID = bomDetailID + 1
             Next
             Return listDetailModel
         Catch ex As Exception
@@ -218,6 +223,88 @@
 #End Region
 
 #Region "CRUD"
+    Protected Function SqlInsertHeader(bomHeaderModel As BOMHeaderModel) As String
+        Dim sqlHeader As String
+        sqlHeader = "Insert into BOMHeader(BOMHeaderID,BOMCode,FabricID,BuyerID,StyleID,ColorID,StatusBOM,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
+                    "('" & bomHeaderModel.BOMHeaderID & "','" & bomHeaderModel.BOMCode & "','" & bomHeaderModel.FabricID & "'" &
+                    ",'" & bomHeaderModel.BuyerID & "','" & bomHeaderModel.StyleID & "','" & bomHeaderModel.ColorID & "'" &
+                    ",'" & bomHeaderModel.StatusBOM & "','" & bomHeaderModel.IsActive & "','" & bomHeaderModel.CreatedBy & "'" &
+                    ",'" & bomHeaderModel.CreatedDate & "','" & bomHeaderModel.UpdatedBy & "','" & bomHeaderModel.UpdatedDate & "')"
+        Return sqlHeader
+    End Function
+    Protected Function SqlInsertDetail(myModel As BOMDetailModel) As String
+        Dim sql As String
+        sql = "Insert into BOMDetail(BOMHeaderID,BOMDetailID,RawMaterialID,UnitID,Qty)Values('" & myModel.BOMHeaderID & "'" &
+            ",'" & myModel.BOMDetailID & "','" & myModel.RawMaterialID & "','" & myModel.UnitID & "','" & myModel.Qty & "')"
+        Return sql
+    End Function
+    Protected Function SqlUpdateHeader(myModel As BOMHeaderModel) As String
+        Dim SQL As String
+        SQL = "Update BOMHeader set FabricID = '" & myModel.FabricID & "',BuyerID = '" & myModel.BuyerID & "',StyleID = '" & myModel.StyleID & "'" &
+              ",ColorID = '" & myModel.ColorID & "',StatusBOM = '" & myModel.StatusBOM & "',IsActive = '" & myModel.IsActive & "',UpdatedBy = '" & myModel.UpdatedBy & "'" &
+              ",UpdatedDate = '" & myModel.UpdatedDate & "' Where BOMHeaderID = '" & myModel.BOMHeaderID & "'"
+        Return SQL
+    End Function
+    Protected Function SqlDeleteDetail(myModel As BOMHeaderModel) As String
+        Dim SQL As String
+        SQL = "Delete From BOMDetail Where BOMHeaderID = '" & myModel.BOMHeaderID & "'"
+        Return SQL
+    End Function
+    Public Function InsertData(bomHeaderModel As BOMHeaderModel, listBomDetail As List(Of BOMDetailModel), logModel As LogHistoryModel) As Boolean
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim queryList As List(Of String) = New List(Of String)
+        Dim statusInsert As Boolean = False
+        'insert header
+        queryList.Add(SqlInsertHeader(bomHeaderModel))
 
+        'insert detail
+        For Each detail In listBomDetail
+            queryList.Add(SqlInsertDetail(detail))
+        Next
+
+        'insert log history
+        queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
+
+        Try
+            dataAccess.InsertMasterDetail(queryList)
+            dataAccess = Nothing
+            statusInsert = True
+        Catch ex As Exception
+            dataAccess = Nothing
+            Throw ex
+        End Try
+        Return statusInsert
+    End Function
+
+    Public Function UpdateData(bomHeaderModel As BOMHeaderModel, listBomDetail As List(Of BOMDetailModel), logModel As LogHistoryModel) As Boolean
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim queryList As List(Of String) = New List(Of String)
+        Dim statusUpdate As Boolean = False
+        'delete all detail before update
+        queryList.Add(SqlDeleteDetail(bomHeaderModel))
+
+        'update header
+        queryList.Add(SqlUpdateHeader(bomHeaderModel))
+
+        'insert detail
+        For Each detail In listBomDetail
+            queryList.Add(SqlInsertDetail(detail))
+        Next
+
+        'insert log history
+        queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
+
+        Try
+            dataAccess.InsertMasterDetail(queryList)
+            dataAccess = Nothing
+            statusUpdate = True
+        Catch ex As Exception
+            dataAccess = Nothing
+            Throw ex
+        End Try
+        Return statusUpdate
+    End Function
 #End Region
 End Class
