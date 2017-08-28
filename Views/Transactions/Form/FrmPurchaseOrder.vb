@@ -1,4 +1,6 @@
-﻿Public Class FrmPurchaseOrder
+﻿Imports System.ComponentModel
+
+Public Class FrmPurchaseOrder
 #Region "Declaration"
     Public Shared poHeaderID As Long = 0
     Public condition As String
@@ -451,25 +453,7 @@
 
     End Sub
 
-    Sub RetrieveCustomer()
-        Dim vendorBFC As ClsVendor = New ClsVendor
-        Dim vendorModel As VendorModel = New VendorModel
-        Dim obj As Integer = cmbCustomer.SelectedValue
-        If obj > 0 Then
-            vendorModel = vendorBFC.RetrieveVendorByID(obj, "C")
-            With vendorModel
-                customerCode = .VendorCode
-                txtPhoneCust.Text = .Telephone
-                txtCPCust.Text = .ContactPerson
-                txtAdressCust.Text = .Address
-                txtPhoneCust.Text = .Telephone
-                txtFaxCust.Text = .Fax
-                txtEmailCust.Text = .EmailCP
-            End With
-        Else
-            MsgBoxError("Customer not valid")
-        End If
-    End Sub
+
     Sub RetrieveSupplier()
         Dim vendorPoS As ClsVendor = New ClsVendor
         Dim vendorModel As VendorModel = New VendorModel
@@ -494,7 +478,7 @@
         Dim rawmatrialPo As ClsRawMaterial = New ClsRawMaterial
         Dim rawmatrialModel As RawMaterialModel = New RawMaterialModel
         Dim rawmatrialID As Integer = cmbRawCode.SelectedValue
-        If RawMatrialID > 0 Then
+        If rawmatrialID > 0 Then
             rawmatrialModel = rawmatrialPo.RetrieveByID(rawmatrialID)
             With rawmatrialModel
                 txtRawMaterialName.Text = .RawMaterialName
@@ -716,9 +700,11 @@
         intPostRawMatrial = e.Row.Index
     End Sub
 
-    Private Sub cmbCustomer_Validated(sender As Object, e As EventArgs) Handles cmbCustomer.Validated
+
+
+    Private Sub cmbSupplier_Validating(sender As Object, e As CancelEventArgs) Handles cmbSupplier.Validating
         Try
-            RetrieveCustomer()
+            RetrieveSupplier()
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
