@@ -96,6 +96,14 @@
     End Function
 #End Region
 
+#Region "Function"
+    Public Sub ComboBoxStatus(cmb As ComboBox)
+        cmb.Items.Clear()
+        cmb.Items.Add("Production")
+        cmb.Items.Add("Development")
+    End Sub
+#End Region
+
 #Region "Generated"
     Protected Function GeneratedBOMCode(buyerCode As String) As String
         Dim myCode As String
@@ -307,4 +315,5 @@
         Return statusUpdate
     End Function
 #End Region
+
 End Class

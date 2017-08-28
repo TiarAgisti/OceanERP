@@ -23,9 +23,8 @@
     End Sub
 
     Public Sub PopulateStatus()
-        cmbStatus.Items.Clear()
-        cmbStatus.Items.Add("Production")
-        cmbStatus.Items.Add("Development")
+        Dim bomBFC As ClsBOM = New ClsBOM
+        bomBFC.ComboBoxStatus(cmbStatus)
     End Sub
 
     Public Sub PropertiesGrid()
