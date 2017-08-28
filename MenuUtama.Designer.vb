@@ -54,11 +54,11 @@ Partial Class MenuUtama
         Me.menuBrandYarn = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuStyle = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuRawMaterial = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuBOM = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuTransaksi = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuProformaInvoice = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuPO = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuBOM = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -276,6 +276,13 @@ Partial Class MenuUtama
         Me.menuRawMaterial.Tag = "20"
         Me.menuRawMaterial.Text = "Raw Material"
         '
+        'menuBOM
+        '
+        Me.menuBOM.Name = "menuBOM"
+        Me.menuBOM.Size = New System.Drawing.Size(167, 22)
+        Me.menuBOM.Tag = "21"
+        Me.menuBOM.Text = "Bill Of Material"
+        '
         'menuTransaksi
         '
         Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuProformaInvoice, Me.menuPO})
@@ -302,13 +309,6 @@ Partial Class MenuUtama
         Me.menuKeluar.Name = "menuKeluar"
         Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
         Me.menuKeluar.Text = "Exit"
-        '
-        'menuBOM
-        '
-        Me.menuBOM.Name = "menuBOM"
-        Me.menuBOM.Size = New System.Drawing.Size(167, 22)
-        Me.menuBOM.Tag = "21"
-        Me.menuBOM.Text = "Bill Of Material"
         '
         'MenuUtama
         '
