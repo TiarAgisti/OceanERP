@@ -1,4 +1,5 @@
 ﻿Public Class MenuUtama
+#Region "Function"
     Sub HideMenuMaster()
         'menu master
         menuMaster.Visible = False
@@ -20,12 +21,14 @@
         menuBrandYarn.Visible = False
         menuStyle.Visible = False
         menuRawMaterial.Visible = False
+        menuBOM.Visible = False
         'end
     End Sub
     Sub HideMenuTransaction()
         'menu transaksi
         menuTransaksi.Visible = False
         menuProformaInvoice.Visible = False
+        menuPO.Visible = False
         'end
     End Sub
     Sub HideAllMenu()
@@ -109,6 +112,11 @@
             menuMaster.Visible = True
             menuRawMaterial.Visible = True
         End If
+
+        If menuID = menuBOM.Tag Then
+            menuMaster.Visible = True
+            menuBOM.Visible = True
+        End If
         'end
     End Sub
     Sub CheckPermissionMenuTrans(menuID As Integer)
@@ -116,18 +124,34 @@
             menuTransaksi.Visible = True
             menuProformaInvoice.Visible = True
         End If
+
+        If menuID = menuPO.Tag Then
+            menuTransaksi.Visible = True
+            menuPO.Visible = True
+        End If
     End Sub
     Sub CheckPermissionMenu(menuID As Integer)
         If userID = 1 Then menuPermission.Visible = True
         CheckPermissionMenuMaster(menuID)
         CheckPermissionMenuTrans(menuID)
     End Sub
+#End Region
+
+#Region "Menu Setting"
     Private Sub menuHakAkses_Click(sender As Object, e As EventArgs) Handles menuPermission.Click
         Dim frmPermission As New FrmListPermission
         frmPermission.MdiParent = Me
         'frmPermission.WindowState = FormWindowState.Maximized
         frmPermission.Show()
     End Sub
+    Private Sub menuChangePassword_Click(sender As Object, e As EventArgs) Handles menuChangePassword.Click
+        Dim frm As New FrmChangePassword
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+#End Region
+
+#Region "Menu Master"
     Private Sub menuDestination_Click(sender As Object, e As EventArgs) Handles menuDestination.Click
         Dim frmDest As New FrmDestination
         frmDest.MdiParent = Me
@@ -138,26 +162,6 @@
         Dim frmBank As New FrmSettingBank
         frmBank.MdiParent = Me
         frmBank.Show()
-    End Sub
-    Private Sub menuKeluar_Click(sender As Object, e As EventArgs) Handles menuKeluar.Click
-        Dim result As DialogResult = MsgBoxQuestionExit()
-        If result = MsgBoxResult.Yes Then
-            Application.Exit()
-        End If
-    End Sub
-    Private Sub MenuUtama_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        HideAllMenu()
-        If userID <> 0 Then
-            Dim roleBFC As ClsPermission = New ClsPermission
-            Dim listRole As New List(Of RoleDModel)
-            listRole = roleBFC.RetrieveDetails(roleIDUser)
-            For Each list As RoleDModel In listRole
-                CheckPermissionMenu(list.MenuID)
-            Next
-            toltipUserName.Text = userName
-            toltipTanggal.Text = Format(Now, "dd-MM-yyyy")
-            toltipIP.Text = stringIPUser
-        End If
     End Sub
     Private Sub menuUser_Click(sender As Object, e As EventArgs) Handles menuUser.Click
         Dim frm As New FrmListUser
@@ -189,32 +193,6 @@
 
     Private Sub menuGroupSales_Click(sender As Object, e As EventArgs) Handles menuGroupSales.Click
         Dim frm As New FrmGroupSales
-        frm.MdiParent = Me
-        frm.Show()
-    End Sub
-
-    Private Sub MenuUtama_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
-        Application.Exit()
-    End Sub
-
-    Private Sub MenuUtama_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
-        HideAllMenu()
-        If userID <> 0 Then
-            Dim roleBFC As ClsPermission = New ClsPermission
-            Dim listRole As New List(Of RoleDModel)
-            listRole = roleBFC.RetrieveDetails(roleIDUser)
-            For Each list As RoleDModel In listRole
-                CheckPermissionMenu(list.MenuID)
-            Next
-            toltipUserName.Text = userName
-            toltipTanggal.Text = Format(Now, "dd-MM-yyyy")
-            toltipIP.Text = stringIPUser
-            toltipCopyRight.Text = copyRight
-        End If
-    End Sub
-
-    Private Sub menuChangePassword_Click(sender As Object, e As EventArgs) Handles menuChangePassword.Click
-        Dim frm As New FrmChangePassword
         frm.MdiParent = Me
         frm.Show()
     End Sub
@@ -260,14 +238,6 @@
         frm.MdiParent = Me
         frm.Show()
     End Sub
-
-    Private Sub menuProformaInvoice_Click(sender As Object, e As EventArgs) Handles menuProformaInvoice.Click
-        Dim frm As FrmListProformaInvoice = New FrmListProformaInvoice
-        frm.MdiParent = Me
-        frm.WindowState = FormWindowState.Maximized
-        frm.Show()
-    End Sub
-
     Private Sub menuBrandYarn_Click(sender As Object, e As EventArgs) Handles menuBrandYarn.Click
         Dim frm As FrmBrandYarn = New FrmBrandYarn
         frm.MdiParent = Me
@@ -279,17 +249,75 @@
         frm.MdiParent = Me
         frm.Show()
     End Sub
-
     Private Sub menuRawMaterial_Click(sender As Object, e As EventArgs) Handles menuRawMaterial.Click
         Dim frm As FrmRawMaterial = New FrmRawMaterial
         frm.MdiParent = Me
         frm.Show()
     End Sub
 
-    Private Sub PurchaseOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PurchaseOrderToolStripMenuItem.Click
+    Private Sub menuBOM_Click(sender As Object, e As EventArgs) Handles menuBOM.Click
+        Dim frm As FrmListBOM = New FrmListBOM
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+#End Region
+
+#Region "Menu Transaction"
+    Private Sub menuProformaInvoice_Click(sender As Object, e As EventArgs) Handles menuProformaInvoice.Click
+        Dim frm As FrmListProformaInvoice = New FrmListProformaInvoice
+        frm.MdiParent = Me
+        frm.WindowState = FormWindowState.Maximized
+        frm.Show()
+    End Sub
+    Private Sub menuPO_Click(sender As Object, e As EventArgs) Handles menuPO.Click
         Dim frm As FrmListPurchaseOrder = New FrmListPurchaseOrder
         frm.MdiParent = Me
         frm.WindowState = FormWindowState.Maximized
         frm.Show()
     End Sub
+#End Region
+
+#Region "Other"
+    Private Sub MenuUtama_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        HideAllMenu()
+        If userID <> 0 Then
+            Dim roleBFC As ClsPermission = New ClsPermission
+            Dim listRole As New List(Of RoleDModel)
+            listRole = roleBFC.RetrieveDetails(roleIDUser)
+            For Each list As RoleDModel In listRole
+                CheckPermissionMenu(list.MenuID)
+            Next
+            toltipUserName.Text = userName
+            toltipTanggal.Text = Format(Now, "dd-MM-yyyy")
+            toltipIP.Text = stringIPUser
+        End If
+    End Sub
+
+
+    Private Sub MenuUtama_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        Application.Exit()
+    End Sub
+
+    Private Sub MenuUtama_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
+        HideAllMenu()
+        If userID <> 0 Then
+            Dim roleBFC As ClsPermission = New ClsPermission
+            Dim listRole As New List(Of RoleDModel)
+            listRole = roleBFC.RetrieveDetails(roleIDUser)
+            For Each list As RoleDModel In listRole
+                CheckPermissionMenu(list.MenuID)
+            Next
+            toltipUserName.Text = userName
+            toltipTanggal.Text = Format(Now, "dd-MM-yyyy")
+            toltipIP.Text = stringIPUser
+            toltipCopyRight.Text = copyRight
+        End If
+    End Sub
+    Private Sub menuKeluar_Click(sender As Object, e As EventArgs) Handles menuKeluar.Click
+        Dim result As DialogResult = MsgBoxQuestionExit()
+        If result = MsgBoxResult.Yes Then
+            Application.Exit()
+        End If
+    End Sub
+#End Region
 End Class

@@ -93,6 +93,15 @@
         End Try
     End Sub
 
+    Sub CheckPermissions()
+        Dim roleBFC As ClsPermission = New ClsPermission
+        Dim roleModel As RoleDModel = New RoleDModel
+        roleModel = roleBFC.RetrieveDetailsByRoleIDMenuID(roleIDUser, Tag)
+        If roleModel.IsCreate = True Then btnAdd.Enabled = True
+        If roleModel.IsUpdate = True Then btnView.Enabled = True
+        If roleModel.IsDelete = True Then btnView.Enabled = True
+    End Sub
+
     Public Sub PreDisplayList()
         ClearData()
         ListData()
@@ -173,6 +182,7 @@
     Public Sub New()
         ' This call is required by the designer.
         InitializeComponent()
+        CheckPermissions()
         PreDisplayList()
         ' Add any initialization after the InitializeComponent() call.
     End Sub

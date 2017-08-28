@@ -53,4 +53,13 @@
             xRawMaterialName = value
         End Set
     End Property
+    Private xUnitName As String
+    Public Property UnitName() As String
+        Get
+            Return xUnitName
+        End Get
+        Set(ByVal value As String)
+            xUnitName = value
+        End Set
+    End Property
 End Class
