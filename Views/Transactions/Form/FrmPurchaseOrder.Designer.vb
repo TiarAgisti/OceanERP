@@ -54,6 +54,8 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabProductName = New System.Windows.Forms.TabPage()
+        Me.cmbUnit = New System.Windows.Forms.ComboBox()
+        Me.Label31 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnVoid = New System.Windows.Forms.Button()
@@ -72,7 +74,7 @@ Partial Class FrmPurchaseOrder
         Me.btnRawDelList = New System.Windows.Forms.Button()
         Me.btnRawAddList = New System.Windows.Forms.Button()
         Me.Label25 = New System.Windows.Forms.Label()
-        Me.dgvproduct = New System.Windows.Forms.DataGridView()
+        Me.dgvrawmatrial = New System.Windows.Forms.DataGridView()
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.txtSubtotal = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -81,12 +83,12 @@ Partial Class FrmPurchaseOrder
         Me.Label15 = New System.Windows.Forms.Label()
         Me.txtUnitPrice = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.txtRawMaterialCode = New System.Windows.Forms.TextBox()
+        Me.txtRawMaterialName = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.cmbRawCode = New System.Windows.Forms.ComboBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TabRemark = New System.Windows.Forms.TabPage()
-        Me.dgvremarks = New System.Windows.Forms.DataGridView()
+        Me.dgvRemarks = New System.Windows.Forms.DataGridView()
         Me.btnRemDelList = New System.Windows.Forms.Button()
         Me.btnRemAddList = New System.Windows.Forms.Button()
         Me.txtRemarks = New System.Windows.Forms.TextBox()
@@ -111,9 +113,9 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox3.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabProductName.SuspendLayout()
-        CType(Me.dgvproduct, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvrawmatrial, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabRemark.SuspendLayout()
-        CType(Me.dgvremarks, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvRemarks, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
@@ -257,7 +259,7 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox2.Size = New System.Drawing.Size(431, 233)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Vendor"
+        Me.GroupBox2.Text = "Vendor :"
         '
         'Panel1
         '
@@ -402,6 +404,8 @@ Partial Class FrmPurchaseOrder
         '
         'TabProductName
         '
+        Me.TabProductName.Controls.Add(Me.cmbUnit)
+        Me.TabProductName.Controls.Add(Me.Label31)
         Me.TabProductName.Controls.Add(Me.btnClose)
         Me.TabProductName.Controls.Add(Me.btnPrint)
         Me.TabProductName.Controls.Add(Me.btnVoid)
@@ -420,7 +424,7 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.Controls.Add(Me.btnRawDelList)
         Me.TabProductName.Controls.Add(Me.btnRawAddList)
         Me.TabProductName.Controls.Add(Me.Label25)
-        Me.TabProductName.Controls.Add(Me.dgvproduct)
+        Me.TabProductName.Controls.Add(Me.dgvrawmatrial)
         Me.TabProductName.Controls.Add(Me.txtTotal)
         Me.TabProductName.Controls.Add(Me.txtSubtotal)
         Me.TabProductName.Controls.Add(Me.Label16)
@@ -429,7 +433,7 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.Controls.Add(Me.Label15)
         Me.TabProductName.Controls.Add(Me.txtUnitPrice)
         Me.TabProductName.Controls.Add(Me.Label14)
-        Me.TabProductName.Controls.Add(Me.txtRawMaterialCode)
+        Me.TabProductName.Controls.Add(Me.txtRawMaterialName)
         Me.TabProductName.Controls.Add(Me.Label21)
         Me.TabProductName.Controls.Add(Me.cmbRawCode)
         Me.TabProductName.Controls.Add(Me.Label20)
@@ -440,6 +444,23 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.TabIndex = 0
         Me.TabProductName.Text = "Produk Name"
         Me.TabProductName.UseVisualStyleBackColor = True
+        '
+        'cmbUnit
+        '
+        Me.cmbUnit.FormattingEnabled = True
+        Me.cmbUnit.Location = New System.Drawing.Point(110, 56)
+        Me.cmbUnit.Name = "cmbUnit"
+        Me.cmbUnit.Size = New System.Drawing.Size(188, 21)
+        Me.cmbUnit.TabIndex = 135
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(7, 58)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(26, 13)
+        Me.Label31.TabIndex = 134
+        Me.Label31.Text = "Unit"
         '
         'btnClose
         '
@@ -608,13 +629,13 @@ Partial Class FrmPurchaseOrder
         Me.Label25.TabIndex = 118
         Me.Label25.Text = "Discount"
         '
-        'dgvproduct
+        'dgvrawmatrial
         '
-        Me.dgvproduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvproduct.Location = New System.Drawing.Point(10, 85)
-        Me.dgvproduct.Name = "dgvproduct"
-        Me.dgvproduct.Size = New System.Drawing.Size(845, 97)
-        Me.dgvproduct.TabIndex = 112
+        Me.dgvrawmatrial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvrawmatrial.Location = New System.Drawing.Point(10, 85)
+        Me.dgvrawmatrial.Name = "dgvrawmatrial"
+        Me.dgvrawmatrial.Size = New System.Drawing.Size(845, 97)
+        Me.dgvrawmatrial.TabIndex = 112
         '
         'txtTotal
         '
@@ -688,14 +709,14 @@ Partial Class FrmPurchaseOrder
         Me.Label14.TabIndex = 107
         Me.Label14.Text = "Unit Price"
         '
-        'txtRawMaterialCode
+        'txtRawMaterialName
         '
-        Me.txtRawMaterialCode.Enabled = False
-        Me.txtRawMaterialCode.Location = New System.Drawing.Point(110, 36)
-        Me.txtRawMaterialCode.MaxLength = 50
-        Me.txtRawMaterialCode.Name = "txtRawMaterialCode"
-        Me.txtRawMaterialCode.Size = New System.Drawing.Size(188, 20)
-        Me.txtRawMaterialCode.TabIndex = 103
+        Me.txtRawMaterialName.Enabled = False
+        Me.txtRawMaterialName.Location = New System.Drawing.Point(110, 33)
+        Me.txtRawMaterialName.MaxLength = 50
+        Me.txtRawMaterialName.Name = "txtRawMaterialName"
+        Me.txtRawMaterialName.Size = New System.Drawing.Size(188, 20)
+        Me.txtRawMaterialName.TabIndex = 103
         '
         'Label21
         '
@@ -725,7 +746,7 @@ Partial Class FrmPurchaseOrder
         '
         'TabRemark
         '
-        Me.TabRemark.Controls.Add(Me.dgvremarks)
+        Me.TabRemark.Controls.Add(Me.dgvRemarks)
         Me.TabRemark.Controls.Add(Me.btnRemDelList)
         Me.TabRemark.Controls.Add(Me.btnRemAddList)
         Me.TabRemark.Controls.Add(Me.txtRemarks)
@@ -738,13 +759,13 @@ Partial Class FrmPurchaseOrder
         Me.TabRemark.Text = "Remarks"
         Me.TabRemark.UseVisualStyleBackColor = True
         '
-        'dgvremarks
+        'dgvRemarks
         '
-        Me.dgvremarks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvremarks.Location = New System.Drawing.Point(8, 120)
-        Me.dgvremarks.Name = "dgvremarks"
-        Me.dgvremarks.Size = New System.Drawing.Size(845, 97)
-        Me.dgvremarks.TabIndex = 113
+        Me.dgvRemarks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvRemarks.Location = New System.Drawing.Point(8, 120)
+        Me.dgvRemarks.Name = "dgvRemarks"
+        Me.dgvRemarks.Size = New System.Drawing.Size(845, 97)
+        Me.dgvRemarks.TabIndex = 113
         '
         'btnRemDelList
         '
@@ -790,7 +811,7 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox4.Size = New System.Drawing.Size(442, 233)
         Me.GroupBox4.TabIndex = 27
         Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Ship To"
+        Me.GroupBox4.Text = "Ship To :"
         '
         'Panel2
         '
@@ -926,6 +947,7 @@ Partial Class FrmPurchaseOrder
         Me.Controls.Add(Me.Label3)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmPurchaseOrder"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FrmPurchaseOrder"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
@@ -936,10 +958,10 @@ Partial Class FrmPurchaseOrder
         Me.TabControl1.ResumeLayout(False)
         Me.TabProductName.ResumeLayout(False)
         Me.TabProductName.PerformLayout()
-        CType(Me.dgvproduct, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvrawmatrial, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabRemark.ResumeLayout(False)
         Me.TabRemark.PerformLayout()
-        CType(Me.dgvremarks, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvRemarks, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
@@ -989,7 +1011,7 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents Label15 As Label
     Friend WithEvents txtTotal As TextBox
     Friend WithEvents Label16 As Label
-    Friend WithEvents dgvproduct As DataGridView
+    Friend WithEvents dgvrawmatrial As DataGridView
     Friend WithEvents btnRawDelList As Button
     Friend WithEvents btnRawAddList As Button
     Friend WithEvents GroupBox4 As GroupBox
@@ -1018,15 +1040,17 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents Label26 As Label
     Friend WithEvents txtUnitPrice As TextBox
     Friend WithEvents Label14 As Label
-    Friend WithEvents txtRawMaterialCode As TextBox
+    Friend WithEvents txtRawMaterialName As TextBox
     Friend WithEvents Label21 As Label
     Friend WithEvents Label30 As Label
     Friend WithEvents txtGrandTotal As TextBox
-    Friend WithEvents dgvremarks As DataGridView
+    Friend WithEvents dgvRemarks As DataGridView
     Friend WithEvents btnClose As Button
     Friend WithEvents btnPrint As Button
     Friend WithEvents btnVoid As Button
     Friend WithEvents btnApprove As Button
     Friend WithEvents btnUpdate As Button
     Friend WithEvents btnSave As Button
+    Friend WithEvents cmbUnit As ComboBox
+    Friend WithEvents Label31 As Label
 End Class
