@@ -26,6 +26,33 @@
         dataAccess = Nothing
         Return dataTable
     End Function
+    Public Function RetrieveByID(rawmatrialID As Integer) As RawMaterialModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim rawmaterialModel As RawMaterialModel = New RawMaterialModel
+        queryRaw += " AND RawMaterialID = '" & rawmatrialID & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(queryRaw)
+            With dataAccess.reader
+                While .Read
+                    If Not IsDBNull(.Item("RawMaterialCode")) Then
+                        rawmaterialModel.RawMaterialID = .Item("RawMaterialID")
+                        rawmaterialModel.RawMaterialCode = .Item("RawMaterialCode")
+                        rawmaterialModel.RawMaterialName = .Item("RawMaterialName")
+                        rawmaterialModel.SpecRawMaterial = .Item("SpecRawMaterial")
+
+                    End If
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return rawmaterialModel
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
 #End Region
 
 #Region "Method Other"

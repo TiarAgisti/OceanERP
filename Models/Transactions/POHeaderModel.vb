@@ -36,13 +36,13 @@
             xCustomerID = value
         End Set
     End Property
-    Private xSupllierID As Integer
-    Public Property SupllierID() As Integer
+    Private xSupplierID As Integer
+    Public Property SupplierID() As Integer
         Get
-            Return xSupllierID
+            Return xSupplierID
         End Get
         Set(ByVal value As Integer)
-            xSupllierID = value
+            xSupplierID = value
         End Set
     End Property
     Private xShipViaMethod As String

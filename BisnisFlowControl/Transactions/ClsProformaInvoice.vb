@@ -634,7 +634,7 @@ Public Class ClsProformaInvoice
                                     ",TermOfPriceID = '" & myModel.TermOfPriceID & "',ContractNo = '" & myModel.ContractNo & "'" &
                                     ",DestinationID = '" & myModel.DestinationID & "',CustomerID = '" & myModel.CustomerID & "'" &
                                     ",GroupSalesID='" & myModel.GroupSalesID & "',DeliveryPlace = '" & myModel.DeliveryPlace & "'" &
-                                    ",Status = '" & myModel.TermOfPriceID & "',UpdatedBy = '" & myModel.UpdatedBy & "'" &
+                                    ",Status = '" & myModel.Status & "',UpdatedBy = '" & myModel.UpdatedBy & "'" &
                                     ",UpdatedDate = '" & myModel.UpdatedDate & "' Where PIHeaderID = '" & myModel.PIHeaderID & "'"
         Return SQL
     End Function
