@@ -56,12 +56,12 @@
         End Set
     End Property
 
-    Private xUnitID As String
-    Public Property UnitID() As String
+    Private xUnitID As Integer
+    Public Property UnitID() As Integer
         Get
             Return xUnitID
         End Get
-        Set(ByVal value As String)
+        Set(ByVal value As Integer)
             xUnitID = value
         End Set
     End Property
