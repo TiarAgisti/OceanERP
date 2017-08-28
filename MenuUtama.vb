@@ -20,12 +20,14 @@
         menuBrandYarn.Visible = False
         menuStyle.Visible = False
         menuRawMaterial.Visible = False
+        menuBOM.Visible = False
         'end
     End Sub
     Sub HideMenuTransaction()
         'menu transaksi
         menuTransaksi.Visible = False
         menuProformaInvoice.Visible = False
+        menuPO.Visible = False
         'end
     End Sub
     Sub HideAllMenu()
@@ -109,12 +111,22 @@
             menuMaster.Visible = True
             menuRawMaterial.Visible = True
         End If
+
+        If menuID = menuBOM.Tag Then
+            menuMaster.Visible = True
+            menuPO.Visible = True
+        End If
         'end
     End Sub
     Sub CheckPermissionMenuTrans(menuID As Integer)
         If menuID = menuProformaInvoice.Tag Then
             menuTransaksi.Visible = True
             menuProformaInvoice.Visible = True
+        End If
+
+        If menuID = menuPO.Tag Then
+            menuTransaksi.Visible = True
+            menuPO.Visible = True
         End If
     End Sub
     Sub CheckPermissionMenu(menuID As Integer)
@@ -286,7 +298,7 @@
         frm.Show()
     End Sub
 
-    Private Sub PurchaseOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PurchaseOrderToolStripMenuItem.Click
+    Private Sub PurchaseOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles menuPO.Click
         Dim frm As FrmListPurchaseOrder = New FrmListPurchaseOrder
         frm.MdiParent = Me
         frm.WindowState = FormWindowState.Maximized
