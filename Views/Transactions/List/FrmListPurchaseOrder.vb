@@ -28,18 +28,23 @@
 
             dgv.Columns(1).HeaderText = "PO Date"
             dgv.Columns(1).DefaultCellStyle.Format = "dd-MMM-yyyy"
-
             dgv.Columns(2).HeaderText = "PO No"
+            dgv.Columns(2).Width = 210
             dgv.Columns(3).HeaderText = "Customer Code"
             dgv.Columns(3).Visible = False
             dgv.Columns(4).HeaderText = "Customer Name"
+            dgv.Columns(4).Width = 150
             dgv.Columns(5).HeaderText = "Supplier Code"
             dgv.Columns(5).Visible = False
             dgv.Columns(6).HeaderText = "Supplier Name"
-            dgv.Columns(7).HeaderText = "ShipViaMethod"
-            dgv.Columns(8).HeaderText = "ShippingDate"
+            dgv.Columns(6).Width = 150
+            dgv.Columns(7).HeaderText = "Ship Via Method"
+            dgv.Columns(7).Width = 150
+            dgv.Columns(8).HeaderText = "Shipping Date"
+            dgv.Columns(8).Width = 150
             dgv.Columns(8).DefaultCellStyle.Format = "dd-MMM-yyyy"
             dgv.Columns(9).HeaderText = "Term Of Payment"
+            dgv.Columns(9).Width = 150
             dgv.Columns(10).HeaderText = "Expected Receipt Date"
             dgv.Columns(10).DefaultCellStyle.Format = "dd-MMM-yyyy"
             dgv.Columns(11).HeaderText = "Customer ID"
@@ -73,7 +78,7 @@
             supplier = ""
         End If
         Dim poBFC As ClsPO = New ClsPO
-        dgv.DataSource = poBFC.RetrieveListPurchaseOrder(poNo, dateFrom, dateTo, customer, supplier)
+        dgv.DataSource = poBFC.RetrieveListPurchaseOrder(Trim(poNo), dateFrom, dateTo, Trim(customer), Trim(supplier))
         dgv.ReadOnly = True
         PropertiesGrid()
     End Sub

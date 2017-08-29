@@ -315,7 +315,7 @@ Public Class FrmPurchaseOrder
                     .UpdatedBy = userID
                     .UpdatedDate = DateTime.Now
                 Case "Update"
-                    poHeaderID = .POHeaderID
+                    .POHeaderID = poHeaderID
                     .PODate = Format(dtPODate.Value, "yyyy-MM-dd")
                     txtPONo.Text = .PONo
                     .CustomerID = cmbCustomer.SelectedValue
