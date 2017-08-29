@@ -104,7 +104,7 @@
     Protected Function ListComboBox() As DataTable
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim dataTable As DataTable = New DataTable
-        Dim query As String = "Select FabricID,FabricName From Fabric where IsActive = 1"
+        Dim query As String = "Select FabricID,FabricName From v_Fabric where IsActive = 1"
         Try
             dataTable = dataAccess.RetrieveListData(query)
         Catch ex As Exception

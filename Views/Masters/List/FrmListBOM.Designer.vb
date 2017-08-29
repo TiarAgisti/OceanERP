@@ -25,6 +25,7 @@ Partial Class FrmListBOM
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmListBOM))
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cmbStatus = New System.Windows.Forms.ComboBox()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.btnFind = New System.Windows.Forms.Button()
         Me.ckStatus = New System.Windows.Forms.CheckBox()
@@ -40,7 +41,6 @@ Partial Class FrmListBOM
         Me.btnView = New System.Windows.Forms.Button()
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.dgv = New System.Windows.Forms.DataGridView()
-        Me.cmbStatus = New System.Windows.Forms.ComboBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,6 +76,14 @@ Partial Class FrmListBOM
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(917, 153)
         Me.Panel1.TabIndex = 16
+        '
+        'cmbStatus
+        '
+        Me.cmbStatus.FormattingEnabled = True
+        Me.cmbStatus.Location = New System.Drawing.Point(71, 89)
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Size = New System.Drawing.Size(198, 21)
+        Me.cmbStatus.TabIndex = 41
         '
         'btnClear
         '
@@ -216,14 +224,6 @@ Partial Class FrmListBOM
         Me.dgv.Size = New System.Drawing.Size(917, 252)
         Me.dgv.TabIndex = 28
         '
-        'cmbStatus
-        '
-        Me.cmbStatus.FormattingEnabled = True
-        Me.cmbStatus.Location = New System.Drawing.Point(71, 89)
-        Me.cmbStatus.Name = "cmbStatus"
-        Me.cmbStatus.Size = New System.Drawing.Size(198, 21)
-        Me.cmbStatus.TabIndex = 41
-        '
         'FrmListBOM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -237,6 +237,7 @@ Partial Class FrmListBOM
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmListBOM"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Tag = "21"
         Me.Text = "FrmListBOM"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
