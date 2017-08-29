@@ -96,6 +96,8 @@ Public Class FrmPurchaseOrder
         txtOtherCost.Text = 0
         txtSH.Text = 0
         txtGrandTotal.Text = 0
+        txtShipViaMethode.Focus()
+
     End Sub
 
     Sub ClearRawMatrial()
@@ -123,16 +125,17 @@ Public Class FrmPurchaseOrder
 
     Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
         CheckNumber(txtQty)
-        txtTotal.Text = Val(txtQty.Text) * Val(txtUnitPrice.Text)
-
+        CalculateTotal()
     End Sub
 
     Private Sub txtUnitPrice_TextChanged(sender As Object, e As EventArgs) Handles txtUnitPrice.TextChanged
         CheckNumber(txtUnitPrice)
+        CalculateTotal()
     End Sub
 
     Private Sub txtDiscount_TextChanged(sender As Object, e As EventArgs) Handles txtDiscount.TextChanged
         CheckNumber(txtDiscount)
+        CalculateDiscount()
     End Sub
 
     Private Sub txtVAT_TextChanged(sender As Object, e As EventArgs) Handles txtVAT.TextChanged
@@ -141,16 +144,18 @@ Public Class FrmPurchaseOrder
 
     Private Sub txtOtherCost_TextChanged(sender As Object, e As EventArgs) Handles txtOtherCost.TextChanged
         CheckNumber(txtOtherCost)
+        CalculateOtherCost()
     End Sub
 
     Private Sub txtSH_TextChanged(sender As Object, e As EventArgs) Handles txtSH.TextChanged
         CheckNumber(txtSH)
+        CalculateSH()
     End Sub
 
 #End Region
 
 #Region "Add Grid Detail"
-    Sub SumTotalValue()
+    Sub SumSubTotalValue()
         Dim subtotalval As Double
         subtotalval = 0
         For i As Integer = 0 To dgvrawmatrial.Rows.Count - 1
@@ -158,6 +163,20 @@ Public Class FrmPurchaseOrder
             '-----------cell 2 disini menunjukan posisi field yang akan kita jumlahkan
         Next
         txtSubtotal.Text = subtotalval
+        txtVAT.Text = Val(txtSubtotal.Text) * 0.1
+        txtGrandTotal.Text = Val(txtSubtotal.Text) + Val(txtVAT.Text)
+    End Sub
+    Sub CalculateDiscount()
+        txtGrandTotal.Text = Val(txtSubtotal.Text) - Val(txtDiscount.Text) + Val(txtVAT.Text)
+    End Sub
+    Sub CalculateTotal()
+        txtTotal.Text = Val(txtQty.Text) * Val(txtUnitPrice.Text)
+    End Sub
+    Sub CalculateOtherCost()
+        txtGrandTotal.Text = Val(txtSubtotal.Text) - Val(txtDiscount.Text) + Val(txtVAT.Text) + Val(txtOtherCost.Text)
+    End Sub
+    Sub CalculateSH()
+        txtGrandTotal.Text = Val(txtSubtotal.Text) - Val(txtDiscount.Text) + Val(txtVAT.Text) + Val(txtOtherCost.Text) + Val(txtSH.Text)
     End Sub
     Sub AddGridDetailRawMatrial()
         With dgvrawmatrial
@@ -166,8 +185,8 @@ Public Class FrmPurchaseOrder
             .Item(1, intBarisRawMatrial).Value = cmbRawCode.Text
             .Item(2, intBarisRawMatrial).Value = cmbUnit.SelectedValue
             .Item(3, intBarisRawMatrial).Value = cmbUnit.Text
-            .Item(4, intBarisRawMatrial).Value = txtUnitPrice.Text
-            .Item(5, intBarisRawMatrial).Value = txtQty.Text
+            .Item(4, intBarisRawMatrial).Value = txtQty.Text
+            .Item(5, intBarisRawMatrial).Value = txtUnitPrice.Text
             .Item(6, intBarisRawMatrial).Value = txtTotal.Text
 
         End With
@@ -361,7 +380,7 @@ Public Class FrmPurchaseOrder
                 btnPrint.Enabled = True
                 btnSave.Enabled = False
                 btnUpdate.Enabled = False
-                'PreCreatedisplay()
+
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -600,10 +619,6 @@ Public Class FrmPurchaseOrder
         ClearAllData()
         GridDetailALL()
         ComboBoxALL()
-        txtShipViaMethode.Focus()
-        txtShipViaMethode.Enabled = True
-        txtUnitPrice.Enabled = True
-        txtQty.Enabled = True
         btnApprove.Enabled = False
         btnVoid.Enabled = False
         btnPrint.Enabled = False
@@ -694,8 +709,9 @@ Public Class FrmPurchaseOrder
             Try
                 If CheckRawMatrialInList() = True Then
                     AddGridDetailRawMatrial()
-                    SumTotalValue()
-                    ' ClearRawMatrial()
+                    SumSubTotalValue()
+                    ClearRawMatrial()
+
                 Else
                     MsgBoxError("Raw Matrial available in list")
                     ClearRawMatrial()
@@ -709,13 +725,28 @@ Public Class FrmPurchaseOrder
     Private Sub btnRawDelList_Click(sender As Object, e As EventArgs) Handles btnRawDelList.Click
         Try
             DeleteGridDetailRawMatrial()
+            SumSubTotalValue()
+            CalculateTotal()
+            CalculateDiscount()
+            CalculateOtherCost()
+            CalculateSH()
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
+        If dgvrawmatrial.Rows.Count - 1 = 0 Then
+            txtSubtotal.Text = 0
+            txtDiscount.Text = 0
+            txtVAT.Text = 0
+            txtOtherCost.Text = 0
+            txtSH.Text = 0
+            txtGrandTotal.Text = 0
+        End If
+
+
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If CheckEmptyHeader() = False And CheckEmptyRawMatrial() = False Then
+        If CheckEmptyHeader() = False Then
             If condition = "Create" Then
                 InsertData()
             End If
@@ -772,6 +803,18 @@ Public Class FrmPurchaseOrder
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
+    End Sub
+
+    Private Sub txtDiscount_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDiscount.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtOtherCost.Focus()
+        End If
+    End Sub
+
+    Private Sub txtOtherCost_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtOtherCost.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtSH.Focus()
+        End If
     End Sub
 #End Region
 

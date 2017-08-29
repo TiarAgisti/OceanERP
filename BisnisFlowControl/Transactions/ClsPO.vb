@@ -201,9 +201,9 @@ Public Class ClsPO
         Return id
     End Function
     Public Function GetPONo(supplierCode As String) As String
-        Dim piNo As String
-        piNo = GeneratedPONo(supplierCode)
-        Return piNo
+        Dim poNo As String
+        poNo = GeneratedPONo(supplierCode)
+        Return poNo
     End Function
 
 #End Region
@@ -276,7 +276,7 @@ Public Class ClsPO
             Dim detailModel As PORemarksModel = New PORemarksModel
             With dgvRemarks
                 detailModel.POHeaderID = poID
-                detailModel.POHeaderID = poDetailID
+                detailModel.PORemarksID = poDetailID
                 detailModel.Remarks = .Rows(detail).Cells(0).Value
                 listModel.Add(detailModel)
             End With
