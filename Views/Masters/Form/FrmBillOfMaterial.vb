@@ -172,6 +172,28 @@
         ElseIf cmbStatus.Text = "" Then
             MsgBoxWarning("Status can't empty")
             cmbStatus.Focus()
+        ElseIf dgv.Rows.Count - 1 = 0 Then
+            MsgBoxWarning("Detail can't empty")
+            cmbRaw.Focus()
+        Else
+            check = False
+        End If
+        Return check
+    End Function
+    Function CheckEmptyDetail() As Boolean
+        Dim check As Boolean = True
+        If cmbRaw.SelectedValue = 0 Then
+            MsgBoxWarning("Raw Material not valid")
+            cmbRaw.Focus()
+        ElseIf cmbUnit.SelectedValue = 0 Then
+            MsgBoxWarning("UOM not valid")
+            cmbUnit.Focus()
+        ElseIf txtQty.Text = 0 Then
+            MsgBoxWarning("Qty can't 0")
+            txtQty.Focus()
+        ElseIf Trim(txtQty.Text) = "" Then
+            MsgBoxWarning("Qty can't 0")
+            txtQty.Focus()
         Else
             check = False
         End If
@@ -284,34 +306,13 @@
                     .Rows.Add()
                     .Item(0, intBaris).Value = detail.RawMaterialID
                     .Item(1, intBaris).Value = detail.RawMaterialName
-                    .Item(2, intBaris).Value = detail.Specification
-                    .Item(3, intBarisFabric).Value = detail.StyleID
-                    .Item(4, intBarisFabric).Value = detail.StyleName
-                    .Item(5, intBarisFabric).Value = detail.RawMaterialID
-                    .Item(6, intBarisFabric).Value = detail.RawMaterialName
-                    .Item(7, intBarisFabric).Value = detail.TypeGreige
-                    .Item(8, intBarisFabric).Value = detail.WidthMin
-                    .Item(9, intBarisFabric).Value = detail.WidthMax
-                    .Item(10, intBarisFabric).Value = detail.UnitID
-                    .Item(11, intBarisFabric).Value = detail.UnitName
-                    .Item(12, intBarisFabric).Value = detail.WeightMin
-                    .Item(13, intBarisFabric).Value = detail.WeightMax
-                    .Item(14, intBarisFabric).Value = detail.DNYardage
-                    .Item(15, intBarisFabric).Value = detail.WeightYard
-                    .Item(16, intBarisFabric).Value = detail.BeforeWash
-                    .Item(17, intBarisFabric).Value = detail.AfterWash
-                    .Item(18, intBarisFabric).Value = detail.NetWeight
-                    .Item(19, intBarisFabric).Value = detail.SrinkageL
-                    .Item(20, intBarisFabric).Value = detail.SrinkageW
-                    .Item(21, intBarisFabric).Value = detail.GSM
-                    .Item(22, intBarisFabric).Value = detail.PriceGreige
-                    .Item(23, intBarisFabric).Value = detail.PurchSize
-                    .Item(24, intBarisFabric).Value = detail.StorageSize
-                    .Item(25, intBarisFabric).Value = detail.PPSample
-                    .Item(26, intBarisFabric).Value = detail.QtyCuttable
-                    .Item(27, intBarisFabric).Value = detail.QtyWeight
+                    .Item(2, intBaris).Value = detail.SpecRawMaterial
+                    .Item(3, intBaris).Value = detail.VendorName
+                    .Item(4, intBaris).Value = detail.UnitID
+                    .Item(5, intBaris).Value = detail.UnitName
+                    .Item(6, intBaris).Value = detail.Qty
                 End With
-                intBarisFabric = intBarisFabric + 1
+                intBaris = intBaris + 1
             Next
         Catch ex As Exception
             Throw ex
@@ -321,6 +322,16 @@
         ClearDataAll()
         dgv.Columns.Clear()
         GridDetailRaw()
+    End Sub
+    Sub PreUpdateDisplay()
+        Try
+            ClearDataAll()
+            dgv.Columns.Clear()
+            PrepareByHeaderID()
+            PrepareDetailByHeaderID()
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
     Sub CheckPermissions()
         Try
@@ -367,10 +378,73 @@
             MsgBoxError(ex.Message)
         End Try
     End Sub
+
+    Private Sub FrmBillOfMaterial_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            Select Case conditionBOM
+                Case "Create"
+                    PreCreateDisplay()
+                Case "Update"
+                    PreUpdateDisplay()
+            End Select
+            Text = title
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
 #End Region
 
 #Region "Button"
+    Private Sub btnAddList_Click(sender As Object, e As EventArgs) Handles btnAddList.Click
+        If CheckEmptyDetail() = False Then
+            Try
+                If CheckDetailInList() = True Then
+                    AddGridDetail()
+                Else
+                    MsgBoxError("Raw Material Available in list")
+                End If
+                ClearDetail()
+            Catch ex As Exception
+                MsgBoxError(ex.Message)
+            End Try
+        End If
+    End Sub
 
+    Private Sub btnDelList_Click(sender As Object, e As EventArgs) Handles btnDelList.Click
+        Try
+            DeleteGridDetail()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        If CheckEmptyHeader() = False Then
+            If conditionBOM = "Create" Then
+                Try
+                    InsertData()
+                Catch ex As Exception
+                    MsgBoxError(ex.Message)
+                End Try
+            End If
+        End If
+    End Sub
+
+    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        If CheckEmptyHeader() = False Then
+            If conditionBOM = "Update" Then
+                Try
+                    UpdateData()
+                Catch ex As Exception
+                    MsgBoxError(ex.Message)
+                End Try
+            End If
+        End If
+    End Sub
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        Close()
+    End Sub
 #End Region
 
 #Region "KeyPress"
@@ -378,6 +452,8 @@
 #End Region
 
 #Region "Row State Change"
-
+    Private Sub dgv_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgv.RowStateChanged
+        intPost = e.Row.Index
+    End Sub
 #End Region
 End Class

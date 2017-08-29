@@ -53,6 +53,26 @@
             xRawMaterialName = value
         End Set
     End Property
+
+    Private xSpecRawMaterial As String
+    Public Property SpecRawMaterial() As String
+        Get
+            Return xSpecRawMaterial
+        End Get
+        Set(ByVal value As String)
+            xSpecRawMaterial = value
+        End Set
+    End Property
+
+    Private xVendorName As String
+    Public Property VendorName() As String
+        Get
+            Return xVendorName
+        End Get
+        Set(ByVal value As String)
+            xVendorName = value
+        End Set
+    End Property
     Private xUnitName As String
     Public Property UnitName() As String
         Get
