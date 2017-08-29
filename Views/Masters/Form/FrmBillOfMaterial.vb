@@ -58,6 +58,14 @@
             Throw ex
         End Try
     End Sub
+    Sub ComboBoxStatus()
+        Dim bomBFC As ClsBOM = New ClsBOM
+        Try
+            bomBFC.ComboBoxStatus(cmbStatus)
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
     Sub ComboBoxAll()
         Try
             ComboBoxBuyer()
@@ -66,6 +74,7 @@
             ComboBoxColor()
             ComboBoxRawMaterial()
             ComboBoxUnit()
+            ComboBoxStatus()
         Catch ex As Exception
             Throw ex
         End Try
@@ -274,6 +283,42 @@
 #End Region
 
 #Region "Function"
+    Sub RetrieveFabric()
+        Dim fabricBFC As ClsFabric = New ClsFabric
+        Dim fabricModel As FabricModel = New FabricModel
+        Try
+            Dim fabricID As Integer = cmbFabric.SelectedValue
+            If fabricID > 0 Then
+                fabricModel = fabricBFC.RetrieveByID(fabricID)
+                With fabricModel
+                    txtSpec.Text = fabricModel.Specification
+                    txtCompo.Text = fabricModel.Composition
+                End With
+            Else
+                MsgBoxError("Fabric Not Valid")
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Sub RetrieveRawMaterial()
+        Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
+        Dim rawModel As RawMaterialModel = New RawMaterialModel
+        Try
+            Dim rawMaterialID As Integer = cmbRaw.SelectedValue
+            If rawMaterialID > 0 Then
+                rawModel = rawBFC.RetrieveByID(rawMaterialID)
+                With rawModel
+                    txtSpecRaw.Text = rawModel.SpecRawMaterial
+                    txtSuppRaw.Text = rawModel.VendorName
+                End With
+            Else
+                MsgBoxError("Raw Material Not Valid")
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
     Sub PrepareByHeaderID()
         Dim headerModel As BOMHeaderModel = New BOMHeaderModel
         Dim bomBFC As ClsBOM = New ClsBOM
@@ -319,16 +364,21 @@
         End Try
     End Sub
     Sub PreCreateDisplay()
+        CheckPermissions()
         ClearDataAll()
         dgv.Columns.Clear()
         GridDetailRaw()
+        ComboBoxAll()
+        cmbFabric.Focus()
     End Sub
     Sub PreUpdateDisplay()
         Try
+            CheckPermissions()
             ClearDataAll()
             dgv.Columns.Clear()
             PrepareByHeaderID()
             PrepareDetailByHeaderID()
+            cmbFabric.Focus()
         Catch ex As Exception
             Throw ex
         End Try
@@ -454,6 +504,53 @@
 #Region "Row State Change"
     Private Sub dgv_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgv.RowStateChanged
         intPost = e.Row.Index
+    End Sub
+#End Region
+#Region "Other"
+    Private Sub cmbFabric_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFabric.SelectedIndexChanged
+        cmbBuyer.Focus()
+    End Sub
+    Private Sub cmbFabric_Validated(sender As Object, e As EventArgs) Handles cmbFabric.Validated
+        Try
+            RetrieveFabric()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub cmbBuyer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbBuyer.SelectedIndexChanged
+        cmbStyle.Focus()
+    End Sub
+    Private Sub cmbStyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbStyle.SelectedIndexChanged
+        cmbColor.Focus()
+    End Sub
+    Private Sub cmbColor_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbColor.SelectedIndexChanged
+        cmbStatus.Focus()
+    End Sub
+    Private Sub cmbStatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbStatus.SelectedIndexChanged
+        cmbRaw.Focus()
+    End Sub
+
+    Private Sub cmbRaw_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRaw.SelectedIndexChanged
+        cmbUnit.Focus()
+    End Sub
+
+    Private Sub cmbRaw_Validated(sender As Object, e As EventArgs) Handles cmbRaw.Validated
+        Try
+            RetrieveRawMaterial()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub cmbUnit_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbUnit.SelectedIndexChanged
+        txtQty.Focus()
+    End Sub
+
+    Private Sub txtQty_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQty.KeyPress
+        If e.KeyChar = Chr(13) Then
+            btnAddList.Focus()
+        End If
     End Sub
 #End Region
 End Class

@@ -172,6 +172,7 @@ Partial Class FrmBillOfMaterial
         '
         'txtSpec
         '
+        Me.txtSpec.Enabled = False
         Me.txtSpec.Location = New System.Drawing.Point(83, 86)
         Me.txtSpec.MaxLength = 150
         Me.txtSpec.Name = "txtSpec"
@@ -189,6 +190,7 @@ Partial Class FrmBillOfMaterial
         '
         'txtCompo
         '
+        Me.txtCompo.Enabled = False
         Me.txtCompo.Location = New System.Drawing.Point(83, 60)
         Me.txtCompo.MaxLength = 150
         Me.txtCompo.Name = "txtCompo"
@@ -223,6 +225,7 @@ Partial Class FrmBillOfMaterial
         '
         'txtCode
         '
+        Me.txtCode.Enabled = False
         Me.txtCode.Location = New System.Drawing.Point(83, 7)
         Me.txtCode.Name = "txtCode"
         Me.txtCode.Size = New System.Drawing.Size(196, 20)
@@ -313,6 +316,7 @@ Partial Class FrmBillOfMaterial
         '
         'txtSuppRaw
         '
+        Me.txtSuppRaw.Enabled = False
         Me.txtSuppRaw.Location = New System.Drawing.Point(85, 72)
         Me.txtSuppRaw.MaxLength = 150
         Me.txtSuppRaw.Name = "txtSuppRaw"
@@ -330,6 +334,7 @@ Partial Class FrmBillOfMaterial
         '
         'txtSpecRaw
         '
+        Me.txtSpecRaw.Enabled = False
         Me.txtSpecRaw.Location = New System.Drawing.Point(85, 46)
         Me.txtSpecRaw.MaxLength = 150
         Me.txtSpecRaw.Name = "txtSpecRaw"
@@ -426,6 +431,7 @@ Partial Class FrmBillOfMaterial
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmBillOfMaterial"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Tag = "21"
         Me.Text = "FrmBillOfMaterial"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

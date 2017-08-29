@@ -40,7 +40,7 @@
                         rawmaterialModel.RawMaterialCode = .Item("RawMaterialCode")
                         rawmaterialModel.RawMaterialName = .Item("RawMaterialName")
                         rawmaterialModel.SpecRawMaterial = .Item("SpecRawMaterial")
-
+                        rawmaterialModel.VendorName = .Item("VendorName")
                     End If
                 End While
                 .Close()
