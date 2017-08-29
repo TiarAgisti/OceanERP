@@ -9,7 +9,7 @@ Public Class FrmPurchaseOrder
     Dim intPostRawMatrial As Integer
     Dim intBarisRemarks As Integer
     Dim intPostRemarks As Integer
-
+    Dim hasil As Integer
     Dim customerCode As String = ""
     Dim supplierCode As String = ""
     Dim rawmatrialCode As String = ""
@@ -46,7 +46,7 @@ Public Class FrmPurchaseOrder
 #Region "Grid Detail"
     Sub GridDetailRawMatrial()
         With dgvrawmatrial
-            .Columns.Add(0, "[Raw Material ID]")
+            .Columns.Add(0, "Raw Material ID")
             .Columns(0).Visible = False
 
             .Columns.Add(1, "Raw Material")
@@ -54,9 +54,10 @@ Public Class FrmPurchaseOrder
             .Columns.Add(2, "Unit ID")
             .Columns(2).Visible = False
 
-            .Columns.Add(2, "Unit")
-            .Columns.Add(3, "Quantity")
+            .Columns.Add(3, "Unit")
             .Columns.Add(4, "Unit Price")
+            .Columns.Add(5, "Quantity")
+            .Columns.Add(6, "Total")
 
         End With
     End Sub
@@ -123,6 +124,7 @@ Public Class FrmPurchaseOrder
     Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
         CheckNumber(txtQty)
         txtTotal.Text = Val(txtQty.Text) * Val(txtUnitPrice.Text)
+
     End Sub
 
     Private Sub txtUnitPrice_TextChanged(sender As Object, e As EventArgs) Handles txtUnitPrice.TextChanged
@@ -148,13 +150,21 @@ Public Class FrmPurchaseOrder
 #End Region
 
 #Region "Add Grid Detail"
+    Sub SumTotalValue()
+        Dim subtotalval As Double
+        subtotalval = 0
+        For i As Integer = 0 To dgvrawmatrial.Rows.Count - 1
+            subtotalval = subtotalval + Val(dgvrawmatrial.Rows(i).Cells(6).Value)
+            '-----------cell 2 disini menunjukan posisi field yang akan kita jumlahkan
+        Next
+        txtSubtotal.Text = subtotalval
+    End Sub
     Sub AddGridDetailRawMatrial()
         With dgvrawmatrial
             .Rows.Add()
             .Item(0, intBarisRawMatrial).Value = cmbRawCode.SelectedValue
             .Item(1, intBarisRawMatrial).Value = cmbRawCode.Text
-            .Item(2, intBarisRawMatrial).Value = cmbRawCode.Text
-            '   .Item(2, intBarisRawMatrial).Value = cmbUnit.SelectedValue
+            .Item(2, intBarisRawMatrial).Value = cmbUnit.SelectedValue
             .Item(3, intBarisRawMatrial).Value = cmbUnit.Text
             .Item(4, intBarisRawMatrial).Value = txtUnitPrice.Text
             .Item(5, intBarisRawMatrial).Value = txtQty.Text
@@ -286,11 +296,9 @@ Public Class FrmPurchaseOrder
                     .UpdatedBy = userID
                     .UpdatedDate = DateTime.Now
                 Case "Update"
-                    .POHeaderID = poBFC.GetPOHeaderID
                     poHeaderID = .POHeaderID
                     .PODate = Format(dtPODate.Value, "yyyy-MM-dd")
-                    .PONo = poBFC.GetPONo(supplierCode)
-                    txtPONo.Text = .PONo
+                    .PONo = txtPONo.Text
                     .CustomerID = cmbCustomer.SelectedValue
                     .SupplierID = cmbSupplier.SelectedValue
                     .ShipViaMethod = txtShipViaMethode.Text
@@ -500,7 +508,7 @@ Public Class FrmPurchaseOrder
         If rawmatrialID > 0 Then
             rawmatrialModel = rawmatrialPo.RetrieveByID(rawmatrialID)
             With rawmatrialModel
-                rawmatrialCode = .RawMaterialCode
+                rawmatrialID = .RawMaterialID
 
             End With
         Else
@@ -686,7 +694,8 @@ Public Class FrmPurchaseOrder
             Try
                 If CheckRawMatrialInList() = True Then
                     AddGridDetailRawMatrial()
-                    ClearRawMatrial()
+                    SumTotalValue()
+                    ' ClearRawMatrial()
                 Else
                     MsgBoxError("Raw Matrial available in list")
                     ClearRawMatrial()

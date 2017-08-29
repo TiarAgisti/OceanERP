@@ -258,7 +258,7 @@ Public Class ClsPO
                 detailModel.POHeaderID = poID
                 detailModel.PODetailID = poDetailID
                 detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
-                detailModel.UnitID = .Rows(detail).Cells(3).Value
+                detailModel.UnitID = .Rows(detail).Cells(2).Value
                 detailModel.Quantity = .Rows(detail).Cells(4).Value
                 detailModel.UnitPrice = .Rows(detail).Cells(5).Value
                 listRawMatrialDetailModel.Add(detailModel)
@@ -352,7 +352,7 @@ Public Class ClsPO
         'insert header
         queryList.Add(SqlInsertHeader(pOHeaderModel))
 
-        'insert fabric detail
+        'insert RawMatrial detail
         For Each detail In listPoDetailModel
             queryList.Add(SqlInsertDetailRawMatrial(detail))
         Next

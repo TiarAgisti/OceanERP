@@ -54,14 +54,15 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabProductName = New System.Windows.Forms.TabPage()
-        Me.cmbUnit = New System.Windows.Forms.ComboBox()
-        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Button()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.btnApprove = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnVoid = New System.Windows.Forms.Button()
-        Me.btnApprove = New System.Windows.Forms.Button()
-        Me.btnUpdate = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
+        Me.cmbUnit = New System.Windows.Forms.ComboBox()
+        Me.Label31 = New System.Windows.Forms.Label()
         Me.Label30 = New System.Windows.Forms.Label()
         Me.txtGrandTotal = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
@@ -105,19 +106,18 @@ Partial Class FrmPurchaseOrder
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtAdressCust = New System.Windows.Forms.TextBox()
-        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabProductName.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         CType(Me.dgvrawmatrial, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabRemark.SuspendLayout()
         CType(Me.dgvRemarks, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label3
@@ -127,7 +127,7 @@ Partial Class FrmPurchaseOrder
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(0, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(892, 43)
+        Me.Label3.Size = New System.Drawing.Size(880, 43)
         Me.Label3.TabIndex = 24
         Me.Label3.Text = "Purchase Order"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -149,7 +149,7 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Location = New System.Drawing.Point(0, 43)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(892, 76)
+        Me.GroupBox1.Size = New System.Drawing.Size(880, 76)
         Me.GroupBox1.TabIndex = 25
         Me.GroupBox1.TabStop = False
         '
@@ -254,11 +254,12 @@ Partial Class FrmPurchaseOrder
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.GroupBox4)
         Me.GroupBox2.Controls.Add(Me.Panel1)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox2.Location = New System.Drawing.Point(0, 119)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(892, 233)
+        Me.GroupBox2.Size = New System.Drawing.Size(880, 233)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Vendor :"
@@ -279,13 +280,13 @@ Partial Class FrmPurchaseOrder
         Me.Panel1.Controls.Add(Me.cmbSupplier)
         Me.Panel1.Location = New System.Drawing.Point(9, 19)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(411, 203)
+        Me.Panel1.Size = New System.Drawing.Size(411, 204)
         Me.Panel1.TabIndex = 0
         '
         'txtEmailSup
         '
         Me.txtEmailSup.Enabled = False
-        Me.txtEmailSup.Location = New System.Drawing.Point(89, 180)
+        Me.txtEmailSup.Location = New System.Drawing.Point(89, 178)
         Me.txtEmailSup.Name = "txtEmailSup"
         Me.txtEmailSup.Size = New System.Drawing.Size(188, 20)
         Me.txtEmailSup.TabIndex = 22
@@ -293,7 +294,7 @@ Partial Class FrmPurchaseOrder
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(8, 183)
+        Me.Label9.Location = New System.Drawing.Point(10, 174)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(32, 13)
         Me.Label9.TabIndex = 21
@@ -302,7 +303,7 @@ Partial Class FrmPurchaseOrder
         'txtFaxSup
         '
         Me.txtFaxSup.Enabled = False
-        Me.txtFaxSup.Location = New System.Drawing.Point(89, 154)
+        Me.txtFaxSup.Location = New System.Drawing.Point(89, 152)
         Me.txtFaxSup.Name = "txtFaxSup"
         Me.txtFaxSup.Size = New System.Drawing.Size(188, 20)
         Me.txtFaxSup.TabIndex = 20
@@ -310,7 +311,7 @@ Partial Class FrmPurchaseOrder
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(8, 157)
+        Me.Label8.Location = New System.Drawing.Point(10, 152)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(24, 13)
         Me.Label8.TabIndex = 19
@@ -319,7 +320,7 @@ Partial Class FrmPurchaseOrder
         'txtPhoneSup
         '
         Me.txtPhoneSup.Enabled = False
-        Me.txtPhoneSup.Location = New System.Drawing.Point(89, 131)
+        Me.txtPhoneSup.Location = New System.Drawing.Point(89, 128)
         Me.txtPhoneSup.Name = "txtPhoneSup"
         Me.txtPhoneSup.Size = New System.Drawing.Size(188, 20)
         Me.txtPhoneSup.TabIndex = 18
@@ -327,7 +328,7 @@ Partial Class FrmPurchaseOrder
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(8, 131)
+        Me.Label7.Location = New System.Drawing.Point(8, 128)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(38, 13)
         Me.Label7.TabIndex = 17
@@ -336,7 +337,7 @@ Partial Class FrmPurchaseOrder
         'txtAddressSup
         '
         Me.txtAddressSup.Enabled = False
-        Me.txtAddressSup.Location = New System.Drawing.Point(89, 62)
+        Me.txtAddressSup.Location = New System.Drawing.Point(89, 60)
         Me.txtAddressSup.Multiline = True
         Me.txtAddressSup.Name = "txtAddressSup"
         Me.txtAddressSup.Size = New System.Drawing.Size(188, 63)
@@ -345,7 +346,7 @@ Partial Class FrmPurchaseOrder
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(3, 65)
+        Me.Label6.Location = New System.Drawing.Point(3, 63)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(39, 13)
         Me.Label6.TabIndex = 9
@@ -354,7 +355,7 @@ Partial Class FrmPurchaseOrder
         'txtCPSup
         '
         Me.txtCPSup.Enabled = False
-        Me.txtCPSup.Location = New System.Drawing.Point(89, 36)
+        Me.txtCPSup.Location = New System.Drawing.Point(89, 34)
         Me.txtCPSup.Name = "txtCPSup"
         Me.txtCPSup.Size = New System.Drawing.Size(188, 20)
         Me.txtCPSup.TabIndex = 8
@@ -362,7 +363,7 @@ Partial Class FrmPurchaseOrder
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(3, 39)
+        Me.Label5.Location = New System.Drawing.Point(3, 37)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(80, 13)
         Me.Label5.TabIndex = 7
@@ -371,7 +372,7 @@ Partial Class FrmPurchaseOrder
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(3, 12)
+        Me.Label4.Location = New System.Drawing.Point(3, 10)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(45, 13)
         Me.Label4.TabIndex = 7
@@ -380,7 +381,7 @@ Partial Class FrmPurchaseOrder
         'cmbSupplier
         '
         Me.cmbSupplier.FormattingEnabled = True
-        Me.cmbSupplier.Location = New System.Drawing.Point(89, 9)
+        Me.cmbSupplier.Location = New System.Drawing.Point(89, 7)
         Me.cmbSupplier.Name = "cmbSupplier"
         Me.cmbSupplier.Size = New System.Drawing.Size(188, 21)
         Me.cmbSupplier.TabIndex = 0
@@ -388,9 +389,9 @@ Partial Class FrmPurchaseOrder
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.TabControl1)
-        Me.GroupBox3.Location = New System.Drawing.Point(5, 367)
+        Me.GroupBox3.Location = New System.Drawing.Point(0, 353)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(882, 385)
+        Me.GroupBox3.Size = New System.Drawing.Size(882, 372)
         Me.GroupBox3.TabIndex = 26
         Me.GroupBox3.TabStop = False
         '
@@ -402,7 +403,7 @@ Partial Class FrmPurchaseOrder
         Me.TabControl1.Location = New System.Drawing.Point(3, 16)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(876, 363)
+        Me.TabControl1.Size = New System.Drawing.Size(876, 349)
         Me.TabControl1.TabIndex = 0
         '
         'TabProductName
@@ -436,27 +437,23 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.Location = New System.Drawing.Point(4, 22)
         Me.TabProductName.Name = "TabProductName"
         Me.TabProductName.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabProductName.Size = New System.Drawing.Size(868, 337)
+        Me.TabProductName.Size = New System.Drawing.Size(868, 323)
         Me.TabProductName.TabIndex = 0
         Me.TabProductName.Text = "Produk Name"
         Me.TabProductName.UseVisualStyleBackColor = True
         '
-        'cmbUnit
+        'Panel3
         '
-        Me.cmbUnit.FormattingEnabled = True
-        Me.cmbUnit.Location = New System.Drawing.Point(110, 32)
-        Me.cmbUnit.Name = "cmbUnit"
-        Me.cmbUnit.Size = New System.Drawing.Size(188, 21)
-        Me.cmbUnit.TabIndex = 135
-        '
-        'Label31
-        '
-        Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(8, 35)
-        Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(26, 13)
-        Me.Label31.TabIndex = 134
-        Me.Label31.Text = "Unit"
+        Me.Panel3.Controls.Add(Me.btnClose)
+        Me.Panel3.Controls.Add(Me.btnSave)
+        Me.Panel3.Controls.Add(Me.btnUpdate)
+        Me.Panel3.Controls.Add(Me.btnApprove)
+        Me.Panel3.Controls.Add(Me.btnPrint)
+        Me.Panel3.Controls.Add(Me.btnVoid)
+        Me.Panel3.Location = New System.Drawing.Point(8, 185)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(485, 32)
+        Me.Panel3.TabIndex = 136
         '
         'btnClose
         '
@@ -466,6 +463,36 @@ Partial Class FrmPurchaseOrder
         Me.btnClose.TabIndex = 130
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
+        '
+        'btnSave
+        '
+        Me.btnSave.Enabled = False
+        Me.btnSave.Location = New System.Drawing.Point(5, 3)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(75, 23)
+        Me.btnSave.TabIndex = 127
+        Me.btnSave.Text = "Save"
+        Me.btnSave.UseVisualStyleBackColor = True
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.Enabled = False
+        Me.btnUpdate.Location = New System.Drawing.Point(86, 3)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(75, 23)
+        Me.btnUpdate.TabIndex = 128
+        Me.btnUpdate.Text = "Update"
+        Me.btnUpdate.UseVisualStyleBackColor = True
+        '
+        'btnApprove
+        '
+        Me.btnApprove.Enabled = False
+        Me.btnApprove.Location = New System.Drawing.Point(248, 3)
+        Me.btnApprove.Name = "btnApprove"
+        Me.btnApprove.Size = New System.Drawing.Size(75, 23)
+        Me.btnApprove.TabIndex = 131
+        Me.btnApprove.Text = "Approve"
+        Me.btnApprove.UseVisualStyleBackColor = True
         '
         'btnPrint
         '
@@ -487,35 +514,22 @@ Partial Class FrmPurchaseOrder
         Me.btnVoid.Text = "Void"
         Me.btnVoid.UseVisualStyleBackColor = True
         '
-        'btnApprove
+        'cmbUnit
         '
-        Me.btnApprove.Enabled = False
-        Me.btnApprove.Location = New System.Drawing.Point(248, 3)
-        Me.btnApprove.Name = "btnApprove"
-        Me.btnApprove.Size = New System.Drawing.Size(75, 23)
-        Me.btnApprove.TabIndex = 131
-        Me.btnApprove.Text = "Approve"
-        Me.btnApprove.UseVisualStyleBackColor = True
+        Me.cmbUnit.FormattingEnabled = True
+        Me.cmbUnit.Location = New System.Drawing.Point(110, 32)
+        Me.cmbUnit.Name = "cmbUnit"
+        Me.cmbUnit.Size = New System.Drawing.Size(188, 21)
+        Me.cmbUnit.TabIndex = 135
         '
-        'btnUpdate
+        'Label31
         '
-        Me.btnUpdate.Enabled = False
-        Me.btnUpdate.Location = New System.Drawing.Point(86, 3)
-        Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(75, 23)
-        Me.btnUpdate.TabIndex = 128
-        Me.btnUpdate.Text = "Update"
-        Me.btnUpdate.UseVisualStyleBackColor = True
-        '
-        'btnSave
-        '
-        Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(5, 3)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 127
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(8, 35)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(26, 13)
+        Me.Label31.TabIndex = 134
+        Me.Label31.Text = "Unit"
         '
         'Label30
         '
@@ -546,7 +560,6 @@ Partial Class FrmPurchaseOrder
         '
         'txtSH
         '
-        Me.txtSH.Enabled = False
         Me.txtSH.Location = New System.Drawing.Point(667, 276)
         Me.txtSH.MaxLength = 50
         Me.txtSH.Name = "txtSH"
@@ -555,7 +568,6 @@ Partial Class FrmPurchaseOrder
         '
         'txtOtherCost
         '
-        Me.txtOtherCost.Enabled = False
         Me.txtOtherCost.Location = New System.Drawing.Point(667, 253)
         Me.txtOtherCost.MaxLength = 50
         Me.txtOtherCost.Name = "txtOtherCost"
@@ -573,7 +585,6 @@ Partial Class FrmPurchaseOrder
         '
         'txtVAT
         '
-        Me.txtVAT.Enabled = False
         Me.txtVAT.Location = New System.Drawing.Point(667, 230)
         Me.txtVAT.MaxLength = 50
         Me.txtVAT.Name = "txtVAT"
@@ -591,7 +602,6 @@ Partial Class FrmPurchaseOrder
         '
         'txtDiscount
         '
-        Me.txtDiscount.Enabled = False
         Me.txtDiscount.Location = New System.Drawing.Point(667, 208)
         Me.txtDiscount.MaxLength = 50
         Me.txtDiscount.Name = "txtDiscount"
@@ -784,9 +794,9 @@ Partial Class FrmPurchaseOrder
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.Panel2)
-        Me.GroupBox4.Location = New System.Drawing.Point(445, 128)
+        Me.GroupBox4.Location = New System.Drawing.Point(432, 0)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(442, 233)
+        Me.GroupBox4.Size = New System.Drawing.Size(442, 227)
         Me.GroupBox4.TabIndex = 27
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Ship To :"
@@ -914,25 +924,11 @@ Partial Class FrmPurchaseOrder
         Me.txtAdressCust.Size = New System.Drawing.Size(188, 63)
         Me.txtAdressCust.TabIndex = 40
         '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.btnClose)
-        Me.Panel3.Controls.Add(Me.btnSave)
-        Me.Panel3.Controls.Add(Me.btnUpdate)
-        Me.Panel3.Controls.Add(Me.btnApprove)
-        Me.Panel3.Controls.Add(Me.btnPrint)
-        Me.Panel3.Controls.Add(Me.btnVoid)
-        Me.Panel3.Location = New System.Drawing.Point(10, 214)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(485, 32)
-        Me.Panel3.TabIndex = 136
-        '
         'FrmPurchaseOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(892, 750)
-        Me.Controls.Add(Me.GroupBox4)
+        Me.ClientSize = New System.Drawing.Size(880, 720)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -951,6 +947,7 @@ Partial Class FrmPurchaseOrder
         Me.TabControl1.ResumeLayout(False)
         Me.TabProductName.ResumeLayout(False)
         Me.TabProductName.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
         CType(Me.dgvrawmatrial, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabRemark.ResumeLayout(False)
         Me.TabRemark.PerformLayout()
@@ -958,7 +955,6 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox4.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
