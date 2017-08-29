@@ -172,8 +172,8 @@
     <Compile Include="Models\Settings\RoleDModel.vb" />
     <Compile Include="Models\Settings\RoleHModel.vb" />
     <Compile Include="Models\Settings\TermApproveModel.vb" />
-    <Compile Include="Models\Transactions\BOMDetailModel.vb" />
-    <Compile Include="Models\Transactions\BOMHeaderModel.vb" />
+    <Compile Include="Models\Masters\BOMDetailModel.vb" />
+    <Compile Include="Models\Masters\BOMHeaderModel.vb" />
     <Compile Include="Models\Transactions\PODetailModel.vb" />
     <Compile Include="Models\Transactions\POHeaderModel.vb" />
     <Compile Include="Models\Transactions\PIBankDetailModel.vb" />
@@ -291,10 +291,10 @@
     <Compile Include="Views\Settings\Form\FrmPrintPreview.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Transactions\Form\FrmBillOfMaterial.Designer.vb">
+    <Compile Include="Views\Masters\Form\FrmBillOfMaterial.Designer.vb">
       <DependentUpon>FrmBillOfMaterial.vb</DependentUpon>
     </Compile>
-    <Compile Include="Views\Transactions\Form\FrmBillOfMaterial.vb">
+    <Compile Include="Views\Masters\Form\FrmBillOfMaterial.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Transactions\Form\FrmProformaInvoice.Designer.vb">
@@ -387,10 +387,10 @@
     <Compile Include="Views\Transactions\Form\FrmPurchaseOrder.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Transactions\List\FrmListBOM.Designer.vb">
+    <Compile Include="Views\Masters\List\FrmListBOM.Designer.vb">
       <DependentUpon>FrmListBOM.vb</DependentUpon>
     </Compile>
-    <Compile Include="Views\Transactions\List\FrmListBOM.vb">
+    <Compile Include="Views\Masters\List\FrmListBOM.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Transactions\List\FrmListProformaInvoice.Designer.vb">
@@ -463,7 +463,7 @@
     <EmbeddedResource Include="Views\Settings\Form\FrmPrintPreview.resx">
       <DependentUpon>FrmPrintPreview.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Transactions\Form\FrmBillOfMaterial.resx">
+    <EmbeddedResource Include="Views\Masters\Form\FrmBillOfMaterial.resx">
       <DependentUpon>FrmBillOfMaterial.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\Form\FrmProformaInvoice.resx">
@@ -511,7 +511,7 @@
     <EmbeddedResource Include="Views\Transactions\Form\FrmPurchaseOrder.resx">
       <DependentUpon>FrmPurchaseOrder.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Transactions\List\FrmListBOM.resx">
+    <EmbeddedResource Include="Views\Masters\List\FrmListBOM.resx">
       <DependentUpon>FrmListBOM.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\List\FrmListProformaInvoice.resx">

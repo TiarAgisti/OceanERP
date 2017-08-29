@@ -117,7 +117,7 @@ Partial Class FrmBillOfMaterial
         Me.cmbStatus.Location = New System.Drawing.Point(325, 88)
         Me.cmbStatus.Name = "cmbStatus"
         Me.cmbStatus.Size = New System.Drawing.Size(208, 21)
-        Me.cmbStatus.TabIndex = 32
+        Me.cmbStatus.TabIndex = 8
         '
         'Label8
         '
@@ -134,7 +134,7 @@ Partial Class FrmBillOfMaterial
         Me.cmbColor.Location = New System.Drawing.Point(325, 61)
         Me.cmbColor.Name = "cmbColor"
         Me.cmbColor.Size = New System.Drawing.Size(208, 21)
-        Me.cmbColor.TabIndex = 30
+        Me.cmbColor.TabIndex = 7
         '
         'Label7
         '
@@ -151,7 +151,7 @@ Partial Class FrmBillOfMaterial
         Me.cmbStyle.Location = New System.Drawing.Point(325, 34)
         Me.cmbStyle.Name = "cmbStyle"
         Me.cmbStyle.Size = New System.Drawing.Size(208, 21)
-        Me.cmbStyle.TabIndex = 28
+        Me.cmbStyle.TabIndex = 6
         '
         'Label3
         '
@@ -168,7 +168,7 @@ Partial Class FrmBillOfMaterial
         Me.cmbBuyer.Location = New System.Drawing.Point(325, 7)
         Me.cmbBuyer.Name = "cmbBuyer"
         Me.cmbBuyer.Size = New System.Drawing.Size(208, 21)
-        Me.cmbBuyer.TabIndex = 26
+        Me.cmbBuyer.TabIndex = 5
         '
         'txtSpec
         '
@@ -176,7 +176,7 @@ Partial Class FrmBillOfMaterial
         Me.txtSpec.MaxLength = 150
         Me.txtSpec.Name = "txtSpec"
         Me.txtSpec.Size = New System.Drawing.Size(196, 20)
-        Me.txtSpec.TabIndex = 23
+        Me.txtSpec.TabIndex = 4
         '
         'Label5
         '
@@ -193,7 +193,7 @@ Partial Class FrmBillOfMaterial
         Me.txtCompo.MaxLength = 150
         Me.txtCompo.Name = "txtCompo"
         Me.txtCompo.Size = New System.Drawing.Size(196, 20)
-        Me.txtCompo.TabIndex = 22
+        Me.txtCompo.TabIndex = 3
         '
         'Label2
         '
@@ -219,7 +219,7 @@ Partial Class FrmBillOfMaterial
         Me.cmbFabric.Location = New System.Drawing.Point(83, 33)
         Me.cmbFabric.Name = "cmbFabric"
         Me.cmbFabric.Size = New System.Drawing.Size(196, 21)
-        Me.cmbFabric.TabIndex = 16
+        Me.cmbFabric.TabIndex = 2
         '
         'txtCode
         '
@@ -264,7 +264,7 @@ Partial Class FrmBillOfMaterial
         Me.btnDelList.Location = New System.Drawing.Point(430, 72)
         Me.btnDelList.Name = "btnDelList"
         Me.btnDelList.Size = New System.Drawing.Size(105, 23)
-        Me.btnDelList.TabIndex = 58
+        Me.btnDelList.TabIndex = 15
         Me.btnDelList.Text = "Delete From List"
         Me.btnDelList.UseVisualStyleBackColor = True
         '
@@ -274,14 +274,14 @@ Partial Class FrmBillOfMaterial
         Me.txtQty.MaxLength = 150
         Me.txtQty.Name = "txtQty"
         Me.txtQty.Size = New System.Drawing.Size(168, 20)
-        Me.txtQty.TabIndex = 42
+        Me.txtQty.TabIndex = 13
         '
         'btnAddList
         '
         Me.btnAddList.Location = New System.Drawing.Point(319, 72)
         Me.btnAddList.Name = "btnAddList"
         Me.btnAddList.Size = New System.Drawing.Size(105, 23)
-        Me.btnAddList.TabIndex = 57
+        Me.btnAddList.TabIndex = 14
         Me.btnAddList.Text = "Add To List"
         Me.btnAddList.UseVisualStyleBackColor = True
         '
@@ -309,20 +309,20 @@ Partial Class FrmBillOfMaterial
         Me.cmbUnit.Location = New System.Drawing.Point(367, 19)
         Me.cmbUnit.Name = "cmbUnit"
         Me.cmbUnit.Size = New System.Drawing.Size(168, 21)
-        Me.cmbUnit.TabIndex = 40
+        Me.cmbUnit.TabIndex = 12
         '
         'txtSuppRaw
         '
-        Me.txtSuppRaw.Location = New System.Drawing.Point(118, 72)
+        Me.txtSuppRaw.Location = New System.Drawing.Point(85, 72)
         Me.txtSuppRaw.MaxLength = 150
         Me.txtSuppRaw.Name = "txtSuppRaw"
-        Me.txtSuppRaw.Size = New System.Drawing.Size(178, 20)
-        Me.txtSuppRaw.TabIndex = 38
+        Me.txtSuppRaw.Size = New System.Drawing.Size(196, 20)
+        Me.txtSuppRaw.TabIndex = 11
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(15, 75)
+        Me.Label12.Location = New System.Drawing.Point(6, 75)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(45, 13)
         Me.Label12.TabIndex = 39
@@ -330,16 +330,16 @@ Partial Class FrmBillOfMaterial
         '
         'txtSpecRaw
         '
-        Me.txtSpecRaw.Location = New System.Drawing.Point(118, 46)
+        Me.txtSpecRaw.Location = New System.Drawing.Point(85, 46)
         Me.txtSpecRaw.MaxLength = 150
         Me.txtSpecRaw.Name = "txtSpecRaw"
-        Me.txtSpecRaw.Size = New System.Drawing.Size(178, 20)
-        Me.txtSpecRaw.TabIndex = 36
+        Me.txtSpecRaw.Size = New System.Drawing.Size(196, 20)
+        Me.txtSpecRaw.TabIndex = 10
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(15, 49)
+        Me.Label11.Location = New System.Drawing.Point(6, 49)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(68, 13)
         Me.Label11.TabIndex = 37
@@ -348,19 +348,19 @@ Partial Class FrmBillOfMaterial
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(12, 22)
+        Me.Label10.Location = New System.Drawing.Point(6, 22)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(100, 13)
+        Me.Label10.Size = New System.Drawing.Size(69, 13)
         Me.Label10.TabIndex = 35
-        Me.Label10.Text = "Raw Material Name"
+        Me.Label10.Text = "Raw Material"
         '
         'cmbRaw
         '
         Me.cmbRaw.FormattingEnabled = True
-        Me.cmbRaw.Location = New System.Drawing.Point(118, 19)
+        Me.cmbRaw.Location = New System.Drawing.Point(85, 19)
         Me.cmbRaw.Name = "cmbRaw"
-        Me.cmbRaw.Size = New System.Drawing.Size(178, 21)
-        Me.cmbRaw.TabIndex = 34
+        Me.cmbRaw.Size = New System.Drawing.Size(196, 21)
+        Me.cmbRaw.TabIndex = 9
         '
         'dgv
         '
@@ -369,7 +369,7 @@ Partial Class FrmBillOfMaterial
         Me.dgv.Location = New System.Drawing.Point(0, 265)
         Me.dgv.Name = "dgv"
         Me.dgv.Size = New System.Drawing.Size(547, 178)
-        Me.dgv.TabIndex = 25
+        Me.dgv.TabIndex = 16
         '
         'Panel2
         '
@@ -388,7 +388,7 @@ Partial Class FrmBillOfMaterial
         Me.btnClose.Location = New System.Drawing.Point(172, 11)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
-        Me.btnClose.TabIndex = 81
+        Me.btnClose.TabIndex = 19
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -398,7 +398,7 @@ Partial Class FrmBillOfMaterial
         Me.btnUpdate.Location = New System.Drawing.Point(91, 11)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(75, 23)
-        Me.btnUpdate.TabIndex = 80
+        Me.btnUpdate.TabIndex = 18
         Me.btnUpdate.Text = "Update"
         Me.btnUpdate.UseVisualStyleBackColor = True
         '
@@ -408,7 +408,7 @@ Partial Class FrmBillOfMaterial
         Me.btnSave.Location = New System.Drawing.Point(10, 11)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 79
+        Me.btnSave.TabIndex = 17
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
