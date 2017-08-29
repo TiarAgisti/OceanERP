@@ -115,11 +115,11 @@
             dataAccess.reader.Read()
 
             If IsDBNull(dataAccess.reader.Item("BOMCode")) Then
-                myCode = "BOM" + "000001" + "/" + buyerCode + "/" + Format(Now.Year)
+                myCode = "BOM" + "0000001" + "/" + buyerCode + "/" + Format(Now.Year)
             Else
-                Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("BOMCode"), 9)
-                hitung = Microsoft.VisualBasic.Right(xCode, 6) + 1
-                myCode = "BOM" & Microsoft.VisualBasic.Right("000000" & hitung, 6) & "/" & buyerCode & "/" & Format(Now.Year)
+                Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("BOMCode"), 10)
+                hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
+                myCode = "BOM" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & buyerCode & "/" & Format(Now.Year)
             End If
             Return myCode
         Catch ex As Exception

@@ -313,16 +313,16 @@ Partial Class FrmBillOfMaterial
         '
         'txtSuppRaw
         '
-        Me.txtSuppRaw.Location = New System.Drawing.Point(118, 72)
+        Me.txtSuppRaw.Location = New System.Drawing.Point(85, 72)
         Me.txtSuppRaw.MaxLength = 150
         Me.txtSuppRaw.Name = "txtSuppRaw"
-        Me.txtSuppRaw.Size = New System.Drawing.Size(178, 20)
+        Me.txtSuppRaw.Size = New System.Drawing.Size(196, 20)
         Me.txtSuppRaw.TabIndex = 38
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(15, 75)
+        Me.Label12.Location = New System.Drawing.Point(6, 75)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(45, 13)
         Me.Label12.TabIndex = 39
@@ -330,16 +330,16 @@ Partial Class FrmBillOfMaterial
         '
         'txtSpecRaw
         '
-        Me.txtSpecRaw.Location = New System.Drawing.Point(118, 46)
+        Me.txtSpecRaw.Location = New System.Drawing.Point(85, 46)
         Me.txtSpecRaw.MaxLength = 150
         Me.txtSpecRaw.Name = "txtSpecRaw"
-        Me.txtSpecRaw.Size = New System.Drawing.Size(178, 20)
+        Me.txtSpecRaw.Size = New System.Drawing.Size(196, 20)
         Me.txtSpecRaw.TabIndex = 36
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(15, 49)
+        Me.Label11.Location = New System.Drawing.Point(6, 49)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(68, 13)
         Me.Label11.TabIndex = 37
@@ -348,18 +348,18 @@ Partial Class FrmBillOfMaterial
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(12, 22)
+        Me.Label10.Location = New System.Drawing.Point(6, 22)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(100, 13)
+        Me.Label10.Size = New System.Drawing.Size(69, 13)
         Me.Label10.TabIndex = 35
-        Me.Label10.Text = "Raw Material Name"
+        Me.Label10.Text = "Raw Material"
         '
         'cmbRaw
         '
         Me.cmbRaw.FormattingEnabled = True
-        Me.cmbRaw.Location = New System.Drawing.Point(118, 19)
+        Me.cmbRaw.Location = New System.Drawing.Point(85, 19)
         Me.cmbRaw.Name = "cmbRaw"
-        Me.cmbRaw.Size = New System.Drawing.Size(178, 21)
+        Me.cmbRaw.Size = New System.Drawing.Size(196, 21)
         Me.cmbRaw.TabIndex = 34
         '
         'dgv
