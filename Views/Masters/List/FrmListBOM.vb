@@ -106,6 +106,18 @@
         ListData()
         PopulateStatus()
     End Sub
+
+    Function GetID() As Long
+        Dim row As Integer
+        Dim headerID As Long
+        If dgv.Rows.Count > 1 Then
+            row = dgv.CurrentRow.Index
+            headerID = dgv.Item(0, row).Value
+        Else
+            Throw New Exception("No data available")
+        End If
+        Return headerID
+    End Function
 #End Region
 
 #Region "Button"
@@ -160,7 +172,14 @@
     End Sub
 
     Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
-
+        Try
+            Dim frm As FrmBillOfMaterial = New FrmBillOfMaterial
+            frm.conditionBOM = "Update"
+            FrmBillOfMaterial.bomHeaderID = GetID()
+            frm.ShowDialog()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
@@ -188,6 +207,14 @@
 
     Private Sub cmbStatus_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbStatus.KeyPress
         e.KeyChar = Chr(0)
+    End Sub
+
+    Private Sub FrmListBOM_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
+        Try
+            ListData()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 #End Region
 End Class

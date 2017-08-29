@@ -298,21 +298,21 @@
         Application.Exit()
     End Sub
 
-    Private Sub MenuUtama_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
-        HideAllMenu()
-        If userID <> 0 Then
-            Dim roleBFC As ClsPermission = New ClsPermission
-            Dim listRole As New List(Of RoleDModel)
-            listRole = roleBFC.RetrieveDetails(roleIDUser)
-            For Each list As RoleDModel In listRole
-                CheckPermissionMenu(list.MenuID)
-            Next
-            toltipUserName.Text = userName
-            toltipTanggal.Text = Format(Now, "dd-MM-yyyy")
-            toltipIP.Text = stringIPUser
-            toltipCopyRight.Text = copyRight
-        End If
-    End Sub
+    'Private Sub MenuUtama_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
+    '    HideAllMenu()
+    '    If userID <> 0 Then
+    '        Dim roleBFC As ClsPermission = New ClsPermission
+    '        Dim listRole As New List(Of RoleDModel)
+    '        listRole = roleBFC.RetrieveDetails(roleIDUser)
+    '        For Each list As RoleDModel In listRole
+    '            CheckPermissionMenu(list.MenuID)
+    '        Next
+    '        toltipUserName.Text = userName
+    '        toltipTanggal.Text = Format(Now, "dd-MM-yyyy")
+    '        toltipIP.Text = stringIPUser
+    '        toltipCopyRight.Text = copyRight
+    '    End If
+    'End Sub
     Private Sub menuKeluar_Click(sender As Object, e As EventArgs) Handles menuKeluar.Click
         Dim result As DialogResult = MsgBoxQuestionExit()
         If result = MsgBoxResult.Yes Then

@@ -82,6 +82,8 @@
                     bomDetailModel.UnitID = .Item("UnitID")
                     bomDetailModel.Qty = .Item("Qty")
                     bomDetailModel.RawMaterialName = .Item("RawMaterialName")
+                    bomDetailModel.SpecRawMaterial = .Item("SpecRawMaterial")
+                    bomDetailModel.VendorName = .Item("VendorName")
                     bomDetailModel.UnitName = .Item("UnitName")
                     myList.Add(bomDetailModel)
                 End While
