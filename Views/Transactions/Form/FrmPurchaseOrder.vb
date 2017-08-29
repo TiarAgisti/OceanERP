@@ -317,7 +317,7 @@ Public Class FrmPurchaseOrder
                 Case "Update"
                     poHeaderID = .POHeaderID
                     .PODate = Format(dtPODate.Value, "yyyy-MM-dd")
-                    .PONo = txtPONo.Text
+                    txtPONo.Text = .PONo
                     .CustomerID = cmbCustomer.SelectedValue
                     .SupplierID = cmbSupplier.SelectedValue
                     .ShipViaMethod = txtShipViaMethode.Text
@@ -619,6 +619,7 @@ Public Class FrmPurchaseOrder
         ClearAllData()
         GridDetailALL()
         ComboBoxALL()
+        txtShipViaMethode.Focus()
         btnApprove.Enabled = False
         btnVoid.Enabled = False
         btnPrint.Enabled = False
@@ -632,8 +633,9 @@ Public Class FrmPurchaseOrder
             CheckPermissions()
             PrepareHeaderByID()
             PrepareRawMatrialByHeaderID()
-
             PrepareRemarksByHeaderID()
+            RetrieveSupplier()
+            RetrieveCustomer()
             If statusPO = 0 Then btnPrint.Enabled = False Else btnPrint.Enabled = True
             If statusPO = 0 Or statusPO = 2 Then btnApprove.Enabled = False
             If statusPO = 0 Then btnVoid.Enabled = False
@@ -681,7 +683,7 @@ Public Class FrmPurchaseOrder
 
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-        If CheckEmptyHeader() = False And CheckEmptyRawMatrial() = False Then
+        If CheckEmptyHeader() = False Then
             If condition = "Update" Then
                 UpdateData()
             End If

@@ -47,32 +47,32 @@ Public Class ClsPO
                         poHeaderModel.POHeaderID = headerID
                         poHeaderModel.PODate = .Item("PODate")
                         poHeaderModel.PONo = .Item("PONo")
-                        poHeaderModel.SupplierID = .Item("[SupplierID]")
-                        poHeaderModel.SupplierCode = .Item("[SupplierCode]")
-                        poHeaderModel.SupplierName = .Item("[SupplierName]")
-                        poHeaderModel.AddressSupplier = .Item("[AddressSupplier]")
-                        poHeaderModel.TelephoneSupplier = .Item("[TelephoneSupplier]")
-                        poHeaderModel.FaxSupplier = .Item("[FaxSupplier]")
-                        poHeaderModel.ContactPersonSupplier = .Item("[ContactPersonSupplier]")
-                        poHeaderModel.EmailSupplier = .Item("[EmailSupplier]")
-                        poHeaderModel.CustomerID = .Item("[CustomerID]")
-                        poHeaderModel.CustomerCode = .Item("[CustomerCode]")
-                        poHeaderModel.CustomerName = .Item("[CustomerName]")
-                        poHeaderModel.AddressCustomer = .Item("[AddressCustomer]")
-                        poHeaderModel.TelephoneCustomer = .Item("[TelephoneCustomer]")
-                        poHeaderModel.FaxCustomer = .Item("[FaxCustomer]")
-                        poHeaderModel.EmailCustomer = .Item("[EmailCustomer]")
-                        poHeaderModel.ShipViaMethod = .Item("[ShipViaMethod]")
-                        poHeaderModel.ShippingDate = .Item("[ShippingDate]")
-                        poHeaderModel.TermOfPaymentID = .Item("[TermOfPaymentID]")
-                        poHeaderModel.TermOfPayment = .Item("[TermOfPayment]")
-                        poHeaderModel.ExpectedReceiptDate = .Item("[ExpectedReceiptDate]")
-                        poHeaderModel.Subtotal = .Item("[Subtotal]")
-                        poHeaderModel.Discount = .Item("[Discount]")
-                        poHeaderModel.VATRate = .Item("[VATRate]")
-                        poHeaderModel.SH = .Item("[SH]")
-                        poHeaderModel.GrandTotal = .Item("[GrandTotal]")
-                        poHeaderModel.Status = .Item("[Status]")
+                        poHeaderModel.SupplierID = .Item("SupplierID")
+                        poHeaderModel.SupplierCode = .Item("SupplierCode")
+                        poHeaderModel.SupplierName = .Item("SupplierName")
+                        poHeaderModel.AddressSupplier = .Item("AddressSupplier")
+                        poHeaderModel.TelephoneSupplier = .Item("TelephoneSupplier")
+                        poHeaderModel.FaxSupplier = .Item("FaxSupplier")
+                        poHeaderModel.ContactPersonSupplier = .Item("ContactPersonSupplier")
+                        poHeaderModel.EmailSupplier = .Item("EmailSupplier")
+                        poHeaderModel.CustomerID = .Item("CustomerID")
+                        poHeaderModel.CustomerCode = .Item("CustomerCode")
+                        poHeaderModel.CustomerName = .Item("CustomerName")
+                        poHeaderModel.AddressCustomer = .Item("AddressCustomer")
+                        poHeaderModel.TelephoneCustomer = .Item("TelephoneCustomer")
+                        poHeaderModel.FaxCustomer = .Item("FaxCustomer")
+                        poHeaderModel.EmailCustomer = .Item("EmailCustomer")
+                        poHeaderModel.ShipViaMethod = .Item("ShipViaMethod")
+                        poHeaderModel.ShippingDate = .Item("ShippingDate")
+                        poHeaderModel.TermOfPaymentID = .Item("TermOfPaymentID")
+                        poHeaderModel.TermOfPayment = .Item("TermOfPayment")
+                        poHeaderModel.ExpectedReceiptDate = .Item("ExpectedReceiptDate")
+                        poHeaderModel.Subtotal = .Item("Subtotal")
+                        poHeaderModel.Discount = .Item("Discount")
+                        poHeaderModel.VATRate = .Item("VATRate")
+                        poHeaderModel.SH = .Item("SH")
+                        poHeaderModel.GrandTotal = .Item("GrandTotal")
+                        poHeaderModel.Status = .Item("Status")
                     End If
                 End With
             End While
@@ -93,14 +93,15 @@ Public Class ClsPO
             With dataAccess.reader
                 While .Read
                     Dim poDetailModel As PODetailModel = New PODetailModel
-                    poDetailModel.POHeaderID = .Item("PIHeaderID")
-                    poDetailModel.PODetailID = .Item("PIDetailID")
+                    poDetailModel.POHeaderID = .Item("POHeaderID")
+                    poDetailModel.PODetailID = .Item("PODetailID")
                     poDetailModel.RawMaterialID = .Item("RawMaterialID")
                     poDetailModel.RawMaterialName = .Item("RawMaterialName")
                     poDetailModel.UnitID = .Item("UnitID")
                     poDetailModel.UnitName = .Item("UnitName")
                     poDetailModel.Quantity = .Item("Quantity")
                     poDetailModel.UnitPrice = .Item("UnitPrice")
+                    myList.Add(poDetailModel)
                 End While
                 .Close()
             End With
@@ -308,7 +309,7 @@ Public Class ClsPO
                                     ",VATRate = '" & myModel.VATRate & "',OtherCost = '" & myModel.OtherCost & "'" &
                                     ",SH='" & myModel.SH & "',GrandTotal = '" & myModel.GrandTotal & "'" &
                                     ",Status = '" & myModel.Status & "',UpdatedBy = '" & myModel.UpdatedBy & "'" &
-                                    ",UpdatedDate = '" & myModel.UpdatedDate & "' Where PIHeaderID = '" & myModel.POHeaderID & "'"
+                                    ",UpdatedDate = '" & myModel.UpdatedDate & "' Where POHeaderID = '" & myModel.POHeaderID & "'"
         Return SQL
     End Function
     Protected Function SqlInsertDetailRawMatrial(myModel As PODetailModel) As String
