@@ -28,6 +28,7 @@
         End Set
     End Property
 
+
     Private xQuantity As Integer
     Public Property Quantity() As Integer
         Get

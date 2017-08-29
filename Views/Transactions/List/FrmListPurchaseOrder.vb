@@ -43,7 +43,9 @@
             dgv.Columns(10).HeaderText = "Expected Receipt Date"
             dgv.Columns(10).DefaultCellStyle.Format = "dd-MMM-yyyy"
             dgv.Columns(11).HeaderText = "Customer ID"
+            dgv.Columns(11).Visible = False
             dgv.Columns(12).HeaderText = "Supplier ID"
+            dgv.Columns(12).Visible = False
             dgv.Columns(13).HeaderText = "Term Of Payment ID"
             dgv.Columns(13).Visible = False
             dgv.Columns(14).HeaderText = "Status"
@@ -74,7 +76,7 @@
 
 
         Dim poBFC As ClsPO = New ClsPO
-        dgv.DataSource = poBFC.RetrieveListPurchaseOrder(poNo, dateFrom, dateTo, customer, supplier)
+        dgv.DataSource = poBFC.RetrieveListPurchaseOrder(Trim(poNo), dateFrom, dateTo, Trim(customer), Trim(supplier))
         dgv.ReadOnly = True
         PropertiesGrid()
     End Sub
@@ -151,8 +153,6 @@
     Private Sub FrmListPurchaseOrder_Activated(sender As Object, e As EventArgs) Handles Me.Activated
         ListData()
     End Sub
-
-
 #End Region
 
 End Class
