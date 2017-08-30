@@ -14,6 +14,8 @@
         txtName.Clear()
         txtCompo.Clear()
         txtSpec.Clear()
+        txtWidth.Clear()
+        txtWeight.Clear()
         cmbSupp.Text = ""
         cmbCari.Text = ""
         txtCari.Clear()
@@ -32,11 +34,17 @@
             .Columns(4).HeaderText = "Specification"
             .Columns(4).Width = 150
 
-            .Columns(5).HeaderText = "Supplier"
+            .Columns(5).HeaderText = "Width"
             .Columns(5).Width = 150
 
-            .Columns(6).Visible = False
-            .Columns(7).Visible = False
+            .Columns(6).HeaderText = "Weight"
+            .Columns(6).Width = 150
+
+            .Columns(7).HeaderText = "Supplier"
+            .Columns(7).Width = 150
+
+            .Columns(8).Visible = False
+            .Columns(9).Visible = False
         End With
     End Sub
     Sub ListFabric(myOptions As String, myParam As String)
@@ -54,12 +62,18 @@
     Sub ComboBoxSupplier()
         Dim vendorBFC As ClsVendor = New ClsVendor
         Dim statusVendor As Char = "S"
-        vendorBFC.ComboBoxVendor(cmbSupp, statusVendor)
+        Try
+            vendorBFC.ComboBoxVendor(cmbSupp, statusVendor)
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
     Sub EnabledText(status As Boolean)
         txtName.Enabled = status
         txtCompo.Enabled = status
         txtSpec.Enabled = status
+        txtWidth.Enabled = status
+        txtWeight.Enabled = status
         cmbSupp.Enabled = status
     End Sub
     Sub CheckPermissions()
@@ -128,6 +142,8 @@
                     .FabricName = txtName.Text
                     .Composition = txtCompo.Text
                     .Specification = txtSpec.Text
+                    .Width = txtWidth.Text
+                    .Weight = txtWeight.Text
                     .VendorID = cmbSupp.SelectedValue
                     .IsActive = True
                     .CreatedBy = userID
@@ -141,6 +157,8 @@
                     .FabricName = txtName.Text
                     .Composition = txtCompo.Text
                     .Specification = txtSpec.Text
+                    .Width = txtWidth.Text
+                    .Weight = txtWeight.Text
                     .VendorID = cmbSupp.SelectedValue
                     .IsActive = True
                     .UpdatedBy = userID
@@ -266,6 +284,18 @@
 
     Private Sub txtSpec_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSpec.KeyPress
         If e.KeyChar = Chr(13) Then
+            txtWidth.Focus()
+        End If
+    End Sub
+
+    Private Sub txtWidth_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWidth.KeyPress
+        If e.KeyChar = Chr(13) Then
+            txtWeight.Focus()
+        End If
+    End Sub
+
+    Private Sub txtWeight_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWeight.KeyPress
+        If e.KeyChar = Chr(13) Then
             cmbSupp.Focus()
         End If
     End Sub
@@ -297,7 +327,18 @@
             fabricName = .Item(2, row).Value
             txtCompo.Text = .Item(3, row).Value
             txtSpec.Text = .Item(4, row).Value
-            cmbSupp.SelectedValue = .Item(6, row).Value
+            If IsDBNull(.Item(5, row).Value) Then
+                txtWidth.Text = ""
+            Else
+                txtWidth.Text = .Item(5, row).Value
+            End If
+            If IsDBNull(.Item(6, row).Value) Then
+                txtWeight.Text = ""
+            Else
+                txtWeight.Text = .Item(6, row).Value
+            End If
+
+            cmbSupp.SelectedValue = .Item(8, row).Value
         End With
 
         display = "Update"

@@ -129,7 +129,8 @@
     <Compile Include="BisnisFlowControl\Settings\ClsConfig.vb" />
     <Compile Include="BisnisFlowControl\Settings\ClsLogHistory.vb" />
     <Compile Include="BisnisFlowControl\Settings\ClsPermission.vb" />
-    <Compile Include="BisnisFlowControl\Transactions\ClsBOM.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsBOM.vb" />
+    <Compile Include="BisnisFlowControl\Transactions\ClsBonOrder.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsPO.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsProformaInvoice.vb" />
     <Compile Include="DataAccess\ClsDataAccess.vb" />
