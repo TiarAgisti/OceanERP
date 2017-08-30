@@ -105,7 +105,7 @@
                 myCode = "BON" + "0000001" + "/" + customerCode + "/" + Format(Now.Year)
             Else
                 Dim xtahun As String = Microsoft.VisualBasic.Right(dataAccess.reader.Item("Code"), 4)
-                If xtahun = Format(Now.Year) Then
+                If xtahun <> Format(Now.Year) Then
                     Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("Code"), 10)
                     hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
                     myCode = "BON" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & customerCode & "/" & Format(Now.Year)

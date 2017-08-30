@@ -120,7 +120,7 @@
                 myCode = "BOM" + "0000001" + "/" + buyerCode + "/" + Format(Now.Year)
             Else
                 Dim xtahun As String = Microsoft.VisualBasic.Right(dataAccess.reader.Item("BOMCode"), 4)
-                If xtahun = Format(Now.Year) Then
+                If xtahun <> Format(Now.Year) Then
                     myCode = "BOM" + "0000001" + "/" + buyerCode + "/" + Format(Now.Year)
                 Else
                     Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("BOMCode"), 10)
