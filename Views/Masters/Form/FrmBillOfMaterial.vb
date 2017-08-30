@@ -283,6 +283,19 @@
 #End Region
 
 #Region "Function"
+    Sub RetrieveBuyer()
+        Dim vendorBFC As ClsVendor = New ClsVendor
+        Dim vendorModel As VendorModel = New VendorModel
+        Dim obj As Integer = cmbBuyer.SelectedValue
+        If obj > 0 Then
+            vendorModel = vendorBFC.RetrieveVendorByID(obj, "C")
+            With vendorModel
+                buyerCode = .VendorCode
+            End With
+        Else
+            MsgBoxError("Buyer not valid")
+        End If
+    End Sub
     Sub RetrieveFabric()
         Dim fabricBFC As ClsFabric = New ClsFabric
         Dim fabricModel As FabricModel = New FabricModel
@@ -322,6 +335,7 @@
     Sub PrepareByHeaderID()
         Dim headerModel As BOMHeaderModel = New BOMHeaderModel
         Dim bomBFC As ClsBOM = New ClsBOM
+        ComboBoxAll()
         headerModel = bomBFC.RetrieveByID(bomHeaderID)
         With headerModel
             txtCode.Text = .BOMCode
@@ -370,6 +384,7 @@
         GridDetailRaw()
         ComboBoxAll()
         cmbFabric.Focus()
+        btnUpdate.Enabled = False
     End Sub
     Sub PreUpdateDisplay()
         Try
@@ -379,6 +394,7 @@
             PrepareByHeaderID()
             PrepareDetailByHeaderID()
             cmbFabric.Focus()
+            btnSave.Enabled = False
         Catch ex As Exception
             Throw ex
         End Try
@@ -421,8 +437,7 @@
             If bomBFC.UpdateData(SetDataHeader, SetDetail(bomHeaderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxUpdated()
                 CheckPermissions()
-                btnSave.Enabled = False
-                btnUpdate.Enabled = False
+                PreCreateDisplay()
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -551,6 +566,14 @@
         If e.KeyChar = Chr(13) Then
             btnAddList.Focus()
         End If
+    End Sub
+
+    Private Sub cmbBuyer_Validated(sender As Object, e As EventArgs) Handles cmbBuyer.Validated
+        Try
+            RetrieveBuyer()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 #End Region
 End Class
