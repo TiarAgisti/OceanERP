@@ -37,6 +37,10 @@ Public Class FrmPurchaseOrder
         Dim unitRaw As ClsUnit = New ClsUnit
         unitRaw.ComboBoxUnit(cmbUnit)
     End Sub
+    Sub ComboBoxCurrency()
+        Dim CurrCode As ClsCurrency = New ClsCurrency
+        CurrCode.ComboBoxCurrency(cmbCurrency)
+    End Sub
     Sub ComboBoxTermOfPayment()
         Dim topBFC As ClsTermOfPayment = New ClsTermOfPayment
         topBFC.ComboBoxTOP(cmbTOP)
@@ -58,6 +62,11 @@ Public Class FrmPurchaseOrder
             .Columns.Add(4, "Unit Price")
             .Columns.Add(5, "Quantity")
             .Columns.Add(6, "Total")
+
+            .Columns.Add(7, "Currrency ID")
+            .Columns(7).Visible = False
+
+            .Columns.Add(8, "Currency")
 
         End With
     End Sub
@@ -86,7 +95,6 @@ Public Class FrmPurchaseOrder
         txtFaxCust.Clear()
         txtEmailCust.Clear()
         cmbTOP.Text = ""
-
         txtUnitPrice.Text = 0
         txtQty.Text = 0
         txtTotal.Text = 0
@@ -106,6 +114,7 @@ Public Class FrmPurchaseOrder
         txtUnitPrice.Clear()
         txtQty.Clear()
         txtTotal.Clear()
+        cmbCurrency.Text = ""
     End Sub
     Sub ClearRemarks()
         txtRemarks.Clear()
@@ -160,7 +169,7 @@ Public Class FrmPurchaseOrder
         subtotalval = 0
         For i As Integer = 0 To dgvrawmatrial.Rows.Count - 1
             subtotalval = subtotalval + Val(dgvrawmatrial.Rows(i).Cells(6).Value)
-            '-----------cell 2 disini menunjukan posisi field yang akan kita jumlahkan
+            '-----------cell 6 disini menunjukan posisi field yang akan kita jumlahkan
         Next
         txtSubtotal.Text = subtotalval
         txtVAT.Text = Val(txtSubtotal.Text) * 0.1
@@ -185,10 +194,11 @@ Public Class FrmPurchaseOrder
             .Item(1, intBarisRawMatrial).Value = cmbRawCode.Text
             .Item(2, intBarisRawMatrial).Value = cmbUnit.SelectedValue
             .Item(3, intBarisRawMatrial).Value = cmbUnit.Text
-            .Item(4, intBarisRawMatrial).Value = txtQty.Text
-            .Item(5, intBarisRawMatrial).Value = txtUnitPrice.Text
+            .Item(4, intBarisRawMatrial).Value = txtUnitPrice.Text
+            .Item(5, intBarisRawMatrial).Value = txtQty.Text
             .Item(6, intBarisRawMatrial).Value = txtTotal.Text
-
+            .Item(7, intBarisRawMatrial).Value = cmbCurrency.SelectedValue
+            .Item(8, intBarisRawMatrial).Value = cmbCurrency.Text
         End With
         intBarisRawMatrial = intBarisRawMatrial + 1
     End Sub
@@ -438,7 +448,7 @@ Public Class FrmPurchaseOrder
     Sub PrintData()
         Try
             Dim poPrint As ClsPrintOut = New ClsPrintOut
-            If poPrint.PrintOutProformaInvoice(txtPONo.Text) Then
+            If poPrint.PrintOutPurchaseOrder(txtPONo.Text) Then
                 PreCreatedisplay()
             Else
                 MsgBoxError("Failed to print")
@@ -478,8 +488,9 @@ Public Class FrmPurchaseOrder
         ComboBoxRawMaterial()
         ComboBoxSupplier()
         ComboBoxUnit()
+        ComboBoxCurrency()
         ComboBoxTermOfPayment()
-        ComboBoxUnit()
+
 
     End Sub
     Sub RetrieveSupplier()
@@ -585,8 +596,10 @@ Public Class FrmPurchaseOrder
                     .Item(1, intBarisRawMatrial).Value = detail.RawMaterialName
                     .Item(2, intBarisRawMatrial).Value = detail.UnitID
                     .Item(3, intBarisRawMatrial).Value = detail.UnitName
-                    .Item(4, intBarisRawMatrial).Value = detail.Quantity
-                    .Item(5, intBarisRawMatrial).Value = detail.UnitPrice
+                    .Item(4, intBarisRawMatrial).Value = detail.UnitPrice
+                    .Item(5, intBarisRawMatrial).Value = detail.Quantity
+                    .Item(6, intBarisRawMatrial).Value = detail.CurrencyID
+                    .Item(7, intBarisRawMatrial).Value = detail.CurrencyCode
 
                 End With
                 intBarisRawMatrial = intBarisRawMatrial + 1
@@ -755,6 +768,7 @@ Public Class FrmPurchaseOrder
         End If
     End Sub
 #End Region
+
 #Region "Row State Change"
     Private Sub dgvRemarks_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgvRemarks.RowStateChanged
         intPostRemarks = e.Row.Index
@@ -818,6 +832,16 @@ Public Class FrmPurchaseOrder
             txtSH.Focus()
         End If
     End Sub
+
+    Private Sub txtCurrency_SelectedIndexChanged(sender As Object, e As EventArgs)
+        txtQty.Focus()
+    End Sub
+
+    Private Sub cmbCurrency_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCurrency.SelectedIndexChanged
+
+    End Sub
+
+
 #End Region
 
 End Class

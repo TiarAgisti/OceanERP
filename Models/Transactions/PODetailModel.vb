@@ -95,5 +95,31 @@
             xUnitName = value
         End Set
     End Property
-
+    Private xCurrencyID As Integer
+    Public Property CurrencyID() As Integer
+        Get
+            Return xCurrencyID
+        End Get
+        Set(ByVal value As Integer)
+            xCurrencyID = value
+        End Set
+    End Property
+    Private xCurrencyCode As String
+    Public Property CurrencyCode() As String
+        Get
+            Return xCurrencyCode
+        End Get
+        Set(ByVal value As String)
+            xCurrencyCode = value
+        End Set
+    End Property
+    Private xTotal As Integer
+    Public Property Total() As Integer
+        Get
+            Return xTotal
+        End Get
+        Set(ByVal value As Integer)
+            xTotal = value
+        End Set
+    End Property
 End Class

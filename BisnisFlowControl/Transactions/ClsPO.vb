@@ -70,6 +70,7 @@ Public Class ClsPO
                         poHeaderModel.Subtotal = .Item("Subtotal")
                         poHeaderModel.Discount = .Item("Discount")
                         poHeaderModel.VATRate = .Item("VATRate")
+                        poHeaderModel.OtherCost = .Item("OtherCost")
                         poHeaderModel.SH = .Item("SH")
                         poHeaderModel.GrandTotal = .Item("GrandTotal")
                         poHeaderModel.Status = .Item("Status")
@@ -103,6 +104,8 @@ Public Class ClsPO
                     poDetailModel.UnitPrice = .Item("UnitPrice")
                     poDetailModel.PODate = .Item("PODate")
                     poDetailModel.PONo = .Item("PONo")
+                    poDetailModel.CurrencyID = .Item("CurrencyID")
+                    poDetailModel.CurrencyCode = .Item("CurrencyCode")
                     myList.Add(poDetailModel)
                 End While
                 .Close()
@@ -262,8 +265,10 @@ Public Class ClsPO
                 detailModel.PODetailID = poDetailID
                 detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
                 detailModel.UnitID = .Rows(detail).Cells(2).Value
-                detailModel.Quantity = .Rows(detail).Cells(4).Value
-                detailModel.UnitPrice = .Rows(detail).Cells(5).Value
+                detailModel.UnitPrice = .Rows(detail).Cells(4).Value
+                detailModel.Quantity = .Rows(detail).Cells(5).Value
+                '   detailModel.Total = .Rows(detail).Cells(6).Value
+                detailModel.CurrencyID = .Rows(detail).Cells(7).Value
                 listRawMatrialDetailModel.Add(detailModel)
             End With
             poDetailID = poDetailID + 1
@@ -318,9 +323,9 @@ Public Class ClsPO
         Dim sql As String
 
         sql = "Insert Into PODetail(POHeaderID,PODetailID,RawMaterialID,UnitID,Quantity" &
-              ",UnitPrice)Values" &
+              ",UnitPrice,CurrencyID)Values" &
               "('" & myModel.POHeaderID & "','" & myModel.PODetailID & "','" & myModel.RawMaterialID & "','" & myModel.UnitID & "'" &
-              ",'" & myModel.Quantity & "','" & myModel.UnitPrice & "')"
+              ",'" & myModel.Quantity & "','" & myModel.UnitPrice & "','" & myModel.CurrencyID & "')"
 
         Return sql
     End Function

@@ -193,14 +193,14 @@ Public Class ClsPrintOut
         frm.rptView.ProcessingMode = ProcessingMode.Local
         Dim localReport As LocalReport
         localReport = frm.rptView.LocalReport
-        localReport.ReportPath = My.Settings.reportPath + "PurchaseOrder\rptPurchaseOrde.rdlc"
+        localReport.ReportPath = My.Settings.reportPath + "PurchaseOrder\rptPurchaseOrder.rdlc"
 
         Try
             Dim dataset As New DataSet("Purchas Order")
             GetPurchaseOrderHeader(poNo, dataset)
             Dim dsPurchaseOrderHeader As New ReportDataSource
             With dsPurchaseOrderHeader
-                .Name = "pOHeaderDT"
+                .Name = "poHeaderDT"
                 .Value = dataset.Tables("v_POHeader")
             End With
 
@@ -211,6 +211,7 @@ Public Class ClsPrintOut
                 .Name = "poPrintOutDT"
                 .Value = dsPOPrintOut.Tables("v_POPrintOut")
             End With
+
 
             Dim dsPORemarks As New DataSet("PO Remarks")
             GetPORemarksByPONo(poNo, dsPORemarks)

@@ -72,4 +72,14 @@
             xTotal = value
         End Set
     End Property
+    Private xCurrencyCode As String
+    Public Property CurrencyCode() As String
+        Get
+            Return xCurrencyCode
+        End Get
+        Set(ByVal value As String)
+            xCurrencyCode = value
+        End Set
+    End Property
+
 End Class

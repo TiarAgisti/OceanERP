@@ -1531,7 +1531,7 @@
         <Top>0.28755cm</Top>
         <Left>0.02611cm</Left>
         <Height>2.4cm</Height>
-        <Width>20.27657cm</Width>
+        <Width>20.27656cm</Width>
         <ZIndex>18</ZIndex>
         <Style>
           <Border>
@@ -3277,7 +3277,6 @@ Serang - Banten - Indonesia Phone +62254403123</Value>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>0in</Top>
           <Left>0.11373in</Left>
           <Height>0.25in</Height>
           <Width>1.04687in</Width>

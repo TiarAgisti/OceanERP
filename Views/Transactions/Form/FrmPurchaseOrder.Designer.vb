@@ -68,6 +68,7 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabProductName = New System.Windows.Forms.TabPage()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
@@ -106,6 +107,7 @@ Partial Class FrmPurchaseOrder
         Me.btnRemAddList = New System.Windows.Forms.Button()
         Me.txtRemarks = New System.Windows.Forms.TextBox()
         Me.Label67 = New System.Windows.Forms.Label()
+        Me.cmbCurrency = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -540,6 +542,8 @@ Partial Class FrmPurchaseOrder
         '
         'TabProductName
         '
+        Me.TabProductName.Controls.Add(Me.cmbCurrency)
+        Me.TabProductName.Controls.Add(Me.Label21)
         Me.TabProductName.Controls.Add(Me.Panel3)
         Me.TabProductName.Controls.Add(Me.cmbUnit)
         Me.TabProductName.Controls.Add(Me.Label31)
@@ -573,6 +577,15 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.TabIndex = 0
         Me.TabProductName.Text = "Produk Name"
         Me.TabProductName.UseVisualStyleBackColor = True
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(303, 35)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(49, 13)
+        Me.Label21.TabIndex = 138
+        Me.Label21.Text = "Currency"
         '
         'Panel3
         '
@@ -743,18 +756,18 @@ Partial Class FrmPurchaseOrder
         '
         'btnRawDelList
         '
-        Me.btnRawDelList.Location = New System.Drawing.Point(667, 56)
+        Me.btnRawDelList.Location = New System.Drawing.Point(693, 57)
         Me.btnRawDelList.Name = "btnRawDelList"
-        Me.btnRawDelList.Size = New System.Drawing.Size(105, 23)
+        Me.btnRawDelList.Size = New System.Drawing.Size(120, 23)
         Me.btnRawDelList.TabIndex = 114
         Me.btnRawDelList.Text = "Delete From List"
         Me.btnRawDelList.UseVisualStyleBackColor = True
         '
         'btnRawAddList
         '
-        Me.btnRawAddList.Location = New System.Drawing.Point(556, 56)
+        Me.btnRawAddList.Location = New System.Drawing.Point(573, 57)
         Me.btnRawAddList.Name = "btnRawAddList"
-        Me.btnRawAddList.Size = New System.Drawing.Size(105, 23)
+        Me.btnRawAddList.Size = New System.Drawing.Size(114, 23)
         Me.btnRawAddList.TabIndex = 113
         Me.btnRawAddList.Text = "Add To List"
         Me.btnRawAddList.UseVisualStyleBackColor = True
@@ -779,7 +792,7 @@ Partial Class FrmPurchaseOrder
         'txtTotal
         '
         Me.txtTotal.Enabled = False
-        Me.txtTotal.Location = New System.Drawing.Point(362, 59)
+        Me.txtTotal.Location = New System.Drawing.Point(625, 31)
         Me.txtTotal.MaxLength = 50
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(188, 20)
@@ -797,7 +810,7 @@ Partial Class FrmPurchaseOrder
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(307, 64)
+        Me.Label16.Location = New System.Drawing.Point(570, 36)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(31, 13)
         Me.Label16.TabIndex = 111
@@ -805,7 +818,7 @@ Partial Class FrmPurchaseOrder
         '
         'txtQty
         '
-        Me.txtQty.Location = New System.Drawing.Point(362, 33)
+        Me.txtQty.Location = New System.Drawing.Point(625, 5)
         Me.txtQty.MaxLength = 50
         Me.txtQty.Name = "txtQty"
         Me.txtQty.Size = New System.Drawing.Size(188, 20)
@@ -823,7 +836,7 @@ Partial Class FrmPurchaseOrder
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(304, 36)
+        Me.Label15.Location = New System.Drawing.Point(567, 8)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(46, 13)
         Me.Label15.TabIndex = 109
@@ -840,7 +853,7 @@ Partial Class FrmPurchaseOrder
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(307, 9)
+        Me.Label14.Location = New System.Drawing.Point(304, 9)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(53, 13)
         Me.Label14.TabIndex = 107
@@ -921,6 +934,14 @@ Partial Class FrmPurchaseOrder
         Me.Label67.Size = New System.Drawing.Size(46, 13)
         Me.Label67.TabIndex = 112
         Me.Label67.Text = "Remaks"
+        '
+        'cmbCurrency
+        '
+        Me.cmbCurrency.FormattingEnabled = True
+        Me.cmbCurrency.Location = New System.Drawing.Point(362, 32)
+        Me.cmbCurrency.Name = "cmbCurrency"
+        Me.cmbCurrency.Size = New System.Drawing.Size(188, 21)
+        Me.cmbCurrency.TabIndex = 139
         '
         'FrmPurchaseOrder
         '
@@ -1040,4 +1061,6 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents cmbUnit As ComboBox
     Friend WithEvents Label31 As Label
     Friend WithEvents Panel3 As Panel
+    Friend WithEvents Label21 As Label
+    Friend WithEvents cmbCurrency As ComboBox
 End Class

@@ -24,6 +24,33 @@
         Return dataTable
 
     End Function
+
+    Public Function RetrieveByID(currencylID As Integer) As CurrencyModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim currencyModel As CurrencyModel = New CurrencyModel
+        queryCurrency += " AND CurrencyID = '" & currencylID & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(queryCurrency)
+            With dataAccess.reader
+                While .Read
+                    If Not IsDBNull(.Item("CurrencyCode")) Then
+                        currencyModel.CurrencyID = .Item("CurrencyID")
+                        currencyModel.CurrencyCode = .Item("CurrencyCode")
+                        currencyModel.CurrencyName = .Item("Name")
+
+                    End If
+                End While
+                .Close()
+            End With
+            dataAccess = Nothing
+            Return currencyModel
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
 #End Region
 
 #Region "Method Other"
@@ -33,6 +60,21 @@
         Dim query As String
         query = "Select CurrencyID,CurrencyCode +' - '+ Name as CurrCode From Currency Where IsActive = 1"
 
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
+    Protected Function ListComboBox()
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim query As String
+        query = "Select CurrencyID,CurrencyCode From Currency Where IsActive = 1"
         Try
             dataTable = dataAccess.RetrieveListData(query)
             dataAccess = Nothing
@@ -72,7 +114,16 @@
         dataAccess = Nothing
         Return hasil
     End Function
+    Public Sub ComboBoxCurrency(cmb As ComboBox)
 
+        With cmb
+                .DataSource = ListComboBox()
+            .ValueMember = "CurrencyID"
+            .DisplayMember = "CurrencyCode"
+            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+            End With
+    End Sub
     Public Function GetValidateCurrencyCode(currCode As String) As Boolean
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
