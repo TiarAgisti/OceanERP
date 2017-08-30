@@ -26,6 +26,7 @@
         My.Settings.database = txtDatabase.Text
         If cmbAuthentication.Text = "Windows Authentication" Then
             My.Settings.winAuthentication = True
+            My.Settings.reportPath = txtReportPath.Text
         Else
             My.Settings.winAuthentication = False
             My.Settings.userId = txtLogin.Text

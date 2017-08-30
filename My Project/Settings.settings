@@ -18,7 +18,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="reportPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">D:\OceanERP\PrintOut</Value>
     </Setting>
     <Setting Name="superPassword" Type="System.String" Scope="User">
       <Value Profile="(Default)">roti1!@#</Value>

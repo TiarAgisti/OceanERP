@@ -101,6 +101,8 @@ Public Class ClsPO
                     poDetailModel.UnitName = .Item("UnitName")
                     poDetailModel.Quantity = .Item("Quantity")
                     poDetailModel.UnitPrice = .Item("UnitPrice")
+                    poDetailModel.PODate = .Item("PODate")
+                    poDetailModel.PONo = .Item("PONo")
                     myList.Add(poDetailModel)
                 End While
                 .Close()

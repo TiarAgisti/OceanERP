@@ -183,6 +183,7 @@
     <Compile Include="Models\Transactions\PIPrintOutModel.vb" />
     <Compile Include="Models\Transactions\PIRemarksModel.vb" />
     <Compile Include="Models\Transactions\PIYarnDetailModel.vb" />
+    <Compile Include="Models\Transactions\POPrintOutModel.vb" />
     <Compile Include="Models\Transactions\PORemarksModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -421,6 +422,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PrintOut\ProformaInvoice\Report1.rdlc" />
     <EmbeddedResource Include="PrintOut\ProformaInvoice\rptProformaInvoice.rdlc" />
+    <EmbeddedResource Include="PrintOut\PurchaseOrder\rptPurchaseOrder.rdlc" />
     <EmbeddedResource Include="Views\Masters\Form\FrmBankAccount.resx">
       <DependentUpon>FrmBankAccount.vb</DependentUpon>
     </EmbeddedResource>
@@ -541,7 +543,7 @@
     <None Include="ReportDataSet\OceanDS.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OceanDS.Designer.vb</LastGenOutput>
+      <LastGenOutput>OceanDS1.Designer.vb</LastGenOutput>
     </None>
     <None Include="ReportDataSet\OceanDS.xss">
       <DependentUpon>OceanDS.xsd</DependentUpon>
@@ -563,9 +565,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PrintOut\Purchase Order\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
