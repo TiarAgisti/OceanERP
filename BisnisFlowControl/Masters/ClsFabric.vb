@@ -1,5 +1,5 @@
 ﻿Public Class ClsFabric
-    Dim queryFabric As String = "Select FabricID,FabricCode,FabricName,Composition,Specification,VendorName,VendorID,IsActive From v_Fabric" &
+    Dim queryFabric As String = "Select FabricID,FabricCode,FabricName,Composition,Specification,Width,Weight,VendorName,VendorID,IsActive From v_Fabric" &
                         " Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
@@ -41,6 +41,8 @@
                         fabricModel.FabricName = .Item("FabricName")
                         fabricModel.Composition = .Item("Composition")
                         fabricModel.Specification = .Item("Specification")
+                        fabricModel.Width = .Item("Width")
+                        fabricModel.Weight = .Item("Weight")
                         fabricModel.VendorName = .Item("VendorName")
                         fabricModel.VendorID = .Item("VendorID")
                     End If
@@ -135,11 +137,12 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
 
-        Dim sql As String = "Insert into Fabric(FabricID,FabricCode,FabricName,Composition,Specification,VendorID,IsActive,CreatedBy" &
+        Dim sql As String = "Insert into Fabric(FabricID,FabricCode,FabricName,Composition,Specification,Width,Weight,VendorID,IsActive,CreatedBy" &
                                 ",CreatedDate,UpdatedBy,UpdatedDate)Values('" & fabricModel.FabricID & "','" & fabricModel.FabricCode & "'" &
                                 ",'" & fabricModel.FabricName & "','" & fabricModel.Composition & "','" & fabricModel.Specification & "'" &
-                                ",'" & fabricModel.VendorID & "','" & fabricModel.IsActive & "','" & fabricModel.CreatedBy & "'" &
-                                ",'" & fabricModel.CreatedDate & "','" & fabricModel.UpdatedBy & "','" & fabricModel.UpdatedDate & "')"
+                                ",'" & fabricModel.Width & "','" & fabricModel.Weight & "','" & fabricModel.VendorID & "'" &
+                                ",'" & fabricModel.IsActive & "','" & fabricModel.CreatedBy & "','" & fabricModel.CreatedDate & "'" &
+                                ",'" & fabricModel.UpdatedBy & "','" & fabricModel.UpdatedDate & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -162,8 +165,9 @@
 
         If options = "Update" Then
             query = "Update Fabric Set FabricName = '" & fabricModel.FabricName & "',Composition = '" & fabricModel.Composition & "'" &
-                    ",Specification = '" & fabricModel.Specification & "',VendorID='" & fabricModel.VendorID & "',IsActive = '" & fabricModel.IsActive & "'" &
-                    ",UpdatedBy='" & fabricModel.UpdatedBy & "',UpdatedDate = '" & fabricModel.UpdatedDate & "' Where FabricID='" & fabricModel.FabricID & "'"
+                    ",Specification = '" & fabricModel.Specification & "',Width='" & fabricModel.Width & "',Weight='" & fabricModel.Weight & "'" &
+                    ",VendorID='" & fabricModel.VendorID & "',IsActive = '" & fabricModel.IsActive & "',UpdatedBy='" & fabricModel.UpdatedBy & "'" &
+                    ",UpdatedDate = '" & fabricModel.UpdatedDate & "' Where FabricID='" & fabricModel.FabricID & "'"
             queryList.Add(query)
 
         Else

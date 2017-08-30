@@ -1,10 +1,10 @@
 ﻿Public Class ClsBOM
-    Dim query As String = "Select BOMHeaderID,BOMCode,FabricName,Composition,Specification,VendorName,StyleName,ColorName,StatusDesc" &
-                               ",FabricID,BuyerID,StyleID,ColorID,StatusBOM From v_BOMHeader Where IsActive <> 0"
 #Region "Retrieve"
     Public Function RetrieveListBOM(fabricName As String, styleName As String, colorName As String, statusDesc As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
+        Dim query As String = "Select BOMHeaderID,BOMCode,FabricName,Composition,Specification,VendorName,StyleName,ColorName,StatusDesc" &
+                               ",FabricID,BuyerID,StyleID,ColorID,StatusBOM From v_BOMHeader Where IsActive <> 0"
 
         If Not String.IsNullOrEmpty(fabricName) Then
             query += " AND FabricName = '" & fabricName & "'"
@@ -119,9 +119,14 @@
             If IsDBNull(dataAccess.reader.Item("BOMCode")) Then
                 myCode = "BOM" + "0000001" + "/" + buyerCode + "/" + Format(Now.Year)
             Else
-                Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("BOMCode"), 10)
-                hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
-                myCode = "BOM" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & buyerCode & "/" & Format(Now.Year)
+                Dim xtahun As String = Microsoft.VisualBasic.Right(dataAccess.reader.Item("BOMCode"), 4)
+                If xtahun <> Format(Now.Year) Then
+                    myCode = "BOM" + "0000001" + "/" + buyerCode + "/" + Format(Now.Year)
+                Else
+                    Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("BOMCode"), 10)
+                    hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
+                    myCode = "BOM" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & buyerCode & "/" & Format(Now.Year)
+                End If
             End If
             Return myCode
         Catch ex As Exception
