@@ -78,8 +78,9 @@ Public Class ClsPrintOut
         Dim frm As New FrmPrintPreview
         frm.rptView.ProcessingMode = ProcessingMode.Local
         Dim localReport As LocalReport
+        Dim path As String = My.Settings.reportPath
         localReport = frm.rptView.LocalReport
-        localReport.ReportPath = My.Settings.reportPath + "ProformaInvoice\rptProformaInvoice.rdlc"
+        localReport.ReportPath = path + "ProformaInvoice\rptProformaInvoice.rdlc"
 
         Try
             Dim dataset As New DataSet("Proforma Invoice")
@@ -132,5 +133,111 @@ Public Class ClsPrintOut
         Return status
     End Function
 #End Region
+
+#Region "Purchase Order"
+    Protected Sub GetPurchaseOrderHeader(ByVal poNo As String, ByRef dsPurchaseOrder As DataSet)
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim query As String = "Select * From v_POHeader where PONo = @poNo"
+        Try
+            Using myConnection As SqlConnection = dataAccess.SqlConnection
+                Dim myCommand As SqlCommand = New SqlCommand(query, myConnection)
+                Dim parameter As New SqlParameter("PONo", poNo)
+                myCommand.Parameters.Add(parameter)
+                Dim purchaseOrderAdapter As New SqlDataAdapter(myCommand)
+                purchaseOrderAdapter.Fill(dsPurchaseOrder, "v_POHeader")
+                myCommand.Dispose()
+            End Using
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Protected Sub GetPurchaseOrderPrintOut(ByVal poNo As String, ByRef dsPurchaseOrder As DataSet)
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim query As String = "Select * From v_POPrintOut where PONo = @poNo"
+        Try
+            Using myConnection As SqlConnection = dataAccess.SqlConnection
+                Dim myCommand As SqlCommand = New SqlCommand(query, myConnection)
+                Dim parameter As New SqlParameter("PONo", poNo)
+                myCommand.Parameters.Add(parameter)
+                Dim purchaseOrderAdapter As New SqlDataAdapter(myCommand)
+                purchaseOrderAdapter.Fill(dsPurchaseOrder, "v_POPrintOut")
+                myCommand.Dispose()
+            End Using
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+
+    Protected Sub GetPORemarksByPONo(ByVal poNo As String, ByRef dsPurchaseOrder As DataSet)
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim query As String = "Select * From v_PORemarks where PONo = @poNo"
+        Try
+            Using myConnection As SqlConnection = dataAccess.SqlConnection
+                Dim myCommand As SqlCommand = New SqlCommand(query, myConnection)
+                Dim parameter As New SqlParameter("PONo", poNo)
+                myCommand.Parameters.Add(parameter)
+                Dim purchaseOrderAdapter As New SqlDataAdapter(myCommand)
+                purchaseOrderAdapter.Fill(dsPurchaseOrder, "v_PORemarks")
+                myCommand.Dispose()
+            End Using
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Public Function PrintOutPurchaseOrder(ByVal poNo As String) As Boolean
+        Dim status As Boolean
+        Dim frm As New FrmPrintPreview
+        frm.rptView.ProcessingMode = ProcessingMode.Local
+        Dim localReport As LocalReport
+        localReport = frm.rptView.LocalReport
+        localReport.ReportPath = My.Settings.reportPath + "PurchaseOrder\rptPurchaseOrde.rdlc"
+
+        Try
+            Dim dataset As New DataSet("Purchas Order")
+            GetPurchaseOrderHeader(poNo, dataset)
+            Dim dsPurchaseOrderHeader As New ReportDataSource
+            With dsPurchaseOrderHeader
+                .Name = "pOHeaderDT"
+                .Value = dataset.Tables("v_POHeader")
+            End With
+
+            Dim dsPOPrintOut As New DataSet("PO PrintOut")
+            GetPurchaseOrderPrintOut(poNo, dsPOPrintOut)
+            Dim dsPurchaseOrderPrintOut As New ReportDataSource
+            With dsPurchaseOrderPrintOut
+                .Name = "poPrintOutDT"
+                .Value = dsPOPrintOut.Tables("v_POPrintOut")
+            End With
+
+            Dim dsPORemarks As New DataSet("PO Remarks")
+            GetPORemarksByPONo(poNo, dsPORemarks)
+            Dim dsPurchaseOrderRemarks As New ReportDataSource
+            With dsPurchaseOrderRemarks
+                .Name = "poRemarksDT"
+                .Value = dsPORemarks.Tables("v_PORemarks")
+            End With
+
+
+
+            With localReport.DataSources
+                .Add(dsPurchaseOrderHeader)
+                .Add(dsPurchaseOrderPrintOut)
+                .Add(dsPurchaseOrderRemarks)
+            End With
+
+            frm.ShowDialog()
+            frm.rptView.RefreshReport()
+            status = True
+        Catch ex As Exception
+            status = False
+            Throw ex
+        End Try
+        Return status
+    End Function
+#End Region
+
 
 End Class
