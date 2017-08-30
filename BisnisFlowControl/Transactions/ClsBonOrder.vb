@@ -113,27 +113,157 @@
                     myCode = "BON" + "0000001" + "/" + customerCode + "/" + Format(Now.Year)
                 End If
             End If
-            dataAccess.reader.Close()
-            dataAccess = Nothing
             Return myCode
         Catch ex As Exception
+            Throw ex
+        Finally
             dataAccess.reader.Close()
             dataAccess = Nothing
-            Throw ex
         End Try
-        Return myCode
+    End Function
+
+    Protected Function GeneratedAutoNumber() As Long
+        Dim id As Long = 0
+        Dim query As String = "Select max(BonOrderID) from BonOrderHeader"
+        Dim dataAccess = New ClsDataAccess
+        Try
+            id = dataAccess.GeneratedAutoNumber(query)
+            Return id
+        Catch ex As Exception
+            Throw ex
+        Finally
+            dataAccess = Nothing
+        End Try
     End Function
 #End Region
 
 #Region "Get"
-
+    Public Function GetBonOrderCode(customerCode As String) As String
+        Dim bonOrderCode As String
+        Try
+            bonOrderCode = GeneratedBonOrderCode(customerCode)
+            Return bonOrderCode
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
+    Public Function GetBonOrderID() As Long
+        Dim myID As Long
+        Try
+            myID = GeneratedAutoNumber()
+            Return myID
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
 #End Region
 
 #Region "Set Data Detail"
-
+    Public Function SetDetail(bonOrderID As Long, dgv As DataGridView) As List(Of BonOrderDetailModel)
+        Dim listDetailModel As List(Of BonOrderDetailModel) = New List(Of BonOrderDetailModel)
+        Try
+            For detail = 0 To dgv.Rows.Count - 2
+                Dim detailModel As BonOrderDetailModel = New BonOrderDetailModel
+                With dgv
+                    detailModel.BonOrderID = bonOrderID
+                    'detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
+                    'detailModel.UnitID = .Rows(detail).Cells(4).Value
+                    'detailModel.Qty = .Rows(detail).Cells(6).Value
+                    listDetailModel.Add(detailModel)
+                End With
+            Next
+            Return listDetailModel
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
 #End Region
 
 #Region "CRUD"
+    Protected Function SqlInsertHeader(headerModel As BonOrderHeaderModel) As String
+        Dim sqlHeader As String
+        sqlHeader = "Insert into BonOrderHeader(BonOrderID,DateIssues,PIHeaderID,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
+                    "('" & headerModel.BonOrderID & "','" & headerModel.DateIssues & "','" & headerModel.PIHeaderID & "'" &
+                    ",'" & headerModel.Status & "','" & headerModel.CreatedBy & "','" & headerModel.CreatedDate & "'" &
+                    ",'" & headerModel.UpdatedBy & "','" & headerModel.UpdatedDate & "')"
+        Return sqlHeader
+    End Function
 
+    Protected Function SqlInsertDetail(myModel As BonOrderDetailModel) As String
+        Dim sql As String
+        sql = "Insert into BonOrderDetail(BonOrderID,FabricID,ColorID,LabsDipsNo,Bruto,Netto)Values('" & myModel.BonOrderID & "'" &
+            ",'" & myModel.FabricID & "','" & myModel.ColorID & "','" & myModel.LabsDipsNo & "','" & myModel.Bruto & "','" & myModel.Netto & "')"
+        Return sql
+    End Function
+
+    Protected Function SqlUpdateHeader(myModel As BonOrderHeaderModel) As String
+        Dim SQL As String
+        SQL = "Update BonOrderHeader set DateIssues = '" & myModel.DateIssues & "',PIHeaderID = '" & myModel.PIHeaderID & "',Status = '" & myModel.Status & "'" &
+              ",UpdatedBy = '" & myModel.UpdatedBy & "',UpdatedDate = '" & myModel.UpdatedDate & "' Where BonOrderID = '" & myModel.BonOrderID & "'"
+        Return SQL
+    End Function
+
+    Protected Function SqlDeleteDetail(myModel As BonOrderHeaderModel) As String
+        Dim SQL As String
+        SQL = "Delete From BonOrderDetail Where BonOrderID = '" & myModel.BonOrderID & "'"
+        Return SQL
+    End Function
+
+    Public Function InsertData(bonHeaderModel As BonOrderHeaderModel, listBonDetail As List(Of BonOrderDetailModel), logModel As LogHistoryModel) As Boolean
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim queryList As List(Of String) = New List(Of String)
+        Dim statusInsert As Boolean = False
+        'insert header
+        queryList.Add(SqlInsertHeader(bonHeaderModel))
+
+        'insert detail
+        For Each detail In listBonDetail
+            queryList.Add(SqlInsertDetail(detail))
+        Next
+
+        'insert log history
+        queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
+
+        Try
+            dataAccess.InsertMasterDetail(queryList)
+            dataAccess = Nothing
+            statusInsert = True
+        Catch ex As Exception
+            dataAccess = Nothing
+            Throw ex
+        End Try
+        Return statusInsert
+    End Function
+
+    Public Function UpdateData(bonHeaderModel As BonOrderHeaderModel, listBonDetail As List(Of BonOrderDetailModel), logModel As LogHistoryModel) As Boolean
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim queryList As List(Of String) = New List(Of String)
+        Dim statusUpdate As Boolean = False
+        'delete all detail before update
+        queryList.Add(SqlDeleteDetail(bonHeaderModel))
+
+        'update header
+        queryList.Add(SqlUpdateHeader(bonHeaderModel))
+
+        'insert detail
+        For Each detail In listBonDetail
+            queryList.Add(SqlInsertDetail(detail))
+        Next
+
+        'insert log history
+        queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
+
+        Try
+            dataAccess.InsertMasterDetail(queryList)
+            dataAccess = Nothing
+            statusUpdate = True
+        Catch ex As Exception
+            dataAccess = Nothing
+            Throw ex
+        End Try
+        Return statusUpdate
+    End Function
 #End Region
 End Class
