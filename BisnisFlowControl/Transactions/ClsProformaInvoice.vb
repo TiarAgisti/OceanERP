@@ -277,7 +277,7 @@ Public Class ClsProformaInvoice
                     myCode = "OA" + "0000001" + "/" + customerCode + "/" + Format(Now.Year)
                 End If
             End If
-                dataAccess.reader.Close()
+            dataAccess.reader.Close()
             dataAccess = Nothing
             Return myCode
         Catch ex As Exception
@@ -285,7 +285,6 @@ Public Class ClsProformaInvoice
             dataAccess = Nothing
             Throw ex
         End Try
-        Return myCode
     End Function
 
     Protected Function GeneratedAutoNumber() As Long
