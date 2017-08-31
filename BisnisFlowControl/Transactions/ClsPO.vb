@@ -5,7 +5,7 @@ Public Class ClsPO
                                                 , supplier As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = "Select POHeaderID,PODate,PONo,CustomerCode,CustomerName,SupplierCode,SupplierName,ShipViaMethodCode,ShipViaMethodName,ShippingDate,TermOfPayment,ExpectedReceiptDate" &
+        Dim query As String = "Select POHeaderID,PIHeaderID,PINO,PODate,PONo,CustomerCode,CustomerName,SupplierCode,SupplierName,ShipViaMethodCode,ShipViaMethodName,ShippingDate,TermOfPayment,ExpectedReceiptDate" &
                                ",CustomerID,SupplierID,TermOfPaymentID,ShipViaMethodID,StatusDesc From v_POHeader" &
                                " Where Status <> 0"
 
@@ -47,6 +47,8 @@ Public Class ClsPO
                         poHeaderModel.POHeaderID = headerID
                         poHeaderModel.PODate = .Item("PODate")
                         poHeaderModel.PONo = .Item("PONo")
+                        poHeaderModel.PIHeaderID = .Item("PIHeaderID")
+                        poHeaderModel.PINo = .Item("PINo")
                         poHeaderModel.SupplierID = .Item("SupplierID")
                         poHeaderModel.SupplierCode = .Item("SupplierCode")
                         poHeaderModel.SupplierName = .Item("SupplierName")
@@ -305,9 +307,9 @@ Public Class ClsPO
 #Region "Method CRUD"
     Protected Function SqlInsertHeader(poHeaderModel As POHeaderModel) As String
         Dim sqlHeader As String
-        sqlHeader = "Insert into POHeader(POHeaderID,PODate,PONo,CustomerID,SupplierID,ShipViaMethodID,ShippingDate,TermOfPaymentID,ExpectedReceiptDate" &
+        sqlHeader = "Insert into POHeader(POHeaderID,PIHeaderID,PODate,PONo,CustomerID,SupplierID,ShipViaMethodID,ShippingDate,TermOfPaymentID,ExpectedReceiptDate" &
                                    ",Subtotal,Discount,VATRate,OtherCost,SH,GrandTotal,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
-                                   "('" & poHeaderModel.POHeaderID & "','" & poHeaderModel.PODate & "','" & poHeaderModel.PONo & "'" &
+                                   "('" & poHeaderModel.POHeaderID & "','" & poHeaderModel.PIHeaderID & "',,'" & poHeaderModel.PODate & "','" & poHeaderModel.PONo & "'" &
                                    ",'" & poHeaderModel.CustomerID & "','" & poHeaderModel.SupplierID & "','" & poHeaderModel.ShipViaMethodID & "'" &
                                    ",'" & poHeaderModel.ShippingDate & "','" & poHeaderModel.TermOfPaymentID & "','" & poHeaderModel.ExpectedReceiptDate & "'" &
                                    ",'" & poHeaderModel.Subtotal & "','" & poHeaderModel.Discount & "','" & poHeaderModel.VATRate & "'" &
@@ -319,7 +321,7 @@ Public Class ClsPO
 
     Protected Function SqlUpdateHeader(myModel As POHeaderModel) As String
         Dim SQL As String
-        SQL = "Update POHeader Set PODate = '" & myModel.PODate & "',CustomerID = '" & myModel.CustomerID & "',SupplierID = '" & myModel.SupplierID & "'" &
+        SQL = "Update POHeader Set  PIHeaderID = '" & myModel.PIHeaderID & "',PODate = '" & myModel.PODate & "',CustomerID = '" & myModel.CustomerID & "',SupplierID = '" & myModel.SupplierID & "'" &
                                     ",ShipViaMethodID='" & myModel.ShipViaMethodID & "',ShippingDate = '" & myModel.ShippingDate & "'" &
                                     ",TermOfPaymentID = '" & myModel.TermOfPaymentID & "',ExpectedReceiptDate = '" & myModel.ExpectedReceiptDate & "'" &
                                     ",Subtotal = '" & myModel.Subtotal & "',Discount = '" & myModel.Discount & "'" &
