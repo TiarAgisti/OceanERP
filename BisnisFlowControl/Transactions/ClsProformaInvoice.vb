@@ -378,7 +378,7 @@ Public Class ClsProformaInvoice
     Protected Function ListComboBox() As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable As DataTable = New DataTable
-        Dim query As String = "Select PIheaderID,PINo From PIHeader Where Status = 2"
+        Dim query As String = "Select PIHeaderID,PINo From PIHeader Where Status = 2"
         Try
             dataTable = dataAccess.RetrieveListData(query)
             dataAccess = Nothing
