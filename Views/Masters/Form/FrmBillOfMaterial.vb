@@ -16,6 +16,8 @@
             vendorBFC.ComboBoxVendor(cmbBuyer, status)
         Catch ex As Exception
             Throw ex
+        Finally
+            vendorBFC = Nothing
         End Try
     End Sub
     Sub ComboBoxFabric()
@@ -24,6 +26,8 @@
             fabricBFC.ComboBoxFabric(cmbFabric)
         Catch ex As Exception
             Throw ex
+        Finally
+            fabricBFC = Nothing
         End Try
     End Sub
     Sub ComboBoxStyle()
@@ -32,6 +36,8 @@
             styleBFC.ComboBoxStyle(cmbStyle)
         Catch ex As Exception
             Throw ex
+        Finally
+            styleBFC = Nothing
         End Try
     End Sub
     Sub ComboBoxColor()
@@ -40,6 +46,8 @@
             colorBFC.ComboBoxColor(cmbColor)
         Catch ex As Exception
             Throw ex
+        Finally
+            colorBFC = Nothing
         End Try
     End Sub
     Sub ComboBoxRawMaterial()
@@ -48,6 +56,8 @@
             rawBFC.ComboBoxRawMaterial(cmbRaw)
         Catch ex As Exception
             Throw ex
+        Finally
+            rawBFC = Nothing
         End Try
     End Sub
     Sub ComboBoxUnit()
@@ -56,6 +66,8 @@
             unitBFC.ComboBoxUnit(cmbUnit)
         Catch ex As Exception
             Throw ex
+        Finally
+            unitBFC = Nothing
         End Try
     End Sub
     Sub ComboBoxStatus()
@@ -64,6 +76,8 @@
             bomBFC.ComboBoxStatus(cmbStatus)
         Catch ex As Exception
             Throw ex
+        Finally
+            bomBFC = Nothing
         End Try
     End Sub
     Sub ComboBoxAll()
@@ -278,6 +292,8 @@
             Return listModel
         Catch ex As Exception
             Throw ex
+        Finally
+            bomBFC = Nothing
         End Try
     End Function
 #End Region
@@ -287,20 +303,28 @@
         Dim vendorBFC As ClsVendor = New ClsVendor
         Dim vendorModel As VendorModel = New VendorModel
         Dim obj As Integer = cmbBuyer.SelectedValue
-        If obj > 0 Then
-            vendorModel = vendorBFC.RetrieveVendorByID(obj, "C")
-            With vendorModel
-                buyerCode = .VendorCode
-            End With
-        Else
-            MsgBoxError("Buyer not valid")
-        End If
+        Try
+            If obj > 0 Then
+                vendorModel = vendorBFC.RetrieveVendorByID(obj, "C")
+                With vendorModel
+                    buyerCode = .VendorCode
+                End With
+            Else
+                MsgBoxError("Buyer not valid")
+            End If
+        Catch ex As Exception
+            Throw ex
+        Finally
+            vendorBFC = Nothing
+            vendorModel = Nothing
+            obj = Nothing
+        End Try
     End Sub
     Sub RetrieveFabric()
         Dim fabricBFC As ClsFabric = New ClsFabric
         Dim fabricModel As FabricModel = New FabricModel
+        Dim fabricID As Integer = cmbFabric.SelectedValue
         Try
-            Dim fabricID As Integer = cmbFabric.SelectedValue
             If fabricID > 0 Then
                 fabricModel = fabricBFC.RetrieveByID(fabricID)
                 With fabricModel
@@ -312,13 +336,17 @@
             End If
         Catch ex As Exception
             Throw ex
+        Finally
+            fabricBFC = Nothing
+            fabricModel = Nothing
+            fabricID = Nothing
         End Try
     End Sub
     Sub RetrieveRawMaterial()
         Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
         Dim rawModel As RawMaterialModel = New RawMaterialModel
+        Dim rawMaterialID As Integer = cmbRaw.SelectedValue
         Try
-            Dim rawMaterialID As Integer = cmbRaw.SelectedValue
             If rawMaterialID > 0 Then
                 rawModel = rawBFC.RetrieveByID(rawMaterialID)
                 With rawModel
@@ -330,35 +358,46 @@
             End If
         Catch ex As Exception
             Throw ex
+        Finally
+            rawBFC = Nothing
+            rawModel = Nothing
+            rawMaterialID = Nothing
         End Try
     End Sub
     Sub PrepareByHeaderID()
         Dim headerModel As BOMHeaderModel = New BOMHeaderModel
         Dim bomBFC As ClsBOM = New ClsBOM
-        ComboBoxAll()
-        headerModel = bomBFC.RetrieveByID(bomHeaderID)
-        With headerModel
-            txtCode.Text = .BOMCode
-            cmbFabric.SelectedValue = .FabricID
-            txtCompo.Text = .Composition
-            txtSpec.Text = .Specification
-            cmbBuyer.SelectedValue = .BuyerID
-            cmbStyle.SelectedValue = .StyleID
-            cmbColor.SelectedValue = .ColorID
-            If .StatusBOM = 1 Then
-                cmbStatus.Text = "Production"
-            ElseIf .StatusBOM = 2 Then
-                cmbStatus.Text = "Development"
-            Else
-                cmbStatus.Text = ""
-            End If
-        End With
+        Try
+            ComboBoxAll()
+            headerModel = bomBFC.RetrieveByID(bomHeaderID)
+            With headerModel
+                txtCode.Text = .BOMCode
+                cmbFabric.SelectedValue = .FabricID
+                txtCompo.Text = .Composition
+                txtSpec.Text = .Specification
+                cmbBuyer.SelectedValue = .BuyerID
+                cmbStyle.SelectedValue = .StyleID
+                cmbColor.SelectedValue = .ColorID
+                If .StatusBOM = 1 Then
+                    cmbStatus.Text = "Production"
+                ElseIf .StatusBOM = 2 Then
+                    cmbStatus.Text = "Development"
+                Else
+                    cmbStatus.Text = ""
+                End If
+            End With
+        Catch ex As Exception
+            Throw ex
+        Finally
+            headerModel = Nothing
+            bomBFC = Nothing
+        End Try
     End Sub
     Sub PrepareDetailByHeaderID()
+        Dim listDetail As List(Of BOMDetailModel) = New List(Of BOMDetailModel)
+        Dim bomBFC As ClsBOM = New ClsBOM
         Try
             GridDetailRaw()
-            Dim listDetail As List(Of BOMDetailModel) = New List(Of BOMDetailModel)
-            Dim bomBFC As ClsBOM = New ClsBOM
             listDetail = bomBFC.RetrieveDetailByHeaderID(bomHeaderID)
             For Each detail In listDetail
                 With dgv
@@ -375,16 +414,23 @@
             Next
         Catch ex As Exception
             Throw ex
+        Finally
+            listDetail = Nothing
+            bomBFC = Nothing
         End Try
     End Sub
     Sub PreCreateDisplay()
-        CheckPermissions()
-        ClearDataAll()
-        dgv.Columns.Clear()
-        GridDetailRaw()
-        ComboBoxAll()
-        cmbFabric.Focus()
-        btnUpdate.Enabled = False
+        Try
+            CheckPermissions()
+            ClearDataAll()
+            dgv.Columns.Clear()
+            GridDetailRaw()
+            ComboBoxAll()
+            cmbFabric.Focus()
+            btnUpdate.Enabled = False
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
     Sub PreUpdateDisplay()
         Try
@@ -400,14 +446,17 @@
         End Try
     End Sub
     Sub CheckPermissions()
+        Dim roleBFC As ClsPermission = New ClsPermission
+        Dim roleModel As RoleDModel = New RoleDModel
         Try
-            Dim roleBFC As ClsPermission = New ClsPermission
-            Dim roleModel As RoleDModel = New RoleDModel
             roleModel = roleBFC.RetrieveDetailsByRoleIDMenuID(roleIDUser, Tag)
             If roleModel.IsCreate = True Then btnSave.Enabled = True
             If roleModel.IsUpdate = True Then btnUpdate.Enabled = True
         Catch ex As Exception
             Throw ex
+        Finally
+            roleBFC = Nothing
+            roleModel = Nothing
         End Try
     End Sub
 
@@ -426,6 +475,12 @@
             End If
         Catch ex As Exception
             Throw ex
+        Finally
+            bomBFC = Nothing
+            logBFC = Nothing
+            myBomCode = Nothing
+            myBomID = Nothing
+            logDesc = Nothing
         End Try
     End Sub
 
@@ -440,7 +495,11 @@
                 PreCreateDisplay()
             End If
         Catch ex As Exception
-            MsgBoxError(ex.Message)
+            Throw ex
+        Finally
+            bomBFC = Nothing
+            logBFC = Nothing
+            logDesc = Nothing
         End Try
     End Sub
 

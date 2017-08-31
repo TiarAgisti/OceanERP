@@ -372,6 +372,31 @@ Public Class ClsProformaInvoice
     End Function
 #End Region
 
+#Region "Function"
+    Protected Function ListComboBox() As DataTable
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim query As String = "Select PIheaderID,PINo From PIHeader Where Status = 2"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
+    Public Sub ComboBoxPI(cmb As ComboBox)
+        With cmb
+            .DataSource = ListComboBox()
+            .DisplayMember = "PINo"
+            .ValueMember = "PIHeaderID"
+            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+            .AutoCompleteSource = AutoCompleteSource.ListItems
+        End With
+    End Sub
+#End Region
+
 #Region "Get"
     Public Function GetPINo(customerCode As String) As String
         Dim piNo As String
