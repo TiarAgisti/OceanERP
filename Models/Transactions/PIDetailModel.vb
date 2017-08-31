@@ -320,4 +320,75 @@
         End Set
     End Property
 
+    'Model for v_PIAllDetail
+    Private xColDescription As String
+    Public Property ColDescription() As String
+        Get
+            Return xColDescription
+        End Get
+        Set(ByVal value As String)
+            xColDescription = value
+        End Set
+    End Property
+
+    Private xColorCode As String
+    Public Property ColorCode() As String
+        Get
+            Return xColorCode
+        End Get
+        Set(ByVal value As String)
+            xColorCode = value
+        End Set
+    End Property
+
+    Private xQtySample As Double
+    Public Property QtySample() As Double
+        Get
+            Return xQtySample
+        End Get
+        Set(ByVal value As Double)
+            xQtySample = value
+        End Set
+    End Property
+
+    Private xQtyOrder As Double
+    Public Property QtyOrder() As Double
+        Get
+            Return xQtyOrder
+        End Get
+        Set(ByVal value As Double)
+            xQtyOrder = value
+        End Set
+    End Property
+
+    Private xPrice As Double
+    Public Property Price() As Double
+        Get
+            Return xPrice
+        End Get
+        Set(ByVal value As Double)
+            xPrice = value
+        End Set
+    End Property
+
+    Private xAmount As Double
+    Public Property Amount() As Double
+        Get
+            Return xAmount
+        End Get
+        Set(ByVal value As Double)
+            xAmount = value
+        End Set
+    End Property
+
+    Private xColorID As Integer
+    Public Property ColorID() As Integer
+        Get
+            Return xColorID
+        End Get
+        Set(ByVal value As Integer)
+            xColorID = value
+        End Set
+    End Property
+    'end
 End Class
