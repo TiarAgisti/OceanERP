@@ -117,6 +117,10 @@
 
     End Sub
 
+    Private Sub txtNoPO_TextChanged(sender As Object, e As EventArgs) Handles txtNoPO.TextChanged
+
+    End Sub
+
 
 #End Region
 

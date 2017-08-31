@@ -55,11 +55,12 @@ Partial Class MenuUtama
         Me.menuStyle = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuRawMaterial = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuBOM = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuSVM = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuTransaksi = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuProformaInvoice = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuPO = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuSVM = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BonOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -284,9 +285,16 @@ Partial Class MenuUtama
         Me.menuBOM.Tag = "21"
         Me.menuBOM.Text = "Bill Of Material"
         '
+        'menuSVM
+        '
+        Me.menuSVM.Name = "menuSVM"
+        Me.menuSVM.Size = New System.Drawing.Size(168, 22)
+        Me.menuSVM.Tag = "23"
+        Me.menuSVM.Text = "Ship Via Method"
+        '
         'menuTransaksi
         '
-        Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuProformaInvoice, Me.menuPO})
+        Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuProformaInvoice, Me.menuPO, Me.BonOrderToolStripMenuItem})
         Me.menuTransaksi.Name = "menuTransaksi"
         Me.menuTransaksi.Size = New System.Drawing.Size(86, 20)
         Me.menuTransaksi.Text = "Transactions"
@@ -311,12 +319,12 @@ Partial Class MenuUtama
         Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
         Me.menuKeluar.Text = "Exit"
         '
-        'menuSVM
+        'BonOrderToolStripMenuItem
         '
-        Me.menuSVM.Name = "menuSVM"
-        Me.menuSVM.Size = New System.Drawing.Size(168, 22)
-        Me.menuSVM.Tag = "23"
-        Me.menuSVM.Text = "Ship Via Method"
+        Me.BonOrderToolStripMenuItem.Name = "BonOrderToolStripMenuItem"
+        Me.BonOrderToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.BonOrderToolStripMenuItem.Tag = "24"
+        Me.BonOrderToolStripMenuItem.Text = "Bon Order"
         '
         'MenuUtama
         '
@@ -382,4 +390,5 @@ Partial Class MenuUtama
     Friend WithEvents menuPO As ToolStripMenuItem
     Friend WithEvents menuBOM As ToolStripMenuItem
     Friend WithEvents menuSVM As ToolStripMenuItem
+    Friend WithEvents BonOrderToolStripMenuItem As ToolStripMenuItem
 End Class

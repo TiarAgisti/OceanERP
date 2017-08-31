@@ -325,5 +325,12 @@
         frm.MdiParent = Me
         frm.Show()
     End Sub
+
+    Private Sub BonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BonOrderToolStripMenuItem.Click
+        Dim frm As FrmListBonOrder = New FrmListBonOrder
+        frm.MdiParent = Me
+        frm.WindowState = FormWindowState.Maximized
+        frm.Show()
+    End Sub
 #End Region
 End Class
