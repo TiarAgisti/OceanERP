@@ -253,6 +253,8 @@ Public Class ClsProformaInvoice
             Return Nothing
         End Try
     End Function
+
+
 #End Region
 
 #Region "Method Generated"
