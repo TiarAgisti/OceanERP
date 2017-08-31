@@ -106,6 +106,7 @@ Public Class ClsPO
                     poDetailModel.PONo = .Item("PONo")
                     poDetailModel.CurrencyID = .Item("CurrencyID")
                     poDetailModel.CurrencyCode = .Item("CurrencyCode")
+                    poDetailModel.Total = .Item("Total")
                     myList.Add(poDetailModel)
                 End While
                 .Close()
@@ -257,6 +258,7 @@ Public Class ClsPO
     Public Function SetDetailRawMatrial(poID As Long, dgvrawmatrial As DataGridView) As List(Of PODetailModel)
         Dim listRawMatrialDetailModel As List(Of PODetailModel) = New List(Of PODetailModel)
         Dim poDetailID As Long
+
         poDetailID = GetPODetailID()
         For detail = 0 To dgvrawmatrial.Rows.Count - 2
             Dim detailModel As PODetailModel = New PODetailModel
@@ -267,7 +269,7 @@ Public Class ClsPO
                 detailModel.UnitID = .Rows(detail).Cells(2).Value
                 detailModel.UnitPrice = .Rows(detail).Cells(4).Value
                 detailModel.Quantity = .Rows(detail).Cells(5).Value
-                '   detailModel.Total = .Rows(detail).Cells(6).Value
+                detailModel.Total = .Rows(detail).Cells(6).Value
                 detailModel.CurrencyID = .Rows(detail).Cells(7).Value
                 listRawMatrialDetailModel.Add(detailModel)
             End With

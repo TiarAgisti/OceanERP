@@ -78,7 +78,7 @@
             supplier = ""
         End If
         Dim poBFC As ClsPO = New ClsPO
-        dgv.DataSource = poBFC.RetrieveListPurchaseOrder(Trim(poNo), dateFrom, dateTo, Trim(customer), Trim(supplier))
+        dgv.DataSource = poBFC.RetrieveListPurchaseOrder(Trim(poNo), dateFrom, dateTo, customer, supplier)
         dgv.ReadOnly = True
         PropertiesGrid()
     End Sub

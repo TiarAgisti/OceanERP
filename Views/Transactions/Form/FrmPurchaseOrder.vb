@@ -164,7 +164,7 @@ Public Class FrmPurchaseOrder
 #End Region
 
 #Region "Add Grid Detail"
-    Sub SumSubTotalValue()
+    Public Sub SumSubTotalValue()
         Dim subtotalval As Double
         subtotalval = 0
         For i As Integer = 0 To dgvrawmatrial.Rows.Count - 1
@@ -598,8 +598,9 @@ Public Class FrmPurchaseOrder
                     .Item(3, intBarisRawMatrial).Value = detail.UnitName
                     .Item(4, intBarisRawMatrial).Value = detail.UnitPrice
                     .Item(5, intBarisRawMatrial).Value = detail.Quantity
-                    .Item(6, intBarisRawMatrial).Value = detail.CurrencyID
-                    .Item(7, intBarisRawMatrial).Value = detail.CurrencyCode
+                    .Item(6, intBarisRawMatrial).Value = detail.Total
+                    .Item(7, intBarisRawMatrial).Value = detail.CurrencyID
+                    .Item(8, intBarisRawMatrial).Value = detail.CurrencyCode
 
                 End With
                 intBarisRawMatrial = intBarisRawMatrial + 1
@@ -795,13 +796,13 @@ Public Class FrmPurchaseOrder
 
     Private Sub txtUnitPrice_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUnitPrice.KeyPress
         If e.KeyChar = Chr(13) Then
-            txtQty.Focus()
+            cmbCurrency.Focus()
         End If
     End Sub
 
     Private Sub txtQty_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQty.KeyPress
         If e.KeyChar = Chr(13) Then
-            txtRemarks.Focus()
+            txtDiscount.Focus()
         End If
     End Sub
 
@@ -832,13 +833,8 @@ Public Class FrmPurchaseOrder
             txtSH.Focus()
         End If
     End Sub
-
-    Private Sub txtCurrency_SelectedIndexChanged(sender As Object, e As EventArgs)
-        txtQty.Focus()
-    End Sub
-
     Private Sub cmbCurrency_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCurrency.SelectedIndexChanged
-
+        txtQty.Focus()
     End Sub
 
 

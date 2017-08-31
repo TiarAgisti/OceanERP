@@ -113,13 +113,14 @@
             xCurrencyCode = value
         End Set
     End Property
-    Private xTotal As Integer
-    Public Property Total() As Integer
+    Private xTotal As Decimal
+    Public Property Total() As Decimal
         Get
             Return xTotal
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As Decimal)
             xTotal = value
         End Set
     End Property
+
 End Class

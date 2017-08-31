@@ -59,6 +59,7 @@ Partial Class MenuUtama
         Me.menuProformaInvoice = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuPO = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuSVM = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -66,7 +67,7 @@ Partial Class MenuUtama
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toltipUserName, Me.ToolStripStatusLabel2, Me.toltipTanggal, Me.ToolStripStatusLabel3, Me.toltipIP, Me.ToolStripStatusLabel1, Me.toltipCopyRight})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 452)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 527)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1063, 22)
         Me.StatusStrip1.TabIndex = 0
@@ -145,7 +146,7 @@ Partial Class MenuUtama
         '
         'menuMaster
         '
-        Me.menuMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuUser, Me.menuDestination, Me.menuBank, Me.menuFabric, Me.menuTOP, Me.menuColor, Me.menuUtilities, Me.menuGroupSales, Me.menuCustomer, Me.menuSupplier, Me.menuYarn, Me.menuBankAccount, Me.menuSeason, Me.menuCOA, Me.menuUnit, Me.menuBrandYarn, Me.menuStyle, Me.menuRawMaterial, Me.menuBOM})
+        Me.menuMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuUser, Me.menuDestination, Me.menuBank, Me.menuFabric, Me.menuTOP, Me.menuColor, Me.menuUtilities, Me.menuGroupSales, Me.menuCustomer, Me.menuSupplier, Me.menuYarn, Me.menuBankAccount, Me.menuSeason, Me.menuCOA, Me.menuUnit, Me.menuBrandYarn, Me.menuStyle, Me.menuRawMaterial, Me.menuBOM, Me.menuSVM})
         Me.menuMaster.Name = "menuMaster"
         Me.menuMaster.Size = New System.Drawing.Size(60, 20)
         Me.menuMaster.Text = "Masters"
@@ -153,133 +154,133 @@ Partial Class MenuUtama
         'menuUser
         '
         Me.menuUser.Name = "menuUser"
-        Me.menuUser.Size = New System.Drawing.Size(167, 22)
+        Me.menuUser.Size = New System.Drawing.Size(168, 22)
         Me.menuUser.Tag = "2"
         Me.menuUser.Text = "User"
         '
         'menuDestination
         '
         Me.menuDestination.Name = "menuDestination"
-        Me.menuDestination.Size = New System.Drawing.Size(167, 22)
+        Me.menuDestination.Size = New System.Drawing.Size(168, 22)
         Me.menuDestination.Tag = "3"
         Me.menuDestination.Text = "Destination"
         '
         'menuBank
         '
         Me.menuBank.Name = "menuBank"
-        Me.menuBank.Size = New System.Drawing.Size(167, 22)
+        Me.menuBank.Size = New System.Drawing.Size(168, 22)
         Me.menuBank.Tag = "4"
         Me.menuBank.Text = "Setting Bank"
         '
         'menuFabric
         '
         Me.menuFabric.Name = "menuFabric"
-        Me.menuFabric.Size = New System.Drawing.Size(167, 22)
+        Me.menuFabric.Size = New System.Drawing.Size(168, 22)
         Me.menuFabric.Tag = "5"
         Me.menuFabric.Text = "Fabric"
         '
         'menuTOP
         '
         Me.menuTOP.Name = "menuTOP"
-        Me.menuTOP.Size = New System.Drawing.Size(167, 22)
+        Me.menuTOP.Size = New System.Drawing.Size(168, 22)
         Me.menuTOP.Tag = "6"
         Me.menuTOP.Text = "Term Of Payment"
         '
         'menuColor
         '
         Me.menuColor.Name = "menuColor"
-        Me.menuColor.Size = New System.Drawing.Size(167, 22)
+        Me.menuColor.Size = New System.Drawing.Size(168, 22)
         Me.menuColor.Tag = "7"
         Me.menuColor.Text = "Color"
         '
         'menuUtilities
         '
         Me.menuUtilities.Name = "menuUtilities"
-        Me.menuUtilities.Size = New System.Drawing.Size(167, 22)
+        Me.menuUtilities.Size = New System.Drawing.Size(168, 22)
         Me.menuUtilities.Tag = "8"
         Me.menuUtilities.Text = "Utilities"
         '
         'menuGroupSales
         '
         Me.menuGroupSales.Name = "menuGroupSales"
-        Me.menuGroupSales.Size = New System.Drawing.Size(167, 22)
+        Me.menuGroupSales.Size = New System.Drawing.Size(168, 22)
         Me.menuGroupSales.Tag = "9"
         Me.menuGroupSales.Text = "Group Sales"
         '
         'menuCustomer
         '
         Me.menuCustomer.Name = "menuCustomer"
-        Me.menuCustomer.Size = New System.Drawing.Size(167, 22)
+        Me.menuCustomer.Size = New System.Drawing.Size(168, 22)
         Me.menuCustomer.Tag = "10"
         Me.menuCustomer.Text = "Customer"
         '
         'menuSupplier
         '
         Me.menuSupplier.Name = "menuSupplier"
-        Me.menuSupplier.Size = New System.Drawing.Size(167, 22)
+        Me.menuSupplier.Size = New System.Drawing.Size(168, 22)
         Me.menuSupplier.Tag = "11"
         Me.menuSupplier.Text = "Supplier"
         '
         'menuYarn
         '
         Me.menuYarn.Name = "menuYarn"
-        Me.menuYarn.Size = New System.Drawing.Size(167, 22)
+        Me.menuYarn.Size = New System.Drawing.Size(168, 22)
         Me.menuYarn.Tag = "12"
         Me.menuYarn.Text = "Yarn"
         '
         'menuBankAccount
         '
         Me.menuBankAccount.Name = "menuBankAccount"
-        Me.menuBankAccount.Size = New System.Drawing.Size(167, 22)
+        Me.menuBankAccount.Size = New System.Drawing.Size(168, 22)
         Me.menuBankAccount.Tag = "13"
         Me.menuBankAccount.Text = "Bank Account"
         '
         'menuSeason
         '
         Me.menuSeason.Name = "menuSeason"
-        Me.menuSeason.Size = New System.Drawing.Size(167, 22)
+        Me.menuSeason.Size = New System.Drawing.Size(168, 22)
         Me.menuSeason.Tag = "14"
         Me.menuSeason.Text = "Season"
         '
         'menuCOA
         '
         Me.menuCOA.Name = "menuCOA"
-        Me.menuCOA.Size = New System.Drawing.Size(167, 22)
+        Me.menuCOA.Size = New System.Drawing.Size(168, 22)
         Me.menuCOA.Tag = "15"
         Me.menuCOA.Text = "COA"
         '
         'menuUnit
         '
         Me.menuUnit.Name = "menuUnit"
-        Me.menuUnit.Size = New System.Drawing.Size(167, 22)
+        Me.menuUnit.Size = New System.Drawing.Size(168, 22)
         Me.menuUnit.Tag = "16"
         Me.menuUnit.Text = "Unit"
         '
         'menuBrandYarn
         '
         Me.menuBrandYarn.Name = "menuBrandYarn"
-        Me.menuBrandYarn.Size = New System.Drawing.Size(167, 22)
+        Me.menuBrandYarn.Size = New System.Drawing.Size(168, 22)
         Me.menuBrandYarn.Tag = "18"
         Me.menuBrandYarn.Text = "Brand Yarn"
         '
         'menuStyle
         '
         Me.menuStyle.Name = "menuStyle"
-        Me.menuStyle.Size = New System.Drawing.Size(167, 22)
+        Me.menuStyle.Size = New System.Drawing.Size(168, 22)
         Me.menuStyle.Tag = "19"
         Me.menuStyle.Text = "Style"
         '
         'menuRawMaterial
         '
         Me.menuRawMaterial.Name = "menuRawMaterial"
-        Me.menuRawMaterial.Size = New System.Drawing.Size(167, 22)
+        Me.menuRawMaterial.Size = New System.Drawing.Size(168, 22)
         Me.menuRawMaterial.Tag = "20"
         Me.menuRawMaterial.Text = "Raw Material"
         '
         'menuBOM
         '
         Me.menuBOM.Name = "menuBOM"
-        Me.menuBOM.Size = New System.Drawing.Size(167, 22)
+        Me.menuBOM.Size = New System.Drawing.Size(168, 22)
         Me.menuBOM.Tag = "21"
         Me.menuBOM.Text = "Bill Of Material"
         '
@@ -287,7 +288,7 @@ Partial Class MenuUtama
         '
         Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuProformaInvoice, Me.menuPO})
         Me.menuTransaksi.Name = "menuTransaksi"
-        Me.menuTransaksi.Size = New System.Drawing.Size(85, 20)
+        Me.menuTransaksi.Size = New System.Drawing.Size(86, 20)
         Me.menuTransaksi.Text = "Transactions"
         '
         'menuProformaInvoice
@@ -310,13 +311,20 @@ Partial Class MenuUtama
         Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
         Me.menuKeluar.Text = "Exit"
         '
+        'menuSVM
+        '
+        Me.menuSVM.Name = "menuSVM"
+        Me.menuSVM.Size = New System.Drawing.Size(168, 22)
+        Me.menuSVM.Tag = "23"
+        Me.menuSVM.Text = "Ship Via Method"
+        '
         'MenuUtama
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1063, 474)
+        Me.ClientSize = New System.Drawing.Size(1063, 549)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.DoubleBuffered = True
@@ -373,4 +381,5 @@ Partial Class MenuUtama
     Friend WithEvents toltipCopyRight As ToolStripStatusLabel
     Friend WithEvents menuPO As ToolStripMenuItem
     Friend WithEvents menuBOM As ToolStripMenuItem
+    Friend WithEvents menuSVM As ToolStripMenuItem
 End Class
