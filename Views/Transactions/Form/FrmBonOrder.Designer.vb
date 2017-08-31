@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FrmBonOrder
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FrmBonOrder
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmBonOrder))
         Me.Label3 = New System.Windows.Forms.Label()
@@ -39,7 +39,7 @@ Partial Class FrmBonOrder
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtCode = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgv = New System.Windows.Forms.DataGridView()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
@@ -50,13 +50,13 @@ Partial Class FrmBonOrder
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.txtTotNetto = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.txtTotBruto = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
@@ -101,7 +101,7 @@ Partial Class FrmBonOrder
         Me.dtpDateIssues.Location = New System.Drawing.Point(79, 39)
         Me.dtpDateIssues.Name = "dtpDateIssues"
         Me.dtpDateIssues.Size = New System.Drawing.Size(196, 20)
-        Me.dtpDateIssues.TabIndex = 15
+        Me.dtpDateIssues.TabIndex = 2
         '
         'Label13
         '
@@ -109,7 +109,7 @@ Partial Class FrmBonOrder
         Me.Label13.Location = New System.Drawing.Point(6, 42)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(63, 13)
-        Me.Label13.TabIndex = 14
+        Me.Label13.TabIndex = 20
         Me.Label13.Text = "Date Issues"
         '
         'txtStyle
@@ -118,7 +118,7 @@ Partial Class FrmBonOrder
         Me.txtStyle.Location = New System.Drawing.Point(384, 65)
         Me.txtStyle.Name = "txtStyle"
         Me.txtStyle.Size = New System.Drawing.Size(196, 20)
-        Me.txtStyle.TabIndex = 13
+        Me.txtStyle.TabIndex = 7
         '
         'Label7
         '
@@ -126,7 +126,7 @@ Partial Class FrmBonOrder
         Me.Label7.Location = New System.Drawing.Point(311, 68)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(30, 13)
-        Me.Label7.TabIndex = 12
+        Me.Label7.TabIndex = 25
         Me.Label7.Text = "Style"
         '
         'txtBrand
@@ -135,7 +135,7 @@ Partial Class FrmBonOrder
         Me.txtBrand.Location = New System.Drawing.Point(384, 39)
         Me.txtBrand.Name = "txtBrand"
         Me.txtBrand.Size = New System.Drawing.Size(196, 20)
-        Me.txtBrand.TabIndex = 11
+        Me.txtBrand.TabIndex = 6
         '
         'Label6
         '
@@ -143,7 +143,7 @@ Partial Class FrmBonOrder
         Me.Label6.Location = New System.Drawing.Point(311, 42)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(73, 13)
-        Me.Label6.TabIndex = 10
+        Me.Label6.TabIndex = 24
         Me.Label6.Text = "Brand / Buyer"
         '
         'txtCustomer
@@ -152,7 +152,7 @@ Partial Class FrmBonOrder
         Me.txtCustomer.Location = New System.Drawing.Point(384, 13)
         Me.txtCustomer.Name = "txtCustomer"
         Me.txtCustomer.Size = New System.Drawing.Size(196, 20)
-        Me.txtCustomer.TabIndex = 9
+        Me.txtCustomer.TabIndex = 5
         '
         'Label5
         '
@@ -160,7 +160,7 @@ Partial Class FrmBonOrder
         Me.Label5.Location = New System.Drawing.Point(311, 16)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(51, 13)
-        Me.Label5.TabIndex = 8
+        Me.Label5.TabIndex = 23
         Me.Label5.Text = "Customer"
         '
         'txtNoPO
@@ -169,7 +169,7 @@ Partial Class FrmBonOrder
         Me.txtNoPO.Location = New System.Drawing.Point(79, 92)
         Me.txtNoPO.Name = "txtNoPO"
         Me.txtNoPO.Size = New System.Drawing.Size(196, 20)
-        Me.txtNoPO.TabIndex = 7
+        Me.txtNoPO.TabIndex = 4
         '
         'Label4
         '
@@ -177,7 +177,7 @@ Partial Class FrmBonOrder
         Me.Label4.Location = New System.Drawing.Point(6, 95)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(39, 13)
-        Me.Label4.TabIndex = 6
+        Me.Label4.TabIndex = 22
         Me.Label4.Text = "No PO"
         '
         'cmbPINo
@@ -186,7 +186,7 @@ Partial Class FrmBonOrder
         Me.cmbPINo.Location = New System.Drawing.Point(79, 65)
         Me.cmbPINo.Name = "cmbPINo"
         Me.cmbPINo.Size = New System.Drawing.Size(196, 21)
-        Me.cmbPINo.TabIndex = 5
+        Me.cmbPINo.TabIndex = 3
         '
         'Label2
         '
@@ -194,7 +194,7 @@ Partial Class FrmBonOrder
         Me.Label2.Location = New System.Drawing.Point(6, 68)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(37, 13)
-        Me.Label2.TabIndex = 4
+        Me.Label2.TabIndex = 21
         Me.Label2.Text = "PI No."
         '
         'txtCode
@@ -203,7 +203,7 @@ Partial Class FrmBonOrder
         Me.txtCode.Location = New System.Drawing.Point(79, 13)
         Me.txtCode.Name = "txtCode"
         Me.txtCode.Size = New System.Drawing.Size(196, 20)
-        Me.txtCode.TabIndex = 3
+        Me.txtCode.TabIndex = 1
         '
         'Label1
         '
@@ -211,17 +211,17 @@ Partial Class FrmBonOrder
         Me.Label1.Location = New System.Drawing.Point(6, 16)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(72, 13)
-        Me.Label1.TabIndex = 2
+        Me.Label1.TabIndex = 19
         Me.Label1.Text = "No Bon Order"
         '
-        'DataGridView1
+        'dgv
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 164)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(590, 238)
-        Me.DataGridView1.TabIndex = 26
+        Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv.Dock = System.Windows.Forms.DockStyle.Top
+        Me.dgv.Location = New System.Drawing.Point(0, 164)
+        Me.dgv.Name = "dgv"
+        Me.dgv.Size = New System.Drawing.Size(590, 238)
+        Me.dgv.TabIndex = 10
         '
         'Panel2
         '
@@ -244,7 +244,7 @@ Partial Class FrmBonOrder
         Me.btnClose.Location = New System.Drawing.Point(127, 40)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(56, 23)
-        Me.btnClose.TabIndex = 84
+        Me.btnClose.TabIndex = 16
         Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -254,7 +254,7 @@ Partial Class FrmBonOrder
         Me.btnPrint.Location = New System.Drawing.Point(127, 11)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(56, 23)
-        Me.btnPrint.TabIndex = 83
+        Me.btnPrint.TabIndex = 13
         Me.btnPrint.Text = "Print"
         Me.btnPrint.UseVisualStyleBackColor = True
         '
@@ -264,7 +264,7 @@ Partial Class FrmBonOrder
         Me.btnVoid.Location = New System.Drawing.Point(65, 40)
         Me.btnVoid.Name = "btnVoid"
         Me.btnVoid.Size = New System.Drawing.Size(56, 23)
-        Me.btnVoid.TabIndex = 86
+        Me.btnVoid.TabIndex = 15
         Me.btnVoid.Text = "Void"
         Me.btnVoid.UseVisualStyleBackColor = True
         '
@@ -274,7 +274,7 @@ Partial Class FrmBonOrder
         Me.btnApprove.Location = New System.Drawing.Point(3, 40)
         Me.btnApprove.Name = "btnApprove"
         Me.btnApprove.Size = New System.Drawing.Size(56, 23)
-        Me.btnApprove.TabIndex = 85
+        Me.btnApprove.TabIndex = 14
         Me.btnApprove.Text = "Approve"
         Me.btnApprove.UseVisualStyleBackColor = True
         '
@@ -284,7 +284,7 @@ Partial Class FrmBonOrder
         Me.btnUpdate.Location = New System.Drawing.Point(65, 11)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(56, 23)
-        Me.btnUpdate.TabIndex = 82
+        Me.btnUpdate.TabIndex = 12
         Me.btnUpdate.Text = "Update"
         Me.btnUpdate.UseVisualStyleBackColor = True
         '
@@ -294,7 +294,7 @@ Partial Class FrmBonOrder
         Me.btnSave.Location = New System.Drawing.Point(3, 11)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(56, 23)
-        Me.btnSave.TabIndex = 81
+        Me.btnSave.TabIndex = 11
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -303,9 +303,9 @@ Partial Class FrmBonOrder
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.Label12)
         Me.Panel3.Controls.Add(Me.Label11)
-        Me.Panel3.Controls.Add(Me.TextBox6)
+        Me.Panel3.Controls.Add(Me.txtTotNetto)
         Me.Panel3.Controls.Add(Me.Label10)
-        Me.Panel3.Controls.Add(Me.TextBox5)
+        Me.Panel3.Controls.Add(Me.txtTotBruto)
         Me.Panel3.Controls.Add(Me.Label9)
         Me.Panel3.Controls.Add(Me.Label8)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Right
@@ -320,7 +320,7 @@ Partial Class FrmBonOrder
         Me.Label12.Location = New System.Drawing.Point(132, 57)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(29, 13)
-        Me.Label12.TabIndex = 19
+        Me.Label12.TabIndex = 32
         Me.Label12.Text = "KGS"
         '
         'Label11
@@ -329,16 +329,16 @@ Partial Class FrmBonOrder
         Me.Label11.Location = New System.Drawing.Point(132, 33)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(29, 13)
-        Me.Label11.TabIndex = 18
+        Me.Label11.TabIndex = 31
         Me.Label11.Text = "KGS"
         '
-        'TextBox6
+        'txtTotNetto
         '
-        Me.TextBox6.Enabled = False
-        Me.TextBox6.Location = New System.Drawing.Point(54, 54)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(72, 20)
-        Me.TextBox6.TabIndex = 17
+        Me.txtTotNetto.Enabled = False
+        Me.txtTotNetto.Location = New System.Drawing.Point(54, 54)
+        Me.txtTotNetto.Name = "txtTotNetto"
+        Me.txtTotNetto.Size = New System.Drawing.Size(72, 20)
+        Me.txtTotNetto.TabIndex = 18
         '
         'Label10
         '
@@ -346,16 +346,16 @@ Partial Class FrmBonOrder
         Me.Label10.Location = New System.Drawing.Point(3, 57)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(44, 13)
-        Me.Label10.TabIndex = 16
+        Me.Label10.TabIndex = 30
         Me.Label10.Text = "NETTO"
         '
-        'TextBox5
+        'txtTotBruto
         '
-        Me.TextBox5.Enabled = False
-        Me.TextBox5.Location = New System.Drawing.Point(54, 30)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(72, 20)
-        Me.TextBox5.TabIndex = 15
+        Me.txtTotBruto.Enabled = False
+        Me.txtTotBruto.Location = New System.Drawing.Point(54, 30)
+        Me.txtTotBruto.Name = "txtTotBruto"
+        Me.txtTotBruto.Size = New System.Drawing.Size(72, 20)
+        Me.txtTotBruto.TabIndex = 17
         '
         'Label9
         '
@@ -363,7 +363,7 @@ Partial Class FrmBonOrder
         Me.Label9.Location = New System.Drawing.Point(3, 33)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(45, 13)
-        Me.Label9.TabIndex = 14
+        Me.Label9.TabIndex = 29
         Me.Label9.Text = "BRUTO"
         '
         'Label8
@@ -372,7 +372,7 @@ Partial Class FrmBonOrder
         Me.Label8.Location = New System.Drawing.Point(3, 10)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(109, 13)
-        Me.Label8.TabIndex = 0
+        Me.Label8.TabIndex = 28
         Me.Label8.Text = "TOTAL ORDER QTY"
         '
         'FrmBonOrder
@@ -382,7 +382,7 @@ Partial Class FrmBonOrder
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(590, 494)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -394,7 +394,7 @@ Partial Class FrmBonOrder
         Me.Text = "FrmBonOrder"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
@@ -404,7 +404,7 @@ Partial Class FrmBonOrder
 
     Friend WithEvents Label3 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgv As DataGridView
     Friend WithEvents Panel2 As Panel
     Friend WithEvents txtStyle As TextBox
     Friend WithEvents Label7 As Label
@@ -421,9 +421,9 @@ Partial Class FrmBonOrder
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Label12 As Label
     Friend WithEvents Label11 As Label
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents txtTotNetto As TextBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents txtTotBruto As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
     Friend WithEvents btnClose As Button
