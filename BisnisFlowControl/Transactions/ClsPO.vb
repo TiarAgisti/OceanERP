@@ -5,8 +5,8 @@ Public Class ClsPO
                                                 , supplier As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = "Select POHeaderID,PODate,PONo,CustomerCode,CustomerName,SupplierCode,SupplierName,ShipViaMethod,ShippingDate,TermOfPayment,ExpectedReceiptDate" &
-                               ",CustomerID,SupplierID,TermOfPaymentID,StatusDesc From v_POHeader" &
+        Dim query As String = "Select POHeaderID,PODate,PONo,CustomerCode,CustomerName,SupplierCode,SupplierName,ShipViaMethodCode,ShipViaMethodName,ShippingDate,TermOfPayment,ExpectedReceiptDate" &
+                               ",CustomerID,SupplierID,TermOfPaymentID,ShipViaMethodID,StatusDesc From v_POHeader" &
                                " Where Status <> 0"
 
         If Not String.IsNullOrEmpty(poNo) Then
@@ -62,7 +62,9 @@ Public Class ClsPO
                         poHeaderModel.TelephoneCustomer = .Item("TelephoneCustomer")
                         poHeaderModel.FaxCustomer = .Item("FaxCustomer")
                         poHeaderModel.EmailCustomer = .Item("EmailCustomer")
-                        poHeaderModel.ShipViaMethod = .Item("ShipViaMethod")
+                        poHeaderModel.ShipViaMethodID = .Item("ShipViaMethodID")
+                        poHeaderModel.ShipViaMethodCode = .Item("ShipViaMethodCode")
+                        poHeaderModel.ShipViaMethodName = .Item("ShipViaMethodCode")
                         poHeaderModel.ShippingDate = .Item("ShippingDate")
                         poHeaderModel.TermOfPaymentID = .Item("TermOfPaymentID")
                         poHeaderModel.TermOfPayment = .Item("TermOfPayment")
@@ -140,6 +142,7 @@ Public Class ClsPO
         End Try
     End Function
 #End Region
+
 #Region "Method Generated"
     Protected Function GeneratedPONo(supplierCode As String) As String
         Dim myCode As String
@@ -214,6 +217,7 @@ Public Class ClsPO
     End Function
 
 #End Region
+
 #Region "Get ID"
     Public Function GetPOHeaderID() As Long
         Dim myID As Long
@@ -232,6 +236,7 @@ Public Class ClsPO
         Return myID
     End Function
 #End Region
+
 #Region "Check Available In List"
     Public Function CheckRawMatrialInList(dgvrawmatrial As DataGridView, RawMatrialID As Integer) As Boolean
         Dim cek As Integer
@@ -254,6 +259,7 @@ Public Class ClsPO
         Return status
     End Function
 #End Region
+
 #Region "Set Data Detail"
     Public Function SetDetailRawMatrial(poID As Long, dgvrawmatrial As DataGridView) As List(Of PODetailModel)
         Dim listRawMatrialDetailModel As List(Of PODetailModel) = New List(Of PODetailModel)
@@ -295,13 +301,14 @@ Public Class ClsPO
         Return listModel
     End Function
 #End Region
+
 #Region "Method CRUD"
     Protected Function SqlInsertHeader(poHeaderModel As POHeaderModel) As String
         Dim sqlHeader As String
-        sqlHeader = "Insert into POHeader(POHeaderID,PODate,PONo,CustomerID,SupplierID,ShipViaMethod,ShippingDate,TermOfPaymentID,ExpectedReceiptDate" &
+        sqlHeader = "Insert into POHeader(POHeaderID,PODate,PONo,CustomerID,SupplierID,ShipViaMethodID,ShippingDate,TermOfPaymentID,ExpectedReceiptDate" &
                                    ",Subtotal,Discount,VATRate,OtherCost,SH,GrandTotal,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
                                    "('" & poHeaderModel.POHeaderID & "','" & poHeaderModel.PODate & "','" & poHeaderModel.PONo & "'" &
-                                   ",'" & poHeaderModel.CustomerID & "','" & poHeaderModel.SupplierID & "','" & poHeaderModel.ShipViaMethod & "'" &
+                                   ",'" & poHeaderModel.CustomerID & "','" & poHeaderModel.SupplierID & "','" & poHeaderModel.ShipViaMethodID & "'" &
                                    ",'" & poHeaderModel.ShippingDate & "','" & poHeaderModel.TermOfPaymentID & "','" & poHeaderModel.ExpectedReceiptDate & "'" &
                                    ",'" & poHeaderModel.Subtotal & "','" & poHeaderModel.Discount & "','" & poHeaderModel.VATRate & "'" &
                                    ",'" & poHeaderModel.OtherCost & "','" & poHeaderModel.SH & "','" & poHeaderModel.GrandTotal & "'" &
@@ -309,10 +316,11 @@ Public Class ClsPO
                                    ",'" & poHeaderModel.UpdatedBy & "','" & poHeaderModel.UpdatedDate & "')"
         Return sqlHeader
     End Function
+
     Protected Function SqlUpdateHeader(myModel As POHeaderModel) As String
         Dim SQL As String
         SQL = "Update POHeader Set PODate = '" & myModel.PODate & "',CustomerID = '" & myModel.CustomerID & "',SupplierID = '" & myModel.SupplierID & "'" &
-                                    ",ShipViaMethod='" & myModel.ShipViaMethod & "',ShippingDate = '" & myModel.ShippingDate & "'" &
+                                    ",ShipViaMethodID='" & myModel.ShipViaMethodID & "',ShippingDate = '" & myModel.ShippingDate & "'" &
                                     ",TermOfPaymentID = '" & myModel.TermOfPaymentID & "',ExpectedReceiptDate = '" & myModel.ExpectedReceiptDate & "'" &
                                     ",Subtotal = '" & myModel.Subtotal & "',Discount = '" & myModel.Discount & "'" &
                                     ",VATRate = '" & myModel.VATRate & "',OtherCost = '" & myModel.OtherCost & "'" &
@@ -321,6 +329,7 @@ Public Class ClsPO
                                     ",UpdatedDate = '" & myModel.UpdatedDate & "' Where POHeaderID = '" & myModel.POHeaderID & "'"
         Return SQL
     End Function
+
     Protected Function SqlInsertDetailRawMatrial(myModel As PODetailModel) As String
         Dim sql As String
 
@@ -331,12 +340,14 @@ Public Class ClsPO
 
         Return sql
     End Function
+
     Protected Function SqlInsertRemarksDetail(myModel As PORemarksModel) As String
         Dim SQL As String
         SQL = "Insert Into PORemarks(POHeaderID,PORemarksID,Remarks)Values('" & myModel.POHeaderID & "'" &
                 ",'" & myModel.PORemarksID & "','" & myModel.Remarks & "')"
         Return SQL
     End Function
+
     Protected Function SqlUpdateStatusHeader(myModel As POHeaderModel) As String
         Dim SQL As String
         SQL = "Update POHeader Set Status = '" & myModel.Status & "' Where POHeaderID = '" & myModel.POHeaderID & "'"
@@ -348,11 +359,13 @@ Public Class ClsPO
         SQL = "Delete From PODetail Where POHeaderID = '" & myModel.POHeaderID & "'"
         Return SQL
     End Function
+
     Protected Function SqlDeleteDetailRemarks(myModel As POHeaderModel) As String
         Dim SQL As String
         SQL = "Delete From PORemarks Where POHeaderID = '" & myModel.POHeaderID & "'"
         Return SQL
     End Function
+
     Public Function InsertData(pOHeaderModel As POHeaderModel, listPoDetailModel As List(Of PODetailModel) _
                               , listRemarks As List(Of PORemarksModel), logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess

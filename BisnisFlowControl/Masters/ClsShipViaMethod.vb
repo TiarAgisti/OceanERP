@@ -110,12 +110,12 @@
             Throw ex
         End Try
     End Function
-    Public Sub ComboBoxColor(cmb As ComboBox)
+    Public Sub ComboBoxShipViaMethod(cmb As ComboBox)
         Try
             With cmb
                 .DataSource = ListComboBoxShipViaMethodCode()
                 .ValueMember = "ShipViaMethodID"
-                .DisplayMember = "ShipViaMethodCode"
+                .DisplayMember = "ShipViaMethodName"
                 .AutoCompleteMode = AutoCompleteMode.SuggestAppend
                 .AutoCompleteSource = AutoCompleteSource.ListItems
             End With
