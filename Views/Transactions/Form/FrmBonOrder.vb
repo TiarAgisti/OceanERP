@@ -85,7 +85,45 @@
 #End Region
 
 #Region "Set Data"
-
+    Function SetDataHeader() As BonOrderHeaderModel
+        Dim headerModel As BonOrderHeaderModel = New BonOrderHeaderModel
+        Dim bonBFC As ClsBonOrder = New ClsBonOrder
+        Try
+            With headerModel
+                Select Case conBon
+                    Case "Create"
+                        .BonOrderID = bonBFC.GetBonOrderID
+                        '.BOMCode = bomBFC.GetBOMCode(buyerCode)
+                        '.FabricID = cmbFabric.SelectedValue
+                        '.BuyerID = cmbBuyer.SelectedValue
+                        '.StyleID = cmbStyle.SelectedValue
+                        '.ColorID = cmbColor.SelectedValue
+                        '.StatusBOM = status
+                        .IsActive = 1
+                        .CreatedBy = userID
+                        .CreatedDate = DateTime.Now
+                        .UpdatedBy = userID
+                        .UpdatedDate = DateTime.Now
+                    Case "Update"
+                        '.BOMHeaderID = bomHeaderID
+                        '.BOMCode = txtCode.Text
+                        '.FabricID = cmbFabric.SelectedValue
+                        '.BuyerID = cmbBuyer.SelectedValue
+                        '.StyleID = cmbStyle.SelectedValue
+                        '.ColorID = cmbColor.SelectedValue
+                        '.StatusBOM = status
+                        .IsActive = 1
+                        .UpdatedBy = userID
+                        .UpdatedDate = DateTime.Now
+                End Select
+            End With
+            Return headerModel
+        Catch ex As Exception
+            Throw ex
+        Finally
+            bomBFC = Nothing
+        End Try
+    End Function
 #End Region
 
 #Region "Function"
