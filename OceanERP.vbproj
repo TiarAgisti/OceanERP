@@ -119,6 +119,7 @@
     <Compile Include="BisnisFlowControl\Masters\ClsGroupSales.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsRawMaterial.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsSeason.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsShipViaMethod.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsStyle.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsTermOfPayment.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsTermOfPrice.vb" />
@@ -163,6 +164,7 @@
     <Compile Include="Models\Masters\BrandYarnModel.vb" />
     <Compile Include="Models\Masters\RawMaterialModel.vb" />
     <Compile Include="Models\Masters\SeasonModel.vb" />
+    <Compile Include="Models\Masters\ShipViaMethodModel.vb" />
     <Compile Include="Models\Masters\StyleModel.vb" />
     <Compile Include="Models\Masters\TermOfPaymentModel.vb" />
     <Compile Include="Models\Masters\UnitModel.vb" />
@@ -263,6 +265,12 @@
       <DependentUpon>FrmRawMaterial.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmRawMaterial.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmShipViaMethod.Designer.vb">
+      <DependentUpon>FrmShipViaMethod.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Masters\Form\FrmShipViaMethod.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Masters\Form\FrmStyle.Designer.vb">
@@ -464,6 +472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmRawMaterial.resx">
       <DependentUpon>FrmRawMaterial.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Masters\Form\FrmShipViaMethod.resx">
+      <DependentUpon>FrmShipViaMethod.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\Form\FrmStyle.resx">
       <DependentUpon>FrmStyle.vb</DependentUpon>

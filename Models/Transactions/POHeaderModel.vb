@@ -45,13 +45,13 @@
             xSupplierID = value
         End Set
     End Property
-    Private xShipViaMethod As String
-    Public Property ShipViaMethod() As String
+    Private xShipViaMethodCode As String
+    Public Property ShipViaMethodCode() As String
         Get
-            Return xShipViaMethod
+            Return xShipViaMethodCode
         End Get
         Set(ByVal value As String)
-            xShipViaMethod = value
+            xShipViaMethodCode = value
         End Set
     End Property
     Private xShippingDate As Date
@@ -286,6 +286,25 @@
         End Get
         Set(ByVal value As String)
             xEmailSupplier = value
+        End Set
+    End Property
+
+    Private xShipViaMethodID As Integer
+    Public Property ShipViaMethodID() As Integer
+        Get
+            Return xShipViaMethodID
+        End Get
+        Set(ByVal value As Integer)
+            xShipViaMethodID = value
+        End Set
+    End Property
+    Private xShipViaMethodName As String
+    Public Property ShipViaMethodName() As String
+        Get
+            Return xShipViaMethodName
+        End Get
+        Set(ByVal value As String)
+            xShipViaMethodName = value
         End Set
     End Property
 End Class

@@ -25,6 +25,7 @@ Partial Class FrmPurchaseOrder
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPurchaseOrder))
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cmbSVM = New System.Windows.Forms.ComboBox()
         Me.dtERD = New System.Windows.Forms.DateTimePicker()
         Me.dtSD = New System.Windows.Forms.DateTimePicker()
         Me.cmbTOP = New System.Windows.Forms.ComboBox()
@@ -35,7 +36,6 @@ Partial Class FrmPurchaseOrder
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtPONo = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtShipViaMethode = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
@@ -68,6 +68,7 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabProductName = New System.Windows.Forms.TabPage()
+        Me.cmbCurrency = New System.Windows.Forms.ComboBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Button()
@@ -107,7 +108,6 @@ Partial Class FrmPurchaseOrder
         Me.btnRemAddList = New System.Windows.Forms.Button()
         Me.txtRemarks = New System.Windows.Forms.TextBox()
         Me.Label67 = New System.Windows.Forms.Label()
-        Me.cmbCurrency = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -136,6 +136,7 @@ Partial Class FrmPurchaseOrder
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.cmbSVM)
         Me.GroupBox1.Controls.Add(Me.dtERD)
         Me.GroupBox1.Controls.Add(Me.dtSD)
         Me.GroupBox1.Controls.Add(Me.cmbTOP)
@@ -146,7 +147,6 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.txtPONo)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.txtShipViaMethode)
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Location = New System.Drawing.Point(0, 43)
@@ -154,6 +154,14 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox1.Size = New System.Drawing.Size(880, 76)
         Me.GroupBox1.TabIndex = 25
         Me.GroupBox1.TabStop = False
+        '
+        'cmbSVM
+        '
+        Me.cmbSVM.FormattingEnabled = True
+        Me.cmbSVM.Location = New System.Drawing.Point(373, 16)
+        Me.cmbSVM.Name = "cmbSVM"
+        Me.cmbSVM.Size = New System.Drawing.Size(188, 21)
+        Me.cmbSVM.TabIndex = 34
         '
         'dtERD
         '
@@ -236,13 +244,6 @@ Partial Class FrmPurchaseOrder
         Me.Label1.Size = New System.Drawing.Size(39, 13)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "PO No"
-        '
-        'txtShipViaMethode
-        '
-        Me.txtShipViaMethode.Location = New System.Drawing.Point(373, 16)
-        Me.txtShipViaMethode.Name = "txtShipViaMethode"
-        Me.txtShipViaMethode.Size = New System.Drawing.Size(188, 20)
-        Me.txtShipViaMethode.TabIndex = 24
         '
         'Label11
         '
@@ -577,6 +578,14 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.TabIndex = 0
         Me.TabProductName.Text = "Produk Name"
         Me.TabProductName.UseVisualStyleBackColor = True
+        '
+        'cmbCurrency
+        '
+        Me.cmbCurrency.FormattingEnabled = True
+        Me.cmbCurrency.Location = New System.Drawing.Point(362, 32)
+        Me.cmbCurrency.Name = "cmbCurrency"
+        Me.cmbCurrency.Size = New System.Drawing.Size(188, 21)
+        Me.cmbCurrency.TabIndex = 139
         '
         'Label21
         '
@@ -935,14 +944,6 @@ Partial Class FrmPurchaseOrder
         Me.Label67.TabIndex = 112
         Me.Label67.Text = "Remaks"
         '
-        'cmbCurrency
-        '
-        Me.cmbCurrency.FormattingEnabled = True
-        Me.cmbCurrency.Location = New System.Drawing.Point(362, 32)
-        Me.cmbCurrency.Name = "cmbCurrency"
-        Me.cmbCurrency.Size = New System.Drawing.Size(188, 21)
-        Me.cmbCurrency.TabIndex = 139
-        '
         'FrmPurchaseOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1001,7 +1002,6 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label10 As Label
-    Friend WithEvents txtShipViaMethode As TextBox
     Friend WithEvents Label11 As Label
     Friend WithEvents cmbTOP As ComboBox
     Friend WithEvents dtERD As DateTimePicker
@@ -1063,4 +1063,5 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Label21 As Label
     Friend WithEvents cmbCurrency As ComboBox
+    Friend WithEvents cmbSVM As ComboBox
 End Class

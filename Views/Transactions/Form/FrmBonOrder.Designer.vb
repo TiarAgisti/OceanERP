@@ -70,6 +70,7 @@ Partial Class FrmBonOrder
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(590, 43)
         Me.Label3.TabIndex = 24
+        Me.Label3.Tag = "24"
         Me.Label3.Text = "Bon Order"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
