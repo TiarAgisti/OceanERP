@@ -411,6 +411,12 @@
     <Compile Include="Views\Masters\List\FrmListBOM.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\Transactions\Form\FrmPlaning.Designer.vb">
+      <DependentUpon>FrmPlaning.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transactions\Form\FrmPlaning.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\Transactions\List\FrmListBonOrder.Designer.vb">
       <DependentUpon>FrmListBonOrder.vb</DependentUpon>
     </Compile>
@@ -544,6 +550,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Masters\List\FrmListBOM.resx">
       <DependentUpon>FrmListBOM.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transactions\Form\FrmPlaning.resx">
+      <DependentUpon>FrmPlaning.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\List\FrmListBonOrder.resx">
       <DependentUpon>FrmListBonOrder.vb</DependentUpon>

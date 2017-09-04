@@ -673,7 +673,6 @@ Public Class FrmPurchaseOrder
             MsgBoxError(ex.Message)
         End Try
     End Sub
-
     Private Sub FrmPurchaseOrder_Load(sender As Object, e As EventArgs) Handles Me.Load
         Select Case condition
             Case "Create"
@@ -708,9 +707,6 @@ Public Class FrmPurchaseOrder
             MsgBoxError(ex.Message)
         End Try
     End Sub
-
-
-
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         If CheckEmptyHeader() = False Then
             If condition = "Update" Then
@@ -859,8 +855,6 @@ Public Class FrmPurchaseOrder
     Private Sub cmbPINO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPINO.SelectedIndexChanged
         cmbSVM.Focus()
     End Sub
-
-
 #End Region
 
 End Class

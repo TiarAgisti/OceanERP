@@ -309,7 +309,7 @@ Public Class ClsPO
         Dim sqlHeader As String
         sqlHeader = "Insert into POHeader(POHeaderID,PIHeaderID,PODate,PONo,CustomerID,SupplierID,ShipViaMethodID,ShippingDate,TermOfPaymentID,ExpectedReceiptDate" &
                                    ",Subtotal,Discount,VATRate,OtherCost,SH,GrandTotal,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
-                                   "('" & poHeaderModel.POHeaderID & "','" & poHeaderModel.PIHeaderID & "',,'" & poHeaderModel.PODate & "','" & poHeaderModel.PONo & "'" &
+                                   "('" & poHeaderModel.POHeaderID & "','" & poHeaderModel.PIHeaderID & "','" & poHeaderModel.PODate & "','" & poHeaderModel.PONo & "'" &
                                    ",'" & poHeaderModel.CustomerID & "','" & poHeaderModel.SupplierID & "','" & poHeaderModel.ShipViaMethodID & "'" &
                                    ",'" & poHeaderModel.ShippingDate & "','" & poHeaderModel.TermOfPaymentID & "','" & poHeaderModel.ExpectedReceiptDate & "'" &
                                    ",'" & poHeaderModel.Subtotal & "','" & poHeaderModel.Discount & "','" & poHeaderModel.VATRate & "'" &
