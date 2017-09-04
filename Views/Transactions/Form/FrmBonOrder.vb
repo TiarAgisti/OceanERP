@@ -5,7 +5,7 @@
     Dim intBaris As Integer
     Dim intPost As Integer
     Dim custCode As String = ""
-    Dim statusBOM As Int16
+    Dim statusBOn As Int16
 #End Region
 
 #Region "ComboBox"
@@ -85,10 +85,102 @@
 #End Region
 
 #Region "Set Data"
-
+    Function SetDataHeader() As BonOrderHeaderModel
+        Dim headerModel As BonOrderHeaderModel = New BonOrderHeaderModel
+        Dim bonBFC As ClsBonOrder = New ClsBonOrder
+        Try
+            With headerModel
+                Select Case conBon
+                    Case "Create"
+                        .BonOrderID = bonBFC.GetBonOrderID
+                        .BonOrderCode = bonBFC.GetBonOrderCode(custCode)
+                        .PIHeaderID = cmbPINo.SelectedValue
+                        .Status = statusBOn
+                        .CreatedBy = userID
+                        .CreatedDate = DateTime.Now
+                        .UpdatedBy = userID
+                        .UpdatedDate = DateTime.Now
+                    Case "Update"
+                        .BonOrderID = bonOrderID
+                        .BonOrderCode = txtCode.Text
+                        .PIHeaderID = cmbPINo.SelectedValue
+                        .Status = statusBOn
+                        .UpdatedBy = userID
+                        .UpdatedDate = DateTime.Now
+                End Select
+            End With
+            Return headerModel
+        Catch ex As Exception
+            Throw ex
+        Finally
+            bonBFC = Nothing
+        End Try
+    End Function
+    Function SetDetail(bonOrderID As Long) As List(Of BonOrderDetailModel)
+        Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
+        Dim listModel As List(Of BonOrderDetailModel) = New List(Of BonOrderDetailModel)
+        Try
+            listModel = bonOrderBFC.SetDetail(bonOrderID, dgv)
+            Return listModel
+        Catch ex As Exception
+            Throw ex
+        Finally
+            bonOrderBFC = Nothing
+        End Try
+    End Function
 #End Region
 
 #Region "Function"
+    Sub PrepareByHeaderID()
+        Dim headerModel As BonOrderHeaderModel = New BonOrderHeaderModel
+        Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
+        Try
+            ComboBoxPI()
+            headerModel = bonOrderBFC.RetrieveByID(bonOrderID)
+            With headerModel
+                txtCode.Text = .BonOrderCode
+                cmbPINo.SelectedValue = .PIHeaderID
+                txtNoPO.Text = .RefPO
+                txtCustomer.Text = .CustomerName
+                txtBrand.Text = .BuyerName
+                txtStyle.Text = .StyleName
+                statusBOn = .Status
+            End With
+        Catch ex As Exception
+            Throw ex
+        Finally
+            headerModel = Nothing
+            bonOrderBFC = Nothing
+        End Try
+    End Sub
+
+    Sub PrepareDetailByHeaderID()
+        Dim listDetail As List(Of PIDetailModel) = New List(Of PIDetailModel)
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+        Try
+            GridDetail()
+            listDetail = piBFC.RetrieveAllDetailByHeaderID(cmbPINo.SelectedValue)
+            For Each detail In listDetail
+                With dgv
+                    .Rows.Add()
+                    .Item(0, intBaris).Value = detail.StyleName
+                    .Item(1, intBaris).Value = detail.Weight + " x " + detail.Width
+                    .Item(2, intBaris).Value = detail.ColDescription
+                    .Item(3, intBaris).Value = detail.ColorCode
+                    .Item(4, intBaris).Value = 0
+                    .Item(5, intBaris).Value = 0
+                    .Item(6, intBaris).Value = detail.FabricID
+                    .Item(7, intBaris).Value = detail.ColorID
+                End With
+                intBaris = intBaris + 1
+            Next
+        Catch ex As Exception
+            Throw ex
+        Finally
+            listDetail = Nothing
+            piBFC = Nothing
+        End Try
+    End Sub
 
 #End Region
 
@@ -114,18 +206,14 @@
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-
+        Close()
     End Sub
-
-    Private Sub txtNoPO_TextChanged(sender As Object, e As EventArgs) Handles txtNoPO.TextChanged
-
-    End Sub
-
-
 #End Region
 
 #Region "Raw State Change"
-
+    Private Sub dgv_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgv.RowStateChanged
+        intPost = e.Row.Index
+    End Sub
 #End Region
 
 #Region "Other"

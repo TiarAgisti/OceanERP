@@ -25,25 +25,25 @@ Partial Class FrmListBonOrder
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmListBonOrder))
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.ckNoBon = New System.Windows.Forms.CheckBox()
-        Me.txtNoBon = New System.Windows.Forms.TextBox()
-        Me.ckDateIssues = New System.Windows.Forms.CheckBox()
-        Me.dtpIssues = New System.Windows.Forms.DateTimePicker()
-        Me.txtPINo = New System.Windows.Forms.TextBox()
-        Me.ckPINo = New System.Windows.Forms.CheckBox()
-        Me.txtCust = New System.Windows.Forms.TextBox()
-        Me.ckCust = New System.Windows.Forms.CheckBox()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.btnFind = New System.Windows.Forms.Button()
+        Me.txtCust = New System.Windows.Forms.TextBox()
+        Me.ckCust = New System.Windows.Forms.CheckBox()
+        Me.txtPINo = New System.Windows.Forms.TextBox()
+        Me.ckPINo = New System.Windows.Forms.CheckBox()
+        Me.dtpIssues = New System.Windows.Forms.DateTimePicker()
+        Me.ckDateIssues = New System.Windows.Forms.CheckBox()
+        Me.txtNoBon = New System.Windows.Forms.TextBox()
+        Me.ckNoBon = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.btnView = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgv = New System.Windows.Forms.DataGridView()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label3
@@ -77,56 +77,23 @@ Partial Class FrmListBonOrder
         Me.Panel1.Size = New System.Drawing.Size(780, 152)
         Me.Panel1.TabIndex = 26
         '
-        'ckNoBon
+        'btnClear
         '
-        Me.ckNoBon.AutoSize = True
-        Me.ckNoBon.Location = New System.Drawing.Point(10, 15)
-        Me.ckNoBon.Name = "ckNoBon"
-        Me.ckNoBon.Size = New System.Drawing.Size(91, 17)
-        Me.ckNoBon.TabIndex = 0
-        Me.ckNoBon.Text = "No Bon Order"
-        Me.ckNoBon.UseVisualStyleBackColor = True
+        Me.btnClear.Location = New System.Drawing.Point(188, 117)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(75, 23)
+        Me.btnClear.TabIndex = 62
+        Me.btnClear.Text = "Clear"
+        Me.btnClear.UseVisualStyleBackColor = True
         '
-        'txtNoBon
+        'btnFind
         '
-        Me.txtNoBon.Location = New System.Drawing.Point(107, 13)
-        Me.txtNoBon.Name = "txtNoBon"
-        Me.txtNoBon.Size = New System.Drawing.Size(188, 20)
-        Me.txtNoBon.TabIndex = 1
-        '
-        'ckDateIssues
-        '
-        Me.ckDateIssues.AutoSize = True
-        Me.ckDateIssues.Location = New System.Drawing.Point(10, 39)
-        Me.ckDateIssues.Name = "ckDateIssues"
-        Me.ckDateIssues.Size = New System.Drawing.Size(82, 17)
-        Me.ckDateIssues.TabIndex = 2
-        Me.ckDateIssues.Text = "Date Issues"
-        Me.ckDateIssues.UseVisualStyleBackColor = True
-        '
-        'dtpIssues
-        '
-        Me.dtpIssues.Location = New System.Drawing.Point(107, 39)
-        Me.dtpIssues.Name = "dtpIssues"
-        Me.dtpIssues.Size = New System.Drawing.Size(188, 20)
-        Me.dtpIssues.TabIndex = 3
-        '
-        'txtPINo
-        '
-        Me.txtPINo.Location = New System.Drawing.Point(107, 65)
-        Me.txtPINo.Name = "txtPINo"
-        Me.txtPINo.Size = New System.Drawing.Size(188, 20)
-        Me.txtPINo.TabIndex = 5
-        '
-        'ckPINo
-        '
-        Me.ckPINo.AutoSize = True
-        Me.ckPINo.Location = New System.Drawing.Point(10, 67)
-        Me.ckPINo.Name = "ckPINo"
-        Me.ckPINo.Size = New System.Drawing.Size(53, 17)
-        Me.ckPINo.TabIndex = 4
-        Me.ckPINo.Text = "PI No"
-        Me.ckPINo.UseVisualStyleBackColor = True
+        Me.btnFind.Location = New System.Drawing.Point(107, 117)
+        Me.btnFind.Name = "btnFind"
+        Me.btnFind.Size = New System.Drawing.Size(75, 23)
+        Me.btnFind.TabIndex = 61
+        Me.btnFind.Text = "Find"
+        Me.btnFind.UseVisualStyleBackColor = True
         '
         'txtCust
         '
@@ -145,23 +112,56 @@ Partial Class FrmListBonOrder
         Me.ckCust.Text = "Customer"
         Me.ckCust.UseVisualStyleBackColor = True
         '
-        'btnClear
+        'txtPINo
         '
-        Me.btnClear.Location = New System.Drawing.Point(188, 117)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(75, 23)
-        Me.btnClear.TabIndex = 62
-        Me.btnClear.Text = "Clear"
-        Me.btnClear.UseVisualStyleBackColor = True
+        Me.txtPINo.Location = New System.Drawing.Point(107, 65)
+        Me.txtPINo.Name = "txtPINo"
+        Me.txtPINo.Size = New System.Drawing.Size(188, 20)
+        Me.txtPINo.TabIndex = 5
         '
-        'btnFind
+        'ckPINo
         '
-        Me.btnFind.Location = New System.Drawing.Point(107, 117)
-        Me.btnFind.Name = "btnFind"
-        Me.btnFind.Size = New System.Drawing.Size(75, 23)
-        Me.btnFind.TabIndex = 61
-        Me.btnFind.Text = "Find"
-        Me.btnFind.UseVisualStyleBackColor = True
+        Me.ckPINo.AutoSize = True
+        Me.ckPINo.Location = New System.Drawing.Point(10, 67)
+        Me.ckPINo.Name = "ckPINo"
+        Me.ckPINo.Size = New System.Drawing.Size(53, 17)
+        Me.ckPINo.TabIndex = 4
+        Me.ckPINo.Text = "PI No"
+        Me.ckPINo.UseVisualStyleBackColor = True
+        '
+        'dtpIssues
+        '
+        Me.dtpIssues.Location = New System.Drawing.Point(107, 39)
+        Me.dtpIssues.Name = "dtpIssues"
+        Me.dtpIssues.Size = New System.Drawing.Size(188, 20)
+        Me.dtpIssues.TabIndex = 3
+        '
+        'ckDateIssues
+        '
+        Me.ckDateIssues.AutoSize = True
+        Me.ckDateIssues.Location = New System.Drawing.Point(10, 39)
+        Me.ckDateIssues.Name = "ckDateIssues"
+        Me.ckDateIssues.Size = New System.Drawing.Size(82, 17)
+        Me.ckDateIssues.TabIndex = 2
+        Me.ckDateIssues.Text = "Date Issues"
+        Me.ckDateIssues.UseVisualStyleBackColor = True
+        '
+        'txtNoBon
+        '
+        Me.txtNoBon.Location = New System.Drawing.Point(107, 13)
+        Me.txtNoBon.Name = "txtNoBon"
+        Me.txtNoBon.Size = New System.Drawing.Size(188, 20)
+        Me.txtNoBon.TabIndex = 1
+        '
+        'ckNoBon
+        '
+        Me.ckNoBon.AutoSize = True
+        Me.ckNoBon.Location = New System.Drawing.Point(10, 15)
+        Me.ckNoBon.Name = "ckNoBon"
+        Me.ckNoBon.Size = New System.Drawing.Size(91, 17)
+        Me.ckNoBon.TabIndex = 0
+        Me.ckNoBon.Text = "No Bon Order"
+        Me.ckNoBon.UseVisualStyleBackColor = True
         '
         'Panel2
         '
@@ -214,32 +214,33 @@ Partial Class FrmListBonOrder
         Me.btnExit.Text = "Exit"
         Me.btnExit.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'dgv
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 230)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(780, 251)
-        Me.DataGridView1.TabIndex = 54
+        Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgv.Location = New System.Drawing.Point(0, 230)
+        Me.dgv.Name = "dgv"
+        Me.dgv.Size = New System.Drawing.Size(780, 251)
+        Me.dgv.TabIndex = 54
         '
         'FrmListBonOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(780, 481)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmListBonOrder"
+        Me.Tag = "24"
         Me.Text = "FrmListBonOrder"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -261,5 +262,5 @@ Partial Class FrmListBonOrder
     Friend WithEvents btnRefresh As Button
     Friend WithEvents btnView As Button
     Friend WithEvents btnExit As Button
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgv As DataGridView
 End Class
