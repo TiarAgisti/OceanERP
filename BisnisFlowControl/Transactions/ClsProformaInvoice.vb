@@ -254,7 +254,59 @@ Public Class ClsProformaInvoice
         End Try
     End Function
 
-
+    Public Function RetrieveAllDetailByHeaderID(headerID As Long) As List(Of PIDetailModel)
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim myListModel As List(Of PIDetailModel) = New List(Of PIDetailModel)
+        Dim query As String = "Select * From v_PIAllDetail Where PIHeaderID = '" & headerID & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(query)
+            With dataAccess.reader
+                While .Read
+                    Dim piDetailModel As PIDetailModel = New PIDetailModel
+                    piDetailModel.PIHeaderID = .Item("PIHeaderID")
+                    piDetailModel.StyleName = .Item("StyleName")
+                    piDetailModel.PIDate = .Item("PIDate")
+                    piDetailModel.PINo = .Item("PINo")
+                    piDetailModel.ColDescription = .Item("ColDescription")
+                    piDetailModel.ColorCode = .Item("ColorCode")
+                    piDetailModel.Weight = .Item("Weight")
+                    piDetailModel.Width = .Item("Width")
+                    piDetailModel.QtySample = .Item("QtySample")
+                    piDetailModel.PPSample = .Item("PPSample")
+                    piDetailModel.QtyOrder = .Item("QtyOrder")
+                    piDetailModel.Price = .Item("Price")
+                    piDetailModel.Amount = .Item("Amount")
+                    piDetailModel.FabricID = .Item("FabricID")
+                    piDetailModel.ColorID = .Item("ColorID")
+                    myListModel.Add(piDetailModel)
+                End While
+            End With
+            Return myListModel
+        Catch ex As Exception
+            Throw ex
+        Finally
+            dataAccess.reader.Close()
+            dataAccess = Nothing
+        End Try
+    End Function
+    Public Function RetrieveCustCodeByPIHeaderID(headerID As Long) As PIHeaderModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim piHeaderModel As PIHeaderModel = New PIHeaderModel
+        Dim query As String = "Select CustomerCode From v_PIHeader Where PIHeaderID='" & headerID & "'"
+        Try
+            With dataAccess.reader
+                While .Read
+                    piHeaderModel.CustomerCode = .Item("CustomerCode")
+                End While
+            End With
+            Return piHeaderModel
+        Catch ex As Exception
+            Throw ex
+        Finally
+            dataAccess.reader.Close()
+            dataAccess = Nothing
+        End Try
+    End Function
 #End Region
 
 #Region "Method Generated"

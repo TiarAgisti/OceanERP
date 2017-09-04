@@ -166,9 +166,11 @@
                 Dim detailModel As BonOrderDetailModel = New BonOrderDetailModel
                 With dgv
                     detailModel.BonOrderID = bonOrderID
-                    'detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
-                    'detailModel.UnitID = .Rows(detail).Cells(4).Value
-                    'detailModel.Qty = .Rows(detail).Cells(6).Value
+                    detailModel.FabricID = .Rows(detail).Cells(6).Value
+                    detailModel.ColorID = .Rows(detail).Cells(7).Value
+                    detailModel.LabsDipsNo = .Rows(detail).Cells(3).Value
+                    detailModel.Bruto = .Rows(detail).Cells(4).Value
+                    detailModel.Netto = .Rows(detail).Cells(5).Value
                     listDetailModel.Add(detailModel)
                 End With
             Next

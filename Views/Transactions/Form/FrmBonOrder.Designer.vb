@@ -392,6 +392,7 @@ Partial Class FrmBonOrder
         Me.MinimizeBox = False
         Me.Name = "FrmBonOrder"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Tag = "24"
         Me.Text = "FrmBonOrder"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

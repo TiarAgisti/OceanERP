@@ -16,10 +16,17 @@
     Sub CheckPermissions()
         Dim roleBFC As ClsPermission = New ClsPermission
         Dim roleModel As RoleDModel = New RoleDModel
-        roleModel = roleBFC.RetrieveDetailsByRoleIDMenuID(roleIDUser, Tag)
-        If roleModel.IsCreate = True Then btnAdd.Enabled = True
-        If roleModel.IsUpdate = True Then btnView.Enabled = True
-        If roleModel.IsDelete = True Then btnView.Enabled = True
+        Try
+            roleModel = roleBFC.RetrieveDetailsByRoleIDMenuID(roleIDUser, Tag)
+            If roleModel.IsCreate = True Then btnAdd.Enabled = True
+            If roleModel.IsUpdate = True Then btnView.Enabled = True
+            If roleModel.IsDelete = True Then btnView.Enabled = True
+        Catch ex As Exception
+            Throw ex
+        Finally
+            roleBFC = Nothing
+            roleModel = Nothing
+        End Try
     End Sub
 
     Sub PropertiesGrid()
@@ -100,9 +107,15 @@
         End If
 
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-        dgv.DataSource = piBFC.RetrieveListProformaInvoice(Trim(piNo), dateFrom, dateTo, Trim(customer), Trim(refPO))
-        dgv.ReadOnly = True
-        PropertiesGrid()
+        Try
+            dgv.DataSource = piBFC.RetrieveListProformaInvoice(Trim(piNo), dateFrom, dateTo, Trim(customer), Trim(refPO))
+            dgv.ReadOnly = True
+            PropertiesGrid()
+        Catch ex As Exception
+            Throw ex
+        Finally
+            piBFC = Nothing
+        End Try
     End Sub
 
     Function GetID() As Long
@@ -112,7 +125,7 @@
             row = dgv.CurrentRow.Index
             headerID = dgv.Item(0, row).Value
         Else
-            Throw New Exception("No data available")
+            Throw New Exception("Error List Proforma Invoice : No data available")
         End If
         Return headerID
     End Function
@@ -123,7 +136,7 @@
             ListData()
             CheckPermissions()
         Catch ex As Exception
-            MsgBoxError(ex.Message)
+            Throw ex
         End Try
     End Sub
 #End Region
@@ -133,7 +146,7 @@
         Try
             ListData()
         Catch ex As Exception
-            MsgBoxError(ex.Message)
+            MsgBoxError("Error List Proforma Invoice : " + ex.Message)
         End Try
     End Sub
 
@@ -143,7 +156,7 @@
             frm.condition = "Create"
             frm.ShowDialog()
         Catch ex As Exception
-            MsgBoxError(ex.Message)
+            MsgBoxError("Error List Proforma Invoice : " + ex.Message)
         End Try
     End Sub
 
@@ -154,7 +167,7 @@
             FrmProformaInvoice.piHeaderID = GetID()
             frm.ShowDialog()
         Catch ex As Exception
-            MsgBoxError(ex.Message)
+            MsgBoxError("Error List Proforma Invoice : " + ex.Message)
         End Try
     End Sub
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
@@ -165,7 +178,7 @@
         Try
             ListData()
         Catch ex As Exception
-            MsgBoxError(ex.Message)
+            MsgBoxError("Error List Proforma Invoice : " + ex.Message)
         End Try
     End Sub
 
@@ -176,12 +189,20 @@
 
 #Region "Other"
     Private Sub FrmListProformaInvoice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        PreCreateDisplay()
-        Text = title
+        Try
+            PreCreateDisplay()
+            Text = title
+        Catch ex As Exception
+            MsgBoxError("Error List Proforma Invoice : " + ex.Message)
+        End Try
     End Sub
 
     Private Sub FrmListProformaInvoice_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
-        ListData()
+        Try
+            ListData()
+        Catch ex As Exception
+            MsgBoxError("Error List Proforma Invoice : " + ex.Message)
+        End Try
     End Sub
 #End Region
 End Class
