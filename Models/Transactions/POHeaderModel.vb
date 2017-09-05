@@ -9,15 +9,26 @@
             xPOHeaderID = value
         End Set
     End Property
-    Private xPIHeaderID As Long
-    Public Property PIHeaderID() As Long
+    Private xCurrencyID As Integer
+    Public Property CurrencyID() As Integer
         Get
-            Return xPIHeaderID
+            Return xCurrencyID
         End Get
-        Set(ByVal value As Long)
-            xPIHeaderID = value
+        Set(ByVal value As Integer)
+            xCurrencyID = value
         End Set
     End Property
+    Private xCurrencyCode As String
+    Public Property CurrencyCode() As String
+        Get
+            Return xCurrencyCode
+        End Get
+        Set(ByVal value As String)
+            xCurrencyCode = value
+        End Set
+    End Property
+
+
     Private xPODate As Date
     Public Property PODate() As Date
         Get
@@ -36,15 +47,7 @@
             xPONo = value
         End Set
     End Property
-    Private xPINo As String
-    Public Property PINo() As String
-        Get
-            Return xPINo
-        End Get
-        Set(ByVal value As String)
-            xPINo = value
-        End Set
-    End Property
+
     Private xCustomerID As Integer
     Public Property CustomerID() As Integer
         Get

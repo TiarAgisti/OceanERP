@@ -1,4 +1,5 @@
 ﻿Public Class FrmPlaning
+
 #Region "Declaration"
     Dim poNo As String
     Dim dateFrom As Date
@@ -10,6 +11,7 @@
 
 
 #End Region
+
 #Region "Function"
     Sub PreCreateDisplay()
         Try
@@ -144,9 +146,6 @@
 
             Dim row As Integer = .CurrentRow.Index
             If IsDBNull(Me.dgv.CurrentRow.Cells(0).Value) Then
-
-
-                MsgBox("Empty")
             Else
 
                 txtPONo.Text = .Item(4, row).Value
@@ -171,6 +170,7 @@
 
     End Sub
 #End Region
+
 #Region "Methode Update"
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Try
@@ -192,8 +192,17 @@
         End Try
     End Sub
 
+    Private Sub txtSVM_TextChanged(sender As Object, e As EventArgs) Handles txtSVM.TextChanged
+
+    End Sub
+
+    Private Sub dgv_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellContentClick
+
+    End Sub
+
 
 
 
 #End Region
+
 End Class

@@ -27,10 +27,10 @@
             dgv.Columns(0).HeaderText = "PO HeaderID"
             dgv.Columns(0).Visible = False
 
-            dgv.Columns(1).HeaderText = "PI HeaderID"
+            dgv.Columns(1).HeaderText = "Currency ID"
             dgv.Columns(1).Visible = False
 
-            dgv.Columns(2).HeaderText = "PI No"
+            dgv.Columns(2).HeaderText = "Currency Code"
             dgv.Columns(2).Width = 140
 
             dgv.Columns(3).HeaderText = "PO Date"
