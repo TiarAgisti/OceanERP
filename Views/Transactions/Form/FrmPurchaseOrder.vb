@@ -11,6 +11,7 @@ Public Class FrmPurchaseOrder
     Dim intPostRemarks As Integer
     Dim hasil As Integer
     Dim customerCode As String = ""
+    Dim piHeaderID As Long
     Dim supplierCode As String = ""
     Dim rawmatrialCode As String = ""
     Dim statusPO As Integer
@@ -315,8 +316,9 @@ Public Class FrmPurchaseOrder
             Select Case condition
                 Case "Create"
                     .POHeaderID = poBFC.GetPOHeaderID
-                    poHeaderID = .POHeaderID
-                    .PIHeaderID = .PIHeaderID
+                    .poHeaderID = .POHeaderID
+                    .PIHeaderID = cmbPINO.SelectedValue
+
                     .PODate = Format(dtPODate.Value, "yyyy-MM-dd")
                     .PONo = poBFC.GetPONo(supplierCode)
                     txtPONo.Text = .PONo
@@ -339,7 +341,8 @@ Public Class FrmPurchaseOrder
                     .UpdatedDate = DateTime.Now
                 Case "Update"
                     .POHeaderID = poHeaderID
-                    .PIHeaderID = .PIHeaderID
+                    .PIHeaderID = cmbPINO.SelectedValue
+
                     .PODate = Format(dtPODate.Value, "yyyy-MM-dd")
                     txtPONo.Text = .PONo
                     .CustomerID = cmbCustomer.SelectedValue
@@ -855,6 +858,8 @@ Public Class FrmPurchaseOrder
     Private Sub cmbPINO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPINO.SelectedIndexChanged
         cmbSVM.Focus()
     End Sub
+
+
 #End Region
 
 End Class

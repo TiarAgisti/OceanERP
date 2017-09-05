@@ -13,7 +13,7 @@
 #Region "Function"
     Sub PreCreateDisplay()
         Try
-            ' ClearData()
+            ClearData()
             listdata()
             CheckPermissions()
         Catch ex As Exception
@@ -29,7 +29,13 @@
         If roleModel.IsDelete = True Then btnView.Enabled = True
     End Sub
 
-
+    Sub ClearData()
+        txtPONo.Clear()
+        txtPINo.Clear()
+        txtSupplierName.Clear()
+        txtTOP.Clear()
+        txtSVM.Clear()
+    End Sub
     Sub PropertiesGrid()
         Try
             dgv.Columns(0).HeaderText = "PO HeaderID"
@@ -134,22 +140,33 @@
 
     Private Sub dgv_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellClick
         With dgv
+
+
             Dim row As Integer = .CurrentRow.Index
-            txtPONo.Text = .Item(4, row).Value
-            txtPINo.Text = .Item(2, row).Value
-            txtSupplierName.Text = .Item(8, row).Value
-            txtSVM.Text = .Item(10, row).Value
-            dtSD.Value = .Item(11, row).Value
-            txtTOP.Text = .Item(12, row).Value
-            dtERD.Value = .Item(13, row).Value
-            'txtPONo.Text = .Item(6, row).Value
-            'txtPINo.Text = .Item(4, row).Value
-            'txtSupplierName.Text = .Item(10, row).Value
-            'txtSVM.Text = .Item(12, row).Value
-            'dtSD.Value = .Item(13, row).Value
-            'txtTOP.Text = .Item(14, row).Value
-            'dtERD.Value = .Item(15, row).Value
+            If IsDBNull(Me.dgv.CurrentRow.Cells(0).Value) Then
+
+
+                MsgBox("Empty")
+            Else
+
+                txtPONo.Text = .Item(4, row).Value
+                txtPINo.Text = .Item(2, row).Value
+                txtSupplierName.Text = .Item(8, row).Value
+                txtSVM.Text = .Item(10, row).Value
+                dtSD.Value = .Item(11, row).Value
+                txtTOP.Text = .Item(12, row).Value
+                dtERD.Value = .Item(13, row).Value
+                'txtPONo.Text = .Item(6, row).Value
+                'txtPINo.Text = .Item(4, row).Value
+                'txtSupplierName.Text = .Item(10, row).Value
+                'txtSVM.Text = .Item(12, row).Value
+                'dtSD.Value = .Item(13, row).Value
+                'txtTOP.Text = .Item(14, row).Value
+                'dtERD.Value = .Item(15, row).Value
+            End If
         End With
+
+
 
 
     End Sub
@@ -165,5 +182,18 @@
             MsgBoxError(ex.Message)
         End Try
     End Sub
+
+    Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
+        Try
+            listdata()
+            ClearData()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+
+
+
 #End Region
 End Class

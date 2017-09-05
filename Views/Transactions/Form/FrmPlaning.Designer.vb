@@ -24,6 +24,7 @@ Partial Class FrmPlaning
     Private Sub InitializeComponent()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnRefresh = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.txtPONo = New System.Windows.Forms.TextBox()
@@ -54,7 +55,7 @@ Partial Class FrmPlaning
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(0, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(809, 50)
+        Me.Label5.Size = New System.Drawing.Size(903, 50)
         Me.Label5.TabIndex = 42
         Me.Label5.Tag = "25"
         Me.Label5.Text = "Planning"
@@ -62,6 +63,7 @@ Partial Class FrmPlaning
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.btnRefresh)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.btnAdd)
         Me.Panel1.Controls.Add(Me.txtPONo)
@@ -83,8 +85,17 @@ Partial Class FrmPlaning
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 50)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(809, 128)
+        Me.Panel1.Size = New System.Drawing.Size(903, 128)
         Me.Panel1.TabIndex = 64
+        '
+        'btnRefresh
+        '
+        Me.btnRefresh.Location = New System.Drawing.Point(799, 94)
+        Me.btnRefresh.Name = "btnRefresh"
+        Me.btnRefresh.Size = New System.Drawing.Size(75, 23)
+        Me.btnRefresh.TabIndex = 63
+        Me.btnRefresh.Text = "Refresh"
+        Me.btnRefresh.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -244,14 +255,14 @@ Partial Class FrmPlaning
         Me.dgv.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgv.Location = New System.Drawing.Point(0, 178)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(809, 107)
+        Me.dgv.Size = New System.Drawing.Size(903, 107)
         Me.dgv.TabIndex = 65
         '
         'FrmPlaning
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(809, 285)
+        Me.ClientSize = New System.Drawing.Size(903, 285)
         Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label5)
@@ -285,4 +296,5 @@ Partial Class FrmPlaning
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents dgv As DataGridView
+    Friend WithEvents btnRefresh As Button
 End Class

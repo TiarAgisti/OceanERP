@@ -115,7 +115,7 @@
         Dim headerID As Long
         If dgv.Rows.Count > 1 Then
             row = dgv.CurrentRow.Index
-            headerID = dgv.Item(2, row).Value
+            headerID = dgv.Item(0, row).Value
         Else
             Throw New Exception("No data available")
         End If
@@ -187,6 +187,7 @@
             MsgBoxError(ex.Message)
         End Try
     End Sub
+
 
 
 #End Region
