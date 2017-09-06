@@ -8,16 +8,6 @@
             xPOHeaderID = value
         End Set
     End Property
-
-    Private xPODetailID As Long
-    Public Property PODetailID() As Long
-        Get
-            Return xPODetailID
-        End Get
-        Set(ByVal value As Long)
-            xPODetailID = value
-        End Set
-    End Property
     Private xRawMaterialID As Integer
     Public Property RawMaterialID() As Integer
         Get
@@ -95,24 +85,7 @@
             xUnitName = value
         End Set
     End Property
-    Private xCurrencyID As Integer
-    Public Property CurrencyID() As Integer
-        Get
-            Return xCurrencyID
-        End Get
-        Set(ByVal value As Integer)
-            xCurrencyID = value
-        End Set
-    End Property
-    Private xCurrencyCode As String
-    Public Property CurrencyCode() As String
-        Get
-            Return xCurrencyCode
-        End Get
-        Set(ByVal value As String)
-            xCurrencyCode = value
-        End Set
-    End Property
+
     Private xTotal As Decimal
     Public Property Total() As Decimal
         Get
@@ -122,5 +95,22 @@
             xTotal = value
         End Set
     End Property
-
+    Private xPIHeaderID As Long
+    Public Property PIHeaderID() As Long
+        Get
+            Return xPIHeaderID
+        End Get
+        Set(ByVal value As Long)
+            xPIHeaderID = value
+        End Set
+    End Property
+    Private xPINo As String
+    Public Property PINo() As String
+        Get
+            Return xPINo
+        End Get
+        Set(ByVal value As String)
+            xPINo = value
+        End Set
+    End Property
 End Class

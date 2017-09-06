@@ -332,5 +332,13 @@
         frm.WindowState = FormWindowState.Maximized
         frm.Show()
     End Sub
+
+    Private Sub RawMAterialPlaningToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RawMAterialPlaningToolStripMenuItem.Click
+        Dim frm As FrmPlaning = New FrmPlaning
+        frm.MdiParent = Me
+        frm.WindowState = FormWindowState.Maximized
+        frm.Show()
+
+    End Sub
 #End Region
 End Class

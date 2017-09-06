@@ -1,17 +1,26 @@
-﻿Public Class FrmListPurchaseOrder
+﻿Public Class FrmPlaning
+
 #Region "Declaration"
     Dim poNo As String
     Dim dateFrom As Date
     Dim dateTo As Date
     Dim supplier As String
     Dim customer As String
+    Dim col_update As New DataGridViewButtonColumn
+    Dim col_BPB As New DataGridViewButtonColumn
+
+
 #End Region
 
 #Region "Function"
-    Sub ClearData()
-        txtPONo.Clear()
-        txtSupplier.Clear()
-
+    Sub PreCreateDisplay()
+        Try
+            ClearData()
+            listdata()
+            CheckPermissions()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
     Sub CheckPermissions()
         Dim rolepoC As ClsPermission = New ClsPermission
@@ -22,17 +31,23 @@
         If roleModel.IsDelete = True Then btnView.Enabled = True
     End Sub
 
+    Sub ClearData()
+        txtPONo.Clear()
+        txtPINo.Clear()
+        txtSupplierName.Clear()
+        txtTOP.Clear()
+        txtSVM.Clear()
+    End Sub
     Sub PropertiesGrid()
         Try
             dgv.Columns(0).HeaderText = "PO HeaderID"
             dgv.Columns(0).Visible = False
 
-            dgv.Columns(1).HeaderText = "Currency ID"
+            dgv.Columns(1).HeaderText = "PI HeaderID"
             dgv.Columns(1).Visible = False
 
-            dgv.Columns(2).HeaderText = "Currency Code"
+            dgv.Columns(2).HeaderText = "PI No"
             dgv.Columns(2).Width = 140
-            dgv.Columns(2).Visible = False
 
             dgv.Columns(3).HeaderText = "PO Date"
             dgv.Columns(3).DefaultCellStyle.Format = "dd-MMM-yyyy"
@@ -83,34 +98,25 @@
 
             dgv.Columns(18).HeaderText = "Status"
 
+            'dgv.Columns.Add(col_update)
+            'col_update.HeaderText = "Update Receipt Date"
+            'col_update.Text = "PO"
+            'col_update.Name = "btn"
+            'col_update.Width = 150
+            'col_update.UseColumnTextForButtonValue = True
+
+
+            'dgv.Columns.Add(col_BPB)
+            'col_BPB.HeaderText = "Input BPB"
+            'col_BPB.Text = "BPB"
+            'col_BPB.Name = "btn"
+            'col_BPB.Width = 150
+            'col_BPB.UseColumnTextForButtonValue = True
+
         Catch ex As Exception
             Throw ex
         End Try
     End Sub
-
-    Sub ListData()
-        If chkPONo.Checked = True Then
-            poNo = txtPONo.Text
-        Else
-            poNo = ""
-        End If
-
-        If chkPIDate.Checked = True Then
-            dateFrom = dtpDateFrom.Value
-            dateTo = dtpDateTo.Value
-        End If
-
-        If chkSupplier.Checked = True Then
-            supplier = txtSupplier.Text
-        Else
-            supplier = ""
-        End If
-        Dim poBFC As ClsPO = New ClsPO
-        dgv.DataSource = poBFC.RetrieveListPurchaseOrder(Trim(poNo), dateFrom, dateTo, customer, supplier)
-        dgv.ReadOnly = True
-        PropertiesGrid()
-    End Sub
-
     Function GetID() As Long
         Dim row As Integer
         Dim headerID As Long
@@ -122,30 +128,51 @@
         End If
         Return headerID
     End Function
+    Sub listdata()
+        Dim poBFC As ClsPO = New ClsPO
+        dgv.DataSource = poBFC.RetrieveListPurchaseOrder(Trim(poNo), dateFrom, dateTo, customer, supplier)
+        dgv.ReadOnly = True
+        PropertiesGrid()
+    End Sub
 
-    Sub PreCreateDisplay()
-        Try
-            ClearData()
-            ListData()
-            CheckPermissions()
-        Catch ex As Exception
-            MsgBoxError(ex.Message)
-        End Try
+    Private Sub FrmRMPlaning_Load(sender As Object, e As EventArgs) Handles Me.Load
+        PreCreateDisplay()
+        Text = title
+    End Sub
+
+    Private Sub dgv_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellClick
+        With dgv
+
+
+            Dim row As Integer = .CurrentRow.Index
+            If IsDBNull(Me.dgv.CurrentRow.Cells(0).Value) Then
+            Else
+
+                txtPONo.Text = .Item(4, row).Value
+                txtPINo.Text = .Item(2, row).Value
+                txtSupplierName.Text = .Item(8, row).Value
+                txtSVM.Text = .Item(10, row).Value
+                dtSD.Value = .Item(11, row).Value
+                txtTOP.Text = .Item(12, row).Value
+                dtERD.Value = .Item(13, row).Value
+                'txtPONo.Text = .Item(6, row).Value
+                'txtPINo.Text = .Item(4, row).Value
+                'txtSupplierName.Text = .Item(10, row).Value
+                'txtSVM.Text = .Item(12, row).Value
+                'dtSD.Value = .Item(13, row).Value
+                'txtTOP.Text = .Item(14, row).Value
+                'dtERD.Value = .Item(15, row).Value
+            End If
+        End With
+
+
+
+
     End Sub
 #End Region
 
-#Region "Button"
+#Region "Methode Update"
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        Try
-            Dim frm As FrmPurchaseOrder = New FrmPurchaseOrder
-            frm.condition = "Create"
-            frm.ShowDialog()
-        Catch ex As Exception
-            MsgBoxError(ex.Message)
-        End Try
-    End Sub
-
-    Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
         Try
             Dim frm As FrmPurchaseOrder = New FrmPurchaseOrder
             frm.condition = "Update"
@@ -158,36 +185,21 @@
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         Try
-            ListData()
+            listdata()
+            ClearData()
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
     End Sub
 
-    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
-        Close()
+    Private Sub txtSVM_TextChanged(sender As Object, e As EventArgs) Handles txtSVM.TextChanged
+
     End Sub
 
-    Private Sub FrmListPurchaseOrder_Load(sender As Object, e As EventArgs) Handles Me.Load
-        PreCreateDisplay()
-        Text = title
+    Private Sub dgv_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellContentClick
+
     End Sub
 
-    Private Sub FrmListPurchaseOrder_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-        ListData()
-    End Sub
-
-    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        ClearData()
-    End Sub
-
-    Private Sub btnFind_Click(sender As Object, e As EventArgs) Handles btnFind.Click
-        Try
-            ListData()
-        Catch ex As Exception
-            MsgBoxError(ex.Message)
-        End Try
-    End Sub
 
 
 
