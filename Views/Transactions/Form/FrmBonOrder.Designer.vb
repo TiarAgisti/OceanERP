@@ -40,6 +40,14 @@ Partial Class FrmBonOrder
         Me.txtCode = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dgv = New System.Windows.Forms.DataGridView()
+        Me.colFabric = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colWidth = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colColor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colColorCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colBruto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colNetto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colFabricID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colColorID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
@@ -55,6 +63,7 @@ Partial Class FrmBonOrder
         Me.txtTotBruto = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.btnAdd = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -68,7 +77,7 @@ Partial Class FrmBonOrder
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(0, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(590, 43)
+        Me.Label3.Size = New System.Drawing.Size(912, 43)
         Me.Label3.TabIndex = 24
         Me.Label3.Tag = "24"
         Me.Label3.Text = "Bon Order"
@@ -77,6 +86,7 @@ Partial Class FrmBonOrder
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.btnAdd)
         Me.Panel1.Controls.Add(Me.dtpDateIssues)
         Me.Panel1.Controls.Add(Me.Label13)
         Me.Panel1.Controls.Add(Me.txtStyle)
@@ -94,7 +104,7 @@ Partial Class FrmBonOrder
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 43)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(590, 121)
+        Me.Panel1.Size = New System.Drawing.Size(912, 96)
         Me.Panel1.TabIndex = 25
         '
         'dtpDateIssues
@@ -116,7 +126,7 @@ Partial Class FrmBonOrder
         'txtStyle
         '
         Me.txtStyle.Enabled = False
-        Me.txtStyle.Location = New System.Drawing.Point(384, 65)
+        Me.txtStyle.Location = New System.Drawing.Point(702, 39)
         Me.txtStyle.Name = "txtStyle"
         Me.txtStyle.Size = New System.Drawing.Size(196, 20)
         Me.txtStyle.TabIndex = 7
@@ -124,7 +134,7 @@ Partial Class FrmBonOrder
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(311, 68)
+        Me.Label7.Location = New System.Drawing.Point(629, 42)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(30, 13)
         Me.Label7.TabIndex = 25
@@ -133,7 +143,7 @@ Partial Class FrmBonOrder
         'txtBrand
         '
         Me.txtBrand.Enabled = False
-        Me.txtBrand.Location = New System.Drawing.Point(384, 39)
+        Me.txtBrand.Location = New System.Drawing.Point(702, 13)
         Me.txtBrand.Name = "txtBrand"
         Me.txtBrand.Size = New System.Drawing.Size(196, 20)
         Me.txtBrand.TabIndex = 6
@@ -141,7 +151,7 @@ Partial Class FrmBonOrder
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(311, 42)
+        Me.Label6.Location = New System.Drawing.Point(629, 16)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(73, 13)
         Me.Label6.TabIndex = 24
@@ -153,7 +163,7 @@ Partial Class FrmBonOrder
         Me.txtCustomer.Location = New System.Drawing.Point(384, 13)
         Me.txtCustomer.Name = "txtCustomer"
         Me.txtCustomer.Size = New System.Drawing.Size(196, 20)
-        Me.txtCustomer.TabIndex = 5
+        Me.txtCustomer.TabIndex = 4
         '
         'Label5
         '
@@ -167,15 +177,15 @@ Partial Class FrmBonOrder
         'txtNoPO
         '
         Me.txtNoPO.Enabled = False
-        Me.txtNoPO.Location = New System.Drawing.Point(79, 92)
+        Me.txtNoPO.Location = New System.Drawing.Point(384, 39)
         Me.txtNoPO.Name = "txtNoPO"
         Me.txtNoPO.Size = New System.Drawing.Size(196, 20)
-        Me.txtNoPO.TabIndex = 4
+        Me.txtNoPO.TabIndex = 5
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 95)
+        Me.Label4.Location = New System.Drawing.Point(311, 42)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(39, 13)
         Me.Label4.TabIndex = 22
@@ -218,11 +228,66 @@ Partial Class FrmBonOrder
         'dgv
         '
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colFabric, Me.colWidth, Me.colColor, Me.colColorCode, Me.colBruto, Me.colNetto, Me.colFabricID, Me.colColorID})
         Me.dgv.Dock = System.Windows.Forms.DockStyle.Top
-        Me.dgv.Location = New System.Drawing.Point(0, 164)
+        Me.dgv.Location = New System.Drawing.Point(0, 139)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(590, 238)
-        Me.dgv.TabIndex = 10
+        Me.dgv.RowHeadersVisible = False
+        Me.dgv.Size = New System.Drawing.Size(912, 238)
+        Me.dgv.TabIndex = 8
+        '
+        'colFabric
+        '
+        Me.colFabric.HeaderText = "Fabric Details / Item No"
+        Me.colFabric.Name = "colFabric"
+        Me.colFabric.ReadOnly = True
+        Me.colFabric.Width = 200
+        '
+        'colWidth
+        '
+        Me.colWidth.HeaderText = "Width x Weight"
+        Me.colWidth.Name = "colWidth"
+        Me.colWidth.ReadOnly = True
+        Me.colWidth.Width = 200
+        '
+        'colColor
+        '
+        Me.colColor.HeaderText = "Color"
+        Me.colColor.Name = "colColor"
+        Me.colColor.ReadOnly = True
+        '
+        'colColorCode
+        '
+        Me.colColorCode.HeaderText = "Labs Dips No"
+        Me.colColorCode.Name = "colColorCode"
+        Me.colColorCode.ReadOnly = True
+        Me.colColorCode.Width = 150
+        '
+        'colBruto
+        '
+        Me.colBruto.HeaderText = "Bruto"
+        Me.colBruto.MaxInputLength = 15
+        Me.colBruto.Name = "colBruto"
+        '
+        'colNetto
+        '
+        Me.colNetto.HeaderText = "Netto"
+        Me.colNetto.MaxInputLength = 15
+        Me.colNetto.Name = "colNetto"
+        '
+        'colFabricID
+        '
+        Me.colFabricID.HeaderText = "Fabric ID"
+        Me.colFabricID.Name = "colFabricID"
+        Me.colFabricID.ReadOnly = True
+        Me.colFabricID.Visible = False
+        '
+        'colColorID
+        '
+        Me.colColorID.HeaderText = "ColorID"
+        Me.colColorID.Name = "colColorID"
+        Me.colColorID.ReadOnly = True
+        Me.colColorID.Visible = False
         '
         'Panel2
         '
@@ -235,14 +300,14 @@ Partial Class FrmBonOrder
         Me.Panel2.Controls.Add(Me.btnSave)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 402)
+        Me.Panel2.Location = New System.Drawing.Point(0, 377)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(590, 92)
+        Me.Panel2.Size = New System.Drawing.Size(912, 93)
         Me.Panel2.TabIndex = 27
         '
         'btnClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(127, 40)
+        Me.btnClose.Location = New System.Drawing.Point(146, 53)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(56, 23)
         Me.btnClose.TabIndex = 16
@@ -252,7 +317,7 @@ Partial Class FrmBonOrder
         'btnPrint
         '
         Me.btnPrint.Enabled = False
-        Me.btnPrint.Location = New System.Drawing.Point(127, 11)
+        Me.btnPrint.Location = New System.Drawing.Point(146, 24)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(56, 23)
         Me.btnPrint.TabIndex = 13
@@ -262,7 +327,7 @@ Partial Class FrmBonOrder
         'btnVoid
         '
         Me.btnVoid.Enabled = False
-        Me.btnVoid.Location = New System.Drawing.Point(65, 40)
+        Me.btnVoid.Location = New System.Drawing.Point(84, 53)
         Me.btnVoid.Name = "btnVoid"
         Me.btnVoid.Size = New System.Drawing.Size(56, 23)
         Me.btnVoid.TabIndex = 15
@@ -272,7 +337,7 @@ Partial Class FrmBonOrder
         'btnApprove
         '
         Me.btnApprove.Enabled = False
-        Me.btnApprove.Location = New System.Drawing.Point(3, 40)
+        Me.btnApprove.Location = New System.Drawing.Point(22, 53)
         Me.btnApprove.Name = "btnApprove"
         Me.btnApprove.Size = New System.Drawing.Size(56, 23)
         Me.btnApprove.TabIndex = 14
@@ -282,7 +347,7 @@ Partial Class FrmBonOrder
         'btnUpdate
         '
         Me.btnUpdate.Enabled = False
-        Me.btnUpdate.Location = New System.Drawing.Point(65, 11)
+        Me.btnUpdate.Location = New System.Drawing.Point(84, 24)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(56, 23)
         Me.btnUpdate.TabIndex = 12
@@ -292,7 +357,7 @@ Partial Class FrmBonOrder
         'btnSave
         '
         Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(3, 11)
+        Me.btnSave.Location = New System.Drawing.Point(22, 24)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(56, 23)
         Me.btnSave.TabIndex = 11
@@ -310,15 +375,15 @@ Partial Class FrmBonOrder
         Me.Panel3.Controls.Add(Me.Label9)
         Me.Panel3.Controls.Add(Me.Label8)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel3.Location = New System.Drawing.Point(325, 0)
+        Me.Panel3.Location = New System.Drawing.Point(733, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(261, 88)
+        Me.Panel3.Size = New System.Drawing.Size(175, 89)
         Me.Panel3.TabIndex = 0
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(132, 57)
+        Me.Label12.Location = New System.Drawing.Point(141, 57)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(29, 13)
         Me.Label12.TabIndex = 32
@@ -327,7 +392,7 @@ Partial Class FrmBonOrder
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(132, 33)
+        Me.Label11.Location = New System.Drawing.Point(141, 33)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(29, 13)
         Me.Label11.TabIndex = 31
@@ -336,7 +401,7 @@ Partial Class FrmBonOrder
         'txtTotNetto
         '
         Me.txtTotNetto.Enabled = False
-        Me.txtTotNetto.Location = New System.Drawing.Point(54, 54)
+        Me.txtTotNetto.Location = New System.Drawing.Point(63, 54)
         Me.txtTotNetto.Name = "txtTotNetto"
         Me.txtTotNetto.Size = New System.Drawing.Size(72, 20)
         Me.txtTotNetto.TabIndex = 18
@@ -344,7 +409,7 @@ Partial Class FrmBonOrder
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(3, 57)
+        Me.Label10.Location = New System.Drawing.Point(12, 57)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(44, 13)
         Me.Label10.TabIndex = 30
@@ -353,7 +418,7 @@ Partial Class FrmBonOrder
         'txtTotBruto
         '
         Me.txtTotBruto.Enabled = False
-        Me.txtTotBruto.Location = New System.Drawing.Point(54, 30)
+        Me.txtTotBruto.Location = New System.Drawing.Point(63, 30)
         Me.txtTotBruto.Name = "txtTotBruto"
         Me.txtTotBruto.Size = New System.Drawing.Size(72, 20)
         Me.txtTotBruto.TabIndex = 17
@@ -361,7 +426,7 @@ Partial Class FrmBonOrder
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(3, 33)
+        Me.Label9.Location = New System.Drawing.Point(12, 33)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(45, 13)
         Me.Label9.TabIndex = 29
@@ -370,18 +435,27 @@ Partial Class FrmBonOrder
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(3, 10)
+        Me.Label8.Location = New System.Drawing.Point(12, 10)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(109, 13)
         Me.Label8.TabIndex = 28
         Me.Label8.Text = "TOTAL ORDER QTY"
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(281, 63)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(75, 23)
+        Me.btnAdd.TabIndex = 26
+        Me.btnAdd.Text = "Add To List"
+        Me.btnAdd.UseVisualStyleBackColor = True
         '
         'FrmBonOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(590, 494)
+        Me.ClientSize = New System.Drawing.Size(912, 470)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.Panel1)
@@ -436,4 +510,13 @@ Partial Class FrmBonOrder
     Friend WithEvents btnSave As Button
     Friend WithEvents dtpDateIssues As DateTimePicker
     Friend WithEvents Label13 As Label
+    Friend WithEvents colFabric As DataGridViewTextBoxColumn
+    Friend WithEvents colWidth As DataGridViewTextBoxColumn
+    Friend WithEvents colColor As DataGridViewTextBoxColumn
+    Friend WithEvents colColorCode As DataGridViewTextBoxColumn
+    Friend WithEvents colBruto As DataGridViewTextBoxColumn
+    Friend WithEvents colNetto As DataGridViewTextBoxColumn
+    Friend WithEvents colFabricID As DataGridViewTextBoxColumn
+    Friend WithEvents colColorID As DataGridViewTextBoxColumn
+    Friend WithEvents btnAdd As Button
 End Class

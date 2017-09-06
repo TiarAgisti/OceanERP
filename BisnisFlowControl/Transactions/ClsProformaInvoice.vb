@@ -202,6 +202,8 @@ Public Class ClsProformaInvoice
             dataAccess = Nothing
             Return myList
         Catch ex As Exception
+            dataAccess.reader.Close()
+            dataAccess = Nothing
             Throw ex
             Return Nothing
         End Try
@@ -227,6 +229,8 @@ Public Class ClsProformaInvoice
             dataAccess = Nothing
             Return piBankModel
         Catch ex As Exception
+            dataAccess.reader.Close()
+            dataAccess = Nothing
             Throw ex
             Return Nothing
         End Try
@@ -249,6 +253,8 @@ Public Class ClsProformaInvoice
             dataAccess = Nothing
             Return myList
         Catch ex As Exception
+            dataAccess.reader.Close()
+            dataAccess = Nothing
             Throw ex
             Return Nothing
         End Try
@@ -281,12 +287,13 @@ Public Class ClsProformaInvoice
                     myListModel.Add(piDetailModel)
                 End While
             End With
-            Return myListModel
-        Catch ex As Exception
-            Throw ex
-        Finally
             dataAccess.reader.Close()
             dataAccess = Nothing
+            Return myListModel
+        Catch ex As Exception
+            dataAccess.reader.Close()
+            dataAccess = Nothing
+            Throw ex
         End Try
     End Function
     Public Function RetrieveCustCodeByPIHeaderID(headerID As Long) As PIHeaderModel
@@ -299,12 +306,13 @@ Public Class ClsProformaInvoice
                     piHeaderModel.CustomerCode = .Item("CustomerCode")
                 End While
             End With
-            Return piHeaderModel
-        Catch ex As Exception
-            Throw ex
-        Finally
             dataAccess.reader.Close()
             dataAccess = Nothing
+            Return piHeaderModel
+        Catch ex As Exception
+            dataAccess.reader.Close()
+            dataAccess = Nothing
+            Throw ex
         End Try
     End Function
 #End Region
@@ -347,12 +355,12 @@ Public Class ClsProformaInvoice
         Dim dataAccess = New ClsDataAccess
         Try
             id = dataAccess.GeneratedAutoNumber(query)
+            dataAccess = Nothing
+            Return id
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
         End Try
-        dataAccess = Nothing
-        Return id
     End Function
 
     Protected Function GeneratedAutoNumberFabricDetail() As Long
@@ -361,12 +369,12 @@ Public Class ClsProformaInvoice
         Dim dataAccess = New ClsDataAccess
         Try
             id = dataAccess.GeneratedAutoNumber(query)
+            dataAccess = Nothing
+            Return id
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
         End Try
-        dataAccess = Nothing
-        Return id
     End Function
 
     Protected Function GeneratedAutoNumberColorDetail() As Long
@@ -375,12 +383,12 @@ Public Class ClsProformaInvoice
         Dim dataAccess = New ClsDataAccess
         Try
             id = dataAccess.GeneratedAutoNumber(query)
+            dataAccess = Nothing
+            Return id
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
         End Try
-        dataAccess = Nothing
-        Return id
     End Function
 
     Protected Function GeneratedAutoNumberYarnDetail() As Long
@@ -389,12 +397,12 @@ Public Class ClsProformaInvoice
         Dim dataAccess = New ClsDataAccess
         Try
             id = dataAccess.GeneratedAutoNumber(query)
+            dataAccess = Nothing
+            Return id
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
         End Try
-        dataAccess = Nothing
-        Return id
     End Function
 
     Protected Function GeneratedAutoNumberBankDetail() As Long
@@ -436,62 +444,95 @@ Public Class ClsProformaInvoice
             dataAccess = Nothing
             Return dataTable
         Catch ex As Exception
+            dataAccess = Nothing
             Return Nothing
             Throw ex
         End Try
     End Function
     Public Sub ComboBoxPI(cmb As ComboBox)
-        With cmb
-            .DataSource = ListComboBox()
-            .DisplayMember = "PINo"
-            .ValueMember = "PIHeaderID"
-            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
-            .AutoCompleteSource = AutoCompleteSource.ListItems
-        End With
+        Try
+            With cmb
+                .DataSource = ListComboBox()
+                .DisplayMember = "PINo"
+                .ValueMember = "PIHeaderID"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 #End Region
 
 #Region "Get"
     Public Function GetPINo(customerCode As String) As String
         Dim piNo As String
-        piNo = GeneratedPINo(customerCode)
-        Return piNo
+        Try
+            piNo = GeneratedPINo(customerCode)
+            Return piNo
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 
     Public Function GetPiHeaderID() As Long
         Dim myID As Long
-        myID = GeneratedAutoNumber()
-        Return myID
+        Try
+            myID = GeneratedAutoNumber()
+            Return myID
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 
     Public Function GetPIDetailFabricID() As Long
         Dim myID As Long
-        myID = GeneratedAutoNumberFabricDetail()
-        Return myID
+        Try
+            myID = GeneratedAutoNumberFabricDetail()
+            Return myID
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 
     Public Function GetPIDetailColorID() As Long
         Dim myID As Long
-        myID = GeneratedAutoNumberColorDetail()
-        Return myID
+        Try
+            myID = GeneratedAutoNumberColorDetail()
+            Return myID
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 
     Public Function GetPIDetailYarnID() As Long
         Dim myID As Long
-        myID = GeneratedAutoNumberYarnDetail()
-        Return myID
+        Try
+            myID = GeneratedAutoNumberYarnDetail()
+            Return myID
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 
     Public Function GetPIDetailBankID() As Long
         Dim myID As Long
-        myID = GeneratedAutoNumberBankDetail()
-        Return myID
+        Try
+            myID = GeneratedAutoNumberBankDetail()
+            Return myID
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 
     Public Function GetPIDetailRemarksID() As Long
         Dim myID As Long
-        myID = GeneratedAutoNumberRemarksDetail()
-        Return myID
+        Try
+            myID = GeneratedAutoNumberRemarksDetail()
+            Return myID
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 #End Region
 
@@ -499,45 +540,61 @@ Public Class ClsProformaInvoice
     Public Function CheckFabricInList(dgvFabric As DataGridView, fabricID As Integer) As Boolean
         Dim cek As Integer
         Dim status As Boolean = True
-        For cek = 0 To dgvFabric.Rows.Count - 1
-            If dgvFabric.Rows(cek).Cells(0).Value = fabricID Then
-                status = False
-            End If
-        Next
+        Try
+            For cek = 0 To dgvFabric.Rows.Count - 1
+                If dgvFabric.Rows(cek).Cells(0).Value = fabricID Then
+                    status = False
+                End If
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
         Return status
     End Function
 
     Public Function CheckColorInList(dgvColor As DataGridView, colorID As Integer) As Boolean
         Dim row As Integer
         Dim status As Boolean = True
-        For row = 0 To dgvColor.Rows.Count - 1
-            If dgvColor.Rows(row).Cells(0).Value = colorID Then
-                status = False
-            End If
-        Next
+        Try
+            For row = 0 To dgvColor.Rows.Count - 1
+                If dgvColor.Rows(row).Cells(0).Value = colorID Then
+                    status = False
+                End If
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
         Return status
     End Function
 
     Public Function CheckYarnInList(dgvYarn As DataGridView, yarnID As Integer) As Boolean
         Dim row As Integer
         Dim status As Boolean = True
-        For row = 0 To dgvYarn.Rows.Count - 1
-            If dgvYarn.Rows(row).Cells(0).Value = yarnID Then
-                status = False
-            End If
-        Next
-        Return status
+        Try
+            For row = 0 To dgvYarn.Rows.Count - 1
+                If dgvYarn.Rows(row).Cells(0).Value = yarnID Then
+                    status = False
+                End If
+            Next
+            Return status
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 
     Public Function CheckRemarksInList(dgvRemarks As DataGridView, remarks As String) As Boolean
         Dim row As Integer
         Dim status As Boolean = True
-        For row = 0 To dgvRemarks.Rows.Count - 1
-            If dgvRemarks.Rows(row).Cells(0).Value = remarks Then
-                status = False
-            End If
-        Next
-        Return status
+        Try
+            For row = 0 To dgvRemarks.Rows.Count - 1
+                If dgvRemarks.Rows(row).Cells(0).Value = remarks Then
+                    status = False
+                End If
+            Next
+            Return status
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 #End Region
 
@@ -545,107 +602,127 @@ Public Class ClsProformaInvoice
     Public Function SetDetailFabric(piID As Long, dgvFabric As DataGridView) As List(Of PIDetailModel)
         Dim listFabricDetailModel As List(Of PIDetailModel) = New List(Of PIDetailModel)
         Dim piDetailID As Long
-        piDetailID = GetPIDetailFabricID()
-        For detail = 0 To dgvFabric.Rows.Count - 2
-            Dim detailModel As PIDetailModel = New PIDetailModel
-            With dgvFabric
-                detailModel.PIHeaderID = piID
-                detailModel.PIDetailID = piDetailID
-                detailModel.FabricID = .Rows(detail).Cells(0).Value
-                detailModel.StyleID = .Rows(detail).Cells(3).Value
-                detailModel.RawMaterialID = .Rows(detail).Cells(5).Value
-                detailModel.TypeGreige = .Rows(detail).Cells(7).Value
-                detailModel.WidthMin = .Rows(detail).Cells(8).Value
-                detailModel.WidthMax = .Rows(detail).Cells(9).Value
-                detailModel.UnitID = .Rows(detail).Cells(10).Value
-                detailModel.WeightMin = .Rows(detail).Cells(12).Value
-                detailModel.WeightMax = .Rows(detail).Cells(13).Value
-                detailModel.DNYardage = .Rows(detail).Cells(14).Value
-                detailModel.WeightYard = .Rows(detail).Cells(15).Value
-                detailModel.BeforeWash = .Rows(detail).Cells(16).Value
-                detailModel.AfterWash = .Rows(detail).Cells(17).Value
-                detailModel.NetWeight = .Rows(detail).Cells(18).Value
-                detailModel.SrinkageL = .Rows(detail).Cells(19).Value
-                detailModel.SrinkageW = .Rows(detail).Cells(20).Value
-                detailModel.GSM = .Rows(detail).Cells(21).Value
-                detailModel.PriceGreige = .Rows(detail).Cells(22).Value
-                detailModel.PurchSize = .Rows(detail).Cells(23).Value
-                detailModel.StorageSize = .Rows(detail).Cells(24).Value
-                detailModel.PPSample = .Rows(detail).Cells(25).Value
-                detailModel.QtyCuttable = .Rows(detail).Cells(26).Value
-                detailModel.QtyWeight = .Rows(detail).Cells(27).Value
-                listFabricDetailModel.Add(detailModel)
-            End With
-            piDetailID = piDetailID + 1
-        Next
-        Return listFabricDetailModel
+        Try
+            piDetailID = GetPIDetailFabricID()
+            For detail = 0 To dgvFabric.Rows.Count - 2
+                Dim detailModel As PIDetailModel = New PIDetailModel
+                With dgvFabric
+                    detailModel.PIHeaderID = piID
+                    detailModel.PIDetailID = piDetailID
+                    detailModel.FabricID = .Rows(detail).Cells(0).Value
+                    detailModel.StyleID = .Rows(detail).Cells(3).Value
+                    detailModel.RawMaterialID = .Rows(detail).Cells(5).Value
+                    detailModel.TypeGreige = .Rows(detail).Cells(7).Value
+                    detailModel.WidthMin = .Rows(detail).Cells(8).Value
+                    detailModel.WidthMax = .Rows(detail).Cells(9).Value
+                    detailModel.UnitID = .Rows(detail).Cells(10).Value
+                    detailModel.WeightMin = .Rows(detail).Cells(12).Value
+                    detailModel.WeightMax = .Rows(detail).Cells(13).Value
+                    detailModel.DNYardage = .Rows(detail).Cells(14).Value
+                    detailModel.WeightYard = .Rows(detail).Cells(15).Value
+                    detailModel.BeforeWash = .Rows(detail).Cells(16).Value
+                    detailModel.AfterWash = .Rows(detail).Cells(17).Value
+                    detailModel.NetWeight = .Rows(detail).Cells(18).Value
+                    detailModel.SrinkageL = .Rows(detail).Cells(19).Value
+                    detailModel.SrinkageW = .Rows(detail).Cells(20).Value
+                    detailModel.GSM = .Rows(detail).Cells(21).Value
+                    detailModel.PriceGreige = .Rows(detail).Cells(22).Value
+                    detailModel.PurchSize = .Rows(detail).Cells(23).Value
+                    detailModel.StorageSize = .Rows(detail).Cells(24).Value
+                    detailModel.PPSample = .Rows(detail).Cells(25).Value
+                    detailModel.QtyCuttable = .Rows(detail).Cells(26).Value
+                    detailModel.QtyWeight = .Rows(detail).Cells(27).Value
+                    listFabricDetailModel.Add(detailModel)
+                End With
+                piDetailID = piDetailID + 1
+            Next
+            Return listFabricDetailModel
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 
     Public Function SetDetailColor(piID As Long, dgvColor As DataGridView) As List(Of PIColorDetailModel)
         Dim listModel As List(Of PIColorDetailModel) = New List(Of PIColorDetailModel)
         Dim piDetailID As Long
-        piDetailID = GetPIDetailColorID()
-        For detail = 0 To dgvColor.Rows.Count - 2
-            Dim detailModel As PIColorDetailModel = New PIColorDetailModel
-            With dgvColor
-                detailModel.PIHeaderID = piID
-                detailModel.PIColorDetailID = piDetailID
-                detailModel.ColorID = .Rows(detail).Cells(0).Value
-                detailModel.ColorType = .Rows(detail).Cells(3).Value
-                detailModel.ColorLabNumber = .Rows(detail).Cells(4).Value
-                detailModel.QtyOrder = .Rows(detail).Cells(5).Value
-                detailModel.PurchSizeID = .Rows(detail).Cells(6).Value
-                detailModel.Price = .Rows(detail).Cells(8).Value
-                detailModel.QtySample = .Rows(detail).Cells(9).Value
-                detailModel.DelDate = .Rows(detail).Cells(10).Value
-                detailModel.Note = .Rows(detail).Cells(11).Value
-                listModel.Add(detailModel)
-            End With
-            piDetailID = piDetailID + 1
-        Next
-        Return listModel
+        Try
+            piDetailID = GetPIDetailColorID()
+            For detail = 0 To dgvColor.Rows.Count - 2
+                Dim detailModel As PIColorDetailModel = New PIColorDetailModel
+                With dgvColor
+                    detailModel.PIHeaderID = piID
+                    detailModel.PIColorDetailID = piDetailID
+                    detailModel.ColorID = .Rows(detail).Cells(0).Value
+                    detailModel.ColorType = .Rows(detail).Cells(3).Value
+                    detailModel.ColorLabNumber = .Rows(detail).Cells(4).Value
+                    detailModel.QtyOrder = .Rows(detail).Cells(5).Value
+                    detailModel.PurchSizeID = .Rows(detail).Cells(6).Value
+                    detailModel.Price = .Rows(detail).Cells(8).Value
+                    detailModel.QtySample = .Rows(detail).Cells(9).Value
+                    detailModel.DelDate = .Rows(detail).Cells(10).Value
+                    detailModel.Note = .Rows(detail).Cells(11).Value
+                    listModel.Add(detailModel)
+                End With
+                piDetailID = piDetailID + 1
+            Next
+            Return listModel
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 
     Public Function SetDetailYarn(piID As Long, dgvYarn As DataGridView) As List(Of PIYarnDetailModel)
         Dim listModel As List(Of PIYarnDetailModel) = New List(Of PIYarnDetailModel)
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Dim piDetailID As Long
-        piDetailID = piBFC.GetPIDetailYarnID
-        For detail = 0 To dgvYarn.Rows.Count - 2
-            Dim detailModel As PIYarnDetailModel = New PIYarnDetailModel
-            With dgvYarn
-                detailModel.PIHeaderID = piID
-                detailModel.PIYarnDetailID = piDetailID
-                detailModel.YarnID = .Rows(detail).Cells(0).Value
-                detailModel.PriceYarn = .Rows(detail).Cells(3).Value
-                detailModel.PercentageUsage = .Rows(detail).Cells(4).Value
-                detailModel.QtyUsage = .Rows(detail).Cells(5).Value
-                detailModel.ColorID = .Rows(detail).Cells(6).Value
-                detailModel.BrandYarnID = .Rows(detail).Cells(8).Value
-                detailModel.Loss = .Rows(detail).Cells(10).Value
-                listModel.Add(detailModel)
-            End With
-            piDetailID = piDetailID + 1
-        Next
-        Return listModel
+        Try
+            piDetailID = piBFC.GetPIDetailYarnID
+            For detail = 0 To dgvYarn.Rows.Count - 2
+                Dim detailModel As PIYarnDetailModel = New PIYarnDetailModel
+                With dgvYarn
+                    detailModel.PIHeaderID = piID
+                    detailModel.PIYarnDetailID = piDetailID
+                    detailModel.YarnID = .Rows(detail).Cells(0).Value
+                    detailModel.PriceYarn = .Rows(detail).Cells(3).Value
+                    detailModel.PercentageUsage = .Rows(detail).Cells(4).Value
+                    detailModel.QtyUsage = .Rows(detail).Cells(5).Value
+                    detailModel.ColorID = .Rows(detail).Cells(6).Value
+                    detailModel.BrandYarnID = .Rows(detail).Cells(8).Value
+                    detailModel.Loss = .Rows(detail).Cells(10).Value
+                    listModel.Add(detailModel)
+                End With
+                piDetailID = piDetailID + 1
+            Next
+            piBFC = Nothing
+            Return listModel
+        Catch ex As Exception
+            piBFC = Nothing
+            Throw ex
+        End Try
     End Function
 
     Public Function SetDetailRemarks(piID As Long, dgvRemarks As DataGridView) As List(Of PIRemarksModel)
         Dim listModel As List(Of PIRemarksModel) = New List(Of PIRemarksModel)
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Dim piDetailID As Long
-        piDetailID = piBFC.GetPIDetailRemarksID
-        For detail = 0 To dgvRemarks.Rows.Count - 2
-            Dim detailModel As PIRemarksModel = New PIRemarksModel
-            With dgvRemarks
-                detailModel.PIHeaderID = piID
-                detailModel.PIRemarksID = piDetailID
-                detailModel.Remarks = .Rows(detail).Cells(0).Value
-                listModel.Add(detailModel)
-            End With
-            piDetailID = piDetailID + 1
-        Next
-        Return listModel
+        Try
+            piDetailID = piBFC.GetPIDetailRemarksID
+            For detail = 0 To dgvRemarks.Rows.Count - 2
+                Dim detailModel As PIRemarksModel = New PIRemarksModel
+                With dgvRemarks
+                    detailModel.PIHeaderID = piID
+                    detailModel.PIRemarksID = piDetailID
+                    detailModel.Remarks = .Rows(detail).Cells(0).Value
+                    listModel.Add(detailModel)
+                End With
+                piDetailID = piDetailID + 1
+            Next
+            piBFC = Nothing
+            Return listModel
+        Catch ex As Exception
+            piBFC = Nothing
+            Throw ex
+        End Try
     End Function
 #End Region
 
@@ -873,6 +950,7 @@ Public Class ClsProformaInvoice
             dataAccess = Nothing
             status = True
         Catch ex As Exception
+            dataAccess = Nothing
             status = False
             Throw ex
         End Try

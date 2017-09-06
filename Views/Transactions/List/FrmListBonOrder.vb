@@ -155,11 +155,19 @@
 
 #Region "Other"
     Private Sub FrmListBonOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Try
+            PreCreateDisplay()
+        Catch ex As Exception
+            MsgBoxError("Error List Bon Order : " + ex.Message)
+        End Try
     End Sub
 
     Private Sub FrmListBonOrder_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
-
+        Try
+            ListData()
+        Catch ex As Exception
+            MsgBoxError("Error List Bon Order : " + ex.Message)
+        End Try
     End Sub
 
 #End Region

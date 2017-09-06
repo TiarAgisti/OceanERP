@@ -52,12 +52,13 @@
                     bonHeaderModel.CustomerName = .Item("CustomerName")
                 End While
             End With
-            Return bonHeaderModel
-        Catch ex As Exception
-            Throw ex
-        Finally
             dataAccess = Nothing
             dataAccess.reader.Close()
+            Return bonHeaderModel
+        Catch ex As Exception
+            dataAccess = Nothing
+            dataAccess.reader.Close()
+            Throw ex
         End Try
     End Function
     Public Function RetrieveDetailByID(headerID As Long) As List(Of BonOrderDetailModel)
@@ -81,12 +82,13 @@
                     myList.Add(detailModel)
                 End While
             End With
-            Return myList
-        Catch ex As Exception
-            Throw ex
-        Finally
             dataAccess.reader.Close()
             dataAccess = Nothing
+            Return myList
+        Catch ex As Exception
+            dataAccess.reader.Close()
+            dataAccess = Nothing
+            Throw ex
         End Try
     End Function
 #End Region
@@ -113,12 +115,13 @@
                     myCode = "BON" + "0000001" + "/" + customerCode + "/" + Format(Now.Year)
                 End If
             End If
-            Return myCode
-        Catch ex As Exception
-            Throw ex
-        Finally
             dataAccess.reader.Close()
             dataAccess = Nothing
+            Return myCode
+        Catch ex As Exception
+            dataAccess.reader.Close()
+            dataAccess = Nothing
+            Throw ex
         End Try
     End Function
 
@@ -128,11 +131,11 @@
         Dim dataAccess = New ClsDataAccess
         Try
             id = dataAccess.GeneratedAutoNumber(query)
+            dataAccess = Nothing
             Return id
         Catch ex As Exception
-            Throw ex
-        Finally
             dataAccess = Nothing
+            Throw ex
         End Try
     End Function
 #End Region

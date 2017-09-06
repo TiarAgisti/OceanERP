@@ -422,15 +422,19 @@
     End Sub
     Private Sub dgvCon_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCon.CellClick
         Dim row As Integer = dgvCon.CurrentRow.Index
-        contryID = dgvCon.Item(0, row).Value
-        txtConCode.Text = dgvCon.Item(1, row).Value
-        txtConName.Text = dgvCon.Item(2, row).Value
-        countryName = dgvCon.Item(2, row).Value
+        If Not IsDBNull(dgvCon.CurrentRow.Cells(0).Value) Then
+            contryID = dgvCon.Item(0, row).Value
+            txtConCode.Text = dgvCon.Item(1, row).Value
+            txtConName.Text = dgvCon.Item(2, row).Value
+            countryName = dgvCon.Item(2, row).Value
 
-        displayCon = "Update"
+            displayCon = "Update"
 
-        ButtonUpdateCon()
-        EnabledTextCon(True)
+            ButtonUpdateCon()
+            EnabledTextCon(True)
+        Else
+            MsgBoxError("Choise failed")
+        End If
     End Sub
 #End Region
 
@@ -451,15 +455,19 @@
     End Sub
     Private Sub dgvSea_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSea.CellClick
         Dim row As Integer = dgvSea.CurrentRow.Index
-        seaPortID = dgvSea.Item(0, row).Value
-        txtSeaCode.Text = dgvSea.Item(1, row).Value
-        txtSeaName.Text = dgvSea.Item(2, row).Value
-        seaportName = dgvSea.Item(2, row).Value
+        If Not IsDBNull(dgvCon.CurrentRow.Cells(0).Value) Then
+            seaPortID = dgvSea.Item(0, row).Value
+            txtSeaCode.Text = dgvSea.Item(1, row).Value
+            txtSeaName.Text = dgvSea.Item(2, row).Value
+            seaportName = dgvSea.Item(2, row).Value
 
-        displaySea = "Update"
+            displaySea = "Update"
 
-        ButtonUpdateSea()
-        EnabledTextSea(True)
+            ButtonUpdateSea()
+            EnabledTextSea(True)
+        Else
+            MsgBoxError("Choise failed")
+        End If
     End Sub
 #End Region
 
