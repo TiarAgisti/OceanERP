@@ -32,6 +32,7 @@
 
             dgv.Columns(2).HeaderText = "Currency Code"
             dgv.Columns(2).Width = 140
+            dgv.Columns(2).Visible = False
 
             dgv.Columns(3).HeaderText = "PO Date"
             dgv.Columns(3).DefaultCellStyle.Format = "dd-MMM-yyyy"
