@@ -25,6 +25,7 @@ Partial Class FrmBonOrder
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmBonOrder))
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnAdd = New System.Windows.Forms.Button()
         Me.dtpDateIssues = New System.Windows.Forms.DateTimePicker()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.txtStyle = New System.Windows.Forms.TextBox()
@@ -63,7 +64,6 @@ Partial Class FrmBonOrder
         Me.txtTotBruto = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.btnAdd = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -106,6 +106,15 @@ Partial Class FrmBonOrder
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(912, 96)
         Me.Panel1.TabIndex = 25
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Location = New System.Drawing.Point(281, 63)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(75, 23)
+        Me.btnAdd.TabIndex = 26
+        Me.btnAdd.Text = "Add To List"
+        Me.btnAdd.UseVisualStyleBackColor = True
         '
         'dtpDateIssues
         '
@@ -232,7 +241,6 @@ Partial Class FrmBonOrder
         Me.dgv.Dock = System.Windows.Forms.DockStyle.Top
         Me.dgv.Location = New System.Drawing.Point(0, 139)
         Me.dgv.Name = "dgv"
-        Me.dgv.RowHeadersVisible = False
         Me.dgv.Size = New System.Drawing.Size(912, 238)
         Me.dgv.TabIndex = 8
         '
@@ -440,15 +448,6 @@ Partial Class FrmBonOrder
         Me.Label8.Size = New System.Drawing.Size(109, 13)
         Me.Label8.TabIndex = 28
         Me.Label8.Text = "TOTAL ORDER QTY"
-        '
-        'btnAdd
-        '
-        Me.btnAdd.Location = New System.Drawing.Point(281, 63)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(75, 23)
-        Me.btnAdd.TabIndex = 26
-        Me.btnAdd.Text = "Add To List"
-        Me.btnAdd.UseVisualStyleBackColor = True
         '
         'FrmBonOrder
         '
