@@ -196,8 +196,8 @@
 
     Protected Function SqlInsertDetail(myModel As BonOrderDetailModel) As String
         Dim sql As String
-        sql = "Insert into BonOrderDetail(BonOrderID,FabricID,ColorID,LabsDipsNo,Bruto,Netto)Values('" & myModel.BonOrderID & "'" &
-            ",'" & myModel.FabricID & "','" & myModel.ColorID & "','" & myModel.LabsDipsNo & "','" & myModel.Bruto & "','" & myModel.Netto & "')"
+        sql = "Insert into BonOrderDetail(BonOrderID,FabricID,ColorID,StyleID,LabsDipsNo,Bruto,Netto)Values('" & myModel.BonOrderID & "'" &
+            ",'" & myModel.FabricID & "','" & myModel.ColorID & "','" & myModel.StyleID & "','" & myModel.LabsDipsNo & "','" & myModel.Bruto & "','" & myModel.Netto & "')"
         Return sql
     End Function
 

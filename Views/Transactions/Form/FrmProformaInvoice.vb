@@ -24,90 +24,184 @@
     Sub ComboBoxBuyer()
         Dim vendorBFC As ClsVendor = New ClsVendor
         Dim status As String = "C"
-        vendorBFC.ComboBoxVendor(cmbBuyer, status)
+        Try
+            vendorBFC.ComboBoxVendor(cmbBuyer, status)
+            vendorBFC = Nothing
+        Catch ex As Exception
+            vendorBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxStyle()
         Dim styleBFC As ClsStyle = New ClsStyle
-        styleBFC.ComboBoxStyle(cmbStyle)
-        styleBFC.ComboBoxStyle(cmbFabricStyle)
+        Try
+            styleBFC.ComboBoxStyle(cmbStyle)
+            styleBFC.ComboBoxStyle(cmbFabricStyle)
+
+            styleBFC = Nothing
+        Catch ex As Exception
+            styleBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxSeason()
         Dim seasonBFC As ClsSeason = New ClsSeason
-        seasonBFC.ComboBoxSeason(cmbSeason)
+        Try
+            seasonBFC.ComboBoxSeason(cmbSeason)
+            seasonBFC = Nothing
+        Catch ex As Exception
+            seasonBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxPort()
         Dim destiBFC As ClsDestination = New ClsDestination
         Dim status As String = "S"
-        destiBFC.ComboBoxDestination(cmbPort, status)
+        Try
+            destiBFC.ComboBoxDestination(cmbPort, status)
+            destiBFC = Nothing
+        Catch ex As Exception
+            destiBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxCustomer()
         Dim vendorBFC As ClsVendor = New ClsVendor
         Dim status As String = "C"
-        vendorBFC.ComboBoxVendor(cmbTo, status)
+        Try
+            vendorBFC.ComboBoxVendor(cmbTo, status)
+            vendorBFC = Nothing
+        Catch ex As Exception
+            vendorBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxMarketing()
         Dim salesBFC As ClsGroupSales = New ClsGroupSales
-        salesBFC.ComboBoxSales(cmbFM)
+        Try
+            salesBFC.ComboBoxSales(cmbFM)
+            salesBFC = Nothing
+        Catch ex As Exception
+            salesBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxFabric()
         Dim fabricBFC As ClsFabric = New ClsFabric
-        fabricBFC.ComboBoxFabric(cmbFabric)
+        Try
+            fabricBFC.ComboBoxFabric(cmbFabric)
+            fabricBFC = Nothing
+        Catch ex As Exception
+            fabricBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxRawMaterial()
+        Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
         Try
-            Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
             rawBFC.ComboBoxRawMaterial(cmbRawFabric)
+            rawBFC = Nothing
         Catch ex As Exception
+            rawBFC = Nothing
             Throw ex
         End Try
     End Sub
 
     Sub ComboBoxUnit()
         Dim unitBFC As ClsUnit = New ClsUnit
-        unitBFC.ComboBoxUnit(cmbUnitFabric)
-        unitBFC.ComboBoxUnit(cmbColPurchSize)
+        Try
+            unitBFC.ComboBoxUnit(cmbUnitFabric)
+            unitBFC.ComboBoxUnit(cmbColPurchSize)
+
+            unitBFC = Nothing
+        Catch ex As Exception
+            unitBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxColor()
         Dim colorBFC As ClsColor = New ClsColor
-        colorBFC.ComboBoxColor(cmbColor)
+        Try
+            colorBFC.ComboBoxColor(cmbColor)
+            colorBFC = Nothing
+        Catch ex As Exception
+            colorBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxYarn()
         Dim yarnBFC As ClsYarn = New ClsYarn
-        yarnBFC.ComboBoxYarn(cmbYarn)
+        Try
+            yarnBFC.ComboBoxYarn(cmbYarn)
+            yarnBFC = Nothing
+        Catch ex As Exception
+            yarnBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxBrandYarn()
         Dim brandYarn As ClsBrandYarn = New ClsBrandYarn
-        brandYarn.ComboBoxBrandYarn(cmbMerk)
+        Try
+            brandYarn.ComboBoxBrandYarn(cmbMerk)
+            brandYarn = Nothing
+        Catch ex As Exception
+            brandYarn = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxColorYarn()
         Dim colorBFC As ClsColor = New ClsColor
-        colorBFC.ComboBoxColorYarn(cmbColorYarn)
+        Try
+            colorBFC.ComboBoxColorYarn(cmbColorYarn)
+            colorBFC = Nothing
+        Catch ex As Exception
+            colorBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxBank()
         Dim bankAccountBFC As ClsBankAccount = New ClsBankAccount
-        bankAccountBFC.ComboBoxBankAccount(cmbBankCode)
+        Try
+            bankAccountBFC.ComboBoxBankAccount(cmbBankCode)
+            bankAccountBFC = Nothing
+        Catch ex As Exception
+            bankAccountBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxTermOfPayment()
         Dim topBFC As ClsTermOfPayment = New ClsTermOfPayment
-        topBFC.ComboBoxTOP(cmbTOP)
+        Try
+            topBFC.ComboBoxTOP(cmbTOP)
+            topBFC = Nothing
+        Catch ex As Exception
+            topBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub ComboBoxTermPrice()
         Dim termPriceBFC As ClsTermOfPrice = New ClsTermOfPrice
-        termPriceBFC.ComboBoxTermPrice(cmbTermPrice)
+        Try
+            termPriceBFC.ComboBoxTermPrice(cmbTermPrice)
+            termPriceBFC = Nothing
+        Catch ex As Exception
+            termPriceBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
 #End Region
@@ -611,43 +705,67 @@
     Function CheckFabricInList() As Boolean
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Dim status As Boolean
-        status = piBFC.CheckFabricInList(dgvFabric, cmbFabric.SelectedValue)
-        Return status
+        Try
+            status = piBFC.CheckFabricInList(dgvFabric, cmbFabric.SelectedValue)
+            piBFC = Nothing
+            Return status
+        Catch ex As Exception
+            piBFC = Nothing
+            Throw ex
+        End Try
     End Function
 
     Function CheckColorInList() As Boolean
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Dim status As Boolean
-        status = piBFC.CheckColorInList(dgvColor, cmbColor.SelectedValue)
-        Return status
+        Try
+            status = piBFC.CheckColorInList(dgvColor, cmbColor.SelectedValue)
+            piBFC = Nothing
+            Return status
+        Catch ex As Exception
+            piBFC = Nothing
+            Throw ex
+        End Try
     End Function
 
     Function CheckYarnInList() As Boolean
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Dim status As Boolean
-        status = piBFC.CheckYarnInList(dgvYarn, cmbYarn.SelectedValue)
-        Return status
+        Try
+            status = piBFC.CheckYarnInList(dgvYarn, cmbYarn.SelectedValue)
+            piBFC = Nothing
+            Return status
+        Catch ex As Exception
+            piBFC = Nothing
+            Throw ex
+        End Try
     End Function
 
     Function CheckRemarksInList() As Boolean
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Dim status As Boolean = True
-        status = piBFC.CheckRemarksInList(dgvRemarks, txtRemarks.Text)
-        Return status
+        Try
+            status = piBFC.CheckRemarksInList(dgvRemarks, txtRemarks.Text)
+            piBFC = Nothing
+            Return status
+        Catch ex As Exception
+            piBFC = Nothing
+            Throw ex
+        End Try
     End Function
 #End Region
 
 #Region "Set Data"
-    Function SetDataHeader() As PIHeaderModel
+    Function SetDataHeader(piID As Long, piCode As String) As PIHeaderModel
         Dim headerModel As PIHeaderModel = New PIHeaderModel
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         With headerModel
             Select Case condition
                 Case "Create"
-                    .PIHeaderID = piBFC.GetPiHeaderID
+                    .PIHeaderID = piID
                     piHeaderID = .PIHeaderID
                     .PIDate = Format(dtPIDate.Value, "yyyy-MM-dd")
-                    .PINo = piBFC.GetPINo(customerCode)
+                    .PINo = piCode
                     txtPINo.Text = .PINo
                     .CustomerID = cmbTo.SelectedValue
                     .BuyerID = cmbBuyer.SelectedValue
@@ -667,7 +785,7 @@
                     .UpdatedBy = userID
                     .UpdatedDate = DateTime.Now
                 Case "Update"
-                    .PIHeaderID = piHeaderID
+                    .PIHeaderID = piID
                     .PIDate = Format(dtPIDate.Value, "yyyy-MM-dd")
                     .PINo = txtPINo.Text
                     .CustomerID = cmbTo.SelectedValue
@@ -686,13 +804,13 @@
                     .UpdatedBy = userID
                     .UpdatedDate = DateTime.Now
                 Case "Approved"
-                    .PIHeaderID = piHeaderID
+                    .PIHeaderID = piID
                     .PINo = txtPINo.Text
                     .Status = 2
                     .UpdatedBy = userID
                     .UpdatedDate = DateTime.Now
                 Case "Void"
-                    .PIHeaderID = piHeaderID
+                    .PIHeaderID = piID
                     .PINo = txtPINo.Text
                     .Status = 0
                     .UpdatedBy = userID
@@ -705,38 +823,68 @@
     Function SetDetailFabric(piID As Long) As List(Of PIDetailModel)
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Dim listModel As List(Of PIDetailModel) = New List(Of PIDetailModel)
-        listModel = piBFC.SetDetailFabric(piID, dgvFabric)
-        Return listModel
+        Try
+            listModel = piBFC.SetDetailFabric(piID, dgvFabric)
+            piBFC = Nothing
+            Return listModel
+        Catch ex As Exception
+            piBFC = Nothing
+            Throw ex
+        End Try
     End Function
 
     Function SetDetailColor(piID As Long) As List(Of PIColorDetailModel)
         Dim listModel As List(Of PIColorDetailModel) = New List(Of PIColorDetailModel)
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-        listModel = piBFC.SetDetailColor(piID, dgvColor)
-        Return listModel
+        Try
+            listModel = piBFC.SetDetailColor(piID, dgvColor)
+            piBFC = Nothing
+            Return listModel
+        Catch ex As Exception
+            piBFC = Nothing
+            Throw ex
+        End Try
     End Function
 
     Function SetDetailYarn(piID As Long) As List(Of PIYarnDetailModel)
         Dim listModel As List(Of PIYarnDetailModel) = New List(Of PIYarnDetailModel)
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-        listModel = piBFC.SetDetailYarn(piID, dgvYarn)
-        Return listModel
+        Try
+            listModel = piBFC.SetDetailYarn(piID, dgvYarn)
+            piBFC = Nothing
+            Return listModel
+        Catch ex As Exception
+            piBFC = Nothing
+            Throw ex
+        End Try
     End Function
 
     Function SetDataBank(piID As Long) As PIBankDetailModel
         Dim myModel As PIBankDetailModel = New PIBankDetailModel
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-        myModel.PIHeaderID = piID
-        myModel.PIBankDetailID = piBFC.GetPIDetailBankID
-        myModel.BankAccountID = cmbBankCode.SelectedValue
-        Return myModel
+        Try
+            myModel.PIHeaderID = piID
+            myModel.PIBankDetailID = piBFC.GetPIDetailBankID
+            myModel.BankAccountID = cmbBankCode.SelectedValue
+            piBFC = Nothing
+            Return myModel
+        Catch ex As Exception
+            piBFC = Nothing
+            Throw ex
+        End Try
     End Function
 
     Function SetDetailRemarks(piID As Long) As List(Of PIRemarksModel)
         Dim listModel As List(Of PIRemarksModel) = New List(Of PIRemarksModel)
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-        listModel = piBFC.SetDetailRemarks(piID, dgvRemarks)
-        Return listModel
+        Try
+            listModel = piBFC.SetDetailRemarks(piID, dgvRemarks)
+            piBFC = Nothing
+            Return listModel
+        Catch ex As Exception
+            piBFC = Nothing
+            Throw ex
+        End Try
     End Function
 #End Region
 
@@ -749,7 +897,7 @@
         Dim logDesc As String = "Create new Proforma Invoice,PINo is " + myPINo
 
         Try
-            If piBFC.InsertData(SetDataHeader, SetDetailFabric(myPIID), SetDetailColor(myPIID), SetDetailYarn(myPIID) _
+            If piBFC.InsertData(SetDataHeader(myPIID, myPINo), SetDetailFabric(myPIID), SetDetailColor(myPIID), SetDetailYarn(myPIID) _
                                 , SetDetailRemarks(myPIID), SetDataBank(myPIID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxSaved()
                 CheckPermissions()
@@ -758,8 +906,12 @@
                 btnUpdate.Enabled = False
                 'PreCreatedisplay()
             End If
+            piBFC = Nothing
+            logBFC = Nothing
         Catch ex As Exception
-            MsgBoxError(ex.Message)
+            piBFC = Nothing
+            logBFC = Nothing
+            Throw ex
         End Try
     End Sub
 
@@ -768,7 +920,7 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update Proforma Invoice,Where PINo = " + txtPINo.Text
         Try
-            If piBFC.UpdateData(SetDataHeader, SetDetailFabric(piHeaderID), SetDetailColor(piHeaderID), SetDetailYarn(piHeaderID) _
+            If piBFC.UpdateData(SetDataHeader(piHeaderID, txtPINo.Text), SetDetailFabric(piHeaderID), SetDetailColor(piHeaderID), SetDetailYarn(piHeaderID) _
                                 , SetDetailRemarks(piHeaderID), SetDataBank(piHeaderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxUpdated()
                 CheckPermissions()
@@ -776,8 +928,12 @@
                 btnSave.Enabled = False
                 btnUpdate.Enabled = False
             End If
+            piBFC = Nothing
+            logBFC = Nothing
         Catch ex As Exception
-            MsgBoxError(ex.Message)
+            piBFC = Nothing
+            logBFC = Nothing
+            Throw ex
         End Try
     End Sub
 
@@ -787,12 +943,16 @@
         Dim logDesc As String = "Approved proforma invoice where PINO = " + txtPINo.Text
         condition = "Approved"
         Try
-            If piBFC.UpdateStatusHeader(SetDataHeader, logBFC.SetLogHistoryTrans(logDesc)) Then
+            If piBFC.UpdateStatusHeader(SetDataHeader(piHeaderID, txtPINo.Text), logBFC.SetLogHistoryTrans(logDesc)) Then
                 MsgBoxApproved()
                 PreCreatedisplay()
             End If
+            piBFC = Nothing
+            logBFC = Nothing
         Catch ex As Exception
-            MsgBoxError(ex.Message)
+            piBFC = Nothing
+            logBFC = Nothing
+            Throw ex
         End Try
     End Sub
 
@@ -802,25 +962,31 @@
         Dim logDesc As String = "Void proforma invoice where PINO = " + txtPINo.Text
         condition = "Void"
         Try
-            If piBFC.UpdateStatusHeader(SetDataHeader, logBFC.SetLogHistoryTrans(logDesc)) Then
+            If piBFC.UpdateStatusHeader(SetDataHeader(piHeaderID, txtPINo.Text), logBFC.SetLogHistoryTrans(logDesc)) Then
                 MsgBoxVoid()
                 PreCreatedisplay()
             End If
+            piBFC = Nothing
+            logBFC = Nothing
         Catch ex As Exception
-            MsgBoxError(ex.Message)
+            piBFC = Nothing
+            logBFC = Nothing
+            Throw ex
         End Try
     End Sub
 
     Sub PrintData()
+        Dim piPrint As ClsPrintOut = New ClsPrintOut
         Try
-            Dim piPrint As ClsPrintOut = New ClsPrintOut
             If piPrint.PrintOutProformaInvoice(txtPINo.Text) Then
                 PreCreatedisplay()
             Else
                 MsgBoxError("Failed to print")
             End If
+            piPrint = Nothing
         Catch ex As Exception
-            MsgBoxError(ex.Message)
+            piPrint = Nothing
+            Throw ex
         End Try
     End Sub
 
@@ -859,109 +1025,158 @@
     End Sub
 
     Sub ComboBoxALL()
-        ComboBoxBank()
-        ComboBoxBrandYarn()
-        ComboBoxBuyer()
-        ComboBoxColor()
-        ComboBoxColorYarn()
-        ComboBoxCustomer()
-        ComboBoxFabric()
-        ComboBoxMarketing()
-        ComboBoxPort()
-        ComboBoxRawMaterial()
-        ComboBoxSeason()
-        ComboBoxStyle()
-        ComboBoxTermOfPayment()
-        ComboBoxTermPrice()
-        ComboBoxUnit()
-        ComboBoxYarn()
+        Try
+            ComboBoxBank()
+            ComboBoxBrandYarn()
+            ComboBoxBuyer()
+            ComboBoxColor()
+            ComboBoxColorYarn()
+            ComboBoxCustomer()
+            ComboBoxFabric()
+            ComboBoxMarketing()
+            ComboBoxPort()
+            ComboBoxRawMaterial()
+            ComboBoxSeason()
+            ComboBoxStyle()
+            ComboBoxTermOfPayment()
+            ComboBoxTermPrice()
+            ComboBoxUnit()
+            ComboBoxYarn()
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Sub RetrieveCustomer()
         Dim vendorBFC As ClsVendor = New ClsVendor
         Dim vendorModel As VendorModel = New VendorModel
-        Dim obj As Integer = cmbTo.SelectedValue
-        If obj > 0 Then
-            vendorModel = vendorBFC.RetrieveVendorByID(obj, "C")
-            With vendorModel
-                customerCode = .VendorCode
-                txtTlp.Text = .Telephone
-                txtAttention.Text = .ContactPerson
-                txtAddress.Text = .Address
-                txtFax.Text = .Fax
-            End With
-        Else
-            MsgBoxError("Customer not valid")
-        End If
+        Try
+            Dim obj As Integer = cmbTo.SelectedValue
+            If obj > 0 Then
+                vendorModel = vendorBFC.RetrieveVendorByID(obj, "C")
+                With vendorModel
+                    customerCode = .VendorCode
+                    txtTlp.Text = .Telephone
+                    txtAttention.Text = .ContactPerson
+                    txtAddress.Text = .Address
+                    txtFax.Text = .Fax
+                End With
+            Else
+                MsgBoxError("Customer not valid")
+            End If
+            vendorBFC = Nothing
+            vendorModel = Nothing
+        Catch ex As Exception
+            vendorBFC = Nothing
+            vendorModel = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub RetrieveFabric()
         Dim fabricBFC As ClsFabric = New ClsFabric
         Dim fabricModel As FabricModel = New FabricModel
-        Dim fabricID As Integer = cmbFabric.SelectedValue
-        If fabricID > 0 Then
-            fabricModel = fabricBFC.RetrieveByID(fabricID)
-            With fabricModel
-                txtSpec.Text = fabricModel.Specification
-            End With
-        Else
-            MsgBoxError("Fabric Not Valid")
-        End If
+        Try
+            Dim fabricID As Integer = cmbFabric.SelectedValue
+            If fabricID > 0 Then
+                fabricModel = fabricBFC.RetrieveByID(fabricID)
+                With fabricModel
+                    txtSpec.Text = fabricModel.Specification
+                End With
+            Else
+                MsgBoxError("Fabric Not Valid")
+            End If
+            fabricBFC = Nothing
+            fabricModel = Nothing
+        Catch ex As Exception
+            fabricBFC = Nothing
+            fabricModel = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub RetrieveColor()
         Dim colorBFC As ClsColor = New ClsColor
         Dim colorModel As ColorModel = New ColorModel
-        Dim colorID As Integer = cmbColor.SelectedValue
-        If colorID > 0 Then
-            colorModel = colorBFC.RetrieveByID(colorID)
-            With colorModel
-                txtColor.Text = .ColorName
-            End With
-        Else
-            MsgBoxError("Color Code not valid")
-        End If
+        Try
+            Dim colorID As Integer = cmbColor.SelectedValue
+            If colorID > 0 Then
+                colorModel = colorBFC.RetrieveByID(colorID)
+                With colorModel
+                    txtColor.Text = .ColorName
+                End With
+            Else
+                MsgBoxError("Color Code not valid")
+            End If
+            colorBFC = Nothing
+            colorModel = Nothing
+        Catch ex As Exception
+            colorBFC = Nothing
+            colorModel = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub RetrieveYarn()
         Dim yarnBFC As ClsYarn = New ClsYarn
         Dim yarnModel As YarnModel = New YarnModel
-        Dim yarnID As Integer = cmbYarn.SelectedValue
-        If yarnID > 0 Then
-            yarnModel = yarnBFC.RetrieveByID(yarnID)
-            With yarnModel
-                txtSuppYarn.Text = yarnModel.VendorName
-            End With
-        Else
-            MsgBoxError("Yarn not valid")
-        End If
+        Try
+            Dim yarnID As Integer = cmbYarn.SelectedValue
+            If yarnID > 0 Then
+                yarnModel = yarnBFC.RetrieveByID(yarnID)
+                With yarnModel
+                    txtSuppYarn.Text = yarnModel.VendorName
+                End With
+            Else
+                MsgBoxError("Yarn not valid")
+            End If
+            yarnBFC = Nothing
+            yarnModel = Nothing
+        Catch ex As Exception
+            yarnBFC = Nothing
+            yarnModel = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub RetrieveBankAccount()
         Dim bankAccountBFC As ClsBankAccount = New ClsBankAccount
         Dim bankAccountModel As BankAccountModel = New BankAccountModel
-        Dim bankAccountID As Integer = cmbBankCode.SelectedValue
-        If bankAccountID > 0 Then
-            bankAccountModel = bankAccountBFC.RetrieveByID(bankAccountID)
-            With bankAccountModel
-                txtBank.Text = .BankName
-                txtAccName.Text = .AccountName
-                txtAccNumber.Text = .AccountNumber
-                txtSwiftCode.Text = .SwiftCode
-            End With
-        End If
+        Try
+            Dim bankAccountID As Integer = cmbBankCode.SelectedValue
+            If bankAccountID > 0 Then
+                bankAccountModel = bankAccountBFC.RetrieveByID(bankAccountID)
+                With bankAccountModel
+                    txtBank.Text = .BankName
+                    txtAccName.Text = .AccountName
+                    txtAccNumber.Text = .AccountNumber
+                    txtSwiftCode.Text = .SwiftCode
+                End With
+            End If
+            bankAccountBFC = Nothing
+            bankAccountModel = Nothing
+        Catch ex As Exception
+            bankAccountBFC = Nothing
+            bankAccountModel = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub CheckPermissions()
+        Dim roleBFC As ClsPermission = New ClsPermission
+        Dim roleModel As RoleDModel = New RoleDModel
         Try
-            Dim roleBFC As ClsPermission = New ClsPermission
-            Dim roleModel As RoleDModel = New RoleDModel
             roleModel = roleBFC.RetrieveDetailsByRoleIDMenuID(roleIDUser, Tag)
             If roleModel.IsCreate = True Then btnSave.Enabled = True
             If roleModel.IsUpdate = True Then btnUpdate.Enabled = True
             If roleModel.IsApprove = True Then btnApprove.Enabled = True
             If roleModel.IsVoid = True Then btnVoid.Enabled = True
+
+            roleBFC = Nothing
+            roleModel = Nothing
         Catch ex As Exception
+            roleBFC = Nothing
+            roleModel = Nothing
             Throw ex
         End Try
     End Sub
@@ -970,31 +1185,39 @@
         ComboBoxALL()
         Dim headerModel As PIHeaderModel = New PIHeaderModel
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-        headerModel = piBFC.RetrieveByID(piHeaderID)
-        With headerModel
-            txtPINo.Text = .PINo
-            dtPIDate.Value = .PIDate
-            cmbBuyer.SelectedValue = .BuyerID
-            txtRefPO.Text = .RefPO
-            cmbStyle.SelectedValue = .StyleID
-            cmbSeason.SelectedValue = .SeasonID
-            cmbTOP.SelectedValue = .TermOfPaymentID
-            dtDelTerm.Value = .DelTerm
-            cmbTermPrice.SelectedValue = .TermOfPriceID
-            txtContract.Text = .ContractNo
-            cmbPort.SelectedValue = .DestinationID
-            cmbTo.SelectedValue = .CustomerID
-            cmbFM.SelectedValue = .GroupSalesID
-            txtDelPlace.Text = .DeliveryPlace
-            statusPI = .Status
-        End With
+        Try
+            headerModel = piBFC.RetrieveByID(piHeaderID)
+            With headerModel
+                txtPINo.Text = .PINo
+                dtPIDate.Value = .PIDate
+                cmbBuyer.SelectedValue = .BuyerID
+                txtRefPO.Text = .RefPO
+                cmbStyle.SelectedValue = .StyleID
+                cmbSeason.SelectedValue = .SeasonID
+                cmbTOP.SelectedValue = .TermOfPaymentID
+                dtDelTerm.Value = .DelTerm
+                cmbTermPrice.SelectedValue = .TermOfPriceID
+                txtContract.Text = .ContractNo
+                cmbPort.SelectedValue = .DestinationID
+                cmbTo.SelectedValue = .CustomerID
+                cmbFM.SelectedValue = .GroupSalesID
+                txtDelPlace.Text = .DeliveryPlace
+                statusPI = .Status
+            End With
+            headerModel = Nothing
+            piBFC = Nothing
+        Catch ex As Exception
+            headerModel = Nothing
+            piBFC = Nothing
+            Throw ex
+        End Try
     End Sub
 
     Sub PrepareFabricByHeaderID()
+        Dim listFabric As List(Of PIDetailModel) = New List(Of PIDetailModel)
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Try
             GridDetailFabric()
-            Dim listFabric As List(Of PIDetailModel) = New List(Of PIDetailModel)
-            Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
             listFabric = piBFC.RetrieveFabricByHeaderID(piHeaderID)
             For Each detail In listFabric
                 With dgvFabric
@@ -1030,16 +1253,20 @@
                 End With
                 intBarisFabric = intBarisFabric + 1
             Next
+            listFabric = Nothing
+            piBFC = Nothing
         Catch ex As Exception
+            listFabric = Nothing
+            piBFC = Nothing
             Throw ex
         End Try
     End Sub
 
     Sub PrepareColorByHeaderID()
+        Dim listColor As List(Of PIColorDetailModel) = New List(Of PIColorDetailModel)
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Try
             GridDetailColor()
-            Dim listColor As List(Of PIColorDetailModel) = New List(Of PIColorDetailModel)
-            Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
             listColor = piBFC.RetrieveColorByHeaderID(piHeaderID)
             For Each detail In listColor
                 With dgvColor
@@ -1059,16 +1286,20 @@
                 End With
                 intBarisColor = intBarisColor + 1
             Next
+            listColor = Nothing
+            piBFC = Nothing
         Catch ex As Exception
+            listColor = Nothing
+            piBFC = Nothing
             Throw ex
         End Try
     End Sub
 
     Sub PrepareYarnByHeaderID()
+        Dim listYarn As List(Of PIYarnDetailModel) = New List(Of PIYarnDetailModel)
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Try
             GridDetailYarn()
-            Dim listYarn As List(Of PIYarnDetailModel) = New List(Of PIYarnDetailModel)
-            Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
             listYarn = piBFC.RetrieveYarnByHeaderID(piHeaderID)
             For Each detail In listYarn
                 With dgvYarn
@@ -1087,16 +1318,20 @@
                 End With
                 intBarisYarn = intBarisYarn + 1
             Next
+            listYarn = Nothing
+            piBFC = Nothing
         Catch ex As Exception
+            listYarn = Nothing
+            piBFC = Nothing
             Throw ex
         End Try
     End Sub
 
     Sub PrepareBankByHeaderID()
+        Dim piBankAccountModel As PIBankDetailModel = New PIBankDetailModel
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Try
             ComboBoxBank()
-            Dim piBankAccountModel As PIBankDetailModel = New PIBankDetailModel
-            Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
             piBankAccountModel = piBFC.RetrieveBankByHeaderID(piHeaderID)
             With piBankAccountModel
                 cmbBankCode.SelectedValue = .BankAccountID
@@ -1105,16 +1340,20 @@
                 txtAccNumber.Text = .AccountNumber
                 txtSwiftCode.Text = .SwiftCode
             End With
+            piBankAccountModel = Nothing
+            piBFC = Nothing
         Catch ex As Exception
+            piBankAccountModel = Nothing
+            piBFC = Nothing
             Throw ex
         End Try
     End Sub
 
     Sub PrepareRemarksByHeaderID()
+        Dim listRemarks As List(Of PIRemarksModel) = New List(Of PIRemarksModel)
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Try
             GridDetailRemark()
-            Dim listRemarks As List(Of PIRemarksModel) = New List(Of PIRemarksModel)
-            Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
             listRemarks = piBFC.RetrieveRemarksByHeaderID(piHeaderID)
             For Each detail In listRemarks
                 With dgvRemarks
@@ -1123,22 +1362,30 @@
                 End With
                 intBarisRemarks = intBarisRemarks + 1
             Next
+            listRemarks = Nothing
+            piBFC = Nothing
         Catch ex As Exception
+            listRemarks = Nothing
+            piBFC = Nothing
             Throw ex
         End Try
     End Sub
 
     Sub PreCreatedisplay()
-        CheckPermissions()
-        ClearDataGrid()
-        ClearAllData()
-        GridDetailALL()
-        ComboBoxALL()
-        cmbBuyer.Focus()
-        btnApprove.Enabled = False
-        btnVoid.Enabled = False
-        btnPrint.Enabled = False
-        btnUpdate.Enabled = False
+        Try
+            CheckPermissions()
+            ClearDataGrid()
+            ClearAllData()
+            GridDetailALL()
+            ComboBoxALL()
+            cmbBuyer.Focus()
+            btnApprove.Enabled = False
+            btnVoid.Enabled = False
+            btnPrint.Enabled = False
+            btnUpdate.Enabled = False
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Sub PreUpdateDisplay()
@@ -1157,18 +1404,22 @@
             If statusPI = 0 Then btnVoid.Enabled = False
             btnSave.Enabled = False
         Catch ex As Exception
-            MsgBoxError(ex.Message)
+            Throw ex
         End Try
     End Sub
 
     Private Sub FrmProformaInvoice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Select Case condition
-            Case "Create"
-                PreCreatedisplay()
-            Case "Update"
-                PreUpdateDisplay()
-        End Select
-        Text = title
+        Try
+            Select Case condition
+                Case "Create"
+                    PreCreatedisplay()
+                Case "Update"
+                    PreUpdateDisplay()
+            End Select
+            Text = title
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 #End Region
 
@@ -1270,7 +1521,11 @@
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If CheckEmptyHeader() = False And CheckEmptyBank() = False Then
             If condition = "Create" Then
-                InsertData()
+                Try
+                    InsertData()
+                Catch ex As Exception
+                    MsgBoxError(ex.Message)
+                End Try
             End If
         End If
     End Sub
@@ -1278,13 +1533,21 @@
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         If CheckEmptyHeader() = False And CheckEmptyBank() = False Then
             If condition = "Update" Then
-                UpdateData()
+                Try
+                    UpdateData()
+                Catch ex As Exception
+                    MsgBoxError(ex.Message)
+                End Try
             End If
         End If
     End Sub
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
-        PrintData()
+        Try
+            PrintData()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
@@ -1292,11 +1555,19 @@
     End Sub
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
-        ApprovedData()
+        Try
+            ApprovedData()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 
     Private Sub btnVoid_Click(sender As Object, e As EventArgs) Handles btnVoid.Click
-        VoidData()
+        Try
+            VoidData()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 #End Region
 

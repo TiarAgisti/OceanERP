@@ -72,6 +72,7 @@
         txtTotNetto.Text = 0
         intBaris = 0
         intPost = 0
+        custCode = ""
     End Sub
 #End Region
 
@@ -93,23 +94,47 @@
         ElseIf Trim(txtStyle.Text) = "" Then
             MsgBoxWarning("Style can't empty,please check your proforma invoice")
             txtBrand.Focus()
+        ElseIf dgv.Rows.Count - 1 = 0 Then
+            MsgBoxError("Detail can't empty")
+            btnAdd.Focus()
+        ElseIf txtTotBruto.Text = 0 And txtTotNetto.Text = 0 Then
+            MsgBoxError("Bruto Or Netto can't 0")
+            btnAdd.Focus()
         Else
             check = False
         End If
         Return check
     End Function
+
+    Function CheckEmptyDetail() As Boolean
+        Dim check As Boolean = True
+        For i As Integer = 0 To dgv.Rows.Count - 2
+            If dgv.Rows(i).Cells(0).Value = "" Then
+                MsgBoxError("Transaction not yet completed")
+                Exit For
+            ElseIf dgv.Rows(i).Cells(4).Value = 0 Then
+                MsgBoxError("Bruto can't 0")
+                Exit For
+            ElseIf dgv.Rows(i).Cells(5).Value = 0 Then
+                MsgBoxError("Netto can't 0")
+                Exit For
+            Else
+                check = False
+            End If
+        Next
+        Return check
+    End Function
 #End Region
 
 #Region "Set Data"
-    Function SetDataHeader() As BonOrderHeaderModel
+    Function SetDataHeader(orderID As Long, orderCode As String) As BonOrderHeaderModel
         Dim headerModel As BonOrderHeaderModel = New BonOrderHeaderModel
-        Dim bonBFC As ClsBonOrder = New ClsBonOrder
         Try
             With headerModel
                 Select Case conBon
                     Case "Create"
-                        .BonOrderID = bonBFC.GetBonOrderID
-                        .BonOrderCode = bonBFC.GetBonOrderCode(custCode)
+                        .BonOrderID = orderID
+                        .BonOrderCode = orderCode
                         .PIHeaderID = cmbPINo.SelectedValue
                         .Status = statusBOn
                         .CreatedBy = userID
@@ -117,8 +142,8 @@
                         .UpdatedBy = userID
                         .UpdatedDate = DateTime.Now
                     Case "Update"
-                        .BonOrderID = bonOrderID
-                        .BonOrderCode = txtCode.Text
+                        .BonOrderID = orderID
+                        .BonOrderCode = orderCode
                         .PIHeaderID = cmbPINo.SelectedValue
                         .Status = statusBOn
                         .UpdatedBy = userID
@@ -128,20 +153,18 @@
             Return headerModel
         Catch ex As Exception
             Throw ex
-        Finally
-            bonBFC = Nothing
         End Try
     End Function
-    Function SetDetail(bonOrderID As Long) As List(Of BonOrderDetailModel)
+    Function SetDetail(orderID As Long) As List(Of BonOrderDetailModel)
         Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
         Dim listModel As List(Of BonOrderDetailModel) = New List(Of BonOrderDetailModel)
         Try
-            listModel = bonOrderBFC.SetDetail(bonOrderID, dgv)
+            listModel = bonOrderBFC.SetDetail(orderID, dgv)
+            bonOrderBFC = Nothing
             Return listModel
         Catch ex As Exception
-            Throw ex
-        Finally
             bonOrderBFC = Nothing
+            Throw ex
         End Try
     End Function
 #End Region
@@ -205,6 +228,7 @@
                 txtNoPO.Text = piModel.RefPO
                 txtBrand.Text = piModel.BuyerName
                 txtStyle.Text = piModel.BuyerName
+                custCode = piModel.CustomerCode
             End With
 
             GridDetail()
@@ -318,6 +342,48 @@
     Sub PreUpdateDisplay()
 
     End Sub
+
+    Sub InsertData()
+        Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim orderCode As String = bonOrderBFC.GetBonOrderCode(custCode)
+        Dim orderID As Long = bonOrderBFC.GetBonOrderID
+        Dim logDesc As String = "Create new Bon Order,BON Order is " + orderCode
+
+        Try
+            If bonOrderBFC.InsertData(SetDataHeader(orderID, orderCode), SetDetail(orderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
+                MsgBoxSaved()
+                CheckPermission()
+                btnPrint.Enabled = True
+                btnSave.Enabled = False
+                btnUpdate.Enabled = False
+                'PreCreatedisplay()
+            End If
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Sub UpdateData()
+        Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim logDesc As String = "Update Bon Order,Where Bon Order Code = " + txtCode.Text
+        Try
+            If bonOrderBFC.UpdateData(SetDataHeader(bonOrderID, txtCode.Text), SetDetail(bonOrderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
+                MsgBoxUpdated()
+                CheckPermission()
+                btnPrint.Enabled = True
+                btnSave.Enabled = False
+                btnUpdate.Enabled = False
+            End If
+            bonOrderBFC = Nothing
+            logBFC = Nothing
+        Catch ex As Exception
+            bonOrderBFC = Nothing
+            logBFC = Nothing
+            Throw ex
+        End Try
+    End Sub
 #End Region
 
 #Region "Button"
@@ -329,7 +395,13 @@
         End Try
     End Sub
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-
+        If CheckEmptyHeader() = False And CheckEmptyDetail() = False Then
+            Try
+                InsertData()
+            Catch ex As Exception
+                MsgBoxError(msgError + ex.Message)
+            End Try
+        End If
     End Sub
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
