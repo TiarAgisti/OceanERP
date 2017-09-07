@@ -1,5 +1,6 @@
 ﻿Imports Microsoft.Reporting.WinForms
 Public Class ClsPO
+
 #Region "Method Retrieve"
     Public Function RetrieveListPurchaseOrder(poNo As String, dateFrom As Date, dateTo As Date, customer As String _
                                                 , supplier As String) As DataTable
@@ -217,6 +218,36 @@ Public Class ClsPO
         Return poNo
     End Function
 
+#End Region
+
+#Region "Function"
+    Protected Function ListComboBox() As DataTable
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim query As String = "Select POHeaderID,PONo From POHeader Where Status = 2"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
+    Public Sub ComboBoxPO(cmb As ComboBox)
+        Try
+            With cmb
+                .DataSource = ListComboBox()
+                .DisplayMember = "PONo"
+                .ValueMember = "POHeaderID"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
 #End Region
 
 #Region "Get ID"

@@ -62,6 +62,7 @@ Partial Class MenuUtama
         Me.BonOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RawMAterialPlaningToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReceiptToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -295,7 +296,7 @@ Partial Class MenuUtama
         '
         'menuTransaksi
         '
-        Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuProformaInvoice, Me.menuPO, Me.BonOrderToolStripMenuItem, Me.RawMAterialPlaningToolStripMenuItem})
+        Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuProformaInvoice, Me.menuPO, Me.BonOrderToolStripMenuItem, Me.RawMAterialPlaningToolStripMenuItem, Me.ReceiptToolStripMenuItem})
         Me.menuTransaksi.Name = "menuTransaksi"
         Me.menuTransaksi.Size = New System.Drawing.Size(86, 20)
         Me.menuTransaksi.Text = "Transactions"
@@ -333,6 +334,12 @@ Partial Class MenuUtama
         Me.menuKeluar.Name = "menuKeluar"
         Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
         Me.menuKeluar.Text = "Exit"
+        '
+        'ReceiptToolStripMenuItem
+        '
+        Me.ReceiptToolStripMenuItem.Name = "ReceiptToolStripMenuItem"
+        Me.ReceiptToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.ReceiptToolStripMenuItem.Text = "Receipt"
         '
         'MenuUtama
         '
@@ -400,4 +407,5 @@ Partial Class MenuUtama
     Friend WithEvents menuSVM As ToolStripMenuItem
     Friend WithEvents BonOrderToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RawMAterialPlaningToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ReceiptToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -340,5 +340,12 @@
         frm.Show()
 
     End Sub
+
+    Private Sub ReceiptToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceiptToolStripMenuItem.Click
+        Dim frm As FrmListBPB = New FrmListBPB
+        frm.MdiParent = Me
+        frm.WindowState = FormWindowState.Maximized
+        frm.Show()
+    End Sub
 #End Region
 End Class

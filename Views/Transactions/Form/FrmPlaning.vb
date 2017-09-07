@@ -33,7 +33,7 @@
 
     Sub ClearData()
         txtPONo.Clear()
-        txtPINo.Clear()
+        ' txtPINo.Clear()
         txtSupplierName.Clear()
         txtTOP.Clear()
         txtSVM.Clear()
@@ -43,11 +43,12 @@
             dgv.Columns(0).HeaderText = "PO HeaderID"
             dgv.Columns(0).Visible = False
 
-            dgv.Columns(1).HeaderText = "PI HeaderID"
+            dgv.Columns(1).HeaderText = "Currency"
             dgv.Columns(1).Visible = False
 
-            dgv.Columns(2).HeaderText = "PI No"
+            dgv.Columns(2).HeaderText = "Currency Code"
             dgv.Columns(2).Width = 140
+            dgv.Columns(2).Visible = False
 
             dgv.Columns(3).HeaderText = "PO Date"
             dgv.Columns(3).DefaultCellStyle.Format = "dd-MMM-yyyy"
@@ -146,6 +147,8 @@
 
             Dim row As Integer = .CurrentRow.Index
             If IsDBNull(Me.dgv.CurrentRow.Cells(0).Value) Then
+
+
             Else
 
                 txtPONo.Text = .Item(4, row).Value
@@ -155,6 +158,8 @@
                 dtSD.Value = .Item(11, row).Value
                 txtTOP.Text = .Item(12, row).Value
                 dtERD.Value = .Item(13, row).Value
+
+
                 'txtPONo.Text = .Item(6, row).Value
                 'txtPINo.Text = .Item(4, row).Value
                 'txtSupplierName.Text = .Item(10, row).Value
@@ -172,11 +177,41 @@
 #End Region
 
 #Region "Methode Update"
+
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Try
             Dim frm As FrmPurchaseOrder = New FrmPurchaseOrder
             frm.condition = "Update"
             FrmPurchaseOrder.poHeaderID = GetID()
+            frm.dtPODate.Enabled = False
+            frm.cmbSVM.Enabled = False
+            frm.dtSD.Enabled = False
+            frm.cmbTOP.Enabled = False
+            frm.cmbCurrency.Enabled = False
+            frm.cmbSupplier.Enabled = False
+            frm.cmbCustomer.Enabled = False
+            frm.cmbPINO.Enabled = False
+            frm.cmbRawCode.Enabled = False
+            frm.cmbUnit.Enabled = False
+            frm.txtUnitPrice.Enabled = False
+            frm.txtQty.Enabled = False
+            frm.cmbUnit.Enabled = False
+            frm.txtDiscount.Enabled = False
+            frm.txtSH.Enabled = False
+            frm.txtOtherCost.Enabled = False
+            frm.btnRawAddList.Enabled = False
+            frm.btnRawDelList.Enabled = False
+            frm.ShowDialog()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
+        Try
+            Dim frm As FrmBPB = New FrmBPB
+            ' frm.condition = "Create"
+            ' FrmBPB.poHeaderID = GetID()
             frm.ShowDialog()
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -191,16 +226,6 @@
             MsgBoxError(ex.Message)
         End Try
     End Sub
-
-    Private Sub txtSVM_TextChanged(sender As Object, e As EventArgs) Handles txtSVM.TextChanged
-
-    End Sub
-
-    Private Sub dgv_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellContentClick
-
-    End Sub
-
-
 
 
 #End Region

@@ -27,8 +27,8 @@ Partial Class FrmPlaning
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
-        Me.txtPONo = New System.Windows.Forms.TextBox()
         Me.btnView = New System.Windows.Forms.Button()
+        Me.txtPONo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtPINo = New System.Windows.Forms.TextBox()
         Me.dtERD = New System.Windows.Forms.DateTimePicker()
@@ -66,8 +66,8 @@ Partial Class FrmPlaning
         Me.Panel1.Controls.Add(Me.btnRefresh)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.btnAdd)
-        Me.Panel1.Controls.Add(Me.txtPONo)
         Me.Panel1.Controls.Add(Me.btnView)
+        Me.Panel1.Controls.Add(Me.txtPONo)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.txtPINo)
         Me.Panel1.Controls.Add(Me.dtERD)
@@ -90,10 +90,10 @@ Partial Class FrmPlaning
         '
         'btnRefresh
         '
-        Me.btnRefresh.Location = New System.Drawing.Point(799, 94)
+        Me.btnRefresh.Location = New System.Drawing.Point(724, 100)
         Me.btnRefresh.Name = "btnRefresh"
         Me.btnRefresh.Size = New System.Drawing.Size(75, 23)
-        Me.btnRefresh.TabIndex = 63
+        Me.btnRefresh.TabIndex = 66
         Me.btnRefresh.Text = "Refresh"
         Me.btnRefresh.UseVisualStyleBackColor = True
         '
@@ -108,13 +108,23 @@ Partial Class FrmPlaning
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(637, 93)
+        Me.btnAdd.Location = New System.Drawing.Point(643, 101)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 23)
-        Me.btnAdd.TabIndex = 61
+        Me.btnAdd.TabIndex = 64
         Me.btnAdd.Tag = "25"
         Me.btnAdd.Text = "Update PO"
         Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'btnView
+        '
+        Me.btnView.Location = New System.Drawing.Point(771, 59)
+        Me.btnView.Name = "btnView"
+        Me.btnView.Size = New System.Drawing.Size(75, 23)
+        Me.btnView.TabIndex = 65
+        Me.btnView.Text = "Input BPB"
+        Me.btnView.UseVisualStyleBackColor = True
+        Me.btnView.Visible = False
         '
         'txtPONo
         '
@@ -124,35 +134,26 @@ Partial Class FrmPlaning
         Me.txtPONo.Size = New System.Drawing.Size(188, 20)
         Me.txtPONo.TabIndex = 6
         '
-        'btnView
-        '
-        Me.btnView.Location = New System.Drawing.Point(718, 93)
-        Me.btnView.Name = "btnView"
-        Me.btnView.Size = New System.Drawing.Size(75, 23)
-        Me.btnView.TabIndex = 62
-        Me.btnView.Text = "Input BPB"
-        Me.btnView.UseVisualStyleBackColor = True
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 47)
+        Me.Label2.Location = New System.Drawing.Point(330, 100)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(34, 13)
+        Me.Label2.Size = New System.Drawing.Size(49, 13)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "PI No"
+        Me.Label2.Text = "Currency"
         '
         'txtPINo
         '
         Me.txtPINo.Enabled = False
-        Me.txtPINo.Location = New System.Drawing.Point(121, 44)
+        Me.txtPINo.Location = New System.Drawing.Point(451, 93)
         Me.txtPINo.Name = "txtPINo"
         Me.txtPINo.Size = New System.Drawing.Size(188, 20)
         Me.txtPINo.TabIndex = 8
         '
         'dtERD
         '
-        Me.dtERD.Location = New System.Drawing.Point(443, 93)
+        Me.dtERD.Location = New System.Drawing.Point(451, 70)
         Me.dtERD.Name = "dtERD"
         Me.dtERD.Size = New System.Drawing.Size(188, 20)
         Me.dtERD.TabIndex = 39
@@ -160,7 +161,7 @@ Partial Class FrmPlaning
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(12, 73)
+        Me.Label3.Location = New System.Drawing.Point(12, 44)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(48, 13)
         Me.Label3.TabIndex = 9
@@ -168,7 +169,7 @@ Partial Class FrmPlaning
         '
         'dtSD
         '
-        Me.dtSD.Location = New System.Drawing.Point(443, 43)
+        Me.dtSD.Location = New System.Drawing.Point(451, 20)
         Me.dtSD.Name = "dtSD"
         Me.dtSD.Size = New System.Drawing.Size(188, 20)
         Me.dtSD.TabIndex = 38
@@ -176,7 +177,7 @@ Partial Class FrmPlaning
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 99)
+        Me.Label4.Location = New System.Drawing.Point(12, 69)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(76, 13)
         Me.Label4.TabIndex = 11
@@ -184,7 +185,7 @@ Partial Class FrmPlaning
         '
         'dtPODate
         '
-        Me.dtPODate.Location = New System.Drawing.Point(121, 70)
+        Me.dtPODate.Location = New System.Drawing.Point(121, 43)
         Me.dtPODate.Name = "dtPODate"
         Me.dtPODate.Size = New System.Drawing.Size(188, 20)
         Me.dtPODate.TabIndex = 37
@@ -192,7 +193,7 @@ Partial Class FrmPlaning
         'txtSupplierName
         '
         Me.txtSupplierName.Enabled = False
-        Me.txtSupplierName.Location = New System.Drawing.Point(121, 96)
+        Me.txtSupplierName.Location = New System.Drawing.Point(121, 69)
         Me.txtSupplierName.Name = "txtSupplierName"
         Me.txtSupplierName.Size = New System.Drawing.Size(188, 20)
         Me.txtSupplierName.TabIndex = 12
@@ -200,7 +201,7 @@ Partial Class FrmPlaning
         'txtTOP
         '
         Me.txtTOP.Enabled = False
-        Me.txtTOP.Location = New System.Drawing.Point(443, 70)
+        Me.txtTOP.Location = New System.Drawing.Point(451, 47)
         Me.txtTOP.Name = "txtTOP"
         Me.txtTOP.Size = New System.Drawing.Size(188, 20)
         Me.txtTOP.TabIndex = 36
@@ -208,7 +209,7 @@ Partial Class FrmPlaning
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(322, 17)
+        Me.Label11.Location = New System.Drawing.Point(12, 93)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(87, 13)
         Me.Label11.TabIndex = 30
@@ -217,7 +218,7 @@ Partial Class FrmPlaning
         'txtSVM
         '
         Me.txtSVM.Enabled = False
-        Me.txtSVM.Location = New System.Drawing.Point(443, 17)
+        Me.txtSVM.Location = New System.Drawing.Point(121, 93)
         Me.txtSVM.Name = "txtSVM"
         Me.txtSVM.Size = New System.Drawing.Size(188, 20)
         Me.txtSVM.TabIndex = 34
@@ -225,7 +226,7 @@ Partial Class FrmPlaning
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(322, 44)
+        Me.Label10.Location = New System.Drawing.Point(330, 21)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(74, 13)
         Me.Label10.TabIndex = 31
@@ -234,7 +235,7 @@ Partial Class FrmPlaning
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(322, 99)
+        Me.Label12.Location = New System.Drawing.Point(330, 76)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(118, 13)
         Me.Label12.TabIndex = 33
@@ -243,7 +244,7 @@ Partial Class FrmPlaning
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(322, 73)
+        Me.Label13.Location = New System.Drawing.Point(330, 50)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(89, 13)
         Me.Label13.TabIndex = 32
@@ -255,14 +256,14 @@ Partial Class FrmPlaning
         Me.dgv.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgv.Location = New System.Drawing.Point(0, 178)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(903, 107)
+        Me.dgv.Size = New System.Drawing.Size(903, 170)
         Me.dgv.TabIndex = 65
         '
         'FrmPlaning
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(903, 285)
+        Me.ClientSize = New System.Drawing.Size(903, 348)
         Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label5)
@@ -278,9 +279,7 @@ Partial Class FrmPlaning
     Friend WithEvents Label5 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
-    Friend WithEvents btnAdd As Button
     Friend WithEvents txtPONo As TextBox
-    Friend WithEvents btnView As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents txtPINo As TextBox
     Friend WithEvents dtERD As DateTimePicker
@@ -297,4 +296,6 @@ Partial Class FrmPlaning
     Friend WithEvents Label13 As Label
     Friend WithEvents dgv As DataGridView
     Friend WithEvents btnRefresh As Button
+    Friend WithEvents btnAdd As Button
+    Friend WithEvents btnView As Button
 End Class

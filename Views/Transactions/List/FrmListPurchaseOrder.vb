@@ -1,4 +1,5 @@
 ﻿Public Class FrmListPurchaseOrder
+
 #Region "Declaration"
     Dim poNo As String
     Dim dateFrom As Date

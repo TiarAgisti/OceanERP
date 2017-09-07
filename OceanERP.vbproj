@@ -132,6 +132,7 @@
     <Compile Include="BisnisFlowControl\Settings\ClsPermission.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsBOM.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsBonOrder.vb" />
+    <Compile Include="BisnisFlowControl\Transactions\ClsBPB.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsPO.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsProformaInvoice.vb" />
     <Compile Include="DataAccess\ClsDataAccess.vb" />
@@ -179,6 +180,8 @@
     <Compile Include="Models\Masters\BOMHeaderModel.vb" />
     <Compile Include="Models\Transactions\BonOrderDetailModel.vb" />
     <Compile Include="Models\Transactions\BonOrderHeaderModel.vb" />
+    <Compile Include="Models\Transactions\BPBHeaderModel.vb" />
+    <Compile Include="Models\Transactions\BPBDetailModel.vb" />
     <Compile Include="Models\Transactions\PODetailModel.vb" />
     <Compile Include="Models\Transactions\POHeaderModel.vb" />
     <Compile Include="Models\Transactions\PIBankDetailModel.vb" />
@@ -315,6 +318,12 @@
     <Compile Include="Views\Transactions\Form\FrmBonOrder.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\Transactions\Form\FrmBPB.Designer.vb">
+      <DependentUpon>FrmBPB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transactions\Form\FrmBPB.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\Transactions\Form\FrmProformaInvoice.Designer.vb">
       <DependentUpon>FrmProformaInvoice.vb</DependentUpon>
     </Compile>
@@ -423,6 +432,12 @@
     <Compile Include="Views\Transactions\List\FrmListBonOrder.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\Transactions\List\FrmListBPB.Designer.vb">
+      <DependentUpon>FrmListBPB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transactions\List\FrmListBPB.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\Transactions\List\FrmListProformaInvoice.Designer.vb">
       <DependentUpon>FrmListProformaInvoice.vb</DependentUpon>
     </Compile>
@@ -503,6 +518,9 @@
     <EmbeddedResource Include="Views\Transactions\Form\FrmBonOrder.resx">
       <DependentUpon>FrmBonOrder.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transactions\Form\FrmBPB.resx">
+      <DependentUpon>FrmBPB.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\Form\FrmProformaInvoice.resx">
       <DependentUpon>FrmProformaInvoice.vb</DependentUpon>
     </EmbeddedResource>
@@ -556,6 +574,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\List\FrmListBonOrder.resx">
       <DependentUpon>FrmListBonOrder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transactions\List\FrmListBPB.resx">
+      <DependentUpon>FrmListBPB.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\List\FrmListProformaInvoice.resx">
       <DependentUpon>FrmListProformaInvoice.vb</DependentUpon>
