@@ -26,6 +26,15 @@
             xColorID = value
         End Set
     End Property
+    Private xStyleID As Integer
+    Public Property StyleID() As Integer
+        Get
+            Return xStyleID
+        End Get
+        Set(ByVal value As Integer)
+            xStyleID = value
+        End Set
+    End Property
     Private xLabsDipsNo As String
     Public Property LabsDipsNo() As String
         Get
