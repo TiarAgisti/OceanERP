@@ -34,7 +34,7 @@
     Public Function RetrieveByID(headerID As Long) As BonOrderHeaderModel
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim bonHeaderModel As BonOrderHeaderModel = New BonOrderHeaderModel
-        Dim query As String = "Select * From v_PIHeader Where PIHeaderID='" & headerID & "'"
+        Dim query As String = "Select * From v_BonOrderHeader Where BonOrderID='" & headerID & "'"
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             With dataAccess.reader
@@ -52,8 +52,8 @@
                     bonHeaderModel.CustomerName = .Item("CustomerName")
                 End While
             End With
-            dataAccess = Nothing
             dataAccess.reader.Close()
+            dataAccess = Nothing
             Return bonHeaderModel
         Catch ex As Exception
             dataAccess = Nothing
@@ -171,6 +171,7 @@
                     detailModel.BonOrderID = bonOrderID
                     detailModel.FabricID = .Rows(detail).Cells(6).Value
                     detailModel.ColorID = .Rows(detail).Cells(7).Value
+                    detailModel.StyleID = .Rows(detail).Cells(8).Value
                     detailModel.LabsDipsNo = .Rows(detail).Cells(3).Value
                     detailModel.Bruto = .Rows(detail).Cells(4).Value
                     detailModel.Netto = .Rows(detail).Cells(5).Value
@@ -187,8 +188,8 @@
 #Region "CRUD"
     Protected Function SqlInsertHeader(headerModel As BonOrderHeaderModel) As String
         Dim sqlHeader As String
-        sqlHeader = "Insert into BonOrderHeader(BonOrderID,DateIssues,PIHeaderID,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
-                    "('" & headerModel.BonOrderID & "','" & headerModel.DateIssues & "','" & headerModel.PIHeaderID & "'" &
+        sqlHeader = "Insert into BonOrderHeader(BonOrderID,BonOrderCode,DateIssues,PIHeaderID,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
+                    "('" & headerModel.BonOrderID & "','" & headerModel.BonOrderCode & "','" & headerModel.DateIssues & "','" & headerModel.PIHeaderID & "'" &
                     ",'" & headerModel.Status & "','" & headerModel.CreatedBy & "','" & headerModel.CreatedDate & "'" &
                     ",'" & headerModel.UpdatedBy & "','" & headerModel.UpdatedDate & "')"
         Return sqlHeader

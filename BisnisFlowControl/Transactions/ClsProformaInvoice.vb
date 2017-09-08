@@ -72,6 +72,7 @@ Public Class ClsProformaInvoice
                         piHeaderModel.GroupSalesID = .Item("GroupSalesID")
                         piHeaderModel.SalesName = .Item("SalesName")
                         piHeaderModel.DeliveryPlace = .Item("DeliveryPlace")
+                        piHeaderModel.StyleName = .Item("StyleName")
                         piHeaderModel.Status = .Item("Status")
                     End If
                 End With
@@ -284,6 +285,7 @@ Public Class ClsProformaInvoice
                     piDetailModel.Amount = .Item("Amount")
                     piDetailModel.FabricID = .Item("FabricID")
                     piDetailModel.ColorID = .Item("ColorID")
+                    piDetailModel.StyleID = .Item("StyleID")
                     myListModel.Add(piDetailModel)
                 End While
             End With

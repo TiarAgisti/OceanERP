@@ -1,4 +1,5 @@
 ﻿Public Class FrmBonOrder
+
 #Region "Declaration"
     Public conBon As String
     Public Shared bonOrderID As Long = 0
@@ -14,10 +15,11 @@
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Try
             piBFC.ComboBoxPI(cmbPINo)
-        Catch ex As Exception
-            Throw ex
-        Finally
+            cmbPINo.Enabled = True
             piBFC = Nothing
+        Catch ex As Exception
+            piBFC = Nothing
+            Throw ex
         End Try
     End Sub
 #End Region
@@ -52,6 +54,9 @@
 
                 .Columns.Add(7, "ColorID")
                 .Columns(7).Visible = False
+
+                .Columns.Add(8, "StyleID")
+                .Columns(8).Visible = False
             End With
         Catch ex As Exception
             Throw ex
@@ -137,7 +142,7 @@
                         .BonOrderCode = orderCode
                         .PIHeaderID = cmbPINo.SelectedValue
                         .DateIssues = Format(dtpDateIssues.Value, "yyyy-MM-dd")
-                        .Status = statusBOn
+                        .Status = 1
                         .CreatedBy = userID
                         .CreatedDate = DateTime.Now
                         .UpdatedBy = userID
@@ -147,7 +152,7 @@
                         .BonOrderCode = orderCode
                         .PIHeaderID = cmbPINo.SelectedValue
                         .DateIssues = Format(dtpDateIssues.Value, "yyyy-MM-dd")
-                        .Status = statusBOn
+                        .Status = 1
                         .UpdatedBy = userID
                         .UpdatedDate = DateTime.Now
                     Case "Approve"
@@ -175,11 +180,15 @@
     End Function
     Function SetDataPI() As PIHeaderModel
         Dim piModel As PIHeaderModel = New PIHeaderModel
-        piModel.PIHeaderID = cmbPINo.SelectedValue
-        piModel.Status = 3
-        piModel.UpdatedBy = userID
-        piModel.UpdatedDate = DateTime.Now
-        Return piModel
+        Try
+            piModel.PIHeaderID = cmbPINo.SelectedValue
+            piModel.Status = 3
+            piModel.UpdatedBy = userID
+            piModel.UpdatedDate = DateTime.Now
+            Return piModel
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 
 #End Region
@@ -194,33 +203,73 @@
             If roleModel.IsUpdate = True Then btnUpdate.Enabled = True
             If roleModel.IsApprove = True Then btnApprove.Enabled = True
             If roleModel.IsVoid = True Then btnVoid.Enabled = True
-        Catch ex As Exception
-            Throw ex
-        Finally
+
             roleBFC = Nothing
             roleModel = Nothing
+        Catch ex As Exception
+            roleBFC = Nothing
+            roleModel = Nothing
+            Throw ex
         End Try
     End Sub
     Sub PrepareByHeaderID()
         Dim headerModel As BonOrderHeaderModel = New BonOrderHeaderModel
         Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
         Try
-            ComboBoxPI()
+            'ComboBoxPI()
             headerModel = bonOrderBFC.RetrieveByID(bonOrderID)
             With headerModel
                 txtCode.Text = .BonOrderCode
-                cmbPINo.SelectedValue = .PIHeaderID
+                cmbPINo.Text = .PINo
                 txtNoPO.Text = .RefPO
                 txtCustomer.Text = .CustomerName
                 txtBrand.Text = .BuyerName
                 txtStyle.Text = .StyleName
                 statusBOn = .Status
             End With
-        Catch ex As Exception
-            Throw ex
-        Finally
+
+            cmbPINo.Enabled = False
+            btnAdd.Enabled = False
+
             headerModel = Nothing
             bonOrderBFC = Nothing
+        Catch ex As Exception
+            headerModel = Nothing
+            bonOrderBFC = Nothing
+            Throw ex
+        End Try
+    End Sub
+
+    Sub PrepareDetailByHeaderID()
+        Dim bonBFC As ClsBonOrder = New ClsBonOrder
+        Dim listDetail As List(Of BonOrderDetailModel) = New List(Of BonOrderDetailModel)
+        GridDetail()
+        Try
+            listDetail = bonBFC.RetrieveDetailByID(bonOrderID)
+            For Each detail In listDetail
+                With dgv
+                    .Rows.Add()
+                    .Item(0, intBaris).Value = detail.StyleName
+                    .Item(1, intBaris).Value = detail.Weight + " x " + detail.Width
+                    .Item(2, intBaris).Value = detail.ColorName
+                    .Item(3, intBaris).Value = detail.LabsDipsNo
+                    .Item(4, intBaris).Value = detail.Bruto
+                    .Item(5, intBaris).Value = detail.Netto
+                    .Item(6, intBaris).Value = detail.FabricID
+                    .Item(7, intBaris).Value = detail.ColorID
+                    .Item(8, intBaris).Value = detail.StyleID
+                End With
+                intBaris = intBaris + 1
+            Next
+            SumBruto()
+            SumNetto()
+
+            bonBFC = Nothing
+            listDetail = Nothing
+        Catch ex As Exception
+            bonBFC = Nothing
+            listDetail = Nothing
+            Throw ex
         End Try
     End Sub
 
@@ -242,7 +291,7 @@
                 txtCustomer.Text = piModel.CustomerName
                 txtNoPO.Text = piModel.RefPO
                 txtBrand.Text = piModel.BuyerName
-                txtStyle.Text = piModel.BuyerName
+                txtStyle.Text = piModel.StyleName
                 custCode = piModel.CustomerCode
             End With
 
@@ -259,6 +308,7 @@
                     .Item(5, intBaris).Value = 0
                     .Item(6, intBaris).Value = detail.FabricID
                     .Item(7, intBaris).Value = detail.ColorID
+                    .Item(8, intBaris).Value = detail.StyleID
                 End With
                 intBaris = intBaris + 1
             Next
@@ -345,6 +395,7 @@
             GridDetail()
             ComboBoxPI()
             CheckPermission()
+            btnAdd.Enabled = True
             btnUpdate.Enabled = False
             btnApprove.Enabled = False
             btnVoid.Enabled = False
@@ -355,7 +406,11 @@
     End Sub
 
     Sub PreUpdateDisplay()
-
+        Try
+            PrepareByHeaderID()
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Sub InsertData()

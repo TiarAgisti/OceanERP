@@ -33,11 +33,14 @@
             dgv.Columns(0).Visible = False
 
             dgv.Columns(1).HeaderText = "No. Bon Order"
+            dgv.Columns(1).Width = 150
 
             dgv.Columns(2).HeaderText = "Date Issues"
             dgv.Columns(2).DefaultCellStyle.Format = "dd-MMM-yyyy"
 
             dgv.Columns(3).HeaderText = "PI No"
+            dgv.Columns(3).Width = 150
+
             dgv.Columns(4).HeaderText = "PO No"
             dgv.Columns(5).HeaderText = "Brand / Buyer"
             dgv.Columns(6).HeaderText = "Fabric"

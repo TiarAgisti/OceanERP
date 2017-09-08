@@ -89,4 +89,31 @@
             xColorName = value
         End Set
     End Property
+    Private xStyleName As String
+    Public Property StyleName() As String
+        Get
+            Return xStyleName
+        End Get
+        Set(ByVal value As String)
+            xStyleName = value
+        End Set
+    End Property
+    Private xWidth As String
+    Public Property Width() As String
+        Get
+            Return xWidth
+        End Get
+        Set(ByVal value As String)
+            xWidth = value
+        End Set
+    End Property
+    Private xWeight As String
+    Public Property Weight() As String
+        Get
+            Return xWeight
+        End Get
+        Set(ByVal value As String)
+            xWeight = value
+        End Set
+    End Property
 End Class
