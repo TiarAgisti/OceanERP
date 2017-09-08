@@ -800,9 +800,10 @@ Public Class ClsProformaInvoice
         Return SQL
     End Function
 
-    Protected Function SqlUpdateStatusHeader(myModel As PIHeaderModel) As String
+    Public Function SqlUpdateStatusHeader(myModel As PIHeaderModel) As String
         Dim SQL As String
-        SQL = "Update PIHeader Set Status = '" & myModel.Status & "' Where PIHeaderID = '" & myModel.PIHeaderID & "'"
+        SQL = "Update PIHeader Set Status = '" & myModel.Status & "',UpdatedBy = '" & myModel.UpdatedBy & "'" &
+            ",UpdatedDate = '" & myModel.UpdatedDate & "' Where PIHeaderID = '" & myModel.PIHeaderID & "'"
         Return SQL
     End Function
 

@@ -136,6 +136,7 @@
                         .BonOrderID = orderID
                         .BonOrderCode = orderCode
                         .PIHeaderID = cmbPINo.SelectedValue
+                        .DateIssues = Format(dtpDateIssues.Value, "yyyy-MM-dd")
                         .Status = statusBOn
                         .CreatedBy = userID
                         .CreatedDate = DateTime.Now
@@ -145,9 +146,14 @@
                         .BonOrderID = orderID
                         .BonOrderCode = orderCode
                         .PIHeaderID = cmbPINo.SelectedValue
+                        .DateIssues = Format(dtpDateIssues.Value, "yyyy-MM-dd")
                         .Status = statusBOn
                         .UpdatedBy = userID
                         .UpdatedDate = DateTime.Now
+                    Case "Approve"
+
+                    Case "Void"
+
                 End Select
             End With
             Return headerModel
@@ -167,6 +173,15 @@
             Throw ex
         End Try
     End Function
+    Function SetDataPI() As PIHeaderModel
+        Dim piModel As PIHeaderModel = New PIHeaderModel
+        piModel.PIHeaderID = cmbPINo.SelectedValue
+        piModel.Status = 3
+        piModel.UpdatedBy = userID
+        piModel.UpdatedDate = DateTime.Now
+        Return piModel
+    End Function
+
 #End Region
 
 #Region "Function"
@@ -351,7 +366,7 @@
         Dim logDesc As String = "Create new Bon Order,BON Order is " + orderCode
 
         Try
-            If bonOrderBFC.InsertData(SetDataHeader(orderID, orderCode), SetDetail(orderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
+            If bonOrderBFC.InsertData(SetDataHeader(orderID, orderCode), SetDetail(orderID), SetDataPI, logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxSaved()
                 CheckPermission()
                 btnPrint.Enabled = True

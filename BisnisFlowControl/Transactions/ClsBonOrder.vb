@@ -214,9 +214,11 @@
         Return SQL
     End Function
 
-    Public Function InsertData(bonHeaderModel As BonOrderHeaderModel, listBonDetail As List(Of BonOrderDetailModel), logModel As LogHistoryModel) As Boolean
+    Public Function InsertData(bonHeaderModel As BonOrderHeaderModel, listBonDetail As List(Of BonOrderDetailModel), piModel As PIHeaderModel, logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+
         Dim queryList As List(Of String) = New List(Of String)
         Dim statusInsert As Boolean = False
         'insert header
@@ -226,6 +228,9 @@
         For Each detail In listBonDetail
             queryList.Add(SqlInsertDetail(detail))
         Next
+
+        'update status proforma invoice
+        queryList.Add(piBFC.SqlUpdateStatusHeader(piModel))
 
         'insert log history
         queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
