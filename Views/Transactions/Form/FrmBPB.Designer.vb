@@ -25,6 +25,7 @@ Partial Class FrmBPB
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmBPB))
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cmbPONo = New System.Windows.Forms.ComboBox()
         Me.btnRawAddList = New System.Windows.Forms.Button()
         Me.dtDocDate = New System.Windows.Forms.DateTimePicker()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -52,7 +53,7 @@ Partial Class FrmBPB
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnVoid = New System.Windows.Forms.Button()
         Me.dgv = New System.Windows.Forms.DataGridView()
-        Me.cmbPONo = New System.Windows.Forms.ComboBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -72,6 +73,7 @@ Partial Class FrmBPB
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Controls.Add(Me.cmbPONo)
         Me.Panel1.Controls.Add(Me.btnRawAddList)
         Me.Panel1.Controls.Add(Me.dtDocDate)
@@ -97,9 +99,17 @@ Partial Class FrmBPB
         Me.Panel1.Size = New System.Drawing.Size(943, 150)
         Me.Panel1.TabIndex = 26
         '
+        'cmbPONo
+        '
+        Me.cmbPONo.FormattingEnabled = True
+        Me.cmbPONo.Location = New System.Drawing.Point(443, 97)
+        Me.cmbPONo.Name = "cmbPONo"
+        Me.cmbPONo.Size = New System.Drawing.Size(188, 21)
+        Me.cmbPONo.TabIndex = 115
+        '
         'btnRawAddList
         '
-        Me.btnRawAddList.Location = New System.Drawing.Point(638, 114)
+        Me.btnRawAddList.Location = New System.Drawing.Point(637, 118)
         Me.btnRawAddList.Name = "btnRawAddList"
         Me.btnRawAddList.Size = New System.Drawing.Size(114, 23)
         Me.btnRawAddList.TabIndex = 114
@@ -108,7 +118,7 @@ Partial Class FrmBPB
         '
         'dtDocDate
         '
-        Me.dtDocDate.Location = New System.Drawing.Point(426, 117)
+        Me.dtDocDate.Location = New System.Drawing.Point(443, 71)
         Me.dtDocDate.Name = "dtDocDate"
         Me.dtDocDate.Size = New System.Drawing.Size(188, 20)
         Me.dtDocDate.TabIndex = 24
@@ -116,7 +126,7 @@ Partial Class FrmBPB
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(305, 117)
+        Me.Label10.Location = New System.Drawing.Point(322, 71)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(112, 13)
         Me.Label10.TabIndex = 23
@@ -124,7 +134,7 @@ Partial Class FrmBPB
         '
         'txtDocNo
         '
-        Me.txtDocNo.Location = New System.Drawing.Point(426, 91)
+        Me.txtDocNo.Location = New System.Drawing.Point(443, 45)
         Me.txtDocNo.Name = "txtDocNo"
         Me.txtDocNo.Size = New System.Drawing.Size(188, 20)
         Me.txtDocNo.TabIndex = 22
@@ -132,7 +142,7 @@ Partial Class FrmBPB
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(305, 91)
+        Me.Label8.Location = New System.Drawing.Point(322, 45)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(87, 13)
         Me.Label8.TabIndex = 21
@@ -140,7 +150,7 @@ Partial Class FrmBPB
         '
         'txtDocType
         '
-        Me.txtDocType.Location = New System.Drawing.Point(426, 65)
+        Me.txtDocType.Location = New System.Drawing.Point(443, 15)
         Me.txtDocType.Name = "txtDocType"
         Me.txtDocType.Size = New System.Drawing.Size(188, 20)
         Me.txtDocType.TabIndex = 20
@@ -148,7 +158,7 @@ Partial Class FrmBPB
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(305, 65)
+        Me.Label9.Location = New System.Drawing.Point(322, 15)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(97, 13)
         Me.Label9.TabIndex = 19
@@ -156,7 +166,7 @@ Partial Class FrmBPB
         '
         'txtDONO
         '
-        Me.txtDONO.Location = New System.Drawing.Point(426, 39)
+        Me.txtDONO.Location = New System.Drawing.Point(128, 92)
         Me.txtDONO.Name = "txtDONO"
         Me.txtDONO.Size = New System.Drawing.Size(188, 20)
         Me.txtDONO.TabIndex = 18
@@ -164,7 +174,7 @@ Partial Class FrmBPB
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(305, 39)
+        Me.Label7.Location = New System.Drawing.Point(7, 92)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(40, 13)
         Me.Label7.TabIndex = 17
@@ -173,7 +183,7 @@ Partial Class FrmBPB
         'txtSupplier
         '
         Me.txtSupplier.Enabled = False
-        Me.txtSupplier.Location = New System.Drawing.Point(96, 91)
+        Me.txtSupplier.Location = New System.Drawing.Point(443, 124)
         Me.txtSupplier.Name = "txtSupplier"
         Me.txtSupplier.Size = New System.Drawing.Size(188, 20)
         Me.txtSupplier.TabIndex = 16
@@ -181,7 +191,7 @@ Partial Class FrmBPB
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(7, 91)
+        Me.Label6.Location = New System.Drawing.Point(322, 123)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(76, 13)
         Me.Label6.TabIndex = 15
@@ -190,7 +200,7 @@ Partial Class FrmBPB
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(305, 12)
+        Me.Label5.Location = New System.Drawing.Point(7, 65)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(80, 13)
         Me.Label5.TabIndex = 14
@@ -198,7 +208,7 @@ Partial Class FrmBPB
         '
         'dtInFactory
         '
-        Me.dtInFactory.Location = New System.Drawing.Point(426, 12)
+        Me.dtInFactory.Location = New System.Drawing.Point(128, 65)
         Me.dtInFactory.Name = "dtInFactory"
         Me.dtInFactory.Size = New System.Drawing.Size(188, 20)
         Me.dtInFactory.TabIndex = 13
@@ -206,7 +216,7 @@ Partial Class FrmBPB
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(7, 68)
+        Me.Label4.Location = New System.Drawing.Point(322, 100)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(39, 13)
         Me.Label4.TabIndex = 11
@@ -215,7 +225,7 @@ Partial Class FrmBPB
         'dtBPBDate
         '
         Me.dtBPBDate.Enabled = False
-        Me.dtBPBDate.Location = New System.Drawing.Point(96, 39)
+        Me.dtBPBDate.Location = New System.Drawing.Point(128, 39)
         Me.dtBPBDate.Name = "dtBPBDate"
         Me.dtBPBDate.Size = New System.Drawing.Size(188, 20)
         Me.dtBPBDate.TabIndex = 9
@@ -232,7 +242,7 @@ Partial Class FrmBPB
         'txtBPBNo
         '
         Me.txtBPBNo.Enabled = False
-        Me.txtBPBNo.Location = New System.Drawing.Point(96, 12)
+        Me.txtBPBNo.Location = New System.Drawing.Point(128, 13)
         Me.txtBPBNo.Name = "txtBPBNo"
         Me.txtBPBNo.Size = New System.Drawing.Size(188, 20)
         Me.txtBPBNo.TabIndex = 8
@@ -337,13 +347,13 @@ Partial Class FrmBPB
         Me.dgv.Size = New System.Drawing.Size(943, 138)
         Me.dgv.TabIndex = 113
         '
-        'cmbPONo
+        'TextBox1
         '
-        Me.cmbPONo.FormattingEnabled = True
-        Me.cmbPONo.Location = New System.Drawing.Point(96, 64)
-        Me.cmbPONo.Name = "cmbPONo"
-        Me.cmbPONo.Size = New System.Drawing.Size(188, 21)
-        Me.cmbPONo.TabIndex = 115
+        Me.TextBox1.Enabled = False
+        Me.TextBox1.Location = New System.Drawing.Point(677, 35)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(188, 20)
+        Me.TextBox1.TabIndex = 116
         '
         'FrmBPB
         '
@@ -397,4 +407,5 @@ Partial Class FrmBPB
     Friend WithEvents btnPrint As Button
     Friend WithEvents btnVoid As Button
     Friend WithEvents cmbPONo As ComboBox
+    Friend WithEvents TextBox1 As TextBox
 End Class

@@ -5,8 +5,7 @@
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
         Dim query As String = "Select BPBHeaderID,BPBNo,BPBDate,InfactDate,DONo,DocTypeCustoms,DocNoCustoms,DocRegistrationDate,POHeaderID,PONo" &
-                               ",SupplierID,SupplierCode,SupplierName,StatusDesc From v_BPBHeader" &
-                               " Where Status <> 0"
+                               ",SupplierID,SupplierCode,SupplierName,StatusDesc From v_BPBHeader Where Status <> 0"
 
         If Not String.IsNullOrEmpty(bpbNo) Then
             query += " AND BPBNO = '" & bpbNo & "'"

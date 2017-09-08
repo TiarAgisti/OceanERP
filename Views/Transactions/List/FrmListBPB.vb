@@ -27,37 +27,39 @@
 
             dgv.Columns(1).HeaderText = "BPBNo"
 
+
             dgv.Columns(2).HeaderText = "BPB Date"
             dgv.Columns(2).DefaultCellStyle.Format = "dd-MMM-yyyy"
 
             dgv.Columns(3).HeaderText = "In Factory Date"
             dgv.Columns(3).DefaultCellStyle.Format = "dd-MMM-yyyy"
+            dgv.Columns(3).Width = 160
 
             dgv.Columns(4).HeaderText = "Do.No"
 
 
             dgv.Columns(5).HeaderText = "Doc.Type Customs"
+            dgv.Columns(5).Width = 160
 
             dgv.Columns(6).HeaderText = "Doc.No Customs"
-            dgv.Columns(6).Width = 150
+            dgv.Columns(6).Width = 160
 
             dgv.Columns(7).HeaderText = "Doc.Registration Date"
-
+            dgv.Columns(7).Width = 160
             dgv.Columns(8).HeaderText = "PO Header ID"
-
             dgv.Columns(8).Visible = False
 
             dgv.Columns(9).HeaderText = "PO No"
+            dgv.Columns(9).Width = 160
 
             dgv.Columns(10).HeaderText = "Supplier ID"
-
             dgv.Columns(10).Visible = False
 
             dgv.Columns(11).HeaderText = "Supplier Code"
-
+            dgv.Columns(11).Visible = False
 
             dgv.Columns(12).HeaderText = "Supplier Name"
-
+            dgv.Columns(12).Width = 160
 
             dgv.Columns(13).HeaderText = "Status"
 
@@ -68,26 +70,31 @@
     End Sub
 
     Sub ListData()
-        If chkBPBDate.Checked = True Then
-            bpbNo = txtBPBNo.Text
-        Else
-            bpbNo = ""
-        End If
+        Try
+            If chkBPBDate.Checked = True Then
+                bpbNo = txtBPBNo.Text
+            Else
+                bpbNo = ""
+            End If
 
-        If chkBPBDate.Checked = True Then
-            dateFrom = dtpDateFrom.Value
-            dateTo = dtpDateTo.Value
-        End If
+            If chkBPBDate.Checked = True Then
+                dateFrom = dtpDateFrom.Value
+                dateTo = dtpDateTo.Value
+            End If
 
-        If chkSupplier.Checked = True Then
-            supplier = txtSupplier.Text
-        Else
-            supplier = ""
-        End If
-        Dim bpbBFC As ClsBPB = New ClsBPB
-        dgv.DataSource = bpbBFC.RetrieveListBPB(Trim(bpbNo), dateFrom, dateTo, Trim(supplier))
-        dgv.ReadOnly = True
-        PropertiesGrid()
+            If chkSupplier.Checked = True Then
+                supplier = txtSupplier.Text
+            Else
+                supplier = ""
+            End If
+            Dim bpbBFC As ClsBPB = New ClsBPB
+            dgv.DataSource = bpbBFC.RetrieveListBPB(Trim(bpbNo), dateFrom, dateTo, Trim(supplier))
+            dgv.ReadOnly = True
+            PropertiesGrid()
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
     Function GetID() As Long
@@ -163,12 +170,12 @@
     End Sub
 
     Private Sub FrmListBPB_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-        '    ListData()
+        ListData()
     End Sub
     Private Sub FrmListBPB_Load(sender As Object, e As EventArgs) Handles Me.Load
-        ' PreCreateDisplay()
+        PreCreateDisplay()
         ' Text = title
-        PropertiesGrid()
+
     End Sub
 
 
