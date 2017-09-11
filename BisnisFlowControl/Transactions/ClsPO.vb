@@ -90,6 +90,38 @@ Public Class ClsPO
             Throw ex
         End Try
     End Function
+    Public Function RetrieveByDetailRaw(headerID As Long) As PODetailModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim podetailModel As PODetailModel = New PODetailModel
+        Dim query As String = "Select * From v_PODetail Where POHeaderID='" & headerID & "'"
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(query)
+            While dataAccess.reader.Read
+                With dataAccess.reader
+                    If Not IsDBNull(.Item("POHeaderID")) Then
+                        podetailModel.POHeaderID = .Item("POHeaderID")
+                        podetailModel.PIHeaderID = .Item("PIHeaderID")
+                        podetailModel.PINo = .Item("PINo")
+                        podetailModel.RawMaterialID = .Item("RawMaterialID")
+                        podetailModel.RawMaterialName = .Item("RawMaterialName")
+                        PODetailModel.UnitID = .Item("UnitID")
+                        PODetailModel.UnitName = .Item("UnitName")
+                        PODetailModel.Quantity = .Item("Quantity")
+                        PODetailModel.UnitPrice = .Item("UnitPrice")
+                        PODetailModel.PODate = .Item("PODate")
+                        PODetailModel.PONo = .Item("PONo")
+                        PODetailModel.Total = .Item("Total")
+                    End If
+                End With
+            End While
+            dataAccess.reader.Close()
+            dataAccess = Nothing
+            Return podetailModel
+        Catch ex As Exception
+            dataAccess = Nothing
+            Throw ex
+        End Try
+    End Function
     Public Function RetrieveRawMaterialByHeaderID(headerID As Long) As List(Of PODetailModel)
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim query As String = "Select * From v_PODetail Where POHeaderID='" & headerID & "'"
@@ -223,6 +255,7 @@ Public Class ClsPO
 #Region "Function"
     Protected Function ListComboBox() As DataTable
         Dim dataAccess = New ClsDataAccess
+
         Dim dataTable As DataTable = New DataTable
         Dim query As String = "Select POHeaderID,PONo From POHeader Where Status = 2"
         Try
@@ -237,17 +270,57 @@ Public Class ClsPO
     End Function
     Public Sub ComboBoxPO(cmb As ComboBox)
         Try
+
             With cmb
+
                 .DataSource = ListComboBox()
+
                 .DisplayMember = "PONo"
                 .ValueMember = "POHeaderID"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
+    Protected Function ListComboBoxPI() As DataTable
+        Dim PODetailModel As PODetailModel = New PODetailModel
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+
+        Dim query As String = "Select PIHeaderID,PINO From v_PODetail where POHeaderID= 2"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+
+    End Function
+    Public Sub ComboBoxPI(cmb As ComboBox)
+
+
+        Try
+            With cmb
+                .DataSource = ListComboBoxPI()
+                .DisplayMember = "PINo"
+                .ValueMember = "PIHeaderID"
                 .AutoCompleteMode = AutoCompleteMode.SuggestAppend
                 .AutoCompleteSource = AutoCompleteSource.ListItems
             End With
         Catch ex As Exception
             Throw ex
         End Try
+
     End Sub
+
 #End Region
 
 #Region "Get ID"

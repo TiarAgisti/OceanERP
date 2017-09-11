@@ -189,21 +189,23 @@
 #End Region
 
 #Region "Set Data Detail"
-    Public Function SetDetailRawMatrial(bpbID As Long, dgvrawmatrialBPB As DataGridView) As List(Of BPBDetailModel)
+    Public Function SetDetailRawMatrial(bpbID As Long, dgv As DataGridView) As List(Of BPBDetailModel)
         Dim listRawMatrialDetailModel As List(Of BPBDetailModel) = New List(Of BPBDetailModel)
         ' Dim poDetailID As Long
 
         '  poDetailID = GetPODetailID()
-        For detail = 0 To dgvrawmatrialBPB.Rows.Count - 2
+        For detail = 0 To dgv.Rows.Count - 2
             Dim detailModel As BPBDetailModel = New BPBDetailModel
-            With dgvrawmatrialBPB
+            With dgv
                 detailModel.BPBHeaderID = bpbID
-                detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
-                detailModel.UnitID = .Rows(detail).Cells(2).Value
-                detailModel.QuantityPO = .Rows(detail).Cells(3).Value
-                detailModel.Received = .Rows(detail).Cells(4).Value
-                detailModel.Outstanding = .Rows(detail).Cells(5).Value
-                detailModel.PIHeaderID = .Rows(detail).Cells(7).Value
+                detailModel.POHeaderID = .Rows(detail).Cells(0).Value
+                detailModel.PIHeaderID = .Rows(detail).Cells(2).Value
+                detailModel.RawMaterialID = .Rows(detail).Cells(4).Value
+                detailModel.QuantityPO = .Rows(detail).Cells(6).Value
+                detailModel.Received = .Rows(detail).Cells(7).Value
+                detailModel.QuantityPackaging = .Rows(detail).Cells(8).Value
+                detailModel.UnitID = .Rows(detail).Cells(9).Value
+
                 listRawMatrialDetailModel.Add(detailModel)
             End With
             '  poDetailID = poDetailID + 1

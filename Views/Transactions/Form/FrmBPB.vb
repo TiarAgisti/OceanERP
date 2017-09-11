@@ -13,7 +13,7 @@ Public Class FrmBPB
 #End Region
 
 #Region "ComboBox"
-    Sub ComboBoxPO()
+    Public Sub ComboBoxPO()
         Dim poBFC As ClsPO = New ClsPO
         Try
             poBFC.ComboBoxPO(cmbPONo)
@@ -23,28 +23,78 @@ Public Class FrmBPB
             poBFC = Nothing
         End Try
     End Sub
+
+    Sub ComboBoxPI()
+        Dim poBFC As ClsPO = New ClsPO
+
+        Try
+            poBFC.ComboBoxPI(cmbPINO)
+        Catch ex As Exception
+            Throw ex
+        Finally
+            poBFC = Nothing
+        End Try
+
+
+    End Sub
+    Sub RetrieveSupplier()
+        Dim poBFC As ClsPO = New ClsPO
+        Dim poModel As POHeaderModel = New POHeaderModel
+        Dim obj As Integer = cmbPONo.SelectedValue
+        If obj > 0 Then
+            poModel = poBFC.RetrieveByID(obj)
+            With poModel
+                txtSupplier.Text = .SupplierName
+
+            End With
+        Else
+            MsgBoxError("PO not valid")
+        End If
+    End Sub
+    Sub Retrievedetail()
+        Dim poBFC As ClsPO = New ClsPO
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim detailModel As PODetailModel = New PODetailModel
+        Dim obj As Integer = cmbPONo.SelectedValue
+        If obj > 0 Then
+            detailModel = poBFC.RetrieveByDetailRaw(obj)
+            With detailModel
+                '   While dataAccess.reader.Read
+                cmbRawCode.Text = .RawMaterialName
+
+                ' cmbRawCode.ValueMember = "RawMaterialID"
+                ' cmbRawCode.DisplayMember = "RawMaterialName"
+                ' txtUnitname.Text = .UnitName
+                ' txtQtyPO.Text = .Quantity
+                '  End While
+            End With
+        Else
+            MsgBoxError("PO not valid")
+        End If
+    End Sub
 #End Region
 
 #Region "Grid Detail"
     Sub GridDetail()
         Try
             With dgv
-                ' .Columns.Add(0, "BPB Header ID")
+
+                ' Columns.Add(0, "BPB Header ID")
                 ' .Columns(0).Width = 200
                 ' .Columns(0).Visible = False
 
-                .Columns.Add(0, "PI HeaderID")
+                .Columns.Add(0, "PO HeaderID")
                 .Columns(0).Width = 150
                 .Columns(0).Visible = False
 
-                .Columns.Add(1, "PI No")
+                .Columns.Add(1, "PO No")
                 .Columns(1).ReadOnly = True
 
-                .Columns.Add(2, "PO HeaderID")
+                .Columns.Add(2, "PI HeaderID")
                 .Columns(2).Width = 150
                 .Columns(2).Visible = False
 
-                .Columns.Add(3, "PO.NO")
+                .Columns.Add(3, "PI.NO")
                 .Columns(3).ReadOnly = True
 
                 .Columns.Add(4, "Raw Material ID")
@@ -53,19 +103,22 @@ Public Class FrmBPB
                 .Columns.Add(5, "Raw Material Name")
                 .Columns(5).ReadOnly = True
 
-                .Columns.Add(6, " UnitID")
-                .Columns(6).Visible = False
+                .Columns.Add(6, "Quantity PO")
+                .Columns(6).ReadOnly = True
 
-                .Columns.Add(7, " Unit Name")
-                .Columns(7).ReadOnly = True
+                .Columns.Add(7, "Received")
 
-                .Columns.Add(8, "Quantity PO")
-                .Columns(8).ReadOnly = True
+                .Columns.Add(8, "Quantity Packaging")
 
-                .Columns.Add(9, "Received")
+                .Columns.Add(9, " UnitID")
+                .Columns(9).Visible = False
 
-                .Columns.Add(10, "Outstanding")
+                .Columns.Add(10, " Unit Name")
                 .Columns(10).ReadOnly = True
+
+
+                .Columns.Add(11, "Outstanding")
+                .Columns(11).ReadOnly = True
             End With
         Catch ex As Exception
             Throw ex
@@ -112,10 +165,26 @@ Public Class FrmBPB
         End If
         Return check
     End Function
+    Function CheckEmptyDetail() As Boolean
+        Dim check As Boolean = True
+        For i As Integer = 0 To dgv.Rows.Count - 2
+            If dgv.Rows(i).Cells(0).Value = "" Then
+                MsgBoxError("Transaction not yet completed")
+                Exit For
+            ElseIf dgv.Rows(i).Cells(9).Value = 0 Then
+                MsgBoxError("Receveid can't 0")
+                Exit For
+
+            Else
+                check = False
+            End If
+        Next
+        Return check
+    End Function
 #End Region
 
 #Region "Set Data"
-    Function SetDataHeader() As BPBHeaderModel
+    Function SetDataHeader(bpbID As Long, bpbCode As String) As BPBHeaderModel
         Dim headerModel As BPBHeaderModel = New BPBHeaderModel
         Dim bpbBFC As ClsBPB = New ClsBPB
         Try
@@ -158,8 +227,20 @@ Public Class FrmBPB
             bpbBFC = Nothing
         End Try
     End Function
-#End Region
 
+    Function SetDetail(bpbID As Long) As List(Of BPBDetailModel)
+        Dim bpbBFC As ClsBPB = New ClsBPB
+        Dim listModel As List(Of BPBDetailModel) = New List(Of BPBDetailModel)
+        Try
+            listModel = bpbBFC.SetDetailRawMatrial(bpbheaderID, dgv)
+            bpbBFC = Nothing
+            Return listModel
+        Catch ex As Exception
+            bpbBFC = Nothing
+            Throw ex
+        End Try
+    End Function
+#End Region
 
 #Region "Function"
     Sub CheckPermission()
@@ -179,7 +260,47 @@ Public Class FrmBPB
         End Try
     End Sub
 
+    Sub InsertData()
+        Dim bpbBFC As ClsBPB = New ClsBPB
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim bpbCode As String = bpbBFC.GetBPBNo(supplierCode)
+        Dim bpbID As Long = bpbBFC.GetBPBHeaderID
+        Dim logDesc As String = "Create new BPB,BPB Order is " + bpbCode
 
+        Try
+            If bpbBFC.InsertData(SetDataHeader(bpbID, bpbCode), SetDetail(bpbID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
+                MsgBoxSaved()
+                CheckPermission()
+                btnPrint.Enabled = True
+                btnSave.Enabled = False
+                btnUpdate.Enabled = False
+                'PreCreatedisplay()
+            End If
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Sub UpdateData()
+        Dim bpbBFC As ClsBPB = New ClsBPB
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim logDesc As String = "Update BPB,Where BPB Order Code = " + txtBPBNo.Text
+        Try
+            If bpbBFC.UpdateData(SetDataHeader(bpbheaderID, txtBPBNo.Text), SetDetail(bpbheaderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
+                MsgBoxUpdated()
+                CheckPermission()
+                btnPrint.Enabled = True
+                btnSave.Enabled = False
+                btnUpdate.Enabled = False
+            End If
+            bpbBFC = Nothing
+            logBFC = Nothing
+        Catch ex As Exception
+            bpbBFC = Nothing
+            logBFC = Nothing
+            Throw ex
+        End Try
+    End Sub
     Sub PreparePOByPOHeaderID()
         Dim poModel As POHeaderModel = New POHeaderModel
         Dim listDetail As List(Of PODetailModel) = New List(Of PODetailModel)
@@ -204,17 +325,18 @@ Public Class FrmBPB
             For Each detail In listDetail
                 With dgv
                     .Rows.Add()
-                    .Item(0, intBaris).Value = detail.PIHeaderID
-                    .Item(1, intBaris).Value = detail.PINo
-                    .Item(2, intBaris).Value = detail.POHeaderID
-                    .Item(3, intBaris).Value = detail.PONo
+                    .Item(0, intBaris).Value = detail.POHeaderID
+                    .Item(1, intBaris).Value = detail.PONo
+                    .Item(2, intBaris).Value = detail.PIHeaderID
+                    .Item(3, intBaris).Value = detail.PINo
                     .Item(4, intBaris).Value = detail.RawMaterialID
                     .Item(5, intBaris).Value = detail.RawMaterialName
-                    .Item(6, intBaris).Value = detail.UnitID
-                    .Item(7, intBaris).Value = detail.UnitName
-                    .Item(8, intBaris).Value = detail.Quantity
-                    .Item(9, intBaris).Value = 0
-                    .Item(10, intBaris).Value = 0
+                    .Item(6, intBaris).Value = detail.Quantity
+                    .Item(7, intBaris).Value = 0
+                    .Item(8, intBaris).Value = 0
+                    .Item(9, intBaris).Value = detail.UnitID
+                    .Item(10, intBaris).Value = detail.UnitName
+                    .Item(11, intBaris).Value = 0
 
                 End With
                 intBaris = intBaris + 1
@@ -230,33 +352,19 @@ Public Class FrmBPB
     End Sub
 
     Sub SumOutstanding()
-        Dim subTotal, outstand As Integer
+        Dim subTotal As Double
         subTotal = 0
         Try
             For i As Integer = 0 To dgv.Rows.Count - 2
-                If Convert.ToString(dgv.Rows(i).Cells(9).Value) = "" And dgv.Rows(i).Cells(0).Value <> "" Then
+                If Not IsNumeric(dgv.Rows(i).Cells(9).Value) Then
                     dgv.Rows(i).Cells(9).Value = 1
-                    subTotal = subTotal + 1
-                    MsgBoxError("Error  : Must fill numeric")
-                ElseIf Not IsNumeric(dgv.Rows(i).Cells(9).Value) And dgv.Rows(i).Cells(0).Value <> "" Then
-                    dgv.Rows(i).Cells(10).Value = 1
-                    subTotal = subTotal + 1
-                    MsgBoxError("Error  : Must fill numeric")
-                ElseIf Not IsNumeric(dgv.Rows(i).Cells(0).Value) And dgv.Rows(i).Cells(0).Value = "" Then
-                    dgv.Rows.RemoveAt(i)
-                    'dgv.Rows.Remove(dgv.CurrentRow)
-                    intBaris = intBaris - 1
-                    subTotal = subTotal + 0
-                ElseIf dgv.Rows(i).Cells(0).Value = "" Then
-                    dgv.Rows.RemoveAt(i)
-                    'dgv.Rows.Remove(dgv.CurrentRow)
-                    intBaris = intBaris - 1
-                    subTotal = subTotal + 0
+
+                    MsgBoxError("Error  : Test")
+
                 Else
-                    ' subTotal = subTotal + Val(dgv.Rows(i).Cells(9).Value)
-                    outstand = Val(dgv.Rows(i).Cells(8).Value) - Val(dgv.Rows(i).Cells(9).Value)
+                    dgv.Rows(i).Cells(10).Value = Val(dgv.Rows(i).Cells(8).Value) - Val(dgv.Rows(i).Cells(9).Value)
+                    '  dgv.Rows(i).Cells(10).Value = dgv.Rows(i).Cells(8).Value - dgv.Rows(i).Cells(9).Value
                 End If
-                TextBox1.Text = outstand
             Next
 
         Catch ex As Exception
@@ -268,6 +376,7 @@ Public Class FrmBPB
             ClearAll()
             GridDetail()
             ComboBoxPO()
+            ComboBoxPI()
             CheckPermission()
             btnUpdate.Enabled = False
             btnApprove.Enabled = False
@@ -286,22 +395,44 @@ Public Class FrmBPB
         End Try
     End Sub
 
-    Private Sub dgv_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgv.RowStateChanged
+    Private Sub dgv_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs)
         intPost = e.Row.Index
     End Sub
 
 
 #End Region
+
 #Region "Other"
+    Private Sub cmbPONo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPONo.SelectedIndexChanged
+        Try
+            RetrieveSupplier()
+            Retrievedetail()
+        Catch ex As Exception
 
+        End Try
+    End Sub
 
-    Private Sub dgv_KeyPress(sender As Object, e As KeyPressEventArgs) Handles dgv.KeyPress
-        If e.KeyChar = Chr(27) Then 'ESC
-            dgv.Rows.Remove(dgv.CurrentRow)
-            SumOutstanding()
+    Private Sub cmbPINO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPINO.SelectedIndexChanged
+        Try
 
+            Retrievedetail()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub dgv_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellEndEdit
+        If e.ColumnIndex = 9 Then
+            Try
+
+                SumOutstanding()
+
+            Catch ex As Exception
+                '  MsgBoxError(msgError + "please delete column")
+            End Try
         End If
     End Sub
+
 
 
     Private Sub FrmBPB_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -317,36 +448,24 @@ Public Class FrmBPB
         End Try
     End Sub
 
-
-    Private Sub dgv_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellEndEdit
-        If e.ColumnIndex = 9 Then
-            Try
-                SumOutstanding()
-            Catch ex As Exception
-                '    MsgBoxError(msgError + "please delete column")
-            End Try
+    Private Sub dgv_KeyPress(sender As Object, e As KeyPressEventArgs) Handles dgv.KeyPress
+        If e.KeyChar = Chr(27) Then 'ESC
+            dgv.Rows.Remove(dgv.CurrentRow)
+            SumOutstanding()
         End If
     End Sub
 
-    Private Sub dgv_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dgv.CellMouseClick
-        'Try
-        '    If txtSupplier.Text <> "" Then
-        '        If e.ColumnIndex = 9 Then
-        '            Try
-        '                SumOutstanding()
-        '            Catch ex As Exception
-        '                MsgBoxError(msgError + "please delete column")
-        '            End Try
-        '        End If
-
-
-        '    End If
-        'Catch ex As Exception
-        '    MsgBoxError(msgError + ex.Message)
-        'End Try
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        If CheckEmptyHeader() = False And CheckEmptyDetail() = False Then
+            If condition = "Create" Then
+                InsertData()
+            End If
+        End If
     End Sub
 
+
 #End Region
+
 
 
 End Class
