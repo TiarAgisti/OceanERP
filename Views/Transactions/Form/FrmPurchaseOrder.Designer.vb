@@ -25,8 +25,8 @@ Partial Class FrmPurchaseOrder
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmPurchaseOrder))
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.cmbPINO = New System.Windows.Forms.ComboBox()
-        Me.Label32 = New System.Windows.Forms.Label()
+        Me.cmbCurrency = New System.Windows.Forms.ComboBox()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.cmbSVM = New System.Windows.Forms.ComboBox()
         Me.dtERD = New System.Windows.Forms.DateTimePicker()
         Me.dtSD = New System.Windows.Forms.DateTimePicker()
@@ -39,6 +39,8 @@ Partial Class FrmPurchaseOrder
         Me.txtPONo = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.cmbPINO = New System.Windows.Forms.ComboBox()
+        Me.Label32 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -70,8 +72,6 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabProductName = New System.Windows.Forms.TabPage()
-        Me.cmbCurrency = New System.Windows.Forms.ComboBox()
-        Me.Label21 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
@@ -159,22 +159,22 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox1.TabIndex = 25
         Me.GroupBox1.TabStop = False
         '
-        'cmbPINO
+        'cmbCurrency
         '
-        Me.cmbPINO.FormattingEnabled = True
-        Me.cmbPINO.Location = New System.Drawing.Point(118, 7)
-        Me.cmbPINO.Name = "cmbPINO"
-        Me.cmbPINO.Size = New System.Drawing.Size(188, 21)
-        Me.cmbPINO.TabIndex = 36
+        Me.cmbCurrency.FormattingEnabled = True
+        Me.cmbCurrency.Location = New System.Drawing.Point(712, 45)
+        Me.cmbCurrency.Name = "cmbCurrency"
+        Me.cmbCurrency.Size = New System.Drawing.Size(188, 21)
+        Me.cmbCurrency.TabIndex = 139
         '
-        'Label32
+        'Label21
         '
-        Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(9, 7)
-        Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(34, 13)
-        Me.Label32.TabIndex = 35
-        Me.Label32.Text = "PI No"
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(589, 50)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(49, 13)
+        Me.Label21.TabIndex = 138
+        Me.Label21.Text = "Currency"
         '
         'cmbSVM
         '
@@ -274,6 +274,23 @@ Partial Class FrmPurchaseOrder
         Me.Label11.Size = New System.Drawing.Size(87, 13)
         Me.Label11.TabIndex = 23
         Me.Label11.Text = "Ship Via/Method"
+        '
+        'cmbPINO
+        '
+        Me.cmbPINO.FormattingEnabled = True
+        Me.cmbPINO.Location = New System.Drawing.Point(118, 7)
+        Me.cmbPINO.Name = "cmbPINO"
+        Me.cmbPINO.Size = New System.Drawing.Size(188, 21)
+        Me.cmbPINO.TabIndex = 36
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Location = New System.Drawing.Point(9, 7)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(34, 13)
+        Me.Label32.TabIndex = 35
+        Me.Label32.Text = "PI No"
         '
         'GroupBox2
         '
@@ -599,23 +616,6 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.Text = "Produk Name"
         Me.TabProductName.UseVisualStyleBackColor = True
         '
-        'cmbCurrency
-        '
-        Me.cmbCurrency.FormattingEnabled = True
-        Me.cmbCurrency.Location = New System.Drawing.Point(712, 45)
-        Me.cmbCurrency.Name = "cmbCurrency"
-        Me.cmbCurrency.Size = New System.Drawing.Size(188, 21)
-        Me.cmbCurrency.TabIndex = 139
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(589, 50)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(49, 13)
-        Me.Label21.TabIndex = 138
-        Me.Label21.Text = "Currency"
-        '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.btnClose)
@@ -813,6 +813,7 @@ Partial Class FrmPurchaseOrder
         'dgvrawmatrial
         '
         Me.dgvrawmatrial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvrawmatrial.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvrawmatrial.Location = New System.Drawing.Point(10, 89)
         Me.dgvrawmatrial.Name = "dgvrawmatrial"
         Me.dgvrawmatrial.Size = New System.Drawing.Size(837, 79)

@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
 
 Public Class FrmPurchaseOrder
+
 #Region "Declaration"
     Public Shared poHeaderID As Long = 0
     Public condition As String

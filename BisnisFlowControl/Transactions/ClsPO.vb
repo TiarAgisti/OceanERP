@@ -255,8 +255,8 @@ Public Class ClsPO
 #Region "Function"
     Protected Function ListComboBox() As DataTable
         Dim dataAccess = New ClsDataAccess
-
         Dim dataTable As DataTable = New DataTable
+
         Dim query As String = "Select POHeaderID,PONo From POHeader Where Status = 2"
         Try
             dataTable = dataAccess.RetrieveListData(query)
@@ -287,12 +287,11 @@ Public Class ClsPO
 
     End Sub
 
-    Protected Function ListComboBoxPI() As DataTable
-        Dim PODetailModel As PODetailModel = New PODetailModel
+    Protected Function ListComboBoxPI(poID As Long) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable As DataTable = New DataTable
 
-        Dim query As String = "Select PIHeaderID,PINO From v_PODetail where POHeaderID= 2"
+        Dim query As String = "Select PIHeaderID,PINO From v_PODetail where POHeaderID = '" & poID & "'"
         Try
             dataTable = dataAccess.RetrieveListData(query)
             dataAccess = Nothing
@@ -304,12 +303,12 @@ Public Class ClsPO
         End Try
 
     End Function
-    Public Sub ComboBoxPI(cmb As ComboBox)
+    Public Sub ComboBoxPI(cmb As ComboBox, poID As Long)
 
 
         Try
             With cmb
-                .DataSource = ListComboBoxPI()
+                .DataSource = ListComboBoxPI(poID)
                 .DisplayMember = "PINo"
                 .ValueMember = "PIHeaderID"
                 .AutoCompleteMode = AutoCompleteMode.SuggestAppend
@@ -320,7 +319,39 @@ Public Class ClsPO
         End Try
 
     End Sub
+    Protected Function ListComboBoxRaw(poID As Long) As DataTable
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
 
+        Dim query As String = "Select RawMaterialID,RawMaterialName From v_PODetail Where POHeaderID = '" & poID & "'"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
+    Public Sub ComboBoxRaw(cmb As ComboBox, poID As Long)
+        Try
+
+            With cmb
+
+                .DataSource = ListComboBoxRaw(poID)
+
+                .DisplayMember = "RawMaterialName"
+                .ValueMember = "RawMaterialID"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
 #End Region
 
 #Region "Get ID"

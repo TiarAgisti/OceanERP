@@ -45,6 +45,7 @@
             dgv.Columns(6).Width = 160
 
             dgv.Columns(7).HeaderText = "Doc.Registration Date"
+            dgv.Columns(7).DefaultCellStyle.Format = "dd-MMM-yyyy"
             dgv.Columns(7).Width = 160
             dgv.Columns(8).HeaderText = "PO Header ID"
             dgv.Columns(8).Visible = False
@@ -148,19 +149,6 @@
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         ClearData()
     End Sub
-
-
-
-    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        Try
-            Dim frm As FrmBPB = New FrmBPB
-            frm.condition = "Create"
-            frm.ShowDialog()
-        Catch ex As Exception
-            MsgBoxError(ex.Message)
-        End Try
-    End Sub
-
     Private Sub btnFind_Click(sender As Object, e As EventArgs) Handles btnFind.Click
         Try
             ListData()
@@ -176,6 +164,16 @@
         PreCreateDisplay()
         ' Text = title
 
+    End Sub
+
+    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        Try
+            Dim frm As FrmBPB = New FrmBPB
+            frm.condition = "Create"
+            frm.ShowDialog()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
     End Sub
 
 

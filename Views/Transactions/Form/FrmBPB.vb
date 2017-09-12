@@ -24,18 +24,32 @@ Public Class FrmBPB
         End Try
     End Sub
 
-    Sub ComboBoxPI()
+    Sub ComboBoxRaw(cmb As ComboBox, poID As Long)
         Dim poBFC As ClsPO = New ClsPO
 
         Try
-            poBFC.ComboBoxPI(cmbPINO)
+            poBFC.ComboBoxRaw(cmbRawCode, poID)
         Catch ex As Exception
             Throw ex
         Finally
             poBFC = Nothing
         End Try
+    End Sub
 
+    Sub ComboBoxPI(cmb As ComboBox, poID As Long)
+        Dim poBFC As ClsPO = New ClsPO
 
+        Try
+            poBFC.ComboBoxPI(cmbPI, poID)
+        Catch ex As Exception
+            Throw ex
+        Finally
+            poBFC = Nothing
+        End Try
+    End Sub
+    Sub ComboBoxUnit()
+        Dim unitBFC As ClsUnit = New ClsUnit
+        unitBFC.ComboBoxUnit(cmbUnit)
     End Sub
     Sub RetrieveSupplier()
         Dim poBFC As ClsPO = New ClsPO
@@ -45,33 +59,29 @@ Public Class FrmBPB
             poModel = poBFC.RetrieveByID(obj)
             With poModel
                 txtSupplier.Text = .SupplierName
+                supplierCode = .SupplierCode
 
             End With
         Else
             MsgBoxError("PO not valid")
         End If
     End Sub
-    Sub Retrievedetail()
+    Sub RetrieveQtyPO()
         Dim poBFC As ClsPO = New ClsPO
-        Dim dataAccess As ClsDataAccess = New ClsDataAccess
-        Dim detailModel As PODetailModel = New PODetailModel
-        Dim obj As Integer = cmbPONo.SelectedValue
-        If obj > 0 Then
-            detailModel = poBFC.RetrieveByDetailRaw(obj)
-            With detailModel
-                '   While dataAccess.reader.Read
-                cmbRawCode.Text = .RawMaterialName
+        Dim poModel As PODetailModel = New PODetailModel
 
-                ' cmbRawCode.ValueMember = "RawMaterialID"
-                ' cmbRawCode.DisplayMember = "RawMaterialName"
-                ' txtUnitname.Text = .UnitName
-                ' txtQtyPO.Text = .Quantity
-                '  End While
+        Dim obj As Integer = (cmbRawCode.SelectedValue)
+        If obj > 0 Then
+            poModel = poBFC.RetrieveByDetailRaw(obj)
+            With poModel
+                txtQtyPO.Text = .Quantity
+
             End With
         Else
             MsgBoxError("PO not valid")
         End If
     End Sub
+
 #End Region
 
 #Region "Grid Detail"
@@ -83,42 +93,55 @@ Public Class FrmBPB
                 ' .Columns(0).Width = 200
                 ' .Columns(0).Visible = False
 
-                .Columns.Add(0, "PO HeaderID")
-                .Columns(0).Width = 150
+
+
+                '.Columns.Add(2, "PI HeaderID")
+                '.Columns(2).Width = 150
+                '.Columns(2).Visible = False
+
+                '.Columns.Add(3, "PI.NO")
+                '.Columns(3).ReadOnly = True
+
+                .Columns.Add(0, "ID")
                 .Columns(0).Visible = False
+                .Columns(0).Width = 50
 
-                .Columns.Add(1, "PO No")
-                .Columns(1).ReadOnly = True
+                .Columns.Add(1, "Raw Material Name")
+                .Columns(1).Width = 150
 
-                .Columns.Add(2, "PI HeaderID")
+                .Columns.Add(2, "Quantity Received")
                 .Columns(2).Width = 150
-                .Columns(2).Visible = False
 
-                .Columns.Add(3, "PI.NO")
-                .Columns(3).ReadOnly = True
+                .Columns.Add(3, "Quantity Packaging")
+                .Columns(3).Width = 150
 
-                .Columns.Add(4, "Raw Material ID")
+                .Columns.Add(4, " UnitID")
                 .Columns(4).Visible = False
 
-                .Columns.Add(5, "Raw Material Name")
-                .Columns(5).ReadOnly = True
+                .Columns.Add(5, " Unit Name")
 
-                .Columns.Add(6, "Quantity PO")
-                .Columns(6).ReadOnly = True
+                .Columns.Add(6, "Outstanding")
+                .Columns(6).Width = 150
 
-                .Columns.Add(7, "Received")
+                .Columns.Add(7, "POID")
+                .Columns(7).Width = 150
+                .Columns(7).Visible = False
 
-                .Columns.Add(8, "Quantity Packaging")
+                .Columns.Add(8, "PO No")
+                .Columns(8).ReadOnly = True
 
-                .Columns.Add(9, " UnitID")
+                .Columns.Add(9, "PI ID")
+                .Columns(9).Width = 150
                 .Columns(9).Visible = False
 
-                .Columns.Add(10, " Unit Name")
+                .Columns.Add(10, "PI No")
                 .Columns(10).ReadOnly = True
 
+                '.Columns.Add(11, "BPB No")
+                '.Columns(11).Visible = True
 
-                .Columns.Add(11, "Outstanding")
-                .Columns(11).ReadOnly = True
+                '.Columns.Add(12, "Date BPB")
+                '.Columns(12).Visible = True
             End With
         Catch ex As Exception
             Throw ex
@@ -139,20 +162,66 @@ Public Class FrmBPB
         intBaris = 0
         intPost = 0
     End Sub
+    Sub ClearRawMatrial()
+        cmbRawCode.Text = ""
+        cmbUnit.Text = ""
+        txtQtyPO.Clear()
+        txtQtyReceived.Clear()
+        txtQuantityPackaging.Clear()
+
+    End Sub
+#End Region
+
+#Region "Validation Number"
+    Private Sub txtQtyReceived_TextChanged(sender As Object, e As EventArgs) Handles txtQtyReceived.TextChanged
+        CheckNumber(txtQtyReceived)
+    End Sub
+
+    Private Sub txtQuantityPackaging_TextChanged(sender As Object, e As EventArgs) Handles txtQuantityPackaging.TextChanged
+        CheckNumber(txtQuantityPackaging)
+    End Sub
+#End Region
+
+#Region "Add Grid Detail"
+    Sub AddGridDetailRawMatrial()
+        With dgv
+            .Rows.Add()
+            .Item(0, intBaris).Value = cmbRawCode.SelectedValue
+            .Item(1, intBaris).Value = cmbRawCode.Text
+            .Item(2, intBaris).Value = txtQtyReceived.Text
+            .Item(3, intBaris).Value = txtQuantityPackaging.Text
+            .Item(4, intBaris).Value = cmbUnit.SelectedValue
+            .Item(5, intBaris).Value = cmbUnit.Text
+            .Item(6, intBaris).Value = Val(txtQtyPO.Text) - Val(txtQtyReceived.Text)
+            .Item(7, intBaris).Value = cmbPONo.SelectedValue
+            .Item(8, intBaris).Value = cmbPONo.Text
+            .Item(9, intBaris).Value = cmbPI.SelectedValue
+            .Item(10, intBaris).Value = cmbPI.Text
+            '.Item(11, intBaris).Value = bpbheaderID
+            '.Item(12, intBaris).Value = Format(dtBPBDate.Value, "yyyy-MM-dd")
+        End With
+        intBaris = intBaris + 1
+    End Sub
+#End Region
+
+#Region "Delete Grid"
+    Sub DeleteGridDetailRawMatrial()
+        DeleteGrid(dgv, intBaris)
+    End Sub
+
 #End Region
 
 #Region "Check Empty"
     Function CheckEmptyHeader() As Boolean
         Dim check As Boolean = True
         If cmbPONo.SelectedValue = 0 Then
-            MsgBoxWarning("PINo not valid")
+            MsgBoxWarning("PONo not valid")
             cmbPONo.Focus()
-
         ElseIf Trim(txtSupplier.Text) = "" Then
             MsgBoxWarning("Supplier can't empty,please check your purchase order")
             txtSupplier.Focus()
         ElseIf Trim(txtDoNo.Text) = "" Then
-            MsgBoxWarning("Do.Type can't empty")
+            MsgBoxWarning("Do.No can't empty")
             txtDONO.Focus()
         ElseIf Trim(txtDocType.Text) = "" Then
             MsgBoxWarning("Doc.Type Customs can't empty")
@@ -171,7 +240,7 @@ Public Class FrmBPB
             If dgv.Rows(i).Cells(0).Value = "" Then
                 MsgBoxError("Transaction not yet completed")
                 Exit For
-            ElseIf dgv.Rows(i).Cells(9).Value = 0 Then
+            ElseIf dgv.Rows(i).Cells(2).Value = 0 Then
                 MsgBoxError("Receveid can't 0")
                 Exit For
 
@@ -180,6 +249,15 @@ Public Class FrmBPB
             End If
         Next
         Return check
+    End Function
+#End Region
+
+#Region "Check Available In List"
+    Function CheckRawMatrialInList() As Boolean
+        Dim poBFC As ClsBPB = New ClsBPB
+        Dim status As Boolean
+        status = poBFC.CheckRawMatrialBPBInList(dgv, cmbRawCode.SelectedValue)
+        Return status
     End Function
 #End Region
 
@@ -196,11 +274,11 @@ Public Class FrmBPB
                         .BPBNo = bpbBFC.GetBPBNo(supplierCode)
                         .BPBDate = Format(dtBPBDate.Value, "yyyy-MM-dd")
                         .InfactDate = Format(dtInFactory.Value, "yyyy-MM-dd")
-                        txtDONO.Text = .DONo
-                        txtDocType.Text = .DocTypeCustoms
-                        txtDocNo.Text = .DocNoCustoms
+                        .DONo = txtDONO.Text
+                        .DocTypeCustoms = txtDocType.Text
+                        .DocNoCustoms = txtDocNo.Text
                         .DocRegistrationDate = Format(dtDocDate.Value, "yyyy-MM-dd")
-                        .Status = statusBPB
+                        .Status = 1
                         .CreatedBy = userID
                         .CreatedDate = DateTime.Now
                         .UpdatedBy = userID
@@ -211,11 +289,23 @@ Public Class FrmBPB
                         txtBPBNo.Text = .BPBNo
                         .BPBDate = Format(dtBPBDate.Value, "yyyy-MM-dd")
                         .InfactDate = Format(dtInFactory.Value, "yyyy-MM-dd")
-                        txtDONO.Text = .DONo
-                        txtDocType.Text = .DocTypeCustoms
-                        txtDocNo.Text = .DocNoCustoms
+                        .DONo = txtDONO.Text
+                        .DocTypeCustoms = txtDocType.Text
+                        .DocNoCustoms = txtDocNo.Text
                         .DocRegistrationDate = Format(dtDocDate.Value, "yyyy-MM-dd")
-                        .Status = statusBPB
+                        .Status = 1
+                        .UpdatedBy = userID
+                        .UpdatedDate = DateTime.Now
+                    Case "Approved"
+                        .BPBHeaderID = bpbheaderID
+                        .BPBNo = txtBPBNo.Text
+                        .Status = 2
+                        .UpdatedBy = userID
+                        .UpdatedDate = DateTime.Now
+                    Case "Void"
+                        .BPBHeaderID = bpbheaderID
+                        .BPBNo = txtBPBNo.Text
+                        .Status = 0
                         .UpdatedBy = userID
                         .UpdatedDate = DateTime.Now
                 End Select
@@ -232,7 +322,7 @@ Public Class FrmBPB
         Dim bpbBFC As ClsBPB = New ClsBPB
         Dim listModel As List(Of BPBDetailModel) = New List(Of BPBDetailModel)
         Try
-            listModel = bpbBFC.SetDetailRawMatrial(bpbheaderID, dgv)
+            listModel = bpbBFC.SetDetailRawMatrial(bpbID, dgv)
             bpbBFC = Nothing
             Return listModel
         Catch ex As Exception
@@ -240,6 +330,12 @@ Public Class FrmBPB
             Throw ex
         End Try
     End Function
+    'Function SetDetailStok(bpbID As Long) As List(Of StockModel)
+    '    Dim listModel As List(Of StockModel) = New List(Of StockModel)
+    '    Dim bpbBFC As ClsBPB = New ClsBPB
+    '    listModel = bpbBFC.SetDetailStock(bpbID, dgv)
+    '    Return listModel
+    'End Function
 #End Region
 
 #Region "Function"
@@ -301,6 +397,48 @@ Public Class FrmBPB
             Throw ex
         End Try
     End Sub
+    Sub ApprovedData()
+        Dim bpbBFC As ClsBPB = New ClsBPB
+        Dim logpo As ClsLogHistory = New ClsLogHistory
+        Dim logDesc As String = "Approved BPB where BPBNO = " + txtBPBNo.Text
+        condition = "Approved"
+        Try
+            If bpbBFC.UpdateStatusHeader(SetDataHeader(bpbheaderID, txtBPBNo.Text), logpo.SetLogHistoryTrans(logDesc)) Then
+                MsgBoxApproved()
+                PreCreateDisplay()
+            End If
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    Sub VoidData()
+        Dim bpbBFC As ClsBPB = New ClsBPB
+        Dim logpo As ClsLogHistory = New ClsLogHistory
+        Dim logDesc As String = "Void BPB where BPBNO = " + txtBPBNo.Text
+        condition = "Void"
+        Try
+            If bpbBFC.UpdateStatusHeader(SetDataHeader(bpbheaderID, txtBPBNo.Text), logpo.SetLogHistoryTrans(logDesc)) Then
+                MsgBoxVoid()
+                PreCreateDisplay()
+            End If
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
+
+    'Sub PrintData()
+    '    Try
+    '        Dim bpbPrint As ClsPrintOut = New ClsPrintOut
+    '        If bpbPrint.PrintOutPu(txtBPBNo.Text) Then
+    '            PreCreateDisplay()
+    '        Else
+    '            MsgBoxError("Failed to print")
+    '        End If
+    '    Catch ex As Exception
+    '        MsgBoxError(ex.Message)
+    '    End Try
+    'End Sub
     Sub PreparePOByPOHeaderID()
         Dim poModel As POHeaderModel = New POHeaderModel
         Dim listDetail As List(Of PODetailModel) = New List(Of PODetailModel)
@@ -350,7 +488,28 @@ Public Class FrmBPB
             Throw ex
         End Try
     End Sub
-
+    Function CheckEmptyRawMatrial() As Boolean
+        Dim check As Boolean = True
+        If cmbRawCode.SelectedValue = 0 Then
+            MsgBoxWarning("Raw Matrial Not Valid")
+            cmbRawCode.Focus()
+        ElseIf txtQtyPO.Text = "" Then
+            MsgBoxWarning("Qty PO Can't Empty")
+            txtQtyPO.Focus()
+        ElseIf txtQtyReceived.Text = "" Then
+            MsgBoxWarning("Qty Received Can't Empty")
+            txtQtyReceived.Focus()
+        ElseIf txtQuantityPackaging.Text = "" Then
+            MsgBoxWarning("Qty Packaging Can't Empty")
+            txtQuantityPackaging.Focus()
+        ElseIf cmbUnit.SelectedValue = 0 Then
+            MsgBoxWarning("Unit For Raw Matrial Not Valid")
+            cmbUnit.Focus()
+        Else
+            check = False
+        End If
+        Return check
+    End Function
     Sub SumOutstanding()
         Dim subTotal As Double
         subTotal = 0
@@ -376,7 +535,7 @@ Public Class FrmBPB
             ClearAll()
             GridDetail()
             ComboBoxPO()
-            ComboBoxPI()
+            ComboBoxUnit()
             CheckPermission()
             btnUpdate.Enabled = False
             btnApprove.Enabled = False
@@ -387,13 +546,6 @@ Public Class FrmBPB
         End Try
     End Sub
 
-    Private Sub btnRawAddList_Click(sender As Object, e As EventArgs) Handles btnRawAddList.Click
-        Try
-            PreparePOByPOHeaderID()
-        Catch ex As Exception
-            MsgBoxError("Error  : " + ex.Message)
-        End Try
-    End Sub
 
     Private Sub dgv_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs)
         intPost = e.Row.Index
@@ -402,39 +554,59 @@ Public Class FrmBPB
 
 #End Region
 
-#Region "Other"
-    Private Sub cmbPONo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPONo.SelectedIndexChanged
+#Region "Button"
+    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        If CheckEmptyHeader() = False Then
+            If condition = "Update" Then
+                UpdateData()
+            End If
+        End If
+    End Sub
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        If CheckEmptyHeader() = False Then
+            If condition = "Create" Then
+                InsertData()
+            End If
+        End If
+    End Sub
+    Private Sub btnRawAddList_Click(sender As Object, e As EventArgs) Handles btnRawAddList.Click
         Try
+            ComboBoxRaw(cmbRawCode, cmbPONo.SelectedValue)
+            ComboBoxPI(cmbPI, cmbPONo.SelectedValue)
             RetrieveSupplier()
-            Retrievedetail()
         Catch ex As Exception
-
+            MsgBoxError("Error  : " + ex.Message)
         End Try
     End Sub
-
-    Private Sub cmbPINO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPINO.SelectedIndexChanged
-        Try
-
-            Retrievedetail()
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub dgv_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellEndEdit
-        If e.ColumnIndex = 9 Then
+    Private Sub btnAddListBPB_Click(sender As Object, e As EventArgs) Handles btnAddListBPB.Click
+        If CheckEmptyRawMatrial() = False Then
             Try
+                If CheckRawMatrialInList() = True Then
+                    AddGridDetailRawMatrial()
 
-                SumOutstanding()
-
+                    ClearRawMatrial()
+                Else
+                    MsgBoxError("Raw Matrial available in list")
+                    ClearRawMatrial()
+                End If
             Catch ex As Exception
-                '  MsgBoxError(msgError + "please delete column")
+                MsgBoxError(ex.Message)
             End Try
         End If
     End Sub
+    Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
+        ApprovedData()
+    End Sub
+    Private Sub btnVoid_Click(sender As Object, e As EventArgs) Handles btnVoid.Click
+        VoidData()
+    End Sub
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        Close()
+    End Sub
 
+#End Region
 
-
+#Region "Other"
     Private Sub FrmBPB_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             Select Case condition
@@ -447,21 +619,19 @@ Public Class FrmBPB
             MsgBoxError("Error : " + ex.Message)
         End Try
     End Sub
+    Private Sub cmbRawCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRawCode.SelectedIndexChanged
+        Try
+            RetrieveQtyPO()
+        Catch ex As Exception
 
-    Private Sub dgv_KeyPress(sender As Object, e As KeyPressEventArgs) Handles dgv.KeyPress
-        If e.KeyChar = Chr(27) Then 'ESC
-            dgv.Rows.Remove(dgv.CurrentRow)
-            SumOutstanding()
-        End If
+        End Try
     End Sub
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If CheckEmptyHeader() = False And CheckEmptyDetail() = False Then
-            If condition = "Create" Then
-                InsertData()
-            End If
-        End If
-    End Sub
+
+
+
+
+
 
 
 #End Region

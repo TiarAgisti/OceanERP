@@ -99,6 +99,32 @@
 
 
 #Region "Method Generated"
+    'Protected Function GeneratedBPBNo(supplierCode As String) As String
+    '    Dim myCode As String
+    '    Dim hitung As Integer
+    '    Dim query As String = "Select MAX(BPBNo) as BPBNo from BPBHeader"
+    '    Dim dataAccess As ClsDataAccess = New ClsDataAccess
+    '    Try
+    '        dataAccess.reader = dataAccess.ExecuteReader(query)
+    '        dataAccess.reader.Read()
+
+    '        If IsDBNull(dataAccess.reader.Item("BPBNo")) Then
+    '            myCode = "BPB" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
+    '        Else
+    '            Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("PONo"), 9)
+    '            hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
+    '            myCode = "BPB" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & supplierCode & "/" & Format(Now.Year)
+    '        End If
+    '        dataAccess.reader.Close()
+    '        dataAccess = Nothing
+    '        Return myCode
+    '    Catch ex As Exception
+    '        dataAccess.reader.Close()
+    '        dataAccess = Nothing
+    '        Throw ex
+    '    End Try
+    '    Return myCode
+    'End Function
     Protected Function GeneratedBPBNo(supplierCode As String) As String
         Dim myCode As String
         Dim hitung As Integer
@@ -125,7 +151,6 @@
         End Try
         Return myCode
     End Function
-
     Protected Function GeneratedAutoNumber() As Long
         Dim id As Long = 0
         Dim query As String = "Select max(BPBHeaderID) from BPBHeader"
@@ -176,11 +201,11 @@
 #End Region
 
 #Region "Check Available In List"
-    Public Function CheckRawMatrialBPBInList(dgvrawmatrialBPB As DataGridView, RawMatrialID As Integer) As Boolean
+    Public Function CheckRawMatrialBPBInList(dgv As DataGridView, RawMatrialID As Integer) As Boolean
         Dim cek As Integer
         Dim status As Boolean = True
-        For cek = 0 To dgvrawmatrialBPB.Rows.Count - 1
-            If dgvrawmatrialBPB.Rows(cek).Cells(0).Value = RawMatrialID Then
+        For cek = 0 To dgv.Rows.Count - 1
+            If dgv.Rows(cek).Cells(0).Value = RawMatrialID Then
                 status = False
             End If
         Next
@@ -198,20 +223,36 @@
             Dim detailModel As BPBDetailModel = New BPBDetailModel
             With dgv
                 detailModel.BPBHeaderID = bpbID
-                detailModel.POHeaderID = .Rows(detail).Cells(0).Value
-                detailModel.PIHeaderID = .Rows(detail).Cells(2).Value
-                detailModel.RawMaterialID = .Rows(detail).Cells(4).Value
-                detailModel.QuantityPO = .Rows(detail).Cells(6).Value
-                detailModel.Received = .Rows(detail).Cells(7).Value
-                detailModel.QuantityPackaging = .Rows(detail).Cells(8).Value
-                detailModel.UnitID = .Rows(detail).Cells(9).Value
-
+                detailModel.POHeaderID = .Rows(detail).Cells(7).Value
+                detailModel.PIHeaderID = .Rows(detail).Cells(9).Value
+                detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
+                detailModel.Received = .Rows(detail).Cells(2).Value
+                detailModel.QuantityPackaging = .Rows(detail).Cells(3).Value
+                detailModel.UnitID = .Rows(detail).Cells(4).Value
                 listRawMatrialDetailModel.Add(detailModel)
             End With
             '  poDetailID = poDetailID + 1
         Next
         Return listRawMatrialDetailModel
     End Function
+    'Public Function SetDetailStock(bpbID As Long, dgv As DataGridView) As List(Of StockModel)
+    '    Dim listRawMatrialDetail As List(Of StockModel) = New List(Of StockModel)
+    '    For detail = 0 To dgv.Rows.Count - 2
+    '        Dim detailModel As StockModel = New StockModel
+    '        With dgv
+    '            detailModel.PIHeaderID = .Rows(detail).Cells(9).Value
+    '            detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
+    '            detailModel.QuantityIN = .Rows(detail).Cells(2).Value
+    '            detailModel.QuantityOUT = 0
+    '            detailModel.DocNO = .Rows(detail).Cells(11).Value
+    '            detailModel.DocDate = .Rows(detail).Cells(12).Value
+    '            detailModel.Doctype = "BPB"
+    '            listRawMatrialDetail.Add(detailModel)
+    '        End With
+    '        '  poDetailID = poDetailID + 1
+    '    Next
+    '    Return listRawMatrialDetail
+    'End Function
 
 #End Region
 
@@ -244,7 +285,7 @@
         sql = "Insert Into BPBDetail(BPBHeaderID,POHeaderID,PIHeaderID,RawMaterialID,QuantityBPB,QuantityPackaging" &
               ",UnitID)Values" &
               "('" & myModel.BPBHeaderID & "','" & myModel.POHeaderID & "','" & myModel.PIHeaderID & "','" & myModel.RawMaterialID & "'" &
-              ",'" & myModel.QuantityPO & "','" & myModel.QuantityPackaging & "','" & myModel.UnitID & "')"
+              ",'" & myModel.Received & "','" & myModel.QuantityPackaging & "','" & myModel.UnitID & "')"
 
         Return sql
     End Function

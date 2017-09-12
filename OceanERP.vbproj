@@ -193,6 +193,7 @@
     <Compile Include="Models\Transactions\PIYarnDetailModel.vb" />
     <Compile Include="Models\Transactions\POPrintOutModel.vb" />
     <Compile Include="Models\Transactions\PORemarksModel.vb" />
+    <Compile Include="Models\Transactions\StockModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
