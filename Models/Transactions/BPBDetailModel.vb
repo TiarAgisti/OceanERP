@@ -8,6 +8,7 @@
             xBPBHeaderID = value
         End Set
     End Property
+
     Private xPIHeaderID As Long
     Public Property PIHeaderID() As Long
         Get
@@ -117,6 +118,6 @@
             xQuantityPackaging = value
         End Set
     End Property
-
+    Private xStockID As Long
 
 End Class

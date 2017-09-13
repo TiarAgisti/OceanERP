@@ -125,14 +125,14 @@
 
 
     Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
-        Try
-            Dim frm As FrmBPB = New FrmBPB
+        'Try
+        Dim frm As FrmBPB = New FrmBPB
             frm.condition = "Update"
-            FrmPurchaseOrder.poHeaderID = GetID()
+            FrmBPB.bpbheaderID = GetID()
             frm.ShowDialog()
-        Catch ex As Exception
-            MsgBoxError(ex.Message)
-        End Try
+        'Catch ex As Exception
+        '    MsgBoxError(ex.Message)
+        'End Try
     End Sub
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click

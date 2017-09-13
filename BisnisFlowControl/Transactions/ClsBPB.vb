@@ -71,9 +71,19 @@
             With dataAccess.reader
                 While .Read
                     Dim bpbDetailModel As BPBDetailModel = New BPBDetailModel
-                    bpbDetailModel.POHeaderID = .Item("BPBHeaderID")
-                    bpbDetailModel.PIHeaderID = .Item("PIHeaderID")
-                    bpbDetailModel.PINo = .Item("PINo")
+                    bpbDetailModel.BPBHeaderID = .Item("BPBHeaderID")
+                    If IsDBNull(.Item("PIHeaderID")) Then
+                        bpbDetailModel.PIHeaderID = 0
+                    Else
+                        bpbDetailModel.PIHeaderID = .Item("PIHeaderID")
+                    End If
+                    If IsDBNull(.Item("PINo")) Then
+                        bpbDetailModel.PINo = 0
+                    Else
+                        bpbDetailModel.PINo = .Item("PINo")
+                    End If
+                    'bpbDetailModel.PIHeaderID = .Item("PIHeaderID")
+                    'bpbDetailModel.PINo = .Item("PINo")
                     bpbDetailModel.POHeaderID = .Item("POHeaderID")
                     bpbDetailModel.PONo = .Item("PONo")
                     bpbDetailModel.RawMaterialID = .Item("RawMaterialID")
@@ -83,6 +93,7 @@
                     bpbDetailModel.QuantityPO = .Item("QuantityPO")
                     bpbDetailModel.Received = .Item("Received")
                     bpbDetailModel.Outstanding = .Item("Outstanding")
+                    bpbDetailModel.QuantityPackaging = .Item("QuantityPackaging")
                     myList.Add(bpbDetailModel)
                 End While
                 .Close()
@@ -97,49 +108,29 @@
 
 #End Region
 
-
 #Region "Method Generated"
-    'Protected Function GeneratedBPBNo(supplierCode As String) As String
-    '    Dim myCode As String
-    '    Dim hitung As Integer
-    '    Dim query As String = "Select MAX(BPBNo) as BPBNo from BPBHeader"
-    '    Dim dataAccess As ClsDataAccess = New ClsDataAccess
-    '    Try
-    '        dataAccess.reader = dataAccess.ExecuteReader(query)
-    '        dataAccess.reader.Read()
 
-    '        If IsDBNull(dataAccess.reader.Item("BPBNo")) Then
-    '            myCode = "BPB" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
-    '        Else
-    '            Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("PONo"), 9)
-    '            hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
-    '            myCode = "BPB" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & supplierCode & "/" & Format(Now.Year)
-    '        End If
-    '        dataAccess.reader.Close()
-    '        dataAccess = Nothing
-    '        Return myCode
-    '    Catch ex As Exception
-    '        dataAccess.reader.Close()
-    '        dataAccess = Nothing
-    '        Throw ex
-    '    End Try
-    '    Return myCode
-    'End Function
     Protected Function GeneratedBPBNo(supplierCode As String) As String
+
         Dim myCode As String
         Dim hitung As Integer
-        Dim query As String = "Select MAX(BPBNo) as BPBNo from BPBHeader"
+        Dim query As String = "Select MAX(BPBNo) as Code from BPBHeader"
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             dataAccess.reader.Read()
 
-            If IsDBNull(dataAccess.reader.Item("BPBNo")) Then
+            If IsDBNull(dataAccess.reader.Item("Code")) Then
                 myCode = "BPB" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
             Else
-                Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("PONo"), 9)
-                hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
-                myCode = "BPB" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & supplierCode & "/" & Format(Now.Year)
+                Dim xtahun As String = Microsoft.VisualBasic.Right(dataAccess.reader.Item("Code"), 4)
+                If xtahun <> Format(Now.Year) Then
+                    Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("Code"), 10)
+                    hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
+                    myCode = "BPB" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & supplierCode & "/" & Format(Now.Year)
+                Else
+                    myCode = "BPB" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
+                End If
             End If
             dataAccess.reader.Close()
             dataAccess = Nothing
@@ -149,7 +140,7 @@
             dataAccess = Nothing
             Throw ex
         End Try
-        Return myCode
+
     End Function
     Protected Function GeneratedAutoNumber() As Long
         Dim id As Long = 0
@@ -164,19 +155,19 @@
         dataAccess = Nothing
         Return id
     End Function
-    'Protected Function GeneratedAutoNumberDetailID() As Long
-    '    Dim id As Long = 0
-    '    Dim query As String = "Select max(PODetailID) from PODetail"
-    '    Dim dataAccess = New ClsDataAccess
-    '    Try
-    '        id = dataAccess.GeneratedAutoNumber(query)
-    '    Catch ex As Exception
-    '        dataAccess = Nothing
-    '        Throw ex
-    '    End Try
-    '    dataAccess = Nothing
-    '    Return id
-    'End Function
+    Protected Function GeneratedAutoNumberStockID() As Long
+        Dim id As Long = 0
+        Dim query As String = "Select max(StockID) from Stock"
+        Dim dataAccess = New ClsDataAccess
+        Try
+            id = dataAccess.GeneratedAutoNumber(query)
+        Catch ex As Exception
+            dataAccess = Nothing
+            Throw ex
+        End Try
+        dataAccess = Nothing
+        Return id
+    End Function
     Public Function GetBPBNo(supplierCode As String) As String
         Dim bpbNo As String
         bpbNo = GeneratedBPBNo(supplierCode)
@@ -192,11 +183,11 @@
         Return myID
     End Function
 
-    'Public Function GetPODetailID() As Long
-    '    Dim myID As Long
-    '    myID = GeneratedAutoNumberDetailID()
-    '    Return myID
-    'End Function
+    Public Function GetStockID() As Long
+        Dim myID As Long
+        myID = GeneratedAutoNumberStockID()
+        Return myID
+    End Function
 
 #End Region
 
@@ -235,24 +226,25 @@
         Next
         Return listRawMatrialDetailModel
     End Function
-    'Public Function SetDetailStock(bpbID As Long, dgv As DataGridView) As List(Of StockModel)
-    '    Dim listRawMatrialDetail As List(Of StockModel) = New List(Of StockModel)
-    '    For detail = 0 To dgv.Rows.Count - 2
-    '        Dim detailModel As StockModel = New StockModel
-    '        With dgv
-    '            detailModel.PIHeaderID = .Rows(detail).Cells(9).Value
-    '            detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
-    '            detailModel.QuantityIN = .Rows(detail).Cells(2).Value
-    '            detailModel.QuantityOUT = 0
-    '            detailModel.DocNO = .Rows(detail).Cells(11).Value
-    '            detailModel.DocDate = .Rows(detail).Cells(12).Value
-    '            detailModel.Doctype = "BPB"
-    '            listRawMatrialDetail.Add(detailModel)
-    '        End With
-    '        '  poDetailID = poDetailID + 1
-    '    Next
-    '    Return listRawMatrialDetail
-    'End Function
+    Public Function SetDetailStock(bpbID As Long, bpbCode As String, dgv2 As DataGridView) As List(Of StockModel)
+        Dim listDetail As List(Of StockModel) = New List(Of StockModel)
+        For detail = 0 To dgv2.Rows.Count - 2
+            Dim detailModel As StockModel = New StockModel
+            With dgv2
+                detailModel.StockID = GetStockID()
+                detailModel.PIHeaderID = .Rows(detail).Cells(9).Value
+                detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
+                detailModel.QuantityIN = .Rows(detail).Cells(2).Value
+                detailModel.QuantityOUT = 0
+                detailModel.DocID = bpbID
+                detailModel.DocDate = .Rows(detail).Cells(12).Value
+                detailModel.DocType = "BPB"
+                listDetail.Add(detailModel)
+            End With
+            '  poDetailID = poDetailID + 1
+        Next
+        Return listDetail
+    End Function
 
 #End Region
 
@@ -275,7 +267,7 @@
                                     ",DONo='" & myModel.DONo & "',DocTypeCustoms = '" & myModel.DocTypeCustoms & "'" &
                                     ",DocNoCustoms = '" & myModel.DocNoCustoms & "',DocRegistrationDate = '" & myModel.DocRegistrationDate & "'" &
                                      ",Status = '" & myModel.Status & "',UpdatedBy = '" & myModel.UpdatedBy & "'" &
-                                    ",UpdatedDate = '" & myModel.UpdatedDate & "' Where POHeaderID = '" & myModel.POHeaderID & "'"
+                                    ",UpdatedDate = '" & myModel.UpdatedDate & "' Where BPBHeaderID = '" & myModel.BPBHeaderID & "'"
         Return SQL
     End Function
 
@@ -289,21 +281,37 @@
 
         Return sql
     End Function
+    Protected Function SqlInsertStock(myModel As StockModel) As String
+        Dim sql As String
+
+        sql = "Insert Into Stock(StockID,PIHeaderID,RawMaterialID,QuantityIN,QuantityOut,DocID,DocDate" &
+              ",DocType)Values" &
+              "('" & myModel.StockID & "','" & myModel.PIHeaderID & "','" & myModel.RawMaterialID & "'" &
+              ",'" & myModel.QuantityIN & "','" & myModel.QuantityOUT & "','" & myModel.DocID & "','" & myModel.DocDate & "','" & myModel.DocType & "')"
+
+        Return sql
+    End Function
 
     Protected Function SqlUpdateStatusHeader(myModel As BPBHeaderModel) As String
         Dim SQL As String
-        SQL = "Update BPBHeader Set Status = '" & myModel.Status & "' Where BPBHeaderID = '" & myModel.POHeaderID & "'"
+        SQL = "Update BPBHeader Set Status = '" & myModel.Status & "' Where BPBHeaderID = '" & myModel.BPBHeaderID & "'"
         Return SQL
     End Function
 
     Protected Function SqlDeleteDetailBPB(myModel As BPBHeaderModel) As String
         Dim SQL As String
-        SQL = "Delete From BPBDetail Where BPBHeaderID = '" & myModel.POHeaderID & "'"
+        SQL = "Delete From BPBDetail Where BPBHeaderID = '" & myModel.BPBHeaderID & "'"
+        Return SQL
+    End Function
+    Protected Function SqlDeleteStock(myModel As BPBHeaderModel) As String
+        Dim SQL As String
+        SQL = "Delete From Stock Where StockID = '" & myModel.BPBHeaderID & "'"
         Return SQL
     End Function
 
 
-    Public Function InsertData(bpbHeaderModel As BPBHeaderModel, listBpbDetailModel As List(Of BPBDetailModel) _
+
+    Public Function InsertData(bpbHeaderModel As BPBHeaderModel, listBpbDetailModel As List(Of BPBDetailModel), liststokDetailModel As List(Of StockModel) _
                               , logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -316,7 +324,10 @@
         For Each detail In listBpbDetailModel
             queryList.Add(SqlInsertDetailBPB(detail))
         Next
-
+        'insert stok detail
+        For Each detail In liststokDetailModel
+            queryList.Add(SqlInsertStock(detail))
+        Next
 
 
         'insert log history
@@ -332,7 +343,7 @@
         End Try
     End Function
 
-    Public Function UpdateData(bpbHeaderModel As BPBHeaderModel, listBpbDetailModel As List(Of BPBDetailModel) _
+    Public Function UpdateData(bpbHeaderModel As BPBHeaderModel, listBpbDetailModel As List(Of BPBDetailModel), liststokDetailModel As List(Of StockModel) _
                               , logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -340,6 +351,7 @@
 
         'delete all detail before update
         queryList.Add(SqlDeleteDetailBPB(bpbHeaderModel))
+
         'update poheader
         queryList.Add(SqlUpdateHeader(bpbHeaderModel))
 
@@ -347,7 +359,9 @@
         For Each detail In listBpbDetailModel
             queryList.Add(SqlInsertDetailBPB(detail))
         Next
-
+        For Each detail In liststokDetailModel
+            queryList.Add(SqlInsertStock(detail))
+        Next
         'insert log history
         queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
 

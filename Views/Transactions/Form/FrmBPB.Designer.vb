@@ -339,7 +339,7 @@ Partial Class FrmBPB
         'cmbUnit
         '
         Me.cmbUnit.FormattingEnabled = True
-        Me.cmbUnit.Location = New System.Drawing.Point(421, 62)
+        Me.cmbUnit.Location = New System.Drawing.Point(421, 39)
         Me.cmbUnit.Name = "cmbUnit"
         Me.cmbUnit.Size = New System.Drawing.Size(188, 21)
         Me.cmbUnit.TabIndex = 138
@@ -347,10 +347,10 @@ Partial Class FrmBPB
         'txtQtyPO
         '
         Me.txtQtyPO.Enabled = False
-        Me.txtQtyPO.Location = New System.Drawing.Point(121, 62)
+        Me.txtQtyPO.Location = New System.Drawing.Point(685, 12)
         Me.txtQtyPO.MaxLength = 50
         Me.txtQtyPO.Name = "txtQtyPO"
-        Me.txtQtyPO.Size = New System.Drawing.Size(188, 20)
+        Me.txtQtyPO.Size = New System.Drawing.Size(138, 20)
         Me.txtQtyPO.TabIndex = 137
         '
         'Panel3
@@ -428,7 +428,7 @@ Partial Class FrmBPB
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(315, 69)
+        Me.Label31.Location = New System.Drawing.Point(315, 39)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(80, 13)
         Me.Label31.TabIndex = 134
@@ -445,7 +445,7 @@ Partial Class FrmBPB
         '
         'btnAddListBPB
         '
-        Me.btnAddListBPB.Location = New System.Drawing.Point(626, 64)
+        Me.btnAddListBPB.Location = New System.Drawing.Point(616, 64)
         Me.btnAddListBPB.Name = "btnAddListBPB"
         Me.btnAddListBPB.Size = New System.Drawing.Size(95, 23)
         Me.btnAddListBPB.TabIndex = 113
@@ -458,12 +458,12 @@ Partial Class FrmBPB
         Me.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgv.Location = New System.Drawing.Point(10, 89)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(812, 155)
+        Me.dgv.Size = New System.Drawing.Size(812, 103)
         Me.dgv.TabIndex = 112
         '
         'txtQuantityPackaging
         '
-        Me.txtQuantityPackaging.Location = New System.Drawing.Point(421, 36)
+        Me.txtQuantityPackaging.Location = New System.Drawing.Point(421, 13)
         Me.txtQuantityPackaging.MaxLength = 50
         Me.txtQuantityPackaging.Name = "txtQuantityPackaging"
         Me.txtQuantityPackaging.Size = New System.Drawing.Size(188, 20)
@@ -472,7 +472,7 @@ Partial Class FrmBPB
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(315, 42)
+        Me.Label16.Location = New System.Drawing.Point(315, 12)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(100, 13)
         Me.Label16.TabIndex = 111
@@ -480,7 +480,7 @@ Partial Class FrmBPB
         '
         'txtQtyReceived
         '
-        Me.txtQtyReceived.Location = New System.Drawing.Point(421, 12)
+        Me.txtQtyReceived.Location = New System.Drawing.Point(121, 62)
         Me.txtQtyReceived.MaxLength = 50
         Me.txtQtyReceived.Name = "txtQtyReceived"
         Me.txtQtyReceived.Size = New System.Drawing.Size(188, 20)
@@ -489,7 +489,7 @@ Partial Class FrmBPB
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(315, 12)
+        Me.Label15.Location = New System.Drawing.Point(8, 62)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(95, 13)
         Me.Label15.TabIndex = 109
@@ -498,7 +498,7 @@ Partial Class FrmBPB
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(8, 62)
+        Me.Label14.Location = New System.Drawing.Point(615, 15)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(64, 13)
         Me.Label14.TabIndex = 107
@@ -597,11 +597,11 @@ Partial Class FrmBPB
     Friend WithEvents txtQtyReceived As TextBox
     Friend WithEvents Label26 As Label
     Friend WithEvents Label15 As Label
-    Friend WithEvents Label14 As Label
     Friend WithEvents cmbRawCode As ComboBox
     Friend WithEvents Label20 As Label
-    Friend WithEvents txtQtyPO As TextBox
     Friend WithEvents cmbUnit As ComboBox
     Friend WithEvents cmbPI As ComboBox
     Friend WithEvents Label11 As Label
+    Friend WithEvents txtQtyPO As TextBox
+    Friend WithEvents Label14 As Label
 End Class
