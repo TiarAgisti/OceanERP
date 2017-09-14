@@ -91,13 +91,13 @@
             xQuantityPO = value
         End Set
     End Property
-    Private xReceived As Integer
-    Public Property Received() As Integer
+    Private xQuantityBPB As Integer
+    Public Property QuantityBPB() As Integer
         Get
-            Return xReceived
+            Return xQuantityBPB
         End Get
         Set(ByVal value As Integer)
-            xReceived = value
+            xQuantityBPB = value
         End Set
     End Property
     Private xOutstanding As Integer

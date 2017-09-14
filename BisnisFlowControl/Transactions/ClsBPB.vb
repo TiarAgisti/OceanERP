@@ -90,9 +90,7 @@
                     bpbDetailModel.RawMaterialName = .Item("RawMaterialName")
                     bpbDetailModel.UnitID = .Item("UnitID")
                     bpbDetailModel.UnitName = .Item("UnitName")
-                    bpbDetailModel.QuantityPO = .Item("QuantityPO")
-                    bpbDetailModel.Received = .Item("Received")
-                    bpbDetailModel.Outstanding = .Item("Outstanding")
+                    bpbDetailModel.QuantityBPB = .Item("QuantityBPB")
                     bpbDetailModel.QuantityPackaging = .Item("QuantityPackaging")
                     myList.Add(bpbDetailModel)
                 End While
@@ -114,23 +112,18 @@
 
         Dim myCode As String
         Dim hitung As Integer
-        Dim query As String = "Select MAX(BPBNo) as Code from BPBHeader"
+        Dim query As String = "Select MAX(BPBNo) as BPBNo from BPBHeader"
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             dataAccess.reader.Read()
 
-            If IsDBNull(dataAccess.reader.Item("Code")) Then
-                myCode = "BPB" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
+            If IsDBNull(dataAccess.reader.Item("BPBNo")) Then
+                myCode = "BP" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
             Else
-                Dim xtahun As String = Microsoft.VisualBasic.Right(dataAccess.reader.Item("Code"), 4)
-                If xtahun <> Format(Now.Year) Then
-                    Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("Code"), 10)
-                    hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
-                    myCode = "BPB" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & supplierCode & "/" & Format(Now.Year)
-                Else
-                    myCode = "BPB" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
-                End If
+                Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("BPBNo"), 9)
+                hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
+                myCode = "BP" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & supplierCode & "/" & Format(Now.Year)
             End If
             dataAccess.reader.Close()
             dataAccess = Nothing
@@ -140,7 +133,7 @@
             dataAccess = Nothing
             Throw ex
         End Try
-
+        Return myCode
     End Function
     Protected Function GeneratedAutoNumber() As Long
         Dim id As Long = 0
@@ -215,9 +208,19 @@
             With dgv
                 detailModel.BPBHeaderID = bpbID
                 detailModel.POHeaderID = .Rows(detail).Cells(7).Value
-                detailModel.PIHeaderID = .Rows(detail).Cells(9).Value
+                If IsDBNull(detailModel.PIHeaderID) Then
+                    detailModel.PIHeaderID = 0
+                Else
+                    detailModel.PIHeaderID = .Rows(detail).Cells(9).Value
+                End If
+                If IsDBNull(detailModel.PINo) Then
+                    detailModel.PINo = 0
+                Else
+                    detailModel.PINo = .Rows(detail).Cells(10).Value
+                End If
+                ' detailModel.PIHeaderID = .Rows(detail).Cells(9).Value
                 detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
-                detailModel.Received = .Rows(detail).Cells(2).Value
+                detailModel.QuantityBPB = .Rows(detail).Cells(2).Value
                 detailModel.QuantityPackaging = .Rows(detail).Cells(3).Value
                 detailModel.UnitID = .Rows(detail).Cells(4).Value
                 listRawMatrialDetailModel.Add(detailModel)
@@ -277,7 +280,7 @@
         sql = "Insert Into BPBDetail(BPBHeaderID,POHeaderID,PIHeaderID,RawMaterialID,QuantityBPB,QuantityPackaging" &
               ",UnitID)Values" &
               "('" & myModel.BPBHeaderID & "','" & myModel.POHeaderID & "','" & myModel.PIHeaderID & "','" & myModel.RawMaterialID & "'" &
-              ",'" & myModel.Received & "','" & myModel.QuantityPackaging & "','" & myModel.UnitID & "')"
+              ",'" & myModel.QuantityBPB & "','" & myModel.QuantityPackaging & "','" & myModel.UnitID & "')"
 
         Return sql
     End Function

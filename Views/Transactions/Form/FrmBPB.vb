@@ -67,13 +67,15 @@ Public Class FrmBPB
         End If
     End Sub
     Sub RetrieveQtyPO()
-
+        Dim dataTable As DataTable = New DataTable
         Dim poBFC As ClsPO = New ClsPO
         Dim poModel As PODetailModel = New PODetailModel
+
         Try
-            Dim rawID As Integer = cmbRawCode.SelectedValue
-            If rawID > 0 Then
-                poModel = poBFC.RetrieveByDetailRawcode(rawID)
+            Dim rawmatrialID = cmbRawCode.SelectedValue
+            Dim obj As Integer = cmbPONo.SelectedValue
+            If obj > 0 Then
+                poModel = poBFC.RetrieveByDetailRaw(obj, rawmatrialID)
                 With poModel
                     txtQtyPO.Text = .Quantity
                 End With
@@ -81,10 +83,9 @@ Public Class FrmBPB
                 MsgBoxError("Raw Code not valid")
             End If
             poModel = Nothing
-            poModel = Nothing
+
         Catch ex As Exception
-            poModel = Nothing
-            poModel = Nothing
+
             Throw ex
         End Try
     End Sub
@@ -139,10 +140,10 @@ Public Class FrmBPB
 
                 .Columns.Add(9, "PI ID")
                 .Columns(9).Width = 150
-                .Columns(9).Visible = False
+                .Columns(9).Visible = True
 
                 .Columns.Add(10, "PI No")
-                 .Columns(10).Visible = False
+                .Columns(10).Visible = True
 
                 .Columns.Add(11, "BPB ID")
                 .Columns(11).Visible = False
@@ -203,8 +204,18 @@ Public Class FrmBPB
             .Item(6, intBaris).Value = Val(txtQtyPO.Text) - Val(txtQtyReceived.Text)
             .Item(7, intBaris).Value = cmbPONo.SelectedValue
             .Item(8, intBaris).Value = cmbPONo.Text
-            .Item(9, intBaris).Value = cmbPI.SelectedValue
-            .Item(10, intBaris).Value = cmbPI.Text
+            If IsDBNull(.Item(9, intBaris).Value) Then
+                .Item(9, intBaris).Value = 0
+            Else
+                .Item(9, intBaris).Value = cmbPI.SelectedValue
+            End If
+            If IsDBNull(.Item(10, intBaris).Value) Then
+                .Item(10, intBaris).Value = 0
+            Else
+                .Item(10, intBaris).Value = cmbPI.Text
+            End If
+            '.Item(9, intBaris).Value = cmbPI.SelectedValue
+            '.Item(10, intBaris).Value = cmbPI.Text
             .Item(11, intBaris).Value = bpbheaderID
             .Item(12, intBaris).Value = Format(dtBPBDate.Value, "yyyy-MM-dd")
         End With
@@ -471,7 +482,8 @@ Public Class FrmBPB
     Sub PrepareHeaderByID()
 
         ComboBoxUnit()
-
+        ComboBoxPO()
+        cmbPONo.Enabled = False
         Dim headerModel As BPBHeaderModel = New BPBHeaderModel
         Dim bpbBFC As ClsBPB = New ClsBPB
         headerModel = bpbBFC.RetrieveByID(bpbheaderID)
@@ -483,7 +495,7 @@ Public Class FrmBPB
             txtDocType.Text = .DocTypeCustoms
             txtDocNo.Text = .DocNoCustoms
             dtDocDate.Value = .DocRegistrationDate
-            cmbPONo.Text = .PONo
+            cmbPONo.SelectedValue = .POHeaderID
             txtSupplier.Text = .SupplierName
             statusBPB = .Status
         End With
@@ -499,7 +511,7 @@ Public Class FrmBPB
                     .Rows.Add()
                     .Item(0, intBaris).Value = detail.RawMaterialID
                     .Item(1, intBaris).Value = detail.RawMaterialName
-                    .Item(2, intBaris).Value = detail.Received
+                    .Item(2, intBaris).Value = detail.QuantityBPB
                     .Item(3, intBaris).Value = detail.QuantityPackaging
                     .Item(4, intBaris).Value = detail.UnitID
                     .Item(5, intBaris).Value = detail.UnitName
@@ -602,6 +614,7 @@ Public Class FrmBPB
 #End Region
 
 #Region "Button"
+
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         If CheckEmptyHeader() = False Then
             If condition = "Update" Then
@@ -616,16 +629,17 @@ Public Class FrmBPB
             End If
         End If
     End Sub
-    Private Sub btnRawAddList_Click(sender As Object, e As EventArgs) Handles btnRawAddList.Click
-        Try
-            RetrieveSupplier()
-            ComboBoxRaw(cmbRawCode, cmbPONo.SelectedValue)
-            ComboBoxPI(cmbPI, cmbPONo.SelectedValue)
-        Catch ex As Exception
-            MsgBoxError("Error  : " + ex.Message)
-        End Try
+    Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
+        ApprovedData()
     End Sub
-    Private Sub btnAddListBPB_Click(sender As Object, e As EventArgs) Handles btnAddListBPB.Click
+    Private Sub btnVoid_Click(sender As Object, e As EventArgs) Handles btnVoid.Click
+        VoidData()
+    End Sub
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        Close()
+    End Sub
+
+    Private Sub btnAddRawToList_Click(sender As Object, e As EventArgs) Handles btnAddRawToList.Click
         If Val(txtQtyReceived.Text) > Val(txtQtyPO.Text) Then
             MsgBoxError("Qty Received Not Valid ")
             txtQtyReceived.Focus()
@@ -646,16 +660,16 @@ Public Class FrmBPB
             End Try
         End If
     End Sub
-    Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
-        ApprovedData()
-    End Sub
-    Private Sub btnVoid_Click(sender As Object, e As EventArgs) Handles btnVoid.Click
-        VoidData()
-    End Sub
-    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
-        Close()
-    End Sub
 
+    Private Sub btnShowList_Click(sender As Object, e As EventArgs) Handles btnShowList.Click
+        Try
+            RetrieveSupplier()
+            ComboBoxRaw(cmbRawCode, cmbPONo.SelectedValue)
+            ComboBoxPI(cmbPI, cmbPONo.SelectedValue)
+        Catch ex As Exception
+            MsgBoxError("Error  : " + ex.Message)
+        End Try
+    End Sub
 #End Region
 
 #Region "Other"
@@ -678,16 +692,8 @@ Public Class FrmBPB
         Catch ex As Exception
 
         End Try
-
     End Sub
 
-    'Private Sub cmbRawCode_Validating(sender As Object, e As CancelEventArgs) Handles cmbRawCode.Validating
-    '    RetrieveQtyPO()
-    'End Sub
-
-    'Private Sub cmbRawCode_Validated(sender As Object, e As EventArgs) Handles cmbRawCode.Validated
-    '    RetrieveQtyPO()
-    'End Sub
 #End Region
 
 

@@ -90,36 +90,37 @@ Public Class ClsPO
             Throw ex
         End Try
     End Function
-    Public Function RetrieveByDetailRaw(headerID As Long) As PODetailModel
+    Public Function RetrieveByDetailRaw(headerID As Long, rawmatrialID As Integer) As PODetailModel
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        'Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
+        Dim dataTable As DataTable = New DataTable
         Dim podetailModel As PODetailModel = New PODetailModel
-        Dim query As String = "Select * From v_PODetail Where POHeaderID='" & headerID & "'"
+
+        Dim query As String = "Select * From v_PODetail Where POHeaderID='" & headerID & "'  AND RawMaterialID = '" & rawmatrialID & "'"
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             While dataAccess.reader.Read
                 With dataAccess.reader
-                    If Not IsDBNull(.Item("POHeaderID")) Then
-                        podetailModel.POHeaderID = .Item("POHeaderID")
-                        If IsDBNull(.Item("PIHeaderID")) Then
-                            podetailModel.PIHeaderID = 0
-                        Else
-                            podetailModel.PIHeaderID = .Item("PIHeaderID")
-                        End If
-                        If IsDBNull(.Item("PINo")) Then
-                            podetailModel.PINo = 0
-                        Else
-                            podetailModel.PINo = .Item("PINo")
-                        End If
-                        podetailModel.RawMaterialID = .Item("RawMaterialID")
-                        podetailModel.RawMaterialName = .Item("RawMaterialName")
-                        PODetailModel.UnitID = .Item("UnitID")
-                        PODetailModel.UnitName = .Item("UnitName")
-                        PODetailModel.Quantity = .Item("Quantity")
-                        PODetailModel.UnitPrice = .Item("UnitPrice")
-                        PODetailModel.PODate = .Item("PODate")
-                        PODetailModel.PONo = .Item("PONo")
-                        PODetailModel.Total = .Item("Total")
+                    podetailModel.POHeaderID = .Item("POHeaderID")
+                    If IsDBNull(.Item("PIHeaderID")) Then
+                        podetailModel.PIHeaderID = 0
+                    Else
+                        podetailModel.PIHeaderID = .Item("PIHeaderID")
                     End If
+                    If IsDBNull(.Item("PINo")) Then
+                        podetailModel.PINo = 0
+                    Else
+                        podetailModel.PINo = .Item("PINo")
+                    End If
+                    podetailModel.RawMaterialID = .Item("RawMaterialID")
+                    podetailModel.RawMaterialName = .Item("RawMaterialName")
+                    podetailModel.UnitID = .Item("UnitID")
+                    podetailModel.UnitName = .Item("UnitName")
+                    podetailModel.Quantity = .Item("Quantity")
+                    podetailModel.UnitPrice = .Item("UnitPrice")
+                    podetailModel.PODate = .Item("PODate")
+                    podetailModel.PONo = .Item("PONo")
+                    podetailModel.Total = .Item("Total")
                 End With
             End While
             dataAccess.reader.Close()
@@ -192,38 +193,7 @@ Public Class ClsPO
             Return Nothing
         End Try
     End Function
-    Public Function RetrieveByDetailRawcode(headerID As Long) As PODetailModel
-        Dim dataAccess As ClsDataAccess = New ClsDataAccess
-        Dim podetailModel As PODetailModel = New PODetailModel
-        Dim query As String = "Select * From PODetail Where POHeaderID='" & headerID & "'"
-        Try
-            dataAccess.reader = dataAccess.ExecuteReader(query)
-            While dataAccess.reader.Read
-                With dataAccess.reader
-                    If Not IsDBNull(.Item("POHeaderID")) Then
-                        podetailModel.POHeaderID = .Item("POHeaderID")
-                        If IsDBNull(.Item("PIHeaderID")) Then
-                            podetailModel.PIHeaderID = 0
-                        Else
-                            podetailModel.PIHeaderID = .Item("PIHeaderID")
-                        End If
-                        podetailModel.RawMaterialID = .Item("RawMaterialID")
-                        podetailModel.UnitID = .Item("UnitID")
-                        podetailModel.Quantity = .Item("Quantity")
-                        podetailModel.UnitPrice = .Item("UnitPrice")
-
-                    End If
-                End With
-            End While
-            dataAccess.reader.Close()
-            dataAccess = Nothing
-            Return podetailModel
-        Catch ex As Exception
-            dataAccess = Nothing
-            Throw ex
-        End Try
-
-    End Function
+  
 #End Region
 
 #Region "Method Generated"
