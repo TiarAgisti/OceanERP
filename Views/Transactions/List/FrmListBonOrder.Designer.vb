@@ -41,6 +41,7 @@ Partial Class FrmListBonOrder
         Me.btnView = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.dgv = New System.Windows.Forms.DataGridView()
+        Me.btnEdit = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -166,6 +167,7 @@ Partial Class FrmListBonOrder
         'Panel2
         '
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Controls.Add(Me.btnEdit)
         Me.Panel2.Controls.Add(Me.btnAdd)
         Me.Panel2.Controls.Add(Me.btnRefresh)
         Me.Panel2.Controls.Add(Me.btnView)
@@ -188,7 +190,7 @@ Partial Class FrmListBonOrder
         '
         'btnRefresh
         '
-        Me.btnRefresh.Location = New System.Drawing.Point(172, 4)
+        Me.btnRefresh.Location = New System.Drawing.Point(253, 4)
         Me.btnRefresh.Name = "btnRefresh"
         Me.btnRefresh.Size = New System.Drawing.Size(75, 23)
         Me.btnRefresh.TabIndex = 35
@@ -207,7 +209,7 @@ Partial Class FrmListBonOrder
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(253, 5)
+        Me.btnExit.Location = New System.Drawing.Point(334, 5)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(75, 23)
         Me.btnExit.TabIndex = 36
@@ -222,6 +224,16 @@ Partial Class FrmListBonOrder
         Me.dgv.Name = "dgv"
         Me.dgv.Size = New System.Drawing.Size(780, 251)
         Me.dgv.TabIndex = 54
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Enabled = False
+        Me.btnEdit.Location = New System.Drawing.Point(172, 4)
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(75, 23)
+        Me.btnEdit.TabIndex = 37
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.UseVisualStyleBackColor = True
         '
         'FrmListBonOrder
         '
@@ -263,4 +275,5 @@ Partial Class FrmListBonOrder
     Friend WithEvents btnView As Button
     Friend WithEvents btnExit As Button
     Friend WithEvents dgv As DataGridView
+    Friend WithEvents btnEdit As Button
 End Class

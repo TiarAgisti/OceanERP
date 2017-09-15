@@ -18,8 +18,9 @@
         Try
             roleModel = roleBFC.RetrieveDetailsByRoleIDMenuID(roleIDUser, Tag)
             If roleModel.IsCreate = True Then btnAdd.Enabled = True
-            If roleModel.IsUpdate = True Then btnView.Enabled = True
-            If roleModel.IsDelete = True Then btnView.Enabled = True
+            If roleModel.IsUpdate = True Then btnEdit.Enabled = True
+            If roleModel.IsDelete = True Then btnEdit.Enabled = True
+            If roleModel.IsApprove = True Then btnView.Enabled = True
         Catch ex As Exception
             Throw ex
         Finally
@@ -33,13 +34,13 @@
             dgv.Columns(0).Visible = False
 
             dgv.Columns(1).HeaderText = "No. Bon Order"
-            dgv.Columns(1).Width = 150
+            dgv.Columns(1).Width = 180
 
             dgv.Columns(2).HeaderText = "Date Issues"
             dgv.Columns(2).DefaultCellStyle.Format = "dd-MMM-yyyy"
 
             dgv.Columns(3).HeaderText = "PI No"
-            dgv.Columns(3).Width = 150
+            dgv.Columns(3).Width = 180
 
             dgv.Columns(4).HeaderText = "PO No"
             dgv.Columns(5).HeaderText = "Brand / Buyer"
@@ -135,7 +136,7 @@
     Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
         Try
             Dim frm As FrmBonOrder = New FrmBonOrder
-            frm.conBon = "Update"
+            frm.conBon = "View"
             FrmBonOrder.bonOrderID = GetID()
             frm.ShowDialog()
         Catch ex As Exception
@@ -168,6 +169,17 @@
     Private Sub FrmListBonOrder_Activated(sender As Object, e As EventArgs) Handles MyBase.Activated
         Try
             ListData()
+        Catch ex As Exception
+            MsgBoxError("Error List Bon Order : " + ex.Message)
+        End Try
+    End Sub
+
+    Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        Try
+            Dim frm As FrmBonOrder = New FrmBonOrder
+            frm.conBon = "Update"
+            FrmBonOrder.bonOrderID = GetID()
+            frm.ShowDialog()
         Catch ex As Exception
             MsgBoxError("Error List Bon Order : " + ex.Message)
         End Try

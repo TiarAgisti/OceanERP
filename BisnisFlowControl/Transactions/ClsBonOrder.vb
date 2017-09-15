@@ -76,8 +76,9 @@
                     detailModel.LabsDipsNo = .Item("LabsDipsNo")
                     detailModel.Bruto = .Item("Bruto")
                     detailModel.Netto = .Item("Netto")
-                    detailModel.FabricName = .Item("FabricName")
-                    detailModel.WidthWeight = .Item("WidthWeight")
+                    detailModel.StyleName = .Item("StyleName")
+                    detailModel.Width = .Item("Width")
+                    detailModel.Weight = .Item("Weight")
                     detailModel.ColorName = .Item("ColorName")
                     myList.Add(detailModel)
                 End While
@@ -209,13 +210,20 @@
         Return SQL
     End Function
 
+    Protected Function SqlUpdateStatusHeader(myModel As BonOrderHeaderModel) As String
+        Dim SQL As String
+        SQL = "Update BonOrderHeader Set Status = '" & myModel.Status & "',UpdatedBy = '" & myModel.UpdatedBy & "'"
+        SQL += ",UpdatedDate = '" & myModel.UpdatedDate & "' Where PIHeaderID = '" & myModel.PIHeaderID & "'"
+        Return SQL
+    End Function
+
     Protected Function SqlDeleteDetail(myModel As BonOrderHeaderModel) As String
         Dim SQL As String
         SQL = "Delete From BonOrderDetail Where BonOrderID = '" & myModel.BonOrderID & "'"
         Return SQL
     End Function
 
-    Public Function InsertData(bonHeaderModel As BonOrderHeaderModel, listBonDetail As List(Of BonOrderDetailModel), piModel As PIHeaderModel, logModel As LogHistoryModel) As Boolean
+    Public Function InsertData(bonHeaderModel As BonOrderHeaderModel, listBonDetail As List(Of BonOrderDetailModel), logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
@@ -229,9 +237,6 @@
         For Each detail In listBonDetail
             queryList.Add(SqlInsertDetail(detail))
         Next
-
-        'update status proforma invoice
-        queryList.Add(piBFC.SqlUpdateStatusHeader(piModel))
 
         'insert log history
         queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
@@ -275,6 +280,35 @@
             Throw ex
         End Try
         Return statusUpdate
+    End Function
+
+    Public Function UpdateStatus(headerModel As BonOrderHeaderModel, piModel As PIHeaderModel, logModel As LogHistoryModel) As Boolean
+        Dim status As Boolean
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
+
+        Dim queryList As List(Of String) = New List(Of String)
+
+        Try
+            'update header Bon Order
+            queryList.Add(SqlUpdateStatusHeader(headerModel))
+
+            'update proforma invoice
+            queryList.Add(piBFC.SqlUpdateStatusHeader(piModel))
+
+            'insert log history
+            queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
+
+            dataAccess.InsertMasterDetail(queryList)
+            dataAccess = Nothing
+            status = True
+        Catch ex As Exception
+            dataAccess = Nothing
+            status = False
+            Throw ex
+        End Try
+        Return status
     End Function
 #End Region
 End Class
