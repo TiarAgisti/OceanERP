@@ -816,6 +816,7 @@ Partial Class FrmPurchaseOrder
         Me.dgvrawmatrial.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvrawmatrial.Location = New System.Drawing.Point(10, 89)
         Me.dgvrawmatrial.Name = "dgvrawmatrial"
+        Me.dgvrawmatrial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvrawmatrial.Size = New System.Drawing.Size(837, 79)
         Me.dgvrawmatrial.TabIndex = 112
         '

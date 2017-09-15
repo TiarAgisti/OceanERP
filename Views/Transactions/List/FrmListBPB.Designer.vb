@@ -137,9 +137,9 @@ Partial Class FrmListBPB
         Me.chkBPBDate.AutoSize = True
         Me.chkBPBDate.Location = New System.Drawing.Point(3, 32)
         Me.chkBPBDate.Name = "chkBPBDate"
-        Me.chkBPBDate.Size = New System.Drawing.Size(67, 17)
+        Me.chkBPBDate.Size = New System.Drawing.Size(73, 17)
         Me.chkBPBDate.TabIndex = 58
-        Me.chkBPBDate.Text = "PO Date"
+        Me.chkBPBDate.Text = "BPB Date"
         Me.chkBPBDate.UseVisualStyleBackColor = True
         '
         'chkBPBNo

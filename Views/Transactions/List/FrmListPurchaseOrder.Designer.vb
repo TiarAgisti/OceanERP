@@ -31,7 +31,7 @@ Partial Class FrmListPurchaseOrder
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.chkSupplier = New System.Windows.Forms.CheckBox()
-        Me.chkPIDate = New System.Windows.Forms.CheckBox()
+        Me.chkPODate = New System.Windows.Forms.CheckBox()
         Me.chkPONo = New System.Windows.Forms.CheckBox()
         Me.btnFind = New System.Windows.Forms.Button()
         Me.txtSupplier = New System.Windows.Forms.TextBox()
@@ -100,7 +100,7 @@ Partial Class FrmListPurchaseOrder
         '
         Me.Panel1.Controls.Add(Me.btnClear)
         Me.Panel1.Controls.Add(Me.chkSupplier)
-        Me.Panel1.Controls.Add(Me.chkPIDate)
+        Me.Panel1.Controls.Add(Me.chkPODate)
         Me.Panel1.Controls.Add(Me.chkPONo)
         Me.Panel1.Controls.Add(Me.btnFind)
         Me.Panel1.Controls.Add(Me.txtSupplier)
@@ -133,15 +133,15 @@ Partial Class FrmListPurchaseOrder
         Me.chkSupplier.Text = "Supplier"
         Me.chkSupplier.UseVisualStyleBackColor = True
         '
-        'chkPIDate
+        'chkPODate
         '
-        Me.chkPIDate.AutoSize = True
-        Me.chkPIDate.Location = New System.Drawing.Point(3, 32)
-        Me.chkPIDate.Name = "chkPIDate"
-        Me.chkPIDate.Size = New System.Drawing.Size(67, 17)
-        Me.chkPIDate.TabIndex = 58
-        Me.chkPIDate.Text = "PO Date"
-        Me.chkPIDate.UseVisualStyleBackColor = True
+        Me.chkPODate.AutoSize = True
+        Me.chkPODate.Location = New System.Drawing.Point(3, 32)
+        Me.chkPODate.Name = "chkPODate"
+        Me.chkPODate.Size = New System.Drawing.Size(67, 17)
+        Me.chkPODate.TabIndex = 58
+        Me.chkPODate.Text = "PO Date"
+        Me.chkPODate.UseVisualStyleBackColor = True
         '
         'chkPONo
         '
@@ -250,7 +250,7 @@ Partial Class FrmListPurchaseOrder
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnClear As Button
     Friend WithEvents chkSupplier As CheckBox
-    Friend WithEvents chkPIDate As CheckBox
+    Friend WithEvents chkPODate As CheckBox
     Friend WithEvents chkPONo As CheckBox
     Friend WithEvents btnFind As Button
     Friend WithEvents txtSupplier As TextBox

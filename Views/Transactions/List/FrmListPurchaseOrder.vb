@@ -96,7 +96,7 @@
             poNo = ""
         End If
 
-        If chkPIDate.Checked = True Then
+        If chkPODate.Checked = True Then
             dateFrom = dtpDateFrom.Value
             dateTo = dtpDateTo.Value
         End If
