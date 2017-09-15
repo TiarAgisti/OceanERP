@@ -351,7 +351,7 @@ Partial Class FrmBPB
         '
         'btnAddRawToList
         '
-        Me.btnAddRawToList.Location = New System.Drawing.Point(630, 65)
+        Me.btnAddRawToList.Location = New System.Drawing.Point(630, 60)
         Me.btnAddRawToList.Name = "btnAddRawToList"
         Me.btnAddRawToList.Size = New System.Drawing.Size(102, 22)
         Me.btnAddRawToList.TabIndex = 141
@@ -403,12 +403,12 @@ Partial Class FrmBPB
         Me.Panel3.Controls.Add(Me.btnVoid)
         Me.Panel3.Location = New System.Drawing.Point(11, 248)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(485, 32)
+        Me.Panel3.Size = New System.Drawing.Size(492, 32)
         Me.Panel3.TabIndex = 136
         '
         'btnClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(410, 3)
+        Me.btnClose.Location = New System.Drawing.Point(329, 3)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
         Me.btnClose.TabIndex = 130
@@ -458,12 +458,13 @@ Partial Class FrmBPB
         'btnVoid
         '
         Me.btnVoid.Enabled = False
-        Me.btnVoid.Location = New System.Drawing.Point(329, 3)
+        Me.btnVoid.Location = New System.Drawing.Point(410, 3)
         Me.btnVoid.Name = "btnVoid"
         Me.btnVoid.Size = New System.Drawing.Size(75, 23)
         Me.btnVoid.TabIndex = 132
         Me.btnVoid.Text = "Void"
         Me.btnVoid.UseVisualStyleBackColor = True
+        Me.btnVoid.Visible = False
         '
         'Label31
         '

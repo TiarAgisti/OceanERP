@@ -27,7 +27,6 @@ Partial Class FrmPlaning
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
-        Me.btnView = New System.Windows.Forms.Button()
         Me.txtPONo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtPINo = New System.Windows.Forms.TextBox()
@@ -43,9 +42,14 @@ Partial Class FrmPlaning
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.btnView = New System.Windows.Forms.Button()
         Me.dgv = New System.Windows.Forms.DataGridView()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cmbCari = New System.Windows.Forms.ComboBox()
+        Me.txtCari = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label5
@@ -58,7 +62,7 @@ Partial Class FrmPlaning
         Me.Label5.Size = New System.Drawing.Size(903, 50)
         Me.Label5.TabIndex = 42
         Me.Label5.Tag = "25"
-        Me.Label5.Text = "Planning"
+        Me.Label5.Text = "Planning Expected Receipt Date"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel1
@@ -66,7 +70,6 @@ Partial Class FrmPlaning
         Me.Panel1.Controls.Add(Me.btnRefresh)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.btnAdd)
-        Me.Panel1.Controls.Add(Me.btnView)
         Me.Panel1.Controls.Add(Me.txtPONo)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.txtPINo)
@@ -85,7 +88,7 @@ Partial Class FrmPlaning
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 50)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(903, 128)
+        Me.Panel1.Size = New System.Drawing.Size(903, 131)
         Me.Panel1.TabIndex = 64
         '
         'btnRefresh
@@ -115,16 +118,6 @@ Partial Class FrmPlaning
         Me.btnAdd.Tag = "25"
         Me.btnAdd.Text = "Update PO"
         Me.btnAdd.UseVisualStyleBackColor = True
-        '
-        'btnView
-        '
-        Me.btnView.Location = New System.Drawing.Point(771, 59)
-        Me.btnView.Name = "btnView"
-        Me.btnView.Size = New System.Drawing.Size(75, 23)
-        Me.btnView.TabIndex = 65
-        Me.btnView.Text = "Input BPB"
-        Me.btnView.UseVisualStyleBackColor = True
-        Me.btnView.Visible = False
         '
         'txtPONo
         '
@@ -250,28 +243,69 @@ Partial Class FrmPlaning
         Me.Label13.TabIndex = 32
         Me.Label13.Text = "Term Of Payment"
         '
+        'btnView
+        '
+        Me.btnView.Location = New System.Drawing.Point(816, 291)
+        Me.btnView.Name = "btnView"
+        Me.btnView.Size = New System.Drawing.Size(75, 23)
+        Me.btnView.TabIndex = 65
+        Me.btnView.Text = "Input BPB"
+        Me.btnView.UseVisualStyleBackColor = True
+        Me.btnView.Visible = False
+        '
         'dgv
         '
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgv.Location = New System.Drawing.Point(0, 178)
+        Me.dgv.Location = New System.Drawing.Point(0, 320)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(903, 170)
+        Me.dgv.Size = New System.Drawing.Size(903, 59)
         Me.dgv.TabIndex = 65
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.cmbCari)
+        Me.GroupBox1.Controls.Add(Me.txtCari)
+        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 181)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(903, 50)
+        Me.GroupBox1.TabIndex = 67
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Search PO"
+        '
+        'cmbCari
+        '
+        Me.cmbCari.FormattingEnabled = True
+        Me.cmbCari.Items.AddRange(New Object() {"PO No", "Supplier Name"})
+        Me.cmbCari.Location = New System.Drawing.Point(6, 19)
+        Me.cmbCari.Name = "cmbCari"
+        Me.cmbCari.Size = New System.Drawing.Size(256, 21)
+        Me.cmbCari.TabIndex = 11
+        '
+        'txtCari
+        '
+        Me.txtCari.Location = New System.Drawing.Point(274, 19)
+        Me.txtCari.Name = "txtCari"
+        Me.txtCari.Size = New System.Drawing.Size(350, 20)
+        Me.txtCari.TabIndex = 12
         '
         'FrmPlaning
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(903, 348)
+        Me.ClientSize = New System.Drawing.Size(903, 379)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.btnView)
         Me.Name = "FrmPlaning"
         Me.Text = "FrmRMPlaning"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -298,4 +332,7 @@ Partial Class FrmPlaning
     Friend WithEvents btnRefresh As Button
     Friend WithEvents btnAdd As Button
     Friend WithEvents btnView As Button
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents cmbCari As ComboBox
+    Friend WithEvents txtCari As TextBox
 End Class

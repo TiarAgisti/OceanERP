@@ -451,20 +451,20 @@ Public Class FrmBPB
         End Try
     End Sub
 
-    Sub VoidData()
-        Dim bpbBFC As ClsBPB = New ClsBPB
-        Dim logpo As ClsLogHistory = New ClsLogHistory
-        Dim logDesc As String = "Void BPB where BPBNO = " + txtBPBNo.Text
-        condition = "Void"
-        Try
-            If bpbBFC.UpdateStatusHeader(SetDataHeader(bpbheaderID, txtBPBNo.Text), logpo.SetLogHistoryTrans(logDesc)) Then
-                MsgBoxVoid()
-                PreCreateDisplay()
-            End If
-        Catch ex As Exception
-            MsgBoxError(ex.Message)
-        End Try
-    End Sub
+    'Sub VoidData()
+    '    Dim bpbBFC As ClsBPB = New ClsBPB
+    '    Dim logpo As ClsLogHistory = New ClsLogHistory
+    '    Dim logDesc As String = "Void BPB where BPBNO = " + txtBPBNo.Text
+    '    condition = "Void"
+    '    Try
+    '        If bpbBFC.UpdateStatusHeader(SetDataHeader(bpbheaderID, txtBPBNo.Text), logpo.SetLogHistoryTrans(logDesc)) Then
+    '            MsgBoxVoid()
+    '            PreCreateDisplay()
+    '        End If
+    '    Catch ex As Exception
+    '        MsgBoxError(ex.Message)
+    '    End Try
+    'End Sub
     Sub conditionbutton()
         dgv.Enabled = False
         cmbPI.Enabled = False
@@ -585,13 +585,13 @@ Public Class FrmBPB
             MsgBoxWarning("Qty Received Can't Empty")
             txtQtyReceived.Focus()
         ElseIf Val(txtQtyPO.Text) = Val(TextBox1.Text) Then
-            MsgBoxError("Qty This PO Is Full In BPB ")
+            MsgBoxError("Qty PO Is Full In BPB ")
             txtQtyReceived.Focus()
         ElseIf Val(txtQtyReceived.Text) > Val(txtQtyPO.Text) Then
-            MsgBoxError("Qty Received LEBIH BESAR DARI QTY po ")
+            MsgBoxError("Qty Received Greater than Qty PO ")
             txtQtyReceived.Focus()
         ElseIf Val(txtQtyReceived.Text) > restQtyBPB Then
-            MsgBoxError("Qty Received Not Valid ")
+            MsgBoxError("Qty Received Greater than the Rest Qty")
             txtQtyReceived.Focus()
         ElseIf txtQuantityPackaging.Text = "" Then
             MsgBoxWarning("Qty Packaging Can't Empty")
@@ -670,9 +670,6 @@ Public Class FrmBPB
     End Sub
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
         ApprovedData()
-    End Sub
-    Private Sub btnVoid_Click(sender As Object, e As EventArgs) Handles btnVoid.Click
-        VoidData()
     End Sub
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Close()
