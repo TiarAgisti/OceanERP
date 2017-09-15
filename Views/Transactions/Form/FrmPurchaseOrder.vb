@@ -662,7 +662,7 @@ Public Class FrmPurchaseOrder
 
     Sub PreUpdateDisplay()
         Try
-            ClearAllData()
+            'ClearAllData()
             ClearDataGrid()
             CheckPermissions()
             PrepareHeaderByID()

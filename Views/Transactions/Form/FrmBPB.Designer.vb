@@ -25,8 +25,8 @@ Partial Class FrmBPB
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmBPB))
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnShowList = New System.Windows.Forms.Button()
         Me.cmbPONo = New System.Windows.Forms.ComboBox()
-        Me.btnRawAddList = New System.Windows.Forms.Button()
         Me.dtDocDate = New System.Windows.Forms.DateTimePicker()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtDocNo = New System.Windows.Forms.TextBox()
@@ -47,6 +47,8 @@ Partial Class FrmBPB
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabProductName = New System.Windows.Forms.TabPage()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnAddRawToList = New System.Windows.Forms.Button()
         Me.cmbPI = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.cmbUnit = New System.Windows.Forms.ComboBox()
@@ -59,8 +61,6 @@ Partial Class FrmBPB
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnVoid = New System.Windows.Forms.Button()
         Me.Label31 = New System.Windows.Forms.Label()
-        Me.btnRawDelList = New System.Windows.Forms.Button()
-        Me.btnAddListBPB = New System.Windows.Forms.Button()
         Me.dgv = New System.Windows.Forms.DataGridView()
         Me.txtQuantityPackaging = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -84,14 +84,14 @@ Partial Class FrmBPB
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(0, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(843, 63)
+        Me.Label3.Size = New System.Drawing.Size(863, 63)
         Me.Label3.TabIndex = 25
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.btnShowList)
         Me.Panel1.Controls.Add(Me.cmbPONo)
-        Me.Panel1.Controls.Add(Me.btnRawAddList)
         Me.Panel1.Controls.Add(Me.dtDocDate)
         Me.Panel1.Controls.Add(Me.Label10)
         Me.Panel1.Controls.Add(Me.txtDocNo)
@@ -112,8 +112,17 @@ Partial Class FrmBPB
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 63)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(843, 150)
+        Me.Panel1.Size = New System.Drawing.Size(863, 150)
         Me.Panel1.TabIndex = 26
+        '
+        'btnShowList
+        '
+        Me.btnShowList.Location = New System.Drawing.Point(637, 124)
+        Me.btnShowList.Name = "btnShowList"
+        Me.btnShowList.Size = New System.Drawing.Size(102, 24)
+        Me.btnShowList.TabIndex = 1
+        Me.btnShowList.Text = "Show List"
+        Me.btnShowList.UseVisualStyleBackColor = True
         '
         'cmbPONo
         '
@@ -122,15 +131,6 @@ Partial Class FrmBPB
         Me.cmbPONo.Name = "cmbPONo"
         Me.cmbPONo.Size = New System.Drawing.Size(188, 21)
         Me.cmbPONo.TabIndex = 115
-        '
-        'btnRawAddList
-        '
-        Me.btnRawAddList.Location = New System.Drawing.Point(637, 123)
-        Me.btnRawAddList.Name = "btnRawAddList"
-        Me.btnRawAddList.Size = New System.Drawing.Size(93, 23)
-        Me.btnRawAddList.TabIndex = 114
-        Me.btnRawAddList.Text = "Show List"
-        Me.btnRawAddList.UseVisualStyleBackColor = True
         '
         'dtDocDate
         '
@@ -278,7 +278,7 @@ Partial Class FrmBPB
         Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox3.Location = New System.Drawing.Point(0, 213)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(843, 374)
+        Me.GroupBox3.Size = New System.Drawing.Size(863, 374)
         Me.GroupBox3.TabIndex = 27
         Me.GroupBox3.TabStop = False
         '
@@ -289,19 +289,19 @@ Partial Class FrmBPB
         Me.TabControl1.Location = New System.Drawing.Point(3, 16)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(837, 326)
+        Me.TabControl1.Size = New System.Drawing.Size(857, 326)
         Me.TabControl1.TabIndex = 0
         '
         'TabProductName
         '
+        Me.TabProductName.Controls.Add(Me.Button1)
+        Me.TabProductName.Controls.Add(Me.btnAddRawToList)
         Me.TabProductName.Controls.Add(Me.cmbPI)
         Me.TabProductName.Controls.Add(Me.Label11)
         Me.TabProductName.Controls.Add(Me.cmbUnit)
         Me.TabProductName.Controls.Add(Me.txtQtyPO)
         Me.TabProductName.Controls.Add(Me.Panel3)
         Me.TabProductName.Controls.Add(Me.Label31)
-        Me.TabProductName.Controls.Add(Me.btnRawDelList)
-        Me.TabProductName.Controls.Add(Me.btnAddListBPB)
         Me.TabProductName.Controls.Add(Me.dgv)
         Me.TabProductName.Controls.Add(Me.txtQuantityPackaging)
         Me.TabProductName.Controls.Add(Me.Label16)
@@ -313,10 +313,28 @@ Partial Class FrmBPB
         Me.TabProductName.Location = New System.Drawing.Point(4, 22)
         Me.TabProductName.Name = "TabProductName"
         Me.TabProductName.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabProductName.Size = New System.Drawing.Size(829, 300)
+        Me.TabProductName.Size = New System.Drawing.Size(849, 300)
         Me.TabProductName.TabIndex = 0
         Me.TabProductName.Text = "Produk Name"
         Me.TabProductName.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(738, 68)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(102, 21)
+        Me.Button1.TabIndex = 142
+        Me.Button1.Text = "Delete From List"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'btnAddRawToList
+        '
+        Me.btnAddRawToList.Location = New System.Drawing.Point(630, 68)
+        Me.btnAddRawToList.Name = "btnAddRawToList"
+        Me.btnAddRawToList.Size = New System.Drawing.Size(102, 22)
+        Me.btnAddRawToList.TabIndex = 141
+        Me.btnAddRawToList.Text = "Add To List"
+        Me.btnAddRawToList.UseVisualStyleBackColor = True
         '
         'cmbPI
         '
@@ -339,7 +357,7 @@ Partial Class FrmBPB
         'cmbUnit
         '
         Me.cmbUnit.FormattingEnabled = True
-        Me.cmbUnit.Location = New System.Drawing.Point(421, 62)
+        Me.cmbUnit.Location = New System.Drawing.Point(436, 65)
         Me.cmbUnit.Name = "cmbUnit"
         Me.cmbUnit.Size = New System.Drawing.Size(188, 21)
         Me.cmbUnit.TabIndex = 138
@@ -347,7 +365,7 @@ Partial Class FrmBPB
         'txtQtyPO
         '
         Me.txtQtyPO.Enabled = False
-        Me.txtQtyPO.Location = New System.Drawing.Point(121, 62)
+        Me.txtQtyPO.Location = New System.Drawing.Point(121, 65)
         Me.txtQtyPO.MaxLength = 50
         Me.txtQtyPO.Name = "txtQtyPO"
         Me.txtQtyPO.Size = New System.Drawing.Size(188, 20)
@@ -428,42 +446,24 @@ Partial Class FrmBPB
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(315, 69)
+        Me.Label31.Location = New System.Drawing.Point(315, 68)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(80, 13)
         Me.Label31.TabIndex = 134
         Me.Label31.Text = "Unit Packaging"
         '
-        'btnRawDelList
-        '
-        Me.btnRawDelList.Location = New System.Drawing.Point(727, 64)
-        Me.btnRawDelList.Name = "btnRawDelList"
-        Me.btnRawDelList.Size = New System.Drawing.Size(95, 23)
-        Me.btnRawDelList.TabIndex = 114
-        Me.btnRawDelList.Text = "Delete From List"
-        Me.btnRawDelList.UseVisualStyleBackColor = True
-        '
-        'btnAddListBPB
-        '
-        Me.btnAddListBPB.Location = New System.Drawing.Point(626, 64)
-        Me.btnAddListBPB.Name = "btnAddListBPB"
-        Me.btnAddListBPB.Size = New System.Drawing.Size(95, 23)
-        Me.btnAddListBPB.TabIndex = 113
-        Me.btnAddListBPB.Text = "Add To List"
-        Me.btnAddListBPB.UseVisualStyleBackColor = True
-        '
         'dgv
         '
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.dgv.Location = New System.Drawing.Point(10, 89)
+        Me.dgv.Location = New System.Drawing.Point(10, 96)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(812, 155)
+        Me.dgv.Size = New System.Drawing.Size(830, 146)
         Me.dgv.TabIndex = 112
         '
         'txtQuantityPackaging
         '
-        Me.txtQuantityPackaging.Location = New System.Drawing.Point(421, 36)
+        Me.txtQuantityPackaging.Location = New System.Drawing.Point(436, 39)
         Me.txtQuantityPackaging.MaxLength = 50
         Me.txtQuantityPackaging.Name = "txtQuantityPackaging"
         Me.txtQuantityPackaging.Size = New System.Drawing.Size(188, 20)
@@ -472,7 +472,7 @@ Partial Class FrmBPB
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(315, 42)
+        Me.Label16.Location = New System.Drawing.Point(315, 43)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(100, 13)
         Me.Label16.TabIndex = 111
@@ -480,7 +480,7 @@ Partial Class FrmBPB
         '
         'txtQtyReceived
         '
-        Me.txtQtyReceived.Location = New System.Drawing.Point(421, 12)
+        Me.txtQtyReceived.Location = New System.Drawing.Point(436, 13)
         Me.txtQtyReceived.MaxLength = 50
         Me.txtQtyReceived.Name = "txtQtyReceived"
         Me.txtQtyReceived.Size = New System.Drawing.Size(188, 20)
@@ -489,7 +489,7 @@ Partial Class FrmBPB
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(315, 12)
+        Me.Label15.Location = New System.Drawing.Point(315, 16)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(95, 13)
         Me.Label15.TabIndex = 109
@@ -498,7 +498,7 @@ Partial Class FrmBPB
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(8, 62)
+        Me.Label14.Location = New System.Drawing.Point(8, 65)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(64, 13)
         Me.Label14.TabIndex = 107
@@ -507,7 +507,7 @@ Partial Class FrmBPB
         'cmbRawCode
         '
         Me.cmbRawCode.FormattingEnabled = True
-        Me.cmbRawCode.Location = New System.Drawing.Point(121, 36)
+        Me.cmbRawCode.Location = New System.Drawing.Point(121, 39)
         Me.cmbRawCode.Name = "cmbRawCode"
         Me.cmbRawCode.Size = New System.Drawing.Size(188, 21)
         Me.cmbRawCode.TabIndex = 102
@@ -525,7 +525,7 @@ Partial Class FrmBPB
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(843, 584)
+        Me.ClientSize = New System.Drawing.Size(863, 584)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label3)
@@ -565,7 +565,6 @@ Partial Class FrmBPB
     Friend WithEvents Label9 As Label
     Friend WithEvents txtDONO As TextBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents btnRawAddList As Button
     Friend WithEvents cmbPONo As ComboBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents TabControl1 As TabControl
@@ -587,8 +586,6 @@ Partial Class FrmBPB
     Friend WithEvents txtVAT As TextBox
     Friend WithEvents Label28 As Label
     Friend WithEvents txtDiscount As TextBox
-    Friend WithEvents btnRawDelList As Button
-    Friend WithEvents btnAddListBPB As Button
     Friend WithEvents Label25 As Label
     Friend WithEvents dgv As DataGridView
     Friend WithEvents txtQuantityPackaging As TextBox
@@ -597,11 +594,14 @@ Partial Class FrmBPB
     Friend WithEvents txtQtyReceived As TextBox
     Friend WithEvents Label26 As Label
     Friend WithEvents Label15 As Label
-    Friend WithEvents Label14 As Label
     Friend WithEvents cmbRawCode As ComboBox
     Friend WithEvents Label20 As Label
-    Friend WithEvents txtQtyPO As TextBox
     Friend WithEvents cmbUnit As ComboBox
     Friend WithEvents cmbPI As ComboBox
     Friend WithEvents Label11 As Label
+    Friend WithEvents txtQtyPO As TextBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents btnShowList As Button
+    Friend WithEvents btnAddRawToList As Button
+    Friend WithEvents Button1 As Button
 End Class

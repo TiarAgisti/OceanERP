@@ -90,28 +90,37 @@ Public Class ClsPO
             Throw ex
         End Try
     End Function
-    Public Function RetrieveByDetailRaw(headerID As Long) As PODetailModel
+    Public Function RetrieveByDetailRaw(headerID As Long, rawmatrialID As Integer) As PODetailModel
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        'Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
+        Dim dataTable As DataTable = New DataTable
         Dim podetailModel As PODetailModel = New PODetailModel
-        Dim query As String = "Select * From v_PODetail Where POHeaderID='" & headerID & "'"
+
+        Dim query As String = "Select * From v_PODetail Where POHeaderID='" & headerID & "'  AND RawMaterialID = '" & rawmatrialID & "'"
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             While dataAccess.reader.Read
                 With dataAccess.reader
-                    If Not IsDBNull(.Item("POHeaderID")) Then
-                        podetailModel.POHeaderID = .Item("POHeaderID")
+                    podetailModel.POHeaderID = .Item("POHeaderID")
+                    If IsDBNull(.Item("PIHeaderID")) Then
+                        podetailModel.PIHeaderID = 0
+                    Else
                         podetailModel.PIHeaderID = .Item("PIHeaderID")
-                        podetailModel.PINo = .Item("PINo")
-                        podetailModel.RawMaterialID = .Item("RawMaterialID")
-                        podetailModel.RawMaterialName = .Item("RawMaterialName")
-                        PODetailModel.UnitID = .Item("UnitID")
-                        PODetailModel.UnitName = .Item("UnitName")
-                        PODetailModel.Quantity = .Item("Quantity")
-                        PODetailModel.UnitPrice = .Item("UnitPrice")
-                        PODetailModel.PODate = .Item("PODate")
-                        PODetailModel.PONo = .Item("PONo")
-                        PODetailModel.Total = .Item("Total")
                     End If
+                    If IsDBNull(.Item("PINo")) Then
+                        podetailModel.PINo = 0
+                    Else
+                        podetailModel.PINo = .Item("PINo")
+                    End If
+                    podetailModel.RawMaterialID = .Item("RawMaterialID")
+                    podetailModel.RawMaterialName = .Item("RawMaterialName")
+                    podetailModel.UnitID = .Item("UnitID")
+                    podetailModel.UnitName = .Item("UnitName")
+                    podetailModel.Quantity = .Item("Quantity")
+                    podetailModel.UnitPrice = .Item("UnitPrice")
+                    podetailModel.PODate = .Item("PODate")
+                    podetailModel.PONo = .Item("PONo")
+                    podetailModel.Total = .Item("Total")
                 End With
             End While
             dataAccess.reader.Close()
@@ -121,6 +130,7 @@ Public Class ClsPO
             dataAccess = Nothing
             Throw ex
         End Try
+
     End Function
     Public Function RetrieveRawMaterialByHeaderID(headerID As Long) As List(Of PODetailModel)
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
@@ -132,8 +142,16 @@ Public Class ClsPO
                 While .Read
                     Dim poDetailModel As PODetailModel = New PODetailModel
                     poDetailModel.POHeaderID = .Item("POHeaderID")
-                    poDetailModel.PIHeaderID = .Item("PIHeaderID")
-                    poDetailModel.PINo = .Item("PINo")
+                    If IsDBNull(.Item("PIHeaderID")) Then
+                        poDetailModel.PIHeaderID = 0
+                    Else
+                        poDetailModel.PIHeaderID = .Item("PIHeaderID")
+                    End If
+                    If IsDBNull(.Item("PINo")) Then
+                        poDetailModel.PINo = 0
+                    Else
+                        poDetailModel.PINo = .Item("PINo")
+                    End If
                     poDetailModel.RawMaterialID = .Item("RawMaterialID")
                     poDetailModel.RawMaterialName = .Item("RawMaterialName")
                     poDetailModel.UnitID = .Item("UnitID")
@@ -175,6 +193,7 @@ Public Class ClsPO
             Return Nothing
         End Try
     End Function
+  
 #End Region
 
 #Region "Method Generated"
@@ -287,11 +306,11 @@ Public Class ClsPO
 
     End Sub
 
-    Protected Function ListComboBoxPI(poID As Long) As DataTable
+    Protected Function ListComboBoxPI(headerID As Long) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable As DataTable = New DataTable
 
-        Dim query As String = "Select PIHeaderID,PINO From v_PODetail where POHeaderID = '" & poID & "'"
+        Dim query As String = "Select PIHeaderID,PINO From v_PODetail where POHeaderID = '" & headerID & "'"
         Try
             dataTable = dataAccess.RetrieveListData(query)
             dataAccess = Nothing
@@ -303,12 +322,12 @@ Public Class ClsPO
         End Try
 
     End Function
-    Public Sub ComboBoxPI(cmb As ComboBox, poID As Long)
+    Public Sub ComboBoxPI(cmb As ComboBox, headerID As Long)
 
 
         Try
             With cmb
-                .DataSource = ListComboBoxPI(poID)
+                .DataSource = ListComboBoxPI(headerID)
                 .DisplayMember = "PINo"
                 .ValueMember = "PIHeaderID"
                 .AutoCompleteMode = AutoCompleteMode.SuggestAppend
@@ -319,11 +338,11 @@ Public Class ClsPO
         End Try
 
     End Sub
-    Protected Function ListComboBoxRaw(poID As Long) As DataTable
+    Protected Function ListComboBoxRaw(headerID As Long) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable As DataTable = New DataTable
 
-        Dim query As String = "Select RawMaterialID,RawMaterialName From v_PODetail Where POHeaderID = '" & poID & "'"
+        Dim query As String = "Select RawMaterialID,RawMaterialName From v_PODetail Where POHeaderID = '" & headerID & "'"
         Try
             dataTable = dataAccess.RetrieveListData(query)
             dataAccess = Nothing
@@ -334,12 +353,12 @@ Public Class ClsPO
             Throw ex
         End Try
     End Function
-    Public Sub ComboBoxRaw(cmb As ComboBox, poID As Long)
+    Public Sub ComboBoxRaw(cmb As ComboBox, headerID As Long)
         Try
 
             With cmb
 
-                .DataSource = ListComboBoxRaw(poID)
+                .DataSource = ListComboBoxRaw(headerID)
 
                 .DisplayMember = "RawMaterialName"
                 .ValueMember = "RawMaterialID"

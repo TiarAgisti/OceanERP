@@ -1,4 +1,13 @@
 ﻿Public Class StockModel
+    Private xStockID As Long
+    Public Property StockID() As Long
+        Get
+            Return xStockID
+        End Get
+        Set(ByVal value As Long)
+            xStockID = value
+        End Set
+    End Property
     Private xPIHeaderID As Long
     Public Property PIHeaderID() As Long
         Get
@@ -17,7 +26,6 @@
             xPINo = value
         End Set
     End Property
-
     Private xRawMaterialID As Integer
     Public Property RawMaterialID() As Integer
         Get
@@ -36,7 +44,6 @@
             xRawMaterialName = value
         End Set
     End Property
-
     Private xQuantityIN As Integer
     Public Property QuantityIN() As Integer
         Get
@@ -56,13 +63,13 @@
         End Set
     End Property
 
-    Private xDocNO As String
-    Public Property DocNO() As String
+    Private xDocID As Long
+    Public Property DocID() As Long
         Get
-            Return xDocNO
+            Return xDocID
         End Get
-        Set(ByVal value As String)
-            xDocNO = value
+        Set(ByVal value As Long)
+            xDocID = value
         End Set
     End Property
 
@@ -76,13 +83,13 @@
         End Set
     End Property
 
-    Private xDoctype As String
-    Public Property Doctype() As String
+    Private xDocType As String
+    Public Property DocType() As String
         Get
-            Return xDoctype
+            Return xDocType
         End Get
         Set(ByVal value As String)
-            xDoctype = value
+            xDocType = value
         End Set
     End Property
 End Class
