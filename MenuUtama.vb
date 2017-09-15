@@ -290,6 +290,7 @@
             toltipUserName.Text = userName
             toltipTanggal.Text = Format(Now, "dd-MM-yyyy")
             toltipIP.Text = stringIPUser
+            toltipCopyRight.Text = "Tiar © All Rights Reserved."
         End If
     End Sub
 

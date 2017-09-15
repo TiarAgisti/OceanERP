@@ -156,9 +156,21 @@
                         .UpdatedBy = userID
                         .UpdatedDate = DateTime.Now
                     Case "Approve"
-
+                        .BonOrderID = orderID
+                        .BonOrderCode = orderCode
+                        .PIHeaderID = cmbPINo.SelectedValue
+                        .DateIssues = Format(dtpDateIssues.Value, "yyyy-MM-dd")
+                        .Status = 2
+                        .UpdatedBy = userID
+                        .UpdatedDate = DateTime.Now
                     Case "Void"
-
+                        .BonOrderID = orderID
+                        .BonOrderCode = orderCode
+                        .PIHeaderID = cmbPINo.SelectedValue
+                        .DateIssues = Format(dtpDateIssues.Value, "yyyy-MM-dd")
+                        .Status = 0
+                        .UpdatedBy = userID
+                        .UpdatedDate = DateTime.Now
                 End Select
             End With
             Return headerModel
@@ -178,13 +190,21 @@
             Throw ex
         End Try
     End Function
-    Function SetDataPI() As PIHeaderModel
+    Function SetDataPI(condPI As String) As PIHeaderModel
         Dim piModel As PIHeaderModel = New PIHeaderModel
         Try
-            piModel.PIHeaderID = cmbPINo.SelectedValue
-            piModel.Status = 3
-            piModel.UpdatedBy = userID
-            piModel.UpdatedDate = DateTime.Now
+            Select Case condPI
+                Case "Approve"
+                    piModel.PIHeaderID = cmbPINo.SelectedValue
+                    piModel.Status = 3
+                    piModel.UpdatedBy = userID
+                    piModel.UpdatedDate = DateTime.Now
+                Case "Void"
+                    piModel.PIHeaderID = cmbPINo.SelectedValue
+                    piModel.Status = 2
+                    piModel.UpdatedBy = userID
+                    piModel.UpdatedDate = DateTime.Now
+            End Select
             Return piModel
         Catch ex As Exception
             Throw ex
@@ -199,10 +219,24 @@
         Dim roleModel As RoleDModel = New RoleDModel
         Try
             roleModel = roleBFC.RetrieveDetailsByRoleIDMenuID(roleIDUser, Tag)
-            If roleModel.IsCreate = True Then btnSave.Enabled = True
-            If roleModel.IsUpdate = True Then btnUpdate.Enabled = True
-            If roleModel.IsApprove = True Then btnApprove.Enabled = True
-            If roleModel.IsVoid = True Then btnVoid.Enabled = True
+            If roleModel.IsCreate = True And conBon = "Create " Then btnSave.Enabled = True
+            If roleModel.IsUpdate = True And conBon = "Update" Then btnUpdate.Enabled = True
+            If roleModel.IsApprove = True And conBon = "View" Then btnApprove.Enabled = True
+            If roleModel.IsVoid = True And conBon = "View" Then btnVoid.Enabled = True
+
+            If conBon = "Create" Then
+                btnPrint.Enabled = False
+                cmbPINo.Enabled = True
+                btnAdd.Enabled = True
+            ElseIf conBon = "Update" Then
+                btnPrint.Enabled = True
+                cmbPINo.Enabled = True
+                btnAdd.Enabled = True
+            ElseIf conBon = "View" Then
+                cmbPINo.Enabled = False
+                btnAdd.Enabled = False
+            End If
+
 
             roleBFC = Nothing
             roleModel = Nothing
@@ -216,11 +250,11 @@
         Dim headerModel As BonOrderHeaderModel = New BonOrderHeaderModel
         Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
         Try
-            'ComboBoxPI()
+            ComboBoxPI()
             headerModel = bonOrderBFC.RetrieveByID(bonOrderID)
             With headerModel
                 txtCode.Text = .BonOrderCode
-                cmbPINo.Text = .PINo
+                cmbPINo.SelectedValue = .PIHeaderID
                 txtNoPO.Text = .RefPO
                 txtCustomer.Text = .CustomerName
                 txtBrand.Text = .BuyerName
@@ -228,8 +262,8 @@
                 statusBOn = .Status
             End With
 
-            cmbPINo.Enabled = False
-            btnAdd.Enabled = False
+            'cmbPINo.Enabled = False
+            'btnAdd.Enabled = False
 
             headerModel = Nothing
             bonOrderBFC = Nothing
@@ -243,6 +277,8 @@
     Sub PrepareDetailByHeaderID()
         Dim bonBFC As ClsBonOrder = New ClsBonOrder
         Dim listDetail As List(Of BonOrderDetailModel) = New List(Of BonOrderDetailModel)
+
+        dgv.Columns.Clear()
         GridDetail()
         Try
             listDetail = bonBFC.RetrieveDetailByID(bonOrderID)
@@ -395,11 +431,6 @@
             GridDetail()
             ComboBoxPI()
             CheckPermission()
-            btnAdd.Enabled = True
-            btnUpdate.Enabled = False
-            btnApprove.Enabled = False
-            btnVoid.Enabled = False
-            btnPrint.Enabled = False
         Catch ex As Exception
             Throw ex
         End Try
@@ -408,11 +439,12 @@
     Sub PreUpdateDisplay()
         Try
             PrepareByHeaderID()
+            PrepareDetailByHeaderID()
+            CheckPermission()
         Catch ex As Exception
             Throw ex
         End Try
     End Sub
-
     Sub InsertData()
         Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -421,7 +453,7 @@
         Dim logDesc As String = "Create new Bon Order,BON Order is " + orderCode
 
         Try
-            If bonOrderBFC.InsertData(SetDataHeader(orderID, orderCode), SetDetail(orderID), SetDataPI, logBFC.SetLogHistoryTrans(logDesc)) = True Then
+            If bonOrderBFC.InsertData(SetDataHeader(orderID, orderCode), SetDetail(orderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxSaved()
                 CheckPermission()
                 btnPrint.Enabled = True
@@ -433,7 +465,6 @@
             MsgBoxError(ex.Message)
         End Try
     End Sub
-
     Sub UpdateData()
         Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -441,6 +472,48 @@
         Try
             If bonOrderBFC.UpdateData(SetDataHeader(bonOrderID, txtCode.Text), SetDetail(bonOrderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxUpdated()
+                CheckPermission()
+                btnPrint.Enabled = True
+                btnSave.Enabled = False
+                btnUpdate.Enabled = False
+            End If
+            bonOrderBFC = Nothing
+            logBFC = Nothing
+        Catch ex As Exception
+            bonOrderBFC = Nothing
+            logBFC = Nothing
+            Throw ex
+        End Try
+    End Sub
+    Sub ApproveData()
+        Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim logDesc As String = "Approve Bon Order,Where Bon Order Code = " + txtCode.Text
+        conBon = "Approve"
+        Try
+            If bonOrderBFC.UpdateStatus(SetDataHeader(bonOrderID, txtCode.Text), SetDataPI("Approve"), logBFC.SetLogHistoryTrans(logDesc)) = True Then
+                MsgBoxApproved()
+                CheckPermission()
+                btnPrint.Enabled = True
+                btnSave.Enabled = False
+                btnUpdate.Enabled = False
+            End If
+            bonOrderBFC = Nothing
+            logBFC = Nothing
+        Catch ex As Exception
+            bonOrderBFC = Nothing
+            logBFC = Nothing
+            Throw ex
+        End Try
+    End Sub
+    Sub VoidData()
+        Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
+        Dim logBFC As ClsLogHistory = New ClsLogHistory
+        Dim logDesc As String = "Void Bon Order,Where Bon Order Code = " + txtCode.Text
+        conBon = "Void"
+        Try
+            If bonOrderBFC.UpdateStatus(SetDataHeader(bonOrderID, txtCode.Text), SetDataPI("Void"), logBFC.SetLogHistoryTrans(logDesc)) = True Then
+                MsgBoxApproved()
                 CheckPermission()
                 btnPrint.Enabled = True
                 btnSave.Enabled = False
@@ -475,7 +548,13 @@
     End Sub
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-
+        If CheckEmptyHeader() = False And CheckEmptyDetail() = False Then
+            Try
+                UpdateData()
+            Catch ex As Exception
+                MsgBoxError(msgError + ex.Message)
+            End Try
+        End If
     End Sub
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
@@ -483,13 +562,24 @@
     End Sub
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
-
+        If CheckEmptyHeader() = False And CheckEmptyDetail() = False Then
+            Try
+                ApproveData()
+            Catch ex As Exception
+                MsgBoxError(msgError + ex.Message)
+            End Try
+        End If
     End Sub
 
     Private Sub btnVoid_Click(sender As Object, e As EventArgs) Handles btnVoid.Click
-
+        If CheckEmptyHeader() = False And CheckEmptyDetail() = False Then
+            Try
+                VoidData()
+            Catch ex As Exception
+                MsgBoxError(msgError + ex.Message)
+            End Try
+        End If
     End Sub
-
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Close()
     End Sub
