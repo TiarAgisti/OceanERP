@@ -21,7 +21,7 @@ Public Class FrmPurchaseOrder
 #Region "ComboBox"
     Sub ComboBoxPI()
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-        piBFC.ComboBoxPI(cmbPINO)
+        piBFC.ComboBoxPII(cmbPINO)
     End Sub
     Sub ComboBoxSupplier()
         Dim suppBFC As ClsVendor = New ClsVendor
@@ -226,6 +226,7 @@ Public Class FrmPurchaseOrder
     Sub DeleteGridDetailRawMatrial()
         DeleteGrid(dgvrawmatrial, intBarisRawMatrial)
     End Sub
+
     Sub DeleteGridDetailRemarks()
         DeleteGrid(dgvRemarks, intBarisRemarks)
     End Sub
@@ -756,7 +757,7 @@ Public Class FrmPurchaseOrder
 
     Private Sub btnRawDelList_Click(sender As Object, e As EventArgs) Handles btnRawDelList.Click
         Try
-            DeleteGridDetailRawMatrial()
+            DeleteGrid(dgvrawmatrial, intBarisRawMatrial)
             SumSubTotalValue()
             CalculateTotal()
             CalculateDiscount()

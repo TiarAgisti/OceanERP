@@ -25,10 +25,10 @@
             dgv.Columns(0).HeaderText = "BPB HeaderID"
             dgv.Columns(0).Visible = False
 
-            dgv.Columns(1).HeaderText = "BPBNo"
+            dgv.Columns(1).HeaderText = "Receipt.No"
 
 
-            dgv.Columns(2).HeaderText = "BPB Date"
+            dgv.Columns(2).HeaderText = "Receipt Date"
             dgv.Columns(2).DefaultCellStyle.Format = "dd-MMM-yyyy"
 
             dgv.Columns(3).HeaderText = "In Factory Date"

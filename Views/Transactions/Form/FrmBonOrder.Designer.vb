@@ -219,7 +219,6 @@ Partial Class FrmBonOrder
         '
         'txtCode
         '
-        Me.txtCode.Enabled = False
         Me.txtCode.Location = New System.Drawing.Point(79, 13)
         Me.txtCode.Name = "txtCode"
         Me.txtCode.Size = New System.Drawing.Size(196, 20)

@@ -226,6 +226,15 @@
             MsgBoxError(ex.Message)
         End Try
     End Sub
+
+    Private Sub txtCari_TextChanged(sender As Object, e As EventArgs) Handles txtCari.TextChanged
+        Try
+
+            listdata()
+        Catch ex As Exception
+
+        End Try
+    End Sub
 #End Region
 
 End Class

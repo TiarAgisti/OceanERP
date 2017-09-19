@@ -441,7 +441,7 @@ Public Class ClsProformaInvoice
         Dim dataAccess = New ClsDataAccess
         Dim dataTable As DataTable = New DataTable
         Dim query As String
-        query = "Select PIHeaderID,PINo From PIHeader"
+        query = "Select pih.PIHeaderID,pih.PINo From PIHeader as pih"
         query += " LEFT JOIN(Select PIHeaderID FROM BonOrderHeader) as Bon ON bon.PIHeaderID = pih.PIHeaderID"
         query += " Where pih.Status = 2 AND bon.PIHeaderID is null"
 
@@ -455,10 +455,41 @@ Public Class ClsProformaInvoice
             Throw ex
         End Try
     End Function
+
     Public Sub ComboBoxPI(cmb As ComboBox)
         Try
             With cmb
                 .DataSource = ListComboBox()
+                .DisplayMember = "PINo"
+                .ValueMember = "PIHeaderID"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Protected Function ListComboBoxPO() As DataTable
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim query As String
+        query = "Select PIHeaderID,PINo From PIHeader"
+        query += " Where Status = 2 "
+
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
+    Public Sub ComboBoxPII(cmb As ComboBox)
+        Try
+            With cmb
+                .DataSource = ListComboBoxPO()
                 .DisplayMember = "PINo"
                 .ValueMember = "PIHeaderID"
                 .AutoCompleteMode = AutoCompleteMode.SuggestAppend

@@ -88,7 +88,7 @@ Partial Class FrmBPB
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(759, 63)
         Me.Label3.TabIndex = 25
-        Me.Label3.Text = "Receipt Of Goods "
+        Me.Label3.Text = "Goods Receipt PO"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel1
@@ -254,9 +254,9 @@ Partial Class FrmBPB
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(6, 42)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(54, 13)
+        Me.Label2.Size = New System.Drawing.Size(70, 13)
         Me.Label2.TabIndex = 10
-        Me.Label2.Text = "BPB Date"
+        Me.Label2.Text = "Receipt Date"
         '
         'txtBPBNo
         '
@@ -271,9 +271,9 @@ Partial Class FrmBPB
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(7, 15)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(45, 13)
+        Me.Label1.Size = New System.Drawing.Size(61, 13)
         Me.Label1.TabIndex = 7
-        Me.Label1.Text = "BPB.No"
+        Me.Label1.Text = "Receipt.No"
         '
         'GroupBox3
         '
@@ -342,7 +342,7 @@ Partial Class FrmBPB
         '
         'btnDeletetolist
         '
-        Me.btnDeletetolist.Location = New System.Drawing.Point(630, 90)
+        Me.btnDeletetolist.Location = New System.Drawing.Point(630, 94)
         Me.btnDeletetolist.Name = "btnDeletetolist"
         Me.btnDeletetolist.Size = New System.Drawing.Size(102, 21)
         Me.btnDeletetolist.TabIndex = 142
@@ -351,7 +351,7 @@ Partial Class FrmBPB
         '
         'btnAddRawToList
         '
-        Me.btnAddRawToList.Location = New System.Drawing.Point(630, 60)
+        Me.btnAddRawToList.Location = New System.Drawing.Point(630, 67)
         Me.btnAddRawToList.Name = "btnAddRawToList"
         Me.btnAddRawToList.Size = New System.Drawing.Size(102, 22)
         Me.btnAddRawToList.TabIndex = 141
@@ -557,7 +557,7 @@ Partial Class FrmBPB
         Me.Name = "FrmBPB"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Tag = "26"
-        Me.Text = "FrmBPB"
+        Me.Text = "FrmReceipt"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)

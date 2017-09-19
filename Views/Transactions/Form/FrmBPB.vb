@@ -768,6 +768,10 @@ Public Class FrmBPB
 
         End Try
     End Sub
+
+    Private Sub btnVoid_Click(sender As Object, e As EventArgs) Handles btnVoid.Click
+
+    End Sub
 #End Region
 
 
