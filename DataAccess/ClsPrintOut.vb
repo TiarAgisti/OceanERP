@@ -287,7 +287,7 @@ Public Class ClsPrintOut
             GetBonOrderHeader(bonordercode, dataset)
             Dim dsBonOrderHeader As New ReportDataSource
             With dsBonOrderHeader
-                .Name = "BonOderHeaderDT"
+                .Name = "DataSet1"
                 .Value = dataset.Tables("v_BonOrderHeader")
             End With
 
@@ -295,7 +295,7 @@ Public Class ClsPrintOut
             GetBonOrderPrintOut(bonordercode, dsBonPrintOut)
             Dim dsBonOrderPrintOut As New ReportDataSource
             With dsBonOrderPrintOut
-                .Name = "BonOrderPrintOut"
+                .Name = "DataSet2"
                 .Value = dsBonPrintOut.Tables("v_BonOrderPrintOut")
             End With
 
