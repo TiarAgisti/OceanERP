@@ -38,7 +38,8 @@
         logModel.Description = description
         logModel.UserID = userID
         logModel.CompName = GetHostNameLog()
-        logModel.CreatedDate = DateTime.Now
+        logModel.CreatedDate = Today.Date
+
         Return logModel
     End Function
     Public Function SetLogHistoryTrans(desc As String) As LogHistoryModel
