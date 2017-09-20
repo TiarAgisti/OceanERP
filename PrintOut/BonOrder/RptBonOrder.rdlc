@@ -1641,8 +1641,8 @@
       </Textbox>
       <Rectangle Name="Rectangle10">
         <KeepTogether>true</KeepTogether>
-        <Top>9.42214cm</Top>
-        <Left>3.92332cm</Left>
+        <Top>9.39568cm</Top>
+        <Left>3.91698cm</Left>
         <Height>0.19813cm</Height>
         <Width>0.20365cm</Width>
         <ZIndex>29</ZIndex>
@@ -1713,8 +1713,8 @@
       </Textbox>
       <Rectangle Name="Rectangle13">
         <KeepTogether>true</KeepTogether>
-        <Top>11.63007cm</Top>
-        <Left>0.32702cm</Left>
+        <Top>11.59655cm</Top>
+        <Left>0.32068cm</Left>
         <Height>0.19813cm</Height>
         <Width>0.20365cm</Width>
         <ZIndex>33</ZIndex>

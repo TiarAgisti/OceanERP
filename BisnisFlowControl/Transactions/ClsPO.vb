@@ -1,14 +1,40 @@
 ﻿Imports Microsoft.Reporting.WinForms
 Public Class ClsPO
-
+    Dim querypo As String = "Select POHeaderID,CurrencyID,CurrencyCode,PODate,PONo,CustomerCode,CustomerName,SupplierCode,SupplierName,ShipViaMethodCode,ShipViaMethodName,ShippingDate,TermOfPayment,ExpectedReceiptDate" &
+                               ",CustomerID,SupplierID,TermOfPaymentID,ShipViaMethodID,StatusDesc From v_POHeader" &
+                               " Where Status =2 "
 #Region "Method Retrieve"
+    Public Function Retrievepo(options As String, param As String) As DataTable
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Select Case options
+
+            Case "PO No"
+                querypo += " AND PONo LIKE '%" & param & "%' Order By PONo Asc"
+            Case "Supplier Name"
+                querypo += " AND SupplierName LIKE '%" & param & "%' Order By PONo Asc"
+
+            Case Else
+                querypo += " Order By PONo Asc"
+        End Select
+
+        Try
+            dataTable = dataAccess.RetrieveListData(querypo)
+        Catch ex As Exception
+            dataAccess = Nothing
+            Throw ex
+        End Try
+
+        dataAccess = Nothing
+        Return dataTable
+    End Function
     Public Function RetrieveListPurchaseOrder(poNo As String, dateFrom As Date, dateTo As Date, customer As String _
                                                 , supplier As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
         Dim query As String = "Select POHeaderID,CurrencyID,CurrencyCode,PODate,PONo,CustomerCode,CustomerName,SupplierCode,SupplierName,ShipViaMethodCode,ShipViaMethodName,ShippingDate,TermOfPayment,ExpectedReceiptDate" &
                                ",CustomerID,SupplierID,TermOfPaymentID,ShipViaMethodID,StatusDesc From v_POHeader" &
-                               " Where Status <> 0"
+                               " Where Status = 2"
 
         If Not String.IsNullOrEmpty(poNo) Then
             query += " AND PONo = '" & poNo & "'"

@@ -13,6 +13,17 @@
 #End Region
 
 #Region "Function"
+    Sub ListColor(myOptions As String, myParam As String)
+        Try
+            Dim poBFC As ClsPO = New ClsPO
+            With dgv
+                .DataSource = poBFC.Retrievepo(myOptions, myParam)
+            End With
+            PropertiesGrid()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
     Sub PreCreateDisplay()
         Try
             ClearData()
@@ -228,12 +239,7 @@
     End Sub
 
     Private Sub txtCari_TextChanged(sender As Object, e As EventArgs) Handles txtCari.TextChanged
-        Try
-
-            listdata()
-        Catch ex As Exception
-
-        End Try
+        ListColor(cmbCari.Text, txtCari.Text)
     End Sub
 #End Region
 
