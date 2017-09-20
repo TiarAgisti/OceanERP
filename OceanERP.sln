@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OceanERP", "OceanERP.vbproj", "{307CB1F7-F3DD-4DD4-BAF6-6F283C644FDE}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "..\Setup OceanERP\Setup\Setup.vdproj", "{38965FC7-CC07-4620-A32C-9C65A851B20C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,8 +15,6 @@ Global
 		{307CB1F7-F3DD-4DD4-BAF6-6F283C644FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{307CB1F7-F3DD-4DD4-BAF6-6F283C644FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{307CB1F7-F3DD-4DD4-BAF6-6F283C644FDE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38965FC7-CC07-4620-A32C-9C65A851B20C}.Debug|Any CPU.ActiveCfg = Debug
-		{38965FC7-CC07-4620-A32C-9C65A851B20C}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
