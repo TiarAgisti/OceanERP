@@ -103,7 +103,53 @@
             Throw ex
         End Try
     End Function
+    Public Function RetrieveRawMaterialBPBByPO(headerID As Long, rawmatrialID As Integer) As BPBDetailModel
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        'Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
+        Dim dataTable As DataTable = New DataTable
+        Dim bpbDetailModel As BPBDetailModel = New BPBDetailModel
 
+        Dim query As String = "Select SUM(QuantityBPB) AS TotalBPB From v_BPBDetail Where POHeaderID='" & headerID & "'  AND RawMaterialID = '" & rawmatrialID & "'"
+
+        Try
+            dataAccess.reader = dataAccess.ExecuteReader(query)
+            While dataAccess.reader.Read
+                With dataAccess.reader
+
+                    If IsDBNull(.Item("TotalBPB")) Then
+                        bpbDetailModel.QuantityBPB = 0
+                    Else
+                        bpbDetailModel.QuantityBPB = .Item("TotalBPB")
+                    End If
+                End With
+            End While
+            dataAccess.reader.Close()
+            dataAccess = Nothing
+            Return bpbDetailModel
+        Catch ex As Exception
+            dataAccess = Nothing
+            Throw ex
+        End Try
+
+    End Function
+    'Public Function GetValidateBPBByPO(headerID As Long, rawmatrialID As Integer) As String
+    '    Dim dataAccess = New ClsDataAccess
+    '    Dim dataTable = New DataTable
+    '    Dim query As String = "Select * From BPBDetail Where POHeaderID='" & headerID & "'  AND RawMaterialID = '" & rawmatrialID & "'"
+    '    Try
+    '        dataTable = dataAccess.RetrieveListData(query)
+
+    '        If dataTable.Rows.Count > 0 Then
+    '            Throw New Exception("Raw already available")
+    '        Else
+
+    '            Return True
+    '        End If
+
+    '    Catch ex As Exception
+    '        Throw ex
+    '    End Try
+    'End Function
 #End Region
 
 #Region "Method Generated"
@@ -248,7 +294,25 @@
         Next
         Return listDetail
     End Function
-
+    Public Function SetDetailStockbpb(bpbID As Long, dgv As DataGridView) As List(Of StockModel)
+        Dim listDetail As List(Of StockModel) = New List(Of StockModel)
+        For detail = 0 To dgv.Rows.Count - 2
+            Dim detailModel As StockModel = New StockModel
+            With dgv
+                detailModel.StockID = GetStockID()
+                detailModel.PIHeaderID = .Rows(detail).Cells(9).Value
+                detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
+                detailModel.QuantityIN = .Rows(detail).Cells(2).Value
+                detailModel.QuantityOUT = 0
+                detailModel.DocID = bpbID
+                detailModel.DocDate = .Rows(detail).Cells(12).Value
+                detailModel.DocType = "BPB"
+                listDetail.Add(detailModel)
+            End With
+            '  poDetailID = poDetailID + 1
+        Next
+        Return listDetail
+    End Function
 #End Region
 
 #Region "Method CRUD"
@@ -306,9 +370,9 @@
         SQL = "Delete From BPBDetail Where BPBHeaderID = '" & myModel.BPBHeaderID & "'"
         Return SQL
     End Function
-    Protected Function SqlDeleteStock(myModel As BPBHeaderModel) As String
+    Protected Function SqlDeleteStock(myModel As StockModel) As String
         Dim SQL As String
-        SQL = "Delete From Stock Where StockID = '" & myModel.BPBHeaderID & "'"
+        SQL = "Delete From Stock Where StockID = '" & myModel.StockID & "'"
         Return SQL
     End Function
 
@@ -346,7 +410,7 @@
         End Try
     End Function
 
-    Public Function UpdateData(bpbHeaderModel As BPBHeaderModel, listBpbDetailModel As List(Of BPBDetailModel), liststokDetailModel As List(Of StockModel) _
+    Public Function UpdateData(bpbHeaderModel As BPBHeaderModel, listBpbDetailModel As List(Of BPBDetailModel) _
                               , logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -362,9 +426,7 @@
         For Each detail In listBpbDetailModel
             queryList.Add(SqlInsertDetailBPB(detail))
         Next
-        For Each detail In liststokDetailModel
-            queryList.Add(SqlInsertStock(detail))
-        Next
+
         'insert log history
         queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
 

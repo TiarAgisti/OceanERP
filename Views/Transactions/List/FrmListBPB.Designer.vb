@@ -97,7 +97,7 @@ Partial Class FrmListBPB
         '
         'btnClear
         '
-        Me.btnClear.Location = New System.Drawing.Point(160, 81)
+        Me.btnClear.Location = New System.Drawing.Point(180, 82)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(75, 23)
         Me.btnClear.TabIndex = 60
@@ -109,9 +109,9 @@ Partial Class FrmListBPB
         Me.chkSupplier.AutoSize = True
         Me.chkSupplier.Location = New System.Drawing.Point(3, 59)
         Me.chkSupplier.Name = "chkSupplier"
-        Me.chkSupplier.Size = New System.Drawing.Size(64, 17)
+        Me.chkSupplier.Size = New System.Drawing.Size(95, 17)
         Me.chkSupplier.TabIndex = 59
-        Me.chkSupplier.Text = "Supplier"
+        Me.chkSupplier.Text = "Supplier Name"
         Me.chkSupplier.UseVisualStyleBackColor = True
         '
         'Panel1
@@ -137,9 +137,9 @@ Partial Class FrmListBPB
         Me.chkBPBDate.AutoSize = True
         Me.chkBPBDate.Location = New System.Drawing.Point(3, 32)
         Me.chkBPBDate.Name = "chkBPBDate"
-        Me.chkBPBDate.Size = New System.Drawing.Size(67, 17)
+        Me.chkBPBDate.Size = New System.Drawing.Size(89, 17)
         Me.chkBPBDate.TabIndex = 58
-        Me.chkBPBDate.Text = "PO Date"
+        Me.chkBPBDate.Text = "Receipt Date"
         Me.chkBPBDate.UseVisualStyleBackColor = True
         '
         'chkBPBNo
@@ -147,14 +147,14 @@ Partial Class FrmListBPB
         Me.chkBPBNo.AutoSize = True
         Me.chkBPBNo.Location = New System.Drawing.Point(3, 7)
         Me.chkBPBNo.Name = "chkBPBNo"
-        Me.chkBPBNo.Size = New System.Drawing.Size(64, 17)
+        Me.chkBPBNo.Size = New System.Drawing.Size(80, 17)
         Me.chkBPBNo.TabIndex = 57
-        Me.chkBPBNo.Text = "BPB No"
+        Me.chkBPBNo.Text = "Receipt.No"
         Me.chkBPBNo.UseVisualStyleBackColor = True
         '
         'btnFind
         '
-        Me.btnFind.Location = New System.Drawing.Point(79, 81)
+        Me.btnFind.Location = New System.Drawing.Point(99, 82)
         Me.btnFind.Name = "btnFind"
         Me.btnFind.Size = New System.Drawing.Size(75, 23)
         Me.btnFind.TabIndex = 56
@@ -163,14 +163,14 @@ Partial Class FrmListBPB
         '
         'txtSupplier
         '
-        Me.txtSupplier.Location = New System.Drawing.Point(79, 55)
+        Me.txtSupplier.Location = New System.Drawing.Point(99, 56)
         Me.txtSupplier.Name = "txtSupplier"
         Me.txtSupplier.Size = New System.Drawing.Size(265, 20)
         Me.txtSupplier.TabIndex = 55
         '
         'dtpDateTo
         '
-        Me.dtpDateTo.Location = New System.Drawing.Point(313, 29)
+        Me.dtpDateTo.Location = New System.Drawing.Point(333, 29)
         Me.dtpDateTo.Name = "dtpDateTo"
         Me.dtpDateTo.Size = New System.Drawing.Size(200, 20)
         Me.dtpDateTo.TabIndex = 54
@@ -178,7 +178,7 @@ Partial Class FrmListBPB
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(285, 33)
+        Me.Label4.Location = New System.Drawing.Point(305, 33)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(22, 13)
         Me.Label4.TabIndex = 53
@@ -186,14 +186,14 @@ Partial Class FrmListBPB
         '
         'dtpDateFrom
         '
-        Me.dtpDateFrom.Location = New System.Drawing.Point(79, 29)
+        Me.dtpDateFrom.Location = New System.Drawing.Point(99, 29)
         Me.dtpDateFrom.Name = "dtpDateFrom"
         Me.dtpDateFrom.Size = New System.Drawing.Size(200, 20)
         Me.dtpDateFrom.TabIndex = 52
         '
         'txtBPBNo
         '
-        Me.txtBPBNo.Location = New System.Drawing.Point(79, 3)
+        Me.txtBPBNo.Location = New System.Drawing.Point(99, 3)
         Me.txtBPBNo.Name = "txtBPBNo"
         Me.txtBPBNo.Size = New System.Drawing.Size(265, 20)
         Me.txtBPBNo.TabIndex = 51
@@ -208,7 +208,7 @@ Partial Class FrmListBPB
         Me.Label3.Size = New System.Drawing.Size(878, 46)
         Me.Label3.TabIndex = 54
         Me.Label3.Tag = "26"
-        Me.Label3.Text = "List BPB"
+        Me.Label3.Text = "List Goods Receipt PO"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'dgv
@@ -231,7 +231,7 @@ Partial Class FrmListBPB
         Me.Controls.Add(Me.Label3)
         Me.Name = "FrmListBPB"
         Me.Tag = "26"
-        Me.Text = "FrmListBPB"
+        Me.Text = "FrmListReceipt"
         Me.Panel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

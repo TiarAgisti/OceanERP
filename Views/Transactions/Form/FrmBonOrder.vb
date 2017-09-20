@@ -1,4 +1,5 @@
-﻿Public Class FrmBonOrder
+﻿Imports System.ComponentModel
+Public Class FrmBonOrder
 
 #Region "Declaration"
     Public conBon As String
@@ -214,16 +215,31 @@
 #End Region
 
 #Region "Function"
+    Sub PrintData()
+        Try
+            Dim bonPrint As ClsPrintOut = New ClsPrintOut
+            If bonPrint.PrintOutBonOrder(txtCode.Text) Then
+                PreCreateDisplay()
+            Else
+                MsgBoxError("Failed to print")
+            End If
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+    End Sub
     Sub CheckPermission()
         Dim roleBFC As ClsPermission = New ClsPermission
         Dim roleModel As RoleDModel = New RoleDModel
         Try
             roleModel = roleBFC.RetrieveDetailsByRoleIDMenuID(roleIDUser, Tag)
-            If roleModel.IsCreate = True And conBon = "Create " Then btnSave.Enabled = True
-            If roleModel.IsUpdate = True And conBon = "Update" Then btnUpdate.Enabled = True
-            If roleModel.IsApprove = True And conBon = "View" Then btnApprove.Enabled = True
-            If roleModel.IsVoid = True And conBon = "View" Then btnVoid.Enabled = True
-
+            'If roleModel.IsCreate = True And conBon = "Create " Then btnSave.Enabled = True
+            'If roleModel.IsUpdate = True And conBon = "Update" Then btnUpdate.Enabled = True
+            'If roleModel.IsApprove = True And conBon = "View" Then btnApprove.Enabled = True
+            'If roleModel.IsVoid = True And conBon = "View" Then btnVoid.Enabled = True
+            If roleModel.IsCreate = True Then btnSave.Enabled = True
+            If roleModel.IsUpdate = True Then btnUpdate.Enabled = True
+            If roleModel.IsApprove = True Then btnApprove.Enabled = True
+            If roleModel.IsVoid = True Then btnVoid.Enabled = True
             If conBon = "Create" Then
                 btnPrint.Enabled = False
                 cmbPINo.Enabled = True
@@ -459,7 +475,7 @@
                 btnPrint.Enabled = True
                 btnSave.Enabled = False
                 btnUpdate.Enabled = False
-                'PreCreatedisplay()
+
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -527,6 +543,7 @@
             Throw ex
         End Try
     End Sub
+
 #End Region
 
 #Region "Button"
@@ -557,9 +574,7 @@
         End If
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
 
-    End Sub
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
         If CheckEmptyHeader() = False And CheckEmptyDetail() = False Then
@@ -656,6 +671,11 @@
         Catch ex As Exception
             MsgBoxError(msgError + ex.Message)
         End Try
+    End Sub
+
+
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        PrintData()
     End Sub
 #End Region
 

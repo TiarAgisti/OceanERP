@@ -239,6 +239,85 @@ Public Class ClsPrintOut
         Return status
     End Function
 #End Region
+#Region " BON ORDER PRINT"
+    Protected Sub GetBonOrderHeader(ByVal bonordercode As String, ByRef dsBonOrder As DataSet)
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim query As String = "Select * From v_BonOrderHeader where BonOrderCode = @bonordercode"
+        Try
+            Using myConnection As SqlConnection = dataAccess.SqlConnection
+                Dim myCommand As SqlCommand = New SqlCommand(query, myConnection)
+                Dim parameter As New SqlParameter("BonOrderCode", bonordercode)
+                myCommand.Parameters.Add(parameter)
+                Dim bonOrderAdapter As New SqlDataAdapter(myCommand)
+                bonOrderAdapter.Fill(dsBonOrder, "v_BonOrderHeader")
+                myCommand.Dispose()
+            End Using
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Protected Sub GetBonOrderPrintOut(ByVal bonordercode As String, ByRef dsBonOrder As DataSet)
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim query As String = "Select * From v_BonOrderPrintOut where BonOrderCode = @bonordercode"
+        Try
+            Using myConnection As SqlConnection = dataAccess.SqlConnection
+                Dim myCommand As SqlCommand = New SqlCommand(query, myConnection)
+                Dim parameter As New SqlParameter("BonOrderCode", bonordercode)
+                myCommand.Parameters.Add(parameter)
+                Dim bonOrderAdapter As New SqlDataAdapter(myCommand)
+                bonOrderAdapter.Fill(dsBonOrder, "v_BonOrderPrintOut")
+                myCommand.Dispose()
+            End Using
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Public Function PrintOutBonOrder(ByVal bonordercode As String) As Boolean
+        Dim status As Boolean
+        Dim frm As New FrmPrintPreview
+        frm.rptView.ProcessingMode = ProcessingMode.Local
+        Dim localReport As LocalReport
+        localReport = frm.rptView.LocalReport
+        localReport.ReportPath = My.Settings.reportPath + "BonOrder\RptBonOrder.rdlc"
+
+        Try
+            Dim dataset As New DataSet("Bon Order")
+            GetBonOrderHeader(bonordercode, dataset)
+            Dim dsBonOrderHeader As New ReportDataSource
+            With dsBonOrderHeader
+                .Name = "DataSet1"
+                .Value = dataset.Tables("v_BonOrderHeader")
+            End With
+
+            Dim dsBonPrintOut As New DataSet("BON PrintOut")
+            GetBonOrderPrintOut(bonordercode, dsBonPrintOut)
+            Dim dsBonOrderPrintOut As New ReportDataSource
+            With dsBonOrderPrintOut
+                .Name = "DataSet2"
+                .Value = dsBonPrintOut.Tables("v_BonOrderPrintOut")
+            End With
+
+
+
+
+            With localReport.DataSources
+                .Add(dsBonOrderHeader)
+                .Add(dsBonOrderPrintOut)
+
+            End With
+
+            frm.ShowDialog()
+            frm.rptView.RefreshReport()
+            status = True
+        Catch ex As Exception
+            status = False
+            Throw ex
+        End Try
+        Return status
+    End Function
+#End Region
 
 
 End Class

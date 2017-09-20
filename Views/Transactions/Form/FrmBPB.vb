@@ -10,6 +10,9 @@ Public Class FrmBPB
     Dim supplierCode As String = ""
     Dim statusBPB As Int16
     Dim msgError As String = "Error BPB : "
+    Dim PoID As String = ""
+    Dim rawmatrialID As Integer
+    Dim restQtyBPB As Integer = 0
 #End Region
 
 #Region "ComboBox"
@@ -130,6 +133,7 @@ Public Class FrmBPB
 
                 .Columns.Add(6, "Outstanding")
                 .Columns(6).Width = 150
+                .Columns(6).Visible = False
 
                 .Columns.Add(7, "POID")
                 .Columns(7).Width = 150
@@ -140,10 +144,10 @@ Public Class FrmBPB
 
                 .Columns.Add(9, "PI ID")
                 .Columns(9).Width = 150
-                .Columns(9).Visible = True
+                .Columns(9).Visible = False
 
                 .Columns.Add(10, "PI No")
-                .Columns(10).Visible = True
+                .Columns(10).Visible = False
 
                 .Columns.Add(11, "BPB ID")
                 .Columns(11).Visible = False
@@ -164,7 +168,9 @@ Public Class FrmBPB
         txtSupplier.Clear()
         txtDocNo.Clear()
         txtDocType.Clear()
+        txtDONO.Clear()
         txtDONO.Focus()
+
         dgv.Columns.Clear()
 
         intBaris = 0
@@ -172,8 +178,10 @@ Public Class FrmBPB
     End Sub
     Sub ClearRawMatrial()
         cmbRawCode.Text = ""
+        cmbPI.Text = ""
         cmbUnit.Text = ""
         txtQtyPO.Clear()
+        TextBox1.Clear()
         txtQtyReceived.Clear()
         txtQuantityPackaging.Clear()
 
@@ -233,13 +241,7 @@ Public Class FrmBPB
 #Region "Check Empty"
     Function CheckEmptyHeader() As Boolean
         Dim check As Boolean = True
-        If cmbPONo.SelectedValue = 0 Then
-            MsgBoxWarning("PONo not valid")
-            cmbPONo.Focus()
-        ElseIf Trim(txtSupplier.Text) = "" Then
-            MsgBoxWarning("Supplier can't empty,please check your purchase order")
-            txtSupplier.Focus()
-        ElseIf Trim(txtDoNo.Text) = "" Then
+        If Trim(txtDONO.Text) = "" Then
             MsgBoxWarning("Do.No can't empty")
             txtDONO.Focus()
         ElseIf Trim(txtDocType.Text) = "" Then
@@ -248,6 +250,15 @@ Public Class FrmBPB
         ElseIf Trim(txtDocNo.Text) = "" Then
             MsgBoxWarning("Doc.No Customs can't empty")
             txtDocNo.Focus()
+        ElseIf cmbPONo.SelectedValue = 0 Then
+            MsgBoxWarning("PONo not valid")
+            cmbPONo.Focus()
+        ElseIf Trim(txtSupplier.Text) = "" Then
+            MsgBoxWarning("Supplier can't empty,please check your purchase order")
+            txtSupplier.Focus()
+        ElseIf dgv.Rows.Count - 1 = 0 Then
+            MsgBoxWarning("Detail Raw Material Can't Empty")
+            cmbRawCode.Focus()
         Else
             check = False
         End If
@@ -278,6 +289,7 @@ Public Class FrmBPB
         status = poBFC.CheckRawMatrialBPBInList(dgv, cmbRawCode.SelectedValue)
         Return status
     End Function
+
 #End Region
 
 #Region "Set Data"
@@ -315,6 +327,7 @@ Public Class FrmBPB
                         .Status = 1
                         .UpdatedBy = userID
                         .UpdatedDate = DateTime.Now
+
                     Case "Approved"
                         .BPBHeaderID = bpbheaderID
                         .BPBNo = txtBPBNo.Text
@@ -361,6 +374,7 @@ Public Class FrmBPB
             Throw ex
         End Try
     End Function
+
 #End Region
 
 #Region "Function"
@@ -389,13 +403,14 @@ Public Class FrmBPB
         Dim logDesc As String = "Create new BPB,BPB Order is " + bpbCode
 
         Try
+
             If bpbBFC.InsertData(SetDataHeader(mybpbID, bpbCode), SetDetail(mybpbID), SetDetailStok(mybpbID, bpbCode), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxSaved()
                 CheckPermission()
                 btnPrint.Enabled = True
                 btnSave.Enabled = False
                 btnUpdate.Enabled = False
-                'PreCreatedisplay()
+                PreCreateDisplay()
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
@@ -406,7 +421,7 @@ Public Class FrmBPB
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update BPB,Where BPB Order Code = " + txtBPBNo.Text
         Try
-            If bpbBFC.UpdateData(SetDataHeader(bpbheaderID, txtBPBNo.Text), SetDetail(bpbheaderID), SetDetailStok(bpbheaderID, txtBPBNo.Text), logBFC.SetLogHistoryTrans(logDesc)) = True Then
+            If bpbBFC.UpdateData(SetDataHeader(bpbheaderID, txtBPBNo.Text), SetDetail(bpbheaderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxUpdated()
                 CheckPermission()
                 btnPrint.Enabled = True
@@ -436,21 +451,31 @@ Public Class FrmBPB
         End Try
     End Sub
 
-    Sub VoidData()
-        Dim bpbBFC As ClsBPB = New ClsBPB
-        Dim logpo As ClsLogHistory = New ClsLogHistory
-        Dim logDesc As String = "Void BPB where BPBNO = " + txtBPBNo.Text
-        condition = "Void"
-        Try
-            If bpbBFC.UpdateStatusHeader(SetDataHeader(bpbheaderID, txtBPBNo.Text), logpo.SetLogHistoryTrans(logDesc)) Then
-                MsgBoxVoid()
-                PreCreateDisplay()
-            End If
-        Catch ex As Exception
-            MsgBoxError(ex.Message)
-        End Try
+    'Sub VoidData()
+    '    Dim bpbBFC As ClsBPB = New ClsBPB
+    '    Dim logpo As ClsLogHistory = New ClsLogHistory
+    '    Dim logDesc As String = "Void BPB where BPBNO = " + txtBPBNo.Text
+    '    condition = "Void"
+    '    Try
+    '        If bpbBFC.UpdateStatusHeader(SetDataHeader(bpbheaderID, txtBPBNo.Text), logpo.SetLogHistoryTrans(logDesc)) Then
+    '            MsgBoxVoid()
+    '            PreCreateDisplay()
+    '        End If
+    '    Catch ex As Exception
+    '        MsgBoxError(ex.Message)
+    '    End Try
+    'End Sub
+    Sub conditionbutton()
+        dgv.Enabled = False
+        cmbPI.Enabled = False
+        cmbRawCode.Enabled = False
+        txtQtyPO.Enabled = False
+        txtQtyReceived.Enabled = False
+        txtQuantityPackaging.Enabled = False
+        cmbUnit.Enabled = False
+        btnAddRawToList.Enabled = False
+        btnDeletetolist.Enabled = False
     End Sub
-
     'Sub PrintData()
     '    Try
     '        Dim bpbPrint As ClsPrintOut = New ClsPrintOut
@@ -534,6 +559,7 @@ Public Class FrmBPB
     Sub PreUpdateDisplay()
         Try
             ClearAll()
+            ClearRawMatrial()
             ClearDataGrid()
             CheckPermissions()
             PrepareHeaderByID()
@@ -552,18 +578,31 @@ Public Class FrmBPB
         If cmbRawCode.SelectedValue = 0 Then
             MsgBoxWarning("Raw Matrial Not Valid")
             cmbRawCode.Focus()
-            'ElseIf txtQtyPO.Text = "" Then
-            '    MsgBoxWarning("Qty PO Can't Empty")
-            '    txtQtyPO.Focus()
+        ElseIf txtQtyReceived.Text = "0" Then
+            MsgBoxWarning("Qty Received Can't 0")
+            txtQtyReceived.Focus()
         ElseIf txtQtyReceived.Text = "" Then
             MsgBoxWarning("Qty Received Can't Empty")
+            txtQtyReceived.Focus()
+        ElseIf Val(txtQtyPO.Text) = Val(TextBox1.Text) Then
+            MsgBoxError("Qty PO Is Full In BPB ")
+            txtQtyReceived.Focus()
+        ElseIf Val(txtQtyReceived.Text) > Val(txtQtyPO.Text) Then
+            MsgBoxError("Qty Received Greater than Qty PO ")
+            txtQtyReceived.Focus()
+        ElseIf Val(txtQtyReceived.Text) > restQtyBPB Then
+            MsgBoxError("Qty Received Greater than the Rest Qty")
             txtQtyReceived.Focus()
         ElseIf txtQuantityPackaging.Text = "" Then
             MsgBoxWarning("Qty Packaging Can't Empty")
             txtQuantityPackaging.Focus()
+        ElseIf txtQuantityPackaging.Text = "0" Then
+            MsgBoxWarning("Qty Packaging Can't 0")
+            txtQuantityPackaging.Focus()
         ElseIf cmbUnit.SelectedValue = 0 Then
             MsgBoxWarning("Unit For Raw Matrial Not Valid")
             cmbUnit.Focus()
+
         Else
             check = False
         End If
@@ -632,24 +671,16 @@ Public Class FrmBPB
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
         ApprovedData()
     End Sub
-    Private Sub btnVoid_Click(sender As Object, e As EventArgs) Handles btnVoid.Click
-        VoidData()
-    End Sub
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Close()
     End Sub
 
     Private Sub btnAddRawToList_Click(sender As Object, e As EventArgs) Handles btnAddRawToList.Click
-        If Val(txtQtyReceived.Text) > Val(txtQtyPO.Text) Then
-            MsgBoxError("Qty Received Not Valid ")
-            txtQtyReceived.Focus()
-            Exit Sub
-        End If
+
         If CheckEmptyRawMatrial() = False Then
             Try
                 If CheckRawMatrialInList() = True Then
                     AddGridDetailRawMatrial()
-
                     ClearRawMatrial()
                 Else
                     MsgBoxError("Raw Matrial available in list")
@@ -659,15 +690,47 @@ Public Class FrmBPB
                 MsgBoxError(ex.Message)
             End Try
         End If
+
     End Sub
 
     Private Sub btnShowList_Click(sender As Object, e As EventArgs) Handles btnShowList.Click
         Try
             RetrieveSupplier()
+            RetrieveQtyPO()
             ComboBoxRaw(cmbRawCode, cmbPONo.SelectedValue)
             ComboBoxPI(cmbPI, cmbPONo.SelectedValue)
         Catch ex As Exception
             MsgBoxError("Error  : " + ex.Message)
+        End Try
+    End Sub
+#End Region
+
+#Region "Check In BPB"
+
+    Sub RetrieveQtyBPB()
+        Dim dataTable As DataTable = New DataTable
+        Dim poBFC As ClsBPB = New ClsBPB
+        Dim bpbModel As BPBDetailModel = New BPBDetailModel
+
+        Try
+            Dim rawmatrialID = cmbRawCode.SelectedValue
+            Dim obj As String = cmbPONo.SelectedValue
+            If obj > 0 Then
+                bpbModel = poBFC.RetrieveRawMaterialBPBByPO(obj, rawmatrialID)
+                With bpbModel
+                    TextBox1.Text = .QuantityBPB
+                    restQtyBPB = Val(txtQtyPO.Text) - Val(TextBox1.Text)
+                End With
+                Exit Sub
+
+            Else
+                MsgBoxError("Raw already available")
+            End If
+            bpbModel = Nothing
+
+        Catch ex As Exception
+
+            Throw ex
         End Try
     End Sub
 #End Region
@@ -687,13 +750,28 @@ Public Class FrmBPB
     End Sub
 
     Private Sub cmbRawCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRawCode.SelectedIndexChanged
+
         Try
             RetrieveQtyPO()
+            RetrieveQtyBPB()
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub btnDeletetolist_Click(sender As Object, e As EventArgs) Handles btnDeletetolist.Click
+        Try
+            DeleteGrid(dgv, intBaris)
         Catch ex As Exception
 
         End Try
     End Sub
 
+    Private Sub btnVoid_Click(sender As Object, e As EventArgs) Handles btnVoid.Click
+
+    End Sub
 #End Region
 
 

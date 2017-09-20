@@ -3,6 +3,12 @@
 Partial Public Class OceanDS
 
 
+    Partial Public Class BonOrderHeaderDTDataTable
+
+
+
+
+    End Class
 
     Partial Public Class PIDetailDTDataTable
         Private Sub PIDetailDTDataTable_ColumnChanging(sender As Object, e As DataColumnChangeEventArgs) Handles Me.ColumnChanging

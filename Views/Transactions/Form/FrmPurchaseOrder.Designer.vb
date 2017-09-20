@@ -131,7 +131,7 @@ Partial Class FrmPurchaseOrder
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(0, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(916, 40)
+        Me.Label3.Size = New System.Drawing.Size(906, 34)
         Me.Label3.TabIndex = 24
         Me.Label3.Text = "Purchase Order"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -153,16 +153,16 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 40)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 34)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(916, 103)
+        Me.GroupBox1.Size = New System.Drawing.Size(906, 91)
         Me.GroupBox1.TabIndex = 25
         Me.GroupBox1.TabStop = False
         '
         'cmbCurrency
         '
         Me.cmbCurrency.FormattingEnabled = True
-        Me.cmbCurrency.Location = New System.Drawing.Point(712, 45)
+        Me.cmbCurrency.Location = New System.Drawing.Point(712, 38)
         Me.cmbCurrency.Name = "cmbCurrency"
         Me.cmbCurrency.Size = New System.Drawing.Size(188, 21)
         Me.cmbCurrency.TabIndex = 139
@@ -170,7 +170,7 @@ Partial Class FrmPurchaseOrder
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(589, 50)
+        Me.Label21.Location = New System.Drawing.Point(589, 40)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(49, 13)
         Me.Label21.TabIndex = 138
@@ -179,21 +179,21 @@ Partial Class FrmPurchaseOrder
         'cmbSVM
         '
         Me.cmbSVM.FormattingEnabled = True
-        Me.cmbSVM.Location = New System.Drawing.Point(98, 71)
+        Me.cmbSVM.Location = New System.Drawing.Point(98, 64)
         Me.cmbSVM.Name = "cmbSVM"
         Me.cmbSVM.Size = New System.Drawing.Size(188, 21)
         Me.cmbSVM.TabIndex = 34
         '
         'dtERD
         '
-        Me.dtERD.Location = New System.Drawing.Point(712, 15)
+        Me.dtERD.Location = New System.Drawing.Point(714, 11)
         Me.dtERD.Name = "dtERD"
         Me.dtERD.Size = New System.Drawing.Size(186, 20)
         Me.dtERD.TabIndex = 33
         '
         'dtSD
         '
-        Me.dtSD.Location = New System.Drawing.Point(382, 15)
+        Me.dtSD.Location = New System.Drawing.Point(382, 11)
         Me.dtSD.Name = "dtSD"
         Me.dtSD.Size = New System.Drawing.Size(188, 20)
         Me.dtSD.TabIndex = 32
@@ -201,7 +201,7 @@ Partial Class FrmPurchaseOrder
         'cmbTOP
         '
         Me.cmbTOP.FormattingEnabled = True
-        Me.cmbTOP.Location = New System.Drawing.Point(382, 45)
+        Me.cmbTOP.Location = New System.Drawing.Point(382, 37)
         Me.cmbTOP.Name = "cmbTOP"
         Me.cmbTOP.Size = New System.Drawing.Size(188, 21)
         Me.cmbTOP.TabIndex = 31
@@ -209,7 +209,7 @@ Partial Class FrmPurchaseOrder
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(589, 18)
+        Me.Label12.Location = New System.Drawing.Point(586, 14)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(118, 13)
         Me.Label12.TabIndex = 29
@@ -218,7 +218,7 @@ Partial Class FrmPurchaseOrder
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(292, 50)
+        Me.Label13.Location = New System.Drawing.Point(292, 44)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(89, 13)
         Me.Label13.TabIndex = 27
@@ -226,7 +226,7 @@ Partial Class FrmPurchaseOrder
         '
         'dtPODate
         '
-        Me.dtPODate.Location = New System.Drawing.Point(98, 42)
+        Me.dtPODate.Location = New System.Drawing.Point(98, 38)
         Me.dtPODate.Name = "dtPODate"
         Me.dtPODate.Size = New System.Drawing.Size(188, 20)
         Me.dtPODate.TabIndex = 5
@@ -234,7 +234,7 @@ Partial Class FrmPurchaseOrder
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(8, 45)
+        Me.Label2.Location = New System.Drawing.Point(8, 38)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(48, 13)
         Me.Label2.TabIndex = 6
@@ -243,7 +243,7 @@ Partial Class FrmPurchaseOrder
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(292, 19)
+        Me.Label10.Location = New System.Drawing.Point(292, 14)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(74, 13)
         Me.Label10.TabIndex = 25
@@ -252,7 +252,7 @@ Partial Class FrmPurchaseOrder
         'txtPONo
         '
         Me.txtPONo.Enabled = False
-        Me.txtPONo.Location = New System.Drawing.Point(98, 15)
+        Me.txtPONo.Location = New System.Drawing.Point(98, 11)
         Me.txtPONo.Name = "txtPONo"
         Me.txtPONo.Size = New System.Drawing.Size(188, 20)
         Me.txtPONo.TabIndex = 4
@@ -260,7 +260,7 @@ Partial Class FrmPurchaseOrder
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 18)
+        Me.Label1.Location = New System.Drawing.Point(9, 14)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(39, 13)
         Me.Label1.TabIndex = 3
@@ -269,7 +269,7 @@ Partial Class FrmPurchaseOrder
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(5, 74)
+        Me.Label11.Location = New System.Drawing.Point(9, 64)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(87, 13)
         Me.Label11.TabIndex = 23
@@ -296,9 +296,9 @@ Partial Class FrmPurchaseOrder
         '
         Me.GroupBox2.Controls.Add(Me.GroupBox4)
         Me.GroupBox2.Controls.Add(Me.Panel1)
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 145)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 131)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(880, 227)
+        Me.GroupBox2.Size = New System.Drawing.Size(880, 228)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Vendor :"
@@ -306,9 +306,9 @@ Partial Class FrmPurchaseOrder
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.Panel2)
-        Me.GroupBox4.Location = New System.Drawing.Point(428, 4)
+        Me.GroupBox4.Location = New System.Drawing.Point(433, 0)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(442, 222)
+        Me.GroupBox4.Size = New System.Drawing.Size(442, 235)
         Me.GroupBox4.TabIndex = 27
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Ship To :"
@@ -561,9 +561,9 @@ Partial Class FrmPurchaseOrder
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.TabControl1)
-        Me.GroupBox3.Location = New System.Drawing.Point(5, 377)
+        Me.GroupBox3.Location = New System.Drawing.Point(5, 351)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(882, 374)
+        Me.GroupBox3.Size = New System.Drawing.Size(869, 346)
         Me.GroupBox3.TabIndex = 26
         Me.GroupBox3.TabStop = False
         '
@@ -575,7 +575,7 @@ Partial Class FrmPurchaseOrder
         Me.TabControl1.Location = New System.Drawing.Point(3, 16)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(876, 326)
+        Me.TabControl1.Size = New System.Drawing.Size(863, 326)
         Me.TabControl1.TabIndex = 0
         '
         'TabProductName
@@ -611,9 +611,9 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.Location = New System.Drawing.Point(4, 22)
         Me.TabProductName.Name = "TabProductName"
         Me.TabProductName.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabProductName.Size = New System.Drawing.Size(868, 300)
+        Me.TabProductName.Size = New System.Drawing.Size(855, 300)
         Me.TabProductName.TabIndex = 0
-        Me.TabProductName.Text = "Produk Name"
+        Me.TabProductName.Text = "Raw Material"
         Me.TabProductName.UseVisualStyleBackColor = True
         '
         'Panel3
@@ -816,6 +816,7 @@ Partial Class FrmPurchaseOrder
         Me.dgvrawmatrial.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvrawmatrial.Location = New System.Drawing.Point(10, 89)
         Me.dgvrawmatrial.Name = "dgvrawmatrial"
+        Me.dgvrawmatrial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvrawmatrial.Size = New System.Drawing.Size(837, 79)
         Me.dgvrawmatrial.TabIndex = 112
         '
@@ -902,9 +903,9 @@ Partial Class FrmPurchaseOrder
         Me.Label20.AutoSize = True
         Me.Label20.Location = New System.Drawing.Point(9, 37)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(97, 13)
+        Me.Label20.Size = New System.Drawing.Size(100, 13)
         Me.Label20.TabIndex = 104
-        Me.Label20.Text = "Raw Material Code"
+        Me.Label20.Text = "Raw Material Name"
         '
         'TabRemark
         '
@@ -969,7 +970,7 @@ Partial Class FrmPurchaseOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(916, 728)
+        Me.ClientSize = New System.Drawing.Size(906, 691)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)

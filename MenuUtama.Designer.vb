@@ -61,8 +61,8 @@ Partial Class MenuUtama
         Me.menuPO = New System.Windows.Forms.ToolStripMenuItem()
         Me.BonOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RawMAterialPlaningToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReceiptToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -304,42 +304,42 @@ Partial Class MenuUtama
         'menuProformaInvoice
         '
         Me.menuProformaInvoice.Name = "menuProformaInvoice"
-        Me.menuProformaInvoice.Size = New System.Drawing.Size(165, 22)
+        Me.menuProformaInvoice.Size = New System.Drawing.Size(166, 22)
         Me.menuProformaInvoice.Tag = "17"
         Me.menuProformaInvoice.Text = "Proforma Invoice"
         '
         'menuPO
         '
         Me.menuPO.Name = "menuPO"
-        Me.menuPO.Size = New System.Drawing.Size(165, 22)
+        Me.menuPO.Size = New System.Drawing.Size(166, 22)
         Me.menuPO.Tag = "22"
         Me.menuPO.Text = "Purchase Order"
         '
         'BonOrderToolStripMenuItem
         '
         Me.BonOrderToolStripMenuItem.Name = "BonOrderToolStripMenuItem"
-        Me.BonOrderToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.BonOrderToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.BonOrderToolStripMenuItem.Tag = "24"
         Me.BonOrderToolStripMenuItem.Text = "Bon Order"
         '
         'RawMAterialPlaningToolStripMenuItem
         '
         Me.RawMAterialPlaningToolStripMenuItem.Name = "RawMAterialPlaningToolStripMenuItem"
-        Me.RawMAterialPlaningToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
+        Me.RawMAterialPlaningToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.RawMAterialPlaningToolStripMenuItem.Tag = "25"
         Me.RawMAterialPlaningToolStripMenuItem.Text = "Planning"
+        '
+        'ReceiptToolStripMenuItem
+        '
+        Me.ReceiptToolStripMenuItem.Name = "ReceiptToolStripMenuItem"
+        Me.ReceiptToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.ReceiptToolStripMenuItem.Text = "Receipt Of Goods"
         '
         'menuKeluar
         '
         Me.menuKeluar.Name = "menuKeluar"
         Me.menuKeluar.Size = New System.Drawing.Size(37, 20)
         Me.menuKeluar.Text = "Exit"
-        '
-        'ReceiptToolStripMenuItem
-        '
-        Me.ReceiptToolStripMenuItem.Name = "ReceiptToolStripMenuItem"
-        Me.ReceiptToolStripMenuItem.Size = New System.Drawing.Size(165, 22)
-        Me.ReceiptToolStripMenuItem.Text = "Receipt"
         '
         'MenuUtama
         '
