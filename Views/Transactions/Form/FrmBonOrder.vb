@@ -23,6 +23,17 @@ Public Class FrmBonOrder
             Throw ex
         End Try
     End Sub
+    Sub ComboBoxPIView(cmb As ComboBox, bonOrderID As Long)
+        Dim bonBFC As ClsBonOrder = New ClsBonOrder
+        Try
+            bonBFC.ComboBoxPIView(cmbPINo, bonOrderID)
+            cmbPINo.Enabled = True
+            bonBFC = Nothing
+        Catch ex As Exception
+            bonBFC = Nothing
+            Throw ex
+        End Try
+    End Sub
 #End Region
 
 #Region "Grid Detail"
@@ -251,6 +262,11 @@ Public Class FrmBonOrder
             ElseIf conBon = "View" Then
                 cmbPINo.Enabled = False
                 btnAdd.Enabled = False
+                txtCode.Enabled = False
+                dtpDateIssues.Enabled = False
+                btnSave.Enabled = False
+                btnUpdate.Enabled = False
+                btnPrint.Enabled = True
             End If
 
 
@@ -262,11 +278,38 @@ Public Class FrmBonOrder
             Throw ex
         End Try
     End Sub
+    Sub PrepareByHeaderIDView()
+        Dim headerModel As BonOrderHeaderModel = New BonOrderHeaderModel
+        Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
+        Try
+            ComboBoxPIView(cmbPINo, bonOrderID)
+            headerModel = bonOrderBFC.RetrieveByID(bonOrderID)
+            With headerModel
+                txtCode.Text = .BonOrderCode
+                cmbPINo.SelectedValue = .PIHeaderID
+                txtNoPO.Text = .RefPO
+                txtCustomer.Text = .CustomerName
+                txtBrand.Text = .BuyerName
+                txtStyle.Text = .StyleName
+                statusBOn = .Status
+            End With
+
+            'cmbPINo.Enabled = False
+            'btnAdd.Enabled = False
+
+            headerModel = Nothing
+            bonOrderBFC = Nothing
+        Catch ex As Exception
+            headerModel = Nothing
+            bonOrderBFC = Nothing
+            Throw ex
+        End Try
+    End Sub
     Sub PrepareByHeaderID()
         Dim headerModel As BonOrderHeaderModel = New BonOrderHeaderModel
         Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
         Try
-            ComboBoxPI()
+            ComboBoxPIView(cmbPINo, bonOrderID)
             headerModel = bonOrderBFC.RetrieveByID(bonOrderID)
             With headerModel
                 txtCode.Text = .BonOrderCode
@@ -451,7 +494,15 @@ Public Class FrmBonOrder
             Throw ex
         End Try
     End Sub
-
+    Sub PreViewDisplay()
+        Try
+            PrepareByHeaderIDView()
+            PrepareDetailByHeaderID()
+            CheckPermission()
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
     Sub PreUpdateDisplay()
         Try
             PrepareByHeaderID()
@@ -614,6 +665,8 @@ Public Class FrmBonOrder
                     PreCreateDisplay()
                 Case "Update"
                     PreUpdateDisplay()
+                Case "View"
+                    PreViewDisplay()
             End Select
         Catch ex As Exception
             MsgBoxError("Error Bon Order : " + ex.Message)

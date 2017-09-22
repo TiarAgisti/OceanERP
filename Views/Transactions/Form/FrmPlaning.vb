@@ -154,6 +154,7 @@
         With dgv
             Dim row As Integer = .CurrentRow.Index
             If IsDBNull(Me.dgv.CurrentRow.Cells(0).Value) Then
+
             Else
                 txtPONo.Text = .Item(4, row).Value
                 txtPINo.Text = .Item(2, row).Value
@@ -219,7 +220,13 @@
     End Sub
 
     Private Sub txtCari_TextChanged(sender As Object, e As EventArgs) Handles txtCari.TextChanged
-        ListColor(cmbCari.Text, txtCari.Text)
+        If cmbCari.SelectedValue = 0 Then
+            MsgBoxWarning("Please choice yourcCriteria !")
+            cmbCari.Focus()
+            txtCari.Clear()
+        Else
+            ListColor(cmbCari.Text, txtCari.Text)
+        End If
     End Sub
 #End Region
 

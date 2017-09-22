@@ -6,7 +6,7 @@
         Dim query As String = "Select BonOrderID,BonOrderCode,DateIssues,PINo,RefPO,BuyerName,StyleName,CustomerName,StatusDesc From v_BonOrderHeader"
 
         If Not String.IsNullOrEmpty(noBonOrder) Then
-            query += " AND BonOrderCode LIKE '%" & noBonOrder & "%'"
+            query += " AND BonOrderCode ='" & noBonOrder & "'"
         End If
 
         If Not dateIssues = "1900-01-01" Then
@@ -14,7 +14,7 @@
         End If
 
         If Not String.IsNullOrEmpty(piNO) Then
-            query += " AND PINo LIKE '%" & piNO & "%'"
+            query += " AND PINo ='" & piNO & "'"
         End If
 
         If Not String.IsNullOrEmpty(customerName) Then
@@ -92,6 +92,36 @@
             Throw ex
         End Try
     End Function
+    Protected Function ListComboBoxPIView(bonOrderID As Long) As DataTable
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+
+        Dim query As String = "Select PIHeaderID,pino FROM v_BonOrderHeader  where BonOrderID= '" & bonOrderID & "'"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+
+    End Function
+    Public Sub ComboBoxPIView(cmb As ComboBox, bonOrderID As Long)
+        Try
+            With cmb
+                .DataSource = ListComboBoxPIView(bonOrderID)
+                .DisplayMember = "PINo"
+                .ValueMember = "PIHeaderID"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
 #End Region
 
 #Region "Generated"

@@ -137,9 +137,9 @@ Partial Class FrmListBPB
         Me.chkBPBDate.AutoSize = True
         Me.chkBPBDate.Location = New System.Drawing.Point(3, 32)
         Me.chkBPBDate.Name = "chkBPBDate"
-        Me.chkBPBDate.Size = New System.Drawing.Size(89, 17)
+        Me.chkBPBDate.Size = New System.Drawing.Size(73, 17)
         Me.chkBPBDate.TabIndex = 58
-        Me.chkBPBDate.Text = "Receipt Date"
+        Me.chkBPBDate.Text = "BPB Date"
         Me.chkBPBDate.UseVisualStyleBackColor = True
         '
         'chkBPBNo
@@ -147,9 +147,9 @@ Partial Class FrmListBPB
         Me.chkBPBNo.AutoSize = True
         Me.chkBPBNo.Location = New System.Drawing.Point(3, 7)
         Me.chkBPBNo.Name = "chkBPBNo"
-        Me.chkBPBNo.Size = New System.Drawing.Size(80, 17)
+        Me.chkBPBNo.Size = New System.Drawing.Size(64, 17)
         Me.chkBPBNo.TabIndex = 57
-        Me.chkBPBNo.Text = "Receipt.No"
+        Me.chkBPBNo.Text = "BPB.No"
         Me.chkBPBNo.UseVisualStyleBackColor = True
         '
         'btnFind

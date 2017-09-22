@@ -59,7 +59,7 @@ Partial Class FrmPlaning
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(0, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(903, 50)
+        Me.Label5.Size = New System.Drawing.Size(806, 50)
         Me.Label5.TabIndex = 42
         Me.Label5.Tag = "25"
         Me.Label5.Text = "Planning Expected Receipt Date"
@@ -89,16 +89,16 @@ Partial Class FrmPlaning
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 50)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(903, 193)
+        Me.Panel1.Size = New System.Drawing.Size(806, 187)
         Me.Panel1.TabIndex = 64
         '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.txtCari)
         Me.GroupBox2.Controls.Add(Me.cmbCari)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 128)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 124)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(888, 55)
+        Me.GroupBox2.Size = New System.Drawing.Size(789, 55)
         Me.GroupBox2.TabIndex = 67
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Search"
@@ -107,7 +107,7 @@ Partial Class FrmPlaning
         '
         Me.txtCari.Location = New System.Drawing.Point(239, 20)
         Me.txtCari.Name = "txtCari"
-        Me.txtCari.Size = New System.Drawing.Size(375, 20)
+        Me.txtCari.Size = New System.Drawing.Size(388, 20)
         Me.txtCari.TabIndex = 10
         '
         'cmbCari
@@ -121,7 +121,7 @@ Partial Class FrmPlaning
         '
         'btnRefresh
         '
-        Me.btnRefresh.Location = New System.Drawing.Point(726, 95)
+        Me.btnRefresh.Location = New System.Drawing.Point(726, 91)
         Me.btnRefresh.Name = "btnRefresh"
         Me.btnRefresh.Size = New System.Drawing.Size(75, 23)
         Me.btnRefresh.TabIndex = 66
@@ -139,7 +139,7 @@ Partial Class FrmPlaning
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(645, 95)
+        Me.btnAdd.Location = New System.Drawing.Point(645, 91)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 23)
         Me.btnAdd.TabIndex = 64
@@ -285,23 +285,23 @@ Partial Class FrmPlaning
         '
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgv.Location = New System.Drawing.Point(0, 243)
+        Me.dgv.Location = New System.Drawing.Point(0, 237)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(903, 136)
+        Me.dgv.Size = New System.Drawing.Size(806, 142)
         Me.dgv.TabIndex = 65
         '
         'FrmPlaning
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(903, 379)
+        Me.ClientSize = New System.Drawing.Size(806, 379)
         Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.btnView)
         Me.Name = "FrmPlaning"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "FrmRMPlaning"
+        Me.Text = "FrmPlaningExpectedReceiptDate"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
