@@ -677,6 +677,8 @@ Public Class FrmBonOrder
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
         PrintData()
     End Sub
+
+
 #End Region
 
 End Class

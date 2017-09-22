@@ -146,22 +146,15 @@
         dgv.ReadOnly = True
         PropertiesGrid()
     End Sub
-
     Private Sub FrmRMPlaning_Load(sender As Object, e As EventArgs) Handles Me.Load
         PreCreateDisplay()
         Text = title
     End Sub
-
     Private Sub dgv_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellClick
         With dgv
-
-
             Dim row As Integer = .CurrentRow.Index
             If IsDBNull(Me.dgv.CurrentRow.Cells(0).Value) Then
-
-
             Else
-
                 txtPONo.Text = .Item(4, row).Value
                 txtPINo.Text = .Item(2, row).Value
                 txtSupplierName.Text = .Item(8, row).Value
@@ -169,21 +162,8 @@
                 dtSD.Value = .Item(11, row).Value
                 txtTOP.Text = .Item(12, row).Value
                 dtERD.Value = .Item(13, row).Value
-
-
-                'txtPONo.Text = .Item(6, row).Value
-                'txtPINo.Text = .Item(4, row).Value
-                'txtSupplierName.Text = .Item(10, row).Value
-                'txtSVM.Text = .Item(12, row).Value
-                'dtSD.Value = .Item(13, row).Value
-                'txtTOP.Text = .Item(14, row).Value
-                'dtERD.Value = .Item(15, row).Value
             End If
         End With
-
-
-
-
     End Sub
 #End Region
 

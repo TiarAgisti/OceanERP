@@ -38,7 +38,7 @@
         logModel.Description = description
         logModel.UserID = userID
         logModel.CompName = GetHostNameLog()
-        logModel.CreatedDate = Today.Date
+        logModel.CreatedDate = DateTime.Now
 
         Return logModel
     End Function

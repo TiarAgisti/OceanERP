@@ -170,9 +170,7 @@ Public Class FrmBPB
         txtDocType.Clear()
         txtDONO.Clear()
         txtDONO.Focus()
-
         dgv.Columns.Clear()
-
         intBaris = 0
         intPost = 0
     End Sub
@@ -184,16 +182,13 @@ Public Class FrmBPB
         TextBox1.Clear()
         txtQtyReceived.Clear()
         txtQuantityPackaging.Clear()
-
     End Sub
 #End Region
 
 #Region "Validation Number"
     Private Sub txtQtyReceived_TextChanged(sender As Object, e As EventArgs) Handles txtQtyReceived.TextChanged
         CheckNumber(txtQtyReceived)
-
     End Sub
-
     Private Sub txtQuantityPackaging_TextChanged(sender As Object, e As EventArgs) Handles txtQuantityPackaging.TextChanged
         CheckNumber(txtQuantityPackaging)
     End Sub
@@ -273,7 +268,6 @@ Public Class FrmBPB
             ElseIf dgv.Rows(i).Cells(2).Value = 0 Then
                 MsgBoxError("Receveid can't 0")
                 Exit For
-
             Else
                 check = False
             End If
@@ -327,7 +321,6 @@ Public Class FrmBPB
                         .Status = 1
                         .UpdatedBy = userID
                         .UpdatedDate = DateTime.Now
-
                     Case "Approved"
                         .BPBHeaderID = bpbheaderID
                         .BPBNo = txtBPBNo.Text
@@ -349,7 +342,6 @@ Public Class FrmBPB
             bpbBFC = Nothing
         End Try
     End Function
-
     Function SetDetail(bpbID As Long) As List(Of BPBDetailModel)
         Dim bpbBFC As ClsBPB = New ClsBPB
         Dim listModel As List(Of BPBDetailModel) = New List(Of BPBDetailModel)
@@ -374,7 +366,6 @@ Public Class FrmBPB
             Throw ex
         End Try
     End Function
-
 #End Region
 
 #Region "Function"
@@ -394,7 +385,6 @@ Public Class FrmBPB
             roleModel = Nothing
         End Try
     End Sub
-
     Sub InsertData()
         Dim bpbBFC As ClsBPB = New ClsBPB
         Dim logBFC As ClsLogHistory = New ClsLogHistory
@@ -505,7 +495,6 @@ Public Class FrmBPB
         End Try
     End Sub
     Sub PrepareHeaderByID()
-
         ComboBoxUnit()
         ComboBoxPO()
         cmbPONo.Enabled = False
@@ -547,8 +536,6 @@ Public Class FrmBPB
                     .Item(10, intBaris).Value = detail.PINo
                     .Item(11, intBaris).Value = detail.BPBHeaderID
                     .Item(12, intBaris).Value = Format(dtBPBDate.Value, "yyyy-MM-dd")
-
-
                 End With
                 intBaris = intBaris + 1
             Next
@@ -564,7 +551,6 @@ Public Class FrmBPB
             CheckPermissions()
             PrepareHeaderByID()
             PrepareRawMatrialByHeaderID()
-
             If statusBPB = 0 Then btnPrint.Enabled = False Else btnPrint.Enabled = True
             If statusBPB = 0 Or statusBPB = 2 Then btnApprove.Enabled = False
             If statusBPB = 0 Then btnVoid.Enabled = False
@@ -648,12 +634,9 @@ Public Class FrmBPB
     Private Sub dgv_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs)
         intPost = e.Row.Index
     End Sub
-
-
 #End Region
 
 #Region "Button"
-
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         If CheckEmptyHeader() = False Then
             If condition = "Update" Then
@@ -674,9 +657,7 @@ Public Class FrmBPB
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Close()
     End Sub
-
     Private Sub btnAddRawToList_Click(sender As Object, e As EventArgs) Handles btnAddRawToList.Click
-
         If CheckEmptyRawMatrial() = False Then
             Try
                 If CheckRawMatrialInList() = True Then
@@ -690,9 +671,7 @@ Public Class FrmBPB
                 MsgBoxError(ex.Message)
             End Try
         End If
-
     End Sub
-
     Private Sub btnShowList_Click(sender As Object, e As EventArgs) Handles btnShowList.Click
         Try
             RetrieveSupplier()
@@ -706,12 +685,10 @@ Public Class FrmBPB
 #End Region
 
 #Region "Check In BPB"
-
     Sub RetrieveQtyBPB()
         Dim dataTable As DataTable = New DataTable
         Dim poBFC As ClsBPB = New ClsBPB
         Dim bpbModel As BPBDetailModel = New BPBDetailModel
-
         Try
             Dim rawmatrialID = cmbRawCode.SelectedValue
             Dim obj As String = cmbPONo.SelectedValue
@@ -722,14 +699,11 @@ Public Class FrmBPB
                     restQtyBPB = Val(txtQtyPO.Text) - Val(TextBox1.Text)
                 End With
                 Exit Sub
-
             Else
                 MsgBoxError("Raw already available")
             End If
             bpbModel = Nothing
-
         Catch ex As Exception
-
             Throw ex
         End Try
     End Sub
@@ -748,33 +722,20 @@ Public Class FrmBPB
             MsgBoxError("Error : " + ex.Message)
         End Try
     End Sub
-
     Private Sub cmbRawCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRawCode.SelectedIndexChanged
-
         Try
             RetrieveQtyPO()
             RetrieveQtyBPB()
-
         Catch ex As Exception
-
         End Try
-
     End Sub
-
     Private Sub btnDeletetolist_Click(sender As Object, e As EventArgs) Handles btnDeletetolist.Click
         Try
             DeleteGrid(dgv, intBaris)
         Catch ex As Exception
-
         End Try
     End Sub
-
-    Private Sub btnVoid_Click(sender As Object, e As EventArgs) Handles btnVoid.Click
-
-    End Sub
 #End Region
-
-
 
 End Class
 
