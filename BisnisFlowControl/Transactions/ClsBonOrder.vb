@@ -214,6 +214,25 @@
             Throw ex
         End Try
     End Function
+
+    Public Function SetDetailRawMatrial(bonOrderID As Long, dgvrawmatrial As DataGridView) As List(Of PODetailModel)
+        Dim listRawMatrialDetailModel As List(Of PODetailModel) = New List(Of PODetailModel)
+        For detail = 0 To dgvrawmatrial.Rows.Count - 2
+            Dim detailModel As PODetailModel = New PODetailModel
+            With dgvrawmatrial
+                detailModel.POHeaderID = bonOrderID
+                detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
+                detailModel.UnitID = .Rows(detail).Cells(2).Value
+                detailModel.UnitPrice = .Rows(detail).Cells(4).Value
+                detailModel.Quantity = .Rows(detail).Cells(5).Value
+                detailModel.Total = .Rows(detail).Cells(6).Value
+                detailModel.PIHeaderID = .Rows(detail).Cells(7).Value
+                listRawMatrialDetailModel.Add(detailModel)
+            End With
+            '  poDetailID = poDetailID + 1
+        Next
+        Return listRawMatrialDetailModel
+    End Function
 #End Region
 
 #Region "CRUD"

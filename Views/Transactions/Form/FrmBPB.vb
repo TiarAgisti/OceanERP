@@ -687,13 +687,13 @@ Public Class FrmBPB
 #Region "Check In BPB"
     Sub RetrieveQtyBPB()
         Dim dataTable As DataTable = New DataTable
-        Dim poBFC As ClsBPB = New ClsBPB
+        Dim bpbBFC As ClsBPB = New ClsBPB
         Dim bpbModel As BPBDetailModel = New BPBDetailModel
         Try
             Dim rawmatrialID = cmbRawCode.SelectedValue
             Dim obj As String = cmbPONo.SelectedValue
             If obj > 0 Then
-                bpbModel = poBFC.RetrieveRawMaterialBPBByPO(obj, rawmatrialID)
+                bpbModel = bpbBFC.RetrieveRawMaterialBPBByPO(obj, rawmatrialID)
                 With bpbModel
                     TextBox1.Text = .QuantityBPB
                     restQtyBPB = Val(txtQtyPO.Text) - Val(TextBox1.Text)

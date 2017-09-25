@@ -9,9 +9,19 @@ Public Class FrmBonOrder
     Dim custCode As String = ""
     Dim statusBOn As Int16
     Dim msgError As String = "Error Bon Order : "
+
 #End Region
 
 #Region "ComboBox"
+    Sub ComboBoxRawMaterial()
+        Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
+        rawBFC.ComboBoxRawMaterial(cmbRawCode)
+    End Sub
+
+    Sub ComboBoxUnit()
+        Dim unitBFC As ClsUnit = New ClsUnit
+        unitBFC.ComboBoxUnit(cmbUnit)
+    End Sub
     Sub ComboBoxPI()
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Try
@@ -70,6 +80,46 @@ Public Class FrmBonOrder
                 .Columns.Add(8, "StyleID")
                 .Columns(8).Visible = False
             End With
+
+            With dgvrawmatrial
+                .Columns.Add(0, "Raw Material ID")
+                .Columns(0).Visible = False
+
+                .Columns.Add(1, "Raw Material Name")
+                .Columns(1).Width = 250
+
+                .Columns.Add(2, "Unit ID")
+                .Columns(2).Visible = False
+
+                .Columns.Add(3, "Unit")
+                .Columns(3).Width = 150
+                .Columns.Add(4, "Quantity")
+                .Columns(4).Width = 150
+            End With
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+#End Region
+
+#Region "Check StockMaterial"
+    Sub RetrieveQtyStock()
+        Dim stkBFC As ClsStock = New ClsStock
+        Dim bpbModel As StockModel = New StockModel
+        Try
+
+            Dim rawmatrialID As String = cmbRawCode.SelectedValue
+            If rawmatrialID > 0 Then
+                bpbModel = stkBFC.RetrieveRawMaterialStock(rawmatrialID)
+                With bpbModel
+                    txtStockAV.Text = .QuantityStock
+                End With
+                Exit Sub
+            Else
+                MsgBoxError("Raw already available")
+            End If
+            bpbModel = Nothing
         Catch ex As Exception
             Throw ex
         End Try
@@ -90,6 +140,12 @@ Public Class FrmBonOrder
         intBaris = 0
         intPost = 0
         custCode = ""
+    End Sub
+    Sub ClearRawMatrial()
+        cmbRawCode.Text = ""
+        cmbUnit.Text = ""
+        txtQty.Clear()
+        txtStockAV.Clear()
     End Sub
 #End Region
 
@@ -122,7 +178,22 @@ Public Class FrmBonOrder
         End If
         Return check
     End Function
-
+    Function CheckEmptyRawMatrial() As Boolean
+        Dim check As Boolean = True
+        If cmbRawCode.SelectedValue = 0 Then
+            MsgBoxWarning("Raw Matrial Not Valid")
+            cmbRawCode.Focus()
+        ElseIf txtQty.Text = "" Then
+            MsgBoxWarning("Qty Price Can't Empty")
+            txtQty.Focus()
+        ElseIf cmbUnit.SelectedValue = 0 Then
+            MsgBoxWarning("Unit For Raw Matrial Not Valid")
+            cmbUnit.Focus()
+        Else
+            check = False
+        End If
+        Return check
+    End Function
     Function CheckEmptyDetail() As Boolean
         Dim check As Boolean = True
         For i As Integer = 0 To dgv.Rows.Count - 2
@@ -140,6 +211,15 @@ Public Class FrmBonOrder
             End If
         Next
         Return check
+    End Function
+#End Region
+
+#Region "CekMaterialInlist"
+    Function CheckRawMatrialInList() As Boolean
+        Dim poBFC As ClsPO = New ClsPO
+        Dim status As Boolean
+        status = poBFC.CheckRawMatrialInList(dgvrawmatrial, cmbRawCode.SelectedValue)
+        Return status
     End Function
 #End Region
 
@@ -226,6 +306,7 @@ Public Class FrmBonOrder
 #End Region
 
 #Region "Function"
+
     Sub PrintData()
         Try
             Dim bonPrint As ClsPrintOut = New ClsPrintOut
@@ -483,11 +564,23 @@ Public Class FrmBonOrder
             Throw ex
         End Try
     End Sub
-
+    Sub AddGridDetailRawMatrial()
+        With dgvrawmatrial
+            .Rows.Add()
+            .Item(0, intBaris).Value = cmbRawCode.SelectedValue
+            .Item(1, intBaris).Value = cmbRawCode.Text
+            .Item(2, intBaris).Value = cmbUnit.SelectedValue
+            .Item(3, intBaris).Value = cmbUnit.Text
+            .Item(4, intBaris).Value = txtQty.Text
+        End With
+        intBaris = intBaris + 1
+    End Sub
     Sub PreCreateDisplay()
         Try
             ClearAll()
             GridDetail()
+            ComboBoxRawMaterial()
+            ComboBoxUnit()
             ComboBoxPI()
             CheckPermission()
         Catch ex As Exception
@@ -725,13 +818,33 @@ Public Class FrmBonOrder
             MsgBoxError(msgError + ex.Message)
         End Try
     End Sub
-
-
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
         PrintData()
     End Sub
 
+    Private Sub cmbRawCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRawCode.SelectedIndexChanged
+        Try
+            RetrieveQtyStock()
+        Catch ex As Exception
+        End Try
+    End Sub
 
+    Private Sub btnRawAddList_Click(sender As Object, e As EventArgs) Handles btnRawAddList.Click
+        If CheckEmptyRawMatrial() = False Then
+            Try
+                If CheckRawMatrialInList() = True Then
+                    AddGridDetailRawMatrial()
+                    ClearRawMatrial()
+
+                Else
+                    MsgBoxError("Raw Matrial available in list")
+                    ClearRawMatrial()
+                End If
+            Catch ex As Exception
+                MsgBoxError(ex.Message)
+            End Try
+        End If
+    End Sub
 #End Region
 
 End Class

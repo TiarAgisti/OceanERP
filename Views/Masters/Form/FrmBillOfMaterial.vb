@@ -334,8 +334,8 @@
             If fabricID > 0 Then
                 fabricModel = fabricBFC.RetrieveByID(fabricID)
                 With fabricModel
-                    txtSpec.Text = fabricModel.Specification
-                    txtCompo.Text = fabricModel.Composition
+                    txtSpec.Text = .Specification
+                    txtCompo.Text = .Composition
                 End With
             Else
                 MsgBoxError("Fabric Not Valid")
