@@ -179,6 +179,7 @@
     <Compile Include="Models\Settings\TermApproveModel.vb" />
     <Compile Include="Models\Masters\BOMDetailModel.vb" />
     <Compile Include="Models\Masters\BOMHeaderModel.vb" />
+    <Compile Include="Models\Transactions\BonOrderDetailMaterialModel.vb" />
     <Compile Include="Models\Transactions\BonOrderDetailModel.vb" />
     <Compile Include="Models\Transactions\BonOrderHeaderModel.vb" />
     <Compile Include="Models\Transactions\BonOrderPrintOutModel.vb" />

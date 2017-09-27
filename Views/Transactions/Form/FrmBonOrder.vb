@@ -6,6 +6,8 @@ Public Class FrmBonOrder
     Public Shared bonOrderID As Long = 0
     Dim intBaris As Integer
     Dim intPost As Integer
+    Dim intBarisRaw As Integer
+    Dim intPostRaw As Integer
     Dim custCode As String = ""
     Dim statusBOn As Int16
     Dim msgError As String = "Error Bon Order : "
@@ -47,6 +49,23 @@ Public Class FrmBonOrder
 #End Region
 
 #Region "Grid Detail"
+    Sub GridMaterial()
+        With dgvrawmatrial
+            .Columns.Add(0, "Raw Material ID")
+            .Columns(0).Visible = False
+
+            .Columns.Add(1, "Raw Material Name")
+            .Columns(1).Width = 250
+
+            .Columns.Add(2, "Unit ID")
+            .Columns(2).Visible = False
+
+            .Columns.Add(3, "Unit")
+            .Columns(3).Width = 150
+            .Columns.Add(4, "Quantity")
+            .Columns(4).Width = 150
+        End With
+    End Sub
     Sub GridDetail()
         Try
             With dgv
@@ -79,22 +98,6 @@ Public Class FrmBonOrder
 
                 .Columns.Add(8, "StyleID")
                 .Columns(8).Visible = False
-            End With
-
-            With dgvrawmatrial
-                .Columns.Add(0, "Raw Material ID")
-                .Columns(0).Visible = False
-
-                .Columns.Add(1, "Raw Material Name")
-                .Columns(1).Width = 250
-
-                .Columns.Add(2, "Unit ID")
-                .Columns(2).Visible = False
-
-                .Columns.Add(3, "Unit")
-                .Columns(3).Width = 150
-                .Columns.Add(4, "Quantity")
-                .Columns(4).Width = 150
             End With
 
         Catch ex As Exception
@@ -275,6 +278,18 @@ Public Class FrmBonOrder
         Dim listModel As List(Of BonOrderDetailModel) = New List(Of BonOrderDetailModel)
         Try
             listModel = bonOrderBFC.SetDetail(orderID, dgv)
+            bonOrderBFC = Nothing
+            Return listModel
+        Catch ex As Exception
+            bonOrderBFC = Nothing
+            Throw ex
+        End Try
+    End Function
+    Function SetDetailMaterial(orderID As Long) As List(Of BonOrderDetailMaterialModel)
+        Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
+        Dim listModel As List(Of BonOrderDetailMaterialModel) = New List(Of BonOrderDetailMaterialModel)
+        Try
+            listModel = bonOrderBFC.SetDetailMaterial(orderID, dgvrawmatrial)
             bonOrderBFC = Nothing
             Return listModel
         Catch ex As Exception
@@ -567,18 +582,19 @@ Public Class FrmBonOrder
     Sub AddGridDetailRawMatrial()
         With dgvrawmatrial
             .Rows.Add()
-            .Item(0, intBaris).Value = cmbRawCode.SelectedValue
-            .Item(1, intBaris).Value = cmbRawCode.Text
-            .Item(2, intBaris).Value = cmbUnit.SelectedValue
-            .Item(3, intBaris).Value = cmbUnit.Text
-            .Item(4, intBaris).Value = txtQty.Text
+            .Item(0, intBarisRaw).Value = cmbRawCode.SelectedValue
+            .Item(1, intBarisRaw).Value = cmbRawCode.Text
+            .Item(2, intBarisRaw).Value = cmbUnit.SelectedValue
+            .Item(3, intBarisRaw).Value = cmbUnit.Text
+            .Item(4, intBarisRaw).Value = txtQty.Text
         End With
-        intBaris = intBaris + 1
+        intBarisRaw = intBarisRaw + 1
     End Sub
     Sub PreCreateDisplay()
         Try
             ClearAll()
             GridDetail()
+            GridMaterial()
             ComboBoxRawMaterial()
             ComboBoxUnit()
             ComboBoxPI()
@@ -613,7 +629,7 @@ Public Class FrmBonOrder
         Dim logDesc As String = "Create new Bon Order,BON Order is " + orderCode
 
         Try
-            If bonOrderBFC.InsertData(SetDataHeader(orderID, orderCode), SetDetail(orderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
+            If bonOrderBFC.InsertData(SetDataHeader(orderID, orderCode), SetDetail(orderID), SetDetailMaterial(orderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxSaved()
                 CheckPermission()
                 btnPrint.Enabled = True
@@ -630,7 +646,7 @@ Public Class FrmBonOrder
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update Bon Order,Where Bon Order Code = " + txtCode.Text
         Try
-            If bonOrderBFC.UpdateData(SetDataHeader(bonOrderID, txtCode.Text), SetDetail(bonOrderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
+            If bonOrderBFC.UpdateData(SetDataHeader(bonOrderID, txtCode.Text), SetDetail(bonOrderID), SetDetailMaterial(bonOrderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxUpdated()
                 CheckPermission()
                 btnPrint.Enabled = True
@@ -687,7 +703,9 @@ Public Class FrmBonOrder
             Throw ex
         End Try
     End Sub
-
+    Sub DeleteGridDetailMaterial()
+        DeleteGrid(dgvrawmatrial, intBarisRaw)
+    End Sub
 #End Region
 
 #Region "Button"
@@ -699,7 +717,7 @@ Public Class FrmBonOrder
         End Try
     End Sub
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If CheckEmptyHeader() = False And CheckEmptyDetail() = False Then
+        If CheckEmptyHeader() = False And CheckEmptyDetail() = False And CheckEmptyRawMatrial() = False Then
             Try
                 InsertData()
             Catch ex As Exception
@@ -835,7 +853,6 @@ Public Class FrmBonOrder
                 If CheckRawMatrialInList() = True Then
                     AddGridDetailRawMatrial()
                     ClearRawMatrial()
-
                 Else
                     MsgBoxError("Raw Matrial available in list")
                     ClearRawMatrial()
@@ -844,6 +861,14 @@ Public Class FrmBonOrder
                 MsgBoxError(ex.Message)
             End Try
         End If
+    End Sub
+
+    Private Sub btnRawDelList_Click(sender As Object, e As EventArgs) Handles btnRawDelList.Click
+        Try
+            DeleteGridDetailMaterial()
+        Catch ex As Exception
+
+        End Try
     End Sub
 #End Region
 

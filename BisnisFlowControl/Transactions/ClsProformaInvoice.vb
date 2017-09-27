@@ -333,7 +333,7 @@ Public Class ClsProformaInvoice
                 myCode = "OA" + "0000001" + "/" + customerCode + "/" + Format(Now.Year)
             Else
                 Dim xtahun As String = Microsoft.VisualBasic.Right(dataAccess.reader.Item("PINo"), 4)
-                If xtahun <> Format(Now.Year) Then
+                If xtahun = Format(Now.Year) Then
                     Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("PINo"), 9)
                     hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
                     myCode = "OA" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & customerCode & "/" & Format(Now.Year)
@@ -341,6 +341,8 @@ Public Class ClsProformaInvoice
                     myCode = "OA" + "0000001" + "/" + customerCode + "/" + Format(Now.Year)
                 End If
             End If
+
+
             dataAccess.reader.Close()
             dataAccess = Nothing
             Return myCode

@@ -38,6 +38,17 @@ Public Class FrmPurchaseOrder
         Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
         rawBFC.ComboBoxRawMaterial(cmbRawCode)
     End Sub
+    Sub ComboBoxRaw(cmb As ComboBox, headerID As Long)
+        Dim poBFC As ClsPO = New ClsPO
+
+        Try
+            poBFC.ComboBoxRawBON(cmbRawCode, headerID)
+        Catch ex As Exception
+            Throw ex
+        Finally
+            poBFC = Nothing
+        End Try
+    End Sub
     Sub ComboBoxShipViaMethod()
         Dim svmBFC As ClsShipViaMethod = New ClsShipViaMethod
         svmBFC.ComboBoxShipViaMethod(cmbSVM)
@@ -859,7 +870,11 @@ Public Class FrmPurchaseOrder
     End Sub
 
     Private Sub cmbPINO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPINO.SelectedIndexChanged
-        cmbRawCode.Focus()
+        Try
+            ComboBoxRaw(cmbRawCode, cmbPINO.SelectedValue)
+        Catch ex As Exception
+
+        End Try
     End Sub
 
 
