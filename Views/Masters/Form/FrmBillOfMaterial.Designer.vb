@@ -238,7 +238,7 @@ Partial Class FrmBillOfMaterial
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(59, 13)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "BOM Code"
+        Me.Label1.Text = "Kode BOM"
         '
         'GroupBox1
         '

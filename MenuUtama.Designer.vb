@@ -296,7 +296,7 @@ Partial Class MenuUtama
         '
         'menuTransaksi
         '
-        Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuProformaInvoice, Me.BonOrderToolStripMenuItem, Me.menuPO, Me.RawMAterialPlaningToolStripMenuItem, Me.ReceiptToolStripMenuItem})
+        Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuProformaInvoice, Me.menuPO, Me.BonOrderToolStripMenuItem, Me.RawMAterialPlaningToolStripMenuItem, Me.ReceiptToolStripMenuItem})
         Me.menuTransaksi.Name = "menuTransaksi"
         Me.menuTransaksi.Size = New System.Drawing.Size(86, 20)
         Me.menuTransaksi.Text = "Transactions"
