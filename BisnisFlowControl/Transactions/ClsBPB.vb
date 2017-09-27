@@ -110,7 +110,6 @@
         Dim bpbDetailModel As BPBDetailModel = New BPBDetailModel
 
         Dim query As String = "Select SUM(QuantityBPB) AS TotalBPB From v_BPBDetail Where POHeaderID='" & headerID & "'  AND RawMaterialID = '" & rawmatrialID & "'"
-
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             While dataAccess.reader.Read
