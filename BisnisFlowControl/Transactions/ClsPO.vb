@@ -34,7 +34,7 @@ Public Class ClsPO
         Dim dataTable = New DataTable
         Dim query As String = "Select POHeaderID,CurrencyID,CurrencyCode,PODate,PONo,CustomerCode,CustomerName,SupplierCode,SupplierName,ShipViaMethodCode,ShipViaMethodName,ShippingDate,TermOfPayment,ExpectedReceiptDate" &
                                ",CustomerID,SupplierID,TermOfPaymentID,ShipViaMethodID,StatusDesc From v_POHeader" &
-                               " Where Status = 2"
+                               " Where Status <> 0"
 
         If Not String.IsNullOrEmpty(poNo) Then
             query += " AND PONo = '" & poNo & "'"
@@ -235,9 +235,14 @@ Public Class ClsPO
             If IsDBNull(dataAccess.reader.Item("PONo")) Then
                 myCode = "PO" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
             Else
-                Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("PONo"), 9)
-                hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
-                myCode = "PO" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & supplierCode & "/" & Format(Now.Year)
+                Dim xtahun As String = Microsoft.VisualBasic.Right(dataAccess.reader.Item("PONo"), 4)
+                If xtahun = Format(Now.Year) Then
+                    Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("PONo"), 9)
+                    hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
+                    myCode = "PO" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & supplierCode & "/" & Format(Now.Year)
+                Else
+                    myCode = "PO" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
+                End If
             End If
             dataAccess.reader.Close()
             dataAccess = Nothing
@@ -385,6 +390,40 @@ Public Class ClsPO
             With cmb
 
                 .DataSource = ListComboBoxRaw(headerID)
+
+                .DisplayMember = "RawMaterialName"
+                .ValueMember = "RawMaterialID"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
+    Protected Function ListComboBoxRawBON(headerID As Long) As DataTable
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+
+        Dim query As String = "Select RawMaterialID,RawMaterialName From v_BonOrderDetailMaterial Where PIHeaderID = '" & headerID & "'"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
+    Public Sub ComboBoxRawBON(cmb As ComboBox, headerID As Long)
+        Try
+
+            With cmb
+
+                .DataSource = ListComboBoxRawBON(headerID)
 
                 .DisplayMember = "RawMaterialName"
                 .ValueMember = "RawMaterialID"

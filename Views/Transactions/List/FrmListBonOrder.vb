@@ -42,7 +42,7 @@
             dgv.Columns(3).HeaderText = "PI No"
             dgv.Columns(3).Width = 180
 
-            dgv.Columns(4).HeaderText = "PO No"
+            dgv.Columns(4).HeaderText = "Ref PO"
             dgv.Columns(5).HeaderText = "Brand / Buyer"
             dgv.Columns(6).HeaderText = "Fabric"
             dgv.Columns(7).HeaderText = "Customer"
@@ -52,39 +52,38 @@
         End Try
     End Sub
     Sub ListData()
-        If ckNoBon.Checked = True Then
-            noBonOrder = txtNoBon.Text
-        ElseIf ckNoBon.Checked = False Then
-            noBonOrder = ""
-        End If
-
-        If ckDateIssues.Checked = True Then
-            dateIssues = dtpIssues.Value
-        ElseIf ckDateIssues.Checked = False Then
-            dateIssues = "1900-01-01"
-        End If
-
-        If ckPINo.Checked = True Then
-            piNo = txtPINo.Text
-        ElseIf ckPINo.Checked = False Then
-            piNo = ""
-        End If
-
-        If ckCust.Checked = True Then
-            customer = txtCust.Text
-        ElseIf ckCust.Checked = False Then
-            customer = ""
-        End If
-
-        Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
         Try
+            If ckNoBon.Checked = True Then
+                noBonOrder = txtNoBon.Text
+            Else
+                noBonOrder = ""
+            End If
+
+            If ckDateIssues.Checked = True Then
+                dateIssues = dtpIssues.Value
+            Else
+                dateIssues = "1900-01-01"
+            End If
+
+            If ckPINo.Checked = True Then
+                piNo = txtPINo.Text
+            Else
+                piNo = ""
+            End If
+
+            If ckCust.Checked = True Then
+                customer = txtCust.Text
+            Else
+                customer = ""
+            End If
+
+            Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
+
             dgv.DataSource = bonOrderBFC.RetrieveListBonOrder(Trim(noBonOrder), dateIssues, Trim(piNo), Trim(customer))
             dgv.ReadOnly = True
             PropertiesGrid()
         Catch ex As Exception
-            Throw ex
-        Finally
-            bonOrderBFC = Nothing
+            MsgBoxError("Error List Bon Order : " + ex.Message)
         End Try
     End Sub
     Function GetID() As Long

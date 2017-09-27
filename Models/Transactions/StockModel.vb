@@ -92,4 +92,14 @@
             xDocType = value
         End Set
     End Property
+
+    Private xQuantityStock As Integer
+    Public Property QuantityStock() As Integer
+        Get
+            Return xQuantityStock
+        End Get
+        Set(ByVal value As Integer)
+            xQuantityStock = value
+        End Set
+    End Property
 End Class

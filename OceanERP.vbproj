@@ -135,6 +135,7 @@
     <Compile Include="BisnisFlowControl\Transactions\ClsBPB.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsPO.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsProformaInvoice.vb" />
+    <Compile Include="BisnisFlowControl\Transactions\ClsStock.vb" />
     <Compile Include="DataAccess\ClsDataAccess.vb" />
     <Compile Include="DataAccess\ClsPrintOut.vb" />
     <Compile Include="DataAccess\MdlHelper.vb" />
@@ -178,6 +179,7 @@
     <Compile Include="Models\Settings\TermApproveModel.vb" />
     <Compile Include="Models\Masters\BOMDetailModel.vb" />
     <Compile Include="Models\Masters\BOMHeaderModel.vb" />
+    <Compile Include="Models\Transactions\BonOrderDetailMaterialModel.vb" />
     <Compile Include="Models\Transactions\BonOrderDetailModel.vb" />
     <Compile Include="Models\Transactions\BonOrderHeaderModel.vb" />
     <Compile Include="Models\Transactions\BonOrderPrintOutModel.vb" />

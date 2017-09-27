@@ -6,7 +6,7 @@
         Dim query As String = "Select BonOrderID,BonOrderCode,DateIssues,PINo,RefPO,BuyerName,StyleName,CustomerName,StatusDesc From v_BonOrderHeader"
 
         If Not String.IsNullOrEmpty(noBonOrder) Then
-            query += " AND BonOrderCode LIKE '%" & noBonOrder & "%'"
+            query += " AND BonOrderCode ='" & noBonOrder & "'"
         End If
 
         If Not dateIssues = "1900-01-01" Then
@@ -14,7 +14,7 @@
         End If
 
         If Not String.IsNullOrEmpty(piNO) Then
-            query += " AND PINo LIKE '%" & piNO & "%'"
+            query += " AND PINo ='" & piNO & "'"
         End If
 
         If Not String.IsNullOrEmpty(customerName) Then
@@ -92,6 +92,36 @@
             Throw ex
         End Try
     End Function
+    Protected Function ListComboBoxPIView(bonOrderID As Long) As DataTable
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+
+        Dim query As String = "Select PIHeaderID,pino FROM v_BonOrderHeader  where BonOrderID= '" & bonOrderID & "'"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+
+    End Function
+    Public Sub ComboBoxPIView(cmb As ComboBox, bonOrderID As Long)
+        Try
+            With cmb
+                .DataSource = ListComboBoxPIView(bonOrderID)
+                .DisplayMember = "PINo"
+                .ValueMember = "PIHeaderID"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
 #End Region
 
 #Region "Generated"
@@ -108,7 +138,7 @@
                 myCode = "BON" + "0000001" + "/" + customerCode + "/" + Format(Now.Year)
             Else
                 Dim xtahun As String = Microsoft.VisualBasic.Right(dataAccess.reader.Item("Code"), 4)
-                If xtahun <> Format(Now.Year) Then
+                If xtahun = Format(Now.Year) Then
                     Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("Code"), 10)
                     hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
                     myCode = "BON" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & customerCode & "/" & Format(Now.Year)
@@ -184,6 +214,25 @@
             Throw ex
         End Try
     End Function
+
+    Public Function SetDetailMaterial(bonOrderID As Long, dgv As DataGridView) As List(Of BonOrderDetailMaterialModel)
+        Dim listDetail As List(Of BonOrderDetailMaterialModel) = New List(Of BonOrderDetailMaterialModel)
+        Try
+            For detail = 0 To dgv.Rows.Count - 2
+                Dim detailModel As BonOrderDetailMaterialModel = New BonOrderDetailMaterialModel
+                With dgv
+                    detailModel.BonOrderID = bonOrderID
+                    detailModel.RawMaterialID = .Rows(detail).Cells(0).Value
+                    detailModel.UnitID = .Rows(detail).Cells(2).Value
+                    detailModel.Quantity = .Rows(detail).Cells(4).Value
+                    listDetail.Add(detailModel)
+                End With
+            Next
+            Return listDetail
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
 #End Region
 
 #Region "CRUD"
@@ -200,6 +249,14 @@
         Dim sql As String
         sql = "Insert into BonOrderDetail(BonOrderID,FabricID,ColorID,StyleID,LabsDipsNo,Bruto,Netto)Values('" & myModel.BonOrderID & "'" &
             ",'" & myModel.FabricID & "','" & myModel.ColorID & "','" & myModel.StyleID & "','" & myModel.LabsDipsNo & "','" & myModel.Bruto & "','" & myModel.Netto & "')"
+        Return sql
+    End Function
+
+
+    Protected Function SqlInsertDetailMaterial(myModel As BonOrderDetailMaterialModel) As String
+        Dim sql As String
+        sql = "Insert into BonOrderDetailMaterial(BonOrderID,RawMaterialID,UnitID,Quantity)Values('" & myModel.BonOrderID & "'" &
+            ",'" & myModel.RawMaterialID & "','" & myModel.UnitID & "','" & myModel.Quantity & "')"
         Return sql
     End Function
 
@@ -223,7 +280,13 @@
         Return SQL
     End Function
 
-    Public Function InsertData(bonHeaderModel As BonOrderHeaderModel, listBonDetail As List(Of BonOrderDetailModel), logModel As LogHistoryModel) As Boolean
+    Protected Function SqlDeleteDetailMaterial(myModel As BonOrderHeaderModel) As String
+        Dim SQL As String
+        SQL = "Delete From BonOrderDetailMaterial Where BonOrderID = '" & myModel.BonOrderID & "'"
+        Return SQL
+    End Function
+
+    Public Function InsertData(bonHeaderModel As BonOrderHeaderModel, listBonDetail As List(Of BonOrderDetailModel), listBonDetailMaterial As List(Of BonOrderDetailMaterialModel), logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
@@ -236,6 +299,9 @@
         'insert detail
         For Each detail In listBonDetail
             queryList.Add(SqlInsertDetail(detail))
+        Next
+        For Each detailmaterial In listBonDetailMaterial
+            queryList.Add(SqlInsertDetailMaterial(detailmaterial))
         Next
 
         'insert log history
@@ -252,20 +318,23 @@
         Return statusInsert
     End Function
 
-    Public Function UpdateData(bonHeaderModel As BonOrderHeaderModel, listBonDetail As List(Of BonOrderDetailModel), logModel As LogHistoryModel) As Boolean
+    Public Function UpdateData(bonHeaderModel As BonOrderHeaderModel, listBonDetail As List(Of BonOrderDetailModel), listBonDetailMaterial As List(Of BonOrderDetailMaterialModel), logModel As LogHistoryModel) As Boolean
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As List(Of String) = New List(Of String)
         Dim statusUpdate As Boolean = False
         'delete all detail before update
         queryList.Add(SqlDeleteDetail(bonHeaderModel))
-
+        queryList.Add(SqlDeleteDetailMaterial(bonHeaderModel))
         'update header
         queryList.Add(SqlUpdateHeader(bonHeaderModel))
 
         'insert detail
         For Each detail In listBonDetail
             queryList.Add(SqlInsertDetail(detail))
+        Next
+        For Each detail In listBonDetailMaterial
+            queryList.Add(SqlInsertDetailMaterial(detail))
         Next
 
         'insert log history

@@ -1,4 +1,5 @@
 ﻿Public Class FrmListBPB
+
 #Region "Declaration"
     Dim bpbNo As String
     Dim dateFrom As Date
@@ -95,7 +96,6 @@
         Catch ex As Exception
 
         End Try
-
     End Sub
 
     Function GetID() As Long
@@ -109,8 +109,6 @@
             Throw New Exception("Error List: No data available")
         End If
         Return headerID
-
-
     End Function
 
     Sub PreCreateDisplay()

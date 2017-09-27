@@ -50,6 +50,19 @@ Partial Class FrmBonOrder
         Me.colFabricID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colColorID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.TabProductName = New System.Windows.Forms.TabPage()
+        Me.btnRawDelList = New System.Windows.Forms.Button()
+        Me.txtStockAV = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.cmbUnit = New System.Windows.Forms.ComboBox()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.btnRawAddList = New System.Windows.Forms.Button()
+        Me.dgvrawmatrial = New System.Windows.Forms.DataGridView()
+        Me.txtQty = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.cmbRawCode = New System.Windows.Forms.ComboBox()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnVoid = New System.Windows.Forms.Button()
@@ -67,6 +80,9 @@ Partial Class FrmBonOrder
         Me.Panel1.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
+        Me.TabControl1.SuspendLayout()
+        Me.TabProductName.SuspendLayout()
+        CType(Me.dgvrawmatrial, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -77,7 +93,7 @@ Partial Class FrmBonOrder
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(0, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(912, 43)
+        Me.Label3.Size = New System.Drawing.Size(893, 43)
         Me.Label3.TabIndex = 24
         Me.Label3.Tag = "24"
         Me.Label3.Text = "Bon Order"
@@ -104,7 +120,7 @@ Partial Class FrmBonOrder
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 43)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(912, 96)
+        Me.Panel1.Size = New System.Drawing.Size(893, 96)
         Me.Panel1.TabIndex = 25
         '
         'btnAdd
@@ -135,7 +151,7 @@ Partial Class FrmBonOrder
         'txtStyle
         '
         Me.txtStyle.Enabled = False
-        Me.txtStyle.Location = New System.Drawing.Point(702, 39)
+        Me.txtStyle.Location = New System.Drawing.Point(687, 39)
         Me.txtStyle.Name = "txtStyle"
         Me.txtStyle.Size = New System.Drawing.Size(196, 20)
         Me.txtStyle.TabIndex = 7
@@ -143,7 +159,7 @@ Partial Class FrmBonOrder
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(629, 42)
+        Me.Label7.Location = New System.Drawing.Point(614, 42)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(30, 13)
         Me.Label7.TabIndex = 25
@@ -152,7 +168,7 @@ Partial Class FrmBonOrder
         'txtBrand
         '
         Me.txtBrand.Enabled = False
-        Me.txtBrand.Location = New System.Drawing.Point(702, 13)
+        Me.txtBrand.Location = New System.Drawing.Point(687, 13)
         Me.txtBrand.Name = "txtBrand"
         Me.txtBrand.Size = New System.Drawing.Size(196, 20)
         Me.txtBrand.TabIndex = 6
@@ -160,7 +176,7 @@ Partial Class FrmBonOrder
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(629, 16)
+        Me.Label6.Location = New System.Drawing.Point(614, 16)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(73, 13)
         Me.Label6.TabIndex = 24
@@ -169,7 +185,7 @@ Partial Class FrmBonOrder
         'txtCustomer
         '
         Me.txtCustomer.Enabled = False
-        Me.txtCustomer.Location = New System.Drawing.Point(384, 13)
+        Me.txtCustomer.Location = New System.Drawing.Point(369, 13)
         Me.txtCustomer.Name = "txtCustomer"
         Me.txtCustomer.Size = New System.Drawing.Size(196, 20)
         Me.txtCustomer.TabIndex = 4
@@ -177,7 +193,7 @@ Partial Class FrmBonOrder
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(311, 16)
+        Me.Label5.Location = New System.Drawing.Point(296, 16)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(51, 13)
         Me.Label5.TabIndex = 23
@@ -186,7 +202,7 @@ Partial Class FrmBonOrder
         'txtNoPO
         '
         Me.txtNoPO.Enabled = False
-        Me.txtNoPO.Location = New System.Drawing.Point(384, 39)
+        Me.txtNoPO.Location = New System.Drawing.Point(369, 39)
         Me.txtNoPO.Name = "txtNoPO"
         Me.txtNoPO.Size = New System.Drawing.Size(196, 20)
         Me.txtNoPO.TabIndex = 5
@@ -194,11 +210,11 @@ Partial Class FrmBonOrder
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(311, 42)
+        Me.Label4.Location = New System.Drawing.Point(296, 42)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(39, 13)
+        Me.Label4.Size = New System.Drawing.Size(65, 13)
         Me.Label4.TabIndex = 22
-        Me.Label4.Text = "No PO"
+        Me.Label4.Text = "No .Reff PO"
         '
         'cmbPINo
         '
@@ -240,7 +256,7 @@ Partial Class FrmBonOrder
         Me.dgv.Dock = System.Windows.Forms.DockStyle.Top
         Me.dgv.Location = New System.Drawing.Point(0, 139)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(912, 238)
+        Me.dgv.Size = New System.Drawing.Size(893, 200)
         Me.dgv.TabIndex = 8
         '
         'colFabric
@@ -299,6 +315,7 @@ Partial Class FrmBonOrder
         'Panel2
         '
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Controls.Add(Me.TabControl1)
         Me.Panel2.Controls.Add(Me.btnClose)
         Me.Panel2.Controls.Add(Me.btnPrint)
         Me.Panel2.Controls.Add(Me.btnVoid)
@@ -307,14 +324,141 @@ Partial Class FrmBonOrder
         Me.Panel2.Controls.Add(Me.btnSave)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 377)
+        Me.Panel2.Location = New System.Drawing.Point(0, 339)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(912, 93)
+        Me.Panel2.Size = New System.Drawing.Size(893, 314)
         Me.Panel2.TabIndex = 27
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Controls.Add(Me.TabProductName)
+        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.TabControl1.Location = New System.Drawing.Point(0, 0)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(889, 227)
+        Me.TabControl1.TabIndex = 19
+        '
+        'TabProductName
+        '
+        Me.TabProductName.Controls.Add(Me.btnRawDelList)
+        Me.TabProductName.Controls.Add(Me.txtStockAV)
+        Me.TabProductName.Controls.Add(Me.Label14)
+        Me.TabProductName.Controls.Add(Me.cmbUnit)
+        Me.TabProductName.Controls.Add(Me.Label31)
+        Me.TabProductName.Controls.Add(Me.btnRawAddList)
+        Me.TabProductName.Controls.Add(Me.dgvrawmatrial)
+        Me.TabProductName.Controls.Add(Me.txtQty)
+        Me.TabProductName.Controls.Add(Me.Label15)
+        Me.TabProductName.Controls.Add(Me.cmbRawCode)
+        Me.TabProductName.Controls.Add(Me.Label20)
+        Me.TabProductName.Location = New System.Drawing.Point(4, 22)
+        Me.TabProductName.Name = "TabProductName"
+        Me.TabProductName.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabProductName.Size = New System.Drawing.Size(881, 201)
+        Me.TabProductName.TabIndex = 0
+        Me.TabProductName.Text = "Raw Material"
+        Me.TabProductName.UseVisualStyleBackColor = True
+        '
+        'btnRawDelList
+        '
+        Me.btnRawDelList.Location = New System.Drawing.Point(470, 59)
+        Me.btnRawDelList.Name = "btnRawDelList"
+        Me.btnRawDelList.Size = New System.Drawing.Size(120, 23)
+        Me.btnRawDelList.TabIndex = 138
+        Me.btnRawDelList.Text = "Delete From List"
+        Me.btnRawDelList.UseVisualStyleBackColor = True
+        '
+        'txtStockAV
+        '
+        Me.txtStockAV.Enabled = False
+        Me.txtStockAV.Location = New System.Drawing.Point(113, 35)
+        Me.txtStockAV.MaxLength = 50
+        Me.txtStockAV.Name = "txtStockAV"
+        Me.txtStockAV.Size = New System.Drawing.Size(188, 20)
+        Me.txtStockAV.TabIndex = 136
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(7, 38)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(84, 13)
+        Me.Label14.TabIndex = 137
+        Me.Label14.Text = " Available Stock"
+        '
+        'cmbUnit
+        '
+        Me.cmbUnit.FormattingEnabled = True
+        Me.cmbUnit.Location = New System.Drawing.Point(402, 7)
+        Me.cmbUnit.Name = "cmbUnit"
+        Me.cmbUnit.Size = New System.Drawing.Size(188, 21)
+        Me.cmbUnit.TabIndex = 135
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(317, 10)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(26, 13)
+        Me.Label31.TabIndex = 134
+        Me.Label31.Text = "Unit"
+        '
+        'btnRawAddList
+        '
+        Me.btnRawAddList.Location = New System.Drawing.Point(350, 59)
+        Me.btnRawAddList.Name = "btnRawAddList"
+        Me.btnRawAddList.Size = New System.Drawing.Size(114, 23)
+        Me.btnRawAddList.TabIndex = 113
+        Me.btnRawAddList.Text = "Add To List"
+        Me.btnRawAddList.UseVisualStyleBackColor = True
+        '
+        'dgvrawmatrial
+        '
+        Me.dgvrawmatrial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvrawmatrial.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dgvrawmatrial.Location = New System.Drawing.Point(10, 88)
+        Me.dgvrawmatrial.Name = "dgvrawmatrial"
+        Me.dgvrawmatrial.Size = New System.Drawing.Size(580, 107)
+        Me.dgvrawmatrial.TabIndex = 112
+        '
+        'txtQty
+        '
+        Me.txtQty.Location = New System.Drawing.Point(402, 34)
+        Me.txtQty.MaxLength = 50
+        Me.txtQty.Name = "txtQty"
+        Me.txtQty.Size = New System.Drawing.Size(188, 20)
+        Me.txtQty.TabIndex = 108
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(317, 38)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(46, 13)
+        Me.Label15.TabIndex = 109
+        Me.Label15.Text = "Quantity"
+        '
+        'cmbRawCode
+        '
+        Me.cmbRawCode.FormattingEnabled = True
+        Me.cmbRawCode.Location = New System.Drawing.Point(113, 8)
+        Me.cmbRawCode.Name = "cmbRawCode"
+        Me.cmbRawCode.Size = New System.Drawing.Size(188, 21)
+        Me.cmbRawCode.TabIndex = 102
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(7, 11)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(100, 13)
+        Me.Label20.TabIndex = 104
+        Me.Label20.Text = "Raw Material Name"
         '
         'btnClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(146, 53)
+        Me.btnClose.Location = New System.Drawing.Point(307, 234)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(56, 23)
         Me.btnClose.TabIndex = 16
@@ -324,7 +468,7 @@ Partial Class FrmBonOrder
         'btnPrint
         '
         Me.btnPrint.Enabled = False
-        Me.btnPrint.Location = New System.Drawing.Point(146, 24)
+        Me.btnPrint.Location = New System.Drawing.Point(127, 234)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(56, 23)
         Me.btnPrint.TabIndex = 13
@@ -334,7 +478,7 @@ Partial Class FrmBonOrder
         'btnVoid
         '
         Me.btnVoid.Enabled = False
-        Me.btnVoid.Location = New System.Drawing.Point(84, 53)
+        Me.btnVoid.Location = New System.Drawing.Point(245, 234)
         Me.btnVoid.Name = "btnVoid"
         Me.btnVoid.Size = New System.Drawing.Size(56, 23)
         Me.btnVoid.TabIndex = 15
@@ -344,7 +488,7 @@ Partial Class FrmBonOrder
         'btnApprove
         '
         Me.btnApprove.Enabled = False
-        Me.btnApprove.Location = New System.Drawing.Point(22, 53)
+        Me.btnApprove.Location = New System.Drawing.Point(183, 234)
         Me.btnApprove.Name = "btnApprove"
         Me.btnApprove.Size = New System.Drawing.Size(56, 23)
         Me.btnApprove.TabIndex = 14
@@ -354,7 +498,7 @@ Partial Class FrmBonOrder
         'btnUpdate
         '
         Me.btnUpdate.Enabled = False
-        Me.btnUpdate.Location = New System.Drawing.Point(84, 24)
+        Me.btnUpdate.Location = New System.Drawing.Point(65, 234)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(56, 23)
         Me.btnUpdate.TabIndex = 12
@@ -364,7 +508,7 @@ Partial Class FrmBonOrder
         'btnSave
         '
         Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(22, 24)
+        Me.btnSave.Location = New System.Drawing.Point(3, 234)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(56, 23)
         Me.btnSave.TabIndex = 11
@@ -373,7 +517,6 @@ Partial Class FrmBonOrder
         '
         'Panel3
         '
-        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.Label12)
         Me.Panel3.Controls.Add(Me.Label11)
         Me.Panel3.Controls.Add(Me.txtTotNetto)
@@ -381,10 +524,9 @@ Partial Class FrmBonOrder
         Me.Panel3.Controls.Add(Me.txtTotBruto)
         Me.Panel3.Controls.Add(Me.Label9)
         Me.Panel3.Controls.Add(Me.Label8)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel3.Location = New System.Drawing.Point(733, 0)
+        Me.Panel3.Location = New System.Drawing.Point(710, 229)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(175, 89)
+        Me.Panel3.Size = New System.Drawing.Size(175, 79)
         Me.Panel3.TabIndex = 0
         '
         'Label12
@@ -453,7 +595,7 @@ Partial Class FrmBonOrder
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(912, 470)
+        Me.ClientSize = New System.Drawing.Size(893, 653)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.Panel1)
@@ -470,6 +612,10 @@ Partial Class FrmBonOrder
         Me.Panel1.PerformLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
+        Me.TabControl1.ResumeLayout(False)
+        Me.TabProductName.ResumeLayout(False)
+        Me.TabProductName.PerformLayout()
+        CType(Me.dgvrawmatrial, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
@@ -517,4 +663,17 @@ Partial Class FrmBonOrder
     Friend WithEvents colFabricID As DataGridViewTextBoxColumn
     Friend WithEvents colColorID As DataGridViewTextBoxColumn
     Friend WithEvents btnAdd As Button
+    Friend WithEvents TabControl1 As TabControl
+    Friend WithEvents TabProductName As TabPage
+    Friend WithEvents cmbUnit As ComboBox
+    Friend WithEvents Label31 As Label
+    Friend WithEvents btnRawAddList As Button
+    Friend WithEvents dgvrawmatrial As DataGridView
+    Friend WithEvents txtQty As TextBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents cmbRawCode As ComboBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents txtStockAV As TextBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents btnRawDelList As Button
 End Class

@@ -6,12 +6,24 @@ Public Class FrmBonOrder
     Public Shared bonOrderID As Long = 0
     Dim intBaris As Integer
     Dim intPost As Integer
+    Dim intBarisRaw As Integer
+    Dim intPostRaw As Integer
     Dim custCode As String = ""
     Dim statusBOn As Int16
     Dim msgError As String = "Error Bon Order : "
+
 #End Region
 
 #Region "ComboBox"
+    Sub ComboBoxRawMaterial()
+        Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
+        rawBFC.ComboBoxRawMaterial(cmbRawCode)
+    End Sub
+
+    Sub ComboBoxUnit()
+        Dim unitBFC As ClsUnit = New ClsUnit
+        unitBFC.ComboBoxUnit(cmbUnit)
+    End Sub
     Sub ComboBoxPI()
         Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
         Try
@@ -23,9 +35,37 @@ Public Class FrmBonOrder
             Throw ex
         End Try
     End Sub
+    Sub ComboBoxPIView(cmb As ComboBox, bonOrderID As Long)
+        Dim bonBFC As ClsBonOrder = New ClsBonOrder
+        Try
+            bonBFC.ComboBoxPIView(cmbPINo, bonOrderID)
+            cmbPINo.Enabled = True
+            bonBFC = Nothing
+        Catch ex As Exception
+            bonBFC = Nothing
+            Throw ex
+        End Try
+    End Sub
 #End Region
 
 #Region "Grid Detail"
+    Sub GridMaterial()
+        With dgvrawmatrial
+            .Columns.Add(0, "Raw Material ID")
+            .Columns(0).Visible = False
+
+            .Columns.Add(1, "Raw Material Name")
+            .Columns(1).Width = 250
+
+            .Columns.Add(2, "Unit ID")
+            .Columns(2).Visible = False
+
+            .Columns.Add(3, "Unit")
+            .Columns(3).Width = 150
+            .Columns.Add(4, "Quantity")
+            .Columns(4).Width = 150
+        End With
+    End Sub
     Sub GridDetail()
         Try
             With dgv
@@ -59,6 +99,30 @@ Public Class FrmBonOrder
                 .Columns.Add(8, "StyleID")
                 .Columns(8).Visible = False
             End With
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+#End Region
+
+#Region "Check StockMaterial"
+    Sub RetrieveQtyStock()
+        Dim stkBFC As ClsStock = New ClsStock
+        Dim bpbModel As StockModel = New StockModel
+        Try
+
+            Dim rawmatrialID As String = cmbRawCode.SelectedValue
+            If rawmatrialID > 0 Then
+                bpbModel = stkBFC.RetrieveRawMaterialStock(rawmatrialID)
+                With bpbModel
+                    txtStockAV.Text = .QuantityStock
+                End With
+                Exit Sub
+            Else
+                MsgBoxError("Raw already available")
+            End If
+            bpbModel = Nothing
         Catch ex As Exception
             Throw ex
         End Try
@@ -79,6 +143,12 @@ Public Class FrmBonOrder
         intBaris = 0
         intPost = 0
         custCode = ""
+    End Sub
+    Sub ClearRawMatrial()
+        cmbRawCode.Text = ""
+        cmbUnit.Text = ""
+        txtQty.Clear()
+        txtStockAV.Clear()
     End Sub
 #End Region
 
@@ -111,7 +181,22 @@ Public Class FrmBonOrder
         End If
         Return check
     End Function
-
+    Function CheckEmptyRawMatrial() As Boolean
+        Dim check As Boolean = True
+        If cmbRawCode.SelectedValue = 0 Then
+            MsgBoxWarning("Raw Matrial Not Valid")
+            cmbRawCode.Focus()
+        ElseIf txtQty.Text = "" Then
+            MsgBoxWarning("Qty Price Can't Empty")
+            txtQty.Focus()
+        ElseIf cmbUnit.SelectedValue = 0 Then
+            MsgBoxWarning("Unit For Raw Matrial Not Valid")
+            cmbUnit.Focus()
+        Else
+            check = False
+        End If
+        Return check
+    End Function
     Function CheckEmptyDetail() As Boolean
         Dim check As Boolean = True
         For i As Integer = 0 To dgv.Rows.Count - 2
@@ -129,6 +214,15 @@ Public Class FrmBonOrder
             End If
         Next
         Return check
+    End Function
+#End Region
+
+#Region "CekMaterialInlist"
+    Function CheckRawMatrialInList() As Boolean
+        Dim poBFC As ClsPO = New ClsPO
+        Dim status As Boolean
+        status = poBFC.CheckRawMatrialInList(dgvrawmatrial, cmbRawCode.SelectedValue)
+        Return status
     End Function
 #End Region
 
@@ -191,6 +285,18 @@ Public Class FrmBonOrder
             Throw ex
         End Try
     End Function
+    Function SetDetailMaterial(orderID As Long) As List(Of BonOrderDetailMaterialModel)
+        Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
+        Dim listModel As List(Of BonOrderDetailMaterialModel) = New List(Of BonOrderDetailMaterialModel)
+        Try
+            listModel = bonOrderBFC.SetDetailMaterial(orderID, dgvrawmatrial)
+            bonOrderBFC = Nothing
+            Return listModel
+        Catch ex As Exception
+            bonOrderBFC = Nothing
+            Throw ex
+        End Try
+    End Function
     Function SetDataPI(condPI As String) As PIHeaderModel
         Dim piModel As PIHeaderModel = New PIHeaderModel
         Try
@@ -215,6 +321,7 @@ Public Class FrmBonOrder
 #End Region
 
 #Region "Function"
+
     Sub PrintData()
         Try
             Dim bonPrint As ClsPrintOut = New ClsPrintOut
@@ -251,6 +358,11 @@ Public Class FrmBonOrder
             ElseIf conBon = "View" Then
                 cmbPINo.Enabled = False
                 btnAdd.Enabled = False
+                txtCode.Enabled = False
+                dtpDateIssues.Enabled = False
+                btnSave.Enabled = False
+                btnUpdate.Enabled = False
+                btnPrint.Enabled = True
             End If
 
 
@@ -262,11 +374,38 @@ Public Class FrmBonOrder
             Throw ex
         End Try
     End Sub
+    Sub PrepareByHeaderIDView()
+        Dim headerModel As BonOrderHeaderModel = New BonOrderHeaderModel
+        Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
+        Try
+            ComboBoxPIView(cmbPINo, bonOrderID)
+            headerModel = bonOrderBFC.RetrieveByID(bonOrderID)
+            With headerModel
+                txtCode.Text = .BonOrderCode
+                cmbPINo.SelectedValue = .PIHeaderID
+                txtNoPO.Text = .RefPO
+                txtCustomer.Text = .CustomerName
+                txtBrand.Text = .BuyerName
+                txtStyle.Text = .StyleName
+                statusBOn = .Status
+            End With
+
+            'cmbPINo.Enabled = False
+            'btnAdd.Enabled = False
+
+            headerModel = Nothing
+            bonOrderBFC = Nothing
+        Catch ex As Exception
+            headerModel = Nothing
+            bonOrderBFC = Nothing
+            Throw ex
+        End Try
+    End Sub
     Sub PrepareByHeaderID()
         Dim headerModel As BonOrderHeaderModel = New BonOrderHeaderModel
         Dim bonOrderBFC As ClsBonOrder = New ClsBonOrder
         Try
-            ComboBoxPI()
+            ComboBoxPIView(cmbPINo, bonOrderID)
             headerModel = bonOrderBFC.RetrieveByID(bonOrderID)
             With headerModel
                 txtCode.Text = .BonOrderCode
@@ -440,18 +579,39 @@ Public Class FrmBonOrder
             Throw ex
         End Try
     End Sub
-
+    Sub AddGridDetailRawMatrial()
+        With dgvrawmatrial
+            .Rows.Add()
+            .Item(0, intBarisRaw).Value = cmbRawCode.SelectedValue
+            .Item(1, intBarisRaw).Value = cmbRawCode.Text
+            .Item(2, intBarisRaw).Value = cmbUnit.SelectedValue
+            .Item(3, intBarisRaw).Value = cmbUnit.Text
+            .Item(4, intBarisRaw).Value = txtQty.Text
+        End With
+        intBarisRaw = intBarisRaw + 1
+    End Sub
     Sub PreCreateDisplay()
         Try
             ClearAll()
             GridDetail()
+            GridMaterial()
+            ComboBoxRawMaterial()
+            ComboBoxUnit()
             ComboBoxPI()
             CheckPermission()
         Catch ex As Exception
             Throw ex
         End Try
     End Sub
-
+    Sub PreViewDisplay()
+        Try
+            PrepareByHeaderIDView()
+            PrepareDetailByHeaderID()
+            CheckPermission()
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
     Sub PreUpdateDisplay()
         Try
             PrepareByHeaderID()
@@ -469,7 +629,7 @@ Public Class FrmBonOrder
         Dim logDesc As String = "Create new Bon Order,BON Order is " + orderCode
 
         Try
-            If bonOrderBFC.InsertData(SetDataHeader(orderID, orderCode), SetDetail(orderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
+            If bonOrderBFC.InsertData(SetDataHeader(orderID, orderCode), SetDetail(orderID), SetDetailMaterial(orderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxSaved()
                 CheckPermission()
                 btnPrint.Enabled = True
@@ -486,7 +646,7 @@ Public Class FrmBonOrder
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update Bon Order,Where Bon Order Code = " + txtCode.Text
         Try
-            If bonOrderBFC.UpdateData(SetDataHeader(bonOrderID, txtCode.Text), SetDetail(bonOrderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
+            If bonOrderBFC.UpdateData(SetDataHeader(bonOrderID, txtCode.Text), SetDetail(bonOrderID), SetDetailMaterial(bonOrderID), logBFC.SetLogHistoryTrans(logDesc)) = True Then
                 MsgBoxUpdated()
                 CheckPermission()
                 btnPrint.Enabled = True
@@ -543,7 +703,9 @@ Public Class FrmBonOrder
             Throw ex
         End Try
     End Sub
-
+    Sub DeleteGridDetailMaterial()
+        DeleteGrid(dgvrawmatrial)
+    End Sub
 #End Region
 
 #Region "Button"
@@ -614,6 +776,8 @@ Public Class FrmBonOrder
                     PreCreateDisplay()
                 Case "Update"
                     PreUpdateDisplay()
+                Case "View"
+                    PreViewDisplay()
             End Select
         Catch ex As Exception
             MsgBoxError("Error Bon Order : " + ex.Message)
@@ -672,10 +836,60 @@ Public Class FrmBonOrder
             MsgBoxError(msgError + ex.Message)
         End Try
     End Sub
-
-
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
         PrintData()
+    End Sub
+
+    Private Sub cmbRawCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRawCode.SelectedIndexChanged
+        Try
+            RetrieveQtyStock()
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub btnRawAddList_Click(sender As Object, e As EventArgs) Handles btnRawAddList.Click
+        If CheckEmptyRawMatrial() = False Then
+            Try
+                If CheckRawMatrialInList() = True Then
+                    AddGridDetailRawMatrial()
+                    ClearRawMatrial()
+                Else
+                    MsgBoxError("Raw Matrial available in list")
+                    ClearRawMatrial()
+                End If
+            Catch ex As Exception
+                MsgBoxError(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub btnRawDelList_Click(sender As Object, e As EventArgs) Handles btnRawDelList.Click
+        Try
+            DeleteGridDetailMaterial()
+        Catch ex As Exception
+
+        End Try
+        intBarisRaw = intBarisRaw - 1
+    End Sub
+
+    Private Sub dgvrawmatrial_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgvrawmatrial.UserDeletingRow
+        If (Not e.Row.IsNewRow) Then
+            Dim response As DialogResult =
+            MessageBox.Show(
+            "Are you sure you want to delete this row?",
+            "Delete row?",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question,
+            MessageBoxDefaultButton.Button2)
+            If (response = DialogResult.No) Then
+                e.Cancel = True
+            End If
+        End If
+        dgvrawmatrial.Refresh()
+    End Sub
+
+    Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
+        CheckNumber(txtQty)
     End Sub
 #End Region
 

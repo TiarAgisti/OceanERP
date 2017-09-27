@@ -110,7 +110,6 @@
         Dim bpbDetailModel As BPBDetailModel = New BPBDetailModel
 
         Dim query As String = "Select SUM(QuantityBPB) AS TotalBPB From v_BPBDetail Where POHeaderID='" & headerID & "'  AND RawMaterialID = '" & rawmatrialID & "'"
-
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             While dataAccess.reader.Read
@@ -167,10 +166,16 @@
             If IsDBNull(dataAccess.reader.Item("BPBNo")) Then
                 myCode = "BP" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
             Else
-                Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("BPBNo"), 9)
-                hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
-                myCode = "BP" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & supplierCode & "/" & Format(Now.Year)
+                Dim xtahun As String = Microsoft.VisualBasic.Right(dataAccess.reader.Item("BPBNo"), 4)
+                If xtahun = Format(Now.Year) Then
+                    Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("BPBNo"), 9)
+                    hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
+                    myCode = "BP" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & supplierCode & "/" & Format(Now.Year)
+                Else
+                    myCode = "BP" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
+                End If
             End If
+
             dataAccess.reader.Close()
             dataAccess = Nothing
             Return myCode
