@@ -41,8 +41,18 @@
                         fabricModel.FabricName = .Item("FabricName")
                         fabricModel.Composition = .Item("Composition")
                         fabricModel.Specification = .Item("Specification")
-                        fabricModel.Width = .Item("Width")
-                        fabricModel.Weight = .Item("Weight")
+                        If IsDBNull(.Item("Width")) Then
+                            fabricModel.Width = 0
+                        Else
+                            fabricModel.Width = .Item("Width")
+                        End If
+                        If IsDBNull(.Item("Weight")) Then
+                            fabricModel.Width = 0
+                        Else
+                            fabricModel.Width = .Item("Weight")
+                        End If
+                        '  fabricModel.Width = .Item("Width")
+                        ' fabricModel.Weight = .Item("Weight")
                         fabricModel.VendorName = .Item("VendorName")
                         fabricModel.VendorID = .Item("VendorID")
                     End If
