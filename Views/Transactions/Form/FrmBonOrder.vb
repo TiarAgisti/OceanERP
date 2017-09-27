@@ -703,9 +703,7 @@ Public Class FrmBonOrder
             Throw ex
         End Try
     End Sub
-    Sub DeleteGridDetailMaterial()
-        DeleteGrid(dgvrawmatrial, intBarisRaw)
-    End Sub
+
 #End Region
 
 #Region "Button"
@@ -865,10 +863,15 @@ Public Class FrmBonOrder
 
     Private Sub btnRawDelList_Click(sender As Object, e As EventArgs) Handles btnRawDelList.Click
         Try
-            DeleteGridDetailMaterial()
+            DeleteGrid(dgvrawmatrial)
         Catch ex As Exception
 
         End Try
+        intBarisRaw = intBarisRaw - 1
+    End Sub
+
+    Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
+        CheckNumber(txtQty)
     End Sub
 #End Region
 

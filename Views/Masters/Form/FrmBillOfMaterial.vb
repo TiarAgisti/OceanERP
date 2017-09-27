@@ -168,13 +168,7 @@
 #End Region
 
 #Region "Delete Grid"
-    Sub DeleteGridDetail()
-        Try
-            DeleteGrid(dgv, intBaris)
-        Catch ex As Exception
-            Throw ex
-        End Try
-    End Sub
+
 #End Region
 
 #Region "Check Empty"
@@ -542,10 +536,11 @@
 
     Private Sub btnDelList_Click(sender As Object, e As EventArgs) Handles btnDelList.Click
         Try
-            DeleteGridDetail()
+            DeleteGrid(dgv)
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
+        intBaris = intBaris - 1
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click

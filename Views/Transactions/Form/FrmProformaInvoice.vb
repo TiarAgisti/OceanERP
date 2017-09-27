@@ -542,16 +542,20 @@
 
 #Region "Delete Grid"
     Sub DeleteGridDetailFabric()
-        DeleteGrid(dgvFabric, intBarisFabric)
+        DeleteGrid(dgvFabric)
+        intBarisFabric = intBarisFabric - 1
     End Sub
     Sub DeleteGridDetailColor()
-        DeleteGrid(dgvColor, intBarisColor)
+        DeleteGrid(dgvColor)
+        intBarisColor = intBarisColor - 1
     End Sub
     Sub DeleteGridDetailYarn()
-        DeleteGrid(dgvYarn, intBarisYarn)
+        DeleteGrid(dgvYarn)
+        intBarisYarn = intBarisYarn - 1
     End Sub
     Sub DeleteGridDetailRemarks()
-        DeleteGrid(dgvRemarks, intBarisRemarks)
+        DeleteGrid(dgvRemarks)
+        intBarisRemarks = intBarisRemarks - 1
     End Sub
 #End Region
 
