@@ -184,7 +184,6 @@ Public Class FrmBPB
         txtQuantityPackaging.Clear()
     End Sub
 #End Region
-
 #Region "Validation Number"
     Private Sub txtQtyReceived_TextChanged(sender As Object, e As EventArgs) Handles txtQtyReceived.TextChanged
         CheckNumber(txtQtyReceived)
