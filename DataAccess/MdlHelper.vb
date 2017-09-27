@@ -59,8 +59,9 @@ Module MdlHelper
             End If
         End If
     End Sub
-    Public Sub DeleteGrid(dgv As DataGridView)
+    Public Sub DeleteGrid(dgv As DataGridView, baris As Integer)
         dgv.Rows.RemoveAt(dgv.CurrentCell.RowIndex)
+        baris = baris - 1
     End Sub
     Public Function ValidationEmail(value As String) As Boolean
         Dim pattern As String = "^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$"

@@ -127,7 +127,6 @@ Public Class FrmPurchaseOrder
         txtSH.Text = 0
         txtGrandTotal.Text = 0
         'txtShipViaMethode.Focus()
-        intBarisRawMatrial = 0
 
     End Sub
 
@@ -236,11 +235,11 @@ Public Class FrmPurchaseOrder
 
 #Region "Delete Grid"
     Sub DeleteGridDetailRawMatrial()
-        DeleteGrid(dgvrawmatrial)
+        DeleteGrid(dgvrawmatrial, intBarisRawMatrial)
     End Sub
 
     Sub DeleteGridDetailRemarks()
-        DeleteGrid(dgvRemarks)
+        DeleteGrid(dgvRemarks, intBarisRemarks)
     End Sub
 #End Region
 
@@ -769,7 +768,7 @@ Public Class FrmPurchaseOrder
 
     Private Sub btnRawDelList_Click(sender As Object, e As EventArgs) Handles btnRawDelList.Click
         Try
-            DeleteGrid(dgvrawmatrial)
+            DeleteGrid(dgvrawmatrial, intBarisRawMatrial)
             SumSubTotalValue()
             CalculateTotal()
             CalculateDiscount()
@@ -786,7 +785,8 @@ Public Class FrmPurchaseOrder
             txtSH.Text = 0
             txtGrandTotal.Text = 0
         End If
-        intBarisRawMatrial = intBarisRawMatrial - 1
+
+
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click

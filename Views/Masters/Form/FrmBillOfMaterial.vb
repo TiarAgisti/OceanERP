@@ -169,7 +169,11 @@
 
 #Region "Delete Grid"
     Sub DeleteGridDetail()
-        DeleteGrid(dgv)
+        Try
+            DeleteGrid(dgv, intBaris)
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 #End Region
 
@@ -542,7 +546,6 @@
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
-        intBaris = intBaris - 1
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click

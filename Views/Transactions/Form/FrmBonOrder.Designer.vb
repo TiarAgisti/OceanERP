@@ -52,7 +52,6 @@ Partial Class FrmBonOrder
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabProductName = New System.Windows.Forms.TabPage()
-        Me.btnRawDelList = New System.Windows.Forms.Button()
         Me.txtStockAV = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.cmbUnit = New System.Windows.Forms.ComboBox()
@@ -77,6 +76,7 @@ Partial Class FrmBonOrder
         Me.txtTotBruto = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.btnRawDelList = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -360,15 +360,6 @@ Partial Class FrmBonOrder
         Me.TabProductName.Text = "Raw Material"
         Me.TabProductName.UseVisualStyleBackColor = True
         '
-        'btnRawDelList
-        '
-        Me.btnRawDelList.Location = New System.Drawing.Point(470, 59)
-        Me.btnRawDelList.Name = "btnRawDelList"
-        Me.btnRawDelList.Size = New System.Drawing.Size(120, 23)
-        Me.btnRawDelList.TabIndex = 138
-        Me.btnRawDelList.Text = "Delete From List"
-        Me.btnRawDelList.UseVisualStyleBackColor = True
-        '
         'txtStockAV
         '
         Me.txtStockAV.Enabled = False
@@ -419,6 +410,7 @@ Partial Class FrmBonOrder
         Me.dgvrawmatrial.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvrawmatrial.Location = New System.Drawing.Point(10, 88)
         Me.dgvrawmatrial.Name = "dgvrawmatrial"
+        Me.dgvrawmatrial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvrawmatrial.Size = New System.Drawing.Size(580, 107)
         Me.dgvrawmatrial.TabIndex = 112
         '
@@ -517,6 +509,7 @@ Partial Class FrmBonOrder
         '
         'Panel3
         '
+        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.Label12)
         Me.Panel3.Controls.Add(Me.Label11)
         Me.Panel3.Controls.Add(Me.txtTotNetto)
@@ -589,6 +582,15 @@ Partial Class FrmBonOrder
         Me.Label8.Size = New System.Drawing.Size(109, 13)
         Me.Label8.TabIndex = 28
         Me.Label8.Text = "TOTAL ORDER QTY"
+        '
+        'btnRawDelList
+        '
+        Me.btnRawDelList.Location = New System.Drawing.Point(470, 59)
+        Me.btnRawDelList.Name = "btnRawDelList"
+        Me.btnRawDelList.Size = New System.Drawing.Size(120, 23)
+        Me.btnRawDelList.TabIndex = 138
+        Me.btnRawDelList.Text = "Delete From List"
+        Me.btnRawDelList.UseVisualStyleBackColor = True
         '
         'FrmBonOrder
         '

@@ -227,7 +227,7 @@ Public Class FrmBPB
 
 #Region "Delete Grid"
     Sub DeleteGridDetailRawMatrial()
-        DeleteGrid(dgv)
+        DeleteGrid(dgv, intBaris)
     End Sub
 
 #End Region
@@ -730,10 +730,9 @@ Public Class FrmBPB
     End Sub
     Private Sub btnDeletetolist_Click(sender As Object, e As EventArgs) Handles btnDeletetolist.Click
         Try
-            DeleteGrid(dgv)
+            DeleteGrid(dgv, intBaris)
         Catch ex As Exception
         End Try
-        intBaris = intBaris - 1
     End Sub
 #End Region
 

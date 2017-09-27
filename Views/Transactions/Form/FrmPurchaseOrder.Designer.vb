@@ -816,6 +816,7 @@ Partial Class FrmPurchaseOrder
         Me.dgvrawmatrial.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvrawmatrial.Location = New System.Drawing.Point(10, 89)
         Me.dgvrawmatrial.Name = "dgvrawmatrial"
+        Me.dgvrawmatrial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvrawmatrial.Size = New System.Drawing.Size(837, 79)
         Me.dgvrawmatrial.TabIndex = 112
         '
@@ -916,7 +917,7 @@ Partial Class FrmPurchaseOrder
         Me.TabRemark.Location = New System.Drawing.Point(4, 22)
         Me.TabRemark.Name = "TabRemark"
         Me.TabRemark.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabRemark.Size = New System.Drawing.Size(855, 300)
+        Me.TabRemark.Size = New System.Drawing.Size(868, 300)
         Me.TabRemark.TabIndex = 1
         Me.TabRemark.Text = "Remarks"
         Me.TabRemark.UseVisualStyleBackColor = True
