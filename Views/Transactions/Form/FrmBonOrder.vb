@@ -704,7 +704,7 @@ Public Class FrmBonOrder
         End Try
     End Sub
     Sub DeleteGridDetailMaterial()
-        DeleteGrid(dgvrawmatrial, intBarisRaw)
+        DeleteGrid(dgvrawmatrial)
     End Sub
 #End Region
 
@@ -717,7 +717,7 @@ Public Class FrmBonOrder
         End Try
     End Sub
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        If CheckEmptyHeader() = False And CheckEmptyDetail() = False And CheckEmptyRawMatrial() = False Then
+        If CheckEmptyHeader() = False And CheckEmptyDetail() = False Then
             Try
                 InsertData()
             Catch ex As Exception
@@ -869,6 +869,27 @@ Public Class FrmBonOrder
         Catch ex As Exception
 
         End Try
+        intBarisRaw = intBarisRaw - 1
+    End Sub
+
+    Private Sub dgvrawmatrial_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgvrawmatrial.UserDeletingRow
+        If (Not e.Row.IsNewRow) Then
+            Dim response As DialogResult =
+            MessageBox.Show(
+            "Are you sure you want to delete this row?",
+            "Delete row?",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question,
+            MessageBoxDefaultButton.Button2)
+            If (response = DialogResult.No) Then
+                e.Cancel = True
+            End If
+        End If
+        dgvrawmatrial.Refresh()
+    End Sub
+
+    Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
+        CheckNumber(txtQty)
     End Sub
 #End Region
 
