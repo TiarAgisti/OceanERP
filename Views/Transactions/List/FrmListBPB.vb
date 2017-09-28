@@ -70,7 +70,6 @@
             Throw ex
         End Try
     End Sub
-
     Sub ListData()
         Try
             If chkBPBNo.Checked = True Then
