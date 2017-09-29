@@ -34,12 +34,12 @@
     End Function
     Public Function SetLogHistory(description As String) As LogHistoryModel
         Dim logModel As LogHistoryModel = New LogHistoryModel
+
         logModel.LogID = GeneratedAutoNumber()
         logModel.Description = description
         logModel.UserID = userID
         logModel.CompName = GetHostNameLog()
-        logModel.CreatedDate = Today.Date
-
+        logModel.CreatedDate = Date.Now
         Return logModel
     End Function
     Public Function SetLogHistoryTrans(desc As String) As LogHistoryModel
@@ -56,7 +56,7 @@
         Try
             Dim query As String = "Insert into LogHistory(LogID,Description,UserID,CompName,CreatedDate)values" &
                             "('" & logModel.LogID & "','" & logModel.Description & "','" & logModel.UserID & "'" &
-                           ",'" & logModel.CompName & "','" & logModel.CreatedDate & "')"
+                           ",'" & logModel.CompName & "','" & Format(logModel.CreatedDate, "yyyy-MM-dd") & "')"
             dataAccess.CreateCommand(query)
             dataAccess = Nothing
             Return True

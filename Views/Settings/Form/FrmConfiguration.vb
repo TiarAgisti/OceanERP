@@ -37,7 +37,7 @@
     End Sub
     Private Function SetLogHistory() As LogHistoryModel
         Dim logBFC As ClsLogHistory = New ClsLogHistory
-        Dim desc As String = "Test Connection & Save Configuration"
+        Dim desc As String = "Test Connection and Save Configuration"
         Return logBFC.SetLogHistory(desc)
     End Function
     Public Sub New()
