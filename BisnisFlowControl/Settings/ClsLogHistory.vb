@@ -56,7 +56,7 @@
         Try
             Dim query As String = "Insert into LogHistory(LogID,Description,UserID,CompName,CreatedDate)values" &
                             "('" & logModel.LogID & "','" & logModel.Description & "','" & logModel.UserID & "'" &
-                           ",'" & logModel.CompName & "','" & Format(logModel.CreatedDate, "yyyy-MM-dd") & "')"
+                           ",'" & logModel.CompName & "','" & dataAccess.CustomFormatDate(logModel.CreatedDate) & "')"
             dataAccess.CreateCommand(query)
             dataAccess = Nothing
             Return True

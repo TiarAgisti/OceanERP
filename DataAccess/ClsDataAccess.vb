@@ -265,4 +265,9 @@ Public Class ClsDataAccess
             Throw ex
         End Try
     End Function
+    Public Function CustomFormatDate(dt As Date) As Date
+        Dim dt2 As Date
+        dt2 = Format(dt, "yyyy-MM-dd")
+        Return dt2
+    End Function
 End Class
