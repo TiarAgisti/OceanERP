@@ -816,6 +816,7 @@ Public Class FrmBO
                 btnSave.Enabled = False
                 btnUpdate.Enabled = False
                 Clear()
+
             End If
         Catch ex As Exception
             MsgBoxError(ex.Message)

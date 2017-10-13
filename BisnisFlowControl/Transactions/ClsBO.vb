@@ -436,7 +436,7 @@
     Protected Function SqlInsertHeader(headerModel As BOHeaderModel) As String
         Dim sqlHeader As String
         sqlHeader = "Insert into BOHeader(BOID,NoOrder,DateIssues,DeliveryDate,ReffPO,CustomerID,BrandID,StyleID,SumBrutto,SumNetto,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
-                "('" & headerModel.BOID & "','" & headerModel.NoOrder & "','" & headerModel.DateIssues & "','" & headerModel.DeliveryDate & "','" & headerModel.ReffPO & "'" &
+                "('" & headerModel.BOID & "','" & headerModel.NoOrder & "','" & Format(headerModel.DateIssues, "yyyy-MM-dd") & "','" & Format(headerModel.DeliveryDate, "yyyy-MM-dd") & "','" & headerModel.ReffPO & "'" &
                  ",'" & headerModel.CustomerID & "','" & headerModel.BrandID & "','" & headerModel.StyleID & "','" & headerModel.SumBrutto & "','" & headerModel.SumNetto & "'" &
                 ",'" & headerModel.Status & "','" & headerModel.CreatedBy & "','" & Format(headerModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
                 ",'" & headerModel.UpdatedBy & "','" & Format(headerModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
@@ -465,7 +465,7 @@
 
     Protected Function SqlUpdateHeader(myModel As BOHeaderModel) As String
         Dim SQL As String
-        SQL = "Update BOHeader set DateIssues = '" & myModel.DateIssues & "', DeliveryDate = '" & myModel.DeliveryDate & "',ReffPO = '" & myModel.ReffPO & "',CustomerID = '" & myModel.CustomerID & "'" &
+        SQL = "Update BOHeader set DateIssues = '" & Format(myModel.DateIssues, "yyyy-MM-dd") & "', DeliveryDate = '" & Format(myModel.DeliveryDate, "yyyy-MM-dd") & "',ReffPO = '" & myModel.ReffPO & "',CustomerID = '" & myModel.CustomerID & "'" &
           ",BrandID = '" & myModel.BrandID & "',StyleID= '" & myModel.StyleID & "',SumBrutto = '" & myModel.SumBrutto & "',SumNetto = '" & myModel.SumNetto & "',Status = '" & myModel.Status & "'" &
           ",UpdatedBy = '" & myModel.UpdatedBy & "',UpdatedDate = '" & Format(myModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BOID = '" & myModel.BOID & "'"
         Return SQL

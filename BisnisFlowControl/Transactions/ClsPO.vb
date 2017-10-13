@@ -481,9 +481,9 @@ Public Class ClsPO
         Dim sqlHeader As String
         sqlHeader = "Insert into POHeader(POHeaderID,PODate,PONo,SupplierID,ShipViaMethodID,ShippingDate,TermOfPaymentID,ExpectedReceiptDate" &
                                    ",CurrencyID,Subtotal,Discount,VATRate,OtherCost,SH,GrandTotal,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
-                                   "('" & poHeaderModel.POHeaderID & "','" & poHeaderModel.PODate & "','" & poHeaderModel.PONo & "'" &
+                                   "('" & poHeaderModel.POHeaderID & "','" & Format(poHeaderModel.PODate, "yyyy-MM-dd") & "','" & poHeaderModel.PONo & "'" &
                                    ",'" & poHeaderModel.SupplierID & "','" & poHeaderModel.ShipViaMethodID & "'" &
-                                   ",'" & poHeaderModel.ShippingDate & "','" & poHeaderModel.TermOfPaymentID & "','" & poHeaderModel.ExpectedReceiptDate & "'" &
+                                   ",'" & Format(poHeaderModel.ShippingDate, "yyyy-MM-dd") & "','" & poHeaderModel.TermOfPaymentID & "','" & Format(poHeaderModel.ExpectedReceiptDate, "yyyy-MM-dd") & "'" &
                                    ",'" & poHeaderModel.CurrencyID & "','" & poHeaderModel.Subtotal & "','" & poHeaderModel.Discount & "','" & poHeaderModel.VATRate & "'" &
                                    ",'" & poHeaderModel.OtherCost & "','" & poHeaderModel.SH & "','" & poHeaderModel.GrandTotal & "'" &
                                    ",'" & poHeaderModel.Status & "','" & poHeaderModel.CreatedBy & "','" & Format(poHeaderModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
@@ -493,9 +493,9 @@ Public Class ClsPO
 
     Protected Function SqlUpdateHeader(myModel As POHeaderModel) As String
         Dim SQL As String
-        SQL = "Update POHeader Set  PODate = '" & myModel.PODate & "',SupplierID = '" & myModel.SupplierID & "'" &
-                                    ",ShipViaMethodID='" & myModel.ShipViaMethodID & "',ShippingDate = '" & myModel.ShippingDate & "'" &
-                                    ",TermOfPaymentID = '" & myModel.TermOfPaymentID & "',ExpectedReceiptDate = '" & myModel.ExpectedReceiptDate & "'" &
+        SQL = "Update POHeader Set  PODate = '" & Format(myModel.PODate, "yyyy-MM-dd") & "',SupplierID = '" & myModel.SupplierID & "'" &
+                                    ",ShipViaMethodID='" & myModel.ShipViaMethodID & "',ShippingDate = '" & Format(myModel.ShippingDate, "yyyy-MM-dd") & "'" &
+                                    ",TermOfPaymentID = '" & myModel.TermOfPaymentID & "',ExpectedReceiptDate = '" & Format(myModel.ExpectedReceiptDate, "yyyy-MM-dd") & "'" &
                                     ",CurrencyID = '" & myModel.CurrencyID & "',Subtotal = '" & myModel.Subtotal & "',Discount = '" & myModel.Discount & "'" &
                                     ",VATRate = '" & myModel.VATRate & "',OtherCost = '" & myModel.OtherCost & "'" &
                                     ",SH='" & myModel.SH & "',GrandTotal = '" & myModel.GrandTotal & "'" &

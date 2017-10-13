@@ -326,20 +326,20 @@
         sqlHeader = "Insert into BPBHeader(BPBHeaderID,POHeaderID,BPBNo,BPBDate,InfactDate,DONo,DocTypeCustoms,DocNoCustoms,DocRegistrationDate" &
                                    ",Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
                                    "('" & bpbHeaderModel.BPBHeaderID & "','" & bpbHeaderModel.POHeaderID & "','" & bpbHeaderModel.BPBNo & "'" &
-                                   ",'" & bpbHeaderModel.BPBDate & "','" & bpbHeaderModel.InfactDate & "','" & bpbHeaderModel.DONo & "'" &
-                                   ",'" & bpbHeaderModel.DocTypeCustoms & "','" & bpbHeaderModel.DocNoCustoms & "','" & bpbHeaderModel.DocRegistrationDate & "'" &
-                                   ",'" & bpbHeaderModel.Status & "','" & bpbHeaderModel.CreatedBy & "','" & bpbHeaderModel.CreatedDate & "'" &
-                                   ",'" & bpbHeaderModel.UpdatedBy & "','" & bpbHeaderModel.UpdatedDate & "')"
+                                   ",'" & Format(bpbHeaderModel.BPBDate, "yyyy-MM-dd") & "','" & Format(bpbHeaderModel.InfactDate, "yyyy-MM-dd") & "','" & bpbHeaderModel.DONo & "'" &
+                                   ",'" & bpbHeaderModel.DocTypeCustoms & "','" & bpbHeaderModel.DocNoCustoms & "','" & Format(bpbHeaderModel.DocRegistrationDate, "yyyy-MM-dd") & "'" &
+                                   ",'" & bpbHeaderModel.Status & "','" & bpbHeaderModel.CreatedBy & "','" & Format(bpbHeaderModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                   ",'" & bpbHeaderModel.UpdatedBy & "','" & Format(bpbHeaderModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         Return sqlHeader
     End Function
 
     Protected Function SqlUpdateHeader(myModel As BPBHeaderModel) As String
         Dim SQL As String
-        SQL = "Update BPBHeader Set  POHeaderID = '" & myModel.POHeaderID & "',BPBDate = '" & myModel.BPBDate & "',InfactDate = '" & myModel.InfactDate & "'" &
+        SQL = "Update BPBHeader Set  POHeaderID = '" & myModel.POHeaderID & "',BPBDate = '" & Format(myModel.BPBDate, "yyyy-MM-dd") & "',InfactDate = '" & Format(myModel.InfactDate, "yyyy-MM-dd") & "'" &
                                     ",DONo='" & myModel.DONo & "',DocTypeCustoms = '" & myModel.DocTypeCustoms & "'" &
-                                    ",DocNoCustoms = '" & myModel.DocNoCustoms & "',DocRegistrationDate = '" & myModel.DocRegistrationDate & "'" &
+                                    ",DocNoCustoms = '" & myModel.DocNoCustoms & "',DocRegistrationDate = '" & Format(myModel.DocRegistrationDate, "yyyy-MM-dd") & "'" &
                                      ",Status = '" & myModel.Status & "',UpdatedBy = '" & myModel.UpdatedBy & "'" &
-                                    ",UpdatedDate = '" & myModel.UpdatedDate & "' Where BPBHeaderID = '" & myModel.BPBHeaderID & "'"
+                                    ",UpdatedDate = '" & Format(myModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BPBHeaderID = '" & myModel.BPBHeaderID & "'"
         Return SQL
     End Function
 
@@ -359,7 +359,7 @@
         sql = "Insert Into Stock(StockID,PIHeaderID,RawMaterialID,QuantityIN,QuantityOut,DocID,DocDate" &
               ",DocType)Values" &
               "('" & myModel.StockID & "','" & myModel.PIHeaderID & "','" & myModel.RawMaterialID & "'" &
-              ",'" & myModel.QuantityIN & "','" & myModel.QuantityOUT & "','" & myModel.DocID & "','" & myModel.DocDate & "','" & myModel.DocType & "')"
+              ",'" & myModel.QuantityIN & "','" & myModel.QuantityOUT & "','" & myModel.DocID & "','" & Format(myModel.DocDate, "yyyy-MM-dd") & "','" & myModel.DocType & "')"
 
         Return sql
     End Function

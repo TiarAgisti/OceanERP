@@ -535,7 +535,7 @@ Public Class ClsPI
         SQL = "Insert Into ProInvoiceColorDetail(BOID,FabricID,ColorID,ColorType,QtyOrder,PurchSizeID,CurrencyID,Price,QtySample,DelDate,Note)Values" &
                 "('" & myModel.BOID & "','" & myModel.FabricID & "','" & myModel.ColorID & "','" & myModel.ColorType & "'" &
                 ",'" & myModel.QtyOrder & "','" & myModel.PurchSizeID & "','" & myModel.CurrencyID & "','" & myModel.Price & "'" &
-                ",'" & myModel.QtySample & "','" & myModel.DelDate & "','" & myModel.Note & "')"
+                ",'" & myModel.QtySample & "','" & Format(myModel.DelDate, "yyyy-MM-dd") & "','" & myModel.Note & "')"
         Return SQL
     End Function
 

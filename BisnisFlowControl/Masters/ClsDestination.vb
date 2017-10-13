@@ -123,7 +123,7 @@
 
         Dim sql As String = "Insert into Destination(DestinationID,DestinationCode,Name,IsActive,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & destModel.DestinationID & "','" & destModel.DestinationCode & "','" & destModel.Name & "','" & destModel.IsActive & "','" & destModel.Status & "'" &
-                                ",'" & destModel.CreatedBy & "','" & Format(destModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "','" & destModel.UpdatedBy & "','" & Format(destModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss")e & "')"
+                                ",'" & destModel.CreatedBy & "','" & Format(destModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "','" & destModel.UpdatedBy & "','" & Format(destModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))

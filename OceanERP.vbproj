@@ -458,12 +458,6 @@
     <Compile Include="Views\Transactions\Form\FrmPlaning.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Transactions\FrmBonDetailYarn.Designer.vb">
-      <DependentUpon>FrmBonDetailYarn.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Transactions\FrmBonDetailYarn.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Views\Transactions\List\FrmListBO.Designer.vb">
       <DependentUpon>FrmListBO.vb</DependentUpon>
     </Compile>
@@ -630,9 +624,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\Form\FrmPlaning.resx">
       <DependentUpon>FrmPlaning.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Transactions\FrmBonDetailYarn.resx">
-      <DependentUpon>FrmBonDetailYarn.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\List\FrmListBO.resx">
       <DependentUpon>FrmListBO.vb</DependentUpon>
