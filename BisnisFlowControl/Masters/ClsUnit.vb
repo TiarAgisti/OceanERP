@@ -96,8 +96,8 @@
 
         Dim sql As String = "Insert into Unit(UnitID,UnitName,Description,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & unitModel.UnitID & "','" & unitModel.UnitName & "','" & unitModel.Description & "'" &
-                                ",'" & unitModel.IsActive & "','" & unitModel.CreatedBy & "','" & unitModel.CreatedDate & "'" &
-                                ",'" & unitModel.UpdatedBy & "','" & unitModel.UpdatedDate & "')"
+                                ",'" & unitModel.IsActive & "','" & unitModel.CreatedBy & "','" & Format(unitModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & unitModel.UpdatedBy & "','" & Format(unitModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))

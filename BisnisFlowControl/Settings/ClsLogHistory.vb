@@ -48,7 +48,7 @@
         logModel.Description = desc
         logModel.UserID = userID
         logModel.CompName = GetHostNameLog()
-        logModel.CreatedDate = DateTime.Now
+        logModel.CreatedDate = Date.Now
         Return logModel
     End Function
     Public Function SaveData(logModel As LogHistoryModel) As Boolean
@@ -56,7 +56,7 @@
         Try
             Dim query As String = "Insert into LogHistory(LogID,Description,UserID,CompName,CreatedDate)values" &
                             "('" & logModel.LogID & "','" & logModel.Description & "','" & logModel.UserID & "'" &
-                           ",'" & logModel.CompName & "','" & dataAccess.CustomFormatDate(logModel.CreatedDate) & "')"
+                           ",'" & logModel.CompName & "','" & Format(logModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
             dataAccess.CreateCommand(query)
             dataAccess = Nothing
             Return True
@@ -66,14 +66,16 @@
         End Try
     End Function
     Public Function SqlInsertLog(logModel As LogHistoryModel) As String
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim queryLog As String = "Insert into LogHistory(LogID,Description,UserID,CompName,CreatedDate)values('" & logModel.LogID & "','" & logModel.Description & "'" &
-                               ",'" & logModel.UserID & "','" & logModel.CompName & "','" & logModel.CreatedDate & "')"
+                               ",'" & logModel.UserID & "','" & logModel.CompName & "','" & Format(logModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         Return queryLog
     End Function
 
     Public Function SqlInsertLogHistoryTransaction(logModel As LogHistoryModel) As String
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim queryLog As String = "Insert into LogHistoryTransaction(LogID,Description,UserID,CompName,CreatedDate)values('" & logModel.LogID & "','" & logModel.Description & "'" &
-                               ",'" & logModel.UserID & "','" & logModel.CompName & "','" & logModel.CreatedDate & "')"
+                               ",'" & logModel.UserID & "','" & logModel.CompName & "','" & Format(logModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         Return queryLog
     End Function
 #End Region
