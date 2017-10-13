@@ -170,7 +170,7 @@
 
         Dim sql As String = "Insert into OrderLooses(LoosesID,[OrderLengthRange(LBS)],[OrderLengthRange(KG)],IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & orderloosesModel.LoosesID & "','" & orderloosesModel.OrderLengthRangeLBS & "','" & orderloosesModel.OrderLengthRangeKG & "','" & orderloosesModel.IsActive & "'" &
-                                ",'" & orderloosesModel.CreatedBy & "','" & orderloosesModel.CreatedDate & "','" & orderloosesModel.UpdatedBy & "','" & orderloosesModel.UpdatedDate & "')"
+                                ",'" & orderloosesModel.CreatedBy & "','" & Format(orderloosesModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "','" & orderloosesModel.UpdatedBy & "','" & Format(orderloosesModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -194,12 +194,12 @@
         If options = "Update" Then
 
             query = "Update OrderLooses Set [OrderLengthRange(LBS)] = '" & orderloosesModel.OrderLengthRangeLBS & "', [OrderLengthRange(KG)] = '" & orderloosesModel.OrderLengthRangeKG & "',IsActive = '" & orderloosesModel.IsActive & "'" &
-                    ",UpdatedBy = '" & orderloosesModel.UpdatedBy & "',UpdatedDate = '" & orderloosesModel.UpdatedDate & "' Where LoosesID='" & orderloosesModel.LoosesID & "'"
+                    ",UpdatedBy = '" & orderloosesModel.UpdatedBy & "',UpdatedDate = '" & Format(orderloosesModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where LoosesID='" & orderloosesModel.LoosesID & "'"
             queryList.Add(query)
 
         Else
             query = "Update Destination Set IsActive = '" & orderloosesModel.IsActive & "',UpdatedBy='" & orderloosesModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & orderloosesModel.UpdatedDate & "' Where LoosesID='" & orderloosesModel.LoosesID & "'"
+                    ",UpdatedDate = '" & Format(orderloosesModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where LoosesID='" & orderloosesModel.LoosesID & "'"
             queryList.Add(query)
         End If
 

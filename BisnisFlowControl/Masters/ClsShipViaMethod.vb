@@ -150,8 +150,8 @@
 
         Dim sql As String = "Insert into ShipViaMethod(ShipViaMethodID,ShipViaMethodCode,ShipViaMethodName,Description,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & shipviamethodModel.ShipViaMethodID & "','" & shipviamethodModel.ShipViaMethodCode & "','" & shipviamethodModel.ShipViaMethodName & "','" & shipviamethodModel.Description & "'" &
-                                ",'" & shipviamethodModel.IsActive & "','" & shipviamethodModel.CreatedBy & "','" & shipviamethodModel.CreatedDate & "'" &
-                                ",'" & shipviamethodModel.UpdatedBy & "','" & shipviamethodModel.UpdatedDate & "')"
+                                ",'" & shipviamethodModel.IsActive & "','" & shipviamethodModel.CreatedBy & "','" & Format(shipviamethodModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & shipviamethodModel.UpdatedBy & "','" & Format(shipviamethodModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -174,12 +174,12 @@
         If options = "Update" Then
             query = "Update ShipViaMethod Set ShipViaMethodName = '" & shipviamethodModel.ShipViaMethodName & "',Description='" & shipviamethodModel.Description & "'" &
                     ",IsActive = '" & shipviamethodModel.IsActive & "',UpdatedBy='" & shipviamethodModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & shipviamethodModel.UpdatedDate & "' Where ShipViaMethodID='" & shipviamethodModel.ShipViaMethodID & "'"
+                    ",UpdatedDate = '" & Format(shipviamethodModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where ShipViaMethodID='" & shipviamethodModel.ShipViaMethodID & "'"
             queryList.Add(query)
 
         Else
             query = "Update ShipViaMethod Set IsActive = '" & shipviamethodModel.IsActive & "',UpdatedBy='" & shipviamethodModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & shipviamethodModel.UpdatedDate & "' Where ShipViaMethodID='" & shipviamethodModel.ShipViaMethodID & "'"
+                    ",UpdatedDate = '" & Format(shipviamethodModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where ShipViaMethodID='" & shipviamethodModel.ShipViaMethodID & "'"
             queryList.Add(query)
         End If
 

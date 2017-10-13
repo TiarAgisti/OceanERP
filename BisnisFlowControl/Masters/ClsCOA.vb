@@ -86,7 +86,7 @@
 
         Dim sql As String = "Insert into COA(CoaID,CoaCode,CoaName,CostCenter,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values('" & coaModel.CoaID & "'" &
                             ",'" & coaModel.CoaCode & "','" & coaModel.CoaName & "','" & coaModel.CostCenter & "','" & coaModel.IsActive & "'" &
-                            ",'" & coaModel.CreatedBy & "','" & coaModel.CreatedDate & "','" & coaModel.UpdatedBy & "','" & coaModel.UpdatedDate & "')"
+                            ",'" & coaModel.CreatedBy & "','" & Format(coaModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "','" & coaModel.UpdatedBy & "','" & Format(coaModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -113,7 +113,7 @@
 
         Else
             query = "Update COA Set IsActive = '" & coaModel.IsActive & "',UpdatedBy='" & coaModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & coaModel.UpdatedDate & "' Where CoaID='" & coaModel.CoaID & "'"
+                    ",UpdatedDate = '" & Format(coaModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where CoaID='" & coaModel.CoaID & "'"
             queryList.Add(query)
         End If
 

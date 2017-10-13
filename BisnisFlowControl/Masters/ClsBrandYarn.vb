@@ -92,8 +92,8 @@
 
         Dim sql As String = "Insert into BrandYarn(BrandYarnID,BrandYarnName,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)" &
                                 "Values('" & brandYarnModel.BrandYarnID & "','" & brandYarnModel.BrandYarnName & "'" &
-                                ",'" & brandYarnModel.IsActive & "','" & brandYarnModel.CreatedBy & "','" & brandYarnModel.CreatedDate & "'" &
-                                ",'" & brandYarnModel.UpdatedBy & "','" & brandYarnModel.UpdatedDate & "')"
+                                ",'" & brandYarnModel.IsActive & "','" & brandYarnModel.CreatedBy & "','" & Format(brandYarnModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & brandYarnModel.UpdatedBy & "','" & Format(brandYarnModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -115,13 +115,13 @@
 
         If options = "Update" Then
             query = "Update BrandYarn Set BrandYarnName = '" & brandYarnModel.BrandYarnName & "',IsActive = '" & brandYarnModel.IsActive & "'" &
-                    ",UpdatedBy='" & brandYarnModel.UpdatedBy & "',UpdatedDate = '" & brandYarnModel.UpdatedDate & "'" &
+                    ",UpdatedBy='" & brandYarnModel.UpdatedBy & "',UpdatedDate = '" & Format(brandYarnModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
                     " Where BrandYarnID='" & brandYarnModel.BrandYarnID & "'"
             queryList.Add(query)
 
         Else
             query = "Update BrandYarn Set IsActive = '" & brandYarnModel.IsActive & "',UpdatedBy='" & brandYarnModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & brandYarnModel.UpdatedDate & "' Where BrandYarnID='" & brandYarnModel.BrandYarnID & "'"
+                    ",UpdatedDate = '" & Format(brandYarnModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BrandYarnID='" & brandYarnModel.BrandYarnID & "'"
             queryList.Add(query)
         End If
 

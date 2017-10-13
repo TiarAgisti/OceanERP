@@ -151,8 +151,8 @@
 
         Dim sql As String = "Insert into Currency(CurrencyID,CurrencyCode,Name,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & currModel.CurrencyID & "','" & currModel.CurrencyCode & "','" & currModel.CurrencyName & "'" &
-                                ",'" & currModel.IsActive & "','" & currModel.CreatedBy & "','" & currModel.CreatedDate & "'" &
-                                ",'" & currModel.UpdatedBy & "','" & currModel.UpdatedDate & "')"
+                                ",'" & currModel.IsActive & "','" & currModel.CreatedBy & "','" & Format(currModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & currModel.UpdatedBy & "','" & Format(currModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -175,11 +175,11 @@
 
         If options = "Update" Then
             query = "Update Currency Set Name = '" & currModel.CurrencyName & "',UpdatedBy='" & currModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & currModel.UpdatedDate & "' Where CurrencyID='" & currModel.CurrencyID & "'"
+                    ",UpdatedDate = '" & Format(currModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where CurrencyID='" & currModel.CurrencyID & "'"
             queryList.Add(query)
         Else
             query = "Update Currency Set IsActive = '" & currModel.IsActive & "',UpdatedBy='" & currModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & currModel.UpdatedDate & "' Where CurrencyID='" & currModel.CurrencyID & "'"
+                    ",UpdatedDate = '" & Format(currModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where CurrencyID='" & currModel.CurrencyID & "'"
             queryList.Add(query)
         End If
 

@@ -486,8 +486,8 @@ Public Class ClsPO
                                    ",'" & poHeaderModel.ShippingDate & "','" & poHeaderModel.TermOfPaymentID & "','" & poHeaderModel.ExpectedReceiptDate & "'" &
                                    ",'" & poHeaderModel.CurrencyID & "','" & poHeaderModel.Subtotal & "','" & poHeaderModel.Discount & "','" & poHeaderModel.VATRate & "'" &
                                    ",'" & poHeaderModel.OtherCost & "','" & poHeaderModel.SH & "','" & poHeaderModel.GrandTotal & "'" &
-                                   ",'" & poHeaderModel.Status & "','" & poHeaderModel.CreatedBy & "','" & poHeaderModel.CreatedDate & "'" &
-                                   ",'" & poHeaderModel.UpdatedBy & "','" & poHeaderModel.UpdatedDate & "')"
+                                   ",'" & poHeaderModel.Status & "','" & poHeaderModel.CreatedBy & "','" & Format(poHeaderModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                   ",'" & poHeaderModel.UpdatedBy & "','" & Format(poHeaderModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         Return sqlHeader
     End Function
 
@@ -500,7 +500,7 @@ Public Class ClsPO
                                     ",VATRate = '" & myModel.VATRate & "',OtherCost = '" & myModel.OtherCost & "'" &
                                     ",SH='" & myModel.SH & "',GrandTotal = '" & myModel.GrandTotal & "'" &
                                     ",Status = '" & myModel.Status & "',UpdatedBy = '" & myModel.UpdatedBy & "'" &
-                                    ",UpdatedDate = '" & myModel.UpdatedDate & "' Where POHeaderID = '" & myModel.POHeaderID & "'"
+                                    ",UpdatedDate = '" & Format(myModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where POHeaderID = '" & myModel.POHeaderID & "'"
         Return SQL
     End Function
 

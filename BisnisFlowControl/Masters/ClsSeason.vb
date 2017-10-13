@@ -111,7 +111,7 @@
         Dim sql As String = "Insert into Season(SeasonID,SeasonCode,SeasonName,Description,VendorID,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate" &
                             ")Values('" & seasonModel.SeasonID & "','" & seasonModel.SeasonCode & "','" & seasonModel.SeasonName & "'" &
                             ",'" & seasonModel.Description & "','" & seasonModel.VendorID & "','" & seasonModel.IsActive & "'" &
-                            ",'" & seasonModel.CreatedBy & "','" & seasonModel.CreatedDate & "','" & seasonModel.UpdatedBy & "','" & seasonModel.UpdatedDate & "')"
+                            ",'" & seasonModel.CreatedBy & "','" & Format(seasonModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "','" & seasonModel.UpdatedBy & "','" & Format(seasonModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -134,12 +134,12 @@
         If options = "Update" Then
 
             query = "Update Season set SeasonName='" & seasonModel.SeasonName & "',Description='" & seasonModel.Description & "'" &
-                    ",VendorID = '" & seasonModel.VendorID & "' Where SeasonID = '" & seasonModel.SeasonID & "'"
+                    ",VendorID = '" & seasonModel.VendorID & "',UpdateBy = '" & seasonModel.UpdatedBy & "',UpdatedDate = '" & Format(seasonModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where SeasonID = '" & seasonModel.SeasonID & "'"
             queryList.Add(query)
 
         Else
             query = "Update Season Set IsActive = '" & seasonModel.IsActive & "',UpdatedBy='" & seasonModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & seasonModel.UpdatedDate & "' Where SeasonID='" & seasonModel.SeasonID & "'"
+                    ",UpdatedDate = '" & Format(seasonModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where SeasonID='" & seasonModel.SeasonID & "'"
             queryList.Add(query)
         End If
 

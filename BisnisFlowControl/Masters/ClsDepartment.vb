@@ -83,8 +83,8 @@
 
         Dim sql As String = "Insert into Department(DepartmentID,DepartmentCode,Name,SBU,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & departModel.DepartmentID & "','" & departModel.DepartmentCode & "','" & departModel.Name & "','" & departModel.SBU & "'" &
-                                ",'" & departModel.IsActive & "','" & departModel.CreatedBy & "','" & departModel.CreatedDate & "'" &
-                                ",'" & departModel.UpdatedBy & "','" & departModel.UpdatedDate & "')"
+                                ",'" & departModel.IsActive & "','" & departModel.CreatedBy & "','" & Format(departModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & departModel.UpdatedBy & "','" & Format(departModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -107,11 +107,11 @@
 
         If options = "Update" Then
             query = "Update Department Set Name = '" & departModel.Name & "',SBU = '" & departModel.SBU & "',IsActive = '" & departModel.IsActive & "'" &
-                    ",UpdatedBy='" & departModel.UpdatedBy & "',UpdatedDate = '" & departModel.UpdatedDate & "' Where DepartmentID='" & departModel.DepartmentID & "'"
+                    ",UpdatedBy='" & departModel.UpdatedBy & "',UpdatedDate = '" & Format(departModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where DepartmentID='" & departModel.DepartmentID & "'"
             queryList.Add(query)
         Else
             query = "Update Department Set IsActive = '" & departModel.IsActive & "',UpdatedBy='" & departModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & departModel.UpdatedDate & "' Where DepartmentID='" & departModel.DepartmentID & "'"
+                    ",UpdatedDate = '" & Format(departModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where DepartmentID='" & departModel.DepartmentID & "'"
             queryList.Add(query)
         End If
 

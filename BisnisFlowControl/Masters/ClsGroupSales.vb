@@ -104,8 +104,8 @@
 
         Dim sql As String = "Insert into GroupSales(GroupSalesID,GroupSalesCode,Name,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & grpSalesModel.GroupSalesID & "','" & grpSalesModel.GroupSalesCode & "','" & grpSalesModel.Name & "'" &
-                                ",'" & grpSalesModel.IsActive & "','" & grpSalesModel.CreatedBy & "','" & grpSalesModel.CreatedDate & "'" &
-                                ",'" & grpSalesModel.UpdatedBy & "','" & grpSalesModel.UpdatedDate & "')"
+                                ",'" & grpSalesModel.IsActive & "','" & grpSalesModel.CreatedBy & "','" & Format(grpSalesModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & grpSalesModel.UpdatedBy & "','" & Format(grpSalesModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -127,12 +127,12 @@
 
         If options = "Update" Then
             query = "Update GroupSales Set Name = '" & grpSalesModel.Name & "',IsActive = '" & grpSalesModel.IsActive & "'" &
-                    ",UpdatedBy='" & grpSalesModel.UpdatedBy & "',UpdatedDate = '" & grpSalesModel.UpdatedDate & "' Where GroupSalesID='" & grpSalesModel.GroupSalesID & "'"
+                    ",UpdatedBy='" & grpSalesModel.UpdatedBy & "',UpdatedDate = '" & Format(grpSalesModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where GroupSalesID='" & grpSalesModel.GroupSalesID & "'"
             queryList.Add(query)
 
         Else
             query = "Update GroupSales Set IsActive = '" & grpSalesModel.IsActive & "',UpdatedBy='" & grpSalesModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & grpSalesModel.UpdatedDate & "' Where GroupSalesID='" & grpSalesModel.GroupSalesID & "'"
+                    ",UpdatedDate = '" & Format(grpSalesModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where GroupSalesID='" & grpSalesModel.GroupSalesID & "'"
             queryList.Add(query)
         End If
 

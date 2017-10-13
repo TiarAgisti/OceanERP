@@ -113,8 +113,8 @@
 
         Dim sql As String = "Insert into Brand(BrandID,BrandCode,Name,Description,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & brandModel.BrandID & "','" & brandModel.BrandCode & "','" & brandModel.Name & "','" & brandModel.Description & "'" &
-                                ",'" & brandModel.IsActive & "','" & brandModel.CreatedBy & "','" & brandModel.CreatedDate & "'" &
-                                ",'" & brandModel.UpdatedBy & "','" & brandModel.UpdatedDate & "')"
+                                ",'" & brandModel.IsActive & "','" & brandModel.CreatedBy & "','" & Format(brandModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & brandModel.UpdatedBy & "','" & Format(brandModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -142,7 +142,7 @@
             queryList.Add(query)
         Else
             query = "Update Brand Set IsActive = '" & brandModel.IsActive & "',UpdatedBy='" & brandModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & brandModel.UpdatedDate & "' Where BrandID='" & brandModel.BrandID & "'"
+                    ",UpdatedDate = '" & Format(brandModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BrandID='" & brandModel.BrandID & "'"
             queryList.Add(query)
         End If
 

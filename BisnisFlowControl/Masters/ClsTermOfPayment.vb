@@ -110,8 +110,8 @@
 
         Dim sql As String = "Insert into TermOfPayment(TermOfPaymentID,TermOfPaymentCode,Name,Description,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & termModel.TermOfPaymentID & "','" & termModel.TermOfPaymentCode & "','" & termModel.Name & "','" & termModel.Description & "'" &
-                                ",'" & termModel.IsActive & "','" & termModel.CreatedBy & "','" & termModel.CreatedDate & "'" &
-                                ",'" & termModel.UpdatedBy & "','" & termModel.UpdatedDate & "')"
+                                ",'" & termModel.IsActive & "','" & termModel.CreatedBy & "','" & Format(termModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & termModel.UpdatedBy & "','" & Format(termModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -135,11 +135,11 @@
         If options = "Update" Then
             query = "Update TermOfPayment Set Name = '" & termModel.Name & "',Description='" & termModel.Description & "'" &
                     ",IsActive = '" & termModel.IsActive & "',UpdatedBy='" & termModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & termModel.UpdatedDate & "' Where TermOfPaymentID='" & termModel.TermOfPaymentID & "'"
+                    ",UpdatedDate = '" & Format(termModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where TermOfPaymentID='" & termModel.TermOfPaymentID & "'"
             queryList.Add(query)
         Else
             query = "Update TermOfPayment Set IsActive = '" & termModel.IsActive & "',UpdatedBy='" & termModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & termModel.UpdatedDate & "' Where TermOfPaymentID='" & termModel.TermOfPaymentID & "'"
+                    ",UpdatedDate = '" & Format(termModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where TermOfPaymentID='" & termModel.TermOfPaymentID & "'"
             queryList.Add(query)
         End If
 

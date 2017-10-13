@@ -120,7 +120,7 @@
 
         Dim sql As String = "Insert into CategoryFabric(CategoryID,CategoryName,IsActive,CreatedBy,CreatedDate" &
                             ",UpdatedBy,UpdatedDate)Values('" & categoryModel.CategoryID & "','" & categoryModel.CategoryName & "'" &
-                            ",'" & categoryModel.IsActive & "','" & categoryModel.CreatedBy & "','" & categoryModel.CreatedDate & "','" & categoryModel.UpdatedBy & "','" & categoryModel.UpdatedDate & "')"
+                            ",'" & categoryModel.IsActive & "','" & categoryModel.CreatedBy & "','" & Format(categoryModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "','" & categoryModel.UpdatedBy & "','" & Format(categoryModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -149,7 +149,7 @@
 
         Else
             query = "Update CategoryFabric Set IsActive = '" & categoryModel.IsActive & "',UpdatedBy='" & categoryModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & categoryModel.UpdatedDate & "' Where CategoryID='" & categoryModel.CategoryID & "'"
+                    ",UpdatedDate = '" & Format(categoryModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where CategoryID='" & categoryModel.CategoryID & "'"
             queryList.Add(query)
         End If
 

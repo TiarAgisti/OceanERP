@@ -181,8 +181,8 @@
 
         Dim sql As String = "Insert into Colors(ColorID,ColorCode,ColorName,Description,FabricID,RemarksPart,Season,DarkLight,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & colorModel.ColorID & "','" & colorModel.ColorCode & "','" & colorModel.ColorName & "','" & colorModel.Description & "'" &
-                                ",'" & colorModel.FabricID & "','" & colorModel.RemarksPart & "','" & colorModel.Season & "','" & colorModel.DarkLight & "','" & colorModel.IsActive & "','" & colorModel.CreatedBy & "','" & colorModel.CreatedDate & "'" &
-                                ",'" & colorModel.UpdatedBy & "','" & colorModel.UpdatedDate & "')"
+                                ",'" & colorModel.FabricID & "','" & colorModel.RemarksPart & "','" & colorModel.Season & "','" & colorModel.DarkLight & "','" & colorModel.IsActive & "','" & colorModel.CreatedBy & "','" & Format(colorModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & colorModel.UpdatedBy & "','" & Format(colorModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -205,12 +205,12 @@
         If options = "Update" Then
             query = "Update Colors Set ColorName = '" & colorModel.ColorName & "',Description='" & colorModel.Description & "'" &
                     ",FabricID = '" & colorModel.FabricID & "',RemarksPart = '" & colorModel.RemarksPart & "',Season = '" & colorModel.Season & "',DarkLight = '" & colorModel.DarkLight & "',IsActive = '" & colorModel.IsActive & "',UpdatedBy='" & colorModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & colorModel.UpdatedDate & "' Where ColorID='" & colorModel.ColorID & "'"
+                    ",UpdatedDate = '" & Format(colorModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where ColorID='" & colorModel.ColorID & "'"
             queryList.Add(query)
 
         Else
             query = "Update Colors Set IsActive = '" & colorModel.IsActive & "',UpdatedBy='" & colorModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & colorModel.UpdatedDate & "' Where ColorID='" & colorModel.ColorID & "'"
+                    ",UpdatedDate = '" & Format(colorModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where ColorID='" & colorModel.ColorID & "'"
             queryList.Add(query)
         End If
 

@@ -134,8 +134,8 @@
         Dim sql As String = "Insert into BankAccount(BankAccountID,BankAccountCode,BankID,VendorID,CurrencyID,AccountName,AccountNumber,IsActive,CreatedBy" &
                             ",CreatedDate,UpdatedBy,UpdatedDate)Values('" & bacModel.BankAccountID & "','" & bacModel.BankAccountCode & "'" &
                             ",'" & bacModel.BankID & "','" & bacModel.VendorID & "','" & bacModel.CurrencyID & "','" & bacModel.AccountName & "'" &
-                            ",'" & bacModel.AccountNumber & "','" & bacModel.IsActive & "','" & bacModel.CreatedBy & "','" & bacModel.CreatedDate & "'" &
-                            ",'" & bacModel.UpdatedBy & "','" & bacModel.UpdatedDate & "')"
+                            ",'" & bacModel.AccountNumber & "','" & bacModel.IsActive & "','" & bacModel.CreatedBy & "','" & Format(bacModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                            ",'" & bacModel.UpdatedBy & "','" & Format(bacModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -163,7 +163,7 @@
 
         Else
             query = "Update BankAccount Set IsActive = '" & bacModel.IsActive & "',UpdatedBy='" & bacModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & bacModel.UpdatedDate & "' Where BankAccountID='" & bacModel.BankAccountID & "'"
+                    ",UpdatedDate = '" & Format(bacModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BankAccountID='" & bacModel.BankAccountID & "'"
             queryList.Add(query)
         End If
 

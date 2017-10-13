@@ -115,8 +115,8 @@
 
         Dim sql As String = "Insert into Style(StyleID,StyleCode,StyleName,SpecStyle,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & styleModel.StyleID & "','" & styleModel.StyleCode & "','" & styleModel.StyleName & "'" &
-                                ",'" & styleModel.SpecStyle & "','" & styleModel.IsActive & "','" & styleModel.CreatedBy & "','" & styleModel.CreatedDate & "'" &
-                                ",'" & styleModel.UpdatedBy & "','" & styleModel.UpdatedDate & "')"
+                                ",'" & styleModel.SpecStyle & "','" & styleModel.IsActive & "','" & styleModel.CreatedBy & "','" & Format(styleModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & styleModel.UpdatedBy & "','" & Format(styleModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -139,13 +139,13 @@
 
         If options = "Update" Then
             query = "Update Style Set StyleName = '" & styleModel.StyleName & "',SpecStyle = '" & styleModel.StyleName & "'" &
-                    ",IsActive = '" & styleModel.IsActive & "',UpdatedBy='" & styleModel.UpdatedBy & "',UpdatedDate = '" & styleModel.UpdatedDate & "'" &
+                    ",IsActive = '" & styleModel.IsActive & "',UpdatedBy='" & styleModel.UpdatedBy & "',UpdatedDate = '" & Format(styleModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
                     " Where StyleID='" & styleModel.StyleID & "'"
             queryList.Add(query)
 
         Else
             query = "Update Style Set IsActive = '" & styleModel.IsActive & "',UpdatedBy='" & styleModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & styleModel.UpdatedDate & "' Where StyleID='" & styleModel.StyleID & "'"
+                    ",UpdatedDate = '" & Format(styleModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where StyleID='" & styleModel.StyleID & "'"
             queryList.Add(query)
         End If
 

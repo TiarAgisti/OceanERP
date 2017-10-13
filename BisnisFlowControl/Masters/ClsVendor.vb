@@ -231,8 +231,8 @@
                                 "'" & vendorModel.VendorID & "','" & vendorModel.VendorCode & "','" & vendorModel.VendorName & "','" & vendorModel.Address & "'" &
                                 ",'" & vendorModel.ShippingAddress & "','" & vendorModel.Telephone & "','" & vendorModel.Fax & "','" & vendorModel.ContactPerson & "'" &
                                 ",'" & vendorModel.EmailCP & "','" & vendorModel.Npwp & "','" & vendorModel.TermOfPaymentID & "','" & vendorModel.Status & "'" &
-                                ",'" & vendorModel.DestinationID & "','" & vendorModel.IsActive & "','" & vendorModel.CreatedBy & "','" & vendorModel.CreatedDate & "'" &
-                                ",'" & vendorModel.UpdatedBy & "','" & vendorModel.UpdatedDate & "')"
+                                ",'" & vendorModel.DestinationID & "','" & vendorModel.IsActive & "','" & vendorModel.CreatedBy & "','" & Format(vendorModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & vendorModel.UpdatedBy & "','" & Format(vendorModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -258,13 +258,13 @@
                     ",ShippingAddress='" & vendorModel.ShippingAddress & "',Telephone='" & vendorModel.Telephone & "'" &
                     ",Fax='" & vendorModel.Fax & "',ContactPerson='" & vendorModel.ContactPerson & "',EmailCP='" & vendorModel.EmailCP & "'" &
                     ",Npwp='" & vendorModel.Npwp & "',TermOfPaymentID='" & vendorModel.TermOfPaymentID & "',DestinationID='" & vendorModel.DestinationID & "'" &
-                    ",IsActive = '" & vendorModel.IsActive & "',UpdatedBy = '" & vendorModel.UpdatedBy & "',UpdatedDate = '" & vendorModel.UpdatedDate & "'" &
+                    ",IsActive = '" & vendorModel.IsActive & "',UpdatedBy = '" & vendorModel.UpdatedBy & "',UpdatedDate = '" & Format(vendorModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
                     " Where VendorID='" & vendorModel.VendorID & "'"
             queryList.Add(query)
 
         Else
             query = "Update Vendor Set IsActive = '" & vendorModel.IsActive & "',UpdatedBy='" & vendorModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & vendorModel.UpdatedDate & "' Where VendorID='" & vendorModel.VendorID & "'"
+                    ",UpdatedDate = '" & Format(vendorModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where VendorID='" & vendorModel.VendorID & "'"
             queryList.Add(query)
         End If
 

@@ -438,8 +438,8 @@
         sqlHeader = "Insert into BOHeader(BOID,NoOrder,DateIssues,DeliveryDate,ReffPO,CustomerID,BrandID,StyleID,SumBrutto,SumNetto,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
                 "('" & headerModel.BOID & "','" & headerModel.NoOrder & "','" & headerModel.DateIssues & "','" & headerModel.DeliveryDate & "','" & headerModel.ReffPO & "'" &
                  ",'" & headerModel.CustomerID & "','" & headerModel.BrandID & "','" & headerModel.StyleID & "','" & headerModel.SumBrutto & "','" & headerModel.SumNetto & "'" &
-                ",'" & headerModel.Status & "','" & headerModel.CreatedBy & "','" & headerModel.CreatedDate & "'" &
-                ",'" & headerModel.UpdatedBy & "','" & headerModel.UpdatedDate & "')"
+                ",'" & headerModel.Status & "','" & headerModel.CreatedBy & "','" & Format(headerModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                ",'" & headerModel.UpdatedBy & "','" & Format(headerModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         Return sqlHeader
     End Function
 
@@ -467,14 +467,14 @@
         Dim SQL As String
         SQL = "Update BOHeader set DateIssues = '" & myModel.DateIssues & "', DeliveryDate = '" & myModel.DeliveryDate & "',ReffPO = '" & myModel.ReffPO & "',CustomerID = '" & myModel.CustomerID & "'" &
           ",BrandID = '" & myModel.BrandID & "',StyleID= '" & myModel.StyleID & "',SumBrutto = '" & myModel.SumBrutto & "',SumNetto = '" & myModel.SumNetto & "',Status = '" & myModel.Status & "'" &
-          ",UpdatedBy = '" & myModel.UpdatedBy & "',UpdatedDate = '" & myModel.UpdatedDate & "' Where BOID = '" & myModel.BOID & "'"
+          ",UpdatedBy = '" & myModel.UpdatedBy & "',UpdatedDate = '" & Format(myModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BOID = '" & myModel.BOID & "'"
         Return SQL
     End Function
 
     Protected Function SqlUpdateStatusHeader(myModel As BOHeaderModel) As String
         Dim SQL As String
         SQL = "Update BOHeader Set Status = '" & myModel.Status & "',UpdatedBy = '" & myModel.UpdatedBy & "'"
-        SQL += ",UpdatedDate = '" & myModel.UpdatedDate & "' Where BOID = '" & myModel.BOID & "'"
+        SQL += ",UpdatedDate = '" & Format(myModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BOID = '" & myModel.BOID & "'"
         Return SQL
     End Function
 

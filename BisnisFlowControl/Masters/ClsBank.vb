@@ -148,8 +148,8 @@
 
         Dim sql As String = "Insert into Bank(BankID,BankCode,Name,SwiftCode,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & bankModel.BankID & "','" & bankModel.BankCode & "','" & bankModel.Name & "','" & bankModel.SwiftCode & "'" &
-                                ",'" & bankModel.IsActive & "','" & bankModel.CreatedBy & "','" & bankModel.CreatedDate & "','" & bankModel.UpdatedBy & "'" &
-                                ",'" & bankModel.UpdatedDate & "')"
+                                ",'" & bankModel.IsActive & "','" & bankModel.CreatedBy & "','" & Format(bankModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "','" & bankModel.UpdatedBy & "'" &
+                                ",'" & Format(bankModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -177,7 +177,7 @@
             queryList.Add(query)
         Else
             query = "Update Bank Set IsActive = '" & bankModel.IsActive & "',UpdatedBy='" & bankModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & bankModel.UpdatedDate & "' Where BankID='" & bankModel.BankID & "'"
+                    ",UpdatedDate = '" & Format(bankModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BankID='" & bankModel.BankID & "'"
             queryList.Add(query)
         End If
 

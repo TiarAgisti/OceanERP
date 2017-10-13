@@ -244,7 +244,7 @@
                     "('" & bomHeaderModel.BOMHeaderID & "','" & bomHeaderModel.BOMCode & "','" & bomHeaderModel.FabricID & "'" &
                     ",'" & bomHeaderModel.BuyerID & "','" & bomHeaderModel.StyleID & "','" & bomHeaderModel.ColorID & "'" &
                     ",'" & bomHeaderModel.StatusBOM & "','" & bomHeaderModel.IsActive & "','" & bomHeaderModel.CreatedBy & "'" &
-                    ",'" & bomHeaderModel.CreatedDate & "','" & bomHeaderModel.UpdatedBy & "','" & bomHeaderModel.UpdatedDate & "')"
+                    ",'" & Format(bomHeaderModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "','" & bomHeaderModel.UpdatedBy & "','" & Format(bomHeaderModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         Return sqlHeader
     End Function
     Protected Function SqlInsertDetail(myModel As BOMDetailModel) As String
@@ -257,7 +257,7 @@
         Dim SQL As String
         SQL = "Update BOMHeader set FabricID = '" & myModel.FabricID & "',BuyerID = '" & myModel.BuyerID & "',StyleID = '" & myModel.StyleID & "'" &
               ",ColorID = '" & myModel.ColorID & "',StatusBOM = '" & myModel.StatusBOM & "',IsActive = '" & myModel.IsActive & "',UpdatedBy = '" & myModel.UpdatedBy & "'" &
-              ",UpdatedDate = '" & myModel.UpdatedDate & "' Where BOMHeaderID = '" & myModel.BOMHeaderID & "'"
+              ",UpdatedDate = '" & Format(myModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BOMHeaderID = '" & myModel.BOMHeaderID & "'"
         Return SQL
     End Function
     Protected Function SqlDeleteDetail(myModel As BOMHeaderModel) As String

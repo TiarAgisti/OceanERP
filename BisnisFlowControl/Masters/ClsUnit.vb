@@ -120,13 +120,13 @@
 
         If options = "Update" Then
             query = "Update Unit Set UnitName = '" & unitModel.UnitName & "',Description = '" & unitModel.Description & "'" &
-                    ",IsActive = '" & unitModel.IsActive & "',UpdatedBy='" & unitModel.UpdatedBy & "',UpdatedDate = '" & unitModel.UpdatedDate & "'" &
+                    ",IsActive = '" & unitModel.IsActive & "',UpdatedBy='" & unitModel.UpdatedBy & "',UpdatedDate = '" & Format(unitModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
                     " Where UnitID='" & unitModel.UnitID & "'"
             queryList.Add(query)
 
         Else
             query = "Update Unit Set IsActive = '" & unitModel.IsActive & "',UpdatedBy='" & unitModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & unitModel.UpdatedDate & "' Where UnitID='" & unitModel.UnitID & "'"
+                    ",UpdatedDate = '" & Format(unitModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where UnitID='" & unitModel.UnitID & "'"
             queryList.Add(query)
         End If
 

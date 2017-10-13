@@ -180,8 +180,8 @@
                                 ",CreatedDate,UpdatedBy,UpdatedDate)Values('" & fabricModel.FabricID & "','" & fabricModel.FabricCode & "'" &
                                 ",'" & fabricModel.FabricName & "','" & fabricModel.Composition & "','" & fabricModel.Specification & "'" &
                                 ",'" & fabricModel.Width & "','" & fabricModel.Weight & "','" & fabricModel.VendorID & "'" &
-                                ",'" & fabricModel.IsActive & "','" & fabricModel.CreatedBy & "','" & fabricModel.CreatedDate & "'" &
-                                ",'" & fabricModel.UpdatedBy & "','" & fabricModel.UpdatedDate & "')"
+                                ",'" & fabricModel.IsActive & "','" & fabricModel.CreatedBy & "','" & Format(fabricModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & fabricModel.UpdatedBy & "','" & Format(fabricModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -206,12 +206,12 @@
             query = "Update Fabric Set FabricName = '" & fabricModel.FabricName & "',Composition = '" & fabricModel.Composition & "'" &
                     ",Specification = '" & fabricModel.Specification & "',Width='" & fabricModel.Width & "',Weight='" & fabricModel.Weight & "'" &
                     ",VendorID='" & fabricModel.VendorID & "',IsActive = '" & fabricModel.IsActive & "',UpdatedBy='" & fabricModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & fabricModel.UpdatedDate & "' Where FabricID='" & fabricModel.FabricID & "'"
+                    ",UpdatedDate = '" & Format(fabricModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where FabricID='" & fabricModel.FabricID & "'"
             queryList.Add(query)
 
         Else
             query = "Update Fabric Set IsActive = '" & fabricModel.IsActive & "',UpdatedBy='" & fabricModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & fabricModel.UpdatedDate & "' Where FabricID='" & fabricModel.FabricID & "'"
+                    ",UpdatedDate = '" & Format(fabricModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where FabricID='" & fabricModel.FabricID & "'"
             queryList.Add(query)
         End If
 

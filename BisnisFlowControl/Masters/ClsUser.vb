@@ -160,8 +160,8 @@
 
         Dim sqlUser As String = "Insert into Users(UserID,Name,userpassword,RoleID,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
                                 "('" & userModel.UserID & "','" & userModel.Name & "','" & userModel.userpassword & "','" & userModel.RoleID & "'" &
-                                ",'" & userModel.IsActive & "','" & userModel.CreatedBy & "','" & userModel.CreatedDate & "','" & userModel.UpdatedBy & "'" &
-                                ",'" & userModel.UpdatedDate & "')"
+                                ",'" & userModel.IsActive & "','" & userModel.CreatedBy & "','" & Format(userModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "','" & userModel.UpdatedBy & "'" &
+                                ",'" & Format(userModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sqlUser)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -180,7 +180,7 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
         Dim sqlUser As String = "Update Users Set IsActive = '" & userModel.IsActive & "',UpdatedBy='" & userModel.UpdatedBy & "'" &
-                                ",UpdatedDate = '" & userModel.UpdatedDate & "' Where UserID='" & userModel.UserID & "'"
+                                ",UpdatedDate = '" & Format(userModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where UserID='" & userModel.UserID & "'"
         queryList.Add(sqlUser)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -199,7 +199,7 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
         Dim sqlUser As String = "Update Users Set userpassword='" & userModel.userpassword & "',RoleID='" & userModel.RoleID & "',IsActive = '" & userModel.IsActive & "'" &
-                                ",UpdatedBy='" & userModel.UpdatedBy & "',UpdatedDate = '" & userModel.UpdatedDate & "' Where UserID='" & userModel.UserID & "'"
+                                ",UpdatedBy='" & userModel.UpdatedBy & "',UpdatedDate = '" & Format(userModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where UserID='" & userModel.UserID & "'"
         queryList.Add(sqlUser)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -218,7 +218,7 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
         Dim sqlUser As String = "Update Users Set userpassword='" & userModel.userpassword & "',UpdatedBy='" & userModel.UpdatedBy & "'" &
-                                ",UpdatedDate = '" & userModel.UpdatedDate & "' Where UserID='" & userModel.UserID & "'"
+                                ",UpdatedDate = '" & Format(userModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where UserID='" & userModel.UserID & "'"
         queryList.Add(sqlUser)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))

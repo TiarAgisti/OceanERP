@@ -290,7 +290,6 @@ Public Class ClsPI
     End Function
 #End Region
 
-
 #Region "Function"
     Protected Function ListComboBox() As DataTable
         Dim dataAccess = New ClsDataAccess
@@ -325,8 +324,6 @@ Public Class ClsPI
         End Try
     End Sub
 #End Region
-
-
 
 #Region "Check Available In List"
     Public Function CheckFabricInList(dgvFabric As DataGridView, fabricID As Integer) As Boolean
@@ -514,7 +511,7 @@ Public Class ClsPI
                                  "('" & piHeaderModel.BOID & "','" & piHeaderModel.SeasonID & "','" & piHeaderModel.TermOfPaymentID & "','" & piHeaderModel.TermOfPriceID & "'" &
                 ",'" & piHeaderModel.Atention & "','" & piHeaderModel.DestinationID & "','" & piHeaderModel.DeliveryPlace & "'" &
                 ",'" & piHeaderModel.AddressDeliveryplace & "','" & piHeaderModel.AmountTotal & "','" & piHeaderModel.CurrID & "','" & piHeaderModel.Status & "','" & piHeaderModel.CreatedBy & "'" &
-                ",'" & piHeaderModel.CreatedDate & "','" & piHeaderModel.UpdatedBy & "','" & piHeaderModel.UpdatedDate & "')"
+                ",'" & Format(piHeaderModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "','" & piHeaderModel.UpdatedBy & "','" & Format(piHeaderModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         Return sqlHeader
     End Function
 
@@ -575,14 +572,14 @@ Public Class ClsPI
                                     ",DeliveryPlace = '" & myModel.DeliveryPlace & "' , AddressDeliveryPlace = '" & myModel.AddressDeliveryplace & "'" &
                                      ",AmountTotal = '" & myModel.AmountTotal & "',CurrencyID = '" & myModel.CurrID & "'" &
                                     ",Status = '" & myModel.Status & "',UpdatedBy = '" & myModel.UpdatedBy & "'" &
-                                    ",UpdatedDate = '" & myModel.UpdatedDate & "' Where BOID = '" & myModel.BOID & "'"
+                                    ",UpdatedDate = '" & Format(myModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BOID = '" & myModel.BOID & "'"
         Return SQL
     End Function
 
     Public Function SqlUpdateStatusHeader(myModel As ProInvoiceHeaderModel) As String
         Dim SQL As String
         SQL = "Update ProInvoiceHeader Set Status = '" & myModel.Status & "',UpdatedBy = '" & myModel.UpdatedBy & "'" &
-            ",UpdatedDate = '" & myModel.UpdatedDate & "' Where BOID = '" & myModel.BOID & "'"
+            ",UpdatedDate = '" & Format(myModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BOID = '" & myModel.BOID & "'"
         Return SQL
     End Function
 
@@ -655,43 +652,7 @@ Public Class ClsPI
             dataAccess = Nothing
             Throw ex
         End Try
-        ''insert header
-        'queryList.Add(SqlInsertHeader(PIHeaderModel))
 
-        ''insert fabric detail
-        'For Each detail In listPIDetailModel
-        '    queryList.Add(SqlInsertDetailFabric(detail))
-        'Next
-
-        ''insert color detail
-        'For Each myColorDetail In listColorDetailModel
-        '    queryList.Add(SqlInsertDetailColorFabric(myColorDetail))
-        'Next
-
-        ''insert yarn detail
-        'For Each myYarnDetail In listYarnDetailModel
-        '    queryList.Add(SqlInsertYarnDetail(myYarnDetail))
-        'Next
-
-        ''insert Remarks
-        'For Each myRemarksDetail In listRemarks
-        '    queryList.Add(SqlInsertRemarksDetail(myRemarksDetail))
-        'Next
-
-        ''insert Bank Detail
-        'queryList.Add(SqlInsertBankDetail(listbankDetailModel))
-
-        ''insert log history
-        'queryList.Add(logBFC.SqlInsertLogHistoryTransaction(logModel))
-
-        'Try
-        '    dataAccess.InsertMasterDetail(queryList)
-        '    dataAccess = Nothing
-        '    Return True
-        'Catch ex As Exception
-        '    dataAccess = Nothing
-        '    Throw ex
-        'End Try
     End Function
 
     Public Function UpdateData(piHeaderModel As ProInvoiceHeaderModel, listPIDetailModel As List(Of ProInvoiceFabricDetailModel) _

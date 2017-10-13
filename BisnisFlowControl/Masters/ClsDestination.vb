@@ -123,7 +123,7 @@
 
         Dim sql As String = "Insert into Destination(DestinationID,DestinationCode,Name,IsActive,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & destModel.DestinationID & "','" & destModel.DestinationCode & "','" & destModel.Name & "','" & destModel.IsActive & "','" & destModel.Status & "'" &
-                                ",'" & destModel.CreatedBy & "','" & destModel.CreatedDate & "','" & destModel.UpdatedBy & "','" & destModel.UpdatedDate & "')"
+                                ",'" & destModel.CreatedBy & "','" & Format(destModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "','" & destModel.UpdatedBy & "','" & Format(destModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss")e & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -147,12 +147,12 @@
         If options = "Update" Then
 
             query = "Update Destination Set Name = '" & destModel.Name & "',IsActive = '" & destModel.IsActive & "',Status='" & destModel.Status & "'" &
-                    ",UpdatedBy = '" & destModel.UpdatedBy & "',UpdatedDate = '" & destModel.UpdatedDate & "' Where DestinationID='" & destModel.DestinationID & "'"
+                    ",UpdatedBy = '" & destModel.UpdatedBy & "',UpdatedDate = '" & Format(destModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where DestinationID='" & destModel.DestinationID & "'"
             queryList.Add(query)
 
         Else
             query = "Update Destination Set IsActive = '" & destModel.IsActive & "',UpdatedBy='" & destModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & destModel.UpdatedDate & "' Where DestinationID='" & destModel.DestinationID & "'"
+                    ",UpdatedDate = '" & Format(destModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where DestinationID='" & destModel.DestinationID & "'"
             queryList.Add(query)
         End If
 

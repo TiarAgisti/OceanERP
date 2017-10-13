@@ -149,7 +149,7 @@
         Dim sql As String = "Insert into Yarn(YarnID,YarnCode,YarnName,VendorID,SpecYarn,IsActive,CreatedBy,CreatedDate" &
                             ",UpdatedBy,UpdatedDate)Values('" & yarnModel.YarnID & "','" & yarnModel.YarnCode & "','" & yarnModel.YarnName & "'" &
                             ",'" & yarnModel.VendorID & "','" & yarnModel.SpecYarn & "','" & yarnModel.IsActive & "'" &
-                            ",'" & yarnModel.CreatedBy & "','" & yarnModel.CreatedDate & "','" & yarnModel.UpdatedBy & "','" & yarnModel.UpdatedDate & "')"
+                            ",'" & yarnModel.CreatedBy & "','" & Format(yarnModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "','" & yarnModel.UpdatedBy & "','" & Format(yarnModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -178,7 +178,7 @@
 
         Else
             query = "Update Yarn Set IsActive = '" & yarnModel.IsActive & "',UpdatedBy='" & yarnModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & yarnModel.UpdatedDate & "' Where YarnID='" & yarnModel.YarnID & "'"
+                    ",UpdatedDate = '" & Format(yarnModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where YarnID='" & yarnModel.YarnID & "'"
             queryList.Add(query)
         End If
 

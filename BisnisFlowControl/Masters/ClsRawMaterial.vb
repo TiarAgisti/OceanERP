@@ -143,8 +143,8 @@
                                 ",CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values('" & rawMaterialModel.RawMaterialID & "'" &
                                 ",'" & rawMaterialModel.RawMaterialCode & "','" & rawMaterialModel.RawMaterialName & "'" &
                                 ",'" & rawMaterialModel.VendorID & "','" & rawMaterialModel.SpecRawMaterial & "'" &
-                                ",'" & rawMaterialModel.IsActive & "','" & rawMaterialModel.CreatedBy & "','" & rawMaterialModel.CreatedDate & "'" &
-                                ",'" & rawMaterialModel.UpdatedBy & "','" & rawMaterialModel.UpdatedDate & "')"
+                                ",'" & rawMaterialModel.IsActive & "','" & rawMaterialModel.CreatedBy & "','" & Format(rawMaterialModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
+                                ",'" & rawMaterialModel.UpdatedBy & "','" & Format(rawMaterialModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "')"
         queryList.Add(sql)
 
         queryList.Add(logBFC.SqlInsertLog(logModel))
@@ -167,13 +167,13 @@
         If options = "Update" Then
             query = "Update RawMaterial Set RawMaterialName = '" & rawMaterialModel.RawMaterialName & "',VendorID = '" & rawMaterialModel.VendorID & "'" &
                     ",SpecRawMaterial = '" & rawMaterialModel.SpecRawMaterial & "',IsActive = '" & rawMaterialModel.IsActive & "'" &
-                    ",UpdatedBy='" & rawMaterialModel.UpdatedBy & "',UpdatedDate = '" & rawMaterialModel.UpdatedDate & "'" &
+                    ",UpdatedBy='" & rawMaterialModel.UpdatedBy & "',UpdatedDate = '" & Format(rawMaterialModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "'" &
                     " Where RawMaterialID='" & rawMaterialModel.RawMaterialID & "'"
             queryList.Add(query)
 
         Else
             query = "Update RawMaterial Set IsActive = '" & rawMaterialModel.IsActive & "',UpdatedBy='" & rawMaterialModel.UpdatedBy & "'" &
-                    ",UpdatedDate = '" & rawMaterialModel.UpdatedDate & "' Where RawMaterialID='" & rawMaterialModel.RawMaterialID & "'"
+                    ",UpdatedDate = '" & Format(rawMaterialModel.UpdatedBy, "yyyy-MM-dd HH:mm:ss") & "' Where RawMaterialID='" & rawMaterialModel.RawMaterialID & "'"
             queryList.Add(query)
         End If
 
