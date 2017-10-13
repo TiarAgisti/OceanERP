@@ -467,14 +467,14 @@
         Dim SQL As String
         SQL = "Update BOHeader set DateIssues = '" & myModel.DateIssues & "', DeliveryDate = '" & myModel.DeliveryDate & "',ReffPO = '" & myModel.ReffPO & "',CustomerID = '" & myModel.CustomerID & "'" &
           ",BrandID = '" & myModel.BrandID & "',StyleID= '" & myModel.StyleID & "',SumBrutto = '" & myModel.SumBrutto & "',SumNetto = '" & myModel.SumNetto & "',Status = '" & myModel.Status & "'" &
-          ",UpdatedBy = '" & myModel.UpdatedBy & "',UpdatedDate = '" & Format(myModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BOID = '" & myModel.BOID & "'"
+          ",UpdatedBy = '" & myModel.UpdatedBy & "',UpdatedDate = '" & Format(myModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BOID = '" & myModel.BOID & "'"
         Return SQL
     End Function
 
     Protected Function SqlUpdateStatusHeader(myModel As BOHeaderModel) As String
         Dim SQL As String
         SQL = "Update BOHeader Set Status = '" & myModel.Status & "',UpdatedBy = '" & myModel.UpdatedBy & "'"
-        SQL += ",UpdatedDate = '" & Format(myModel.CreatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BOID = '" & myModel.BOID & "'"
+        SQL += ",UpdatedDate = '" & Format(myModel.UpdatedDate, "yyyy-MM-dd HH:mm:ss") & "' Where BOID = '" & myModel.BOID & "'"
         Return SQL
     End Function
 
