@@ -303,6 +303,7 @@ Public Class ClsPI
             dataTable = dataAccess.RetrieveListData(query)
             dataAccess = Nothing
             Return dataTable
+
         Catch ex As Exception
             dataAccess = Nothing
             Return Nothing
