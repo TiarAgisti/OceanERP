@@ -1797,7 +1797,7 @@ Partial Class FrmProformaInvoice
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmProformaInvoice"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Tag = "17"
+        Me.Tag = ""
         Me.Text = "FrmProformaInvoice"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)

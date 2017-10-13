@@ -63,7 +63,6 @@ Public Class FrmBPB
             With poModel
                 txtSupplier.Text = .SupplierName
                 supplierCode = .SupplierCode
-
             End With
         Else
             MsgBoxError("PO not valid")
@@ -86,9 +85,7 @@ Public Class FrmBPB
                 MsgBoxError("Raw Code not valid")
             End If
             poModel = Nothing
-
         Catch ex As Exception
-
             Throw ex
         End Try
     End Sub
@@ -184,6 +181,7 @@ Public Class FrmBPB
         txtQuantityPackaging.Clear()
     End Sub
 #End Region
+
 #Region "Validation Number"
     Private Sub txtQtyReceived_TextChanged(sender As Object, e As EventArgs) Handles txtQtyReceived.TextChanged
         CheckNumber(txtQtyReceived)
@@ -735,6 +733,12 @@ Public Class FrmBPB
         End Try
         intBaris = intBaris - 1
     End Sub
+
+
+
+
+
+
 #End Region
 
 End Class

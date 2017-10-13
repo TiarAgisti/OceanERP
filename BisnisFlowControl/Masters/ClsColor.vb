@@ -1,5 +1,5 @@
 ﻿Public Class ClsColor
-    Dim queryColor As String = "Select * From Colors Where IsActive = 1"
+    Dim queryColor As String = "Select ColorID,ColorCode,ColorName,Description,FabricID,FabricName,VendorID,VendorName,RemarksPart,Season,DarkLight From v_Color Where IsActive = 1"
 #Region "Method Retrieve"
     Public Function RetrieveList(options As String, param As String) As DataTable
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
@@ -38,6 +38,25 @@
                         colorModel.ColorCode = .Item("ColorCode")
                         colorModel.ColorName = .Item("ColorName")
                         colorModel.Description = .Item("Description")
+                        colorModel.FabricID = .Item("FabricID")
+                        colorModel.FabricName = .Item("FabricName")
+                        colorModel.VendorID = .Item("VendorID")
+                        colorModel.VendorName = .Item("VendorName")
+                        If IsDBNull(.Item("RemarksPart")) Then
+                            colorModel.RemarksPart = 0
+                        Else
+                            colorModel.RemarksPart = .Item("RemarksPart")
+                        End If
+                        If IsDBNull(.Item("Season")) Then
+                            colorModel.Season = 0
+                        Else
+                            colorModel.Season = .Item("Season")
+                        End If
+                        If IsDBNull(.Item("DarkLight")) Then
+                            colorModel.DarkLight = 0
+                        Else
+                            colorModel.DarkLight = .Item("DarkLight")
+                        End If
                     End If
                 End While
                 .Close()
@@ -67,7 +86,7 @@
         Return id
     End Function
     Public Function GeneratedCode() As String
-        Dim code As String = "COL"
+        Dim code As String = "OA"
         Dim hasil As String
         Dim query As String = "Select max(ColorCode) as Code from Colors"
         Dim dataAccess = New ClsDataAccess
@@ -80,26 +99,24 @@
         dataAccess = Nothing
         Return hasil
     End Function
-    Protected Function ListComboBox()
-        Dim dataAccess = New ClsDataAccess
+    Protected Function ListComboBox(headerID As Long) As DataTable
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Dim dataTable As DataTable = New DataTable
-        Dim query As String
-        query = "Select ColorID,ColorName From Colors Where IsActive = 1"
+        Dim query As String = "Select ColorID,ColorName From v_Color where FabricID = '" & headerID & "' AND IsActive = 1"
         Try
             dataTable = dataAccess.RetrieveListData(query)
-            dataAccess = Nothing
-            Return dataTable
         Catch ex As Exception
-            dataAccess = Nothing
-            Return Nothing
             Throw ex
+            Return Nothing
         End Try
+        dataAccess = Nothing
+        Return dataTable
     End Function
     Protected Function ListComboBoxColorCode()
         Dim dataAccess = New ClsDataAccess
         Dim dataTable As DataTable = New DataTable
         Dim query As String
-        query = "Select ColorID,ColorCode From Colors Where IsActive = 1"
+        query = "Select ColorID,ColorName From Colors Where IsActive = 1"
         Try
             dataTable = dataAccess.RetrieveListData(query)
             dataAccess = Nothing
@@ -115,7 +132,7 @@
             With cmb
                 .DataSource = ListComboBoxColorCode()
                 .ValueMember = "ColorID"
-                .DisplayMember = "ColorCode"
+                .DisplayMember = "ColorName"
                 .AutoCompleteMode = AutoCompleteMode.SuggestAppend
                 .AutoCompleteSource = AutoCompleteSource.ListItems
             End With
@@ -123,10 +140,10 @@
             Throw ex
         End Try
     End Sub
-    Public Sub ComboBoxColorYarn(cmb As ComboBox)
+    Public Sub ComboBoxColorYarn(cmb As ComboBox, headerID As Long)
         Try
             With cmb
-                .DataSource = ListComboBox()
+                .DataSource = ListComboBox(headerID)
                 .ValueMember = "ColorID"
                 .DisplayMember = "ColorName"
                 .AutoCompleteMode = AutoCompleteMode.SuggestAppend
@@ -162,9 +179,9 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim queryList As New List(Of String)
 
-        Dim sql As String = "Insert into Colors(ColorID,ColorCode,ColorName,Description,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
+        Dim sql As String = "Insert into Colors(ColorID,ColorCode,ColorName,Description,FabricID,RemarksPart,Season,DarkLight,IsActive,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values(" &
                                 "'" & colorModel.ColorID & "','" & colorModel.ColorCode & "','" & colorModel.ColorName & "','" & colorModel.Description & "'" &
-                                ",'" & colorModel.IsActive & "','" & colorModel.CreatedBy & "','" & colorModel.CreatedDate & "'" &
+                                ",'" & colorModel.FabricID & "','" & colorModel.RemarksPart & "','" & colorModel.Season & "','" & colorModel.DarkLight & "','" & colorModel.IsActive & "','" & colorModel.CreatedBy & "','" & colorModel.CreatedDate & "'" &
                                 ",'" & colorModel.UpdatedBy & "','" & colorModel.UpdatedDate & "')"
         queryList.Add(sql)
 
@@ -187,7 +204,7 @@
 
         If options = "Update" Then
             query = "Update Colors Set ColorName = '" & colorModel.ColorName & "',Description='" & colorModel.Description & "'" &
-                    ",IsActive = '" & colorModel.IsActive & "',UpdatedBy='" & colorModel.UpdatedBy & "'" &
+                    ",FabricID = '" & colorModel.FabricID & "',RemarksPart = '" & colorModel.RemarksPart & "',Season = '" & colorModel.Season & "',DarkLight = '" & colorModel.DarkLight & "',IsActive = '" & colorModel.IsActive & "',UpdatedBy='" & colorModel.UpdatedBy & "'" &
                     ",UpdatedDate = '" & colorModel.UpdatedDate & "' Where ColorID='" & colorModel.ColorID & "'"
             queryList.Add(query)
 

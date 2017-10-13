@@ -36,12 +36,12 @@ Partial Class FrmListBonOrder
         Me.txtNoBon = New System.Windows.Forms.TextBox()
         Me.ckNoBon = New System.Windows.Forms.CheckBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnEdit = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnRefresh = New System.Windows.Forms.Button()
         Me.btnView = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.dgv = New System.Windows.Forms.DataGridView()
-        Me.btnEdit = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -178,6 +178,16 @@ Partial Class FrmListBonOrder
         Me.Panel2.Size = New System.Drawing.Size(780, 35)
         Me.Panel2.TabIndex = 53
         '
+        'btnEdit
+        '
+        Me.btnEdit.Enabled = False
+        Me.btnEdit.Location = New System.Drawing.Point(172, 4)
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(75, 23)
+        Me.btnEdit.TabIndex = 37
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.UseVisualStyleBackColor = True
+        '
         'btnAdd
         '
         Me.btnAdd.Enabled = False
@@ -225,16 +235,6 @@ Partial Class FrmListBonOrder
         Me.dgv.Size = New System.Drawing.Size(780, 251)
         Me.dgv.TabIndex = 54
         '
-        'btnEdit
-        '
-        Me.btnEdit.Enabled = False
-        Me.btnEdit.Location = New System.Drawing.Point(172, 4)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(75, 23)
-        Me.btnEdit.TabIndex = 37
-        Me.btnEdit.Text = "Edit"
-        Me.btnEdit.UseVisualStyleBackColor = True
-        '
         'FrmListBonOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -247,7 +247,7 @@ Partial Class FrmListBonOrder
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmListBonOrder"
-        Me.Tag = "24"
+        Me.Tag = ""
         Me.Text = "FrmListBonOrder"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

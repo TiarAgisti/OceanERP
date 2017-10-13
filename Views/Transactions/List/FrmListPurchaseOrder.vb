@@ -41,48 +41,40 @@
             dgv.Columns(4).HeaderText = "PO No"
             dgv.Columns(4).Width = 210
 
-            dgv.Columns(5).HeaderText = "Customer Code"
+
+            dgv.Columns(5).HeaderText = "Supplier Code"
             dgv.Columns(5).Visible = False
 
-            dgv.Columns(6).HeaderText = "Customer Name"
+            dgv.Columns(6).HeaderText = "Supplier Name"
             dgv.Columns(6).Width = 150
 
-            dgv.Columns(7).HeaderText = "Supplier Code"
+            dgv.Columns(7).HeaderText = "Ship Via Method Code"
             dgv.Columns(7).Visible = False
 
-            dgv.Columns(8).HeaderText = "Supplier Name"
+            dgv.Columns(8).HeaderText = "Ship Via Method"
             dgv.Columns(8).Width = 150
 
-            dgv.Columns(9).HeaderText = "Ship Via Method Code"
-            dgv.Columns(9).Visible = False
+            dgv.Columns(9).HeaderText = "Shipping Date"
+            dgv.Columns(9).Width = 150
+            dgv.Columns(9).DefaultCellStyle.Format = "dd-MMM-yyyy"
 
-            dgv.Columns(10).HeaderText = "Ship Via Method"
+            dgv.Columns(10).HeaderText = "Term Of Payment"
             dgv.Columns(10).Width = 150
 
-            dgv.Columns(11).HeaderText = "Shipping Date"
+            dgv.Columns(11).HeaderText = "Expected Receipt Date"
             dgv.Columns(11).Width = 150
             dgv.Columns(11).DefaultCellStyle.Format = "dd-MMM-yyyy"
 
-            dgv.Columns(12).HeaderText = "Term Of Payment"
-            dgv.Columns(12).Width = 150
+            dgv.Columns(12).HeaderText = "Supplier ID"
+            dgv.Columns(12).Visible = False
 
-            dgv.Columns(13).HeaderText = "Expected Receipt Date"
-            dgv.Columns(13).Width = 150
-            dgv.Columns(13).DefaultCellStyle.Format = "dd-MMM-yyyy"
+            dgv.Columns(13).HeaderText = "Shiv Via Method ID"
+            dgv.Columns(13).Visible = False
 
-            dgv.Columns(14).HeaderText = "Customer ID"
+            dgv.Columns(14).HeaderText = "Term Of Payment ID"
             dgv.Columns(14).Visible = False
 
-            dgv.Columns(15).HeaderText = "Supplier ID"
-            dgv.Columns(15).Visible = False
-
-            dgv.Columns(16).HeaderText = "Shiv Via Method ID"
-            dgv.Columns(16).Visible = False
-
-            dgv.Columns(17).HeaderText = "Term Of Payment ID"
-            dgv.Columns(17).Visible = False
-
-            dgv.Columns(18).HeaderText = "Status"
+            dgv.Columns(15).HeaderText = "Status"
 
         Catch ex As Exception
             Throw ex

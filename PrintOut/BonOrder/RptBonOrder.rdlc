@@ -76,8 +76,8 @@
             <Style />
           </Paragraph>
         </Paragraphs>
-        <Top>0.83854in</Top>
-        <Left>0.125in</Left>
+        <Top>0.84896in</Top>
+        <Left>0.13542in</Left>
         <Height>0.25in</Height>
         <Width>1.03202in</Width>
         <ZIndex>3</ZIndex>
@@ -105,8 +105,8 @@
             <Style />
           </Paragraph>
         </Paragraphs>
-        <Top>1.08854in</Top>
-        <Left>0.12625in</Left>
+        <Top>1.09896in</Top>
+        <Left>0.13667in</Left>
         <Height>0.25in</Height>
         <Width>1.03202in</Width>
         <ZIndex>4</ZIndex>
@@ -134,8 +134,8 @@
             <Style />
           </Paragraph>
         </Paragraphs>
-        <Top>1.33854in</Top>
-        <Left>0.12375in</Left>
+        <Top>1.34896in</Top>
+        <Left>0.13417in</Left>
         <Height>0.25in</Height>
         <Width>1.03202in</Width>
         <ZIndex>5</ZIndex>
@@ -166,8 +166,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>0.84132in</Top>
-        <Left>1.21133in</Left>
+        <Top>0.85174in</Top>
+        <Left>1.22175in</Left>
         <Height>0.25in</Height>
         <Width>0.26343in</Width>
         <ZIndex>6</ZIndex>
@@ -198,8 +198,8 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.08854in</Top>
-        <Left>1.21133in</Left>
+        <Top>1.09896in</Top>
+        <Left>1.22175in</Left>
         <Height>0.25in</Height>
         <Width>0.26343in</Width>
         <ZIndex>7</ZIndex>
@@ -230,8 +230,8 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.33854in</Top>
-        <Left>1.21133in</Left>
+        <Top>1.34896in</Top>
+        <Left>1.22175in</Left>
         <Height>0.25in</Height>
         <Width>0.26343in</Width>
         <ZIndex>8</ZIndex>
@@ -289,7 +289,7 @@
             <Style />
           </Paragraph>
         </Paragraphs>
-        <Top>1.09688in</Top>
+        <Top>1.1073in</Top>
         <Left>4.51698in</Left>
         <Height>0.25in</Height>
         <Width>1.03202in</Width>
@@ -320,7 +320,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.09688in</Top>
+        <Top>1.1073in</Top>
         <Left>5.60206in</Left>
         <Height>0.25in</Height>
         <Width>0.3051in</Width>
@@ -353,8 +353,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox4</rd:DefaultName>
-        <Top>0.84966in</Top>
-        <Left>5.60206in</Left>
+        <Top>0.86008in</Top>
+        <Left>5.61248in</Left>
         <Height>0.25in</Height>
         <Width>0.3051in</Width>
         <ZIndex>12</ZIndex>
@@ -383,8 +383,8 @@
             <Style />
           </Paragraph>
         </Paragraphs>
-        <Top>0.84688in</Top>
-        <Left>4.51573in</Left>
+        <Top>0.8573in</Top>
+        <Left>4.52615in</Left>
         <Height>0.25in</Height>
         <Width>1.03202in</Width>
         <ZIndex>13</ZIndex>
@@ -414,7 +414,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>1.34688in</Top>
+        <Top>1.3573in</Top>
         <Left>5.60206in</Left>
         <Height>0.25in</Height>
         <Width>0.3051in</Width>
@@ -2878,6 +2878,195 @@
           </Border>
         </Style>
       </Rectangle>
+      <Textbox Name="Textbox7">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>DELIVERY </Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.78838in</Top>
+        <Left>0.10773in</Left>
+        <Height>0.25in</Height>
+        <Width>0.78202in</Width>
+        <ZIndex>57</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox9">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>:</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.78838in</Top>
+        <Left>0.95919in</Left>
+        <Height>0.25in</Height>
+        <Width>0.26343in</Width>
+        <ZIndex>58</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox10">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>A</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.78838in</Top>
+        <Left>3.32279in</Left>
+        <Height>0.25in</Height>
+        <Width>0.26343in</Width>
+        <ZIndex>59</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox17">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>B</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>2.03838in</Top>
+        <Left>3.32279in</Left>
+        <Height>0.25in</Height>
+        <Width>0.26343in</Width>
+        <ZIndex>60</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox18">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>C</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>1.78838in</Top>
+        <Left>4.47524in</Left>
+        <Height>0.25in</Height>
+        <Width>0.26343in</Width>
+        <ZIndex>61</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox19">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>D</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>2.03838in</Top>
+        <Left>4.47524in</Left>
+        <Height>0.25in</Height>
+        <Width>0.26343in</Width>
+        <ZIndex>62</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>18.39828cm</Height>
     <Style />

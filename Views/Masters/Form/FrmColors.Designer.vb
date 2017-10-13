@@ -38,9 +38,19 @@ Partial Class FrmColors
         Me.cmbCari = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.txtCustomer = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.cmbFabric = New System.Windows.Forms.ComboBox()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.dgv = New System.Windows.Forms.DataGridView()
+        Me.txtRemarksPart = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtseason = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.cmbdark = New System.Windows.Forms.ComboBox()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -52,13 +62,13 @@ Partial Class FrmColors
         Me.txtDesc.Location = New System.Drawing.Point(72, 64)
         Me.txtDesc.MaxLength = 150
         Me.txtDesc.Name = "txtDesc"
-        Me.txtDesc.Size = New System.Drawing.Size(309, 20)
+        Me.txtDesc.Size = New System.Drawing.Size(367, 20)
         Me.txtDesc.TabIndex = 3
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 67)
+        Me.Label3.Location = New System.Drawing.Point(1, 67)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(60, 13)
         Me.Label3.TabIndex = 14
@@ -75,7 +85,7 @@ Partial Class FrmColors
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 41)
+        Me.Label1.Location = New System.Drawing.Point(3, 41)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(62, 13)
         Me.Label1.TabIndex = 13
@@ -92,7 +102,7 @@ Partial Class FrmColors
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 15)
+        Me.Label2.Location = New System.Drawing.Point(3, 15)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(59, 13)
         Me.Label2.TabIndex = 12
@@ -169,7 +179,7 @@ Partial Class FrmColors
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(0, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(620, 46)
+        Me.Label4.Size = New System.Drawing.Size(1156, 46)
         Me.Label4.TabIndex = 20
         Me.Label4.Text = "Colors"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -177,6 +187,16 @@ Partial Class FrmColors
         'Panel3
         '
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.cmbdark)
+        Me.Panel3.Controls.Add(Me.Label8)
+        Me.Panel3.Controls.Add(Me.Label7)
+        Me.Panel3.Controls.Add(Me.txtseason)
+        Me.Panel3.Controls.Add(Me.Label6)
+        Me.Panel3.Controls.Add(Me.txtRemarksPart)
+        Me.Panel3.Controls.Add(Me.txtCustomer)
+        Me.Panel3.Controls.Add(Me.Label5)
+        Me.Panel3.Controls.Add(Me.cmbFabric)
+        Me.Panel3.Controls.Add(Me.Label20)
         Me.Panel3.Controls.Add(Me.txtDesc)
         Me.Panel3.Controls.Add(Me.txtCode)
         Me.Panel3.Controls.Add(Me.Label3)
@@ -186,8 +206,43 @@ Partial Class FrmColors
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 46)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(620, 100)
+        Me.Panel3.Size = New System.Drawing.Size(1156, 237)
         Me.Panel3.TabIndex = 21
+        '
+        'txtCustomer
+        '
+        Me.txtCustomer.Enabled = False
+        Me.txtCustomer.Location = New System.Drawing.Point(72, 117)
+        Me.txtCustomer.MaxLength = 150
+        Me.txtCustomer.Name = "txtCustomer"
+        Me.txtCustomer.Size = New System.Drawing.Size(367, 20)
+        Me.txtCustomer.TabIndex = 107
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(1, 120)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(54, 13)
+        Me.Label5.TabIndex = 108
+        Me.Label5.Text = "Customer "
+        '
+        'cmbFabric
+        '
+        Me.cmbFabric.FormattingEnabled = True
+        Me.cmbFabric.Location = New System.Drawing.Point(72, 90)
+        Me.cmbFabric.Name = "cmbFabric"
+        Me.cmbFabric.Size = New System.Drawing.Size(367, 21)
+        Me.cmbFabric.TabIndex = 105
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(1, 93)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(67, 13)
+        Me.Label20.TabIndex = 106
+        Me.Label20.Text = "Fabric Name"
         '
         'Panel1
         '
@@ -198,9 +253,9 @@ Partial Class FrmColors
         Me.Panel1.Controls.Add(Me.btnCancel)
         Me.Panel1.Controls.Add(Me.btnSave)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 146)
+        Me.Panel1.Location = New System.Drawing.Point(0, 283)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(620, 38)
+        Me.Panel1.Size = New System.Drawing.Size(1156, 38)
         Me.Panel1.TabIndex = 22
         '
         'GroupBox2
@@ -208,9 +263,9 @@ Partial Class FrmColors
         Me.GroupBox2.Controls.Add(Me.txtCari)
         Me.GroupBox2.Controls.Add(Me.cmbCari)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 184)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 321)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(620, 55)
+        Me.GroupBox2.Size = New System.Drawing.Size(1156, 55)
         Me.GroupBox2.TabIndex = 23
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Search"
@@ -219,16 +274,71 @@ Partial Class FrmColors
         '
         Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgv.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgv.Location = New System.Drawing.Point(0, 239)
+        Me.dgv.Location = New System.Drawing.Point(0, 376)
         Me.dgv.Name = "dgv"
-        Me.dgv.Size = New System.Drawing.Size(620, 242)
+        Me.dgv.Size = New System.Drawing.Size(1156, 105)
         Me.dgv.TabIndex = 24
+        '
+        'txtRemarksPart
+        '
+        Me.txtRemarksPart.Enabled = False
+        Me.txtRemarksPart.Location = New System.Drawing.Point(72, 143)
+        Me.txtRemarksPart.MaxLength = 150
+        Me.txtRemarksPart.Name = "txtRemarksPart"
+        Me.txtRemarksPart.Size = New System.Drawing.Size(367, 20)
+        Me.txtRemarksPart.TabIndex = 109
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(3, 146)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(66, 13)
+        Me.Label6.TabIndex = 110
+        Me.Label6.Text = "Remark Part"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(3, 172)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(43, 13)
+        Me.Label7.TabIndex = 112
+        Me.Label7.Text = "Season"
+        '
+        'txtseason
+        '
+        Me.txtseason.Enabled = False
+        Me.txtseason.Location = New System.Drawing.Point(72, 169)
+        Me.txtseason.MaxLength = 150
+        Me.txtseason.Name = "txtseason"
+        Me.txtseason.Size = New System.Drawing.Size(367, 20)
+        Me.txtseason.TabIndex = 111
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(3, 198)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(58, 13)
+        Me.Label8.TabIndex = 114
+        Me.Label8.Text = "Dark/Light"
+        '
+        'cmbdark
+        '
+        Me.cmbdark.Enabled = False
+        Me.cmbdark.FormattingEnabled = True
+        Me.cmbdark.Items.AddRange(New Object() {"DARK", "LIGHT", "MEDIUM"})
+        Me.cmbdark.Location = New System.Drawing.Point(72, 198)
+        Me.cmbdark.Name = "cmbdark"
+        Me.cmbdark.Size = New System.Drawing.Size(144, 21)
+        Me.cmbdark.TabIndex = 115
         '
         'FrmColors
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(620, 481)
+        Me.ClientSize = New System.Drawing.Size(1156, 481)
         Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Panel1)
@@ -267,4 +377,14 @@ Partial Class FrmColors
     Friend WithEvents Panel1 As Panel
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents dgv As DataGridView
+    Friend WithEvents cmbFabric As ComboBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents txtCustomer As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents cmbdark As ComboBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents txtseason As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents txtRemarksPart As TextBox
 End Class

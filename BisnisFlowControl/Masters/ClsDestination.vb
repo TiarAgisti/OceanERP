@@ -27,6 +27,7 @@
         Return dataTable
     End Function
 #End Region
+
 #Region "Method Other"
     Protected Function ListComboBox(status As String) As DataTable
         Dim dataAccess = New ClsDataAccess

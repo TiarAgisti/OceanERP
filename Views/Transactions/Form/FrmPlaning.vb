@@ -181,9 +181,8 @@
             frm.cmbTOP.Enabled = False
             frm.cmbCurrency.Enabled = False
             frm.cmbSupplier.Enabled = False
-            frm.cmbCustomer.Enabled = False
             frm.cmbPINO.Enabled = False
-            frm.cmbRawCode.Enabled = False
+            frm.cmbYarnCode.Enabled = False
             frm.cmbUnit.Enabled = False
             frm.txtUnitPrice.Enabled = False
             frm.txtQty.Enabled = False
@@ -191,8 +190,8 @@
             frm.txtDiscount.Enabled = False
             frm.txtSH.Enabled = False
             frm.txtOtherCost.Enabled = False
-            frm.btnRawAddList.Enabled = False
-            frm.btnRawDelList.Enabled = False
+            frm.btnYarnAddList.Enabled = False
+            frm.btnYarnDelList.Enabled = False
             frm.ShowDialog()
         Catch ex As Exception
             MsgBoxError(ex.Message)

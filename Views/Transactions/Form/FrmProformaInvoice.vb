@@ -160,16 +160,16 @@
         End Try
     End Sub
 
-    Sub ComboBoxColorYarn()
-        Dim colorBFC As ClsColor = New ClsColor
-        Try
-            colorBFC.ComboBoxColorYarn(cmbColorYarn)
-            colorBFC = Nothing
-        Catch ex As Exception
-            colorBFC = Nothing
-            Throw ex
-        End Try
-    End Sub
+    'Sub ComboBoxColorYarn()
+    '    Dim colorBFC As ClsColor = New ClsColor
+    '    Try
+    '        colorBFC.ComboBoxColorYarn(cmbColorYarn)
+    '        colorBFC = Nothing
+    '    Catch ex As Exception
+    '        colorBFC = Nothing
+    '        Throw ex
+    '    End Try
+    'End Sub
 
     Sub ComboBoxBank()
         Dim bankAccountBFC As ClsBankAccount = New ClsBankAccount
@@ -1034,7 +1034,7 @@
             ComboBoxBrandYarn()
             ComboBoxBuyer()
             ComboBoxColor()
-            ComboBoxColorYarn()
+            ' ComboBoxColorYarn()
             ComboBoxCustomer()
             ComboBoxFabric()
             ComboBoxMarketing()
@@ -1831,6 +1831,14 @@
 
     Private Sub dgvRemarks_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgvRemarks.RowStateChanged
         intPostRemarks = e.Row.Index
+    End Sub
+
+    Private Sub FrmProformaInvoice_Layout(sender As Object, e As LayoutEventArgs) Handles Me.Layout
+
+    End Sub
+
+    Private Sub cmbFabricStyle_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFabricStyle.SelectedIndexChanged
+
     End Sub
 #End Region
 End Class

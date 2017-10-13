@@ -264,7 +264,7 @@
 
 #Region "Menu Transaction"
     Private Sub menuProformaInvoice_Click(sender As Object, e As EventArgs) Handles menuProformaInvoice.Click
-        Dim frm As FrmListProformaInvoice = New FrmListProformaInvoice
+        Dim frm As FrmListPI = New FrmListPI
         frm.MdiParent = Me
         frm.WindowState = FormWindowState.Maximized
         frm.Show()
@@ -328,7 +328,7 @@
     End Sub
 
     Private Sub BonOrderToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BonOrderToolStripMenuItem.Click
-        Dim frm As FrmListBonOrder = New FrmListBonOrder
+        Dim frm As FrmListBO = New FrmListBO
         frm.MdiParent = Me
         frm.WindowState = FormWindowState.Maximized
         frm.Show()

@@ -221,7 +221,7 @@ Public Class FrmBonOrder
     Function CheckRawMatrialInList() As Boolean
         Dim poBFC As ClsPO = New ClsPO
         Dim status As Boolean
-        status = poBFC.CheckRawMatrialInList(dgvrawmatrial, cmbRawCode.SelectedValue)
+        status = poBFC.CheckYarnInList(dgvrawmatrial, cmbRawCode.SelectedValue)
         Return status
     End Function
 #End Region

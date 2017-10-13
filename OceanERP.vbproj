@@ -110,6 +110,7 @@
     <Compile Include="BisnisFlowControl\Masters\ClsBankAccount.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsBrand.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsBrandYarn.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsCategoryFabric.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsCOA.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsColor.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsCurrency.vb" />
@@ -117,6 +118,7 @@
     <Compile Include="BisnisFlowControl\Masters\ClsDestination.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsFabric.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsGroupSales.vb" />
+    <Compile Include="BisnisFlowControl\Masters\ClsOrderLooses.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsRawMaterial.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsSeason.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsShipViaMethod.vb" />
@@ -131,8 +133,10 @@
     <Compile Include="BisnisFlowControl\Settings\ClsLogHistory.vb" />
     <Compile Include="BisnisFlowControl\Settings\ClsPermission.vb" />
     <Compile Include="BisnisFlowControl\Masters\ClsBOM.vb" />
+    <Compile Include="BisnisFlowControl\Transactions\ClsBO.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsBonOrder.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsBPB.vb" />
+    <Compile Include="BisnisFlowControl\Transactions\ClsPI.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsPO.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsProformaInvoice.vb" />
     <Compile Include="BisnisFlowControl\Transactions\ClsStock.vb" />
@@ -164,6 +168,7 @@
     <Compile Include="Models\Masters\FabricModel.vb" />
     <Compile Include="Models\Masters\GroupSalesModel.vb" />
     <Compile Include="Models\Masters\BrandYarnModel.vb" />
+    <Compile Include="Models\Masters\OrderLoosesModel.vb" />
     <Compile Include="Models\Masters\RawMaterialModel.vb" />
     <Compile Include="Models\Masters\SeasonModel.vb" />
     <Compile Include="Models\Masters\ShipViaMethodModel.vb" />
@@ -179,12 +184,20 @@
     <Compile Include="Models\Settings\TermApproveModel.vb" />
     <Compile Include="Models\Masters\BOMDetailModel.vb" />
     <Compile Include="Models\Masters\BOMHeaderModel.vb" />
+    <Compile Include="Models\Transactions\BOColorDetailModel.vb" />
+    <Compile Include="Models\Transactions\BODetailModel.vb" />
+    <Compile Include="Models\Transactions\BOHeaderModel.vb" />
     <Compile Include="Models\Transactions\BonOrderDetailMaterialModel.vb" />
     <Compile Include="Models\Transactions\BonOrderDetailModel.vb" />
     <Compile Include="Models\Transactions\BonOrderHeaderModel.vb" />
     <Compile Include="Models\Transactions\BonOrderPrintOutModel.vb" />
+    <Compile Include="Models\Transactions\BOYarnDetailModel.vb" />
     <Compile Include="Models\Transactions\BPBHeaderModel.vb" />
     <Compile Include="Models\Transactions\BPBDetailModel.vb" />
+    <Compile Include="Models\Masters\CategoryFabricModel.vb" />
+    <Compile Include="Models\Transactions\ProInvoiceBankDetailModel.vb" />
+    <Compile Include="Models\Transactions\ProInvoiceRemarkDetailModel.vb" />
+    <Compile Include="Models\Transactions\ProInvoiceYarnDetailModel.vb" />
     <Compile Include="Models\Transactions\PODetailModel.vb" />
     <Compile Include="Models\Transactions\POHeaderModel.vb" />
     <Compile Include="Models\Transactions\PIBankDetailModel.vb" />
@@ -196,6 +209,9 @@
     <Compile Include="Models\Transactions\PIYarnDetailModel.vb" />
     <Compile Include="Models\Transactions\POPrintOutModel.vb" />
     <Compile Include="Models\Transactions\PORemarksModel.vb" />
+    <Compile Include="Models\Transactions\ProInvoiceColorDetailModel.vb" />
+    <Compile Include="Models\Transactions\ProInvoiceFabricDetailModel.vb" />
+    <Compile Include="Models\Transactions\ProInvoiceHeaderModel.vb" />
     <Compile Include="Models\Transactions\StockModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -316,6 +332,12 @@
     <Compile Include="Views\Masters\Form\FrmBillOfMaterial.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\Transactions\Form\FrmBO.Designer.vb">
+      <DependentUpon>FrmBO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transactions\Form\FrmBO.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\Transactions\Form\FrmBonOrder.Designer.vb">
       <DependentUpon>FrmBonOrder.vb</DependentUpon>
     </Compile>
@@ -326,6 +348,12 @@
       <DependentUpon>FrmBPB.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\Transactions\Form\FrmBPB.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Transactions\Form\FrmPI.Designer.vb">
+      <DependentUpon>FrmPI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transactions\Form\FrmPI.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Transactions\Form\FrmProformaInvoice.Designer.vb">
@@ -430,6 +458,18 @@
     <Compile Include="Views\Transactions\Form\FrmPlaning.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\Transactions\FrmBonDetailYarn.Designer.vb">
+      <DependentUpon>FrmBonDetailYarn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transactions\FrmBonDetailYarn.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Transactions\List\FrmListBO.Designer.vb">
+      <DependentUpon>FrmListBO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transactions\List\FrmListBO.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\Transactions\List\FrmListBonOrder.Designer.vb">
       <DependentUpon>FrmListBonOrder.vb</DependentUpon>
     </Compile>
@@ -440,6 +480,12 @@
       <DependentUpon>FrmListBPB.vb</DependentUpon>
     </Compile>
     <Compile Include="Views\Transactions\List\FrmListBPB.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Transactions\List\FrmListPI.Designer.vb">
+      <DependentUpon>FrmListPI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Transactions\List\FrmListPI.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Transactions\List\FrmListProformaInvoice.Designer.vb">
@@ -468,9 +514,10 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintOut\BonOrder\PrintOutBonOrder.rdlc" />
     <EmbeddedResource Include="PrintOut\BonOrder\RptBonOrder.rdlc" />
     <EmbeddedResource Include="PrintOut\BPB\rptBPB.rdlc" />
-    <EmbeddedResource Include="PrintOut\ProformaInvoice\Report1.rdlc" />
+    <EmbeddedResource Include="PrintOut\ProformaInvoice\PrintOutPI.rdlc" />
     <EmbeddedResource Include="PrintOut\ProformaInvoice\rptProformaInvoice.rdlc" />
     <EmbeddedResource Include="PrintOut\PurchaseOrder\rptPurchaseOrder.rdlc" />
     <EmbeddedResource Include="Views\Masters\Form\FrmBankAccount.resx">
@@ -521,11 +568,17 @@
     <EmbeddedResource Include="Views\Masters\Form\FrmBillOfMaterial.resx">
       <DependentUpon>FrmBillOfMaterial.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transactions\Form\FrmBO.resx">
+      <DependentUpon>FrmBO.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\Form\FrmBonOrder.resx">
       <DependentUpon>FrmBonOrder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\Form\FrmBPB.resx">
       <DependentUpon>FrmBPB.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transactions\Form\FrmPI.resx">
+      <DependentUpon>FrmPI.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\Form\FrmProformaInvoice.resx">
       <DependentUpon>FrmProformaInvoice.vb</DependentUpon>
@@ -578,11 +631,20 @@
     <EmbeddedResource Include="Views\Transactions\Form\FrmPlaning.resx">
       <DependentUpon>FrmPlaning.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transactions\FrmBonDetailYarn.resx">
+      <DependentUpon>FrmBonDetailYarn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transactions\List\FrmListBO.resx">
+      <DependentUpon>FrmListBO.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\List\FrmListBonOrder.resx">
       <DependentUpon>FrmListBonOrder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\List\FrmListBPB.resx">
       <DependentUpon>FrmListBPB.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Transactions\List\FrmListPI.resx">
+      <DependentUpon>FrmListPI.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Transactions\List\FrmListProformaInvoice.resx">
       <DependentUpon>FrmListProformaInvoice.vb</DependentUpon>

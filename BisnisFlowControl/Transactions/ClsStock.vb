@@ -2,11 +2,10 @@
 #Region "Method Retrieve"
     Public Function RetrieveRawMaterialStock(rawmatrialID As Integer) As StockModel
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
-        'Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
         Dim dataTable As DataTable = New DataTable
         Dim stockModel As StockModel = New StockModel
 
-        Dim query As String = "SELECT SUM(QuantityIN) -  SUM(QuantityOUT) as StockAvailable FROM Stock  Where RawMaterialID = '" & rawmatrialID & "' group by RawMaterialID"
+        Dim query As String = "SELECT SUM(QuantityIN) -  SUM(QuantityOUT) as StockAvailable FROM Stock  Where YarnID = '" & rawmatrialID & "' group by YarnID"
 
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)

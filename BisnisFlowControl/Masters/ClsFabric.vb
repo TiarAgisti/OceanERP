@@ -47,9 +47,9 @@
                             fabricModel.Width = .Item("Width")
                         End If
                         If IsDBNull(.Item("Weight")) Then
-                            fabricModel.Width = 0
+                            fabricModel.Weight = 0
                         Else
-                            fabricModel.Width = .Item("Weight")
+                            fabricModel.Weight = .Item("Weight")
                         End If
                         '  fabricModel.Width = .Item("Width")
                         ' fabricModel.Weight = .Item("Weight")
@@ -139,6 +139,35 @@
             Throw ex
         End Try
     End Sub
+
+    Protected Function ListComboBox2(headerID As Long) As DataTable
+        Dim dataAccess As ClsDataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim query As String = "Select FabricID,FabricName From v_Fabric where VendorID = '" & headerID & "' AND IsActive = 1"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+        Catch ex As Exception
+            Throw ex
+            Return Nothing
+        End Try
+        dataAccess = Nothing
+        Return dataTable
+    End Function
+    Public Sub ComboBoxFabric2(cmb As ComboBox, headerID As Long)
+        Try
+            With cmb
+                .DataSource = ListComboBox2(headerID)
+                .ValueMember = "FabricID"
+                .DisplayMember = "FabricName"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+
 #End Region
 
 #Region "Method CRUD"

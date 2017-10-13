@@ -16,7 +16,7 @@
         txtSpec.Clear()
         txtWidth.Clear()
         txtWeight.Clear()
-        cmbSupp.Text = ""
+        cmbCust.Text = ""
         cmbCari.Text = ""
         txtCari.Clear()
         fabricName = ""
@@ -40,7 +40,7 @@
             .Columns(6).HeaderText = "Weight"
             .Columns(6).Width = 150
 
-            .Columns(7).HeaderText = "Supplier"
+            .Columns(7).HeaderText = "Customer"
             .Columns(7).Width = 150
 
             .Columns(8).Visible = False
@@ -61,9 +61,9 @@
     End Sub
     Sub ComboBoxSupplier()
         Dim vendorBFC As ClsVendor = New ClsVendor
-        Dim statusVendor As Char = "S"
+        Dim statusVendor As Char = "C"
         Try
-            vendorBFC.ComboBoxVendor(cmbSupp, statusVendor)
+            vendorBFC.ComboBoxVendor(cmbCust, statusVendor)
         Catch ex As Exception
             Throw ex
         End Try
@@ -74,7 +74,7 @@
         txtSpec.Enabled = status
         txtWidth.Enabled = status
         txtWeight.Enabled = status
-        cmbSupp.Enabled = status
+        cmbCust.Enabled = status
     End Sub
     Sub CheckPermissions()
         Dim roleBFC As ClsPermission = New ClsPermission
@@ -123,9 +123,9 @@
         ElseIf Trim(txtSpec.Text) = String.Empty Then
             MsgBoxWarning("Specification can't empty")
             txtSpec.Focus()
-        ElseIf cmbSupp.SelectedValue = 0 Then
-            MsgBoxError("Supplier not valid")
-            cmbSupp.Focus()
+        ElseIf cmbCust.SelectedValue = 0 Then
+            MsgBoxError("Customer not valid")
+            cmbCust.Focus()
         Else
             check = False
         End If
@@ -144,7 +144,7 @@
                     .Specification = txtSpec.Text
                     .Width = txtWidth.Text
                     .Weight = txtWeight.Text
-                    .VendorID = cmbSupp.SelectedValue
+                    .VendorID = cmbCust.SelectedValue
                     .IsActive = True
                     .CreatedBy = userID
                     .CreatedDate = DateTime.Now
@@ -155,11 +155,12 @@
                 With fabricModel
                     .FabricID = fabricID
                     .FabricName = txtName.Text
+                    .FabricCode = txtCode.Text
                     .Composition = txtCompo.Text
                     .Specification = txtSpec.Text
                     .Width = txtWidth.Text
                     .Weight = txtWeight.Text
-                    .VendorID = cmbSupp.SelectedValue
+                    .VendorID = cmbCust.SelectedValue
                     .IsActive = True
                     .UpdatedBy = userID
                     .UpdatedDate = DateTime.Now
@@ -296,11 +297,11 @@
 
     Private Sub txtWeight_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWeight.KeyPress
         If e.KeyChar = Chr(13) Then
-            cmbSupp.Focus()
+            cmbCust.Focus()
         End If
     End Sub
 
-    Private Sub cmbSupp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbSupp.KeyPress
+    Private Sub cmbSupp_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbCust.KeyPress
         If e.KeyChar = Chr(13) Then
             btnSave.Focus()
         End If
@@ -338,7 +339,7 @@
                 txtWeight.Text = .Item(6, row).Value
             End If
 
-            cmbSupp.SelectedValue = .Item(8, row).Value
+            cmbCust.SelectedValue = .Item(8, row).Value
         End With
 
         display = "Update"

@@ -16,6 +16,9 @@
         cmbCari.Text = ""
         txtCari.Clear()
         colorName = ""
+        cmbdark.Text = ""
+        txtRemarksPart.Clear()
+        txtseason.Clear()
     End Sub
     Sub PropertiesGrid()
         With dgv
@@ -26,11 +29,21 @@
             .Columns(2).Width = 200
             .Columns(3).HeaderText = "Description"
             .Columns(3).Width = 200
+            .Columns(4).HeaderText = "Fabric Id"
             .Columns(4).Visible = False
-            .Columns(5).Visible = False
+            .Columns(5).HeaderText = "Fabric Name"
+            .Columns(5).Width = 200
+            .Columns(6).HeaderText = "Cust ID"
             .Columns(6).Visible = False
-            .Columns(7).Visible = False
-            .Columns(8).Visible = False
+
+            .Columns(7).HeaderText = "Customer Name"
+            .Columns(7).Width = 200
+            .Columns(8).HeaderText = "Remarks Part"
+            .Columns(8).Width = 100
+            .Columns(9).HeaderText = "Season"
+            .Columns(9).Width = 100
+            .Columns(10).HeaderText = "Dark/Light"
+            .Columns(10).Width = 100
         End With
     End Sub
 
@@ -49,6 +62,10 @@
     Sub EnabledText(status As Boolean)
         txtName.Enabled = status
         txtDesc.Enabled = status
+        cmbFabric.Enabled = status
+        cmbdark.Enabled = status
+        txtRemarksPart.Enabled = status
+        txtseason.Enabled = status
     End Sub
     Sub CheckPermissions()
         Dim roleBFC As ClsPermission = New ClsPermission
@@ -109,6 +126,10 @@
                     .ColorCode = colorBFC.GeneratedCode
                     .ColorName = txtName.Text
                     .Description = txtDesc.Text
+                    .FabricID = cmbFabric.SelectedValue
+                    .RemarksPart = txtRemarksPart.Text
+                    .Season = txtseason.Text
+                    .DarkLight = cmbdark.Text
                     .IsActive = True
                     .CreatedBy = userID
                     .CreatedDate = DateTime.Now
@@ -120,6 +141,10 @@
                     .ColorID = colorID
                     .ColorName = txtName.Text
                     .Description = txtDesc.Text
+                    .FabricID = cmbFabric.SelectedValue
+                    .RemarksPart = txtRemarksPart.Text
+                    .Season = txtseason.Text
+                    .DarkLight = cmbdark.Text
                     .IsActive = True
                     .UpdatedBy = userID
                     .UpdatedDate = DateTime.Now
@@ -139,12 +164,12 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Create new Color,Color name is " + txtName.Text
         Try
-            If colorBFC.GetValidateName(txtName.Text) = True Then
-                If colorBFC.InsertColor(SetModel, logBFC.SetLogHistory(logDesc)) = True Then
+            '  If colorBFC.GetValidateName(txtName.Text) = True Then
+            If colorBFC.InsertColor(SetModel, logBFC.SetLogHistory(logDesc)) = True Then
                     MsgBoxSaved()
                     PreCreateDisplay()
                 End If
-            End If
+            'End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
@@ -154,19 +179,19 @@
         Dim logBFC As ClsLogHistory = New ClsLogHistory
         Dim logDesc As String = "Update Color for ColorCode = " + txtCode.Text
         Try
-            If txtName.Text = colorName Then
-                If colorBFC.UpdateColor(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
+            ' If txtName.Text = colorName Then
+            If colorBFC.UpdateColor(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
                     MsgBoxUpdated()
                     PreCreateDisplay()
                 End If
-            ElseIf txtName.Text <> colorName Then
-                If colorBFC.GetValidateName(txtName.Text) = True Then
-                    If colorBFC.UpdateColor(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
-                        MsgBoxUpdated()
-                        PreCreateDisplay()
-                    End If
-                End If
-            End If
+            'ElseIf txtName.Text <> colorName Then
+            '    If colorBFC.GetValidateName(txtName.Text) = True Then
+            '        If colorBFC.UpdateColor(SetModel, logBFC.SetLogHistory(logDesc), display) = True Then
+            '            MsgBoxUpdated()
+            '            PreCreateDisplay()
+            '        End If
+            ' End If
+            ' End If
         Catch ex As Exception
             MsgBoxError(ex.Message)
         End Try
@@ -185,6 +210,34 @@
             MsgBoxError(ex.Message)
         End Try
     End Sub
+    Sub ComboBoxFabric()
+        Dim fabricBFC As ClsFabric = New ClsFabric
+
+        Try
+            fabricBFC.ComboBoxFabric(cmbFabric)
+            fabricBFC = Nothing
+        Catch ex As Exception
+            fabricBFC = Nothing
+            Throw ex
+        End Try
+    End Sub
+    Sub RetrieveFabric()
+        Dim fabricBFC As ClsFabric = New ClsFabric
+        Dim fabricModel As FabricModel = New FabricModel
+
+        Dim obj As Integer = cmbFabric.SelectedValue
+        If obj > 0 Then
+            fabricModel = fabricBFC.RetrieveByID(obj)
+            With fabricModel
+                txtCustomer.Text = .VendorName
+
+
+            End With
+        Else
+            MsgBoxError("Supplier not valid")
+        End If
+    End Sub
+
 #End Region
 
 #Region "Button"
@@ -193,6 +246,7 @@
         display = "Create"
         ButtonSave()
         txtName.Focus()
+        ComboBoxFabric()
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
@@ -253,21 +307,46 @@
         ListColor(cmbCari.Text, txtCari.Text)
     End Sub
     Private Sub dgv_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgv.CellClick
-        With dgv
-            Dim row As Integer = .CurrentRow.Index
-            colorID = .Item(0, row).Value
-            txtCode.Text = .Item(1, row).Value
-            txtName.Text = .Item(2, row).Value
-            txtDesc.Text = .Item(3, row).Value
-        End With
+        Try
+            ComboBoxFabric()
+            With dgv
+                Dim row As Integer = .CurrentRow.Index
+                colorID = .Item(0, row).Value
+                txtCode.Text = .Item(1, row).Value
+                txtName.Text = .Item(2, row).Value
+                txtDesc.Text = .Item(3, row).Value
+                cmbFabric.Text = .Item(5, row).Value
+                txtCustomer.Text = .Item(7, row).Value
+                txtRemarksPart.Text = .Item(8, row).Value
+                txtseason.Text = .Item(9, row).Value
+                cmbdark.Text = .Item(10, row).Value
 
+
+
+            End With
+        Catch ex As Exception
+        End Try
         display = "Update"
 
         ButtonUpdate()
         EnabledText(True)
     End Sub
     Private Sub FrmColors_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        PreCreateDisplay()
+
+
+        Try
+            PreCreateDisplay()
+
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub cmbFabric_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbFabric.SelectedIndexChanged
+        Try
+            RetrieveFabric()
+        Catch ex As Exception
+
+        End Try
     End Sub
 #End Region
 End Class

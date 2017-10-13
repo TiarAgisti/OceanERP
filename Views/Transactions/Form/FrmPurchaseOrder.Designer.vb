@@ -42,21 +42,6 @@ Partial Class FrmPurchaseOrder
         Me.cmbPINO = New System.Windows.Forms.ComboBox()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.txtEmailCust = New System.Windows.Forms.TextBox()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.cmbCustomer = New System.Windows.Forms.ComboBox()
-        Me.txtFaxCust = New System.Windows.Forms.TextBox()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.txtCPCust = New System.Windows.Forms.TextBox()
-        Me.txtPhoneCust = New System.Windows.Forms.TextBox()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.txtAdressCust = New System.Windows.Forms.TextBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtEmailSup = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtFaxSup = New System.Windows.Forms.TextBox()
@@ -72,6 +57,8 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabProductName = New System.Windows.Forms.TabPage()
+        Me.dgvrawmatrial = New System.Windows.Forms.DataGridView()
+        Me.cmbUnit = New System.Windows.Forms.ComboBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
@@ -79,7 +66,6 @@ Partial Class FrmPurchaseOrder
         Me.btnApprove = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnVoid = New System.Windows.Forms.Button()
-        Me.cmbUnit = New System.Windows.Forms.ComboBox()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Label30 = New System.Windows.Forms.Label()
         Me.txtGrandTotal = New System.Windows.Forms.TextBox()
@@ -90,10 +76,9 @@ Partial Class FrmPurchaseOrder
         Me.txtVAT = New System.Windows.Forms.TextBox()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.txtDiscount = New System.Windows.Forms.TextBox()
-        Me.btnRawDelList = New System.Windows.Forms.Button()
-        Me.btnRawAddList = New System.Windows.Forms.Button()
+        Me.btnYarnDelList = New System.Windows.Forms.Button()
+        Me.btnYarnAddList = New System.Windows.Forms.Button()
         Me.Label25 = New System.Windows.Forms.Label()
-        Me.dgvrawmatrial = New System.Windows.Forms.DataGridView()
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.txtSubtotal = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -102,7 +87,7 @@ Partial Class FrmPurchaseOrder
         Me.Label15 = New System.Windows.Forms.Label()
         Me.txtUnitPrice = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.cmbRawCode = New System.Windows.Forms.ComboBox()
+        Me.cmbYarnCode = New System.Windows.Forms.ComboBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TabRemark = New System.Windows.Forms.TabPage()
         Me.dgvRemarks = New System.Windows.Forms.DataGridView()
@@ -110,16 +95,15 @@ Partial Class FrmPurchaseOrder
         Me.btnRemAddList = New System.Windows.Forms.Button()
         Me.txtRemarks = New System.Windows.Forms.TextBox()
         Me.Label67 = New System.Windows.Forms.Label()
+        Me.txtStockAV = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
-        Me.Panel2.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabProductName.SuspendLayout()
-        Me.Panel3.SuspendLayout()
         CType(Me.dgvrawmatrial, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
         Me.TabRemark.SuspendLayout()
         CType(Me.dgvRemarks, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -131,7 +115,7 @@ Partial Class FrmPurchaseOrder
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(0, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(906, 34)
+        Me.Label3.Size = New System.Drawing.Size(896, 34)
         Me.Label3.TabIndex = 24
         Me.Label3.Text = "Purchase Order"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -155,14 +139,14 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Location = New System.Drawing.Point(0, 34)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(906, 91)
+        Me.GroupBox1.Size = New System.Drawing.Size(896, 91)
         Me.GroupBox1.TabIndex = 25
         Me.GroupBox1.TabStop = False
         '
         'cmbCurrency
         '
         Me.cmbCurrency.FormattingEnabled = True
-        Me.cmbCurrency.Location = New System.Drawing.Point(712, 38)
+        Me.cmbCurrency.Location = New System.Drawing.Point(702, 38)
         Me.cmbCurrency.Name = "cmbCurrency"
         Me.cmbCurrency.Size = New System.Drawing.Size(188, 21)
         Me.cmbCurrency.TabIndex = 139
@@ -170,7 +154,7 @@ Partial Class FrmPurchaseOrder
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(589, 40)
+        Me.Label21.Location = New System.Drawing.Point(579, 40)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(49, 13)
         Me.Label21.TabIndex = 138
@@ -186,7 +170,7 @@ Partial Class FrmPurchaseOrder
         '
         'dtERD
         '
-        Me.dtERD.Location = New System.Drawing.Point(714, 11)
+        Me.dtERD.Location = New System.Drawing.Point(704, 11)
         Me.dtERD.Name = "dtERD"
         Me.dtERD.Size = New System.Drawing.Size(186, 20)
         Me.dtERD.TabIndex = 33
@@ -209,7 +193,7 @@ Partial Class FrmPurchaseOrder
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(586, 14)
+        Me.Label12.Location = New System.Drawing.Point(576, 14)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(118, 13)
         Me.Label12.TabIndex = 29
@@ -294,276 +278,134 @@ Partial Class FrmPurchaseOrder
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.GroupBox4)
-        Me.GroupBox2.Controls.Add(Me.Panel1)
+        Me.GroupBox2.Controls.Add(Me.txtEmailSup)
+        Me.GroupBox2.Controls.Add(Me.Label9)
+        Me.GroupBox2.Controls.Add(Me.txtFaxSup)
+        Me.GroupBox2.Controls.Add(Me.Label8)
+        Me.GroupBox2.Controls.Add(Me.txtPhoneSup)
+        Me.GroupBox2.Controls.Add(Me.Label7)
+        Me.GroupBox2.Controls.Add(Me.txtAddressSup)
+        Me.GroupBox2.Controls.Add(Me.Label6)
+        Me.GroupBox2.Controls.Add(Me.txtCPSup)
+        Me.GroupBox2.Controls.Add(Me.Label5)
+        Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.cmbSupplier)
         Me.GroupBox2.Location = New System.Drawing.Point(0, 131)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(880, 228)
+        Me.GroupBox2.Size = New System.Drawing.Size(877, 158)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Vendor :"
         '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.Panel2)
-        Me.GroupBox4.Location = New System.Drawing.Point(433, 0)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(442, 235)
-        Me.GroupBox4.TabIndex = 27
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Ship To :"
-        '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.txtEmailCust)
-        Me.Panel2.Controls.Add(Me.Label24)
-        Me.Panel2.Controls.Add(Me.Label17)
-        Me.Panel2.Controls.Add(Me.cmbCustomer)
-        Me.Panel2.Controls.Add(Me.txtFaxCust)
-        Me.Panel2.Controls.Add(Me.Label23)
-        Me.Panel2.Controls.Add(Me.Label18)
-        Me.Panel2.Controls.Add(Me.txtCPCust)
-        Me.Panel2.Controls.Add(Me.txtPhoneCust)
-        Me.Panel2.Controls.Add(Me.Label22)
-        Me.Panel2.Controls.Add(Me.Label19)
-        Me.Panel2.Controls.Add(Me.txtAdressCust)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(3, 16)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(436, 198)
-        Me.Panel2.TabIndex = 35
-        '
-        'txtEmailCust
-        '
-        Me.txtEmailCust.Enabled = False
-        Me.txtEmailCust.Location = New System.Drawing.Point(100, 174)
-        Me.txtEmailCust.Name = "txtEmailCust"
-        Me.txtEmailCust.Size = New System.Drawing.Size(188, 20)
-        Me.txtEmailCust.TabIndex = 46
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(14, 13)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(51, 13)
-        Me.Label24.TabIndex = 37
-        Me.Label24.Text = "Customer"
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(19, 174)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(32, 13)
-        Me.Label17.TabIndex = 45
-        Me.Label17.Text = "Email"
-        '
-        'cmbCustomer
-        '
-        Me.cmbCustomer.FormattingEnabled = True
-        Me.cmbCustomer.Location = New System.Drawing.Point(100, 7)
-        Me.cmbCustomer.Name = "cmbCustomer"
-        Me.cmbCustomer.Size = New System.Drawing.Size(188, 21)
-        Me.cmbCustomer.TabIndex = 35
-        '
-        'txtFaxCust
-        '
-        Me.txtFaxCust.Enabled = False
-        Me.txtFaxCust.Location = New System.Drawing.Point(100, 151)
-        Me.txtFaxCust.Name = "txtFaxCust"
-        Me.txtFaxCust.Size = New System.Drawing.Size(188, 20)
-        Me.txtFaxCust.TabIndex = 44
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(14, 37)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(80, 13)
-        Me.Label23.TabIndex = 36
-        Me.Label23.Text = "Contact Person"
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(19, 148)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(24, 13)
-        Me.Label18.TabIndex = 43
-        Me.Label18.Text = "Fax"
-        '
-        'txtCPCust
-        '
-        Me.txtCPCust.Enabled = False
-        Me.txtCPCust.Location = New System.Drawing.Point(100, 34)
-        Me.txtCPCust.Name = "txtCPCust"
-        Me.txtCPCust.Size = New System.Drawing.Size(188, 20)
-        Me.txtCPCust.TabIndex = 38
-        '
-        'txtPhoneCust
-        '
-        Me.txtPhoneCust.Enabled = False
-        Me.txtPhoneCust.Location = New System.Drawing.Point(100, 125)
-        Me.txtPhoneCust.Name = "txtPhoneCust"
-        Me.txtPhoneCust.Size = New System.Drawing.Size(188, 20)
-        Me.txtPhoneCust.TabIndex = 42
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(19, 63)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(39, 13)
-        Me.Label22.TabIndex = 39
-        Me.Label22.Text = "Adress"
-        '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(19, 125)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(38, 13)
-        Me.Label19.TabIndex = 41
-        Me.Label19.Text = "Phone"
-        '
-        'txtAdressCust
-        '
-        Me.txtAdressCust.Enabled = False
-        Me.txtAdressCust.Location = New System.Drawing.Point(100, 58)
-        Me.txtAdressCust.Multiline = True
-        Me.txtAdressCust.Name = "txtAdressCust"
-        Me.txtAdressCust.Size = New System.Drawing.Size(188, 63)
-        Me.txtAdressCust.TabIndex = 40
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.txtEmailSup)
-        Me.Panel1.Controls.Add(Me.Label9)
-        Me.Panel1.Controls.Add(Me.txtFaxSup)
-        Me.Panel1.Controls.Add(Me.Label8)
-        Me.Panel1.Controls.Add(Me.txtPhoneSup)
-        Me.Panel1.Controls.Add(Me.Label7)
-        Me.Panel1.Controls.Add(Me.txtAddressSup)
-        Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Controls.Add(Me.txtCPSup)
-        Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Controls.Add(Me.cmbSupplier)
-        Me.Panel1.Location = New System.Drawing.Point(11, 20)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(411, 194)
-        Me.Panel1.TabIndex = 0
-        '
         'txtEmailSup
         '
         Me.txtEmailSup.Enabled = False
-        Me.txtEmailSup.Location = New System.Drawing.Point(94, 165)
+        Me.txtEmailSup.Location = New System.Drawing.Point(382, 77)
         Me.txtEmailSup.Name = "txtEmailSup"
         Me.txtEmailSup.Size = New System.Drawing.Size(188, 20)
-        Me.txtEmailSup.TabIndex = 22
+        Me.txtEmailSup.TabIndex = 28
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(15, 168)
+        Me.Label9.Location = New System.Drawing.Point(292, 79)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(32, 13)
-        Me.Label9.TabIndex = 21
+        Me.Label9.TabIndex = 27
         Me.Label9.Text = "Email"
         '
         'txtFaxSup
         '
         Me.txtFaxSup.Enabled = False
-        Me.txtFaxSup.Location = New System.Drawing.Point(94, 142)
+        Me.txtFaxSup.Location = New System.Drawing.Point(382, 54)
         Me.txtFaxSup.Name = "txtFaxSup"
         Me.txtFaxSup.Size = New System.Drawing.Size(188, 20)
-        Me.txtFaxSup.TabIndex = 20
+        Me.txtFaxSup.TabIndex = 26
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(17, 140)
+        Me.Label8.Location = New System.Drawing.Point(294, 51)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(24, 13)
-        Me.Label8.TabIndex = 19
+        Me.Label8.TabIndex = 25
         Me.Label8.Text = "Fax"
         '
         'txtPhoneSup
         '
         Me.txtPhoneSup.Enabled = False
-        Me.txtPhoneSup.Location = New System.Drawing.Point(94, 119)
+        Me.txtPhoneSup.Location = New System.Drawing.Point(382, 31)
         Me.txtPhoneSup.Name = "txtPhoneSup"
         Me.txtPhoneSup.Size = New System.Drawing.Size(188, 20)
-        Me.txtPhoneSup.TabIndex = 18
+        Me.txtPhoneSup.TabIndex = 24
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(15, 117)
+        Me.Label7.Location = New System.Drawing.Point(292, 28)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(38, 13)
-        Me.Label7.TabIndex = 17
+        Me.Label7.TabIndex = 23
         Me.Label7.Text = "Phone"
         '
         'txtAddressSup
         '
         Me.txtAddressSup.Enabled = False
-        Me.txtAddressSup.Location = New System.Drawing.Point(94, 54)
+        Me.txtAddressSup.Location = New System.Drawing.Point(98, 75)
         Me.txtAddressSup.Multiline = True
         Me.txtAddressSup.Name = "txtAddressSup"
         Me.txtAddressSup.Size = New System.Drawing.Size(188, 63)
-        Me.txtAddressSup.TabIndex = 16
+        Me.txtAddressSup.TabIndex = 22
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(11, 54)
+        Me.Label6.Location = New System.Drawing.Point(9, 78)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(39, 13)
-        Me.Label6.TabIndex = 9
+        Me.Label6.TabIndex = 21
         Me.Label6.Text = "Adress"
         '
         'txtCPSup
         '
         Me.txtCPSup.Enabled = False
-        Me.txtCPSup.Location = New System.Drawing.Point(94, 31)
+        Me.txtCPSup.Location = New System.Drawing.Point(98, 52)
         Me.txtCPSup.Name = "txtCPSup"
         Me.txtCPSup.Size = New System.Drawing.Size(188, 20)
-        Me.txtCPSup.TabIndex = 8
+        Me.txtCPSup.TabIndex = 20
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(10, 34)
+        Me.Label5.Location = New System.Drawing.Point(8, 58)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(80, 13)
-        Me.Label5.TabIndex = 7
+        Me.Label5.TabIndex = 18
         Me.Label5.Text = "Contact Person"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(15, 7)
+        Me.Label4.Location = New System.Drawing.Point(9, 31)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(45, 13)
-        Me.Label4.TabIndex = 7
+        Me.Label4.TabIndex = 19
         Me.Label4.Text = "Supplier"
         '
         'cmbSupplier
         '
         Me.cmbSupplier.FormattingEnabled = True
-        Me.cmbSupplier.Location = New System.Drawing.Point(94, 7)
+        Me.cmbSupplier.Location = New System.Drawing.Point(98, 28)
         Me.cmbSupplier.Name = "cmbSupplier"
         Me.cmbSupplier.Size = New System.Drawing.Size(188, 21)
-        Me.cmbSupplier.TabIndex = 0
+        Me.cmbSupplier.TabIndex = 17
         '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.TabControl1)
-        Me.GroupBox3.Location = New System.Drawing.Point(5, 351)
+        Me.GroupBox3.Location = New System.Drawing.Point(5, 295)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(869, 346)
+        Me.GroupBox3.Size = New System.Drawing.Size(875, 346)
         Me.GroupBox3.TabIndex = 26
         Me.GroupBox3.TabStop = False
         '
@@ -575,13 +417,16 @@ Partial Class FrmPurchaseOrder
         Me.TabControl1.Location = New System.Drawing.Point(3, 16)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(863, 326)
+        Me.TabControl1.Size = New System.Drawing.Size(869, 326)
         Me.TabControl1.TabIndex = 0
         '
         'TabProductName
         '
-        Me.TabProductName.Controls.Add(Me.Panel3)
+        Me.TabProductName.Controls.Add(Me.txtStockAV)
+        Me.TabProductName.Controls.Add(Me.Label17)
+        Me.TabProductName.Controls.Add(Me.dgvrawmatrial)
         Me.TabProductName.Controls.Add(Me.cmbUnit)
+        Me.TabProductName.Controls.Add(Me.Panel3)
         Me.TabProductName.Controls.Add(Me.cmbPINO)
         Me.TabProductName.Controls.Add(Me.Label32)
         Me.TabProductName.Controls.Add(Me.Label31)
@@ -594,10 +439,9 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.Controls.Add(Me.txtVAT)
         Me.TabProductName.Controls.Add(Me.Label28)
         Me.TabProductName.Controls.Add(Me.txtDiscount)
-        Me.TabProductName.Controls.Add(Me.btnRawDelList)
-        Me.TabProductName.Controls.Add(Me.btnRawAddList)
+        Me.TabProductName.Controls.Add(Me.btnYarnDelList)
+        Me.TabProductName.Controls.Add(Me.btnYarnAddList)
         Me.TabProductName.Controls.Add(Me.Label25)
-        Me.TabProductName.Controls.Add(Me.dgvrawmatrial)
         Me.TabProductName.Controls.Add(Me.txtTotal)
         Me.TabProductName.Controls.Add(Me.txtSubtotal)
         Me.TabProductName.Controls.Add(Me.Label16)
@@ -606,15 +450,31 @@ Partial Class FrmPurchaseOrder
         Me.TabProductName.Controls.Add(Me.Label15)
         Me.TabProductName.Controls.Add(Me.txtUnitPrice)
         Me.TabProductName.Controls.Add(Me.Label14)
-        Me.TabProductName.Controls.Add(Me.cmbRawCode)
+        Me.TabProductName.Controls.Add(Me.cmbYarnCode)
         Me.TabProductName.Controls.Add(Me.Label20)
         Me.TabProductName.Location = New System.Drawing.Point(4, 22)
         Me.TabProductName.Name = "TabProductName"
         Me.TabProductName.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabProductName.Size = New System.Drawing.Size(855, 300)
+        Me.TabProductName.Size = New System.Drawing.Size(861, 300)
         Me.TabProductName.TabIndex = 0
-        Me.TabProductName.Text = "Raw Material"
+        Me.TabProductName.Text = "Product Name / Description"
         Me.TabProductName.UseVisualStyleBackColor = True
+        '
+        'dgvrawmatrial
+        '
+        Me.dgvrawmatrial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvrawmatrial.Location = New System.Drawing.Point(12, 89)
+        Me.dgvrawmatrial.Name = "dgvrawmatrial"
+        Me.dgvrawmatrial.Size = New System.Drawing.Size(835, 79)
+        Me.dgvrawmatrial.TabIndex = 138
+        '
+        'cmbUnit
+        '
+        Me.cmbUnit.FormattingEnabled = True
+        Me.cmbUnit.Location = New System.Drawing.Point(370, 7)
+        Me.cmbUnit.Name = "cmbUnit"
+        Me.cmbUnit.Size = New System.Drawing.Size(188, 21)
+        Me.cmbUnit.TabIndex = 137
         '
         'Panel3
         '
@@ -687,14 +547,6 @@ Partial Class FrmPurchaseOrder
         Me.btnVoid.TabIndex = 132
         Me.btnVoid.Text = "Void"
         Me.btnVoid.UseVisualStyleBackColor = True
-        '
-        'cmbUnit
-        '
-        Me.cmbUnit.FormattingEnabled = True
-        Me.cmbUnit.Location = New System.Drawing.Point(370, 9)
-        Me.cmbUnit.Name = "cmbUnit"
-        Me.cmbUnit.Size = New System.Drawing.Size(188, 21)
-        Me.cmbUnit.TabIndex = 135
         '
         'Label31
         '
@@ -783,23 +635,23 @@ Partial Class FrmPurchaseOrder
         Me.txtDiscount.Size = New System.Drawing.Size(170, 20)
         Me.txtDiscount.TabIndex = 117
         '
-        'btnRawDelList
+        'btnYarnDelList
         '
-        Me.btnRawDelList.Location = New System.Drawing.Point(700, 60)
-        Me.btnRawDelList.Name = "btnRawDelList"
-        Me.btnRawDelList.Size = New System.Drawing.Size(120, 23)
-        Me.btnRawDelList.TabIndex = 114
-        Me.btnRawDelList.Text = "Delete From List"
-        Me.btnRawDelList.UseVisualStyleBackColor = True
+        Me.btnYarnDelList.Location = New System.Drawing.Point(700, 60)
+        Me.btnYarnDelList.Name = "btnYarnDelList"
+        Me.btnYarnDelList.Size = New System.Drawing.Size(120, 23)
+        Me.btnYarnDelList.TabIndex = 114
+        Me.btnYarnDelList.Text = "Delete From List"
+        Me.btnYarnDelList.UseVisualStyleBackColor = True
         '
-        'btnRawAddList
+        'btnYarnAddList
         '
-        Me.btnRawAddList.Location = New System.Drawing.Point(580, 60)
-        Me.btnRawAddList.Name = "btnRawAddList"
-        Me.btnRawAddList.Size = New System.Drawing.Size(114, 23)
-        Me.btnRawAddList.TabIndex = 113
-        Me.btnRawAddList.Text = "Add To List"
-        Me.btnRawAddList.UseVisualStyleBackColor = True
+        Me.btnYarnAddList.Location = New System.Drawing.Point(580, 60)
+        Me.btnYarnAddList.Name = "btnYarnAddList"
+        Me.btnYarnAddList.Size = New System.Drawing.Size(114, 23)
+        Me.btnYarnAddList.TabIndex = 113
+        Me.btnYarnAddList.Text = "Add To List"
+        Me.btnYarnAddList.UseVisualStyleBackColor = True
         '
         'Label25
         '
@@ -809,16 +661,6 @@ Partial Class FrmPurchaseOrder
         Me.Label25.Size = New System.Drawing.Size(49, 13)
         Me.Label25.TabIndex = 118
         Me.Label25.Text = "Discount"
-        '
-        'dgvrawmatrial
-        '
-        Me.dgvrawmatrial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvrawmatrial.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.dgvrawmatrial.Location = New System.Drawing.Point(10, 89)
-        Me.dgvrawmatrial.Name = "dgvrawmatrial"
-        Me.dgvrawmatrial.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvrawmatrial.Size = New System.Drawing.Size(837, 79)
-        Me.dgvrawmatrial.TabIndex = 112
         '
         'txtTotal
         '
@@ -890,22 +732,22 @@ Partial Class FrmPurchaseOrder
         Me.Label14.TabIndex = 107
         Me.Label14.Text = "Unit Price"
         '
-        'cmbRawCode
+        'cmbYarnCode
         '
-        Me.cmbRawCode.FormattingEnabled = True
-        Me.cmbRawCode.Location = New System.Drawing.Point(118, 35)
-        Me.cmbRawCode.Name = "cmbRawCode"
-        Me.cmbRawCode.Size = New System.Drawing.Size(188, 21)
-        Me.cmbRawCode.TabIndex = 102
+        Me.cmbYarnCode.FormattingEnabled = True
+        Me.cmbYarnCode.Location = New System.Drawing.Point(118, 35)
+        Me.cmbYarnCode.Name = "cmbYarnCode"
+        Me.cmbYarnCode.Size = New System.Drawing.Size(188, 21)
+        Me.cmbYarnCode.TabIndex = 102
         '
         'Label20
         '
         Me.Label20.AutoSize = True
         Me.Label20.Location = New System.Drawing.Point(9, 37)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(100, 13)
+        Me.Label20.Size = New System.Drawing.Size(29, 13)
         Me.Label20.TabIndex = 104
-        Me.Label20.Text = "Raw Material Name"
+        Me.Label20.Text = "Yarn"
         '
         'TabRemark
         '
@@ -917,7 +759,7 @@ Partial Class FrmPurchaseOrder
         Me.TabRemark.Location = New System.Drawing.Point(4, 22)
         Me.TabRemark.Name = "TabRemark"
         Me.TabRemark.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabRemark.Size = New System.Drawing.Size(868, 300)
+        Me.TabRemark.Size = New System.Drawing.Size(855, 300)
         Me.TabRemark.TabIndex = 1
         Me.TabRemark.Text = "Remarks"
         Me.TabRemark.UseVisualStyleBackColor = True
@@ -966,14 +808,32 @@ Partial Class FrmPurchaseOrder
         Me.Label67.TabIndex = 112
         Me.Label67.Text = "Remaks"
         '
+        'txtStockAV
+        '
+        Me.txtStockAV.Enabled = False
+        Me.txtStockAV.Location = New System.Drawing.Point(118, 60)
+        Me.txtStockAV.MaxLength = 50
+        Me.txtStockAV.Name = "txtStockAV"
+        Me.txtStockAV.Size = New System.Drawing.Size(188, 20)
+        Me.txtStockAV.TabIndex = 139
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(9, 60)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(84, 13)
+        Me.Label17.TabIndex = 140
+        Me.Label17.Text = " Available Stock"
+        '
         'FrmPurchaseOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(906, 691)
+        Me.ClientSize = New System.Drawing.Size(896, 642)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label3)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmPurchaseOrder"
@@ -983,17 +843,13 @@ Partial Class FrmPurchaseOrder
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox4.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.TabControl1.ResumeLayout(False)
         Me.TabProductName.ResumeLayout(False)
         Me.TabProductName.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
         CType(Me.dgvrawmatrial, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
         Me.TabRemark.ResumeLayout(False)
         Me.TabRemark.PerformLayout()
         CType(Me.dgvRemarks, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1008,19 +864,6 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents txtPONo As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label4 As Label
-    Friend WithEvents cmbSupplier As ComboBox
-    Friend WithEvents txtCPSup As TextBox
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents txtAddressSup As TextBox
-    Friend WithEvents txtEmailSup As TextBox
-    Friend WithEvents Label9 As Label
-    Friend WithEvents txtFaxSup As TextBox
-    Friend WithEvents Label8 As Label
-    Friend WithEvents txtPhoneSup As TextBox
-    Friend WithEvents Label7 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Label10 As Label
@@ -1032,7 +875,7 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabProductName As TabPage
     Friend WithEvents TabRemark As TabPage
-    Friend WithEvents cmbRawCode As ComboBox
+    Friend WithEvents cmbYarnCode As ComboBox
     Friend WithEvents Label20 As Label
     Friend WithEvents btnRemDelList As Button
     Friend WithEvents btnRemAddList As Button
@@ -1042,23 +885,8 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents Label15 As Label
     Friend WithEvents txtTotal As TextBox
     Friend WithEvents Label16 As Label
-    Friend WithEvents dgvrawmatrial As DataGridView
-    Friend WithEvents btnRawDelList As Button
-    Friend WithEvents btnRawAddList As Button
-    Friend WithEvents GroupBox4 As GroupBox
-    Friend WithEvents Panel2 As Panel
-    Friend WithEvents txtEmailCust As TextBox
-    Friend WithEvents Label24 As Label
-    Friend WithEvents Label17 As Label
-    Friend WithEvents cmbCustomer As ComboBox
-    Friend WithEvents txtFaxCust As TextBox
-    Friend WithEvents Label23 As Label
-    Friend WithEvents Label18 As Label
-    Friend WithEvents txtCPCust As TextBox
-    Friend WithEvents txtPhoneCust As TextBox
-    Friend WithEvents Label22 As Label
-    Friend WithEvents Label19 As Label
-    Friend WithEvents txtAdressCust As TextBox
+    Friend WithEvents btnYarnDelList As Button
+    Friend WithEvents btnYarnAddList As Button
     Friend WithEvents Label29 As Label
     Friend WithEvents txtSH As TextBox
     Friend WithEvents txtOtherCost As TextBox
@@ -1080,7 +908,6 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents btnApprove As Button
     Friend WithEvents btnUpdate As Button
     Friend WithEvents btnSave As Button
-    Friend WithEvents cmbUnit As ComboBox
     Friend WithEvents Label31 As Label
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Label21 As Label
@@ -1088,4 +915,20 @@ Partial Class FrmPurchaseOrder
     Friend WithEvents cmbSVM As ComboBox
     Friend WithEvents cmbPINO As ComboBox
     Friend WithEvents Label32 As Label
+    Friend WithEvents cmbUnit As ComboBox
+    Friend WithEvents txtEmailSup As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents txtFaxSup As TextBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents txtPhoneSup As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents txtAddressSup As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents txtCPSup As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents cmbSupplier As ComboBox
+    Friend WithEvents dgvrawmatrial As DataGridView
+    Friend WithEvents txtStockAV As TextBox
+    Friend WithEvents Label17 As Label
 End Class

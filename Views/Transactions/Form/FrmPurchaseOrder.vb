@@ -20,8 +20,8 @@ Public Class FrmPurchaseOrder
 
 #Region "ComboBox"
     Sub ComboBoxPI()
-        Dim piBFC As ClsProformaInvoice = New ClsProformaInvoice
-        piBFC.ComboBoxPII(cmbPINO)
+        Dim piBFC As ClsPI = New ClsPI
+        piBFC.ComboBoxPI(cmbPINO)
     End Sub
     Sub ComboBoxSupplier()
         Dim suppBFC As ClsVendor = New ClsVendor
@@ -29,20 +29,15 @@ Public Class FrmPurchaseOrder
         suppBFC.ComboBoxVendor(cmbSupplier, status)
     End Sub
 
-    Sub ComboBoxCustomer()
-        Dim custBFC As ClsVendor = New ClsVendor
-        Dim status As String = "C"
-        custBFC.ComboBoxVendor(cmbCustomer, status)
-    End Sub
     Sub ComboBoxRawMaterial()
         Dim rawBFC As ClsRawMaterial = New ClsRawMaterial
-        rawBFC.ComboBoxRawMaterial(cmbRawCode)
+        rawBFC.ComboBoxRawMaterial(cmbYarnCode)
     End Sub
-    Sub ComboBoxRaw(cmb As ComboBox, headerID As Long)
+    Sub ComboBoxYarn(cmb As ComboBox, headerID As Long)
         Dim poBFC As ClsPO = New ClsPO
 
         Try
-            poBFC.ComboBoxRawBON(cmbRawCode, headerID)
+            poBFC.ComboBoxYarn(cmbYarnCode, headerID)
         Catch ex As Exception
             Throw ex
         Finally
@@ -71,10 +66,10 @@ Public Class FrmPurchaseOrder
 #Region "Grid Detail"
     Sub GridDetailRawMatrial()
         With dgvrawmatrial
-            .Columns.Add(0, "Raw Material ID")
+            .Columns.Add(0, "Yarn ID")
             .Columns(0).Visible = False
 
-            .Columns.Add(1, "Raw Material")
+            .Columns.Add(1, "Yarn")
 
             .Columns.Add(2, "Unit ID")
             .Columns(2).Visible = False
@@ -87,7 +82,7 @@ Public Class FrmPurchaseOrder
             .Columns.Add(7, "PI Header ID")
             .Columns(7).Visible = False
 
-            .Columns.Add(8, "PINO")
+            .Columns.Add(8, "PI NO")
 
         End With
     End Sub
@@ -110,12 +105,6 @@ Public Class FrmPurchaseOrder
         txtPhoneSup.Clear()
         txtFaxSup.Clear()
         txtEmailSup.Clear()
-        cmbCustomer.Text = ""
-        txtCPCust.Clear()
-        txtAdressCust.Clear()
-        txtPhoneCust.Clear()
-        txtFaxCust.Clear()
-        txtEmailCust.Clear()
         cmbTOP.Text = ""
         txtUnitPrice.Text = 0
         txtQty.Text = 0
@@ -130,8 +119,8 @@ Public Class FrmPurchaseOrder
 
     End Sub
 
-    Sub ClearRawMatrial()
-        cmbRawCode.Text = ""
+    Sub ClearYarn()
+        cmbYarnCode.Text = ""
         cmbUnit.Text = ""
         txtUnitPrice.Clear()
         txtQty.Clear()
@@ -146,12 +135,8 @@ Public Class FrmPurchaseOrder
 #End Region
 
 #Region "Validation Number"
-    Private Sub txtPhoneSup_TextChanged(sender As Object, e As EventArgs) Handles txtPhoneSup.TextChanged
+    Private Sub txtPhoneSup_TextChanged(sender As Object, e As EventArgs)
         CheckNumber(txtPhoneSup)
-    End Sub
-
-    Private Sub txtPhoneCust_TextChanged(sender As Object, e As EventArgs) Handles txtPhoneCust.TextChanged
-        CheckNumber(txtPhoneCust)
     End Sub
 
     Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
@@ -209,11 +194,11 @@ Public Class FrmPurchaseOrder
     Sub CalculateSH()
         txtGrandTotal.Text = Val(txtSubtotal.Text) - Val(txtDiscount.Text) + Val(txtVAT.Text) + Val(txtOtherCost.Text) + Val(txtSH.Text)
     End Sub
-    Sub AddGridDetailRawMatrial()
+    Sub AddGridDetailYarn()
         With dgvrawmatrial
             .Rows.Add()
-            .Item(0, intBarisRawMatrial).Value = cmbRawCode.SelectedValue
-            .Item(1, intBarisRawMatrial).Value = cmbRawCode.Text
+            .Item(0, intBarisRawMatrial).Value = cmbYarnCode.SelectedValue
+            .Item(1, intBarisRawMatrial).Value = cmbYarnCode.Text
             .Item(2, intBarisRawMatrial).Value = cmbUnit.SelectedValue
             .Item(3, intBarisRawMatrial).Value = cmbUnit.Text
             .Item(4, intBarisRawMatrial).Value = txtUnitPrice.Text
@@ -234,22 +219,21 @@ Public Class FrmPurchaseOrder
 #End Region
 
 #Region "Delete Grid"
-    Sub DeleteGridDetailRawMatrial()
+    Sub DeleteGridDetailYarn()
         DeleteGrid(dgvrawmatrial)
+        intBarisRawMatrial = intBarisRawMatrial - 1
     End Sub
 
     Sub DeleteGridDetailRemarks()
         DeleteGrid(dgvRemarks)
+        intBarisRemarks = intBarisRemarks - 1
     End Sub
 #End Region
 
 #Region "Check Empty"
     Function CheckEmptyHeader() As Boolean
         Dim check As Boolean = True
-        If cmbCustomer.SelectedValue = 0 Then
-            MsgBoxWarning("Customer Not Valid")
-            cmbCustomer.Focus()
-        ElseIf cmbCurrency.SelectedValue = 0 Then
+        If cmbCurrency.SelectedValue = 0 Then
             MsgBoxWarning("Currency Not Valid")
             cmbCurrency.Focus()
         ElseIf cmbSupplier.SelectedValue = 0 Then
@@ -263,7 +247,7 @@ Public Class FrmPurchaseOrder
             cmbTOP.Focus()
         ElseIf dgvrawmatrial.Rows.Count - 1 = 0 Then
             MsgBoxWarning("Detail Can't Empty")
-            cmbRawCode.Focus()
+            cmbYarnCode.Focus()
         ElseIf dgvRemarks.Rows.Count - 1 = 0 Then
             MsgBoxWarning("Remarks Can't Empty")
             txtRemarks.Focus()
@@ -272,11 +256,11 @@ Public Class FrmPurchaseOrder
         End If
         Return check
     End Function
-    Function CheckEmptyRawMatrial() As Boolean
+    Function CheckEmptyYarn() As Boolean
         Dim check As Boolean = True
-        If cmbRawCode.SelectedValue = 0 Then
-            MsgBoxWarning("Raw Matrial Not Valid")
-            cmbRawCode.Focus()
+        If cmbYarnCode.SelectedValue = 0 Then
+            MsgBoxWarning("Yarn Not Valid")
+            cmbYarnCode.Focus()
         ElseIf txtUnitPrice.Text = "" Then
             MsgBoxWarning("Unit Price Can't Empty")
             txtUnitPrice.Focus()
@@ -304,10 +288,10 @@ Public Class FrmPurchaseOrder
 #End Region
 
 #Region "Check Available In List"
-    Function CheckRawMatrialInList() As Boolean
+    Function CheckYarnInList() As Boolean
         Dim poBFC As ClsPO = New ClsPO
         Dim status As Boolean
-        status = poBFC.CheckRawMatrialInList(dgvrawmatrial, cmbRawCode.SelectedValue)
+        status = poBFC.CheckYarnInList(dgvrawmatrial, cmbYarnCode.SelectedValue)
         Return status
     End Function
 
@@ -331,11 +315,9 @@ Public Class FrmPurchaseOrder
                     .POHeaderID = poBFC.GetPOHeaderID
                     .POHeaderID = .POHeaderID
                     .CurrencyID = cmbCurrency.SelectedValue
-                    ' .PIHeaderID = cmbPINO.SelectedValue
                     .PODate = Format(dtPODate.Value, "yyyy-MM-dd")
-                    .PONo = poBFC.GetPONo(supplierCode)
+                    .PONo = poBFC.GetPONo()
                     txtPONo.Text = .PONo
-                    .CustomerID = cmbCustomer.SelectedValue
                     .SupplierID = cmbSupplier.SelectedValue
                     .ShipViaMethodID = cmbSVM.SelectedValue
                     .ShippingDate = Format(dtSD.Value, "yyyy-MM-dd")
@@ -358,7 +340,6 @@ Public Class FrmPurchaseOrder
                     .CurrencyID = cmbCurrency.SelectedValue
                     .PODate = Format(dtPODate.Value, "yyyy-MM-dd")
                     txtPONo.Text = .PONo
-                    .CustomerID = cmbCustomer.SelectedValue
                     .SupplierID = cmbSupplier.SelectedValue
                     .ShipViaMethodID = cmbSVM.SelectedValue
                     .ShippingDate = Format(dtSD.Value, "yyyy-MM-dd")
@@ -408,7 +389,7 @@ Public Class FrmPurchaseOrder
     Sub InsertData()
         Dim poBFC As ClsPO = New ClsPO
         Dim logpo As ClsLogHistory = New ClsLogHistory
-        Dim myPONo As String = poBFC.GetPONo(supplierCode)
+        Dim myPONo As String = poBFC.GetPONo()
         Dim myPOID As Long = poBFC.GetPOHeaderID
         Dim logDesc As String = "Create new Purchase Order,PONo is " + myPONo
 
@@ -503,7 +484,7 @@ Public Class FrmPurchaseOrder
     Sub ClearAllData()
         ClearVariable()
         ClearHeader()
-        ClearRawMatrial()
+        ClearYarn()
         ClearRemarks()
     End Sub
 
@@ -514,8 +495,6 @@ Public Class FrmPurchaseOrder
     End Sub
 
     Sub ComboBoxALL()
-        ComboBoxCustomer()
-        ComboBoxRawMaterial()
         ComboBoxSupplier()
         ComboBoxUnit()
         ComboBoxCurrency()
@@ -541,39 +520,25 @@ Public Class FrmPurchaseOrder
             MsgBoxError("Supplier not valid")
         End If
     End Sub
-    Sub RetrieveCustomer()
-        Dim vendorPoC As ClsVendor = New ClsVendor
-        Dim vendorModel As VendorModel = New VendorModel
-        Dim obj As Integer = cmbCustomer.SelectedValue
-        If obj > 0 Then
-            vendorModel = vendorPoC.RetrieveVendorByID(obj, "C")
-            With vendorModel
-                customerCode = .VendorCode
-                txtCPCust.Text = .ContactPerson
-                txtAdressCust.Text = .Address
-                txtPhoneCust.Text = .Telephone
-                txtFaxCust.Text = .Fax
-                txtEmailCust.Text = .EmailCP
-            End With
-        Else
-            MsgBoxError("Customer Not Valid")
-        End If
-    End Sub
+    Sub RetrieveQtyStock()
+        Dim stkBFC As ClsStock = New ClsStock
+        Dim bpbModel As StockModel = New StockModel
+        Try
 
-
-    Sub RetrieveRawMatrial()
-        Dim rawmatrialPo As ClsRawMaterial = New ClsRawMaterial
-        Dim rawmatrialModel As RawMaterialModel = New RawMaterialModel
-        Dim rawmatrialID As Integer = cmbRawCode.SelectedValue
-        If rawmatrialID > 0 Then
-            rawmatrialModel = rawmatrialPo.RetrieveByID(rawmatrialID)
-            With rawmatrialModel
-                rawmatrialID = .RawMaterialID
-
-            End With
-        Else
-            MsgBoxError("Raw Matrial Not Valid")
-        End If
+            Dim rawmatrialID As String = cmbYarnCode.SelectedValue
+            If rawmatrialID > 0 Then
+                bpbModel = stkBFC.RetrieveRawMaterialStock(rawmatrialID)
+                With bpbModel
+                    txtStockAV.Text = .QuantityStock
+                End With
+                Exit Sub
+            Else
+                MsgBoxError("Raw already available")
+            End If
+            bpbModel = Nothing
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
     Sub CheckPermissions()
         Try
@@ -590,16 +555,15 @@ Public Class FrmPurchaseOrder
     End Sub
 
     Sub PrepareHeaderByID()
-        ComboBoxALL()
+        '  ComboBoxALL()
         Dim headerModel As POHeaderModel = New POHeaderModel
         Dim poC As ClsPO = New ClsPO
+        ComboBoxALL()
         headerModel = poC.RetrieveByID(poHeaderID)
         With headerModel
             txtPONo.Text = .PONo
             dtPODate.Value = .PODate
             cmbCurrency.SelectedValue = .CurrencyID
-            ' cmbPINO.SelectedValue = .PIHeaderID
-            cmbCustomer.SelectedValue = .CustomerID
             cmbSupplier.SelectedValue = .SupplierID
             cmbSVM.SelectedValue = .ShipViaMethodID
             dtSD.Value = .ShippingDate
@@ -674,14 +638,12 @@ Public Class FrmPurchaseOrder
 
     Sub PreUpdateDisplay()
         Try
-            'ClearAllData()
             ClearDataGrid()
             CheckPermissions()
             PrepareHeaderByID()
             PrepareRawMatrialByHeaderID()
             PrepareRemarksByHeaderID()
             RetrieveSupplier()
-            RetrieveCustomer()
             If statusPO = 0 Then btnPrint.Enabled = False Else btnPrint.Enabled = True
             If statusPO = 0 Or statusPO = 2 Then btnApprove.Enabled = False
             If statusPO = 0 Then btnVoid.Enabled = False
@@ -748,47 +710,6 @@ Public Class FrmPurchaseOrder
         VoidData()
     End Sub
 
-    Private Sub btnRawAddList_Click(sender As Object, e As EventArgs) Handles btnRawAddList.Click
-        If CheckEmptyRawMatrial() = False Then
-            Try
-                If CheckRawMatrialInList() = True Then
-                    AddGridDetailRawMatrial()
-                    SumSubTotalValue()
-                    ClearRawMatrial()
-
-                Else
-                    MsgBoxError("Raw Matrial available in list")
-                    ClearRawMatrial()
-                End If
-            Catch ex As Exception
-                MsgBoxError(ex.Message)
-            End Try
-        End If
-    End Sub
-
-    Private Sub btnRawDelList_Click(sender As Object, e As EventArgs) Handles btnRawDelList.Click
-        Try
-            DeleteGrid(dgvrawmatrial)
-            SumSubTotalValue()
-            CalculateTotal()
-            CalculateDiscount()
-            CalculateOtherCost()
-            CalculateSH()
-        Catch ex As Exception
-            MsgBoxError(ex.Message)
-        End Try
-        If dgvrawmatrial.Rows.Count - 1 = 0 Then
-            txtSubtotal.Text = 0
-            txtDiscount.Text = 0
-            txtVAT.Text = 0
-            txtOtherCost.Text = 0
-            txtSH.Text = 0
-            txtGrandTotal.Text = 0
-        End If
-
-        intBarisRawMatrial = intBarisRawMatrial - 1
-    End Sub
-
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If CheckEmptyHeader() = False Then
             If condition = "Create" Then
@@ -803,22 +724,24 @@ Public Class FrmPurchaseOrder
         intPostRemarks = e.Row.Index
     End Sub
 
-    Private Sub dgvrawmatrial_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs) Handles dgvrawmatrial.RowStateChanged
+    Private Sub dgvrawmatrial_RowStateChanged(sender As Object, e As DataGridViewRowStateChangedEventArgs)
         intPostRawMatrial = e.Row.Index
     End Sub
-    Private Sub cmbSupplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSupplier.SelectedIndexChanged
-        cmbCustomer.Focus()
-    End Sub
-
-    Private Sub cmbCustomer_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCustomer.SelectedIndexChanged
+    Private Sub cmbCustomer_SelectedIndexChanged(sender As Object, e As EventArgs)
         cmbPINO.Focus()
     End Sub
 
-    Private Sub cmbRawCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbRawCode.SelectedIndexChanged
-        cmbUnit.Focus()
+    Private Sub cmbRawCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbYarnCode.SelectedIndexChanged
+        Try
+            RetrieveQtyStock()
+            cmbUnit.Focus()
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
-    Private Sub cmbUnit_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbUnit.SelectedIndexChanged
+    Private Sub cmbUnit_SelectedIndexChanged(sender As Object, e As EventArgs)
         txtUnitPrice.Focus()
     End Sub
 
@@ -832,22 +755,6 @@ Public Class FrmPurchaseOrder
         If e.KeyChar = Chr(13) Then
             txtDiscount.Focus()
         End If
-    End Sub
-
-    Private Sub cmbSupplier_Validated(sender As Object, e As EventArgs) Handles cmbSupplier.Validated
-        Try
-            RetrieveSupplier()
-        Catch ex As Exception
-            MsgBoxError(ex.Message)
-        End Try
-    End Sub
-
-    Private Sub cmbCustomer_Validated(sender As Object, e As EventArgs) Handles cmbCustomer.Validated
-        Try
-            RetrieveCustomer()
-        Catch ex As Exception
-            MsgBoxError(ex.Message)
-        End Try
     End Sub
 
     Private Sub txtDiscount_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDiscount.KeyPress
@@ -868,15 +775,59 @@ Public Class FrmPurchaseOrder
     Private Sub cmbSVM_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSVM.SelectedIndexChanged
         dtSD.Focus()
     End Sub
+    Private Sub btnYarnAddList_Click(sender As Object, e As EventArgs) Handles btnYarnAddList.Click
+        If CheckEmptyYarn() = False Then
+            Try
+                If CheckYarnInList() = True Then
+                    AddGridDetailYarn()
+                    SumSubTotalValue()
+                    ClearYarn()
+                Else
+                    MsgBoxError("Yarn available in list")
+                    ClearYarn()
+                End If
+            Catch ex As Exception
+                MsgBoxError(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub btnYarnDelList_Click(sender As Object, e As EventArgs) Handles btnYarnDelList.Click
+        Try
+            DeleteGridDetailYarn()
+            SumSubTotalValue()
+            CalculateTotal()
+            CalculateDiscount()
+            CalculateOtherCost()
+            CalculateSH()
+        Catch ex As Exception
+            MsgBoxError(ex.Message)
+        End Try
+        If dgvrawmatrial.Rows.Count - 1 = 0 Then
+            txtSubtotal.Text = 0
+            txtDiscount.Text = 0
+            txtVAT.Text = 0
+            txtOtherCost.Text = 0
+            txtSH.Text = 0
+            txtGrandTotal.Text = 0
+        End If
+    End Sub
 
     Private Sub cmbPINO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPINO.SelectedIndexChanged
         Try
-            ComboBoxRaw(cmbRawCode, cmbPINO.SelectedValue)
+            ComboBoxYarn(cmbYarnCode, cmbPINO.SelectedValue)
         Catch ex As Exception
 
         End Try
     End Sub
 
+    Private Sub cmbSupplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSupplier.SelectedIndexChanged
+        Try
+            RetrieveSupplier()
+        Catch ex As Exception
+
+        End Try
+    End Sub
 
 #End Region
 

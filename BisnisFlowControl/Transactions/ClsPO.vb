@@ -1,7 +1,7 @@
 ﻿Imports Microsoft.Reporting.WinForms
 Public Class ClsPO
-    Dim querypo As String = "Select POHeaderID,CurrencyID,CurrencyCode,PODate,PONo,CustomerCode,CustomerName,SupplierCode,SupplierName,ShipViaMethodCode,ShipViaMethodName,ShippingDate,TermOfPayment,ExpectedReceiptDate" &
-                               ",CustomerID,SupplierID,TermOfPaymentID,ShipViaMethodID,StatusDesc From v_POHeader" &
+    Dim querypo As String = "Select POHeaderID,CurrencyID,CurrencyCode,PODate,PONo,SupplierCode,SupplierName,ShipViaMethodCode,ShipViaMethodName,ShippingDate,TermOfPayment,ExpectedReceiptDate" &
+                               ",SupplierID,TermOfPaymentID,ShipViaMethodID,StatusDesc From v_POHeader" &
                                " Where Status =2 "
 #Region "Method Retrieve"
     Public Function Retrievepo(options As String, param As String) As DataTable
@@ -32,8 +32,8 @@ Public Class ClsPO
                                                 , supplier As String) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable = New DataTable
-        Dim query As String = "Select POHeaderID,CurrencyID,CurrencyCode,PODate,PONo,CustomerCode,CustomerName,SupplierCode,SupplierName,ShipViaMethodCode,ShipViaMethodName,ShippingDate,TermOfPayment,ExpectedReceiptDate" &
-                               ",CustomerID,SupplierID,TermOfPaymentID,ShipViaMethodID,StatusDesc From v_POHeader" &
+        Dim query As String = "Select POHeaderID,CurrencyID,CurrencyCode,PODate,PONo,SupplierCode,SupplierName,ShipViaMethodCode,ShipViaMethodName,ShippingDate,TermOfPayment,ExpectedReceiptDate" &
+                               ",SupplierID,TermOfPaymentID,ShipViaMethodID,StatusDesc From v_POHeader" &
                                " Where Status <> 0"
 
         If Not String.IsNullOrEmpty(poNo) Then
@@ -42,10 +42,6 @@ Public Class ClsPO
 
         If Not dateFrom = "00:00:00" And Not dateTo = "00:00:00" Then
             query += " AND PODate >= '" & dateFrom & "' AND PODate <= '" & dateTo & "'"
-        End If
-
-        If Not String.IsNullOrEmpty(customer) Then
-            query += " AND CustomerName = '" & customer & "'"
         End If
 
         If Not String.IsNullOrEmpty(supplier) Then
@@ -84,13 +80,6 @@ Public Class ClsPO
                         poHeaderModel.FaxSupplier = .Item("FaxSupplier")
                         poHeaderModel.ContactPersonSupplier = .Item("ContactPersonSupplier")
                         poHeaderModel.EmailSupplier = .Item("EmailSupplier")
-                        poHeaderModel.CustomerID = .Item("CustomerID")
-                        poHeaderModel.CustomerCode = .Item("CustomerCode")
-                        poHeaderModel.CustomerName = .Item("CustomerName")
-                        poHeaderModel.AddressCustomer = .Item("AddressCustomer")
-                        poHeaderModel.TelephoneCustomer = .Item("TelephoneCustomer")
-                        poHeaderModel.FaxCustomer = .Item("FaxCustomer")
-                        poHeaderModel.EmailCustomer = .Item("EmailCustomer")
                         poHeaderModel.ShipViaMethodID = .Item("ShipViaMethodID")
                         poHeaderModel.ShipViaMethodCode = .Item("ShipViaMethodCode")
                         poHeaderModel.ShipViaMethodName = .Item("ShipViaMethodCode")
@@ -122,7 +111,7 @@ Public Class ClsPO
         Dim dataTable As DataTable = New DataTable
         Dim podetailModel As PODetailModel = New PODetailModel
 
-        Dim query As String = "Select * From v_PODetail Where POHeaderID='" & headerID & "'  AND RawMaterialID = '" & rawmatrialID & "'"
+        Dim query As String = "Select * From v_PODetail Where POHeaderID='" & headerID & "'  AND YarnID = '" & rawmatrialID & "'"
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             While dataAccess.reader.Read
@@ -131,21 +120,21 @@ Public Class ClsPO
                     If IsDBNull(.Item("PIHeaderID")) Then
                         podetailModel.PIHeaderID = 0
                     Else
-                        podetailModel.PIHeaderID = .Item("PIHeaderID")
+                        podetailModel.PIHeaderID = .Item("BOID")
                     End If
-                    If IsDBNull(.Item("PINo")) Then
+                    If IsDBNull(.Item("BOID")) Then
                         podetailModel.PINo = 0
                     Else
-                        podetailModel.PINo = .Item("PINo")
+                        podetailModel.PINo = .Item("BOID")
                     End If
-                    podetailModel.RawMaterialID = .Item("RawMaterialID")
-                    podetailModel.RawMaterialName = .Item("RawMaterialName")
+                    podetailModel.RawMaterialID = .Item("YarnID")
+                    podetailModel.RawMaterialName = .Item("YarnName")
                     podetailModel.UnitID = .Item("UnitID")
                     podetailModel.UnitName = .Item("UnitName")
                     podetailModel.Quantity = .Item("Quantity")
                     podetailModel.UnitPrice = .Item("UnitPrice")
                     podetailModel.PODate = .Item("PODate")
-                    podetailModel.PONo = .Item("PONo")
+                    podetailModel.PONo = .Item("NoOrder")
                     podetailModel.Total = .Item("Total")
                 End With
             End While
@@ -168,24 +157,24 @@ Public Class ClsPO
                 While .Read
                     Dim poDetailModel As PODetailModel = New PODetailModel
                     poDetailModel.POHeaderID = .Item("POHeaderID")
-                    If IsDBNull(.Item("PIHeaderID")) Then
+                    If IsDBNull(.Item("BOID")) Then
                         poDetailModel.PIHeaderID = 0
                     Else
-                        poDetailModel.PIHeaderID = .Item("PIHeaderID")
+                        poDetailModel.PIHeaderID = .Item("BOID")
                     End If
-                    If IsDBNull(.Item("PINo")) Then
+                    If IsDBNull(.Item("NoOrder")) Then
                         poDetailModel.PINo = 0
                     Else
-                        poDetailModel.PINo = .Item("PINo")
+                        poDetailModel.PINo = .Item("NoOrder")
                     End If
-                    poDetailModel.RawMaterialID = .Item("RawMaterialID")
-                    poDetailModel.RawMaterialName = .Item("RawMaterialName")
+                    poDetailModel.RawMaterialID = .Item("YarnID")
+                    poDetailModel.RawMaterialName = .Item("YarnName")
                     poDetailModel.UnitID = .Item("UnitID")
                     poDetailModel.UnitName = .Item("UnitName")
                     poDetailModel.Quantity = .Item("Quantity")
                     poDetailModel.UnitPrice = .Item("UnitPrice")
                     poDetailModel.PODate = .Item("PODate")
-                    poDetailModel.PONo = .Item("PONo")
+                    poDetailModel.PONo = .Item("NoOrder")
                     poDetailModel.Total = .Item("Total")
                     myList.Add(poDetailModel)
                 End While
@@ -219,29 +208,29 @@ Public Class ClsPO
             Return Nothing
         End Try
     End Function
-  
+
 #End Region
 
 #Region "Method Generated"
-    Protected Function GeneratedPONo(supplierCode As String) As String
+    Protected Function GeneratedPONo() As String
         Dim myCode As String
         Dim hitung As Integer
-        Dim query As String = "Select MAX(PONo) as PONo from POHeader"
+        Dim query As String = "Select MAX(PONo) as Code from POHeader"
         Dim dataAccess As ClsDataAccess = New ClsDataAccess
         Try
             dataAccess.reader = dataAccess.ExecuteReader(query)
             dataAccess.reader.Read()
 
-            If IsDBNull(dataAccess.reader.Item("PONo")) Then
-                myCode = "PO" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
+            If IsDBNull(dataAccess.reader.Item("Code")) Then
+                myCode = Format(Now.Year) + "0001"
             Else
-                Dim xtahun As String = Microsoft.VisualBasic.Right(dataAccess.reader.Item("PONo"), 4)
+                Dim xtahun As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("Code"), 4)
                 If xtahun = Format(Now.Year) Then
-                    Dim xCode As String = Microsoft.VisualBasic.Left(dataAccess.reader.Item("PONo"), 9)
-                    hitung = Microsoft.VisualBasic.Right(xCode, 7) + 1
-                    myCode = "PO" & Microsoft.VisualBasic.Right("0000000" & hitung, 7) & "/" & supplierCode & "/" & Format(Now.Year)
+                    Dim xCode As String = Microsoft.VisualBasic.Right(dataAccess.reader.Item("Code"), 4)
+                    hitung = Microsoft.VisualBasic.Right(xCode, 4) + 1
+                    myCode = Format(Now.Year) & Microsoft.VisualBasic.Right("0000" & hitung, 4)
                 Else
-                    myCode = "PO" + "0000001" + "/" + supplierCode + "/" + Format(Now.Year)
+                    myCode = Format(Now.Year) + "0001"
                 End If
             End If
             dataAccess.reader.Close()
@@ -252,7 +241,6 @@ Public Class ClsPO
             dataAccess = Nothing
             Throw ex
         End Try
-        Return myCode
     End Function
 
     Protected Function GeneratedAutoNumber() As Long
@@ -261,45 +249,25 @@ Public Class ClsPO
         Dim dataAccess = New ClsDataAccess
         Try
             id = dataAccess.GeneratedAutoNumber(query)
+            dataAccess = Nothing
+            Return id
         Catch ex As Exception
             dataAccess = Nothing
             Throw ex
         End Try
-        dataAccess = Nothing
-        Return id
     End Function
-    'Protected Function GeneratedAutoNumberDetailID() As Long
-    '    Dim id As Long = 0
-    '    Dim query As String = "Select max(PODetailID) from PODetail"
-    '    Dim dataAccess = New ClsDataAccess
-    '    Try
-    '        id = dataAccess.GeneratedAutoNumber(query)
-    '    Catch ex As Exception
-    '        dataAccess = Nothing
-    '        Throw ex
-    '    End Try
-    '    dataAccess = Nothing
-    '    Return id
-    'End Function
-    Protected Function GeneratedAutoNumberRemarksDetail() As Long
-        Dim id As Long = 0
-        Dim query As String = "Select max(PORemarksID) from PORemarks"
-        Dim dataAccess = New ClsDataAccess
-        Try
-            id = dataAccess.GeneratedAutoNumber(query)
-        Catch ex As Exception
-            dataAccess = Nothing
-            Throw ex
-        End Try
-        dataAccess = Nothing
-        Return id
-    End Function
-    Public Function GetPONo(supplierCode As String) As String
-        Dim poNo As String
-        poNo = GeneratedPONo(supplierCode)
-        Return poNo
-    End Function
+#End Region
 
+#Region "Get"
+    Public Function GetPONo() As String
+        Dim bonOrderCode As String
+        Try
+            bonOrderCode = GeneratedPONo()
+            Return bonOrderCode
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Function
 #End Region
 
 #Region "Function"
@@ -403,11 +371,11 @@ Public Class ClsPO
 
     End Sub
 
-    Protected Function ListComboBoxRawBON(headerID As Long) As DataTable
+    Protected Function ListComboBoxYarn(headerID As Long) As DataTable
         Dim dataAccess = New ClsDataAccess
         Dim dataTable As DataTable = New DataTable
 
-        Dim query As String = "Select RawMaterialID,RawMaterialName From v_BonOrderDetailMaterial Where PIHeaderID = '" & headerID & "'"
+        Dim query As String = "Select YarnID,YarnName From v_ProInvoiceYarnDetail  Where BOID = '" & headerID & "'"
         Try
             dataTable = dataAccess.RetrieveListData(query)
             dataAccess = Nothing
@@ -418,15 +386,15 @@ Public Class ClsPO
             Throw ex
         End Try
     End Function
-    Public Sub ComboBoxRawBON(cmb As ComboBox, headerID As Long)
+    Public Sub ComboBoxYarn(cmb As ComboBox, headerID As Long)
         Try
 
             With cmb
 
-                .DataSource = ListComboBoxRawBON(headerID)
+                .DataSource = ListComboBoxYarn(headerID)
 
-                .DisplayMember = "RawMaterialName"
-                .ValueMember = "RawMaterialID"
+                .DisplayMember = "YarnName"
+                .ValueMember = "YarnID"
                 .AutoCompleteMode = AutoCompleteMode.SuggestAppend
                 .AutoCompleteSource = AutoCompleteSource.ListItems
 
@@ -444,21 +412,10 @@ Public Class ClsPO
         myID = GeneratedAutoNumber()
         Return myID
     End Function
-
-    'Public Function GetPODetailID() As Long
-    '    Dim myID As Long
-    '    myID = GeneratedAutoNumberDetailID()
-    '    Return myID
-    'End Function
-    Public Function GetPODetailRemarksID() As Long
-        Dim myID As Long
-        myID = GeneratedAutoNumberRemarksDetail()
-        Return myID
-    End Function
 #End Region
 
 #Region "Check Available In List"
-    Public Function CheckRawMatrialInList(dgvrawmatrial As DataGridView, RawMatrialID As Integer) As Boolean
+    Public Function CheckYarnInList(dgvrawmatrial As DataGridView, RawMatrialID As Integer) As Boolean
         Dim cek As Integer
         Dim status As Boolean = True
         For cek = 0 To dgvrawmatrial.Rows.Count - 1
@@ -506,12 +463,10 @@ Public Class ClsPO
         Dim listModel As List(Of PORemarksModel) = New List(Of PORemarksModel)
         Dim poBFC As ClsPO = New ClsPO
         Dim poDetailID As Long
-        poDetailID = poBFC.GetPODetailRemarksID
         For detail = 0 To dgvRemarks.Rows.Count - 2
             Dim detailModel As PORemarksModel = New PORemarksModel
             With dgvRemarks
                 detailModel.POHeaderID = poID
-                detailModel.PORemarksID = poDetailID
                 detailModel.Remarks = .Rows(detail).Cells(0).Value
                 listModel.Add(detailModel)
             End With
@@ -524,10 +479,10 @@ Public Class ClsPO
 #Region "Method CRUD"
     Protected Function SqlInsertHeader(poHeaderModel As POHeaderModel) As String
         Dim sqlHeader As String
-        sqlHeader = "Insert into POHeader(POHeaderID,PODate,PONo,CustomerID,SupplierID,ShipViaMethodID,ShippingDate,TermOfPaymentID,ExpectedReceiptDate" &
+        sqlHeader = "Insert into POHeader(POHeaderID,PODate,PONo,SupplierID,ShipViaMethodID,ShippingDate,TermOfPaymentID,ExpectedReceiptDate" &
                                    ",CurrencyID,Subtotal,Discount,VATRate,OtherCost,SH,GrandTotal,Status,CreatedBy,CreatedDate,UpdatedBy,UpdatedDate)Values" &
                                    "('" & poHeaderModel.POHeaderID & "','" & poHeaderModel.PODate & "','" & poHeaderModel.PONo & "'" &
-                                   ",'" & poHeaderModel.CustomerID & "','" & poHeaderModel.SupplierID & "','" & poHeaderModel.ShipViaMethodID & "'" &
+                                   ",'" & poHeaderModel.SupplierID & "','" & poHeaderModel.ShipViaMethodID & "'" &
                                    ",'" & poHeaderModel.ShippingDate & "','" & poHeaderModel.TermOfPaymentID & "','" & poHeaderModel.ExpectedReceiptDate & "'" &
                                    ",'" & poHeaderModel.CurrencyID & "','" & poHeaderModel.Subtotal & "','" & poHeaderModel.Discount & "','" & poHeaderModel.VATRate & "'" &
                                    ",'" & poHeaderModel.OtherCost & "','" & poHeaderModel.SH & "','" & poHeaderModel.GrandTotal & "'" &
@@ -538,7 +493,7 @@ Public Class ClsPO
 
     Protected Function SqlUpdateHeader(myModel As POHeaderModel) As String
         Dim SQL As String
-        SQL = "Update POHeader Set  PODate = '" & myModel.PODate & "',CustomerID = '" & myModel.CustomerID & "',SupplierID = '" & myModel.SupplierID & "'" &
+        SQL = "Update POHeader Set  PODate = '" & myModel.PODate & "',SupplierID = '" & myModel.SupplierID & "'" &
                                     ",ShipViaMethodID='" & myModel.ShipViaMethodID & "',ShippingDate = '" & myModel.ShippingDate & "'" &
                                     ",TermOfPaymentID = '" & myModel.TermOfPaymentID & "',ExpectedReceiptDate = '" & myModel.ExpectedReceiptDate & "'" &
                                     ",CurrencyID = '" & myModel.CurrencyID & "',Subtotal = '" & myModel.Subtotal & "',Discount = '" & myModel.Discount & "'" &
@@ -552,7 +507,7 @@ Public Class ClsPO
     Protected Function SqlInsertDetailRawMatrial(myModel As PODetailModel) As String
         Dim sql As String
 
-        sql = "Insert Into PODetail(POHeaderID,PIHeaderID,RawMaterialID,UnitID,Quantity" &
+        sql = "Insert Into PODetail(POHeaderID,BOID,YarnID,UnitID,Quantity" &
               ",UnitPrice)Values" &
               "('" & myModel.POHeaderID & "','" & myModel.PIHeaderID & "','" & myModel.RawMaterialID & "','" & myModel.UnitID & "'" &
               ",'" & myModel.Quantity & "','" & myModel.UnitPrice & "')"
@@ -562,8 +517,8 @@ Public Class ClsPO
 
     Protected Function SqlInsertRemarksDetail(myModel As PORemarksModel) As String
         Dim SQL As String
-        SQL = "Insert Into PORemarks(POHeaderID,PORemarksID,Remarks)Values('" & myModel.POHeaderID & "'" &
-                ",'" & myModel.PORemarksID & "','" & myModel.Remarks & "')"
+        SQL = "Insert Into PORemarks(POHeaderID,Remarks)Values('" & myModel.POHeaderID & "'" &
+                ",'" & myModel.Remarks & "')"
         Return SQL
     End Function
 

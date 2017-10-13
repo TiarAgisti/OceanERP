@@ -193,7 +193,7 @@ Partial Class FrmListBPB
         '
         'txtBPBNo
         '
-        Me.txtBPBNo.Location = New System.Drawing.Point(99, 3)
+        Me.txtBPBNo.Location = New System.Drawing.Point(99, 4)
         Me.txtBPBNo.Name = "txtBPBNo"
         Me.txtBPBNo.Size = New System.Drawing.Size(265, 20)
         Me.txtBPBNo.TabIndex = 51
@@ -208,7 +208,7 @@ Partial Class FrmListBPB
         Me.Label3.Size = New System.Drawing.Size(878, 46)
         Me.Label3.TabIndex = 54
         Me.Label3.Tag = "26"
-        Me.Label3.Text = "List Goods Receipt PO"
+        Me.Label3.Text = "List Receipt Of Goods"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'dgv

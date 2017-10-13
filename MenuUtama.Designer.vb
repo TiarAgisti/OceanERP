@@ -58,8 +58,8 @@ Partial Class MenuUtama
         Me.menuSVM = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuTransaksi = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuProformaInvoice = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BonOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuPO = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BonOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RawMAterialPlaningToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReceiptToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuKeluar = New System.Windows.Forms.ToolStripMenuItem()
@@ -296,7 +296,7 @@ Partial Class MenuUtama
         '
         'menuTransaksi
         '
-        Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuProformaInvoice, Me.menuPO, Me.BonOrderToolStripMenuItem, Me.RawMAterialPlaningToolStripMenuItem, Me.ReceiptToolStripMenuItem})
+        Me.menuTransaksi.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BonOrderToolStripMenuItem, Me.menuProformaInvoice, Me.menuPO, Me.RawMAterialPlaningToolStripMenuItem, Me.ReceiptToolStripMenuItem})
         Me.menuTransaksi.Name = "menuTransaksi"
         Me.menuTransaksi.Size = New System.Drawing.Size(86, 20)
         Me.menuTransaksi.Text = "Transactions"
@@ -308,19 +308,19 @@ Partial Class MenuUtama
         Me.menuProformaInvoice.Tag = "17"
         Me.menuProformaInvoice.Text = "Proforma Invoice"
         '
-        'BonOrderToolStripMenuItem
-        '
-        Me.BonOrderToolStripMenuItem.Name = "BonOrderToolStripMenuItem"
-        Me.BonOrderToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
-        Me.BonOrderToolStripMenuItem.Tag = "24"
-        Me.BonOrderToolStripMenuItem.Text = "Bon Order"
-        '
         'menuPO
         '
         Me.menuPO.Name = "menuPO"
         Me.menuPO.Size = New System.Drawing.Size(169, 22)
         Me.menuPO.Tag = "22"
         Me.menuPO.Text = "Purchase Order"
+        '
+        'BonOrderToolStripMenuItem
+        '
+        Me.BonOrderToolStripMenuItem.Name = "BonOrderToolStripMenuItem"
+        Me.BonOrderToolStripMenuItem.Size = New System.Drawing.Size(169, 22)
+        Me.BonOrderToolStripMenuItem.Tag = "24"
+        Me.BonOrderToolStripMenuItem.Text = "Bon Order"
         '
         'RawMAterialPlaningToolStripMenuItem
         '

@@ -75,6 +75,34 @@
             Throw ex
         End Try
     End Function
+    Protected Function ListComboBox()
+        Dim dataAccess = New ClsDataAccess
+        Dim dataTable As DataTable = New DataTable
+        Dim query As String
+        query = "Select BrandID,Name From Brand Where IsActive = 1"
+        Try
+            dataTable = dataAccess.RetrieveListData(query)
+            dataAccess = Nothing
+            Return dataTable
+        Catch ex As Exception
+            dataAccess = Nothing
+            Return Nothing
+            Throw ex
+        End Try
+    End Function
+    Public Sub ComboBoxBrand(cmb As ComboBox)
+        Try
+            With cmb
+                .DataSource = ListComboBox()
+                .ValueMember = "BrandID"
+                .DisplayMember = "Name"
+                .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+                .AutoCompleteSource = AutoCompleteSource.ListItems
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
 #End Region
 
 #Region "Method CRUD"

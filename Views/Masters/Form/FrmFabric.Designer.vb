@@ -36,7 +36,11 @@ Partial Class FrmFabric
         Me.cmbCari = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.cmbSupp = New System.Windows.Forms.ComboBox()
+        Me.txtWeight = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtWidth = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.cmbCust = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtSpec = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -45,10 +49,6 @@ Partial Class FrmFabric
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.dgv = New System.Windows.Forms.DataGridView()
-        Me.txtWeight = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtWidth = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -172,7 +172,7 @@ Partial Class FrmFabric
         Me.Panel3.Controls.Add(Me.Label7)
         Me.Panel3.Controls.Add(Me.txtWidth)
         Me.Panel3.Controls.Add(Me.Label8)
-        Me.Panel3.Controls.Add(Me.cmbSupp)
+        Me.Panel3.Controls.Add(Me.cmbCust)
         Me.Panel3.Controls.Add(Me.Label6)
         Me.Panel3.Controls.Add(Me.txtSpec)
         Me.Panel3.Controls.Add(Me.Label5)
@@ -188,22 +188,56 @@ Partial Class FrmFabric
         Me.Panel3.Size = New System.Drawing.Size(607, 195)
         Me.Panel3.TabIndex = 12
         '
-        'cmbSupp
+        'txtWeight
         '
-        Me.cmbSupp.FormattingEnabled = True
-        Me.cmbSupp.Location = New System.Drawing.Point(76, 165)
-        Me.cmbSupp.Name = "cmbSupp"
-        Me.cmbSupp.Size = New System.Drawing.Size(222, 21)
-        Me.cmbSupp.TabIndex = 7
+        Me.txtWeight.Location = New System.Drawing.Point(76, 139)
+        Me.txtWeight.MaxLength = 150
+        Me.txtWeight.Name = "txtWeight"
+        Me.txtWeight.Size = New System.Drawing.Size(222, 20)
+        Me.txtWeight.TabIndex = 6
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(3, 142)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(41, 13)
+        Me.Label7.TabIndex = 24
+        Me.Label7.Text = "Weight"
+        '
+        'txtWidth
+        '
+        Me.txtWidth.Location = New System.Drawing.Point(76, 113)
+        Me.txtWidth.MaxLength = 150
+        Me.txtWidth.Name = "txtWidth"
+        Me.txtWidth.Size = New System.Drawing.Size(222, 20)
+        Me.txtWidth.TabIndex = 5
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(3, 116)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(35, 13)
+        Me.Label8.TabIndex = 23
+        Me.Label8.Text = "Width"
+        '
+        'cmbCust
+        '
+        Me.cmbCust.FormattingEnabled = True
+        Me.cmbCust.Location = New System.Drawing.Point(76, 165)
+        Me.cmbCust.Name = "cmbCust"
+        Me.cmbCust.Size = New System.Drawing.Size(222, 21)
+        Me.cmbCust.TabIndex = 7
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(3, 168)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(45, 13)
+        Me.Label6.Size = New System.Drawing.Size(51, 13)
         Me.Label6.TabIndex = 19
-        Me.Label6.Text = "Supplier"
+        Me.Label6.Text = "Customer"
         '
         'txtSpec
         '
@@ -274,40 +308,6 @@ Partial Class FrmFabric
         Me.dgv.Size = New System.Drawing.Size(607, 193)
         Me.dgv.TabIndex = 15
         '
-        'txtWeight
-        '
-        Me.txtWeight.Location = New System.Drawing.Point(76, 139)
-        Me.txtWeight.MaxLength = 150
-        Me.txtWeight.Name = "txtWeight"
-        Me.txtWeight.Size = New System.Drawing.Size(222, 20)
-        Me.txtWeight.TabIndex = 6
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(3, 142)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(41, 13)
-        Me.Label7.TabIndex = 24
-        Me.Label7.Text = "Weight"
-        '
-        'txtWidth
-        '
-        Me.txtWidth.Location = New System.Drawing.Point(76, 113)
-        Me.txtWidth.MaxLength = 150
-        Me.txtWidth.Name = "txtWidth"
-        Me.txtWidth.Size = New System.Drawing.Size(222, 20)
-        Me.txtWidth.TabIndex = 5
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(3, 116)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(35, 13)
-        Me.Label8.TabIndex = 23
-        Me.Label8.Text = "Width"
-        '
         'FrmFabric
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -353,7 +353,7 @@ Partial Class FrmFabric
     Friend WithEvents Label4 As Label
     Friend WithEvents txtSpec As TextBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents cmbSupp As ComboBox
+    Friend WithEvents cmbCust As ComboBox
     Friend WithEvents Label6 As Label
     Friend WithEvents txtWeight As TextBox
     Friend WithEvents Label7 As Label

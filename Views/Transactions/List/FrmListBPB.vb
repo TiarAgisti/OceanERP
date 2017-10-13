@@ -176,9 +176,6 @@
             MsgBoxError(ex.Message)
         End Try
     End Sub
-
-
-
 #End Region
 
 End Class

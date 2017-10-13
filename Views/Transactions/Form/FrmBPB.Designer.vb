@@ -88,7 +88,7 @@ Partial Class FrmBPB
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(759, 63)
         Me.Label3.TabIndex = 25
-        Me.Label3.Text = "Goods Receipt PO"
+        Me.Label3.Text = "Receipt Of Goods Form"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Panel1
